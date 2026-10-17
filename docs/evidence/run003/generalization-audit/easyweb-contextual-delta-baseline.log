@@ -1,0 +1,297 @@
+
+Running 9 tests using 1 worker
+
+(node:57545) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/analyzer-context.spec.mjs:192:1 › 동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다 (88ms)
+(node:57551) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/analyzer-context.spec.mjs:205:1 › 목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다 (89ms)
+(node:57558) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/analyzer-context.spec.mjs:221:1 › 동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다 (95ms)
+(node:57564) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/classifier-ranking.spec.mjs:817:1 › 명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다 (98ms)
+(node:57570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/classifier-ranking.spec.mjs:824:1 › 발급 문맥 보완은 다른 기능·문서·전역 메뉴·폼·기사·위험 동작을 덮지 않는다 (142ms)
+  ✘  6 tests/classifier-ranking.spec.mjs:833:1 › 행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다 (84ms)
+(node:57586) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  7 tests/classifier-ranking.spec.mjs:839:1 › camelCase의 일반 행동요령·instructions 경로는 실제 주제 목록의 목적만 보완한다 (114ms)
+(node:57599) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  8 tests/classifier-ranking.spec.mjs:848:1 › 주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다 (95ms)
+(node:57605) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  9 tests/classifier-ranking.spec.mjs:855:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다 (184ms)
+
+
+  1) tests/analyzer-context.spec.mjs:192:1 › 동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다 ────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      196 |   await save();
+      197 |   await page.locator('#peer a').evaluate(e => e.textContent = '일반 개요');
+    > 198 |   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+          |                                                                              ^
+      199 |   await page.locator('#peer a').evaluate(e => { e.textContent = '행동요령'; e.setAttribute('href', '#tips'); });
+      200 |   await save();
+      201 |   await page.locator('#peer').evaluate(e => e.hidden = true);
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:198:78
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-동료-정보-개념과-목록의-보이는-항목-수-변경은-원래-주제-후보를-무효화한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-동료-정보-개념과-목록의-보이는-항목-수-변경은-원래-주제-후보를-무효화한다/error-context.md
+
+  2) tests/analyzer-context.spec.mjs:205:1 › 목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다 ───────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      209 |   await save();
+      210 |   await page.locator('#list').evaluate(e => e.removeAttribute('role'));
+    > 211 |   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+          |                                                                              ^
+      212 |   await page.locator('#list').evaluate(e => e.setAttribute('role', 'list'));
+      213 |   await save();
+      214 |   await page.locator('#panel').evaluate(e => e.remove());
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:211:78
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-목록-역할·탭-대상-존재·원본-폼-영역이-바뀌면-주제-제어의-근거를-무효화한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-목록-역할·탭-대상-존재·원본-폼-영역이-바뀌면-주제-제어의-근거를-무효화한다/error-context.md
+
+  3) tests/analyzer-context.spec.mjs:221:1 › 동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다 ─────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "source",
+    - ]
+    + Array []
+
+      222 |   await page.setContent('<main><h1>생활 정보</h1><div role="tablist"><div id="source" role="tab">가정</div><div role="tab" contenteditable="true">PRIVATE_SENTINEL 행동요령</div><div role="textbox">PRIVATE_SENTINEL 안전수칙</div></div></main>');
+      223 |   const actual = await inspect(page);
+    > 224 |   expect(actual.map(c => c.id)).toEqual(['source']);
+          |                                 ^
+      225 |   const snapshots = await page.evaluate(() => ContextEngine.analyzePage().map(c => c.snapshot));
+      226 |   expect(JSON.stringify(snapshots)).not.toContain('PRIVATE_SENTINEL');
+      227 | });
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:224:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-동료의-편집-텍스트는-정보-개념·목록-후보·snapshot으로-읽지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-동료의-편집-텍스트는-정보-개념·목록-후보·snapshot으로-읽지-않는다/error-context.md
+
+  4) tests/classifier-ranking.spec.mjs:817:1 › 명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다 ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 14
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "first",
+    -     "apply",
+    -     "control",
+    -     "navigate",
+    -   ],
+    -   Array [
+    -     "second",
+    -     "apply",
+    -     "control",
+    -     "locate",
+    -   ],
+    - ]
+    + Array []
+
+      817 | test('명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다', async ({ page }) => {
+      818 |   const actual = await inspectContextual(page, '<main><h1>증명 업무</h1><section><h2>온라인 발급 시스템</h2><ul><li><a id="first" href="https://alpha.example.test/portal">한빛 인증원</a></li><li><a id="second" href="javascript:openPortal();">푸른 민원센터</a></li></ul></section></main>');
+    > 819 |   expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['first', 'apply', 'control', 'navigate'], ['second', 'apply', 'control', 'locate']]);
+          |                                                                                ^
+      820 |   expect(actual.classified[0].label).toBe('한빛 인증원');
+      821 |   expect(actual.classified[0].href).toBe('https://alpha.example.test/portal');
+      822 | });
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:819:80
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-명시적인-발급-842c6--실제-목록은-고유-이름의-서비스-진입을-설명한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-명시적인-발급-842c6--실제-목록은-고유-이름의-서비스-진입을-설명한다/error-context.md
+
+  5) tests/classifier-ranking.spec.mjs:833:1 › 행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다 ──
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 14
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "storm",
+    -     "help",
+    -     "reading",
+    -     "locate",
+    -   ],
+    -   Array [
+    -     "flood",
+    -     "help",
+    -     "reading",
+    -     "locate",
+    -   ],
+    - ]
+    + Array []
+
+      833 | test('행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다', async ({ page }) => {
+      834 |   const actual = await inspectContextual(page, '<main><h1>생활 안전 행동요령</h1><ul><li><a id="storm" href="javascript:showTopic(1);">태풍</a></li><li><a id="flood" href="#flood">침수</a></li></ul><section id="flood"></section></main>');
+    > 835 |   expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['storm', 'help', 'reading', 'locate'], ['flood', 'help', 'reading', 'locate']]);
+          |                                                                                ^
+      836 |   expect(actual.classified.every(c => c.pagePurpose === 'help' && c.href === undefined)).toBe(true);
+      837 | });
+      838 |
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:835:80
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-행동요령의-짧-7cd82-읽기이며-JS와-fragment를-그대로-보존한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-행동요령의-짧-7cd82-읽기이며-JS와-fragment를-그대로-보존한다/error-context.md
+
+  6) tests/classifier-ranking.spec.mjs:839:1 › camelCase의 일반 행동요령·instructions 경로는 실제 주제 목록의 목적만 보완한다 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "quake",
+    -     "help",
+    -   ],
+    -   Array [
+    -     "snow",
+    -     "help",
+    -   ],
+    - ]
+    + Array []
+
+      840 |   for (const pathname of ['/guide/getEmergencyActionTips.do', '/guide/showInstructions.html']) {
+      841 |     const actual = await inspectContextual(page, '<main><h1>상황별 정보</h1><ul><li><button id="quake">지진</button></li><li><button id="snow">대설</button></li></ul><a id="unlisted" href="/misc">기관 소개</a></main>', `https://example.test${pathname}`);
+    > 842 |     expect(actual.classified.map(c => [c.id, c.category])).toEqual([['quake', 'help'], ['snow', 'help']]);
+          |                                                            ^
+      843 |   }
+      844 |   const lookalike = await inspectContextual(page, '<main><ul><li><button>지진</button></li><li><button>대설</button></li></ul></main>', 'https://example.test/instructionalResearch.do');
+      845 |   expect(lookalike.classified).toEqual([]);
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:842:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-camelCa-e7725-ions-경로는-실제-주제-목록의-목적만-보완한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-camelCa-e7725-ions-경로는-실제-주제-목록의-목적만-보완한다/error-context.md
+
+  7) tests/classifier-ranking.spec.mjs:848:1 › 주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다 ────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 20
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "home",
+    -     "help",
+    -     "reading",
+    -     "locate",
+    -   ],
+    -   Array [
+    -     "public",
+    -     "help",
+    -     "reading",
+    -     "locate",
+    -   ],
+    -   Array [
+    -     "tips",
+    -     "help",
+    -     "reading",
+    -     "locate",
+    -   ],
+    - ]
+    + Array []
+
+      848 | test('주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다', async ({ page }) => {
+      849 |   const actual = await inspectContextual(page, '<main><h1>생활 정보</h1><div role="tablist"><div id="home" role="tab" aria-controls="home-panel">가정</div><div id="public" role="tab" aria-controls="public-panel">공공장소</div><div id="tips" role="tab" aria-controls="tips-panel">안전수칙</div></div><section id="home-panel"></section><section id="public-panel" hidden></section><section id="tips-panel" hidden></section></main>');
+    > 850 |   expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['home', 'help', 'reading', 'locate'], ['public', 'help', 'reading', 'locate'], ['tips', 'help', 'reading', 'locate']]);
+          |                                                                                ^
+      851 |   const fragments = await inspectContextual(page, '<main><ul><li><a id="first" href="#public">공공장소</a></li><li><a id="guide" href="#tips">행동요령</a></li></ul><section id="public"></section><section id="tips"></section></main>');
+      852 |   expect(fragments.classified.map(c => [c.id, c.category])).toEqual([['first', 'help'], ['guide', 'help']]);
+      853 | });
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:850:80
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-주제-탭과-동료의-명시적-정보-개념은-일반-페이지의-정보-목록을-설명한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-주제-탭과-동료의-명시적-정보-개념은-일반-페이지의-정보-목록을-설명한다/error-context.md
+
+  8) tests/classifier-ranking.spec.mjs:855:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다 ───────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 0
+
+      Array [
+        Array [
+          "apply",
+          "apply",
+        ],
+    -   Array [
+    -     "topic",
+    -     "help",
+    -   ],
+      ]
+
+      863 |   ]) expect((await inspectContextual(page, markup)).classified).toEqual([]);
+      864 |   const actual = await inspectContextual(page, '<main><h1>도움말</h1><ul><li><a id="apply" href="/apply">시설 예약하기</a></li><li><a id="conflict" href="/login">가정</a></li><li><a id="danger" href="/remove" onclick="openTopic();">공공장소</a></li><li><a id="next" href="#next">다음</a></li><li><a id="topic" href="#topics">학교</a></li></ul></main>');
+    > 865 |   expect(actual.classified.map(c => [c.id, c.category])).toEqual([['apply', 'apply'], ['topic', 'help']]);
+          |                                                          ^
+      866 | });
+      867 |
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:865:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-정보-목록-보-fc87c--실제-구조가-필요하며-다른-강한-기능은-우선한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-정보-목록-보-fc87c--실제-구조가-필요하며-다른-강한-기능은-우선한다/error-context.md
+
+  8 failed
+    tests/analyzer-context.spec.mjs:192:1 › 동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다 ─────────────
+    tests/analyzer-context.spec.mjs:205:1 › 목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다 ────────────
+    tests/analyzer-context.spec.mjs:221:1 › 동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다 ──────────────
+    tests/classifier-ranking.spec.mjs:817:1 › 명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다 ───────────
+    tests/classifier-ranking.spec.mjs:833:1 › 행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다 ───
+    tests/classifier-ranking.spec.mjs:839:1 › camelCase의 일반 행동요령·instructions 경로는 실제 주제 목록의 목적만 보완한다 
+    tests/classifier-ranking.spec.mjs:848:1 › 주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다 ─────────────
+    tests/classifier-ranking.spec.mjs:855:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다 ────────
+  1 passed (3.6s)

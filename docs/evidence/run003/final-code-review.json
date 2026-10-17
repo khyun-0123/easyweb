@@ -1,0 +1,26 @@
+{
+  "reviewedAt": "2026-10-17T17:38:34.892012+00:00",
+  "reviewer": "generalization_review",
+  "mode": "READ_ONLY",
+  "files": [
+    "src/analyzer.ts",
+    "src/classifier.ts",
+    "src/page-session.ts",
+    "src/easy-mode.ts",
+    "src/ranker.ts"
+  ],
+  "freeze": "docs/evidence/run003/final-engine-freeze.json",
+  "allReviewedSourceHashesMatchFreeze": true,
+  "finding": "No new serious regression found within the specified snapshot/currentness, pagination, utility-exclusion and performance scope.",
+  "checkedFlows": [
+    "Collection-dependent metadata is created only for adopted fallback classifications; currentness uses the same flag.",
+    "Batch WeakMap shares collection work across watcher and departing/arriving screen checks.",
+    "Pagination validates current and arriving candidates before exposing their actions.",
+    "Failed stale transition requires refresh and discards exhausted iteration state.",
+    "Ordinary strong candidates avoid scanning all hidden peers on watcher ticks."
+  ],
+  "limitation": "Collection-dependent candidates still require inspecting their relevant peer group; shared per batch. This review is bounded, not proof that no defects exist or that independent quality gates pass.",
+  "mutations": false,
+  "nativeOrVisibleBrowserControl": false,
+  "fullVerificationRepeatedByReviewer": false
+}

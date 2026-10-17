@@ -14,3 +14,19 @@ export function scorePage(actual, target, sourceDestinations) {
     taskRecommended: correct.some(candidate => target.task.expectedSourceIds.includes(candidate.sourceId)),
   };
 }
+
+export function qualityGate(summary, sites) {
+  const thresholds = { overallPrecision: 0.9, overallRecall: 0.85, sitePrecision: 0.8, siteRecall: 0.75 };
+  const ratios = row => ({ precision: row.recommended > 0 ? row.correct / row.recommended : null,
+    recall: row.expected > 0 ? row.matched / row.expected : null });
+  const overall = ratios(summary);
+  const perSite = sites.map(site => {
+    const values = ratios(site);
+    return { siteId: site.siteId, ...values,
+      passed: values.precision !== null && values.precision >= thresholds.sitePrecision && values.recall !== null && values.recall >= thresholds.siteRecall };
+  });
+  const passed = overall.precision !== null && overall.precision >= thresholds.overallPrecision
+    && overall.recall !== null && overall.recall >= thresholds.overallRecall && perSite.length === 5 && perSite.every(site => site.passed);
+  return { status: passed ? 'PASS' : 'FAIL', thresholds, overall, sites: perSite,
+    scope: 'Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance.' };
+}

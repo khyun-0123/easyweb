@@ -1,0 +1,256 @@
+diff --git a/src/analyzer.ts b/src/analyzer.ts
+index 8928ec2..7c40ee8 100644
+--- a/src/analyzer.ts
++++ b/src/analyzer.ts
+@@ -4,6 +4,8 @@ import { sourceAction } from './action-policy';
+ const clean = (text: string) => text.replace(/\s+/g, ' ').trim().slice(0, 140);
+ const editableRoleSelector = ['textbox', 'searchbox', 'combobox', 'spinbutton', 'slider'].map(role => `[role~="${role}" i]`).join(', ');
+ const editableSelector = `input, textarea, select, [contenteditable]:not([contenteditable="false" i]), ${editableRoleSelector}`;
++const headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
++const localRegionSelector = 'section, article, aside, [role~="region" i], [role~="article" i], [role~="complementary" i]';
+ 
+ export function isVisible(element: HTMLElement): boolean {
+   if (!element.isConnected || element.closest('[hidden], [inert], [aria-hidden="true" i], [aria-disabled="true" i]')) return false;
+@@ -78,22 +80,39 @@ export function isSearchControl(element: HTMLElement, label = getSafeLabel(eleme
+     || searchCue(label) || searchCue(element.getAttribute('placeholder') ?? ''));
+ }
+ 
++function headingBelongsTo(heading: HTMLElement, element: HTMLElement): boolean {
++  const region = heading.closest(localRegionSelector);
++  if (!region || region.contains(element)) return true;
++  // A neighbouring section's heading does not describe this section. Preserve
++  // an existing title-only section wrapper only when the control has no local
++  // semantic region of its own (a common page-title layout).
++  if (element.closest(localRegionSelector) || !region.matches('section')) return false;
++  const onlyHeading = (node: Node): boolean => {
++    if (node === heading) return true;
++    if (node.nodeType === Node.TEXT_NODE) return !(node.nodeValue ?? '').trim();
++    if (!(node instanceof Element)) return true;
++    return node.contains(heading) && [...node.childNodes].every(onlyHeading);
++  };
++  return onlyHeading(region);
++}
++
+ export function contextLabels(element: HTMLElement): string[] {
+   const labels: string[] = [];
+   const add = (text: string) => { if (text && text.length <= 60 && !labels.includes(text)) labels.push(text); };
+   let parent = element.parentElement;
+   for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
+-    const headings = [...parent.querySelectorAll<HTMLElement>(':scope > :is(h1,h2,h3), :scope > :is(div,section) > :is(h1,h2,h3), :scope > :is(div,section) > :is(div,section) > :is(h1,h2,h3)')];
++    const headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)];
+     const preceding = headings.filter(heading => {
+       let branch = heading;
+       while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
+       // 같은 내용 상자 안에서 이미 읽은 하위 표제가 상위 표제를 덮지 않게 합니다.
+       if (branch !== heading && branch.contains(element)) return false;
+-      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
++      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading)
++        && headingBelongsTo(heading, element) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+     });
+     const label = preceding.at(-1);
+     if (label) {
+-      const text = clean(staticText(label));
++      const text = clean(getSafeLabel(label));
+       add(text);
+     }
+     // 작은 기능 상자는 제목을 p로 표시하기도 합니다. 가까운 상자의 첫 짧은 문구만 문맥으로 씁니다.
+@@ -115,10 +134,10 @@ function documentPurpose(): PagePurpose | undefined {
+   // 현재 URL의 경로와 명시된 페이지 표제만 분류하며 title·검색 쿼리·입력값은 읽지 않습니다.
+   if (/(?:^|[\/_.-])academic[-_]?calendar(?:[\/_.-]|$)/i.test(location.pathname)) return 'academic-calendar';
+   if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return 'help';
+-  const headings = document.querySelectorAll<HTMLElement>('main > h1, [role~="main"] > h1, .page-title > h1, .page-title > h2, .page-title > h3');
++  const headings = document.querySelectorAll<HTMLElement>(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
+   for (const heading of headings) {
+     if (!isVisible(heading)) continue;
+-    const text = clean(staticText(heading));
++    const text = clean(getSafeLabel(heading));
+     if (text.length > 60) continue;
+     if (/학사\s*일정|academic\s+calendar/i.test(text)) return 'academic-calendar';
+     if (/^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text)) return 'help';
+diff --git a/src/classifier.ts b/src/classifier.ts
+index f08d1ec..0c663ef 100644
+--- a/src/classifier.ts
++++ b/src/classifier.ts
+@@ -45,6 +45,7 @@ const legalDocument = /(?:조례|규정|법령)(?:\s*(?:안내|해설|집))?(?:\
+ const noticeListHeading = /^(?:공지\s*공고|(?:채용|입찰|모집)\s*공고)(?:\s*(?:목록|게시판))?$/;
+ const studentContextHeading = /^(?:학생지원|대학생활|학교생활|student\s+(?:support|life)|campus\s+life)$/i;
+ const counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대면)\s*)?상담\s*(?:운영|안내)$/;
++const applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
+ 
+ function contextsFor(candidate: Candidate, label: string): string[] {
+   return [candidate.sectionLabel, ...(candidate.contextLabels ?? [])]
+@@ -161,6 +162,27 @@ function isArticle(candidate: Candidate, parts: string[], url?: URL): boolean {
+   return articlePath && !listLeaf;
+ }
+ 
++function corroboratedArticleService(candidate: Candidate, label: string, target: string, parts: string[], url?: URL): boolean {
++  if (!url || candidate.context !== 'body' || candidate.action !== 'navigate' || !candidate.element.matches('a[href]')
++    || !candidate.element.closest('article, [role~="article"]') || hasDocumentReference(url)
++    || parts.some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return false;
++  // An article wrapper may contain a service card. A task-shaped fixed label
++  // and the matching complete endpoint are both required; neither alone can
++  // turn a news title or opaque document link into a service.
++  return rules.some(rule => rule.endpoints.has(target)
++    && (rule.category === 'apply' ? applicationControlLabel.test(label) : rule.section.test(label)));
++}
++
++function applicationPageControl(candidate: Candidate, label: string, target: string, url?: URL): boolean {
++  if (candidate.context !== 'body' || !applicationControlLabel.test(label)
++    || !candidate.element.matches('a[href], button, [role~="button"], input[type="button"], input[type="submit"]')
++    || url && hasDocumentReference(url) || isDocumentDownload(candidate.element, candidate.label)
++    || rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return false;
++  // A form's submission control is not an entry to a new application flow.
++  return !((candidate.element instanceof HTMLButtonElement || candidate.element instanceof HTMLInputElement)
++    && candidate.element.type === 'submit' && candidate.element.form);
++}
++
+ function contextualReading(candidate: Candidate, label: string): { category: Category; score: number; reasons: string[]; pageTask: NonNullable<Candidate['pageTask']> } | undefined {
+   // Page purpose supplements a specific source control; it never assigns the
+   // same category to every link on a help/calendar page.
+@@ -233,7 +255,7 @@ export function classify(candidates: Candidate[]): Candidate[] {
+         pageTask: 'reading' as const,
+       }];
+     }
+-    if (isArticle(candidate, parts, url)) return [];
++    if (isArticle(candidate, parts, url) && !corroboratedArticleService(candidate, label, target, parts, url)) return [];
+     if (academicInfo) return [{ ...candidate, category: 'academic' as const, score: 70, reasons: ['학사 납부 정보 읽기', '학사 제목과 안내 목적의 일반 링크'], pageTask: 'reading' as const }];
+     const form = formReading(candidate, label, target, url);
+     if (form === 'conflict') return [];
+@@ -290,7 +312,8 @@ export function classify(candidates: Candidate[]): Candidate[] {
+       ];
+       if (!best || score > best.score || score === best.score && intent > bestIntent) {
+         const pageTask = candidate.context === 'body'
+-          ? semanticMatch || rule.category === 'help' && (viewerControl.test(label)
++          ? semanticMatch || rule.category === 'apply' && applicationPageControl(candidate, label, target, url)
++            || rule.category === 'help' && (viewerControl.test(label)
+             || candidate.element.matches('a[href], button, [role~="button"]')
+               && (contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? 'control'
+             : sectionMatch || rule.category === 'notice' && noticeCollection.test(label) ? 'collection' : undefined
+diff --git a/tests/analyzer-context.spec.mjs b/tests/analyzer-context.spec.mjs
+index 8c2aa99..8e6c10a 100644
+--- a/tests/analyzer-context.spec.mjs
++++ b/tests/analyzer-context.spec.mjs
+@@ -155,3 +155,36 @@ test('정보 패널 버튼이 폼 제출 제어로 연결되면 이전 카드의
+   await page.evaluate(() => { window.saved = ContextEngine.analyzePage()[0]; document.querySelector('#target').id = 'renamed'; });
+   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+ });
++
++test('다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다', async ({ page }) => {
++  await page.setContent('<main><h1>공공 서비스</h1><section><h2>공지사항</h2><p>최근 소식</p></section><article><h2>학사정보</h2><p>기사 내용</p></article><aside><h2>도움말</h2></aside><div role="region"><h2>예약</h2></div><section><ul><li><a id="source" href="/service/reserve">체육관 예약</a></li></ul></section></main>');
++  const actual = await inspect(page);
++  expect(actual[0].contextLabels).toEqual(['공공 서비스']);
++  expect(actual[0].pagePurpose).toBeUndefined();
++});
++
++test('h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다', async ({ page }) => {
++  for (const title of ['<h4>채용공고</h4>', '<h5>채용공고</h5>', '<h6>채용공고</h6>', '<div role="heading" aria-level="4">채용공고 <span role="textbox">PRIVATE_SENTINEL</span></div>']) {
++    await page.setContent(`<main><h1>기관 소식</h1><section>${title}<ul><li><a id="source" href="/post/view?id=33">기간제 근로자 모집 안내</a></li></ul></section></main>`);
++    const actual = await inspect(page);
++    expect(actual[0].contextLabels).toEqual(['채용공고', '기관 소식']);
++    expect(JSON.stringify(actual)).not.toContain('PRIVATE_SENTINEL');
++  }
++});
++
++test('낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다', async ({ page }) => {
++  for (const title of ['<h6>학사일정</h6>', '<div role="heading" aria-level="2">학사일정</div>']) {
++    await page.setContent(`<main>${title}<table><tr><td><a id="source">중간고사</a></td></tr></table></main>`);
++    const actual = await inspect(page);
++    expect(actual.map(c => c.id)).toEqual(['source']);
++    expect(actual[0].pagePurpose).toBe('academic-calendar');
++  }
++});
++
++test('원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다', async ({ page }) => {
++  await page.setContent('<main><section><h2>공지사항</h2><ul><li><a id="source" href="/service/item">안내</a></li></ul></section><section id="target"><h2>체육 시설</h2></section></main>');
++  await page.addScriptTag({ content: code });
++  await page.evaluate(() => { window.saved = ContextEngine.analyzePage()[0]; document.querySelector('#target').append(document.querySelector('#source')); });
++  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
++  expect((await inspect(page))[0].contextLabels).toEqual(['체육 시설']);
++});
+diff --git a/tests/classifier-ranking.spec.mjs b/tests/classifier-ranking.spec.mjs
+index 6a2f190..190c256 100644
+--- a/tests/classifier-ranking.spec.mjs
++++ b/tests/classifier-ranking.spec.mjs
+@@ -8,7 +8,7 @@ test.beforeAll(async () => {
+   const sourceRoot = process.env.EASYWEB_ENGINE_ROOT ?? './src';
+   const result = await build({
+     stdin: {
+-      contents: `export { classify } from ${JSON.stringify(`${sourceRoot}/classifier.ts`)}; export { rank } from ${JSON.stringify(`${sourceRoot}/ranker.ts`)};`,
++      contents: `export { analyzePage } from ${JSON.stringify(`${sourceRoot}/analyzer.ts`)}; export { classify } from ${JSON.stringify(`${sourceRoot}/classifier.ts`)}; export { rank } from ${JSON.stringify(`${sourceRoot}/ranker.ts`)};`,
+       resolveDir: process.cwd(),
+       sourcefile: 'synthetic-ranking-entry.ts',
+     },
+@@ -732,3 +732,73 @@ test('구조가 달라져도 식별 가능한 같은 이름 제어의 동점 순
+   expect(first.directRanked.map(item => item.id)).toEqual(['book-search', 'site-search']);
+   expect(second.directRanked.map(item => item.id)).toEqual(['book-search', 'site-search']);
+ });
++
++test('명확한 본문 신청과 예약은 전역 메뉴가 많아도 현재 페이지 제어로 보존한다', async ({ page }) => {
++  await page.setContent('<header><nav><a href="https://example.test/login">로그인</a><a href="https://example.test/search">검색</a><a href="https://example.test/notice">공지사항</a><a href="https://example.test/academic">학사정보</a><a href="https://example.test/help">도움말</a></nav></header><main><h1>주민 서비스</h1><a id="passport" href="https://example.test/service/a">여권 신청</a><a id="waste" href="https://example.test/service/b">대형폐기물 신청하기</a></main>');
++  await page.addScriptTag({ content: engine });
++  const actual = await page.evaluate(() => {
++    const classified = SyntheticEngine.classify(SyntheticEngine.analyzePage());
++    return { controls: classified.filter(c => c.context === 'body').map(c => [c.element.id, c.pageTask]),
++      ranked: SyntheticEngine.rank(classified).map(c => ({ id: c.element.id, category: c.category })) };
++  });
++  expect(actual.controls).toEqual([['passport', 'control'], ['waste', 'control']]);
++  expect(actual.ranked).toHaveLength(6);
++  expect(actual.ranked.filter(c => c.category === 'apply')).toHaveLength(2);
++  expect(actual.ranked.some(c => c.id === 'waste')).toBe(true);
++  const capped = await page.evaluate(() => {
++    document.querySelector('main').insertAdjacentHTML('beforeend', '<button id="reserve">체육관 예약</button><a id="fourth" href="https://example.test/service/c">교육 접수</a>');
++    const classified = SyntheticEngine.classify(SyntheticEngine.analyzePage());
++    return { controls: classified.filter(c => c.pageTask === 'control').length,
++      ranked: SyntheticEngine.rank(classified).map(c => c.category) };
++  });
++  expect(capped.controls).toBe(4);
++  expect(capped.ranked).toHaveLength(6);
++  expect(capped.ranked.filter(category => category === 'apply')).toHaveLength(3);
++});
++
++test('신청을 언급하는 안내나 제출 제어까지 본문 예약 슬롯으로 올리지 않는다', async ({ page }) => {
++  const { classified } = await inspect(page, [
++    { label: '신청 서비스 개편 안내', selector: '#announcement', href: 'https://example.test/updates/42', context: 'body' },
++    { label: '예약 변경 안내', selector: '#guide', href: 'https://example.test/services/guide', context: 'body' },
++    { label: '여권 신청 방법', selector: '#method', href: 'https://example.test/services/method', context: 'body' },
++    { label: '시설 예약', selector: '#submit', action: 'locate', context: 'body' },
++    { label: '시설 신청', selector: '#download', action: 'locate', context: 'body' },
++    { label: '여권 신청', selector: '#conflict', href: 'https://example.test/search', context: 'body' },
++  ], '<main><a id="announcement" href="/updates/42">신청 서비스 개편 안내</a><a id="guide" href="/services/guide">예약 변경 안내</a><a id="method" href="/services/method">여권 신청 방법</a><form><button id="submit">시설 예약</button></form><a id="download" href="/forms/request.pdf" download>시설 신청</a><a id="conflict" href="/search">여권 신청</a></main>');
++  expect(classified).toHaveLength(6);
++  expect(classified.every(c => c.pageTask === undefined)).toBe(true);
++});
++
++test('article의 서비스는 고정 기능 문구와 완전한 같은 기능 경로가 모두 필요하다', async ({ page }) => {
++  const specs = [
++    { label: '체육관 예약하기', selector: '#reservation', href: 'https://example.test/reservation', context: 'body' },
++    { label: '로그인', selector: '#login', href: 'https://example.test/login', context: 'body' },
++    { label: '예약 방법이 달라집니다', selector: '#story', href: 'https://example.test/updates/42', context: 'body' },
++    { label: '체육관 예약하기', selector: '#label-only', href: 'https://example.test/updates/43', context: 'body' },
++    { label: '자세히 보기', selector: '#endpoint-only', href: 'https://example.test/reservation', context: 'body' },
++    { label: '체육관 예약하기', selector: '#conflict', href: 'https://example.test/login', context: 'body' },
++    { label: '체육관 예약하기', selector: '#news-path', href: 'https://example.test/news/reservation', context: 'body' },
++    { label: '체육관 예약하기', selector: '#document', href: 'https://example.test/reservation?articleNo=3', context: 'body' },
++    { label: '체육관 예약하기', selector: '#dangerous', href: 'https://example.test/reservation?action=payment', context: 'body' },
++  ];
++  const markup = `<main>${specs.map(c => `<article><a id="${c.selector.slice(1)}" href="${c.href}">${c.label}</a></article>`).join('')}</main>`;
++  const { classified } = await inspect(page, specs, markup);
++  expect(classified.map(c => [c.id, c.category])).toEqual([['reservation', 'apply'], ['login', 'login']]);
++  expect(classified[0].pageTask).toBe('control');
++});
++
++test('이웃 section의 공지 제목은 실제 예약 링크의 분류와 예약 슬롯을 바꾸지 않는다', async ({ page }) => {
++  await page.setContent('<main><section><h2>공지사항</h2><p>공개된 공지 0건</p></section><section><ul><li><a id="service" href="https://example.test/service/reserve">체육관 예약</a></li></ul></section></main>');
++  await page.addScriptTag({ content: engine });
++  const actual = await page.evaluate(() => SyntheticEngine.classify(SyntheticEngine.analyzePage()).map(c => [c.element.id, c.category, c.pageTask]));
++  expect(actual).toEqual([['service', 'apply', 'control']]);
++});
++
++test('같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다', async ({ page }) => {
++  for (const heading of ['<h2>채용공고</h2>', '<h4>채용공고</h4>', '<h5>채용공고</h5>', '<h6>채용공고</h6>', '<div role="heading" aria-level="3">채용공고</div>']) {
++    await page.setContent(`<main><section>${heading}<ul><li><a id="item" href="https://example.test/post/view?id=33">기간제 근로자 모집 안내</a></li></ul></section></main>`);
++    await page.addScriptTag({ content: engine });
++    const actual = await page.evaluate(() => SyntheticEngine.classify(SyntheticEngine.analyzePage()).map(c => [c.element.id, c.category, c.pageTask]));
++    expect(actual).toEqual([['item', 'notice', 'reading']]);
++  }
++});

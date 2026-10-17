@@ -1,5 +1,5 @@
 import type { Candidate, Category } from './types';
-import { isQuestionCollection, isSearchControl, isVisible } from './analyzer';
+import { collectionEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache } from './analyzer';
 import { isDocumentDownload } from './action-policy';
 
 const rules: { category: Category; label: RegExp; section: RegExp; endpoints: ReadonlySet<string> }[] = [
@@ -45,6 +45,8 @@ const legalDocument = /(?:조례|규정|법령)(?:\s*(?:안내|해설|집))?(?:\
 const noticeListHeading = /^(?:공지\s*공고|(?:채용|입찰|모집)\s*공고)(?:\s*(?:목록|게시판))?$/;
 const studentContextHeading = /^(?:학생지원|대학생활|학교생활|student\s+(?:support|life)|campus\s+life)$/i;
 const counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대면)\s*)?상담\s*(?:운영|안내)$/;
+const applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
+const issuanceServiceHeading = /^(?=.{2,48}$)(?:(?:온라인|인터넷|전자)\s*)?(?:(?:증명(?:서)?|민원|서류)\s*)?발급\s*(?:시스템|서비스)(?:\s*(?:바로\s*가기|목록))?$/;
 
 function contextsFor(candidate: Candidate, label: string): string[] {
   return [candidate.sectionLabel, ...(candidate.contextLabels ?? [])]
@@ -161,6 +163,62 @@ function isArticle(candidate: Candidate, parts: string[], url?: URL): boolean {
   return articlePath && !listLeaf;
 }
 
+function corroboratedArticleService(candidate: Candidate, label: string, target: string, parts: string[], url?: URL): boolean {
+  if (!url || candidate.context !== 'body' || candidate.action !== 'navigate' || !candidate.element.matches('a[href]')
+    || !candidate.element.closest('article, [role~="article"]') || hasDocumentReference(url)
+    || parts.some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return false;
+  // An article wrapper may contain a service card. A task-shaped fixed label
+  // and the matching complete endpoint are both required; neither alone can
+  // turn a news title or opaque document link into a service.
+  return rules.some(rule => rule.endpoints.has(target)
+    && (rule.category === 'apply' ? applicationControlLabel.test(label) : rule.section.test(label)));
+}
+
+function applicationPageControl(candidate: Candidate, label: string, target: string, url?: URL): boolean {
+  if (candidate.context !== 'body' || !applicationControlLabel.test(label)
+    || !candidate.element.matches('a[href], button, [role~="button"], input[type="button"], input[type="submit"]')
+    || url && hasDocumentReference(url) || isDocumentDownload(candidate.element, candidate.label)
+    || rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return false;
+  // A form's submission control is not an entry to a new application flow.
+  return !((candidate.element instanceof HTMLButtonElement || candidate.element instanceof HTMLInputElement)
+    && candidate.element.type === 'submit' && candidate.element.form);
+}
+
+function structuredContext(candidate: Candidate, label: string, collection: ReturnType<typeof collectionEvidence>, url?: URL): Candidate | undefined {
+  const element = candidate.element;
+  if (!collection.kind || candidate.context === 'footer' || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label)
+    || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]')
+    || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
+  let destination = url;
+  const raw = element.getAttribute('href')?.trim() ?? '';
+  if (!destination && raw && !/^(?:#|javascript:)/i.test(raw)) {
+    try { const parsed = new URL(raw, document.baseURI); if (/^https?:$/.test(parsed.protocol)) destination = parsed; else return; }
+    catch { return; }
+  }
+  // Only this new fallback examines fixed script metadata. It never executes
+  // it, and a dangerous command remains ineligible when href is a locate action.
+  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
+  if (dangerous.test(script)) return;
+  const parts = destination ? pathParts(destination) : [];
+  if (destination && (isDangerousURL(destination, parts) || hasDocumentReference(destination))
+    || parts.some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
+  const target = endpoint(parts);
+  const contexts = contextsFor(candidate, label);
+  if (contexts.some(heading => issuanceServiceHeading.test(heading)) && collection.kind === 'list'
+    && (collection.controlled || !!destination)
+    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) {
+    return { ...candidate, category: 'apply', score: 70, reasons: ['발급 서비스 진입', '명시적 발급 시스템 제목과 원본 목록 제어'], pageTask: 'control' };
+  }
+  const localReading = !!destination && destination.origin === location.origin && candidate.action === 'navigate';
+  if (collection.peers >= 2 && (candidate.pagePurpose === 'help' || collection.informationPeer)
+    && (collection.controlled || localReading)
+    && !rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target))) {
+    return { ...candidate, category: 'help', score: 65, reasons: ['정보 주제 읽기', candidate.pagePurpose === 'help' ? '도움말·행동요령 목적과 원본 주제 목록' : '원본 목록·탭과 동료의 명시적 정보 개념'],
+      pageTask: candidate.context === 'body' || candidate.action === 'locate' && collection.controlled ? 'reading' : undefined };
+  }
+}
+
 function contextualReading(candidate: Candidate, label: string): { category: Category; score: number; reasons: string[]; pageTask: NonNullable<Candidate['pageTask']> } | undefined {
   // Page purpose supplements a specific source control; it never assigns the
   // same category to every link on a help/calendar page.
@@ -194,6 +252,7 @@ function contextualReading(candidate: Candidate, label: string): { category: Cat
 }
 
 export function classify(candidates: Candidate[]): Candidate[] {
+  const collectionCache: CollectionCache = new WeakMap();
   return candidates.flatMap(candidate => {
     // Machine-authored accessible names can separate words with _ or -. This
     // lexical view does not alter source labels, URL paths or action metadata.
@@ -233,7 +292,7 @@ export function classify(candidates: Candidate[]): Candidate[] {
         pageTask: 'reading' as const,
       }];
     }
-    if (isArticle(candidate, parts, url)) return [];
+    if (isArticle(candidate, parts, url) && !corroboratedArticleService(candidate, label, target, parts, url)) return [];
     if (academicInfo) return [{ ...candidate, category: 'academic' as const, score: 70, reasons: ['학사 납부 정보 읽기', '학사 제목과 안내 목적의 일반 링크'], pageTask: 'reading' as const }];
     const form = formReading(candidate, label, target, url);
     if (form === 'conflict') return [];
@@ -290,7 +349,8 @@ export function classify(candidates: Candidate[]): Candidate[] {
       ];
       if (!best || score > best.score || score === best.score && intent > bestIntent) {
         const pageTask = candidate.context === 'body'
-          ? semanticMatch || rule.category === 'help' && (viewerControl.test(label)
+          ? semanticMatch || rule.category === 'apply' && applicationPageControl(candidate, label, target, url)
+            || rule.category === 'help' && (viewerControl.test(label)
             || candidate.element.matches('a[href], button, [role~="button"]')
               && (contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? 'control'
             : sectionMatch || rule.category === 'notice' && noticeCollection.test(label) ? 'collection' : undefined
@@ -299,12 +359,17 @@ export function classify(candidates: Candidate[]): Candidate[] {
         bestIntent = intent;
       }
     }
+    if (!best) {
+      const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url);
+      if (structured) return [{ ...structured, collectionDependent: true,
+        snapshot: sourceSnapshot(candidate.element, candidate.label, collectionCache, true) }];
+    }
     if ((!best || best.category === 'academic') && (academicReading(candidate, label, target, url) || academicLocalDestination(candidate, label, target, url))) {
       return [{ ...candidate, category: 'academic' as const, score: 70, reasons: ['학사 안내 문서 읽기', '학사 제목과 목록의 교육 개념·지침'], pageTask: 'reading' as const }];
     }
     const guideContext = contextsFor(candidate, label).some(value => value.length <= 60 && /안내$/.test(value));
     const formSubmit = candidate.element instanceof HTMLButtonElement && !!candidate.element.form && candidate.element.type === 'submit';
-    if (!best && guideContext && candidate.context !== 'footer' && candidate.action === 'locate' && !formSubmit
+    if (!best && guideContext && isInformationTopicLabel(label) && candidate.context !== 'footer' && candidate.action === 'locate' && !formSubmit
       && candidate.element.matches('button, [role~="button"]') && /^(?:true|false)$/i.test(candidate.element.getAttribute('aria-expanded') ?? '')
       && !candidate.element.closest('article, [role~="article"]')) {
       return [{ ...candidate, category: 'help' as const, score: 60, reasons: ['안내 정보 패널 읽기', '안내 제목과 명시적 펼침 제어'], pageTask: 'control' as const }];

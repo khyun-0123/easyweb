@@ -1,0 +1,168 @@
+{
+  "reviewedAt": "2026-10-17T17:37:29.060704+00:00",
+  "version": "0.4.0",
+  "classification": "DEVELOPMENT_CANDIDATE",
+  "completedStages": 5,
+  "totalStages": 10,
+  "finalAcceptance": "NOT_MET",
+  "stages": {
+    "S01": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality acceptance remains S07."
+    },
+    "S02": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality acceptance remains S07."
+    },
+    "S03": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality acceptance remains S07."
+    },
+    "S04": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality acceptance remains S07."
+    },
+    "S05": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality acceptance remains S07."
+    },
+    "S06": {
+      "status": "NEEDS_MANUAL",
+      "remaining": [
+        "Actual VoiceOver speech and state announcements",
+        "Final-build actual browser zoom/focus including additional-menu transitions"
+      ],
+      "evidence": "docs/ACCESSIBILITY.md"
+    },
+    "S07": {
+      "status": "IN_PROGRESS",
+      "remaining": [
+        "Fresh independent accuracy/recall goals not met by preserved first evaluations",
+        "General classification omissions on exposed v6 remain"
+      ],
+      "evidence": "docs/RUN_003_REPORT.md"
+    },
+    "S08": {
+      "status": "NOT_RUN_ON_V0.4_NEEDS_MANUAL",
+      "remaining": [
+        "Original Manifest native toolbar/activeTab on five fixed sites",
+        "Assigned shortcut, repeated execution, reload/navigation/restricted-page recovery"
+      ],
+      "evidence": "docs/MANUAL_CHECK.md"
+    },
+    "S09": {
+      "status": "NOT_RUN_NEEDS_USER",
+      "actualObservations": 0,
+      "pretestObservations": 0,
+      "evidence": "docs/PRETEST.md"
+    },
+    "S10": {
+      "status": "IN_PROGRESS",
+      "remaining": [
+        "S06/S07/S08/S09 acceptance evidence"
+      ],
+      "evidence": "output/run003/EasyWeb-0.4.0-candidate.json"
+    }
+  },
+  "validated": {
+    "localTests": {
+      "expected": 172,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "durationMilliseconds": 28791.037999999997,
+      "report": "/Users/khyun_03/easyweb/docs/evidence/run003/playwright-local.json"
+    },
+    "automatedAccessibility": {
+      "cases": 21,
+      "errors": 0,
+      "violations": 0,
+      "seriousOrCritical": 0,
+      "incomplete": 0,
+      "horizontalOverflowCases": [],
+      "smallTargets": [],
+      "lowComponentContrast": [],
+      "lowFocusContrast": []
+    },
+    "livePublicTasks": {
+      "summary": {
+        "observedTasks": 15,
+        "notRecommended": 0,
+        "observationErrors": 0,
+        "controlPresent": 15,
+        "recommended": 15,
+        "firstGuidanceReached": 6,
+        "guidanceRetries": 0,
+        "originalGuidanceReached": 6,
+        "actualCardLinksClicked": 9,
+        "destinationReached": 9,
+        "passed": 15,
+        "allDatasetTasksAttempted": true,
+        "allPassed": true
+      },
+      "scope": "Actual public pages in fresh Playwright contexts, source-bundled UI in a CDP-created isolated world and native browser actual-card or original-link clicks. Not an installed-extension toolbar/activeTab test, business completion or human usability evidence."
+    },
+    "packageSha256": "feac9d08b16ccf612008dbfbc267a3dd2ad71d1e3eda1f2cd6a916132aa0fa0c",
+    "performance": {
+      "status": "PASS",
+      "runs": 10,
+      "analyzerP95Milliseconds": 248.10000000149012,
+      "overlayReadyP95Milliseconds": 276.5,
+      "thresholds": {
+        "analyzerP95Milliseconds": 300,
+        "overlayReadyP95Milliseconds": 1000
+      },
+      "scope": "Synthetic mixed 1,000-control page; headless Chromium; excludes real site loading and native toolbar activation.",
+      "report": "/Users/khyun_03/easyweb/docs/evidence/run003/performance.json"
+    },
+    "finalReview": {
+      "status": "PASS",
+      "localMarkdownLinks": 239,
+      "hashComparisons": 142,
+      "hashMismatches": 0,
+      "zipIntegrity": "PASS",
+      "run002WorkingTreeUnchanged": true
+    }
+  },
+  "uiAutomation": "No native app or visible browser control used in RUN-003. CLI, HTTP and headless isolated contexts only.",
+  "actualManualChecks": "NOT_RUN_ON_V0.4",
+  "actualUserObservations": 0,
+  "billingUsage": "UNKNOWN; goal aggregate counter is not account billing.",
+  "checkpointTag": "run-003-v0.4.0-dev",
+  "publication": "NONE",
+  "independentFirstEvaluations": {
+    "v5": {
+      "summary": {
+        "pages": 5,
+        "correct": 7,
+        "recommended": 8,
+        "matched": 4,
+        "expected": 15,
+        "precision": 0.875,
+        "recall": 0.26666666666666666,
+        "tasksRecommended": 2
+      },
+      "status": "FAIL",
+      "currentUse": "EXPOSED_DEVELOPMENT"
+    },
+    "v6": {
+      "summary": {
+        "pages": 5,
+        "correct": 9,
+        "recommended": 9,
+        "matched": 5,
+        "expected": 15,
+        "precision": 1,
+        "recall": 0.3333333333333333,
+        "tasksRecommended": 2
+      },
+      "status": "FAIL",
+      "currentUse": "EXPOSED_DEVELOPMENT"
+    }
+  }
+}

@@ -1,10 +1,10 @@
 import styles from './styles.css';
 import { analyzePage } from './analyzer';
 import { classify } from './classifier';
-import { rank } from './ranker';
+import { hasMoreMenus, rank, remainingMenus } from './ranker';
 import { locateOriginal } from './action-bridge';
 import { showOriginalNotice } from './original-notice';
-import { isCandidateCurrent, watchCandidates } from './page-session';
+import { areCandidatesCurrent, isCandidateCurrent, watchCandidates } from './page-session';
 import { CATEGORY_INFO, type Candidate } from './types';
 
 const paths: Record<string, string> = {
@@ -105,6 +105,13 @@ export function openEasyMode(host: HTMLElement): () => void {
   label.append(sectionTitle, refresh);
   const grid = el('section', 'grid');
   grid.setAttribute('aria-labelledby', sectionTitle.id);
+  const pagesNavigation = el('nav', 'menu-pages');
+  pagesNavigation.setAttribute('aria-label', '다른 기능 찾아보기');
+  const previous = el('button', 'menu-page', '이전 메뉴');
+  previous.type = 'button';
+  const next = el('button', 'menu-page', '다른 메뉴 보기');
+  next.type = 'button';
+  pagesNavigation.append(previous, next);
   const changeNotice = el('p', 'change-notice');
   changeNotice.hidden = true;
   changeNotice.setAttribute('role', 'status');
@@ -116,10 +123,26 @@ export function openEasyMode(host: HTMLElement): () => void {
   const status = el('span', 'status');
   status.setAttribute('role', 'status');
   bottom.append(status, el('span', '', '언제든 Esc 키로 원본 화면에 돌아갈 수 있어요'));
-  shell.append(site, intro, changeNotice, label, grid, hint, bottom);
+  shell.append(site, intro, changeNotice, label, grid, pagesNavigation, hint, bottom);
   dialog.append(topbar, shell);
   let items: Candidate[] = [];
+  let pages: Candidate[][] = [];
+  let pageIndex = 0;
+  let remainder: Generator<Candidate>;
+  let pending: Candidate | undefined;
+  let hasRemaining = false;
   let stale = false;
+  function updatePageControls() {
+    const hasPrevious = pageIndex > 0;
+    const hasNext = pageIndex < pages.length - 1 || hasRemaining;
+    pagesNavigation.hidden = !hasPrevious && !hasNext;
+    previous.hidden = !hasPrevious;
+    next.hidden = !hasNext;
+    previous.disabled = stale || !hasPrevious;
+    next.disabled = stale || !hasNext;
+    previous.setAttribute('aria-disabled', String(previous.disabled));
+    next.setAttribute('aria-disabled', String(next.disabled));
+  }
   function markStale() {
     if (stale || closed) return;
     stale = true;
@@ -133,6 +156,9 @@ export function openEasyMode(host: HTMLElement): () => void {
         item.tabIndex = 0;
       }
     }
+    const pagingHadFocus = shadow.activeElement === previous || shadow.activeElement === next;
+    updatePageControls();
+    if (pagingHadFocus) refresh.focus({ preventScroll: true });
   }
 
   function card(candidate: Candidate): HTMLElement {
@@ -181,11 +207,8 @@ export function openEasyMode(host: HTMLElement): () => void {
     return item;
   }
 
-  function update(announce = false) {
-    items = rank(classify(analyzePage()));
-    stale = false;
-    changeNotice.hidden = true;
-    changeNotice.textContent = '';
+  function renderPage(announce = false) {
+    items = pages[pageIndex];
     grid.replaceChildren(...items.map(card));
     if (!items.length) {
       const empty = el('div', 'empty');
@@ -195,8 +218,58 @@ export function openEasyMode(host: HTMLElement): () => void {
       empty.append(el('h3', '', '주요 기능을 찾지 못했어요'), el('p', '', '이 페이지의 메뉴를 원본 화면에서 확인해주세요.'), returnButton);
       grid.append(empty);
     }
-    status.textContent = `${announce ? '다시 확인했어요. ' : ''}현재 페이지에서 ${items.length}개의 주요 기능을 찾았어요.`;
+    updatePageControls();
+    status.textContent = `${announce ? '다시 확인했어요. ' : ''}현재 페이지에서 ${items.length}개의 주요 기능을 찾았어요.${pageIndex ? ` ${pageIndex + 1}번째 메뉴 화면이에요.` : ''}${pageIndex < pages.length - 1 || hasRemaining ? ' 다른 메뉴도 볼 수 있어요.' : ''}`;
   }
+  function update(announce = false) {
+    const candidates = classify(analyzePage());
+    const initial = rank(candidates);
+    pages = [initial];
+    pageIndex = 0;
+    remainder = remainingMenus(candidates, initial);
+    pending = undefined;
+    hasRemaining = hasMoreMenus(candidates, initial);
+    stale = false;
+    changeNotice.hidden = true;
+    changeNotice.textContent = '';
+    renderPage(announce);
+  }
+  function loadNextPage(): Candidate[] {
+    const result: Candidate[] = [];
+    if (pending) { result.push(pending); pending = undefined; }
+    while (result.length < 6) {
+      const following = remainder.next();
+      if (following.done) { hasRemaining = false; return result; }
+      result.push(following.value);
+    }
+    const following = remainder.next();
+    pending = following.done ? undefined : following.value;
+    hasRemaining = !!pending;
+    return result;
+  }
+  function changePage(direction: -1 | 1) {
+    if (stale) return;
+    const targetIndex = pageIndex + direction;
+    if (targetIndex < 0 || targetIndex >= pages.length && !hasRemaining) return;
+    const previouslyHadRemaining = hasRemaining;
+    const target = pages[targetIndex] ?? loadNextPage();
+    // Hidden candidates stay cached, without a whole-page polling loop. Check
+    // the departing and arriving screens synchronously before exposing any URL
+    // or source action, including when returning to an earlier cached screen.
+    if (!areCandidatesCurrent([...items, ...target])) {
+      // A failed transition keeps the old screen's navigation visible but
+      // disabled. The exhausted iterator is discarded by the required refresh.
+      hasRemaining = previouslyHadRemaining;
+      markStale();
+      return;
+    }
+    if (!pages[targetIndex]) pages.push(target);
+    pageIndex = targetIndex;
+    renderPage();
+    grid.querySelector<HTMLElement>('.card')?.focus();
+  }
+  previous.addEventListener('click', () => changePage(-1));
+  next.addEventListener('click', () => changePage(1));
   refresh.addEventListener('click', () => update(true));
   // 첫 분석을 끝낸 뒤 모달을 표시하여 초기 화면의 깜빡임을 줄입니다.
   update();

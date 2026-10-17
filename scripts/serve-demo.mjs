@@ -1,9 +1,14 @@
 import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 
+const portOption = process.argv.find(arg => arg.startsWith('--port='));
+const port = portOption ? Number(portOption.slice('--port='.length)) : 4173;
+if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('--port must be an integer from 1 to 65535');
 const files = {
   '/': ['demo/index.html', 'text/html; charset=utf-8'],
   '/content.js': ['dist/content.js', 'text/javascript; charset=utf-8'],
+  '/manual-check.html': ['demo/manual-check.html', 'text/html; charset=utf-8'],
+  '/manual-check-next.html': ['demo/manual-check.html', 'text/html; charset=utf-8'],
 };
 http.createServer(async (req, res) => {
   const path = new URL(req.url, 'http://localhost').pathname;
@@ -21,4 +26,4 @@ http.createServer(async (req, res) => {
   } catch {
     res.writeHead(500); res.end('npm run build를 먼저 실행해주세요.');
   }
-}).listen(4173, '127.0.0.1', () => console.log('EasyWeb 로컬 예시: http://127.0.0.1:4173 (종료: Ctrl+C)'));
+}).listen(port, '127.0.0.1', () => console.log(`EasyWeb 로컬 예시: http://127.0.0.1:${port} (종료: Ctrl+C)`));

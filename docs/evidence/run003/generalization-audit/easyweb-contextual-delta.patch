@@ -1,0 +1,324 @@
+diff --git a/src/analyzer.ts b/src/analyzer.ts
+--- a/src/analyzer.ts
++++ b/src/analyzer.ts
+@@ -6,6 +6,19 @@
+ const editableSelector = `input, textarea, select, [contenteditable]:not([contenteditable="false" i]), ${editableRoleSelector}`;
+ const headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
+ const localRegionSelector = 'section, article, aside, [role~="region" i], [role~="article" i], [role~="complementary" i]';
++const informationConcept = /(?:행동\s*요령|안전\s*수칙|대처\s*(?:방법|요령)|이용\s*(?:안내|방법)|사용\s*설명서|instructions?|(?:action|safety)\s+tips?)(?:\s*(?:안내|모음))?$/i;
++const helpHeading = /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i;
++const collectionSelector = 'ul, ol, [role~="list" i], [role~="tablist" i]';
++const collectionControlSelector = 'a[href], button, [role~="button" i], [role~="tab" i]';
++const collectionExcludedSelector = 'header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]';
++const topicUtility = /^(?:전체|이전|다음|처음|마지막|확인|취소|닫기|뒤로|더\s*보기|바로\s*가기|자세히\s*보기|previous|next|first|last|ok|cancel|close|back|more|open|\d+)$/i;
++interface CollectionSummary { peers: number; informationPeer: boolean }
++export type CollectionCache = WeakMap<Element, CollectionSummary>;
++
++export function isInformationTopicLabel(label: string): boolean {
++  const text = label.normalize('NFKC').replace(/\s+/g, ' ').trim();
++  return text.length >= 2 && text.length <= 36 && !/[.!?。？]/.test(text) && !topicUtility.test(text);
++}
+ 
+ export function isVisible(element: HTMLElement): boolean {
+   if (!element.isConnected || element.closest('[hidden], [inert], [aria-hidden="true" i], [aria-disabled="true" i]')) return false;
+@@ -134,20 +147,26 @@
+   // 현재 URL의 경로와 명시된 페이지 표제만 분류하며 title·검색 쿼리·입력값은 읽지 않습니다.
+   if (/(?:^|[\/_.-])academic[-_]?calendar(?:[\/_.-]|$)/i.test(location.pathname)) return 'academic-calendar';
+   if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return 'help';
++  // General semantic words from the endpoint only, never query values. Split
++  // camelCase so an opaque route prefix does not conceal an instructions task.
++  const words = (location.pathname.split('/').at(-1) ?? '').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
++    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase().split(/[^a-z]+/).filter(Boolean);
++  if (words.some(word => /^(?:instruction|instructions)$/.test(word))
++    || words.some((word, index) => word === 'action' && /^tips?$/.test(words[index + 1] ?? ''))) return 'help';
+   const headings = document.querySelectorAll<HTMLElement>(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
+   for (const heading of headings) {
+     if (!isVisible(heading)) continue;
+     const text = clean(getSafeLabel(heading));
+     if (text.length > 60) continue;
+     if (/학사\s*일정|academic\s+calendar/i.test(text)) return 'academic-calendar';
+-    if (/^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text)) return 'help';
++    if (helpHeading.test(text) || informationConcept.test(text)) return 'help';
+   }
+   return undefined;
+ }
+ 
+ export function pagePurpose(element: HTMLElement, labels = contextLabels(element), common = documentPurpose()): PagePurpose | undefined {
+   if (common) return common;
+-  if (labels.some(text => /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text))) return 'help';
++  if (labels.some(text => helpHeading.test(text) || informationConcept.test(text))) return 'help';
+   // 본문 영역 안의 로컬 목차만 확인합니다. 전역 header/footer의 FAQ는 페이지 목적이 아닙니다.
+   const region = element.closest('main, [role~="main"], section, [role~="region"]');
+   if (region) for (const link of region.querySelectorAll<HTMLElement>(':scope > nav a, :scope > [role~="navigation"] a')) {
+@@ -176,7 +195,47 @@
+   return false;
+ }
+ 
+-export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element)): SourceSnapshot {
++export function collectionEvidence(element: HTMLElement, cache?: CollectionCache) {
++  const empty = { kind: undefined as 'list' | 'tabs' | undefined, peers: 0, informationPeer: false, controlled: false, targetExists: false };
++  if (element.closest(collectionExcludedSelector)) return empty;
++  const container = element.closest(collectionSelector);
++  if (!container) return empty;
++  const tabs = container.matches('[role~="tablist" i]');
++  const row = element.closest('li, [role~="listitem" i]');
++  if (!(tabs ? element.matches('[role~="tab" i]') : row?.parentElement === container)) return empty;
++  let summary = cache?.get(container);
++  if (!summary) {
++    const eligible = (peer: HTMLElement) => !peer.closest(collectionExcludedSelector)
++      && !((peer instanceof HTMLButtonElement || peer instanceof HTMLInputElement) && peer.form)
++      && isInformationTopicLabel(candidateLabel(peer));
++    const controls = tabs
++      ? [...container.querySelectorAll<HTMLElement>('[role~="tab" i]')].filter(peer => peer.closest(collectionSelector) === container && eligible(peer))
++      : [...container.querySelectorAll<HTMLElement>(':scope > li, :scope > [role~="listitem" i]')].flatMap(item => {
++        const control = [...item.querySelectorAll<HTMLElement>(collectionControlSelector)]
++          .find(peer => peer.closest(collectionSelector) === container && eligible(peer));
++        return control ? [control] : [];
++      });
++    let peers = 0;
++    let informationPeer = false;
++    for (const peer of controls) {
++      const label = candidateLabel(peer);
++      if (!label) continue;
++      peers = Math.min(2, peers + 1);
++      if (label.length <= 40 && (helpHeading.test(label) || informationConcept.test(label))) informationPeer = true;
++    }
++    summary = { peers, informationPeer };
++    cache?.set(container, summary);
++  }
++  const references = (element.getAttribute('aria-controls') ?? '').split(/\s+/).filter(Boolean);
++  const targetExists = references.length > 0 && references.every(id => !!document.getElementById(id));
++  const raw = element.getAttribute('href')?.trim() ?? '';
++  const controlled = element.matches('button, [role~="button" i], [role~="tab" i]') || targetExists
++    || /^#.+|^javascript:\s*\S/i.test(raw) || element.hasAttribute('onclick')
++    || /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '');
++  return { kind: tabs ? 'tabs' as const : 'list' as const, ...summary, controlled, targetExists };
++}
++
++export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache): SourceSnapshot {
+   return {
+     pageUrl: location.href,
+     baseUrl: document.baseURI,
+@@ -197,6 +256,8 @@
+       !!element.closest('li, [role~="listitem"]')?.querySelector(':scope > ul, :scope > ol, :scope > [role~="group"], :scope > [role~="menu"]'),
+       !!element.closest('article, [role~="article"]'),
+       isQuestionCollection(element),
++      collectionEvidence(element, collectionCache),
++      !!element.closest('form, [role~="form" i]'),
+       sourceAction(element, safeLabel),
+     ]),
+   };
+@@ -204,9 +265,10 @@
+ 
+ export function analyzePage(): Candidate[] {
+   const commonPurpose = documentPurpose();
+-  const selector = 'a[href], button, [role~="button"], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
++  const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
+   const elements = document.querySelectorAll<HTMLElement>(selector + (commonPurpose === 'academic-calendar' ? ', table a:not([href]), [role~="grid"] a:not([href])' : ''));
+   const candidates: Candidate[] = [];
++  const collectionCache: CollectionCache = new WeakMap();
+   for (const element of elements) {
+     const label = candidateLabel(element);
+     if (!label) continue;
+@@ -232,7 +294,7 @@
+       destinationHost, opensNewWindow,
+       context: sourceContext(element),
+       score: 0, reasons: [],
+-      snapshot: sourceSnapshot(element, label),
++      snapshot: sourceSnapshot(element, label, collectionCache),
+       sectionLabel: labels[0], contextLabels: labels, pagePurpose: pagePurpose(element, labels, commonPurpose),
+     });
+   }
+diff --git a/src/classifier.ts b/src/classifier.ts
+--- a/src/classifier.ts
++++ b/src/classifier.ts
+@@ -1,5 +1,5 @@
+ import type { Candidate, Category } from './types';
+-import { isQuestionCollection, isSearchControl, isVisible } from './analyzer';
++import { collectionEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, type CollectionCache } from './analyzer';
+ import { isDocumentDownload } from './action-policy';
+ 
+ const rules: { category: Category; label: RegExp; section: RegExp; endpoints: ReadonlySet<string> }[] = [
+@@ -46,6 +46,7 @@
+ const studentContextHeading = /^(?:학생지원|대학생활|학교생활|student\s+(?:support|life)|campus\s+life)$/i;
+ const counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대면)\s*)?상담\s*(?:운영|안내)$/;
+ const applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
++const issuanceServiceHeading = /^(?=.{2,48}$)(?:(?:온라인|인터넷|전자)\s*)?(?:(?:증명(?:서)?|민원|서류)\s*)?발급\s*(?:시스템|서비스)(?:\s*(?:바로\s*가기|목록))?$/;
+ 
+ function contextsFor(candidate: Candidate, label: string): string[] {
+   return [candidate.sectionLabel, ...(candidate.contextLabels ?? [])]
+@@ -183,6 +184,40 @@
+     && candidate.element.type === 'submit' && candidate.element.form);
+ }
+ 
++function structuredContext(candidate: Candidate, label: string, collection: ReturnType<typeof collectionEvidence>, url?: URL): Candidate | undefined {
++  const element = candidate.element;
++  if (!collection.kind || candidate.context === 'footer' || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label)
++    || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]')
++    || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
++  let destination = url;
++  const raw = element.getAttribute('href')?.trim() ?? '';
++  if (!destination && raw && !/^(?:#|javascript:)/i.test(raw)) {
++    try { const parsed = new URL(raw, document.baseURI); if (/^https?:$/.test(parsed.protocol)) destination = parsed; else return; }
++    catch { return; }
++  }
++  // Only this new fallback examines fixed script metadata. It never executes
++  // it, and a dangerous command remains ineligible when href is a locate action.
++  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
++    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
++  if (dangerous.test(script)) return;
++  const parts = destination ? pathParts(destination) : [];
++  if (destination && (isDangerousURL(destination, parts) || hasDocumentReference(destination))
++    || parts.some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
++  const target = endpoint(parts);
++  const contexts = contextsFor(candidate, label);
++  if (contexts.some(heading => issuanceServiceHeading.test(heading)) && collection.kind === 'list'
++    && (collection.controlled || !!destination)
++    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) {
++    return { ...candidate, category: 'apply', score: 70, reasons: ['발급 서비스 진입', '명시적 발급 시스템 제목과 원본 목록 제어'], pageTask: 'control' };
++  }
++  const localReading = !!destination && destination.origin === location.origin && candidate.action === 'navigate';
++  if (collection.peers >= 2 && (candidate.pagePurpose === 'help' || collection.informationPeer)
++    && (collection.controlled || localReading)
++    && !rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target))) {
++    return { ...candidate, category: 'help', score: 65, reasons: ['정보 주제 읽기', candidate.pagePurpose === 'help' ? '도움말·행동요령 목적과 원본 주제 목록' : '원본 목록·탭과 동료의 명시적 정보 개념'], pageTask: 'reading' };
++  }
++}
++
+ function contextualReading(candidate: Candidate, label: string): { category: Category; score: number; reasons: string[]; pageTask: NonNullable<Candidate['pageTask']> } | undefined {
+   // Page purpose supplements a specific source control; it never assigns the
+   // same category to every link on a help/calendar page.
+@@ -216,6 +251,7 @@
+ }
+ 
+ export function classify(candidates: Candidate[]): Candidate[] {
++  const collectionCache: CollectionCache = new WeakMap();
+   return candidates.flatMap(candidate => {
+     // Machine-authored accessible names can separate words with _ or -. This
+     // lexical view does not alter source labels, URL paths or action metadata.
+@@ -322,6 +358,10 @@
+         bestIntent = intent;
+       }
+     }
++    if (!best) {
++      const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url);
++      if (structured) return [structured];
++    }
+     if ((!best || best.category === 'academic') && (academicReading(candidate, label, target, url) || academicLocalDestination(candidate, label, target, url))) {
+       return [{ ...candidate, category: 'academic' as const, score: 70, reasons: ['학사 안내 문서 읽기', '학사 제목과 목록의 교육 개념·지침'], pageTask: 'reading' as const }];
+     }
+diff --git a/tests/analyzer-context.spec.mjs b/tests/analyzer-context.spec.mjs
+--- a/tests/analyzer-context.spec.mjs
++++ b/tests/analyzer-context.spec.mjs
+@@ -188,3 +188,40 @@
+   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+   expect((await inspect(page))[0].contextLabels).toEqual(['체육 시설']);
+ });
++
++test('동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다', async ({ page }) => {
++  await page.setContent('<main><ul><li><a id="source" href="#home">가정</a></li><li id="peer"><a href="#tips">행동요령</a></li></ul></main>');
++  await page.addScriptTag({ content: code });
++  const save = () => page.evaluate(() => { window.saved = ContextEngine.analyzePage().find(c => c.element.id === 'source'); });
++  await save();
++  await page.locator('#peer a').evaluate(e => e.textContent = '일반 개요');
++  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
++  await page.locator('#peer a').evaluate(e => { e.textContent = '행동요령'; e.setAttribute('href', '#tips'); });
++  await save();
++  await page.locator('#peer').evaluate(e => e.hidden = true);
++  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
++});
++
++test('목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다', async ({ page }) => {
++  await page.setContent('<main><div id="list" role="list"><div role="listitem"><button id="source" aria-controls="panel">가정</button></div><div role="listitem"><button>안전수칙</button></div></div><section id="panel"></section><form id="form"></form></main>');
++  await page.addScriptTag({ content: code });
++  const save = () => page.evaluate(() => { window.saved = ContextEngine.analyzePage().find(c => c.element.id === 'source'); });
++  await save();
++  await page.locator('#list').evaluate(e => e.removeAttribute('role'));
++  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
++  await page.locator('#list').evaluate(e => e.setAttribute('role', 'list'));
++  await save();
++  await page.locator('#panel').evaluate(e => e.remove());
++  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
++  await save();
++  await page.locator('#form').evaluate(e => e.append(document.querySelector('#list')));
++  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
++});
++
++test('동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다', async ({ page }) => {
++  await page.setContent('<main><h1>생활 정보</h1><div role="tablist"><div id="source" role="tab">가정</div><div role="tab" contenteditable="true">PRIVATE_SENTINEL 행동요령</div><div role="textbox">PRIVATE_SENTINEL 안전수칙</div></div></main>');
++  const actual = await inspect(page);
++  expect(actual.map(c => c.id)).toEqual(['source']);
++  const snapshots = await page.evaluate(() => ContextEngine.analyzePage().map(c => c.snapshot));
++  expect(JSON.stringify(snapshots)).not.toContain('PRIVATE_SENTINEL');
++});
+diff --git a/tests/classifier-ranking.spec.mjs b/tests/classifier-ranking.spec.mjs
+--- a/tests/classifier-ranking.spec.mjs
++++ b/tests/classifier-ranking.spec.mjs
+@@ -802,3 +802,67 @@
+     expect(actual).toEqual([['item', 'notice', 'reading']]);
+   }
+ });
++
++async function inspectContextual(page, markup, url = 'https://example.test/guide') {
++  await page.route('**/*', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: markup }));
++  await page.goto(url);
++  await page.addScriptTag({ content: engine });
++  return page.evaluate(() => {
++    const summarize = candidates => candidates.map(({ element, snapshot, ...candidate }) => ({ id: element.id, ...candidate }));
++    const classified = SyntheticEngine.classify(SyntheticEngine.analyzePage());
++    return { classified: summarize(classified), ranked: summarize(SyntheticEngine.rank(classified)) };
++  });
++}
++
++test('명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다', async ({ page }) => {
++  const actual = await inspectContextual(page, '<main><h1>증명 업무</h1><section><h2>온라인 발급 시스템</h2><ul><li><a id="first" href="https://alpha.example.test/portal">한빛 인증원</a></li><li><a id="second" href="javascript:openPortal();">푸른 민원센터</a></li></ul></section></main>');
++  expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['first', 'apply', 'control', 'navigate'], ['second', 'apply', 'control', 'locate']]);
++  expect(actual.classified[0].label).toBe('한빛 인증원');
++  expect(actual.classified[0].href).toBe('https://alpha.example.test/portal');
++});
++
++test('발급 문맥 보완은 다른 기능·문서·전역 메뉴·폼·기사·위험 동작을 덮지 않는다', async ({ page }) => {
++  const actual = await inspectContextual(page, '<main><h1>온라인 발급 서비스</h1><ul><li><a id="login" href="/login">로그인</a></li><li><a id="conflict" href="/search">한빛 인증원</a></li><li><a id="document" href="/content?articleNo=42">푸른 민원센터</a></li><li><a id="unsafe" href="/portal?action=delete" onclick="openPortal();">붉은 민원센터</a></li><li><a id="script-danger" href="javascript:deleteAccount();">누리 인증원</a></li><li><a id="download" href="/forms/public.pdf" download>열린 인증원</a></li></ul><form><ul><li><button id="form">별빛 인증원</button></li></ul></form><article><ul><li><a id="article" href="/portal">은하 인증원</a></li></ul></article><header><ul><li><a id="header" href="/portal">바다 인증원</a></li></ul></header><footer><ul><li><a id="footer" href="/portal">하늘 인증원</a></li></ul></footer></main>');
++  expect(actual.classified.map(c => [c.id, c.category])).toEqual([['login', 'login']]);
++  for (const heading of ['발급 안내', '서식자료', '기관 안내']) {
++    const result = await inspectContextual(page, `<main><h1>${heading}</h1><ul><li><a href="/portal">한빛 인증원</a></li><li><a href="/other">푸른 민원센터</a></li></ul></main>`);
++    expect(result.classified).toEqual([]);
++  }
++});
++
++test('행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다', async ({ page }) => {
++  const actual = await inspectContextual(page, '<main><h1>생활 안전 행동요령</h1><ul><li><a id="storm" href="javascript:showTopic(1);">태풍</a></li><li><a id="flood" href="#flood">침수</a></li></ul><section id="flood"></section></main>');
++  expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['storm', 'help', 'reading', 'locate'], ['flood', 'help', 'reading', 'locate']]);
++  expect(actual.classified.every(c => c.pagePurpose === 'help' && c.href === undefined)).toBe(true);
++});
++
++test('camelCase의 일반 행동요령·instructions 경로는 실제 주제 목록의 목적만 보완한다', async ({ page }) => {
++  for (const pathname of ['/guide/getEmergencyActionTips.do', '/guide/showInstructions.html']) {
++    const actual = await inspectContextual(page, '<main><h1>상황별 정보</h1><ul><li><button id="quake">지진</button></li><li><button id="snow">대설</button></li></ul><a id="unlisted" href="/misc">기관 소개</a></main>', `https://example.test${pathname}`);
++    expect(actual.classified.map(c => [c.id, c.category])).toEqual([['quake', 'help'], ['snow', 'help']]);
++  }
++  const lookalike = await inspectContextual(page, '<main><ul><li><button>지진</button></li><li><button>대설</button></li></ul></main>', 'https://example.test/instructionalResearch.do');
++  expect(lookalike.classified).toEqual([]);
++});
++
++test('주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다', async ({ page }) => {
++  const actual = await inspectContextual(page, '<main><h1>생활 정보</h1><div role="tablist"><div id="home" role="tab" aria-controls="home-panel">가정</div><div id="public" role="tab" aria-controls="public-panel">공공장소</div><div id="tips" role="tab" aria-controls="tips-panel">안전수칙</div></div><section id="home-panel"></section><section id="public-panel" hidden></section><section id="tips-panel" hidden></section></main>');
++  expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['home', 'help', 'reading', 'locate'], ['public', 'help', 'reading', 'locate'], ['tips', 'help', 'reading', 'locate']]);
++  const fragments = await inspectContextual(page, '<main><ul><li><a id="first" href="#public">공공장소</a></li><li><a id="guide" href="#tips">행동요령</a></li></ul><section id="public"></section><section id="tips"></section></main>');
++  expect(fragments.classified.map(c => [c.id, c.category])).toEqual([['first', 'help'], ['guide', 'help']]);
++});
++
++test('정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다', async ({ page }) => {
++  for (const markup of [
++    '<main><h1>도움말</h1><a href="#one">가정</a><a href="#two">공공장소</a></main>',
++    '<main><h1>일반 정보</h1><ul><li><a href="#one">가정</a></li><li><a href="#two">공공장소</a></li></ul></main>',
++    '<main><h1>도움말</h1><ul><li><a href="#one">가정</a></li></ul></main>',
++    '<main><h1>도움말</h1><ul><li><a href="https://other.example.test/one">가정</a></li><li><a href="https://other.example.test/two">공공장소</a></li></ul></main>',
++    '<main><h1>도움말</h1><form><ul><li><button>가정</button></li><li><button>공공장소</button></li></ul></form></main>',
++    '<main><h1>도움말</h1><article><ul><li><a href="#one">가정</a></li><li><a href="#two">공공장소</a></li></ul></article></main>',
++    '<main><h1>일반 정보</h1><ul><li><article><a href="#tips">안전수칙</a></article></li><li><a href="#home">가정</a></li></ul></main>',
++    '<main><h1>도움말</h1><ul><li><a href="#home">가정</a></li><li><a href="#next">다음</a></li></ul></main>',
++  ]) expect((await inspectContextual(page, markup)).classified).toEqual([]);
++  const actual = await inspectContextual(page, '<main><h1>도움말</h1><ul><li><a id="apply" href="/apply">시설 예약하기</a></li><li><a id="conflict" href="/login">가정</a></li><li><a id="danger" href="/remove" onclick="openTopic();">공공장소</a></li><li><a id="next" href="#next">다음</a></li><li><a id="topic" href="#topics">학교</a></li></ul></main>');
++  expect(actual.classified.map(c => [c.id, c.category])).toEqual([['apply', 'apply'], ['topic', 'help']]);
++});

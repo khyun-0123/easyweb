@@ -1,0 +1,109 @@
+{
+  "siteId": "government",
+  "name": "국민안전24",
+  "type": "government-service",
+  "observedAt": "2026-10-17T17:12:09.240Z",
+  "pages": [
+    {
+      "id": "government-blind-v5",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "title": "국민안전24 | 행동요령 | 국민행동요령",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v5/fixtures/government.html",
+      "observation": {
+        "method": "Independent anonymous headless Chromium public-source observation with actual CDP accessibility snapshots, safe original DOM ancestry and fixed sibling/heading context. No engine, implementation or evaluation results read or run.",
+        "observedAt": "2026-10-17T17:12:09.240Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "Source task focus/hit-test and three safe public destination GET checks are recorded in docs/evidence/run003/blind-v5-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions, no full-page layout, source CSS/media or application scripts. Original selected-control labels, href/target, ancestor tags/classes/IDs and nearby fixed context are retained.",
+          "Source visible checks establish nonzero boxes and absence of CSS hiding/inert/aria-hidden; only one designated task control per page received read-only focus and center hit testing.",
+          "Source accessibility is actual Chromium AX data, and Playwright ariaSnapshot is additionally stored where its selector injection works. NL uses a CDP isolated world due a source-page conflict in Playwright selector injection. No site security, authentication or certificate settings were changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "government-blind-v5-feature-1",
+          "category": "help",
+          "label": "태풍",
+          "sourceIds": [
+            "government-blind-v5-control-1"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v5-feature-4",
+          "category": "help",
+          "label": "지진",
+          "sourceIds": [
+            "government-blind-v5-control-4"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v5-feature-6",
+          "category": "help",
+          "label": "산행안전사고",
+          "sourceIds": [
+            "government-blind-v5-control-6"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "government-blind-v5-control-1",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v5-control-2",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v5-control-3",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v5-control-4",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v5-control-5",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v5-control-6",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "government-blind-v5-task",
+        "instruction": "가을철 주요재난에서 태풍 행동요령 원본 링크 위치를 찾으세요. JavaScript 링크를 활성화하거나 검색을 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "government-blind-v5-control-1"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "계절별 주요재난 영역의 여섯 실제 주제 제어를 모두 선정했다. 각각의 안전 행동요령 안내는 help이다. 원본 JavaScript URL은 보존하되 실행하지 않으며 locate로 주석했다.",
+        "Fixture base href resolves original relative public hrefs against the observed source URL. Original JavaScript hrefs are inert under script-src none; original event implementations are omitted. No actual user input values or authenticated content are included."
+      ]
+    }
+  ]
+}

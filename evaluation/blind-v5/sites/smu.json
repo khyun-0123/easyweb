@@ -1,0 +1,112 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "type": "university",
+  "observedAt": "2026-10-17T17:12:03.212Z",
+  "pages": [
+    {
+      "id": "smu-blind-v5",
+      "url": "https://www.smu.ac.kr/kor/life/leave.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/leave.do",
+      "title": "상명대학교 국문 | 학사안내 | 학사 | 학적변동 | 휴학",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v5/fixtures/smu.html",
+      "observation": {
+        "method": "Independent anonymous headless Chromium public-source observation with actual CDP accessibility snapshots, safe original DOM ancestry and fixed sibling/heading context. No engine, implementation or evaluation results read or run.",
+        "observedAt": "2026-10-17T17:12:03.212Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "Source task focus/hit-test and three safe public destination GET checks are recorded in docs/evidence/run003/blind-v5-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions, no full-page layout, source CSS/media or application scripts. Original selected-control labels, href/target, ancestor tags/classes/IDs and nearby fixed context are retained.",
+          "Source visible checks establish nonzero boxes and absence of CSS hiding/inert/aria-hidden; only one designated task control per page received read-only focus and center hit testing.",
+          "Source accessibility is actual Chromium AX data, and Playwright ariaSnapshot is additionally stored where its selector injection works. NL uses a CDP isolated world due a source-page conflict in Playwright selector injection. No site security, authentication or certificate settings were changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "smu-blind-v5-feature-2",
+          "category": "academic",
+          "label": "복학",
+          "sourceIds": [
+            "smu-blind-v5-control-2"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_"
+        },
+        {
+          "id": "smu-blind-v5-feature-5",
+          "category": "academic",
+          "label": "전과",
+          "sourceIds": [
+            "smu-blind-v5-control-5"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/previousConviction.do#tab18282_"
+        },
+        {
+          "id": "smu-blind-v5-feature-6",
+          "category": "academic",
+          "label": "증명서발급",
+          "sourceIds": [
+            "smu-blind-v5-control-6"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-blind-v5-control-1",
+          "category": "academic",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-2",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-3",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-4",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-5",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-6",
+          "category": "academic",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "smu-blind-v5-task",
+        "instruction": "휴학 안내의 학적변동 메뉴에서 복학 공개 안내 페이지에 도달하세요. 휴학·복학 신청과 로그인은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "smu-blind-v5-control-2"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "학적변동 본문에 실제 제시된 주제 탭 묶음을 선정했다. 복학·전과·증명서 발급 안내는 수업 및 학적/증명 관련 academic 기능이다. 현재 페이지의 휴학 fragment는 locate이고 다른 공개 안내 문서 링크는 navigate이다.",
+        "Fixture base href resolves original relative public hrefs against the observed source URL. Original JavaScript hrefs are inert under script-src none; original event implementations are omitted. No actual user input values or authenticated content are included."
+      ]
+    }
+  ]
+}

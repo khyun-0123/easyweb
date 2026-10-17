@@ -4,6 +4,22 @@ import { sourceAction } from './action-policy';
 const clean = (text: string) => text.replace(/\s+/g, ' ').trim().slice(0, 140);
 const editableRoleSelector = ['textbox', 'searchbox', 'combobox', 'spinbutton', 'slider'].map(role => `[role~="${role}" i]`).join(', ');
 const editableSelector = `input, textarea, select, [contenteditable]:not([contenteditable="false" i]), ${editableRoleSelector}`;
+const headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
+const localRegionSelector = 'section, article, aside, [role~="region" i], [role~="article" i], [role~="complementary" i]';
+const informationConcept = /(?:행동\s*요령|안전\s*수칙|대처\s*(?:방법|요령)|이용\s*(?:안내|방법)|사용\s*설명서|instructions?|(?:action|safety)\s+tips?)(?:\s*(?:안내|모음))?$/i;
+const helpHeading = /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i;
+const collectionSelector = 'ul, ol, [role~="list" i], [role~="tablist" i]';
+const collectionControlSelector = 'a[href], button, [role~="button" i], [role~="tab" i]';
+const collectionExcludedSelector = 'header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]';
+const topicUtility = /^(?:전체|이전|다음|처음|마지막|확인|취소|닫기|뒤로|더\s*보기|바로\s*가기|자세히\s*보기|공유(?:하기)?|인쇄(?:하기)?|프린트|화면\s*(?:확대|축소)|previous|next|first|last|ok|cancel|close|back|more|open|share|print|zoom\s*(?:in|out)|\d+)$/i;
+const informationFacet = /(?:특징|종류|조건|기준|절차|방법|제도)(?:\s*안내)?$/;
+interface CollectionSummary { peers: number; informationPeer: boolean }
+export type CollectionCache = WeakMap<Element, CollectionSummary>;
+
+export function isInformationTopicLabel(label: string): boolean {
+  const text = label.normalize('NFKC').replace(/\s+/g, ' ').trim();
+  return text.length >= 2 && text.length <= 36 && !/[.!?。？]/.test(text) && !topicUtility.test(text);
+}
 
 export function isVisible(element: HTMLElement): boolean {
   if (!element.isConnected || element.closest('[hidden], [inert], [aria-hidden="true" i], [aria-disabled="true" i]')) return false;
@@ -78,22 +94,39 @@ export function isSearchControl(element: HTMLElement, label = getSafeLabel(eleme
     || searchCue(label) || searchCue(element.getAttribute('placeholder') ?? ''));
 }
 
+function headingBelongsTo(heading: HTMLElement, element: HTMLElement): boolean {
+  const region = heading.closest(localRegionSelector);
+  if (!region || region.contains(element)) return true;
+  // A neighbouring section's heading does not describe this section. Preserve
+  // an existing title-only section wrapper only when the control has no local
+  // semantic region of its own (a common page-title layout).
+  if (element.closest(localRegionSelector) || !region.matches('section')) return false;
+  const onlyHeading = (node: Node): boolean => {
+    if (node === heading) return true;
+    if (node.nodeType === Node.TEXT_NODE) return !(node.nodeValue ?? '').trim();
+    if (!(node instanceof Element)) return true;
+    return node.contains(heading) && [...node.childNodes].every(onlyHeading);
+  };
+  return onlyHeading(region);
+}
+
 export function contextLabels(element: HTMLElement): string[] {
   const labels: string[] = [];
   const add = (text: string) => { if (text && text.length <= 60 && !labels.includes(text)) labels.push(text); };
   let parent = element.parentElement;
   for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-    const headings = [...parent.querySelectorAll<HTMLElement>(':scope > :is(h1,h2,h3), :scope > :is(div,section) > :is(h1,h2,h3), :scope > :is(div,section) > :is(div,section) > :is(h1,h2,h3)')];
+    const headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)];
     const preceding = headings.filter(heading => {
       let branch = heading;
       while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
       // 같은 내용 상자 안에서 이미 읽은 하위 표제가 상위 표제를 덮지 않게 합니다.
       if (branch !== heading && branch.contains(element)) return false;
-      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading)
+        && headingBelongsTo(heading, element) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
     });
     const label = preceding.at(-1);
     if (label) {
-      const text = clean(staticText(label));
+      const text = clean(getSafeLabel(label));
       add(text);
     }
     // 작은 기능 상자는 제목을 p로 표시하기도 합니다. 가까운 상자의 첫 짧은 문구만 문맥으로 씁니다.
@@ -115,20 +148,26 @@ function documentPurpose(): PagePurpose | undefined {
   // 현재 URL의 경로와 명시된 페이지 표제만 분류하며 title·검색 쿼리·입력값은 읽지 않습니다.
   if (/(?:^|[\/_.-])academic[-_]?calendar(?:[\/_.-]|$)/i.test(location.pathname)) return 'academic-calendar';
   if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return 'help';
-  const headings = document.querySelectorAll<HTMLElement>('main > h1, [role~="main"] > h1, .page-title > h1, .page-title > h2, .page-title > h3');
+  // General semantic words from the endpoint only, never query values. Split
+  // camelCase so an opaque route prefix does not conceal an instructions task.
+  const words = (location.pathname.split('/').at(-1) ?? '').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase().split(/[^a-z]+/).filter(Boolean);
+  if (words.some(word => /^(?:instruction|instructions)$/.test(word))
+    || words.some((word, index) => word === 'action' && /^tips?$/.test(words[index + 1] ?? ''))) return 'help';
+  const headings = document.querySelectorAll<HTMLElement>(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
   for (const heading of headings) {
     if (!isVisible(heading)) continue;
-    const text = clean(staticText(heading));
+    const text = clean(getSafeLabel(heading));
     if (text.length > 60) continue;
     if (/학사\s*일정|academic\s+calendar/i.test(text)) return 'academic-calendar';
-    if (/^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text)) return 'help';
+    if (helpHeading.test(text) || informationConcept.test(text)) return 'help';
   }
   return undefined;
 }
 
 export function pagePurpose(element: HTMLElement, labels = contextLabels(element), common = documentPurpose()): PagePurpose | undefined {
   if (common) return common;
-  if (labels.some(text => /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text))) return 'help';
+  if (labels.some(text => helpHeading.test(text) || informationConcept.test(text))) return 'help';
   // 본문 영역 안의 로컬 목차만 확인합니다. 전역 header/footer의 FAQ는 페이지 목적이 아닙니다.
   const region = element.closest('main, [role~="main"], section, [role~="region"]');
   if (region) for (const link of region.querySelectorAll<HTMLElement>(':scope > nav a, :scope > [role~="navigation"] a')) {
@@ -157,7 +196,50 @@ export function isQuestionCollection(element: HTMLElement): boolean {
   return false;
 }
 
-export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element)): SourceSnapshot {
+export function collectionEvidence(element: HTMLElement, cache?: CollectionCache) {
+  const empty = { kind: undefined as 'list' | 'tabs' | undefined, peers: 0, informationPeer: false, controlled: false, targetExists: false };
+  if (element.closest(collectionExcludedSelector)) return empty;
+  const container = element.closest(collectionSelector);
+  if (!container) return empty;
+  const tabs = container.matches('[role~="tablist" i]');
+  const row = element.closest('li, [role~="listitem" i]');
+  if (!(tabs ? element.matches('[role~="tab" i]') : row?.parentElement === container)) return empty;
+  let summary = cache?.get(container);
+  if (!summary) {
+    const eligible = (peer: HTMLElement) => !peer.closest(collectionExcludedSelector)
+      && !((peer instanceof HTMLButtonElement || peer instanceof HTMLInputElement) && peer.form)
+      && isInformationTopicLabel(candidateLabel(peer));
+    const controls = tabs
+      ? [...container.querySelectorAll<HTMLElement>('[role~="tab" i]')].filter(peer => peer.closest(collectionSelector) === container && eligible(peer))
+      : [...container.querySelectorAll<HTMLElement>(':scope > li, :scope > [role~="listitem" i]')].flatMap(item => {
+        const control = [...item.querySelectorAll<HTMLElement>(collectionControlSelector)]
+          .find(peer => peer.closest(collectionSelector) === container && eligible(peer));
+        return control ? [control] : [];
+      });
+    let peers = 0;
+    let informationPeer = false;
+    let facets = 0;
+    for (const peer of controls) {
+      const label = candidateLabel(peer);
+      if (!label) continue;
+      peers = Math.min(2, peers + 1);
+      if (label.length <= 40 && (helpHeading.test(label) || informationConcept.test(label))) informationPeer = true;
+      if (informationFacet.test(label)) facets++;
+    }
+    informationPeer ||= facets >= 2;
+    summary = { peers, informationPeer };
+    cache?.set(container, summary);
+  }
+  const references = (element.getAttribute('aria-controls') ?? '').split(/\s+/).filter(Boolean);
+  const targetExists = references.length > 0 && references.every(id => !!document.getElementById(id));
+  const raw = element.getAttribute('href')?.trim() ?? '';
+  const controlled = element.matches('button, [role~="button" i], [role~="tab" i]') || targetExists
+    || /^#.+|^javascript:\s*\S/i.test(raw) || element.hasAttribute('onclick')
+    || /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '');
+  return { kind: tabs ? 'tabs' as const : 'list' as const, ...summary, controlled, targetExists };
+}
+
+export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false): SourceSnapshot {
   return {
     pageUrl: location.href,
     baseUrl: document.baseURI,
@@ -178,6 +260,8 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
       !!element.closest('li, [role~="listitem"]')?.querySelector(':scope > ul, :scope > ol, :scope > [role~="group"], :scope > [role~="menu"]'),
       !!element.closest('article, [role~="article"]'),
       isQuestionCollection(element),
+      includeCollection ? collectionEvidence(element, collectionCache) : null,
+      !!element.closest('form, [role~="form" i]'),
       sourceAction(element, safeLabel),
     ]),
   };
@@ -185,7 +269,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
 
 export function analyzePage(): Candidate[] {
   const commonPurpose = documentPurpose();
-  const selector = 'a[href], button, [role~="button"], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
+  const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
   const elements = document.querySelectorAll<HTMLElement>(selector + (commonPurpose === 'academic-calendar' ? ', table a:not([href]), [role~="grid"] a:not([href])' : ''));
   const candidates: Candidate[] = [];
   for (const element of elements) {

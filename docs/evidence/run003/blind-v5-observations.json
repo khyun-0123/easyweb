@@ -1,0 +1,3959 @@
+{
+  "schemaVersion": "blind-v5-independent-observation-1",
+  "dataset": "blind-v5",
+  "observedAt": "2026-10-17T17:12:01.177Z",
+  "independence": {
+    "priorAnnotationsRead": "Only evaluation/{sites,blind-v2/sites,blind-v3/sites,blind-v4/sites}/*.json for exclusion and schema. No src/, tests/, dist/, product implementation, prior evaluation result, docs/RUN* or product execution.",
+    "noProductEvaluationBeforeFreeze": true,
+    "computerUse": "No native UI automation, visible browser or user app changes. All browser work was headless.",
+    "safety": "Anonymous public GET/HEAD only. Non-GET/HEAD browser requests aborted. No user input values, input entry, authentication, form submission, download activation, original link click, original task handlers or actual business action."
+  },
+  "excludedPriorPageCount": 30,
+  "excludedPriorPages": [
+    {
+      "pageId": "city-home",
+      "annotation": "evaluation/sites/city.json",
+      "url": "https://www.cheonan.go.kr/",
+      "finalUrl": "https://www.cheonan.go.kr/kor.do"
+    },
+    {
+      "pageId": "city-civil-guide",
+      "annotation": "evaluation/sites/city.json",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do"
+    },
+    {
+      "pageId": "city-counseling",
+      "annotation": "evaluation/sites/city.json",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_02.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_03_02.do"
+    },
+    {
+      "pageId": "gov-home",
+      "annotation": "evaluation/sites/government.json",
+      "url": "https://www.safekorea.go.kr/idsiSFK/neo/main/main.html",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do"
+    },
+    {
+      "pageId": "gov-search",
+      "annotation": "evaluation/sites/government.json",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do"
+    },
+    {
+      "pageId": "gov-help",
+      "annotation": "evaluation/sites/government.json",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406"
+    },
+    {
+      "pageId": "library-home",
+      "annotation": "evaluation/sites/library.json",
+      "url": "https://www.nl.go.kr/",
+      "finalUrl": "https://www.nl.go.kr/"
+    },
+    {
+      "pageId": "library-search",
+      "annotation": "evaluation/sites/library.json",
+      "url": "https://www.nl.go.kr/NL/contents/N10100000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N10100000000.do"
+    },
+    {
+      "pageId": "library-help",
+      "annotation": "evaluation/sites/library.json",
+      "url": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N71300000000.do"
+    },
+    {
+      "pageId": "agency-home",
+      "annotation": "evaluation/sites/public-agency.json",
+      "url": "https://www.nps.or.kr/main.do",
+      "finalUrl": "https://www.nps.or.kr/main.do"
+    },
+    {
+      "pageId": "agency-notice",
+      "annotation": "evaluation/sites/public-agency.json",
+      "url": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897"
+    },
+    {
+      "pageId": "agency-faq",
+      "annotation": "evaluation/sites/public-agency.json",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131"
+    },
+    {
+      "pageId": "smu-home",
+      "annotation": "evaluation/sites/smu.json",
+      "url": "https://www.smu.ac.kr/kor/index.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/index.do"
+    },
+    {
+      "pageId": "smu-notices",
+      "annotation": "evaluation/sites/smu.json",
+      "url": "https://www.smu.ac.kr/kor/life/notice.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/notice.do"
+    },
+    {
+      "pageId": "smu-calendar",
+      "annotation": "evaluation/sites/smu.json",
+      "url": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/academicCalendar.do"
+    },
+    {
+      "pageId": "city-blind-v2",
+      "annotation": "evaluation/blind-v2/sites/city.json",
+      "url": "https://www.cheonan.go.kr/dhealth.do",
+      "finalUrl": "https://www.cheonan.go.kr/dhealth.do"
+    },
+    {
+      "pageId": "government-blind-v2",
+      "annotation": "evaluation/blind-v2/sites/government.json",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58"
+    },
+    {
+      "pageId": "library-blind-v2",
+      "annotation": "evaluation/blind-v2/sites/library.json",
+      "url": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N41500000000.do"
+    },
+    {
+      "pageId": "public-agency-blind-v2",
+      "annotation": "evaluation/blind-v2/sites/public-agency.json",
+      "url": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998"
+    },
+    {
+      "pageId": "smu-blind-v2",
+      "annotation": "evaluation/blind-v2/sites/smu.json",
+      "url": "https://www.smu.ac.kr/kor/life/enrollment.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/enrollment.do"
+    },
+    {
+      "pageId": "city-blind-v3",
+      "annotation": "evaluation/blind-v3/sites/city.json",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_06.do"
+    },
+    {
+      "pageId": "government-blind-v3",
+      "annotation": "evaluation/blind-v3/sites/government.json",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39"
+    },
+    {
+      "pageId": "library-blind-v3",
+      "annotation": "evaluation/blind-v3/sites/library.json",
+      "url": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N40901000000.do"
+    },
+    {
+      "pageId": "public-agency-blind-v3",
+      "annotation": "evaluation/blind-v3/sites/public-agency.json",
+      "url": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "finalUrl": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022"
+    },
+    {
+      "pageId": "smu-blind-v3",
+      "annotation": "evaluation/blind-v3/sites/smu.json",
+      "url": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/sugang.do"
+    },
+    {
+      "pageId": "city-blind-v4",
+      "annotation": "evaluation/blind-v4/sites/city.json",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_03_06.do"
+    },
+    {
+      "pageId": "government-blind-v4",
+      "annotation": "evaluation/blind-v4/sites/government.json",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59"
+    },
+    {
+      "pageId": "library-blind-v4",
+      "annotation": "evaluation/blind-v4/sites/library.json",
+      "url": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N50601000000.do"
+    },
+    {
+      "pageId": "public-agency-blind-v4",
+      "annotation": "evaluation/blind-v4/sites/public-agency.json",
+      "url": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969"
+    },
+    {
+      "pageId": "smu-blind-v4",
+      "annotation": "evaluation/blind-v4/sites/smu.json",
+      "url": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/studentIdCard.do"
+    }
+  ],
+  "selectionPolicy": "Previously unseen source page URLs; representative main-content feature clusters selected from rendered page function and source context, not keyword/classifier output. Every included reconstructive control has accepted annotation. This small purposive page sample is not an estimate for all Korean websites.",
+  "categoryDefinitions": {
+    "login": "account/authentication",
+    "search": "information finding",
+    "notice": "news and notices",
+    "academic": "classes, records and student life",
+    "apply": "applications, issuance/request service entry and own application/result inquiries",
+    "help": "help, FAQs, safety instructions and service-use guidance"
+  },
+  "pages": [
+    {
+      "siteId": "smu",
+      "url": "https://www.smu.ac.kr/kor/life/leave.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/leave.do",
+      "title": "상명대학교 국문 | 학사안내 | 학사 | 학적변동 | 휴학",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T17:12:03.212Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": [
+        "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+        "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+        "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden"
+      ],
+      "headingContext": [
+        {
+          "tag": "h3",
+          "text": "학사\n\n\n\t\t\n학사안내",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1)"
+        },
+        {
+          "tag": "h4",
+          "text": "휴학",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1) > h4:nth-of-type(1)"
+        }
+      ],
+      "controls": [
+        {
+          "sourceId": "smu-blind-v5-control-1",
+          "selector": ".double-tab-wrap.pc a",
+          "selectorIndex": 0,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "/kor/life/leave.do#tab18278_",
+            "title": "휴학 선택됨",
+            "id": "tab18278",
+            "target": ""
+          },
+          "hasInlineHandler": false,
+          "text": "휴학",
+          "rawHref": "/kor/life/leave.do#tab18278_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/leave.do#tab18278_",
+          "visible": true,
+          "rect": {
+            "x": 195,
+            "y": 224,
+            "width": 75.765625,
+            "height": 80
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "swiper-slide active first swiper-slide-active"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "wrap",
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "id": "item_body",
+                "class": "pc depthOnSide leftGnb"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "휴학",
+                "description": "휴학 선택됨",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.smu.ac.kr/kor/life/leave.do#tab18278_"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"휴학\":\n  - /url: /kor/life/leave.do#tab18278_"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-2",
+          "selector": ".double-tab-wrap.pc a",
+          "selectorIndex": 1,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "/kor/life/reinstatement.do#tab18279_",
+            "title": "복학",
+            "id": "tab18279",
+            "target": ""
+          },
+          "hasInlineHandler": false,
+          "text": "복학",
+          "rawHref": "/kor/life/reinstatement.do#tab18279_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_",
+          "visible": true,
+          "rect": {
+            "x": 270.765625,
+            "y": 224,
+            "width": 78.765625,
+            "height": 80
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "swiper-slide swiper-slide-next"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "wrap",
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "id": "item_body",
+                "class": "pc depthOnSide leftGnb"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "복학",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"복학\":\n  - /url: /kor/life/reinstatement.do#tab18279_"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-3",
+          "selector": ".double-tab-wrap.pc a",
+          "selectorIndex": 2,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "/kor/life/dropOff.do#tab18280_",
+            "title": "자퇴 및 제적",
+            "id": "tab18280",
+            "target": ""
+          },
+          "hasInlineHandler": false,
+          "text": "자퇴 및 제적",
+          "rawHref": "/kor/life/dropOff.do#tab18280_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/dropOff.do#tab18280_",
+          "visible": true,
+          "rect": {
+            "x": 349.53125,
+            "y": 224,
+            "width": 123.6875,
+            "height": 80
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "swiper-slide"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "wrap",
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "id": "item_body",
+                "class": "pc depthOnSide leftGnb"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "자퇴 및 제적",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.smu.ac.kr/kor/life/dropOff.do#tab18280_"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"자퇴 및 제적\":\n  - /url: /kor/life/dropOff.do#tab18280_"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-4",
+          "selector": ".double-tab-wrap.pc a",
+          "selectorIndex": 3,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "/kor/life/readmission.do#tab18281_",
+            "title": "재입학",
+            "id": "tab18281",
+            "target": ""
+          },
+          "hasInlineHandler": false,
+          "text": "재입학",
+          "rawHref": "/kor/life/readmission.do#tab18281_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/readmission.do#tab18281_",
+          "visible": true,
+          "rect": {
+            "x": 473.21875,
+            "y": 224,
+            "width": 91.640625,
+            "height": 80
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "swiper-slide"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "wrap",
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "id": "item_body",
+                "class": "pc depthOnSide leftGnb"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "재입학",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.smu.ac.kr/kor/life/readmission.do#tab18281_"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"재입학\":\n  - /url: /kor/life/readmission.do#tab18281_"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-5",
+          "selector": ".double-tab-wrap.pc a",
+          "selectorIndex": 4,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "/kor/life/previousConviction.do#tab18282_",
+            "title": "전과",
+            "id": "tab18282",
+            "target": ""
+          },
+          "hasInlineHandler": false,
+          "text": "전과",
+          "rawHref": "/kor/life/previousConviction.do#tab18282_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/previousConviction.do#tab18282_",
+          "visible": true,
+          "rect": {
+            "x": 564.859375,
+            "y": 224,
+            "width": 78.765625,
+            "height": 80
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "swiper-slide"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "wrap",
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "id": "item_body",
+                "class": "pc depthOnSide leftGnb"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "전과",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.smu.ac.kr/kor/life/previousConviction.do#tab18282_"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"전과\":\n  - /url: /kor/life/previousConviction.do#tab18282_"
+        },
+        {
+          "sourceId": "smu-blind-v5-control-6",
+          "selector": ".double-tab-wrap.pc a",
+          "selectorIndex": 5,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "/kor/life/certificatetype.do#tab18184_",
+            "title": "증명서발급",
+            "id": "tab18184",
+            "target": ""
+          },
+          "hasInlineHandler": false,
+          "text": "증명서발급",
+          "rawHref": "/kor/life/certificatetype.do#tab18184_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+          "visible": true,
+          "rect": {
+            "x": 643.625,
+            "y": 224,
+            "width": 117.40625,
+            "height": 80
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "swiper-slide last"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "wrap",
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "id": "item_body",
+                "class": "pc depthOnSide leftGnb"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "증명서발급",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"증명서발급\":\n  - /url: /kor/life/certificatetype.do#tab18184_"
+        }
+      ]
+    },
+    {
+      "siteId": "city",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "title": "무인민원발급기 이용안내 < 민원안내 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T17:12:07.263Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": [
+        "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+        "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+        "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden"
+      ],
+      "headingContext": [
+        {
+          "tag": "h2",
+          "text": "무인민원발급기 이용안내",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)"
+        },
+        {
+          "tag": "h2",
+          "text": "설치 현황연중운영 17개소, 24시간 운영 10개소",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(1)"
+        },
+        {
+          "tag": "h2",
+          "text": "무인민원발급기 세부 설치 현황",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(2)"
+        },
+        {
+          "tag": "h2",
+          "text": "무인민원발급창구 발급종수 및 수수료",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(3)"
+        },
+        {
+          "tag": "h2",
+          "text": "온라인 발급 시스템",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(4)"
+        }
+      ],
+      "controls": [
+        {
+          "sourceId": "city-blind-v5-control-1",
+          "selector": "#txt a",
+          "selectorIndex": 0,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > ul:nth-of-type(2) > li:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "https://plus.gov.kr/",
+            "target": "_blank",
+            "title": "새창열림",
+            "class": "btn btn-noline btn-icon"
+          },
+          "hasInlineHandler": false,
+          "text": "정부24",
+          "rawHref": "https://plus.gov.kr/",
+          "resolvedHref": "https://plus.gov.kr/",
+          "visible": true,
+          "rect": {
+            "x": 395,
+            "y": 10797.890625,
+            "width": 67.984375,
+            "height": 20
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "list-1st"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "txt"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "contens",
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "body-wrap layout"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "body_layout"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub01_01_04 pretendard  kor-sub"
+              }
+            }
+          ],
+          "siblingContext": [
+            "(공동인증서 필요): 주민등록 등·초본, 자동차등록 원부 등 발급"
+          ],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "정부24",
+                "description": "새창열림",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://plus.gov.kr/"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"정부24\":\n  - /url: https://plus.gov.kr/"
+        },
+        {
+          "sourceId": "city-blind-v5-control-2",
+          "selector": "#txt a",
+          "selectorIndex": 1,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > ul:nth-of-type(2) > li:nth-of-type(2) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "http://efamily.scourt.go.kr",
+            "target": "_blank",
+            "title": "새창열림",
+            "class": "btn btn-noline btn-icon"
+          },
+          "hasInlineHandler": false,
+          "text": "대법원 전자가족관계등록시스템",
+          "rawHref": "http://efamily.scourt.go.kr",
+          "resolvedHref": "http://efamily.scourt.go.kr/",
+          "visible": true,
+          "rect": {
+            "x": 395,
+            "y": 10829.390625,
+            "width": 229.59375,
+            "height": 20
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "list-1st"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "txt"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "contens",
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "body-wrap layout"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "body_layout"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub01_01_04 pretendard  kor-sub"
+              }
+            }
+          ],
+          "siblingContext": [
+            "(공동인증서 필요): 가족관계증명서류 열람 및 발급(24시간- 수수료 무료)"
+          ],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "대법원 전자가족관계등록시스템",
+                "description": "새창열림",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "http://efamily.scourt.go.kr/"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"대법원 전자가족관계등록시스템\":\n  - /url: http://efamily.scourt.go.kr"
+        },
+        {
+          "sourceId": "city-blind-v5-control-3",
+          "selector": "#txt a",
+          "selectorIndex": 2,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > ul:nth-of-type(2) > li:nth-of-type(3) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "https://www.iros.go.kr",
+            "target": "_blank",
+            "title": "새창열림",
+            "class": "btn btn-noline btn-icon"
+          },
+          "hasInlineHandler": false,
+          "text": "대법원 인터넷등기소",
+          "rawHref": "https://www.iros.go.kr",
+          "resolvedHref": "https://www.iros.go.kr/",
+          "visible": true,
+          "rect": {
+            "x": 395,
+            "y": 10860.890625,
+            "width": 156.140625,
+            "height": 20
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "list-1st"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "txt"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "contens",
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "body-wrap layout"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "body_layout"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub01_01_04 pretendard  kor-sub"
+              }
+            }
+          ],
+          "siblingContext": [
+            "(공동인증서 불필요): 부동산 등기부 등본 열람 및 발급(24시간)"
+          ],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "대법원 인터넷등기소",
+                "description": "새창열림",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.iros.go.kr/"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"대법원 인터넷등기소\":\n  - /url: https://www.iros.go.kr"
+        },
+        {
+          "sourceId": "city-blind-v5-control-4",
+          "selector": "#txt a",
+          "selectorIndex": 3,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > ul:nth-of-type(2) > li:nth-of-type(4) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "http://minwon.nhis.or.kr",
+            "target": "_blank",
+            "title": "새창열림",
+            "class": "btn btn-noline btn-icon"
+          },
+          "hasInlineHandler": false,
+          "text": "국민건강보험 사이버민원센터",
+          "rawHref": "http://minwon.nhis.or.kr",
+          "resolvedHref": "http://minwon.nhis.or.kr/",
+          "visible": true,
+          "rect": {
+            "x": 395,
+            "y": 10892.390625,
+            "width": 214.90625,
+            "height": 20
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "list-1st"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "txt"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "contens",
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "body-wrap layout"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "body_layout"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub01_01_04 pretendard  kor-sub"
+              }
+            }
+          ],
+          "siblingContext": [
+            "(공동인증서 필요): 건강보험자격득실확인서 등 발급"
+          ],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "국민건강보험 사이버민원센터",
+                "description": "새창열림",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "http://minwon.nhis.or.kr/"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"국민건강보험 사이버민원센터\":\n  - /url: http://minwon.nhis.or.kr"
+        }
+      ]
+    },
+    {
+      "siteId": "government",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "title": "국민안전24 | 행동요령 | 국민행동요령",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T17:12:09.240Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": [
+        "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+        "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+        "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden"
+      ],
+      "headingContext": [
+        {
+          "tag": "h2",
+          "text": "가을철 주요재난",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)"
+        }
+      ],
+      "controls": [
+        {
+          "sourceId": "government-blind-v5-control-1",
+          "selector": ".guidelines-listarea .guidelines-list a",
+          "selectorIndex": 0,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "javascript:aMove('#guidelines-listarea2' , '태풍');"
+          },
+          "hasInlineHandler": false,
+          "text": "태풍",
+          "rawHref": "javascript:aMove('#guidelines-listarea2' , '태풍');",
+          "resolvedHref": "javascript:aMove('#guidelines-listarea2'%20,%20'%ED%83%9C%ED%92%8D');",
+          "visible": true,
+          "rect": {
+            "x": 310,
+            "y": 303.796875,
+            "width": 120,
+            "height": 156
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": ""
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "guidelines-list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-listarea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-cateinner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-catearea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content-situation",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "태풍",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "javascript:aMove('#guidelines-listarea2'%20,%20'%ED%83%9C%ED%92%8D');"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"태풍\":\n  - /url: javascript:aMove('#guidelines-listarea2' , '태풍');"
+        },
+        {
+          "sourceId": "government-blind-v5-control-2",
+          "selector": ".guidelines-listarea .guidelines-list a",
+          "selectorIndex": 1,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "javascript:aMove('#guidelines-listarea2' , '호우');"
+          },
+          "hasInlineHandler": false,
+          "text": "호우",
+          "rawHref": "javascript:aMove('#guidelines-listarea2' , '호우');",
+          "resolvedHref": "javascript:aMove('#guidelines-listarea2'%20,%20'%ED%98%B8%EC%9A%B0');",
+          "visible": true,
+          "rect": {
+            "x": 450,
+            "y": 303.796875,
+            "width": 120,
+            "height": 156
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": ""
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "guidelines-list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-listarea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-cateinner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-catearea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content-situation",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "호우",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "javascript:aMove('#guidelines-listarea2'%20,%20'%ED%98%B8%EC%9A%B0');"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"호우\":\n  - /url: javascript:aMove('#guidelines-listarea2' , '호우');"
+        },
+        {
+          "sourceId": "government-blind-v5-control-3",
+          "selector": ".guidelines-listarea .guidelines-list a",
+          "selectorIndex": 2,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "javascript:aMove('#guidelines-listarea2' , '산사태');"
+          },
+          "hasInlineHandler": false,
+          "text": "산사태",
+          "rawHref": "javascript:aMove('#guidelines-listarea2' , '산사태');",
+          "resolvedHref": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%82%B0%EC%82%AC%ED%83%9C');",
+          "visible": true,
+          "rect": {
+            "x": 590,
+            "y": 303.796875,
+            "width": 120,
+            "height": 156
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": ""
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "guidelines-list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-listarea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-cateinner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-catearea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content-situation",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "산사태",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%82%B0%EC%82%AC%ED%83%9C');"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"산사태\":\n  - /url: javascript:aMove('#guidelines-listarea2' , '산사태');"
+        },
+        {
+          "sourceId": "government-blind-v5-control-4",
+          "selector": ".guidelines-listarea .guidelines-list a",
+          "selectorIndex": 3,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "javascript:aMove('#guidelines-listarea2' , '지진');"
+          },
+          "hasInlineHandler": false,
+          "text": "지진",
+          "rawHref": "javascript:aMove('#guidelines-listarea2' , '지진');",
+          "resolvedHref": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%A7%80%EC%A7%84');",
+          "visible": true,
+          "rect": {
+            "x": 730,
+            "y": 303.796875,
+            "width": 120,
+            "height": 156
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": ""
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "guidelines-list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-listarea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-cateinner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-catearea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content-situation",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "지진",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%A7%80%EC%A7%84');"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"지진\":\n  - /url: javascript:aMove('#guidelines-listarea2' , '지진');"
+        },
+        {
+          "sourceId": "government-blind-v5-control-5",
+          "selector": ".guidelines-listarea .guidelines-list a",
+          "selectorIndex": 4,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "javascript:aMove('#guidelines-listarea2' , '산불');"
+          },
+          "hasInlineHandler": false,
+          "text": "산불",
+          "rawHref": "javascript:aMove('#guidelines-listarea2' , '산불');",
+          "resolvedHref": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%82%B0%EB%B6%88');",
+          "visible": true,
+          "rect": {
+            "x": 870,
+            "y": 303.796875,
+            "width": 120,
+            "height": 156
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": ""
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "guidelines-list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-listarea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-cateinner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-catearea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content-situation",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "산불",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%82%B0%EB%B6%88');"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"산불\":\n  - /url: javascript:aMove('#guidelines-listarea2' , '산불');"
+        },
+        {
+          "sourceId": "government-blind-v5-control-6",
+          "selector": ".guidelines-listarea .guidelines-list a",
+          "selectorIndex": 5,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "javascript:aMove('#guidelines-listarea2' , '산행안전사고');"
+          },
+          "hasInlineHandler": false,
+          "text": "산행안전사고",
+          "rawHref": "javascript:aMove('#guidelines-listarea2' , '산행안전사고');",
+          "resolvedHref": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%82%B0%ED%96%89%EC%95%88%EC%A0%84%EC%82%AC%EA%B3%A0');",
+          "visible": true,
+          "rect": {
+            "x": 1010,
+            "y": 303.796875,
+            "width": 120,
+            "height": 156
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": ""
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "guidelines-list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-listarea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-cateinner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "guidelines-catearea"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content-situation",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "산행안전사고",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "javascript:aMove('#guidelines-listarea2'%20,%20'%EC%82%B0%ED%96%89%EC%95%88%EC%A0%84%EC%82%AC%EA%B3%A0');"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"산행안전사고\":\n  - /url: javascript:aMove('#guidelines-listarea2' , '산행안전사고');"
+        }
+      ]
+    },
+    {
+      "siteId": "public-agency",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117",
+      "title": "연금정보 > 알기쉬운 국민연금 > 연금 종류 및 청구 > 연금급여 - 급여의 특징 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T17:12:11.669Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": [
+        "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+        "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+        "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden"
+      ],
+      "headingContext": [
+        {
+          "tag": "h3",
+          "text": "연금급여",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > h3:nth-of-type(1)"
+        }
+      ],
+      "controls": [
+        {
+          "sourceId": "public-agency-blind-v5-control-1",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 0,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab1",
+            "title": "선택됨"
+          },
+          "hasInlineHandler": false,
+          "text": "급여의 특징",
+          "rawHref": "#tab1",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab1",
+          "visible": true,
+          "rect": {
+            "x": 370,
+            "y": 394,
+            "width": 256.5,
+            "height": 54
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "id": "tab1li",
+                "class": "active"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "급여의 특징",
+                "description": "선택됨",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab1"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"급여의 특징\":\n  - /url: \"#tab1\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-2",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 1,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(2) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab2",
+            "id": "tab2a"
+          },
+          "hasInlineHandler": false,
+          "text": "급여의 종류",
+          "rawHref": "#tab2",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab2",
+          "visible": true,
+          "rect": {
+            "x": 634.5,
+            "y": 394,
+            "width": 256.5,
+            "height": 54
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "급여의 종류",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab2"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"급여의 종류\":\n  - /url: \"#tab2\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-3",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 2,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(3) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab3",
+            "id": "tab3a"
+          },
+          "hasInlineHandler": false,
+          "text": "급여의 산정",
+          "rawHref": "#tab3",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab3",
+          "visible": true,
+          "rect": {
+            "x": 899,
+            "y": 394,
+            "width": 256.5,
+            "height": 54
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "급여의 산정",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab3"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"급여의 산정\":\n  - /url: \"#tab3\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-4",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 3,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab4",
+            "id": "tab4a"
+          },
+          "hasInlineHandler": false,
+          "text": "급여 지급기간 및 지급일",
+          "rawHref": "#tab4",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab4",
+          "visible": true,
+          "rect": {
+            "x": 1163.5,
+            "y": 394,
+            "width": 256.5,
+            "height": 54
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "급여 지급기간 및 지급일",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab4"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"급여 지급기간 및 지급일\":\n  - /url: \"#tab4\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-5",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 4,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(5) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab5",
+            "id": "tab5a"
+          },
+          "hasInlineHandler": false,
+          "text": "급여의 조정",
+          "rawHref": "#tab5",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab5",
+          "visible": true,
+          "rect": {
+            "x": 370,
+            "y": 456,
+            "width": 256.5,
+            "height": 55
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "급여의 조정",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab5"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"급여의 조정\":\n  - /url: \"#tab5\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-6",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 5,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(6) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab6",
+            "id": "tab6a"
+          },
+          "hasInlineHandler": false,
+          "text": "급여의 청구",
+          "rawHref": "#tab6",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab6",
+          "visible": true,
+          "rect": {
+            "x": 634.5,
+            "y": 456,
+            "width": 256.5,
+            "height": 55
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "급여의 청구",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab6"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"급여의 청구\":\n  - /url: \"#tab6\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-7",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 6,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(7) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab7",
+            "id": "tab7a"
+          },
+          "hasInlineHandler": false,
+          "text": "청구서 처리절차 및 장애·유족심사 절차",
+          "rawHref": "#tab7",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab7",
+          "visible": true,
+          "rect": {
+            "x": 899,
+            "y": 456,
+            "width": 256.5,
+            "height": 55
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "청구서 처리절차 및 장애·유족심사 절차",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab7"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"청구서 처리절차 및 장애·유족심사 절차\":\n  - /url: \"#tab7\""
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-8",
+          "selector": ".con-tab-nav > li > a",
+          "selectorIndex": 7,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(2) > section:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(8) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "#tab8",
+            "id": "tab8a"
+          },
+          "hasInlineHandler": false,
+          "text": "크레딧 제도",
+          "rawHref": "#tab8",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab8",
+          "visible": true,
+          "rect": {
+            "x": 1163.5,
+            "y": 456,
+            "width": 256.5,
+            "height": 55
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {}
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "tabNav con-tab-nav col8 docuTitle"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "section",
+              "attrs": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {}
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "크레딧 제도",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117#tab8"
+                  }
+                ]
+              }
+            ]
+          },
+          "playwrightAriaSnapshot": "- link \"크레딧 제도\":\n  - /url: \"#tab8\""
+        }
+      ]
+    },
+    {
+      "siteId": "library",
+      "url": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "title": "국립중앙도서관>도서관 이용>이용안내>견학>견학안내",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T17:12:14.201Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": [
+        "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+        "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+        "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden"
+      ],
+      "headingContext": [
+        {
+          "tag": "h3",
+          "text": "견학",
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1)"
+        }
+      ],
+      "controls": [
+        {
+          "sourceId": "library-blind-v5-control-1",
+          "selector": ".tour_information_wrap a:not([href^=\"mailto:\"])",
+          "selectorIndex": 0,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(4) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "https://www.nl.go.kr/NL/contents/N30907000000.do",
+            "target": "_blank"
+          },
+          "hasInlineHandler": false,
+          "text": "'해설이 있는 K-컬처'",
+          "rawHref": "https://www.nl.go.kr/NL/contents/N30907000000.do",
+          "resolvedHref": "https://www.nl.go.kr/NL/contents/N30907000000.do",
+          "visible": true,
+          "rect": {
+            "x": 841.375,
+            "y": 711.109375,
+            "width": 113.875,
+            "height": 19
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "info_item"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "info_list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tour_information_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "content",
+                "class": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "container",
+                "class": "container"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub"
+              }
+            }
+          ],
+          "siblingContext": [
+            "실감체험관(열린마당, 실감서재, 지식의 길) 전시 관람 및 체험을 원하시는 경우",
+            "를 예약하시기 바랍니다."
+          ],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "'해설이 있는 K-컬처'",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nl.go.kr/NL/contents/N30907000000.do"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sourceId": "library-blind-v5-control-2",
+          "selector": ".tour_information_wrap a:not([href^=\"mailto:\"])",
+          "selectorIndex": 1,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "title": "현재창열림",
+            "class": "btn btn_facility",
+            "href": "https://nl.go.kr/NL/contents/N40404000000.do"
+          },
+          "hasInlineHandler": false,
+          "text": "본관자료실 안내",
+          "rawHref": "https://nl.go.kr/NL/contents/N40404000000.do",
+          "resolvedHref": "https://nl.go.kr/NL/contents/N40404000000.do",
+          "visible": true,
+          "rect": {
+            "x": 517,
+            "y": 1154.625,
+            "width": 128.421875,
+            "height": 36
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "btn_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "title_area"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_inner_cont"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tour_information_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "content",
+                "class": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "container",
+                "class": "container"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "본관자료실 안내",
+                "description": "현재창열림",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://nl.go.kr/NL/contents/N40404000000.do"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sourceId": "library-blind-v5-control-3",
+          "selector": ".tour_information_wrap a:not([href^=\"mailto:\"])",
+          "selectorIndex": 2,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "title": "현재창열림",
+            "class": "btn btn_facility",
+            "href": "https://nl.go.kr/NL/contents/N40403000000.do"
+          },
+          "hasInlineHandler": false,
+          "text": "디지털도서관 시설 안내",
+          "rawHref": "https://nl.go.kr/NL/contents/N40403000000.do",
+          "resolvedHref": "https://nl.go.kr/NL/contents/N40403000000.do",
+          "visible": true,
+          "rect": {
+            "x": 571.765625,
+            "y": 1348.625,
+            "width": 166.96875,
+            "height": 36
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "btn_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "title_area"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_inner_cont"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tour_information_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "content",
+                "class": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "container",
+                "class": "container"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "디지털도서관 시설 안내",
+                "description": "현재창열림",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://nl.go.kr/NL/contents/N40403000000.do"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sourceId": "library-blind-v5-control-4",
+          "selector": ".tour_information_wrap a:not([href^=\"mailto:\"])",
+          "selectorIndex": 3,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > ul:nth-of-type(1) > li:nth-of-type(1) > span:nth-of-type(1) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "href": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+            "target": "_blank"
+          },
+          "hasInlineHandler": false,
+          "text": "[내서재]",
+          "rawHref": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+          "resolvedHref": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+          "visible": true,
+          "rect": {
+            "x": 631.609375,
+            "y": 1763.578125,
+            "width": 47.921875,
+            "height": 19
+          },
+          "ancestors": [
+            {
+              "tag": "span",
+              "attrs": {}
+            },
+            {
+              "tag": "li",
+              "attrs": {
+                "class": "info_item"
+              }
+            },
+            {
+              "tag": "ul",
+              "attrs": {
+                "class": "info_list"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_inner"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tour_information_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "content",
+                "class": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "container",
+                "class": "container"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub"
+              }
+            }
+          ],
+          "siblingContext": [
+            "견학 신청 후 국립중앙도서관 홈페이지의",
+            "에서"
+          ],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "[내서재]",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nl.go.kr/NL/contents/N60501050000.do"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sourceId": "library-blind-v5-control-5",
+          "selector": ".tour_information_wrap a:not([href^=\"mailto:\"])",
+          "selectorIndex": 4,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6) > div:nth-of-type(4) > a:nth-of-type(1)",
+          "tag": "a",
+          "safeAttributes": {
+            "class": "btn btn_apply",
+            "href": "/NL/contents/N30702000000.do"
+          },
+          "hasInlineHandler": false,
+          "text": "도서관 견학 신청",
+          "rawHref": "/NL/contents/N30702000000.do",
+          "resolvedHref": "https://www.nl.go.kr/NL/contents/N30702000000.do",
+          "visible": true,
+          "rect": {
+            "x": 702.5,
+            "y": 2057.09375,
+            "width": 340,
+            "height": 44.796875
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "btn_wrap is_pair center"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tour_information_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "content",
+                "class": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "container",
+                "class": "container"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "도서관 견학 신청",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nl.go.kr/NL/contents/N30702000000.do"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sourceId": "library-blind-v5-control-6",
+          "selector": ".tour_information_wrap a:not([href^=\"mailto:\"])",
+          "selectorIndex": 5,
+          "sourcePath": "body:nth-of-type(1) > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(6) > div:nth-of-type(4) > a:nth-of-type(2)",
+          "tag": "a",
+          "safeAttributes": {
+            "class": "btn btn_cancel",
+            "href": "/NL/contents/N60501050000.do"
+          },
+          "hasInlineHandler": false,
+          "text": "신청확인 및 취소",
+          "rawHref": "/NL/contents/N60501050000.do",
+          "resolvedHref": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+          "visible": true,
+          "rect": {
+            "x": 702.5,
+            "y": 2113.890625,
+            "width": 340,
+            "height": 44.796875
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "btn_wrap is_pair center"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "informaition_cont_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "tour_information_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "content",
+                "class": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "id": "container",
+                "class": "container"
+              }
+            },
+            {
+              "tag": "body",
+              "attrs": {
+                "class": "sub"
+              }
+            }
+          ],
+          "siblingContext": [],
+          "sourceAriaSnapshot": {
+            "method": "Chromium CDP Accessibility.getPartialAXTree, fetchRelatives=false; value properties excluded",
+            "nodes": [
+              {
+                "ignored": false,
+                "role": "link",
+                "name": "신청확인 및 취소",
+                "properties": [
+                  {
+                    "name": "focusable",
+                    "value": true
+                  },
+                  {
+                    "name": "url",
+                    "value": "https://www.nl.go.kr/NL/contents/N60501050000.do"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "readOnlyTasks": [
+    {
+      "siteId": "smu",
+      "sourceId": "smu-blind-v5-control-2",
+      "sourceUrl": "https://www.smu.ac.kr/kor/life/leave.do",
+      "checkedAt": "2026-10-17T17:12:23.586Z",
+      "taskBoundary": "Read-only focus, scroll and center hit-test on original source control only. No click, handler activation, text entry or actual business action.",
+      "sourceReach": {
+        "found": true,
+        "text": "복학",
+        "href": "/kor/life/reinstatement.do#tab18279_",
+        "visible": true,
+        "focused": true,
+        "centerHit": true,
+        "hitElement": {
+          "tag": "a",
+          "id": "tab18279",
+          "class": null
+        },
+        "rect": {
+          "x": 270.765625,
+          "y": 224,
+          "width": 78.765625,
+          "height": 80
+        },
+        "pageUrl": "https://www.smu.ac.kr/kor/life/leave.do"
+      },
+      "sourceUnchanged": true,
+      "destinationGet": {
+        "method": "GET only, maxRedirects 0 with per-hop public-path check; no original link click, authentication, download or submission",
+        "hops": [
+          {
+            "url": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_",
+            "status": 200,
+            "contentType": "text/html;charset=UTF-8",
+            "contentDisposition": null,
+            "location": null,
+            "publicTitle": "상명대학교 국문 | 학사안내 | 학사 | 학적변동 | 복학",
+            "loginPageDetected": false
+          }
+        ],
+        "publicHtmlReached": true
+      }
+    },
+    {
+      "siteId": "city",
+      "sourceId": "city-blind-v5-control-1",
+      "sourceUrl": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "checkedAt": "2026-10-17T17:12:25.664Z",
+      "taskBoundary": "Read-only focus, scroll and center hit-test on original source control only. No click, handler activation, text entry or actual business action.",
+      "sourceReach": {
+        "found": true,
+        "text": "정부24",
+        "href": "https://plus.gov.kr/",
+        "visible": true,
+        "focused": true,
+        "centerHit": true,
+        "hitElement": {
+          "tag": "a",
+          "id": null,
+          "class": "btn btn-noline btn-icon"
+        },
+        "rect": {
+          "x": 395,
+          "y": 529.890625,
+          "width": 67.984375,
+          "height": 20
+        },
+        "pageUrl": "https://www.cheonan.go.kr/kor/sub01_01_04.do"
+      },
+      "sourceUnchanged": true,
+      "destinationGet": {
+        "method": "GET only, maxRedirects 0 with per-hop public-path check; no original link click, authentication, download or submission",
+        "hops": [
+          {
+            "url": "https://plus.gov.kr/",
+            "status": 200,
+            "contentType": "text/html",
+            "contentDisposition": null,
+            "location": null,
+            "publicTitle": "정부24",
+            "loginPageDetected": false
+          }
+        ],
+        "publicHtmlReached": true
+      }
+    },
+    {
+      "siteId": "government",
+      "sourceId": "government-blind-v5-control-1",
+      "sourceUrl": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "checkedAt": "2026-10-17T17:12:29.730Z",
+      "taskBoundary": "Read-only focus, scroll and center hit-test on original source control only. No click, handler activation, text entry or actual business action.",
+      "sourceReach": {
+        "found": true,
+        "text": "태풍",
+        "href": "javascript:aMove('#guidelines-listarea2' , '태풍');",
+        "visible": true,
+        "focused": true,
+        "centerHit": true,
+        "hitElement": {
+          "tag": "img",
+          "id": null,
+          "class": null
+        },
+        "rect": {
+          "x": 310,
+          "y": 303.796875,
+          "width": 120,
+          "height": 156
+        },
+        "pageUrl": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4"
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "siteId": "public-agency",
+      "sourceId": "public-agency-blind-v5-control-4",
+      "sourceUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117",
+      "checkedAt": "2026-10-17T17:12:31.795Z",
+      "taskBoundary": "Read-only focus, scroll and center hit-test on original source control only. No click, handler activation, text entry or actual business action.",
+      "sourceReach": {
+        "found": true,
+        "text": "급여 지급기간 및 지급일",
+        "href": "#tab4",
+        "visible": true,
+        "focused": true,
+        "centerHit": true,
+        "hitElement": {
+          "tag": "a",
+          "id": "tab4a",
+          "class": null
+        },
+        "rect": {
+          "x": 1163.5,
+          "y": 394,
+          "width": 256.5,
+          "height": 54
+        },
+        "pageUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117"
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "siteId": "library",
+      "sourceId": "library-blind-v5-control-2",
+      "sourceUrl": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "checkedAt": "2026-10-17T17:12:34.198Z",
+      "taskBoundary": "Read-only focus, scroll and center hit-test on original source control only. No click, handler activation, text entry or actual business action.",
+      "sourceReach": {
+        "found": true,
+        "text": "본관자료실 안내",
+        "href": "https://nl.go.kr/NL/contents/N40404000000.do",
+        "visible": true,
+        "focused": true,
+        "centerHit": true,
+        "hitElement": {
+          "tag": "a",
+          "id": null,
+          "class": "btn btn_facility"
+        },
+        "rect": {
+          "x": 517,
+          "y": 555.625,
+          "width": 128.421875,
+          "height": 36
+        },
+        "pageUrl": "https://www.nl.go.kr/NL/contents/N30701000000.do"
+      },
+      "sourceUnchanged": true,
+      "destinationGet": {
+        "method": "GET only, maxRedirects 0 with per-hop public-path check; no original link click, authentication, download or submission",
+        "hops": [
+          {
+            "url": "https://nl.go.kr/NL/contents/N40404000000.do",
+            "status": 200,
+            "contentType": "text/html;charset=UTF-8",
+            "contentDisposition": null,
+            "location": null,
+            "publicTitle": "국립중앙도서관>도서관 이용>이용안내>자료실 이용>본관자료실 안내",
+            "loginPageDetected": false
+          }
+        ],
+        "publicHtmlReached": true
+      }
+    }
+  ],
+  "limitations": [
+    "Small selected-control reconstructions, no full-page layout, source CSS/media or application scripts. Original selected-control labels, href/target, ancestor tags/classes/IDs and nearby fixed context are retained.",
+    "Source visible checks establish nonzero boxes and absence of CSS hiding/inert/aria-hidden; only one designated task control per page received read-only focus and center hit testing.",
+    "Source accessibility is actual Chromium AX data, and Playwright ariaSnapshot is additionally stored where its selector injection works. NL uses a CDP isolated world due a source-page conflict in Playwright selector injection. No site security, authentication or certificate settings were changed.",
+    "Task evidence is source control reach and safe public destination GET only. No actual extension toolbar installation or classifier execution was performed by the annotator.",
+    "Category coverage is academic, apply and help for these main-content pages; this new holdout is not balanced over all six product categories."
+  ],
+  "summary": {
+    "pages": 5,
+    "expectedFeatureGroups": 15,
+    "acceptedControls": 30,
+    "sourceTaskControlsReached": 5,
+    "publicDestinationGetReached": 3,
+    "fixtureParityPassed": 5
+  },
+  "fixtureValidation": [
+    {
+      "siteId": "smu",
+      "fixture": "evaluation/blind-v5/fixtures/smu.html",
+      "checkedAt": "2026-10-17T17:13:39.526Z",
+      "method": "Offline headless DOM/Chromium AX parity only; every network request aborted; no product or classifier loaded; no control activation",
+      "fixtureControlCount": 6,
+      "acceptedControlCount": 6,
+      "allControlsAnnotated": true,
+      "controls": [
+        {
+          "sourceId": "smu-blind-v5-control-1",
+          "visible": true,
+          "name": "휴학",
+          "sourceName": "휴학",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "smu-blind-v5-control-2",
+          "visible": true,
+          "name": "복학",
+          "sourceName": "복학",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "smu-blind-v5-control-3",
+          "visible": true,
+          "name": "자퇴 및 제적",
+          "sourceName": "자퇴 및 제적",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "smu-blind-v5-control-4",
+          "visible": true,
+          "name": "재입학",
+          "sourceName": "재입학",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "smu-blind-v5-control-5",
+          "visible": true,
+          "name": "전과",
+          "sourceName": "전과",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "smu-blind-v5-control-6",
+          "visible": true,
+          "name": "증명서발급",
+          "sourceName": "증명서발급",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "siteId": "city",
+      "fixture": "evaluation/blind-v5/fixtures/city.html",
+      "checkedAt": "2026-10-17T17:13:39.587Z",
+      "method": "Offline headless DOM/Chromium AX parity only; every network request aborted; no product or classifier loaded; no control activation",
+      "fixtureControlCount": 4,
+      "acceptedControlCount": 4,
+      "allControlsAnnotated": true,
+      "controls": [
+        {
+          "sourceId": "city-blind-v5-control-1",
+          "visible": true,
+          "name": "정부24",
+          "sourceName": "정부24",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "city-blind-v5-control-2",
+          "visible": true,
+          "name": "대법원 전자가족관계등록시스템",
+          "sourceName": "대법원 전자가족관계등록시스템",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "city-blind-v5-control-3",
+          "visible": true,
+          "name": "대법원 인터넷등기소",
+          "sourceName": "대법원 인터넷등기소",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "city-blind-v5-control-4",
+          "visible": true,
+          "name": "국민건강보험 사이버민원센터",
+          "sourceName": "국민건강보험 사이버민원센터",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "siteId": "government",
+      "fixture": "evaluation/blind-v5/fixtures/government.html",
+      "checkedAt": "2026-10-17T17:13:39.647Z",
+      "method": "Offline headless DOM/Chromium AX parity only; every network request aborted; no product or classifier loaded; no control activation",
+      "fixtureControlCount": 6,
+      "acceptedControlCount": 6,
+      "allControlsAnnotated": true,
+      "controls": [
+        {
+          "sourceId": "government-blind-v5-control-1",
+          "visible": true,
+          "name": "태풍",
+          "sourceName": "태풍",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "government-blind-v5-control-2",
+          "visible": true,
+          "name": "호우",
+          "sourceName": "호우",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "government-blind-v5-control-3",
+          "visible": true,
+          "name": "산사태",
+          "sourceName": "산사태",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "government-blind-v5-control-4",
+          "visible": true,
+          "name": "지진",
+          "sourceName": "지진",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "government-blind-v5-control-5",
+          "visible": true,
+          "name": "산불",
+          "sourceName": "산불",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "government-blind-v5-control-6",
+          "visible": true,
+          "name": "산행안전사고",
+          "sourceName": "산행안전사고",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "siteId": "public-agency",
+      "fixture": "evaluation/blind-v5/fixtures/public-agency.html",
+      "checkedAt": "2026-10-17T17:13:39.713Z",
+      "method": "Offline headless DOM/Chromium AX parity only; every network request aborted; no product or classifier loaded; no control activation",
+      "fixtureControlCount": 8,
+      "acceptedControlCount": 8,
+      "allControlsAnnotated": true,
+      "controls": [
+        {
+          "sourceId": "public-agency-blind-v5-control-1",
+          "visible": true,
+          "name": "급여의 특징",
+          "sourceName": "급여의 특징",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-2",
+          "visible": true,
+          "name": "급여의 종류",
+          "sourceName": "급여의 종류",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-3",
+          "visible": true,
+          "name": "급여의 산정",
+          "sourceName": "급여의 산정",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-4",
+          "visible": true,
+          "name": "급여 지급기간 및 지급일",
+          "sourceName": "급여 지급기간 및 지급일",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-5",
+          "visible": true,
+          "name": "급여의 조정",
+          "sourceName": "급여의 조정",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-6",
+          "visible": true,
+          "name": "급여의 청구",
+          "sourceName": "급여의 청구",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-7",
+          "visible": true,
+          "name": "청구서 처리절차 및 장애·유족심사 절차",
+          "sourceName": "청구서 처리절차 및 장애·유족심사 절차",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "public-agency-blind-v5-control-8",
+          "visible": true,
+          "name": "크레딧 제도",
+          "sourceName": "크레딧 제도",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "siteId": "library",
+      "fixture": "evaluation/blind-v5/fixtures/library.html",
+      "checkedAt": "2026-10-17T17:13:39.775Z",
+      "method": "Offline headless DOM/Chromium AX parity only; every network request aborted; no product or classifier loaded; no control activation",
+      "fixtureControlCount": 6,
+      "acceptedControlCount": 6,
+      "allControlsAnnotated": true,
+      "controls": [
+        {
+          "sourceId": "library-blind-v5-control-1",
+          "visible": true,
+          "name": "'해설이 있는 K-컬처'",
+          "sourceName": "'해설이 있는 K-컬처'",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "library-blind-v5-control-2",
+          "visible": true,
+          "name": "본관자료실 안내",
+          "sourceName": "본관자료실 안내",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "library-blind-v5-control-3",
+          "visible": true,
+          "name": "디지털도서관 시설 안내",
+          "sourceName": "디지털도서관 시설 안내",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "library-blind-v5-control-4",
+          "visible": true,
+          "name": "[내서재]",
+          "sourceName": "[내서재]",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "library-blind-v5-control-5",
+          "visible": true,
+          "name": "도서관 견학 신청",
+          "sourceName": "도서관 견학 신청",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        },
+        {
+          "sourceId": "library-blind-v5-control-6",
+          "visible": true,
+          "name": "신청확인 및 취소",
+          "sourceName": "신청확인 및 취소",
+          "nameMatches": true,
+          "role": "link",
+          "rawHrefMatches": true,
+          "resolvedHrefMatches": true,
+          "accepted": true,
+          "pass": true
+        }
+      ],
+      "pass": true
+    }
+  ]
+}

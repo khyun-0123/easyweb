@@ -1,0 +1,52 @@
+{
+  "classification": "DEVELOPMENT_DELTA_NOT_INTEGRATED",
+  "worktree": "/tmp/easyweb-generalization.20k4zpqq",
+  "deltaBase": "/tmp/easyweb-generalization-prior.2emg_3fw",
+  "priorPatch": "/tmp/easyweb-generalization.patch",
+  "patch": "/tmp/easyweb-contextual-delta.patch",
+  "patchSha256": "de7fd3ec24abbcbc910890eb66d1f9ec2e5d212197cc38e5ae1a9383c06937c0",
+  "fileSha256": {
+    "src/analyzer.ts": "98c428c24004b3251e04b36783d54e7cf552c01fe28c7ee12c8e01db57db0083",
+    "src/classifier.ts": "c34c5afe64506b3c1bce4aec75221b91d3618960d679a9f5a482ba91a965d7f9",
+    "tests/analyzer-context.spec.mjs": "04642d59b7d215488625ef654e6be0f5a7eaf1cfe6787d24c6bf4ae562d8eb86",
+    "tests/classifier-ranking.spec.mjs": "1c9094112d859f075e68931d5ef5be1b842ea9c34b4bef122ec152d7077554e6"
+  },
+  "validation": {
+    "newRegressionsBeforeImplementation": "8 failed / 1 passed",
+    "newRegressionsAfterImplementation": "9 passed; includes later strengthened negative cases",
+    "relatedTests": "97 passed = original 79 + prior patch 9 + new delta 9",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "patchAppliesToPriorCheckpoint": "PASS",
+    "whitespace": "PASS",
+    "developmentCore": "69/69 precision;45/45 recall;15/15 tasksRecommended",
+    "developmentV2": "22/22 precision;11/11 recall;5/5 tasksRecommended",
+    "developmentV3": "18/18 precision;11/11 recall;5/5 tasksRecommended",
+    "adjudicatedDevelopmentV4": "15/15 precision;13/13 recall;5/5 tasksRecommended",
+    "developmentEngineHash": "b2dfad1edf81ac216a23037e2cabb7a604b2fb50a875e161d7e839fade2e779e",
+    "v5": "NOT_READ_OR_RUN_BY_THIS_AGENT; root must record development evaluation separately",
+    "v6": "NOT_READ_OR_RUN"
+  },
+  "limitations": [
+    "C: same-origin nominal issuance title does not prove information-only public guide; no academic/apply override added",
+    "Existing ranker max6/category3/reserved3 unchanged; no claim all newly eligible topics fit selected cards",
+    "Development corpus passing is not independent quality acceptance"
+  ],
+  "logs": [
+    "/tmp/easyweb-contextual-delta-baseline.log",
+    "/tmp/easyweb-contextual-delta-peer-guard-failure.log",
+    "/tmp/easyweb-contextual-delta-build-typecheck.log",
+    "/tmp/easyweb-contextual-delta-related-tests.log",
+    "/tmp/easyweb-contextual-delta-development.log"
+  ],
+  "constraints": {
+    "rootFilesReadOrChanged": false,
+    "evaluationFilesEdited": false,
+    "v5v6FilesRead": false,
+    "nativeUIUsed": false,
+    "externalCalls": false,
+    "committed": false,
+    "rankerModified": false,
+    "labelsHrefsActionsModified": false
+  }
+}

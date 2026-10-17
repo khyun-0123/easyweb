@@ -3,7 +3,7 @@ import { build } from 'esbuild';
 
 let code;
 test.beforeAll(async () => {
-  const bundle = await build({ stdin: { contents: "import {analyzePage} from './src/analyzer';import {isCandidateCurrent} from './src/page-session';window.ContextEngine={analyzePage,isCandidateCurrent};", resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife' });
+  const bundle = await build({ stdin: { contents: "import {analyzePage} from './src/analyzer';import {classify} from './src/classifier';import {isCandidateCurrent} from './src/page-session';window.ContextEngine={analyzePage,classify,isCandidateCurrent};", resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife' });
   code = bundle.outputFiles[0].text;
 });
 const inspect = async page => {
@@ -154,4 +154,74 @@ test('정보 패널 버튼이 폼 제출 제어로 연결되면 이전 카드의
   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
   await page.evaluate(() => { window.saved = ContextEngine.analyzePage()[0]; document.querySelector('#target').id = 'renamed'; });
   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+});
+
+test('다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다', async ({ page }) => {
+  await page.setContent('<main><h1>공공 서비스</h1><section><h2>공지사항</h2><p>최근 소식</p></section><article><h2>학사정보</h2><p>기사 내용</p></article><aside><h2>도움말</h2></aside><div role="region"><h2>예약</h2></div><section><ul><li><a id="source" href="/service/reserve">체육관 예약</a></li></ul></section></main>');
+  const actual = await inspect(page);
+  expect(actual[0].contextLabels).toEqual(['공공 서비스']);
+  expect(actual[0].pagePurpose).toBeUndefined();
+});
+
+test('h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다', async ({ page }) => {
+  for (const title of ['<h4>채용공고</h4>', '<h5>채용공고</h5>', '<h6>채용공고</h6>', '<div role="heading" aria-level="4">채용공고 <span role="textbox">PRIVATE_SENTINEL</span></div>']) {
+    await page.setContent(`<main><h1>기관 소식</h1><section>${title}<ul><li><a id="source" href="/post/view?id=33">기간제 근로자 모집 안내</a></li></ul></section></main>`);
+    const actual = await inspect(page);
+    expect(actual[0].contextLabels).toEqual(['채용공고', '기관 소식']);
+    expect(JSON.stringify(actual)).not.toContain('PRIVATE_SENTINEL');
+  }
+});
+
+test('낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다', async ({ page }) => {
+  for (const title of ['<h6>학사일정</h6>', '<div role="heading" aria-level="2">학사일정</div>']) {
+    await page.setContent(`<main>${title}<table><tr><td><a id="source">중간고사</a></td></tr></table></main>`);
+    const actual = await inspect(page);
+    expect(actual.map(c => c.id)).toEqual(['source']);
+    expect(actual[0].pagePurpose).toBe('academic-calendar');
+  }
+});
+
+test('원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다', async ({ page }) => {
+  await page.setContent('<main><section><h2>공지사항</h2><ul><li><a id="source" href="/service/item">안내</a></li></ul></section><section id="target"><h2>체육 시설</h2></section></main>');
+  await page.addScriptTag({ content: code });
+  await page.evaluate(() => { window.saved = ContextEngine.analyzePage()[0]; document.querySelector('#target').append(document.querySelector('#source')); });
+  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+  expect((await inspect(page))[0].contextLabels).toEqual(['체육 시설']);
+});
+
+test('동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다', async ({ page }) => {
+  await page.setContent('<main><ul><li><a id="source" href="#home">가정</a></li><li id="peer"><a href="#tips">행동요령</a></li></ul></main>');
+  await page.addScriptTag({ content: code });
+  const save = () => page.evaluate(() => { window.saved = ContextEngine.classify(ContextEngine.analyzePage()).find(c => c.element.id === 'source'); });
+  await save();
+  await page.locator('#peer a').evaluate(e => e.textContent = '일반 개요');
+  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+  await page.locator('#peer a').evaluate(e => { e.textContent = '행동요령'; e.setAttribute('href', '#tips'); });
+  await save();
+  await page.locator('#peer').evaluate(e => e.hidden = true);
+  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+});
+
+test('목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다', async ({ page }) => {
+  await page.setContent('<main><div id="list" role="list"><div role="listitem"><button id="source" aria-controls="panel">가정</button></div><div role="listitem"><button>안전수칙</button></div></div><section id="panel"></section><form id="form"></form></main>');
+  await page.addScriptTag({ content: code });
+  const save = () => page.evaluate(() => { window.saved = ContextEngine.classify(ContextEngine.analyzePage()).find(c => c.element.id === 'source'); });
+  await save();
+  await page.locator('#list').evaluate(e => e.removeAttribute('role'));
+  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+  await page.locator('#list').evaluate(e => e.setAttribute('role', 'list'));
+  await save();
+  await page.locator('#panel').evaluate(e => e.remove());
+  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+  await save();
+  await page.locator('#form').evaluate(e => e.append(document.querySelector('#list')));
+  expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+});
+
+test('동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다', async ({ page }) => {
+  await page.setContent('<main><h1>생활 정보</h1><div role="tablist"><div id="source" role="tab">가정</div><div role="tab" contenteditable="true">PRIVATE_SENTINEL 행동요령</div><div role="textbox">PRIVATE_SENTINEL 안전수칙</div></div></main>');
+  const actual = await inspect(page);
+  expect(actual.map(c => c.id)).toEqual(['source']);
+  const snapshots = await page.evaluate(() => ContextEngine.analyzePage().map(c => c.snapshot));
+  expect(JSON.stringify(snapshots)).not.toContain('PRIVATE_SENTINEL');
 });

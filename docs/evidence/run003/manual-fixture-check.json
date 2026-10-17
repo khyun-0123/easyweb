@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-17T17:11:37.828748+00:00",
+  "scope": "Localhost HTTP route/file integrity only; no native/browser UI control, VoiceOver, zoom or installed-extension acceptance.",
+  "host": "127.0.0.1",
+  "port": 4183,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4183/manual-check.html",
+      "httpStatus": 200,
+      "mime": "text/html",
+      "bytes": 10170,
+      "equalsLocalFile": true,
+      "sha256": "9ca1a80af67619ecce70e5a7dcb906e992029c225d59b2ddb4fb6637ef3f2e07"
+    },
+    {
+      "url": "http://127.0.0.1:4183/manual-check-next.html",
+      "httpStatus": 200,
+      "mime": "text/html",
+      "bytes": 10170,
+      "equalsLocalFile": true,
+      "sha256": "9ca1a80af67619ecce70e5a7dcb906e992029c225d59b2ddb4fb6637ef3f2e07"
+    },
+    {
+      "url": "http://127.0.0.1:4183/content.js",
+      "httpStatus": 200,
+      "mime": "text/javascript",
+      "bytes": 72003,
+      "equalsLocalFile": true,
+      "sha256": "232c4bdc17a109d85b9b6a76586b4573e449a4c65276016930ac0993f87b1c7b"
+    }
+  ],
+  "headlessFixtureTests": {
+    "passed": 4,
+    "failed": 0,
+    "reportedBy": "/root/manual_test_lab",
+    "durationSeconds": 1.9,
+    "testFileSha256": "0d3b6225719896a28cc95aeabaa331d249adeb448e859ec59cb4e36c976bb8c7",
+    "scope": "Direct built-code injection in headless browser, fixture action/invalidations/covered failure/cleanup/navigation; not native acceptance."
+  },
+  "evaluationProtocolTests": {
+    "passed": 4,
+    "failed": 0,
+    "command": "node --test evaluation/protocol-tests.mjs",
+    "testFileSha256": "28e8da15f59cc4ae4f01ea07ca2be0a05567d135eca5b8dcef6a275cd6ddfb8a"
+  },
+  "actualManualResults": "NOT_RUN",
+  "productSourceChanged": false
+}

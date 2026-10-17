@@ -1,0 +1,99 @@
+{
+  "siteId": "government",
+  "name": "국민안전24",
+  "type": "government-service",
+  "observedAt": "2026-10-17T17:17:08.790Z",
+  "pages": [
+    {
+      "id": "government-blind-v6",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/dspo/wnds/wwcs/winWaterCitizenSafetyInsurance.do?menuSn=76",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/dspo/wnds/wwcs/winWaterCitizenSafetyInsurance.do?menuSn=76",
+      "title": "국민안전24 | 재난지원 | 풍수해지진재해보험",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v6/fixtures/government.html",
+      "observation": {
+        "method": "Independent headless public-source observation with actual Chromium AX snapshots and safe original DOM ancestry/fixed heading-sibling context. No product source/engine/evaluation output read or run.",
+        "observedAt": "2026-10-17T17:17:08.790Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "One source task focus/hit-test per page and safe public destination GETs are stored in docs/evidence/run003/blind-v6-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions only; no full page, source CSS/media, app scripts, authenticated state or real extension activation. Original fixed labels, href/target, relevant original ancestor tags/classes/IDs and nearby fixed headings/siblings retained.",
+          "All source controls had nonzero boxes and were not CSS-hidden, inert or aria-hidden. One task control per page additionally received read-only scroll/focus/center hit testing; this is not a complete keyboard or assistive-technology audit.",
+          "Actual Chromium AX snapshots exclude value fields. Playwright ariaSnapshot additionally saved for non-editable controls where selector injection works. NL source DOM read through a CDP isolated world after a source-page selector-injection conflict; no security/authentication/certificate settings changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "government-blind-v6-feature-1",
+          "category": "help",
+          "label": "보험료 및 보험금 예시",
+          "sourceIds": [
+            "government-blind-v6-control-2"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v6-feature-2",
+          "category": "help",
+          "label": "보험사 및 가입안내",
+          "sourceIds": [
+            "government-blind-v6-control-3"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v6-feature-3",
+          "category": "help",
+          "label": "보험금 청구절차",
+          "sourceIds": [
+            "government-blind-v6-control-4"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "government-blind-v6-control-1",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v6-control-2",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v6-control-3",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v6-control-4",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "government-blind-v6-task",
+        "instruction": "풍수해지진재해보험 본문의 보험료 및 보험금 예시 원본 탭 버튼 위치를 찾으세요. 탭 활성화·가입·청구는 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "government-blind-v6-control-2"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "공개 재난지원 보험 이용안내 페이지의 주된 네 주제 탭을 모두 선정했다. 보험료/보험금 예시, 보험사 및 가입안내, 청구절차는 실제 가입·청구 제출 제어가 아니라 공개 이용안내이므로 help이다. href 없는 원본 inline onclick 버튼은 locate이다.",
+        "Base href resolves unchanged original relative hrefs against observed source URL. CSP script-src none/object-src none/form-action none; source onclick presence has an inert return-false marker, without original handler implementations. Only fixed labels and empty fixture editables; no actual input values."
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@ test.setTimeout(120_000);
 
 test('정상·빈 결과·긴 이름·stale·안내 성공/실패와 미디어 상태의 axe 위반이 없다', () => {
   expect(report.errors).toEqual([]);
-  expect(report.cases).toHaveLength(17);
+  expect(report.cases).toHaveLength(21);
   expect(report.summary.seriousOrCritical).toBe(0);
   expect(report.cases.flatMap(record => record.axe.violations.map(rule => ({ case: record.id, id: rule.id, impact: rule.impact, nodes: rule.nodes.map(node => node.failureSummary) })))).toEqual([]);
 });
@@ -25,11 +25,22 @@ test('모든 확장 제어의 클릭 영역은 48px 이상이며 활성 제어 �
   expect(report.summary.lowComponentContrast).toEqual([]);
 });
 
+test('숨긴 페이지 제어는 접근성 트리에서도 제외하고 실제 다른 메뉴 제어는 노출한다', () => {
+  const normal = report.cases.find(record => record.id === 'desktop-normal');
+  expect(normal.hiddenControls.filter(control => control.className === 'menu-page')).toHaveLength(2);
+  expect(normal.hiddenControls.every(control => control.axExposed === false)).toBe(true);
+  const initial = report.cases.find(record => record.id === 'desktop-overflow');
+  expect(initial.controls.some(control => control.name === '다른 메뉴 보기' && control.role === 'button')).toBe(true);
+  expect(initial.hiddenControls.some(control => control.name === '이전 메뉴' && !control.axExposed)).toBe(true);
+  const next = report.cases.find(record => record.id === 'desktop-overflow-next');
+  expect(next.controls.some(control => control.name === '이전 메뉴' && control.role === 'button')).toBe(true);
+});
+
 test('키보드 초점은 양방향 순환·재탐지 유지·종료 복귀하고 표시 대비가 3대1 이상이다', () => {
   expect(report.summary.lowFocusContrast).toEqual([]);
   for (const record of report.cases.filter(record => record.keyboard)) {
     expect(record.keyboard.focus.every(focus => focus.inside)).toBe(true);
-    expect(record.keyboard.reverse.className).toContain('card');
+    expect(record.keyboard.reverse.inside).toBe(true);
     expect(record.keyboard.afterCycle.className).toBe('close');
     expect(record.keyboard.refreshRetained).toBe(true);
     expect(record.keyboard.restored).toBe(true);

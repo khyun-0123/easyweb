@@ -1,6 +1,6 @@
 # 공개 사이트 평가 자료
 
-현재 상태: 원래 core 15페이지와 blind-v2/v3/v4 각 5페이지는 첫 평가 후 모두 개발에 노출되었습니다. 총 30페이지를 다시 통과해도 독립 품질 인수로 세지 않습니다. 최초 실패와 당시 자료·엔진을 보존하며, 최종 판정은 [RUN-002 보고서](../docs/RUN_002_REPORT.md)를 따릅니다.
+현재 상태: **v0.4.0 개발 후보 / 완료 5/10 단계**입니다. 원래 core 15페이지와 blind-v2/v3/v4/v5/v6 각 5페이지는 첫 평가 후 모두 개발에 노출되었습니다. 총 **40페이지**를 다시 통과해도 독립 품질 인수로 세지 않습니다. 최초 실패와 당시 자료·엔진을 보존하며, 최신 판정·최종 검사·ZIP 해시는 [RUN-003 보고서](../docs/RUN_003_REPORT.md)를 따릅니다. v0.3.0의 결과는 [RUN-002 과거 기록](../docs/RUN_002_REPORT.md)으로 구별합니다.
 
 ## 원래 core v1.1
 
@@ -43,33 +43,49 @@ npm run evaluate -- --engine=current --split=holdout
 
 `tasksRecommended`는 과제에 대응하는 제어가 추천됐는지의 값이며 **실제 과제 완료 수가 아닙니다**. 원본 위치 안내나 링크를 실행하여 실제 목적지에 도달했는지는 별도 검증해야 합니다. 메뉴 축약 예시의 수치를 실제 전체 사이트 정확도·범용성·접근성·사용성으로 일반화하지 않습니다.
 
+v0.4.0은 처음 최대 6개 메뉴와 **다른 메뉴 보기 / 이전 메뉴** 흐름을 제공합니다. 기존 순위와 최초 6개 표시 정확도·재현율 지표는 변경하지 않습니다. v6 추가 메뉴 흐름의 coverage도 **5/15**이며 최초 독립 품질 미달이 해결된 것으로 판정하지 않습니다.
+
 RUN-001에서는 기준선 전체와 개발용 전후 비교를 기록하고 보류용 현재 성능을 사용하지 않았습니다. RUN-002의 첫 규칙 고정 평가에서는 보류용 재현율이 8/15(53.3%)로 실패했습니다. 당시 코드와 결과는 `docs/evidence/run002/first-frozen-engine/`, `holdout-first-frozen.json`에 보존했습니다. 이후 원래 15페이지 전체는 개발용으로 사용합니다. 같은 `split=holdout`을 다시 실행하더라도 독립 검증으로 부르지 않습니다. 정답·fixture·원래 분리는 변경하지 않았습니다.
 
 ## 추가 자료와 노출 이력
 
 별도 관찰자가 해당 시점의 개선 엔진·결과를 보지 않고 각 자료를 작성했고, 평가 전에 정답·fixture와 엔진 해시를 고정했습니다. 각 첫 평가의 재현율이 목표에 미달했고, 원인을 본 뒤 개선에 사용했으므로 현재는 모두 개발용입니다.
 
-| 자료 | 페이지 / 기대 그룹 | 최초 정확도 | 최초 재현율 | 현재 용도 |
-| --- | --- | --- | --- | --- |
-| core의 원래 holdout | 5 / 15 | 12/12 | 8/15 | 노출된 개발 회귀 |
-| blind-v2 | 5 / 11 | 14/14 | 5/11 | 노출된 개발 회귀 |
-| blind-v3 | 5 / 11 | 10/10 | 4/11 | 노출된 개발 회귀 |
-| blind-v4 | 5 / 13 | 7/8 | 5/13 | 원본 정답·첫 결과 보존, 개발 회귀 |
+| 자료 | 페이지 / 기대 그룹 | 최초 정확도 | 최초 재현율 | 최초 과제 제어 추천 | 품질 판정 / 현재 용도 |
+| --- | --- | --- | --- | --- | --- |
+| core의 원래 holdout | 5 / 15 | 12/12 | 8/15 | — | FAIL / 노출된 개발 회귀 |
+| blind-v2 | 5 / 11 | 14/14 | 5/11 | — | FAIL / 노출된 개발 회귀 |
+| blind-v3 | 5 / 11 | 10/10 | 4/11 | — | FAIL / 노출된 개발 회귀 |
+| blind-v4 | 5 / 13 | 7/8 | 5/13 | — | FAIL / 원본 정답·첫 결과 보존, 개발 회귀 |
+| blind-v5 | 5 / 15 | 7/8 | 4/15 | 2/5 | FAIL / 원본 정답·첫 결과 보존, 개발 회귀 |
+| blind-v6 | 5 / 15 | 9/9 | 5/15 | 2/5 | FAIL / 원본 정답·첫 결과 보존, 개발 회귀 |
+
+v5·v6의 최초 과제 제어 추천 수는 [RUN-003](../docs/RUN_003_REPORT.md)의 실행 범위와 함께 읽습니다. 추천 수는 실제 링크 실행이나 원본 제어 도달 수가 아닙니다. 별도로 기록한 실제 공개 과제 도달도 현재 v0.4.0 네이티브 설치 경로나 실제 사용자 과제 성공으로 합산하지 않습니다.
 
 v4의 신청 결과 조회 1건에서 category를 search→apply로 정정한 별도 [development-v4-corrected](development-v4-corrected/VERSION.json) 버전은 **ADJUDICATED_DEVELOPMENT**입니다. expected와 accepted의 category 필드 각 1개만 수정했으며 원본 fixture·정답·첫 결과를 덮어쓰지 않았습니다. [독립 정답 검토](../docs/evidence/run002/blind-v4-annotation-audit.json)에 근거를 남겼고, 정정 버전을 새 독립 평가로 세지 않습니다.
 
+v6의 개인 연금 조회 분류 주석에는 확정 오류 **4개**, 필수 기대 기능 **1개** 영향이 있다는 [별도 분류 감사](../docs/evidence/run003/annotation-taxonomy-audit.json)를 남겼습니다. 현재 원본 accepted·expected·fixture·과제와 최초 판정은 변경하지 않았습니다. 모호한 분류 중첩을 제품 출력에 맞춰 정답으로 바꾸지 않으며, 감사 제안도 새로운 독립 평가로 세지 않습니다.
+
 ```bash
 # 원래 15페이지: 현재는 개발용 회귀
-npm run evaluate -- --engine=current --split=all --output-dir=docs/evidence/run002/final-core
+npm run evaluate -- --engine=current --split=all --output-dir=/tmp/easyweb-core-development
 
 # 노출된 추가 자료의 개발 회귀 (최초 결과 폴더를 덮어쓰지 않는다)
 npm run evaluate -- --suite=blind-v2 --engine=current --split=holdout --output-dir=/tmp/easyweb-v2-development
 npm run evaluate -- --suite=blind-v3 --engine=current --split=holdout --output-dir=/tmp/easyweb-v3-development
 npm run evaluate -- --suite=blind-v4 --engine=current --split=holdout --output-dir=/tmp/easyweb-v4-development
 npm run evaluate -- --suite=development-v4-corrected --engine=current --split=holdout --output-dir=/tmp/easyweb-v4-corrected-development
+npm run evaluate -- --suite=blind-v5 --engine=current --split=holdout --output-dir=/tmp/easyweb-v5-development
+npm run evaluate -- --suite=blind-v6 --engine=current --split=holdout --output-dir=/tmp/easyweb-v6-development
 ```
 
-이미 확인한 최종 회귀는 [final55-summary.json](../docs/evidence/run002/final55-development/final55-summary.json)에 있습니다. 위 명령을 반복할 필요 없이 같은 소스 해시인지 먼저 확인합니다. 새 독립 평가를 하려면 기존 30페이지와 다른 자료를 엔진·결과에 접근하지 않은 관찰자가 작성하고 먼저 동결해야 합니다. `--phase=fresh-blind-validation`이라는 이름만 지정하는 것은 독립성의 증거가 아닙니다.
+v0.3.0에서 확인한 회귀는 [final55-summary.json](../docs/evidence/run002/final55-development/final55-summary.json)의 과거 기록으로 보존합니다. 현재 v0.4.0의 최종 회귀·수치·소스 해시는 [RUN-003](../docs/RUN_003_REPORT.md)을 따릅니다. 위 명령을 반복할 필요 없이 같은 소스 해시인지 먼저 확인합니다. 새 독립 평가를 하려면 기존 40페이지와 다른 자료를 엔진·결과에 접근하지 않은 관찰자가 작성하고 먼저 동결해야 합니다. `--phase=fresh-blind-validation`이라는 이름만 지정하는 것은 독립성의 증거가 아닙니다.
+
+새 독립 실행은 `--engine=current --split=holdout --phase=fresh-blind-validation`에 `--engine-freeze=…`, `--dataset-freeze=…`, 새 `--output-dir=…`를 함께 지정합니다. 도구는 제품 소스와 모든 주석·fixture가 동결 해시와 같은지 실행 전후 확인하고, 기존 첫 결과를 덮어쓰지 않습니다. 해시 검사는 관찰자가 엔진·결과를 보지 않았다는 사실 자체를 증명하지 않으므로 별도 관찰 기록이 필요합니다.
+
+`--require-quality`는 전체 정확도90%·재현율85%, 사이트별 정확도80%·재현율75% 중 하나라도 미달이면 결과를 저장한 뒤 비정상 종료합니다. 보고서의 `quality`는 오프라인 정확도·재현율 판정이며 실제15과제·성능·설치·접근성·실증의 인수 판정과는 별개입니다. 평가 절차 보호 검사는 `node --test evaluation/protocol-tests.mjs`로 실행합니다. `--help`는 자료 평가나 파일 출력을 하지 않으며 알 수 없는 인자는 실행 전에 거부합니다.
+
+`--with-menu-flow`는 current 엔진에서 실제 헤드리스 UI의 추가 메뉴를 따라 표시된 후보를 별도 `menuFlow`로 집계합니다. 최초 화면의 `summary`와 `quality`는 그대로 유지합니다. 표시 coverage는 링크 실행·업무 완료·사람의 과제 성공을 뜻하지 않습니다.
 
 실제 공개 과제 도달은 `npm run test:tasks`로 별도 관찰합니다. 정확한 공개 링크를 실제 카드에서 선택해 목적지 HTTP 응답을 확인하거나, 원본 제어의 초점·위치 안내를 확인합니다. 입력·검색 제출·인증·신청은 포함하지 않습니다. 이 관찰도 원래 Manifest를 설치한 네이티브 도구 모음 검증과 구분합니다. S07의 인수 목표는 S02 또는 S04의 완료와 별개입니다.
 

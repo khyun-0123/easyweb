@@ -1,7 +1,7 @@
 import { chromium } from '@playwright/test';
 import { build } from 'esbuild';
 import { mkdir, writeFile } from 'node:fs/promises';
-const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run002';
+const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run003';
 
 const targets = ['https://www.smu.ac.kr/'];
 const bundle = await build({

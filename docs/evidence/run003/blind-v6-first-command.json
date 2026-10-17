@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+    "scripts/evaluate.mjs",
+    "--suite=blind-v6",
+    "--engine=current",
+    "--split=holdout",
+    "--phase=fresh-blind-validation",
+    "--engine-freeze=docs/evidence/run003/v0.4-engine-freeze.json",
+    "--dataset-freeze=docs/evidence/run003/blind-v6-freeze.json",
+    "--output-dir=docs/evidence/run003/blind-v6-first",
+    "--with-menu-flow",
+    "--require-quality"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "error": null
+}

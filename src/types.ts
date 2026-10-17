@@ -25,6 +25,7 @@ export interface Candidate {
   contextLabels?: string[];
   pagePurpose?: PagePurpose;
   pageTask?: 'control' | 'collection' | 'reading';
+  collectionDependent?: boolean;
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

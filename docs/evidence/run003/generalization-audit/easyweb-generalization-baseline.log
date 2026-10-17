@@ -1,0 +1,290 @@
+
+Running 9 tests using 1 worker
+
+(node:54742) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/analyzer-context.spec.mjs:159:1 › 다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다 (97ms)
+(node:54748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/analyzer-context.spec.mjs:166:1 › h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다 (93ms)
+(node:54754) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/analyzer-context.spec.mjs:175:1 › 낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다 (95ms)
+(node:54760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/analyzer-context.spec.mjs:184:1 › 원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다 (97ms)
+(node:54773) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/classifier-ranking.spec.mjs:736:1 › 명확한 본문 신청과 예약은 전역 메뉴가 많아도 현재 페이지 제어로 보존한다 (111ms)
+(node:54779) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/classifier-ranking.spec.mjs:750:1 › 신청을 언급하는 안내나 제출 제어까지 본문 예약 슬롯으로 올리지 않는다 (87ms)
+  ✘  7 tests/classifier-ranking.spec.mjs:761:1 › article의 서비스는 고정 기능 문구와 완전한 같은 기능 경로가 모두 필요하다 (79ms)
+(node:54786) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  8 tests/classifier-ranking.spec.mjs:779:1 › 이웃 section의 공지 제목은 실제 예약 링크의 분류와 예약 슬롯을 바꾸지 않는다 (94ms)
+(node:54799) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  9 tests/classifier-ranking.spec.mjs:786:1 › 같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다 (113ms)
+
+
+  1) tests/analyzer-context.spec.mjs:159:1 › 다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다 ──────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+    -   "공공 서비스",
+    +   "예약",
+      ]
+
+      160 |   await page.setContent('<main><h1>공공 서비스</h1><section><h2>공지사항</h2><p>최근 소식</p></section><article><h2>학사정보</h2><p>기사 내용</p></article><aside><h2>도움말</h2></aside><div role="region"><h2>예약</h2></div><section><ul><li><a id="source" href="/service/reserve">체육관 예약</a></li></ul></section></main>');
+      161 |   const actual = await inspect(page);
+    > 162 |   expect(actual[0].contextLabels).toEqual(['공공 서비스']);
+          |                                   ^
+      163 |   expect(actual[0].pagePurpose).toBeUndefined();
+      164 | });
+      165 |
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:162:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-다른-의미-영역의-국소-제목은-넘어오지-않고-공통-페이지-제목은-보존한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-다른-의미-영역의-국소-제목은-넘어오지-않고-공통-페이지-제목은-보존한다/error-context.md
+
+  2) tests/analyzer-context.spec.mjs:166:1 › h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다 ────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 0
+
+      Array [
+    -   "채용공고",
+        "기관 소식",
+      ]
+
+      168 |     await page.setContent(`<main><h1>기관 소식</h1><section>${title}<ul><li><a id="source" href="/post/view?id=33">기간제 근로자 모집 안내</a></li></ul></section></main>`);
+      169 |     const actual = await inspect(page);
+    > 170 |     expect(actual[0].contextLabels).toEqual(['채용공고', '기관 소식']);
+          |                                     ^
+      171 |     expect(JSON.stringify(actual)).not.toContain('PRIVATE_SENTINEL');
+      172 |   }
+      173 | });
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:170:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-h4부터-h6과-heading-역할의-안전한-제목도-문맥으로-사용한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-h4부터-h6과-heading-역할의-안전한-제목도-문맥으로-사용한다/error-context.md
+
+  3) tests/analyzer-context.spec.mjs:175:1 › 낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다 ──────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "source",
+    - ]
+    + Array []
+
+      177 |     await page.setContent(`<main>${title}<table><tr><td><a id="source">중간고사</a></td></tr></table></main>`);
+      178 |     const actual = await inspect(page);
+    > 179 |     expect(actual.map(c => c.id)).toEqual(['source']);
+          |                                   ^
+      180 |     expect(actual[0].pagePurpose).toBe('academic-calendar');
+      181 |   }
+      182 | });
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:179:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-낮은-표제와-heading-역할의-페이지-목적도-고정-제목으로만-확인한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-낮은-표제와-heading-역할의-페이지-목적도-고정-제목으로만-확인한다/error-context.md
+
+  4) tests/analyzer-context.spec.mjs:184:1 › 원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다 ────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "체육 시설",
+    +   "공지사항",
+      ]
+
+      187 |   await page.evaluate(() => { window.saved = ContextEngine.analyzePage()[0]; document.querySelector('#target').append(document.querySelector('#source')); });
+      188 |   expect(await page.evaluate(() => ContextEngine.isCandidateCurrent(saved))).toBe(false);
+    > 189 |   expect((await inspect(page))[0].contextLabels).toEqual(['체육 시설']);
+          |                                                  ^
+      190 | });
+      191 |
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/analyzer-context.spec.mjs:189:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/analyzer-context-원본-제어가-다른-의미-영역으로-이동하면-이전-제목-문맥을-무효화한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/analyzer-context-원본-제어가-다른-의미-영역으로-이동하면-이전-제목-문맥을-무효화한다/error-context.md
+
+  5) tests/classifier-ranking.spec.mjs:736:1 › 명확한 본문 신청과 예약은 전역 메뉴가 많아도 현재 페이지 제어로 보존한다 ───────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+      Array [
+        Array [
+          "passport",
+    -     "control",
+    +     undefined,
+        ],
+        Array [
+          "waste",
+    -     "control",
+    +     undefined,
+        ],
+        Array [
+          "reserve",
+    -     "control",
+    +     undefined,
+        ],
+        Array [
+          "fourth",
+    -     "control",
+    +     undefined,
+        ],
+      ]
+
+      742 |       ranked: SyntheticEngine.rank(classified).map(c => ({ id: c.element.id, category: c.category })) };
+      743 |   });
+    > 744 |   expect(actual.controls).toEqual([['passport', 'control'], ['waste', 'control'], ['reserve', 'control'], ['fourth', 'control']]);
+          |                           ^
+      745 |   expect(actual.ranked).toHaveLength(6);
+      746 |   expect(actual.ranked.filter(c => c.category === 'apply')).toHaveLength(3);
+      747 |   expect(actual.ranked.some(c => c.id === 'waste')).toBe(true);
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:744:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-명확한-본문-신청과-예약은-전역-메뉴가-많아도-현재-페이지-제어로-보존한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-명확한-본문-신청과-예약은-전역-메뉴가-많아도-현재-페이지-제어로-보존한다/error-context.md
+
+  6) tests/classifier-ranking.spec.mjs:761:1 › article의 서비스는 고정 기능 문구와 완전한 같은 기능 경로가 모두 필요하다 ───────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "reservation",
+    -     "apply",
+    -   ],
+    -   Array [
+    -     "login",
+    -     "login",
+    -   ],
+    - ]
+    + Array []
+
+      773 |   const markup = `<main>${specs.map(c => `<article><a id="${c.selector.slice(1)}" href="${c.href}">${c.label}</a></article>`).join('')}</main>`;
+      774 |   const { classified } = await inspect(page, specs, markup);
+    > 775 |   expect(classified.map(c => [c.id, c.category])).toEqual([['reservation', 'apply'], ['login', 'login']]);
+          |                                                   ^
+      776 |   expect(classified[0].pageTask).toBe('control');
+      777 | });
+      778 |
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:775:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-article-36377-능-문구와-완전한-같은-기능-경로가-모두-필요하다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-article-36377-능-문구와-완전한-같은-기능-경로가-모두-필요하다/error-context.md
+
+  7) tests/classifier-ranking.spec.mjs:779:1 › 이웃 section의 공지 제목은 실제 예약 링크의 분류와 예약 슬롯을 바꾸지 않는다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Array [
+        Array [
+          "service",
+    -     "apply",
+    -     "control",
+    +     "notice",
+    +     "reading",
+        ],
+      ]
+
+      781 |   await page.addScriptTag({ content: engine });
+      782 |   const actual = await page.evaluate(() => SyntheticEngine.classify(SyntheticEngine.analyzePage()).map(c => [c.element.id, c.category, c.pageTask]));
+    > 783 |   expect(actual).toEqual([['service', 'apply', 'control']]);
+          |                  ^
+      784 | });
+      785 |
+      786 | test('같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다', async ({ page }) => {
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:783:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-이웃-sect-d771e-제-예약-링크의-분류와-예약-슬롯을-바꾸지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-이웃-sect-d771e-제-예약-링크의-분류와-예약-슬롯을-바꾸지-않는다/error-context.md
+
+  8) tests/classifier-ranking.spec.mjs:786:1 › 같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Array [
+        Array [
+          "item",
+    -     "notice",
+    -     "reading",
+    +     "help",
+    +     undefined,
+        ],
+      ]
+
+      789 |     await page.addScriptTag({ content: engine });
+      790 |     const actual = await page.evaluate(() => SyntheticEngine.classify(SyntheticEngine.analyzePage()).map(c => [c.element.id, c.category, c.pageTask]));
+    > 791 |     expect(actual).toEqual([['item', 'notice', 'reading']]);
+          |                    ^
+      792 |   }
+      793 | });
+      794 |
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:791:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-같은-공고-목-a00a1-eading-역할의-표제에서-같은-범주를-유지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-같은-공고-목-a00a1-eading-역할의-표제에서-같은-범주를-유지한다/error-context.md
+
+  8 failed
+    tests/analyzer-context.spec.mjs:159:1 › 다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다 ───────────────
+    tests/analyzer-context.spec.mjs:166:1 › h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다 ─────────────────
+    tests/analyzer-context.spec.mjs:175:1 › 낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다 ───────────────
+    tests/analyzer-context.spec.mjs:184:1 › 원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다 ─────────────────
+    tests/classifier-ranking.spec.mjs:736:1 › 명확한 본문 신청과 예약은 전역 메뉴가 많아도 현재 페이지 제어로 보존한다 ────────────
+    tests/classifier-ranking.spec.mjs:761:1 › article의 서비스는 고정 기능 문구와 완전한 같은 기능 경로가 모두 필요하다 ────────
+    tests/classifier-ranking.spec.mjs:779:1 › 이웃 section의 공지 제목은 실제 예약 링크의 분류와 예약 슬롯을 바꾸지 않는다 ──────
+    tests/classifier-ranking.spec.mjs:786:1 › 같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다 ──────
+  1 passed (3.4s)

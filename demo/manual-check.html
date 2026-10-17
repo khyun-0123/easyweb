@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EasyWeb 수동 확인실 · 합성 메뉴</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #172739; background: #f4f7fa; font: 17px/1.65 -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif; }
+    main, footer { width: min(100%, 920px); margin: auto; padding: 24px; }
+    h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.35; }
+    h2 { font-size: 1.3rem; }
+    section { margin-block: 24px; padding: 20px; border: 1px solid #738496; border-radius: 12px; background: white; }
+    p, li, td { overflow-wrap: anywhere; }
+    a { color: #155c91; }
+    button, .source-link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 48px; max-width: 100%; padding: 10px 16px; border: 2px solid #4c6177; border-radius: 8px; color: #172739; background: white; font: inherit; text-align: center; cursor: pointer; overflow-wrap: anywhere; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #08796e; outline-offset: 4px; }
+    .controls { display: flex; flex-wrap: wrap; align-items: start; gap: 12px; }
+    .scope { padding: 12px; border-left: 4px solid #08796e; background: #e6f3ef; }
+    .state { font-weight: 600; }
+    #lab-cover { position: fixed; inset: 0; z-index: 2147483000; display: grid; place-items: center; padding: 16px; background: #e6edf5f5; }
+    #lab-cover[hidden] { display: none; }
+    #lab-cover > div { max-width: 520px; max-height: 80vh; overflow: auto; padding: 20px; border: 2px solid #4c6177; border-radius: 12px; background: white; }
+    footer { font-size: .9rem; }
+    @media (forced-colors: active) {
+      body, section, button, .source-link, #lab-cover, #lab-cover > div { color: CanvasText; background: Canvas; border-color: CanvasText; }
+      a { color: LinkText; }
+      a:focus-visible, button:focus-visible { outline-color: Highlight; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="page-title">EasyWeb 수동 확인실</h1>
+    <p class="scope"><strong>합성 메뉴 전용</strong> · 실제 기관·계정·검색·신청이 아닙니다. 입력창, 자동 제출, 외부 통신, 팝업, 기록 저장이 없습니다. 이 페이지는 EasyWeb을 자동으로 열지 않습니다.</p>
+    <p>설치한 확장의 도구 모음 버튼 또는 설정된 단축키로 쉬운 화면을 여세요. 실제 VoiceOver 음성·브라우저 200%/400% 확대·설치 복구는 사람이 확인하고 기록해야 합니다. 이 페이지를 열었다는 사실만으로 통과가 되지 않습니다.</p>
+
+    <section aria-labelledby="source-title">
+      <h2 id="source-title">원본 메뉴</h2>
+      <p>쉬운 화면의 <strong>통합검색</strong>은 이 버튼 위치만 안내해야 합니다. 안내 직후 아래 실행 횟수는 0이어야 합니다. 원본 버튼을 직접 누르면 합성 횟수만 1 증가합니다.</p>
+      <div class="controls">
+        <button id="source-search" type="button">통합검색</button>
+        <a id="source-notice" class="source-link" href="/manual-check.html?view=next">공지사항</a>
+      </div>
+      <p id="source-result" role="status" data-activation-count="0">원본 버튼 실행 횟수: 0 · 아직 직접 누르지 않았습니다.</p>
+      <p>공지사항 링크는 같은 확인실의 다음 화면으로 바로 이동합니다. 이 링크로 이동·뒤로 가기·재실행을 검사할 수 있습니다.</p>
+    </section>
+
+    <section aria-labelledby="prepare-title">
+      <h2 id="prepare-title">실패 상황 준비</h2>
+      <p>한 번에 하나만 준비하세요. 선택 후 <strong>10초 안에 확장으로 쉬운 화면을 열고</strong>, 준비 표시가 끝날 때까지 기다리세요. 쉬운 화면이 열려 있어도 예약은 진행됩니다. 매 시험 전 초기화하거나 페이지를 새로고침하세요.</p>
+      <div class="controls">
+        <button id="arm-change" type="button">10초 뒤 메뉴 바꾸기</button>
+        <button id="arm-cover" type="button">10초 뒤 가림막 놓기</button>
+        <button id="reset-lab" type="button">시험 초기화</button>
+      </div>
+      <p id="lab-state" class="state" data-state="idle" aria-live="off">대기 중 · 예약 없음</p>
+      <p>메뉴 바꾸기는 통합검색을 자료 검색으로 바꿉니다. 이전 카드는 실행되지 않아야 하며 ‘다시 찾기’ 후 새 메뉴를 확인하세요. 가림막은 원본을 가리지만 쉬운 화면 위로 덮지 않습니다. 가린 상태에서 통합검색 카드를 선택하면 성공 대신 가려짐 안내가 나와야 합니다.</p>
+      <p>가림막은 나타난 뒤 45초 후 자동으로 없어집니다. 화면을 가려도 키 입력을 가로채거나 초점을 자동으로 이동하지 않습니다. 새로고침으로 언제든 초기 상태로 돌아올 수 있습니다.</p>
+    </section>
+
+    <section aria-labelledby="check-title">
+      <h2 id="check-title">직접 확인할 순서</h2>
+      <ol>
+        <li>아무 예약 없이 확장을 여세요. Tab/Shift+Tab, 다시 찾기, Esc, 재실행을 확인하세요.</li>
+        <li>VoiceOver에서 제목·각 카드의 링크/버튼 역할·다시 찾기 상태를 실제로 듣고 기록하세요.</li>
+        <li>통합검색 카드를 선택해 원본 초점·강조와 성공 안내를 확인하세요. 자동 실행 횟수는 0이어야 합니다.</li>
+        <li>초기화한 뒤 각 실패 상황을 예약하고, 10초 안에 확장을 열어 변경/가려짐 안내를 각각 확인하세요.</li>
+        <li>브라우저 메뉴의 실제 확대를 200%, 400%로 바꿔 모든 카드·닫기·다시 찾기를 사용할 수 있는지 확인한 뒤 원래 확대를 복원하세요.</li>
+        <li>공지사항 카드로 다음 화면 이동 → 확장 재실행 → 새로고침 → 확장 재실행 → 뒤로 가기를 확인하세요.</li>
+      </ol>
+      <p>전체 절차와 빈 결과표: 프로젝트의 <code>docs/MANUAL_CHECK.md</code>. 실제 결과는 아직 <strong>NOT_RUN</strong>입니다. 실제 기관 5개 페이지의 설치 실행 확인이나 정식 사용자 실증을 대신하지 않습니다.</p>
+    </section>
+  </main>
+  <footer>EasyWeb 개발용 확인실 · 개인정보를 입력하지 마세요. 페이지를 닫으면 예약과 합성 횟수가 사라집니다.</footer>
+  <div id="lab-cover" hidden role="region" aria-label="합성 가림막">
+    <div>
+      <h2>합성 가림막이 원본을 가리고 있습니다</h2>
+      <p>쉬운 화면에서 통합검색을 선택하면 ‘다른 창에 가려져 있어요’ 안내가 예상됩니다. 원본 기능은 실행되면 안 됩니다. 이 가림막은 45초 뒤 자동으로 사라집니다.</p>
+      <button id="dismiss-cover" type="button">가림막 치우기</button>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const source = document.getElementById('source-search');
+      const result = document.getElementById('source-result');
+      const state = document.getElementById('lab-state');
+      const cover = document.getElementById('lab-cover');
+      let timer, countdown, cleanup, activations = 0;
+      // Only a fixed local navigation marker is used; no input fields or values are read.
+      if (new URL(location.href).searchParams.get('view') === 'next') {
+        document.getElementById('page-title').textContent = 'EasyWeb 수동 확인실 · 다음 화면';
+        document.getElementById('source-notice').href = '/manual-check.html';
+      }
+      const setState = (name, text) => {
+        state.dataset.state = name;
+        state.textContent = text;
+      };
+      const cancelTimers = () => {
+        clearTimeout(timer); clearInterval(countdown); clearTimeout(cleanup);
+        timer = countdown = cleanup = undefined;
+      };
+      const removeCover = () => {
+        clearTimeout(cleanup); cleanup = undefined; cover.hidden = true;
+        if (state.dataset.state === 'covered') setState('idle', '가림막 제거됨 · 예약 없음');
+      };
+      const reset = () => {
+        cancelTimers(); cover.hidden = true; source.textContent = '통합검색'; activations = 0;
+        result.dataset.activationCount = '0';
+        result.textContent = '원본 버튼 실행 횟수: 0 · 아직 직접 누르지 않았습니다.';
+        setState('idle', '대기 중 · 예약 없음');
+      };
+      const arm = kind => {
+        reset();
+        const name = kind === 'change' ? '메뉴 변경' : '가림막';
+        let remaining = 10;
+        setState('armed-' + kind, name + '까지 10초 · 지금 확장을 여세요');
+        countdown = setInterval(() => {
+          remaining -= 1;
+          if (remaining > 0) setState('armed-' + kind, name + '까지 ' + remaining + '초 · 지금 확장을 여세요');
+        }, 1000);
+        timer = setTimeout(() => {
+          clearInterval(countdown); countdown = undefined; timer = undefined;
+          if (kind === 'change') {
+            source.textContent = '자료 검색';
+            setState('changed', '메뉴 변경 완료 · 쉬운 화면의 다시 찾기로 갱신하세요');
+          } else {
+            cover.hidden = false;
+            setState('covered', '가림막 표시 중 · 통합검색 카드 선택 시 가려짐 안내 예상');
+            cleanup = setTimeout(removeCover, 45000);
+          }
+        }, 10000);
+      };
+      source.addEventListener('click', () => {
+        activations += 1;
+        result.dataset.activationCount = String(activations);
+        result.textContent = '원본 버튼 실행 횟수: ' + activations + ' · 합성 동작만 수행했습니다.';
+      });
+      document.getElementById('arm-change').addEventListener('click', () => arm('change'));
+      document.getElementById('arm-cover').addEventListener('click', () => arm('cover'));
+      document.getElementById('reset-lab').addEventListener('click', reset);
+      document.getElementById('dismiss-cover').addEventListener('click', removeCover);
+    })();
+  </script>
+</body>
+</html>

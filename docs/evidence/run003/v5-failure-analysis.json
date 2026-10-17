@@ -1,0 +1,81 @@
+{
+  "recordedAt": "2026-10-17T17:20:31.099590+00:00",
+  "classification": "EXPOSED_DEVELOPMENT_ANALYSIS",
+  "firstReport": "docs/evidence/run003/blind-v5-first/evaluation-current-blind-v5-holdout.json",
+  "firstProductFreeze": "docs/evidence/run003/v0.3-engine-freeze.json",
+  "firstResult": {
+    "correct": 7,
+    "recommended": 8,
+    "matched": 4,
+    "expected": 15,
+    "quality": "FAIL"
+  },
+  "diagnosis": {
+    "missingCorrectClassification": 10,
+    "correctlyClassifiedButNotSelected": 1,
+    "remainingFirstScreenMatches": 4,
+    "categories": "Overlapping academic/apply for one public certificate-information control is unresolved; not established annotation error."
+  },
+  "selectionDiagnostic": {
+    "method": "Read-only annotator-category oracle and equal70/reading injected into current ranker on offline fixtures; diagnostic only, not actual product score. Agent /root/manual_test_lab reported headless/CDP results.",
+    "nps": {
+      "expectedSourcePositions": [
+        2,
+        4,
+        8
+      ],
+      "selectedSourcePositions": [
+        1,
+        2,
+        3
+      ],
+      "matched": 1,
+      "expected": 3
+    },
+    "government": {
+      "expectedSourcePositions": [
+        1,
+        4,
+        6
+      ],
+      "selectedSourcePositions": [
+        1,
+        2,
+        3
+      ],
+      "matched": 1,
+      "expected": 3
+    },
+    "university": {
+      "expectedSourcePositions": [
+        2,
+        5,
+        6
+      ],
+      "selectedSourcePositions": [
+        1,
+        2,
+        3
+      ],
+      "matched": 1,
+      "expected": 3
+    },
+    "city": {
+      "expectedSourcePositions": [
+        1,
+        2,
+        4
+      ],
+      "selectedSourcePositions": [
+        1,
+        2,
+        3
+      ],
+      "matched": 2,
+      "expected": 3
+    }
+  },
+  "invariant": "Do not use annotated source positions to tune ordering. A new other-menu path is separate from original first-screen metrics. Keep original first failure and dataset unchanged.",
+  "actualUserStudy": "NOT_RUN",
+  "nativeUIAutomation": "STOPPED"
+}

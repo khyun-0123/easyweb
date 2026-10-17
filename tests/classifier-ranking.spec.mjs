@@ -8,7 +8,7 @@ test.beforeAll(async () => {
   const sourceRoot = process.env.EASYWEB_ENGINE_ROOT ?? './src';
   const result = await build({
     stdin: {
-      contents: `export { classify } from ${JSON.stringify(`${sourceRoot}/classifier.ts`)}; export { rank } from ${JSON.stringify(`${sourceRoot}/ranker.ts`)};`,
+      contents: `export { analyzePage } from ${JSON.stringify(`${sourceRoot}/analyzer.ts`)}; export { classify } from ${JSON.stringify(`${sourceRoot}/classifier.ts`)}; export { rank } from ${JSON.stringify(`${sourceRoot}/ranker.ts`)};`,
       resolveDir: process.cwd(),
       sourcefile: 'synthetic-ranking-entry.ts',
     },
@@ -731,4 +731,151 @@ test('구조가 달라져도 식별 가능한 같은 이름 제어의 동점 순
   const second = await inspect(page, [...items].reverse(), '<p>관련 없는 콘텐츠</p><button id="site-search">검색</button><button id="book-search">검색</button>');
   expect(first.directRanked.map(item => item.id)).toEqual(['book-search', 'site-search']);
   expect(second.directRanked.map(item => item.id)).toEqual(['book-search', 'site-search']);
+});
+
+test('명확한 본문 신청과 예약은 전역 메뉴가 많아도 현재 페이지 제어로 보존한다', async ({ page }) => {
+  await page.setContent('<header><nav><a href="https://example.test/login">로그인</a><a href="https://example.test/search">검색</a><a href="https://example.test/notice">공지사항</a><a href="https://example.test/academic">학사정보</a><a href="https://example.test/help">도움말</a></nav></header><main><h1>주민 서비스</h1><a id="passport" href="https://example.test/service/a">여권 신청</a><a id="waste" href="https://example.test/service/b">대형폐기물 신청하기</a></main>');
+  await page.addScriptTag({ content: engine });
+  const actual = await page.evaluate(() => {
+    const classified = SyntheticEngine.classify(SyntheticEngine.analyzePage());
+    return { controls: classified.filter(c => c.context === 'body').map(c => [c.element.id, c.pageTask]),
+      ranked: SyntheticEngine.rank(classified).map(c => ({ id: c.element.id, category: c.category })) };
+  });
+  expect(actual.controls).toEqual([['passport', 'control'], ['waste', 'control']]);
+  expect(actual.ranked).toHaveLength(6);
+  expect(actual.ranked.filter(c => c.category === 'apply')).toHaveLength(2);
+  expect(actual.ranked.some(c => c.id === 'waste')).toBe(true);
+  const capped = await page.evaluate(() => {
+    document.querySelector('main').insertAdjacentHTML('beforeend', '<button id="reserve">체육관 예약</button><a id="fourth" href="https://example.test/service/c">교육 접수</a>');
+    const classified = SyntheticEngine.classify(SyntheticEngine.analyzePage());
+    return { controls: classified.filter(c => c.pageTask === 'control').length,
+      ranked: SyntheticEngine.rank(classified).map(c => c.category) };
+  });
+  expect(capped.controls).toBe(4);
+  expect(capped.ranked).toHaveLength(6);
+  expect(capped.ranked.filter(category => category === 'apply')).toHaveLength(3);
+});
+
+test('신청을 언급하는 안내나 제출 제어까지 본문 예약 슬롯으로 올리지 않는다', async ({ page }) => {
+  const { classified } = await inspect(page, [
+    { label: '신청 서비스 개편 안내', selector: '#announcement', href: 'https://example.test/updates/42', context: 'body' },
+    { label: '예약 변경 안내', selector: '#guide', href: 'https://example.test/services/guide', context: 'body' },
+    { label: '여권 신청 방법', selector: '#method', href: 'https://example.test/services/method', context: 'body' },
+    { label: '시설 예약', selector: '#submit', action: 'locate', context: 'body' },
+    { label: '시설 신청', selector: '#download', action: 'locate', context: 'body' },
+    { label: '여권 신청', selector: '#conflict', href: 'https://example.test/search', context: 'body' },
+  ], '<main><a id="announcement" href="/updates/42">신청 서비스 개편 안내</a><a id="guide" href="/services/guide">예약 변경 안내</a><a id="method" href="/services/method">여권 신청 방법</a><form><button id="submit">시설 예약</button></form><a id="download" href="/forms/request.pdf" download>시설 신청</a><a id="conflict" href="/search">여권 신청</a></main>');
+  expect(classified).toHaveLength(6);
+  expect(classified.every(c => c.pageTask === undefined)).toBe(true);
+});
+
+test('article의 서비스는 고정 기능 문구와 완전한 같은 기능 경로가 모두 필요하다', async ({ page }) => {
+  const specs = [
+    { label: '체육관 예약하기', selector: '#reservation', href: 'https://example.test/reservation', context: 'body' },
+    { label: '로그인', selector: '#login', href: 'https://example.test/login', context: 'body' },
+    { label: '예약 방법이 달라집니다', selector: '#story', href: 'https://example.test/updates/42', context: 'body' },
+    { label: '체육관 예약하기', selector: '#label-only', href: 'https://example.test/updates/43', context: 'body' },
+    { label: '자세히 보기', selector: '#endpoint-only', href: 'https://example.test/reservation', context: 'body' },
+    { label: '체육관 예약하기', selector: '#conflict', href: 'https://example.test/login', context: 'body' },
+    { label: '체육관 예약하기', selector: '#news-path', href: 'https://example.test/news/reservation', context: 'body' },
+    { label: '체육관 예약하기', selector: '#document', href: 'https://example.test/reservation?articleNo=3', context: 'body' },
+    { label: '체육관 예약하기', selector: '#dangerous', href: 'https://example.test/reservation?action=payment', context: 'body' },
+  ];
+  const markup = `<main>${specs.map(c => `<article><a id="${c.selector.slice(1)}" href="${c.href}">${c.label}</a></article>`).join('')}</main>`;
+  const { classified } = await inspect(page, specs, markup);
+  expect(classified.map(c => [c.id, c.category])).toEqual([['reservation', 'apply'], ['login', 'login']]);
+  expect(classified[0].pageTask).toBe('control');
+});
+
+test('이웃 section의 공지 제목은 실제 예약 링크의 분류와 예약 슬롯을 바꾸지 않는다', async ({ page }) => {
+  await page.setContent('<main><section><h2>공지사항</h2><p>공개된 공지 0건</p></section><section><ul><li><a id="service" href="https://example.test/service/reserve">체육관 예약</a></li></ul></section></main>');
+  await page.addScriptTag({ content: engine });
+  const actual = await page.evaluate(() => SyntheticEngine.classify(SyntheticEngine.analyzePage()).map(c => [c.element.id, c.category, c.pageTask]));
+  expect(actual).toEqual([['service', 'apply', 'control']]);
+});
+
+test('같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다', async ({ page }) => {
+  for (const heading of ['<h2>채용공고</h2>', '<h4>채용공고</h4>', '<h5>채용공고</h5>', '<h6>채용공고</h6>', '<div role="heading" aria-level="3">채용공고</div>']) {
+    await page.setContent(`<main><section>${heading}<ul><li><a id="item" href="https://example.test/post/view?id=33">기간제 근로자 모집 안내</a></li></ul></section></main>`);
+    await page.addScriptTag({ content: engine });
+    const actual = await page.evaluate(() => SyntheticEngine.classify(SyntheticEngine.analyzePage()).map(c => [c.element.id, c.category, c.pageTask]));
+    expect(actual).toEqual([['item', 'notice', 'reading']]);
+  }
+});
+
+async function inspectContextual(page, markup, url = 'https://example.test/guide') {
+  await page.route('**/*', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: markup }));
+  await page.goto(url);
+  await page.addScriptTag({ content: engine });
+  return page.evaluate(() => {
+    const summarize = candidates => candidates.map(({ element, snapshot, ...candidate }) => ({ id: element.id, ...candidate }));
+    const classified = SyntheticEngine.classify(SyntheticEngine.analyzePage());
+    return { classified: summarize(classified), ranked: summarize(SyntheticEngine.rank(classified)) };
+  });
+}
+
+test('문맥으로 보완한 일반 로컬 목차가 구체적인 신청안내 경로를 예약 슬롯에서 밀어내지 않는다', async ({ page }) => {
+  const actual = await inspectContextual(page, '<header><nav><a href="/login">로그인</a><a href="/search">통합검색</a><a href="/notice">공지사항</a></nav></header><main><h1>공공 서비스</h1><nav aria-label="연관 메뉴"><ul><li><a id="overview" href="/overview" aria-expanded="false">업무 현황</a></li><li><a id="directory" href="/directory" aria-expanded="false">관련 서식</a></li><li><a id="manual" href="/manual" aria-expanded="false">사용설명서</a></li><li><a id="specific-guide" href="/guide/visit">방문예약 안내</a></li></ul></nav><a id="request" href="/service/start">민원신청 바로가기</a></main>');
+  expect(actual.ranked.some(candidate => candidate.id === 'specific-guide')).toBe(true);
+  const inferredNavigation = actual.classified.filter(candidate => ['overview','directory','manual'].includes(candidate.id));
+  expect(inferredNavigation).toHaveLength(3);
+  expect(inferredNavigation.every(candidate => candidate.pageTask === undefined)).toBe(true);
+});
+
+test('안내 제목 아래의 공유·인쇄·확대 도구는 내용 패널로 추천하지 않는다', async ({ page }) => {
+  const actual = await inspectContextual(page, '<main><h1>시설 이용안내</h1><div><button id="share" aria-expanded="false">공유하기</button><button id="print" aria-expanded="false">인쇄</button><button id="zoom" aria-expanded="false">화면 확대</button><button id="english" aria-expanded="false">Share</button><button id="content" aria-expanded="false">시설 현황</button></div><ul><li><a id="listed-share" href="#share-panel">공유</a></li><li><a id="listed-print" href="#print-panel">Print</a></li><li><a id="guide" href="#guide-panel">사용설명서</a></li></ul><section id="share-panel"></section><section id="print-panel"></section><section id="guide-panel"></section></main>');
+  expect(actual.classified.map(candidate => candidate.id)).toEqual(['content']);
+});
+
+test('명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다', async ({ page }) => {
+  const actual = await inspectContextual(page, '<main><h1>증명 업무</h1><section><h2>온라인 발급 시스템</h2><ul><li><a id="first" href="https://alpha.example.test/portal">한빛 인증원</a></li><li><a id="second" href="javascript:openPortal();">푸른 민원센터</a></li></ul></section></main>');
+  expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['first', 'apply', 'control', 'navigate'], ['second', 'apply', 'control', 'locate']]);
+  expect(actual.classified[0].label).toBe('한빛 인증원');
+  expect(actual.classified[0].href).toBe('https://alpha.example.test/portal');
+});
+
+test('발급 문맥 보완은 다른 기능·문서·전역 메뉴·폼·기사·위험 동작을 덮지 않는다', async ({ page }) => {
+  const actual = await inspectContextual(page, '<main><h1>온라인 발급 서비스</h1><ul><li><a id="login" href="/login">로그인</a></li><li><a id="conflict" href="/search">한빛 인증원</a></li><li><a id="document" href="/content?articleNo=42">푸른 민원센터</a></li><li><a id="unsafe" href="/portal?action=delete" onclick="openPortal();">붉은 민원센터</a></li><li><a id="script-danger" href="javascript:deleteAccount();">누리 인증원</a></li><li><a id="download" href="/forms/public.pdf" download>열린 인증원</a></li></ul><form><ul><li><button id="form">별빛 인증원</button></li></ul></form><article><ul><li><a id="article" href="/portal">은하 인증원</a></li></ul></article><header><ul><li><a id="header" href="/portal">바다 인증원</a></li></ul></header><footer><ul><li><a id="footer" href="/portal">하늘 인증원</a></li></ul></footer></main>');
+  expect(actual.classified.map(c => [c.id, c.category])).toEqual([['login', 'login']]);
+  for (const heading of ['발급 안내', '서식자료', '기관 안내']) {
+    const result = await inspectContextual(page, `<main><h1>${heading}</h1><ul><li><a href="/portal">한빛 인증원</a></li><li><a href="/other">푸른 민원센터</a></li></ul></main>`);
+    expect(result.classified).toEqual([]);
+  }
+});
+
+test('행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다', async ({ page }) => {
+  const actual = await inspectContextual(page, '<main><h1>생활 안전 행동요령</h1><ul><li><a id="storm" href="javascript:showTopic(1);">태풍</a></li><li><a id="flood" href="#flood">침수</a></li></ul><section id="flood"></section></main>');
+  expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['storm', 'help', 'reading', 'locate'], ['flood', 'help', 'reading', 'locate']]);
+  expect(actual.classified.every(c => c.pagePurpose === 'help' && c.href === undefined)).toBe(true);
+});
+
+test('camelCase의 일반 행동요령·instructions 경로는 실제 주제 목록의 목적만 보완한다', async ({ page }) => {
+  for (const pathname of ['/guide/getEmergencyActionTips.do', '/guide/showInstructions.html']) {
+    const actual = await inspectContextual(page, '<main><h1>상황별 정보</h1><ul><li><button id="quake">지진</button></li><li><button id="snow">대설</button></li></ul><a id="unlisted" href="/misc">기관 소개</a></main>', `https://example.test${pathname}`);
+    expect(actual.classified.map(c => [c.id, c.category])).toEqual([['quake', 'help'], ['snow', 'help']]);
+  }
+  const lookalike = await inspectContextual(page, '<main><ul><li><button>지진</button></li><li><button>대설</button></li></ul></main>', 'https://example.test/instructionalResearch.do');
+  expect(lookalike.classified).toEqual([]);
+});
+
+test('주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다', async ({ page }) => {
+  const actual = await inspectContextual(page, '<main><h1>생활 정보</h1><div role="tablist"><div id="home" role="tab" aria-controls="home-panel">가정</div><div id="public" role="tab" aria-controls="public-panel">공공장소</div><div id="tips" role="tab" aria-controls="tips-panel">안전수칙</div></div><section id="home-panel"></section><section id="public-panel" hidden></section><section id="tips-panel" hidden></section></main>');
+  expect(actual.classified.map(c => [c.id, c.category, c.pageTask, c.action])).toEqual([['home', 'help', 'reading', 'locate'], ['public', 'help', 'reading', 'locate'], ['tips', 'help', 'reading', 'locate']]);
+  const fragments = await inspectContextual(page, '<main><ul><li><a id="first" href="#public">공공장소</a></li><li><a id="guide" href="#tips">행동요령</a></li></ul><section id="public"></section><section id="tips"></section></main>');
+  expect(fragments.classified.map(c => [c.id, c.category])).toEqual([['first', 'help'], ['guide', 'help']]);
+});
+
+test('정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다', async ({ page }) => {
+  for (const markup of [
+    '<main><h1>도움말</h1><a href="#one">가정</a><a href="#two">공공장소</a></main>',
+    '<main><h1>일반 정보</h1><ul><li><a href="#one">가정</a></li><li><a href="#two">공공장소</a></li></ul></main>',
+    '<main><h1>도움말</h1><ul><li><a href="#one">가정</a></li></ul></main>',
+    '<main><h1>도움말</h1><ul><li><a href="https://other.example.test/one">가정</a></li><li><a href="https://other.example.test/two">공공장소</a></li></ul></main>',
+    '<main><h1>도움말</h1><form><ul><li><button>가정</button></li><li><button>공공장소</button></li></ul></form></main>',
+    '<main><h1>도움말</h1><article><ul><li><a href="#one">가정</a></li><li><a href="#two">공공장소</a></li></ul></article></main>',
+    '<main><h1>일반 정보</h1><ul><li><article><a href="#tips">안전수칙</a></article></li><li><a href="#home">가정</a></li></ul></main>',
+    '<main><h1>도움말</h1><ul><li><a href="#home">가정</a></li><li><a href="#next">다음</a></li></ul></main>',
+  ]) expect((await inspectContextual(page, markup)).classified).toEqual([]);
+  const actual = await inspectContextual(page, '<main><h1>도움말</h1><ul><li><a id="apply" href="/apply">시설 예약하기</a></li><li><a id="conflict" href="/login">가정</a></li><li><a id="danger" href="/remove" onclick="openTopic();">공공장소</a></li><li><a id="next" href="#next">다음</a></li><li><a id="topic" href="#topics">학교</a></li></ul></main>');
+  expect(actual.classified.map(c => [c.id, c.category])).toEqual([['apply', 'apply'], ['topic', 'help']]);
 });

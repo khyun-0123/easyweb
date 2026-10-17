@@ -1,0 +1,36 @@
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { resolve, relative, isAbsolute } from 'node:path';
+
+const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+
+// A phase label alone cannot prove blinding. These checks bind the run to
+// independently recorded frozen bytes; the annotation process still needs review.
+export async function verifyFrozenFiles(freezePath, requiredPaths = [], root = process.cwd()) {
+  if (!freezePath) throw new Error('Fresh evaluation requires both engine and dataset freeze records');
+  const raw = await readFile(resolve(root, freezePath));
+  const record = JSON.parse(raw);
+  const entries = record.sourceFiles
+    ? Object.entries(record.sourceFiles).map(([path, sha256]) => ({ path, sha256 }))
+    : record.files;
+  if (!Array.isArray(entries) || !entries.length) throw new Error('Freeze record has no files');
+  const paths = new Set();
+  for (const entry of entries) {
+    if (typeof entry.path !== 'string' || !/^[a-f0-9]{64}$/.test(entry.sha256)) throw new Error('Invalid freeze entry');
+    const localPath = relative(resolve(root), resolve(root, entry.path));
+    if (!localPath || localPath === '..' || localPath.startsWith('../') || isAbsolute(localPath)) throw new Error('Frozen file must be inside the project');
+    if (paths.has(localPath)) throw new Error('Duplicate frozen file');
+    paths.add(localPath);
+    if (sha256(await readFile(resolve(root, localPath))) !== entry.sha256) throw new Error(`Frozen file changed: ${localPath}`);
+  }
+  for (const required of requiredPaths) {
+    if (!paths.has(required)) throw new Error(`Freeze record missing required file: ${required}`);
+  }
+  return { path: freezePath, sha256: sha256(raw), checkedFiles: entries.length };
+}
+
+export function validateFreshMode({ engine, suite, split, outputDir, explicitOutput, engineFreeze, datasetFreeze }) {
+  if (engine !== 'current' || !/^blind-v\d+$/.test(suite) || split !== 'holdout') throw new Error('Fresh evaluation requires current engine and a blind holdout suite');
+  if (!explicitOutput || !outputDir) throw new Error('Fresh evaluation requires an explicit new output directory');
+  if (!engineFreeze || !datasetFreeze) throw new Error('Fresh evaluation requires both engine and dataset freeze records');
+}

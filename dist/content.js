@@ -1,7 +1,7 @@
 "use strict";
 (() => {
   // src/styles.css
-  var styles_default = ":host { all: initial; color-scheme: light; }\n* { box-sizing: border-box; }\ndialog { inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: #f5f7fa; color: #172739; font: 18px/1.6 -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; overflow-y: auto; overscroll-behavior: contain; }\ndialog::backdrop { background: #f5f7fa; }\nbutton, a { font: inherit; -webkit-tap-highlight-color: transparent; }\nbutton { cursor: pointer; }\nbutton:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #08796e; outline-offset: 5px; }\nsvg { display: block; width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }\n.topbar { background: #fff; border-bottom: 1px solid #e4e9ee; }\n.top-inner { max-width: 1160px; margin: auto; padding: 22px 36px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }\n.brand { display: flex; align-items: center; gap: 12px; font-size: 23px; font-weight: 760; letter-spacing: -.7px; }\n.brand-mark { background: #0a7b70; color: white; border-radius: 12px; padding: 8px; }\n.brand-mark svg { width: 25px; height: 25px; }\n.brand small { display: block; font-size: 12px; line-height: 1.4; font-weight: 500; letter-spacing: 0; color: #697887; }\n.close { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 10px 18px; background: #fff; color: #34465a; border: 1px solid #7f8c99; border-radius: 10px; font-size: 16px; font-weight: 650; }\n.close svg { width: 18px; height: 18px; }\n.close:hover { background: #f0f5f6; border-color: #3e8c81; }\n.shell { max-width: 1088px; margin: 0 auto; padding: 40px 36px 24px; }\n.site { display: flex; gap: 9px; align-items: center; color: #5c6b7b; font-size: 14px; flex-wrap: wrap; }\n.site .dot { width: 7px; height: 7px; border-radius: 50%; background: #0a7b70; }\n.site strong { color: #334b5d; font-weight: 600; overflow-wrap: anywhere; }\n.site-tag { color: #087367; font-size: 12px; background: #e0eee9; padding: 3px 9px; border-radius: 6px; margin-left: 4px; }\n.intro { margin: 29px 0 30px; }\nh1 { font-size: clamp(30px, 4vw, 42px); font-weight: 760; letter-spacing: -1.8px; line-height: 1.35; margin: 0 0 12px; }\n.intro p { color: #5e6e7e; margin: 0; font-size: 18px; word-break: keep-all; }\n.section-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; color: #4d6071; font-size: 14px; }\n.section-label h2 { font-size: 15px; font-weight: 650; margin: 0; }\n.refresh { min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; gap: 6px; background: none; color: #476173; border: 0; padding: 7px; font-size: 14px; }\n.refresh svg { width: 15px; height: 15px; }\n.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }\n.card { display: flex; flex-direction: column; align-items: start; min-height: 224px; padding: 24px; background: white; color: #172739; text-decoration: none; border: 1px solid #7f8c99; border-radius: 18px; text-align: left; transition: border-color .15s, box-shadow .15s; overflow-wrap: anywhere; }\n.card:hover { border-color: #3e8c81; box-shadow: 0 8px 24px #263d4d0b; }\n.card[aria-disabled='true'] { background: #edf1f5; border-color: #c2cbd4; cursor: not-allowed; }\n.change-notice { padding: 15px 18px; background: #fff0d8; color: #704709; border: 1px solid #e6cc9f; border-radius: 10px; font-size: 16px; }\n.change-notice[hidden] { display: none; }\n.card-icon { width: 52px; height: 52px; display: grid; place-items: center; background: #eaf1ff; color: #4263ad; border-radius: 14px; margin-bottom: 18px; }\n.card[data-category='search'] .card-icon, .card[data-category='apply'] .card-icon { background: #e1f1ed; color: #168273; }\n.card[data-category='notice'] .card-icon, .card[data-category='help'] .card-icon { background: #fff1dc; color: #a57019; }\n.card-title { font-size: 24px; font-weight: 730; letter-spacing: -.7px; line-height: 1.3; }\n.card-description { font-size: 15px; color: #647486; margin-top: 7px; }\n.card-source { font-size: 13px; color: #627482; margin-top: 12px; max-width: 100%; }\n.card-action { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #08796e; margin-top: auto; padding-top: 17px; }\n.card-action svg { width: 15px; height: 15px; }\n.empty { grid-column: 1 / -1; text-align: center; background: white; padding: 42px 24px; border: 1px solid #dce3ea; border-radius: 18px; }\n.empty h3 { margin: 10px 0; font-size: 24px; }\n.empty p { color: #607181; margin: 0 0 24px; }\n.hint { display: flex; align-items: flex-start; gap: 12px; margin-top: 26px; padding: 18px 21px; background: #eaf0f4; border: 1px solid #e0e7ed; border-radius: 12px; color: #53677a; font-size: 14px; }\n.hint svg { width: 20px; height: 20px; margin-top: 2px; }\n.hint p { margin: 0; }\n.hint strong { color: #344f65; }\n.bottom { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 8px; color: #526476; font-size: 13px; }\n.status { min-height: 24px; }\n@media (forced-colors: active) {\n  .card, .close, .refresh { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }\n  .card[aria-disabled='true'] { border-color: GrayText; color: GrayText; }\n  button:focus-visible, a:focus-visible { outline: 3px solid Highlight; }\n  .card-icon { border: 1px solid CanvasText; }\n}\n@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }\n@media (max-width: 800px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .shell { padding-top: 28px; } }\n@media (max-width: 520px) {\n  .top-inner { padding: 16px 20px; gap: 10px; } .brand { font-size: 20px; gap: 9px; } .brand small { display: none; }\n  .close { padding: 9px 12px; font-size: 14px; } .shell { padding: 26px 20px 20px; }\n  .intro { margin: 24px 0; } .intro p { font-size: 16px; } h1 { letter-spacing: -1px; }\n  .grid { grid-template-columns: 1fr; gap: 12px; } .card { min-height: 190px; padding: 22px; }\n  .bottom { flex-direction: column; gap: 6px; } .site-tag { margin-left: 0; }\n}\n";
+  var styles_default = ":host { all: initial; color-scheme: light; }\n* { box-sizing: border-box; }\ndialog { inset: 0; width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: #f5f7fa; color: #172739; font: 18px/1.6 -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; overflow-y: auto; overscroll-behavior: contain; }\ndialog::backdrop { background: #f5f7fa; }\nbutton, a { font: inherit; -webkit-tap-highlight-color: transparent; }\nbutton { cursor: pointer; }\nbutton:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #08796e; outline-offset: 5px; }\nsvg { display: block; width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }\n.topbar { background: #fff; border-bottom: 1px solid #e4e9ee; }\n.top-inner { max-width: 1160px; margin: auto; padding: 22px 36px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }\n.brand { display: flex; align-items: center; gap: 12px; font-size: 23px; font-weight: 760; letter-spacing: -.7px; }\n.brand-mark { background: #0a7b70; color: white; border-radius: 12px; padding: 8px; }\n.brand-mark svg { width: 25px; height: 25px; }\n.brand small { display: block; font-size: 12px; line-height: 1.4; font-weight: 500; letter-spacing: 0; color: #697887; }\n.close { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 10px 18px; background: #fff; color: #34465a; border: 1px solid #7f8c99; border-radius: 10px; font-size: 16px; font-weight: 650; }\n.close svg { width: 18px; height: 18px; }\n.close:hover { background: #f0f5f6; border-color: #3e8c81; }\n.shell { max-width: 1088px; margin: 0 auto; padding: 40px 36px 24px; }\n.site { display: flex; gap: 9px; align-items: center; color: #5c6b7b; font-size: 14px; flex-wrap: wrap; }\n.site .dot { width: 7px; height: 7px; border-radius: 50%; background: #0a7b70; }\n.site strong { color: #334b5d; font-weight: 600; overflow-wrap: anywhere; }\n.site-tag { color: #087367; font-size: 12px; background: #e0eee9; padding: 3px 9px; border-radius: 6px; margin-left: 4px; }\n.intro { margin: 29px 0 30px; }\nh1 { font-size: clamp(30px, 4vw, 42px); font-weight: 760; letter-spacing: -1.8px; line-height: 1.35; margin: 0 0 12px; }\n.intro p { color: #5e6e7e; margin: 0; font-size: 18px; word-break: keep-all; }\n.section-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; color: #4d6071; font-size: 14px; }\n.section-label h2 { font-size: 15px; font-weight: 650; margin: 0; }\n.refresh { min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; gap: 6px; background: none; color: #476173; border: 0; padding: 7px; font-size: 14px; }\n.refresh svg { width: 15px; height: 15px; }\n.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }\n.menu-pages { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 20px; }\n.menu-page { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 48px; max-width: 100%; padding: 10px 18px; border: 1px solid #7f8c99; border-radius: 10px; color: #34465a; background: #fff; font-size: 16px; font-weight: 650; overflow-wrap: anywhere; }\n.menu-page:enabled:hover { background: #f0f5f6; border-color: #3e8c81; }\n.menu-page:disabled { background: #edf1f5; color: #526476; cursor: not-allowed; }\n.menu-pages[hidden], .menu-page[hidden] { display: none; }\n.card { display: flex; flex-direction: column; align-items: start; min-height: 224px; padding: 24px; background: white; color: #172739; text-decoration: none; border: 1px solid #7f8c99; border-radius: 18px; text-align: left; transition: border-color .15s, box-shadow .15s; overflow-wrap: anywhere; }\n.card:hover { border-color: #3e8c81; box-shadow: 0 8px 24px #263d4d0b; }\n.card[aria-disabled='true'] { background: #edf1f5; border-color: #c2cbd4; cursor: not-allowed; }\n.change-notice { padding: 15px 18px; background: #fff0d8; color: #704709; border: 1px solid #e6cc9f; border-radius: 10px; font-size: 16px; }\n.change-notice[hidden] { display: none; }\n.card-icon { width: 52px; height: 52px; display: grid; place-items: center; background: #eaf1ff; color: #4263ad; border-radius: 14px; margin-bottom: 18px; }\n.card[data-category='search'] .card-icon, .card[data-category='apply'] .card-icon { background: #e1f1ed; color: #168273; }\n.card[data-category='notice'] .card-icon, .card[data-category='help'] .card-icon { background: #fff1dc; color: #a57019; }\n.card-title { font-size: 24px; font-weight: 730; letter-spacing: -.7px; line-height: 1.3; }\n.card-description { font-size: 15px; color: #647486; margin-top: 7px; }\n.card-source { font-size: 13px; color: #627482; margin-top: 12px; max-width: 100%; }\n.card-action { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #08796e; margin-top: auto; padding-top: 17px; }\n.card-action svg { width: 15px; height: 15px; }\n.empty { grid-column: 1 / -1; text-align: center; background: white; padding: 42px 24px; border: 1px solid #dce3ea; border-radius: 18px; }\n.empty h3 { margin: 10px 0; font-size: 24px; }\n.empty p { color: #607181; margin: 0 0 24px; }\n.hint { display: flex; align-items: flex-start; gap: 12px; margin-top: 26px; padding: 18px 21px; background: #eaf0f4; border: 1px solid #e0e7ed; border-radius: 12px; color: #53677a; font-size: 14px; }\n.hint svg { width: 20px; height: 20px; margin-top: 2px; }\n.hint p { margin: 0; }\n.hint strong { color: #344f65; }\n.bottom { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 8px; color: #526476; font-size: 13px; }\n.status { min-height: 24px; }\n@media (forced-colors: active) {\n  .card, .close, .refresh, .menu-page { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }\n  .card[aria-disabled='true'] { border-color: GrayText; color: GrayText; }\n  .menu-page:disabled { border-color: GrayText; color: GrayText; }\n  button:focus-visible, a:focus-visible { outline: 3px solid Highlight; }\n  .card-icon { border: 1px solid CanvasText; }\n}\n@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }\n@media (max-width: 800px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .shell { padding-top: 28px; } }\n@media (max-width: 520px) {\n  .top-inner { padding: 16px 20px; gap: 10px; } .brand { font-size: 20px; gap: 9px; } .brand small { display: none; }\n  .close { padding: 9px 12px; font-size: 14px; } .shell { padding: 26px 20px 20px; }\n  .intro { margin: 24px 0; } .intro p { font-size: 16px; } h1 { letter-spacing: -1px; }\n  .grid { grid-template-columns: 1fr; gap: 12px; } .card { min-height: 190px; padding: 22px; }\n  .bottom { flex-direction: column; gap: 6px; } .site-tag { margin-left: 0; }\n}\n";
 
   // src/action-policy.ts
   function isDocumentDownload(element, safeLabel = "") {
@@ -34,6 +34,19 @@
   var clean = (text) => text.replace(/\s+/g, " ").trim().slice(0, 140);
   var editableRoleSelector = ["textbox", "searchbox", "combobox", "spinbutton", "slider"].map((role) => `[role~="${role}" i]`).join(", ");
   var editableSelector = `input, textarea, select, [contenteditable]:not([contenteditable="false" i]), ${editableRoleSelector}`;
+  var headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
+  var localRegionSelector = 'section, article, aside, [role~="region" i], [role~="article" i], [role~="complementary" i]';
+  var informationConcept = /(?:행동\s*요령|안전\s*수칙|대처\s*(?:방법|요령)|이용\s*(?:안내|방법)|사용\s*설명서|instructions?|(?:action|safety)\s+tips?)(?:\s*(?:안내|모음))?$/i;
+  var helpHeading = /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i;
+  var collectionSelector = 'ul, ol, [role~="list" i], [role~="tablist" i]';
+  var collectionControlSelector = 'a[href], button, [role~="button" i], [role~="tab" i]';
+  var collectionExcludedSelector = 'header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]';
+  var topicUtility = /^(?:전체|이전|다음|처음|마지막|확인|취소|닫기|뒤로|더\s*보기|바로\s*가기|자세히\s*보기|공유(?:하기)?|인쇄(?:하기)?|프린트|화면\s*(?:확대|축소)|previous|next|first|last|ok|cancel|close|back|more|open|share|print|zoom\s*(?:in|out)|\d+)$/i;
+  var informationFacet = /(?:특징|종류|조건|기준|절차|방법|제도)(?:\s*안내)?$/;
+  function isInformationTopicLabel(label) {
+    const text = label.normalize("NFKC").replace(/\s+/g, " ").trim();
+    return text.length >= 2 && text.length <= 36 && !/[.!?。？]/.test(text) && !topicUtility.test(text);
+  }
   function isVisible(element) {
     if (!element.isConnected || element.closest('[hidden], [inert], [aria-hidden="true" i], [aria-disabled="true" i]')) return false;
     if (element.closest("[data-easyweb-host], [data-easyweb-notice]")) return false;
@@ -95,6 +108,18 @@
     const textual = element instanceof HTMLInputElement && ["text", "search"].includes(element.type) || element instanceof HTMLTextAreaElement || element.isContentEditable || element.matches('[role~="textbox" i], [role~="searchbox" i]');
     return textual && (element.matches('input[type="search"], [role~="searchbox" i]') || !!element.closest('[role~="search"], search') || searchCue(label) || searchCue(element.getAttribute("placeholder") ?? ""));
   }
+  function headingBelongsTo(heading, element) {
+    const region = heading.closest(localRegionSelector);
+    if (!region || region.contains(element)) return true;
+    if (element.closest(localRegionSelector) || !region.matches("section")) return false;
+    const onlyHeading = (node) => {
+      if (node === heading) return true;
+      if (node.nodeType === Node.TEXT_NODE) return !(node.nodeValue ?? "").trim();
+      if (!(node instanceof Element)) return true;
+      return node.contains(heading) && [...node.childNodes].every(onlyHeading);
+    };
+    return onlyHeading(region);
+  }
   function contextLabels(element) {
     const labels = [];
     const add = (text) => {
@@ -102,16 +127,16 @@
     };
     let parent = element.parentElement;
     for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-      const headings = [...parent.querySelectorAll(":scope > :is(h1,h2,h3), :scope > :is(div,section) > :is(h1,h2,h3), :scope > :is(div,section) > :is(div,section) > :is(h1,h2,h3)")];
+      const headings = [...parent.querySelectorAll(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)];
       const preceding = headings.filter((heading) => {
         let branch = heading;
         while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
         if (branch !== heading && branch.contains(element)) return false;
-        return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+        return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading) && headingBelongsTo(heading, element) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
       });
       const label = preceding.at(-1);
       if (label) {
-        const text = clean(staticText(label));
+        const text = clean(getSafeLabel(label));
         add(text);
       }
       if (!label && level < 2 && parent.querySelectorAll("a, button, input").length <= 3) {
@@ -128,19 +153,21 @@
   function documentPurpose() {
     if (/(?:^|[\/_.-])academic[-_]?calendar(?:[\/_.-]|$)/i.test(location.pathname)) return "academic-calendar";
     if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return "help";
-    const headings = document.querySelectorAll('main > h1, [role~="main"] > h1, .page-title > h1, .page-title > h2, .page-title > h3');
+    const words = (location.pathname.split("/").at(-1) ?? "").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2").replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase().split(/[^a-z]+/).filter(Boolean);
+    if (words.some((word) => /^(?:instruction|instructions)$/.test(word)) || words.some((word, index) => word === "action" && /^tips?$/.test(words[index + 1] ?? ""))) return "help";
+    const headings = document.querySelectorAll(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
     for (const heading of headings) {
       if (!isVisible(heading)) continue;
-      const text = clean(staticText(heading));
+      const text = clean(getSafeLabel(heading));
       if (text.length > 60) continue;
       if (/학사\s*일정|academic\s+calendar/i.test(text)) return "academic-calendar";
-      if (/^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text)) return "help";
+      if (helpHeading.test(text) || informationConcept.test(text)) return "help";
     }
     return void 0;
   }
   function pagePurpose(element, labels = contextLabels(element), common = documentPurpose()) {
     if (common) return common;
-    if (labels.some((text) => /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i.test(text))) return "help";
+    if (labels.some((text) => helpHeading.test(text) || informationConcept.test(text))) return "help";
     const region = element.closest('main, [role~="main"], section, [role~="region"]');
     if (region) for (const link of region.querySelectorAll(':scope > nav a, :scope > [role~="navigation"] a')) {
       if (!isVisible(link)) continue;
@@ -163,7 +190,42 @@
     }
     return false;
   }
-  function sourceSnapshot(element, safeLabel = candidateLabel(element)) {
+  function collectionEvidence(element, cache) {
+    const empty = { kind: void 0, peers: 0, informationPeer: false, controlled: false, targetExists: false };
+    if (element.closest(collectionExcludedSelector)) return empty;
+    const container = element.closest(collectionSelector);
+    if (!container) return empty;
+    const tabs = container.matches('[role~="tablist" i]');
+    const row = element.closest('li, [role~="listitem" i]');
+    if (!(tabs ? element.matches('[role~="tab" i]') : row?.parentElement === container)) return empty;
+    let summary = cache?.get(container);
+    if (!summary) {
+      const eligible = (peer) => !peer.closest(collectionExcludedSelector) && !((peer instanceof HTMLButtonElement || peer instanceof HTMLInputElement) && peer.form) && isInformationTopicLabel(candidateLabel(peer));
+      const controls = tabs ? [...container.querySelectorAll('[role~="tab" i]')].filter((peer) => peer.closest(collectionSelector) === container && eligible(peer)) : [...container.querySelectorAll(':scope > li, :scope > [role~="listitem" i]')].flatMap((item) => {
+        const control = [...item.querySelectorAll(collectionControlSelector)].find((peer) => peer.closest(collectionSelector) === container && eligible(peer));
+        return control ? [control] : [];
+      });
+      let peers = 0;
+      let informationPeer = false;
+      let facets = 0;
+      for (const peer of controls) {
+        const label = candidateLabel(peer);
+        if (!label) continue;
+        peers = Math.min(2, peers + 1);
+        if (label.length <= 40 && (helpHeading.test(label) || informationConcept.test(label))) informationPeer = true;
+        if (informationFacet.test(label)) facets++;
+      }
+      informationPeer ||= facets >= 2;
+      summary = { peers, informationPeer };
+      cache?.set(container, summary);
+    }
+    const references = (element.getAttribute("aria-controls") ?? "").split(/\s+/).filter(Boolean);
+    const targetExists = references.length > 0 && references.every((id) => !!document.getElementById(id));
+    const raw = element.getAttribute("href")?.trim() ?? "";
+    const controlled = element.matches('button, [role~="button" i], [role~="tab" i]') || targetExists || /^#.+|^javascript:\s*\S/i.test(raw) || element.hasAttribute("onclick") || /^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "");
+    return { kind: tabs ? "tabs" : "list", ...summary, controlled, targetExists };
+  }
+  function sourceSnapshot(element, safeLabel = candidateLabel(element), collectionCache, includeCollection = false) {
     return {
       pageUrl: location.href,
       baseUrl: document.baseURI,
@@ -184,13 +246,15 @@
         !!element.closest('li, [role~="listitem"]')?.querySelector(':scope > ul, :scope > ol, :scope > [role~="group"], :scope > [role~="menu"]'),
         !!element.closest('article, [role~="article"]'),
         isQuestionCollection(element),
+        includeCollection ? collectionEvidence(element, collectionCache) : null,
+        !!element.closest('form, [role~="form" i]'),
         sourceAction(element, safeLabel)
       ])
     };
   }
   function analyzePage() {
     const commonPurpose = documentPurpose();
-    const selector = 'a[href], button, [role~="button"], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
+    const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
     const elements = document.querySelectorAll(selector + (commonPurpose === "academic-calendar" ? ', table a:not([href]), [role~="grid"] a:not([href])' : ""));
     const candidates = [];
     for (const element of elements) {
@@ -277,6 +341,8 @@
   var noticeListHeading = /^(?:공지\s*공고|(?:채용|입찰|모집)\s*공고)(?:\s*(?:목록|게시판))?$/;
   var studentContextHeading = /^(?:학생지원|대학생활|학교생활|student\s+(?:support|life)|campus\s+life)$/i;
   var counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대면)\s*)?상담\s*(?:운영|안내)$/;
+  var applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
+  var issuanceServiceHeading = /^(?=.{2,48}$)(?:(?:온라인|인터넷|전자)\s*)?(?:(?:증명(?:서)?|민원|서류)\s*)?발급\s*(?:시스템|서비스)(?:\s*(?:바로\s*가기|목록))?$/;
   function contextsFor(candidate, label) {
     return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize).filter((value) => value !== label);
   }
@@ -356,6 +422,48 @@
     const listLeaf = /^(?:news|articles?|stories|story|press|index|list|main)(?:\.[a-z]+)?$/.test(parts.at(-1) ?? "");
     return articlePath && !listLeaf;
   }
+  function corroboratedArticleService(candidate, label, target, parts, url) {
+    if (!url || candidate.context !== "body" || candidate.action !== "navigate" || !candidate.element.matches("a[href]") || !candidate.element.closest('article, [role~="article"]') || hasDocumentReference(url) || parts.some((part) => /^(?:news|articles?|stories|story|press)$/.test(part))) return false;
+    return rules.some((rule) => rule.endpoints.has(target) && (rule.category === "apply" ? applicationControlLabel.test(label) : rule.section.test(label)));
+  }
+  function applicationPageControl(candidate, label, target, url) {
+    if (candidate.context !== "body" || !applicationControlLabel.test(label) || !candidate.element.matches('a[href], button, [role~="button"], input[type="button"], input[type="submit"]') || url && hasDocumentReference(url) || isDocumentDownload(candidate.element, candidate.label) || rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return false;
+    return !((candidate.element instanceof HTMLButtonElement || candidate.element instanceof HTMLInputElement) && candidate.element.type === "submit" && candidate.element.form);
+  }
+  function structuredContext(candidate, label, collection, url) {
+    const element = candidate.element;
+    if (!collection.kind || candidate.context === "footer" || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label) || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]') || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
+    let destination2 = url;
+    const raw = element.getAttribute("href")?.trim() ?? "";
+    if (!destination2 && raw && !/^(?:#|javascript:)/i.test(raw)) {
+      try {
+        const parsed = new URL(raw, document.baseURI);
+        if (/^https?:$/.test(parsed.protocol)) destination2 = parsed;
+        else return;
+      } catch {
+        return;
+      }
+    }
+    const script = [element.getAttribute("onclick") ?? "", /^javascript:/i.test(raw) ? raw : ""].join(" ").replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_-]+/g, " ");
+    if (dangerous.test(script)) return;
+    const parts = destination2 ? pathParts(destination2) : [];
+    if (destination2 && (isDangerousURL(destination2, parts) || hasDocumentReference(destination2)) || parts.some((part) => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
+    const target = endpoint(parts);
+    const contexts = contextsFor(candidate, label);
+    if (contexts.some((heading) => issuanceServiceHeading.test(heading)) && collection.kind === "list" && (collection.controlled || !!destination2) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) {
+      return { ...candidate, category: "apply", score: 70, reasons: ["\uBC1C\uAE09 \uC11C\uBE44\uC2A4 \uC9C4\uC785", "\uBA85\uC2DC\uC801 \uBC1C\uAE09 \uC2DC\uC2A4\uD15C \uC81C\uBAA9\uACFC \uC6D0\uBCF8 \uBAA9\uB85D \uC81C\uC5B4"], pageTask: "control" };
+    }
+    const localReading = !!destination2 && destination2.origin === location.origin && candidate.action === "navigate";
+    if (collection.peers >= 2 && (candidate.pagePurpose === "help" || collection.informationPeer) && (collection.controlled || localReading) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) {
+      return {
+        ...candidate,
+        category: "help",
+        score: 65,
+        reasons: ["\uC815\uBCF4 \uC8FC\uC81C \uC77D\uAE30", candidate.pagePurpose === "help" ? "\uB3C4\uC6C0\uB9D0\xB7\uD589\uB3D9\uC694\uB839 \uBAA9\uC801\uACFC \uC6D0\uBCF8 \uC8FC\uC81C \uBAA9\uB85D" : "\uC6D0\uBCF8 \uBAA9\uB85D\xB7\uD0ED\uACFC \uB3D9\uB8CC\uC758 \uBA85\uC2DC\uC801 \uC815\uBCF4 \uAC1C\uB150"],
+        pageTask: candidate.context === "body" || candidate.action === "locate" && collection.controlled ? "reading" : void 0
+      };
+    }
+  }
   function contextualReading(candidate, label) {
     if (candidate.context === "footer" || candidate.element.closest('article, [role~="article"]')) return;
     const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize);
@@ -381,6 +489,7 @@
     }
   }
   function classify(candidates) {
+    const collectionCache = /* @__PURE__ */ new WeakMap();
     return candidates.flatMap((candidate) => {
       const sourceLabel = normalize(candidate.label).replace(/[_-]+/g, " ");
       const documentDownload = candidate.action === "locate" && isDocumentDownload(candidate.element, candidate.label);
@@ -416,7 +525,7 @@
           pageTask: "reading"
         }];
       }
-      if (isArticle(candidate, parts, url)) return [];
+      if (isArticle(candidate, parts, url) && !corroboratedArticleService(candidate, label, target, parts, url)) return [];
       if (academicInfo) return [{ ...candidate, category: "academic", score: 70, reasons: ["\uD559\uC0AC \uB0A9\uBD80 \uC815\uBCF4 \uC77D\uAE30", "\uD559\uC0AC \uC81C\uBAA9\uACFC \uC548\uB0B4 \uBAA9\uC801\uC758 \uC77C\uBC18 \uB9C1\uD06C"], pageTask: "reading" }];
       const form = formReading(candidate, label, target, url);
       if (form === "conflict") return [];
@@ -456,17 +565,25 @@
           candidate.context === "primary" ? "\uC8FC\uC694 \uBA54\uB274 \uC601\uC5ED" : candidate.context === "footer" ? "\uD558\uB2E8 \uC601\uC5ED \uAC10\uC810" : "\uBCF8\uBB38 \uC601\uC5ED"
         ];
         if (!best || score > best.score || score === best.score && intent > bestIntent) {
-          const pageTask = candidate.context === "body" ? semanticMatch || rule.category === "help" && (viewerControl.test(label) || candidate.element.matches('a[href], button, [role~="button"]') && (contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? "control" : sectionMatch || rule.category === "notice" && noticeCollection.test(label) ? "collection" : void 0 : void 0;
+          const pageTask = candidate.context === "body" ? semanticMatch || rule.category === "apply" && applicationPageControl(candidate, label, target, url) || rule.category === "help" && (viewerControl.test(label) || candidate.element.matches('a[href], button, [role~="button"]') && (contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? "control" : sectionMatch || rule.category === "notice" && noticeCollection.test(label) ? "collection" : void 0 : void 0;
           best = { ...candidate, category: rule.category, score, reasons, pageTask };
           bestIntent = intent;
         }
+      }
+      if (!best) {
+        const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url);
+        if (structured) return [{
+          ...structured,
+          collectionDependent: true,
+          snapshot: sourceSnapshot(candidate.element, candidate.label, collectionCache, true)
+        }];
       }
       if ((!best || best.category === "academic") && (academicReading(candidate, label, target, url) || academicLocalDestination(candidate, label, target, url))) {
         return [{ ...candidate, category: "academic", score: 70, reasons: ["\uD559\uC0AC \uC548\uB0B4 \uBB38\uC11C \uC77D\uAE30", "\uD559\uC0AC \uC81C\uBAA9\uACFC \uBAA9\uB85D\uC758 \uAD50\uC721 \uAC1C\uB150\xB7\uC9C0\uCE68"], pageTask: "reading" }];
       }
       const guideContext = contextsFor(candidate, label).some((value) => value.length <= 60 && /안내$/.test(value));
       const formSubmit = candidate.element instanceof HTMLButtonElement && !!candidate.element.form && candidate.element.type === "submit";
-      if (!best && guideContext && candidate.context !== "footer" && candidate.action === "locate" && !formSubmit && candidate.element.matches('button, [role~="button"]') && /^(?:true|false)$/i.test(candidate.element.getAttribute("aria-expanded") ?? "") && !candidate.element.closest('article, [role~="article"]')) {
+      if (!best && guideContext && isInformationTopicLabel(label) && candidate.context !== "footer" && candidate.action === "locate" && !formSubmit && candidate.element.matches('button, [role~="button"]') && /^(?:true|false)$/i.test(candidate.element.getAttribute("aria-expanded") ?? "") && !candidate.element.closest('article, [role~="article"]')) {
         return [{ ...candidate, category: "help", score: 60, reasons: ["\uC548\uB0B4 \uC815\uBCF4 \uD328\uB110 \uC77D\uAE30", "\uC548\uB0B4 \uC81C\uBAA9\uACFC \uBA85\uC2DC\uC801 \uD3BC\uCE68 \uC81C\uC5B4"], pageTask: "control" }];
       }
       if (!best && url && candidate.action === "navigate" && candidate.element.matches("a[href]") && candidate.context !== "footer" && label.length >= 4 && label.length <= 36 && /안내(?:\s*바로\s*가기)?$/.test(label) && !knownEndpoint && !hasDocumentReference(url) && !/^\d+(?:\.[a-z]+)?$/i.test(parts.at(-1) ?? "") && !candidate.element.closest('article, [role~="article"]')) {
@@ -583,22 +700,59 @@
     }
     return ordered(selected);
   }
+  function alreadyShown(selected) {
+    const destinations = /* @__PURE__ */ new Set();
+    const controls = /* @__PURE__ */ new Set();
+    for (const candidate of selected) {
+      const href = destination(candidate);
+      if (href) destinations.add(href);
+      else controls.add(candidate.element);
+    }
+    return { destinations, controls };
+  }
+  function hasMoreMenus(candidates, selected) {
+    const shown = alreadyShown(selected);
+    return candidates.some((candidate) => {
+      if (!candidate.category) return false;
+      const href = destination(candidate);
+      return href ? !shown.destinations.has(href) : !shown.controls.has(candidate.element);
+    });
+  }
+  function* remainingMenus(candidates, selected) {
+    const shown = alreadyShown(selected);
+    for (const candidate of ordered(candidates.filter((candidate2) => candidate2.category))) {
+      const href = destination(candidate);
+      if (href) {
+        if (shown.destinations.has(href)) continue;
+        shown.destinations.add(href);
+      } else {
+        if (shown.controls.has(candidate.element)) continue;
+        shown.controls.add(candidate.element);
+      }
+      yield candidate;
+    }
+  }
 
   // src/page-session.ts
-  function isCandidateCurrent(candidate) {
-    if (candidateLabel(candidate.element) !== candidate.label) return false;
+  function isCandidateCurrent(candidate, collectionCache) {
+    const label = candidateLabel(candidate.element);
+    if (label !== candidate.label) return false;
     if (sourceContext(candidate.element) !== candidate.context) return false;
     const labels = contextLabels(candidate.element);
     if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
     if (pagePurpose(candidate.element, labels) !== candidate.pagePurpose) return false;
-    const current = sourceSnapshot(candidate.element);
+    const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent);
     return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl && current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
+  }
+  function areCandidatesCurrent(candidates) {
+    const collectionCache = /* @__PURE__ */ new WeakMap();
+    return candidates.every((candidate) => isCandidateCurrent(candidate, collectionCache));
   }
   function watchCandidates(getCandidates, onStale) {
     let stopped = false;
     let scheduled;
     const check = () => {
-      if (!stopped && getCandidates().some((candidate) => !isCandidateCurrent(candidate))) onStale();
+      if (!stopped && !areCandidatesCurrent(getCandidates())) onStale();
     };
     const observer = new MutationObserver((records) => {
       if (records.every((record) => record.target instanceof Element && !!record.target.closest("[data-easyweb-host]"))) return;
@@ -858,6 +1012,13 @@
     label.append(sectionTitle, refresh);
     const grid = el("section", "grid");
     grid.setAttribute("aria-labelledby", sectionTitle.id);
+    const pagesNavigation = el("nav", "menu-pages");
+    pagesNavigation.setAttribute("aria-label", "\uB2E4\uB978 \uAE30\uB2A5 \uCC3E\uC544\uBCF4\uAE30");
+    const previous = el("button", "menu-page", "\uC774\uC804 \uBA54\uB274");
+    previous.type = "button";
+    const next = el("button", "menu-page", "\uB2E4\uB978 \uBA54\uB274 \uBCF4\uAE30");
+    next.type = "button";
+    pagesNavigation.append(previous, next);
     const changeNotice = el("p", "change-notice");
     changeNotice.hidden = true;
     changeNotice.setAttribute("role", "status");
@@ -869,10 +1030,26 @@
     const status = el("span", "status");
     status.setAttribute("role", "status");
     bottom.append(status, el("span", "", "\uC5B8\uC81C\uB4E0 Esc \uD0A4\uB85C \uC6D0\uBCF8 \uD654\uBA74\uC5D0 \uB3CC\uC544\uAC08 \uC218 \uC788\uC5B4\uC694"));
-    shell.append(site, intro, changeNotice, label, grid, hint, bottom);
+    shell.append(site, intro, changeNotice, label, grid, pagesNavigation, hint, bottom);
     dialog.append(topbar, shell);
     let items = [];
+    let pages = [];
+    let pageIndex = 0;
+    let remainder;
+    let pending;
+    let hasRemaining = false;
     let stale = false;
+    function updatePageControls() {
+      const hasPrevious = pageIndex > 0;
+      const hasNext = pageIndex < pages.length - 1 || hasRemaining;
+      pagesNavigation.hidden = !hasPrevious && !hasNext;
+      previous.hidden = !hasPrevious;
+      next.hidden = !hasNext;
+      previous.disabled = stale || !hasPrevious;
+      next.disabled = stale || !hasNext;
+      previous.setAttribute("aria-disabled", String(previous.disabled));
+      next.setAttribute("aria-disabled", String(next.disabled));
+    }
     function markStale() {
       if (stale || closed) return;
       stale = true;
@@ -886,6 +1063,9 @@
           item.tabIndex = 0;
         }
       }
+      const pagingHadFocus = shadow.activeElement === previous || shadow.activeElement === next;
+      updatePageControls();
+      if (pagingHadFocus) refresh.focus({ preventScroll: true });
     }
     function card(candidate) {
       const info = CATEGORY_INFO[candidate.category];
@@ -932,11 +1112,8 @@
       item.append(action);
       return item;
     }
-    function update(announce = false) {
-      items = rank(classify(analyzePage()));
-      stale = false;
-      changeNotice.hidden = true;
-      changeNotice.textContent = "";
+    function renderPage(announce = false) {
+      items = pages[pageIndex];
       grid.replaceChildren(...items.map(card));
       if (!items.length) {
         const empty = el("div", "empty");
@@ -946,8 +1123,59 @@
         empty.append(el("h3", "", "\uC8FC\uC694 \uAE30\uB2A5\uC744 \uCC3E\uC9C0 \uBABB\uD588\uC5B4\uC694"), el("p", "", "\uC774 \uD398\uC774\uC9C0\uC758 \uBA54\uB274\uB97C \uC6D0\uBCF8 \uD654\uBA74\uC5D0\uC11C \uD655\uC778\uD574\uC8FC\uC138\uC694."), returnButton);
         grid.append(empty);
       }
-      status.textContent = `${announce ? "\uB2E4\uC2DC \uD655\uC778\uD588\uC5B4\uC694. " : ""}\uD604\uC7AC \uD398\uC774\uC9C0\uC5D0\uC11C ${items.length}\uAC1C\uC758 \uC8FC\uC694 \uAE30\uB2A5\uC744 \uCC3E\uC558\uC5B4\uC694.`;
+      updatePageControls();
+      status.textContent = `${announce ? "\uB2E4\uC2DC \uD655\uC778\uD588\uC5B4\uC694. " : ""}\uD604\uC7AC \uD398\uC774\uC9C0\uC5D0\uC11C ${items.length}\uAC1C\uC758 \uC8FC\uC694 \uAE30\uB2A5\uC744 \uCC3E\uC558\uC5B4\uC694.${pageIndex ? ` ${pageIndex + 1}\uBC88\uC9F8 \uBA54\uB274 \uD654\uBA74\uC774\uC5D0\uC694.` : ""}${pageIndex < pages.length - 1 || hasRemaining ? " \uB2E4\uB978 \uBA54\uB274\uB3C4 \uBCFC \uC218 \uC788\uC5B4\uC694." : ""}`;
     }
+    function update(announce = false) {
+      const candidates = classify(analyzePage());
+      const initial = rank(candidates);
+      pages = [initial];
+      pageIndex = 0;
+      remainder = remainingMenus(candidates, initial);
+      pending = void 0;
+      hasRemaining = hasMoreMenus(candidates, initial);
+      stale = false;
+      changeNotice.hidden = true;
+      changeNotice.textContent = "";
+      renderPage(announce);
+    }
+    function loadNextPage() {
+      const result = [];
+      if (pending) {
+        result.push(pending);
+        pending = void 0;
+      }
+      while (result.length < 6) {
+        const following2 = remainder.next();
+        if (following2.done) {
+          hasRemaining = false;
+          return result;
+        }
+        result.push(following2.value);
+      }
+      const following = remainder.next();
+      pending = following.done ? void 0 : following.value;
+      hasRemaining = !!pending;
+      return result;
+    }
+    function changePage(direction) {
+      if (stale) return;
+      const targetIndex = pageIndex + direction;
+      if (targetIndex < 0 || targetIndex >= pages.length && !hasRemaining) return;
+      const previouslyHadRemaining = hasRemaining;
+      const target = pages[targetIndex] ?? loadNextPage();
+      if (!areCandidatesCurrent([...items, ...target])) {
+        hasRemaining = previouslyHadRemaining;
+        markStale();
+        return;
+      }
+      if (!pages[targetIndex]) pages.push(target);
+      pageIndex = targetIndex;
+      renderPage();
+      grid.querySelector(".card")?.focus();
+    }
+    previous.addEventListener("click", () => changePage(-1));
+    next.addEventListener("click", () => changePage(1));
     refresh.addEventListener("click", () => update(true));
     update();
     dialog.showModal();

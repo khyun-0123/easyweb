@@ -1,0 +1,58 @@
+
+Running 1 test using 1 worker
+
+(node:58231) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/classifier-ranking.spec.mjs:855:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다 (185ms)
+
+
+  1) tests/classifier-ranking.spec.mjs:855:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다 ───────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 24
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "category": "help",
+    +     "context": "body",
+    +     "contextLabels": Array [
+    +       "일반 정보",
+    +     ],
+    +     "destinationHost": undefined,
+    +     "href": undefined,
+    +     "id": "",
+    +     "label": "가정",
+    +     "opensNewWindow": undefined,
+    +     "pagePurpose": undefined,
+    +     "pageTask": "reading",
+    +     "reasons": Array [
+    +       "정보 주제 읽기",
+    +       "원본 목록·탭과 동료의 명시적 정보 개념",
+    +     ],
+    +     "score": 65,
+    +     "sectionLabel": "일반 정보",
+    +     "target": undefined,
+    +   },
+    + ]
+
+      863 |     '<main><h1>일반 정보</h1><ul><li><article><a href="#tips">안전수칙</a></article></li><li><a href="#home">가정</a></li></ul></main>',
+      864 |     '<main><h1>도움말</h1><ul><li><a href="#home">가정</a></li><li><a href="#next">다음</a></li></ul></main>',
+    > 865 |   ]) expect((await inspectContextual(page, markup)).classified).toEqual([]);
+          |                                                                 ^
+      866 |   const actual = await inspectContextual(page, '<main><h1>도움말</h1><ul><li><a id="apply" href="/apply">시설 예약하기</a></li><li><a id="conflict" href="/login">가정</a></li><li><a id="danger" href="/remove" onclick="openTopic();">공공장소</a></li><li><a id="next" href="#next">다음</a></li><li><a id="topic" href="#topics">학교</a></li></ul></main>');
+      867 |   expect(actual.classified.map(c => [c.id, c.category])).toEqual([['apply', 'apply'], ['topic', 'help']]);
+      868 | });
+        at /private/tmp/easyweb-generalization.20k4zpqq/tests/classifier-ranking.spec.mjs:865:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/classifier-ranking-정보-목록-보-fc87c--실제-구조가-필요하며-다른-강한-기능은-우선한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/classifier-ranking-정보-목록-보-fc87c--실제-구조가-필요하며-다른-강한-기능은-우선한다/error-context.md
+
+  1 failed
+    tests/classifier-ranking.spec.mjs:855:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다 ────────

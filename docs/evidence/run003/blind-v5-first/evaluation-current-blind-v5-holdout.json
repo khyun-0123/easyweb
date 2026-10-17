@@ -1,0 +1,445 @@
+{
+  "checkedAt": "2026-10-17T17:13:59.223Z",
+  "engine": "current",
+  "suite": "blind-v5",
+  "split": "holdout",
+  "evaluationPhase": "fresh-blind-validation",
+  "freezeVerification": {
+    "engine": {
+      "path": "docs/evidence/run003/v0.3-engine-freeze.json",
+      "sha256": "0b9462bd805297b83f42ce53c6c8f4adf239b7ddb0cdeec5ecd41db24e48d9b5",
+      "checkedFiles": 14
+    },
+    "dataset": {
+      "path": "docs/evidence/run003/blind-v5-freeze.json",
+      "sha256": "b5018dd919ecdf655d9d4fac7a788ceb963f0dc9ef289120261858d4f905b687",
+      "checkedFiles": 11
+    },
+    "scope": "Frozen bytes verified before product execution. Independent annotation/blinding is a separate process claim, not established by hashes alone.",
+    "stableThroughEvaluation": true
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+  "datasetHash": "bf0494d96b48942a266f7ef6a0504c325fe3a1c6318d0cd2ecf60430b941c8a9",
+  "fixtureHashes": {
+    "city-blind-v5": "536c40ea3b44774701b52485844c0253eb9a78dc54c9bfc932b4b0d8a3b97ef8",
+    "government-blind-v5": "a03d2a162810fb397c7d0330499aebaf215b9eb22731093dffe8aea2e97d45c6",
+    "library-blind-v5": "822276e06cd37926c9c62a53f46bd5fd66b7f029f0e019724a8863c13ebbd023",
+    "public-agency-blind-v5": "d0c88637ab3cdb796cf2f51a8d83667dd17d91973132931c4665b429b8d9e4f8",
+    "smu-blind-v5": "25f320ba8b2d5aee0350f2a3e1978c20e1543fe40fb50359e3e65037226307f6"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 7,
+    "recommended": 8,
+    "matched": 4,
+    "expected": 15,
+    "precision": 0.875,
+    "recall": 0.26666666666666666,
+    "tasksRecommended": 2
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 4,
+      "matched": 1,
+      "expected": 3,
+      "precision": 0.75,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v5",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "candidateCount": 4,
+      "classifiedCount": 0,
+      "selected": [],
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "missed": [
+        "city-blind-v5-feature-1",
+        "city-blind-v5-feature-2",
+        "city-blind-v5-feature-4"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v5",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "candidateCount": 6,
+      "classifiedCount": 0,
+      "selected": [],
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "missed": [
+        "government-blind-v5-feature-1",
+        "government-blind-v5-feature-4",
+        "government-blind-v5-feature-6"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v5",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "candidateCount": 6,
+      "classifiedCount": 4,
+      "selected": [
+        {
+          "label": "도서관 견학 신청",
+          "href": "https://www.nl.go.kr/NL/contents/N30702000000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "apply",
+          "sourceId": "library-blind-v5-control-5"
+        },
+        {
+          "label": "신청확인 및 취소",
+          "href": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "apply",
+          "sourceId": "library-blind-v5-control-6"
+        },
+        {
+          "label": "본관자료실 안내",
+          "href": "https://nl.go.kr/NL/contents/N40404000000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "help",
+          "sourceId": "library-blind-v5-control-2"
+        },
+        {
+          "label": "디지털도서관 시설 안내",
+          "href": "https://nl.go.kr/NL/contents/N40403000000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "help",
+          "sourceId": "library-blind-v5-control-3"
+        }
+      ],
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v5",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117",
+      "candidateCount": 8,
+      "classifiedCount": 0,
+      "selected": [],
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "missed": [
+        "public-agency-blind-v5-feature-2",
+        "public-agency-blind-v5-feature-4",
+        "public-agency-blind-v5-feature-8"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v5",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/leave.do",
+      "candidateCount": 6,
+      "classifiedCount": 5,
+      "selected": [
+        {
+          "label": "복학",
+          "href": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-2"
+        },
+        {
+          "label": "자퇴 및 제적",
+          "href": "https://www.smu.ac.kr/kor/life/dropOff.do#tab18280_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-3"
+        },
+        {
+          "label": "재입학",
+          "href": "https://www.smu.ac.kr/kor/life/readmission.do#tab18281_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-4"
+        },
+        {
+          "label": "증명서발급",
+          "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "apply",
+          "sourceId": "smu-blind-v5-control-6"
+        }
+      ],
+      "correct": 3,
+      "recommended": 4,
+      "matched": 1,
+      "expected": 3,
+      "precision": 0.75,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "smu-blind-v5-feature-5",
+        "smu-blind-v5-feature-6"
+      ],
+      "incorrect": [
+        {
+          "label": "증명서발급",
+          "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "apply",
+          "sourceId": "smu-blind-v5-control-6"
+        }
+      ],
+      "taskRecommended": true
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 0.875,
+      "recall": 0.26666666666666666
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": null,
+        "recall": 0,
+        "passed": false
+      },
+      {
+        "siteId": "government",
+        "precision": null,
+        "recall": 0,
+        "passed": false
+      },
+      {
+        "siteId": "library",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "public-agency",
+        "precision": null,
+        "recall": 0,
+        "passed": false
+      },
+      {
+        "siteId": "smu",
+        "precision": 0.75,
+        "recall": 0.3333333333333333,
+        "passed": false
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  }
+}

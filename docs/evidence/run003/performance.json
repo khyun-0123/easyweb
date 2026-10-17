@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-10-17T17:35:13.826Z",
+  "status": "PASS",
+  "scope": "Synthetic mixed 1,000-control benchmark; 10 measured runs after one excluded warmup. No real site loading or user data. Headless Chromium is recorded and is separate from native extension installation checks.",
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "27.0.0",
+    "node": "v26.0.0",
+    "cpuModel": "Apple M4 Pro",
+    "logicalCpus": 12,
+    "memoryBytes": 25769803776,
+    "chromium": "156.0.8078.4",
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 1080
+    },
+    "deviceScaleFactor": 1
+  },
+  "fixture": {
+    "controls": 1000,
+    "distinctControlKinds": 10,
+    "regions": {
+      "primary": 200,
+      "body": 600,
+      "footer": 200
+    },
+    "sha256": "c70a5f418bc4735daf62cfc5b73f94bdf860cd4f0cc1d7533ef3921a75d00bcf"
+  },
+  "measurement": {
+    "analysis": "analyzePage() only; includes visibility, safe label, context, action, and source snapshot work",
+    "overlayReady": "append host, openEasyMode() (including analysis/classification/ranking/render/focus/watchers), then two requestAnimationFrame callbacks and layout/readiness check",
+    "percentile": "nearest-rank p95; with n=10 this is the maximum observed sample, not a population estimate",
+    "limitations": "Synthetic local page, headless browser, small sample. Native browser startup, toolbar user gesture, third-party loading, and slow-device variation are excluded.",
+    "warmupExcluded": true
+  },
+  "validity": {
+    "sourceStable": true,
+    "exactlyTenRuns": true,
+    "allCandidatesCount1000": true,
+    "allOverlaysReady": true
+  },
+  "thresholds": {
+    "analyzerP95Milliseconds": 300,
+    "overlayReadyP95Milliseconds": 1000
+  },
+  "analyzerP95Milliseconds": 248.10000000149012,
+  "overlayReadyP95Milliseconds": 276.5,
+  "warmup": {
+    "run": 0,
+    "candidateCount": 1000,
+    "selectedCount": 6,
+    "analyzerMilliseconds": 248.5,
+    "overlayReadyMilliseconds": 270.90000000596046,
+    "ready": true
+  },
+  "measures": [
+    {
+      "run": 1,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 246,
+      "overlayReadyMilliseconds": 275.19999999552965,
+      "ready": true
+    },
+    {
+      "run": 2,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 245.19999999552965,
+      "overlayReadyMilliseconds": 270.8999999985099,
+      "ready": true
+    },
+    {
+      "run": 3,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 244.89999999850988,
+      "overlayReadyMilliseconds": 270.20000000298023,
+      "ready": true
+    },
+    {
+      "run": 4,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 248.10000000149012,
+      "overlayReadyMilliseconds": 265.5,
+      "ready": true
+    },
+    {
+      "run": 5,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 245.80000000447035,
+      "overlayReadyMilliseconds": 276.5,
+      "ready": true
+    },
+    {
+      "run": 6,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 246.79999999701977,
+      "overlayReadyMilliseconds": 267.5,
+      "ready": true
+    },
+    {
+      "run": 7,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 244.60000000149012,
+      "overlayReadyMilliseconds": 268.30000000447035,
+      "ready": true
+    },
+    {
+      "run": 8,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 245,
+      "overlayReadyMilliseconds": 265,
+      "ready": true
+    },
+    {
+      "run": 9,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 244.89999999850988,
+      "overlayReadyMilliseconds": 274.1000000014901,
+      "ready": true
+    },
+    {
+      "run": 10,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 245.5,
+      "overlayReadyMilliseconds": 266.8999999985099,
+      "ready": true
+    }
+  ],
+  "bundleSha256": "7d3b8dc0d2b6d31856ae8302c06c1dc16b00a60da0a54979866fe9261c781f30",
+  "sourceSha256": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "4a0ebea0748b6a88bfd772fb2a5c98d944c3aaac8454f6237e7f706fb9dd51bb",
+    "src/analyzer.ts": "668650ca4a00d264f015f94cd0364f7fb33599b07c07db0393261ec5f59c659b",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "b68994f389f4374b0179bfd1f9b91a91fdce0209b09ab7bf964ae033fb4fd896",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "e18f58877366ed08f276d8f2ec32014c84d39127d7627d8891b388fa15ecac2e",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "69a841a316a145f86a8b425b72efd1fdb4464a32783245e227d457087b6f09b6",
+    "src/ranker.ts": "acaeb5fd8a3b09816e14235c24d64d0f8f893161437537d04ace57f08b89922f",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "2a94139406ca77fc214e01f3441ecd3c58060317d6b24d4e4235e93daaedd9b2"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "siteId": "city",
+  "name": "천안시청",
+  "type": "municipality",
+  "observedAt": "2026-10-17T17:12:07.263Z",
+  "pages": [
+    {
+      "id": "city-blind-v5",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "title": "무인민원발급기 이용안내 < 민원안내 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v5/fixtures/city.html",
+      "observation": {
+        "method": "Independent anonymous headless Chromium public-source observation with actual CDP accessibility snapshots, safe original DOM ancestry and fixed sibling/heading context. No engine, implementation or evaluation results read or run.",
+        "observedAt": "2026-10-17T17:12:07.263Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "Source task focus/hit-test and three safe public destination GET checks are recorded in docs/evidence/run003/blind-v5-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions, no full-page layout, source CSS/media or application scripts. Original selected-control labels, href/target, ancestor tags/classes/IDs and nearby fixed context are retained.",
+          "Source visible checks establish nonzero boxes and absence of CSS hiding/inert/aria-hidden; only one designated task control per page received read-only focus and center hit testing.",
+          "Source accessibility is actual Chromium AX data, and Playwright ariaSnapshot is additionally stored where its selector injection works. NL uses a CDP isolated world due a source-page conflict in Playwright selector injection. No site security, authentication or certificate settings were changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "city-blind-v5-feature-1",
+          "category": "apply",
+          "label": "정부24",
+          "sourceIds": [
+            "city-blind-v5-control-1"
+          ],
+          "action": "navigate",
+          "href": "https://plus.gov.kr/"
+        },
+        {
+          "id": "city-blind-v5-feature-2",
+          "category": "apply",
+          "label": "대법원 전자가족관계등록시스템",
+          "sourceIds": [
+            "city-blind-v5-control-2"
+          ],
+          "action": "navigate",
+          "href": "http://efamily.scourt.go.kr/"
+        },
+        {
+          "id": "city-blind-v5-feature-4",
+          "category": "apply",
+          "label": "국민건강보험 사이버민원센터",
+          "sourceIds": [
+            "city-blind-v5-control-4"
+          ],
+          "action": "navigate",
+          "href": "http://minwon.nhis.or.kr/"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-blind-v5-control-1",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v5-control-2",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v5-control-3",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v5-control-4",
+          "category": "apply",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "city-blind-v5-task",
+        "instruction": "무인민원발급기 이용안내의 온라인 발급 시스템에서 정부24 공개 시작 페이지에 도달하세요. 로그인·증명서 발급·민원 제출은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "city-blind-v5-control-1"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "무인민원발급기 본문의 온라인 발급 시스템에 실제 제시된 네 서비스 진입 링크를 모두 선정했다. 행정 발급 서비스의 공개 진입 위치는 apply이다. 일반 HTTP(S) 링크의 target=_blank만으로 JS 팝업으로 간주하지 않았다.",
+        "Fixture base href resolves original relative public hrefs against the observed source URL. Original JavaScript hrefs are inert under script-src none; original event implementations are omitted. No actual user input values or authenticated content are included."
+      ]
+    }
+  ]
+}

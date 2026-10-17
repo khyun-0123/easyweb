@@ -6,8 +6,7 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const reportFile = 'docs/evidence/run002/a11y-automated.json';
-const screenshotDir = 'docs/evidence/run002/a11y-screenshots';
+const reportFile = 'docs/evidence/run003/a11y-automated.json';
 const modalHost = '[data-easyweb-host]';
 const noticeHost = '[data-easyweb-notice]';
 
@@ -22,11 +21,11 @@ async function sourceHashes(dir = 'src') {
 }
 
 const modes = [
-  { id: 'desktop', viewport: { width: 1440, height: 1050 }, states: ['normal', 'empty', 'long', 'stale', 'success', 'failure'] },
+  { id: 'desktop', viewport: { width: 1440, height: 1050 }, states: ['normal', 'empty', 'long', 'stale', 'success', 'failure', 'overflow', 'overflow-next'] },
   { id: 'reflow-720', viewport: { width: 720, height: 525 }, states: ['normal', 'long'] },
-  { id: 'reflow-320', viewport: { width: 320, height: 256 }, states: ['normal', 'long'] },
+  { id: 'reflow-320', viewport: { width: 320, height: 256 }, states: ['normal', 'long', 'overflow-next'] },
   { id: 'mobile-390', viewport: { width: 390, height: 844 }, states: ['normal', 'long'] },
-  { id: 'forced-colors', viewport: { width: 390, height: 844 }, forcedColors: 'active', states: ['normal', 'stale', 'success', 'failure'] },
+  { id: 'forced-colors', viewport: { width: 390, height: 844 }, forcedColors: 'active', states: ['normal', 'stale', 'success', 'failure', 'overflow-next'] },
   { id: 'reduced-motion', viewport: { width: 1440, height: 1050 }, reducedMotion: 'reduce', states: ['normal'] },
 ];
 
@@ -49,7 +48,7 @@ function fixture(state) {
   return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>EasyWeb synthetic accessibility fixture</title>
     <style>body{margin:20px;background:#fff;color:#111;font:18px/1.5 sans-serif}nav{display:flex;flex-wrap:wrap;gap:12px}nav a,main button{display:inline-block;padding:12px}h1{font-size:24px}</style></head><body>
     <header><h1>원본 예시 사이트</h1><nav aria-label="주요 메뉴">${controls}</nav></header>
-    <main><button id="launch" type="button">원본 화면</button>${state === 'empty' ? '' : '<button id="source-search" type="button">검색</button>'}</main>
+    <main><button id="launch" type="button">원본 화면</button>${state === 'empty' ? '' : '<button id="source-search" type="button">검색</button>'}${state.startsWith('overflow') ? '<ul>'+Array.from({length:8},(_,index)=>'<li><a href="https://source.test/help/topic'+index+'">도움말 자료 '+(index+1)+'</a></li>').join('')+'</ul>' : ''}</main>
     <footer><p>공개 정보 예시</p></footer></body></html>`;
 }
 
@@ -81,6 +80,7 @@ async function prepare(page, bundle, state) {
   });
   await page.addScriptTag({ content: bundle });
   await page.locator(`${modalHost} dialog`).waitFor({ state: 'visible' });
+  if (state === 'overflow-next') await page.locator(modalHost).getByRole('button', { name: '다른 메뉴 보기', exact: true }).click();
   if (state === 'stale') {
     await page.evaluate(() => document.getElementById('source-login').setAttribute('href', 'https://source.test/login?changed=1'));
     await page.locator(`${modalHost} .change-notice`).waitFor({ state: 'visible' });
@@ -119,6 +119,7 @@ async function metrics(page, selector) {
         name: referenceText('aria-labelledby') || element.getAttribute('aria-label') || element.textContent.trim(), className: element.className,
         description: referenceText('aria-describedby'),
         width: rect.width, height: rect.height, disabled: element.getAttribute('aria-disabled') === 'true' || element.disabled,
+        rendered: !!element.getClientRects().length && style.display !== 'none' && style.visibility !== 'hidden',
         foreground: style.color, background: background(element), surroundingBackground: background(parent(element)),
         borderColor: style.borderTopColor, borderWidth: parseFloat(style.borderTopWidth), borderStyle: style.borderTopStyle,
         transitionDuration: style.transitionDuration, scrollBehavior: style.scrollBehavior, hovered: element.matches(':hover'),
@@ -162,12 +163,19 @@ async function accessibilityNames(page, selector, data) {
     const accessible = new Map(nodes.filter(node => node.backendDOMNodeId).map(node => [node.backendDOMNodeId, node]));
     data.controls.forEach((control, index) => {
       const node = accessible.get(controls[index].backendNodeId);
+      if (!control.rendered) {
+        control.axExposed = !!node && !node.ignored;
+        if (control.axExposed) throw new Error(`Hidden control unexpectedly exposed: ${control.name}`);
+        return;
+      }
       if (!node || node.ignored) throw new Error(`No exposed accessibility node for ${control.name}`);
       control.name = node.name?.value ?? '';
       control.description = node.description?.value ?? '';
       control.role = node.role?.value ?? '';
       control.nameSource = 'Chromium Accessibility.getFullAXTree';
     });
+    data.hiddenControls = data.controls.filter(control => !control.rendered);
+    data.controls = data.controls.filter(control => control.rendered);
   } finally {
     await session.detach();
   }
@@ -228,6 +236,7 @@ function addFocusContrast(record) {
 }
 
 export async function runA11yCheck({ output = reportFile, screenshots = true } = {}) {
+  const screenshotDir = join(dirname(output), 'a11y-screenshots');
   const sourceBefore = await sourceHashes();
   const built = await build({ entryPoints: ['src/content.ts'], bundle: true, write: false, format: 'iife', loader: { '.css': 'text' } });
   const bundle = built.outputFiles[0].text;
@@ -240,6 +249,7 @@ export async function runA11yCheck({ output = reportFile, screenshots = true } =
     browser: browser.version(), axeVersion: axe.version,
     emulationBoundary: '720 CSS px is a 200-percent-layout viewport comparison; 320 CSS px is the WCAG reflow width often reached at 400 percent from 1280. Neither is a real browser zoom test. Forced colors/reduced motion are Playwright media emulation.',
     manualChecksRemaining: ['Actual browser 200% and 400% zoom', 'VoiceOver with Chrome announcements and focus', 'NVDA/Windows if environment available'],
+    contrastAuditBoundary: 'After a menu transition may scroll its first card into view, normalize dialog scroll to the top for the whole-content axe/contrast snapshot. Keyboard transition focus and actual scrolled navigation are separately tested; this does not simulate native zoom.',
     cases: [], errors: [],
   };
   if (screenshots) await mkdir(screenshotDir, { recursive: true });
@@ -254,6 +264,9 @@ export async function runA11yCheck({ output = reportFile, screenshots = true } =
         const id = `${mode.id}-${state}`;
         try {
           const selector = await prepare(page, bundle, state);
+          const scrollBeforeContrastAudit = selector === modalHost ? await page.locator(`${modalHost} dialog`).evaluate(dialog => {
+            const original = dialog.scrollTop; dialog.scrollTop = 0; return original;
+          }) : null;
           const data = await metrics(page, selector);
           await accessibilityNames(page, selector, data);
           addContrast(data);
@@ -262,7 +275,7 @@ export async function runA11yCheck({ output = reportFile, screenshots = true } =
             const result = await axe.run({ include: [selector] });
             return { violations: result.violations, incomplete: result.incomplete, passes: result.passes.map(rule => rule.id), inapplicable: result.inapplicable.map(rule => rule.id) };
           }, selector);
-          const record = { id, state, viewport: mode.viewport, ...data, axe: result, screenshots: [] };
+          const record = { id, state, viewport: mode.viewport, scrollBeforeContrastAudit, ...data, axe: result, screenshots: [] };
           if (screenshots) {
             const top = `${screenshotDir}/${id}.png`;
             await page.screenshot({ path: top });
@@ -282,7 +295,7 @@ export async function runA11yCheck({ output = reportFile, screenshots = true } =
             }
             if (state === 'long') await page.locator(`${modalHost} dialog`).evaluate(dialog => { dialog.scrollTop = 0; });
           }
-          if (state === 'normal' && ['desktop', 'forced-colors'].includes(mode.id)) {
+          if (['normal', 'overflow', 'overflow-next'].includes(state) && ['desktop', 'forced-colors'].includes(mode.id)) {
             if (mode.id === 'desktop') {
               record.hoverControls = [];
               for (const target of ['.card', '.close']) {
@@ -332,7 +345,8 @@ export async function runA11yCheck({ output = reportFile, screenshots = true } =
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const report = await runA11yCheck();
-  console.log(JSON.stringify({ report: reportFile, ...report.summary }, null, 2));
+  const output = process.argv.find(arg => arg.startsWith('--output='))?.slice('--output='.length) ?? reportFile;
+  const report = await runA11yCheck({ output });
+  console.log(JSON.stringify({ report: output, ...report.summary }, null, 2));
   if (report.summary.errors || report.summary.violations || report.summary.horizontalOverflowCases.length || report.summary.smallTargets.length || report.summary.lowComponentContrast.length || report.summary.lowFocusContrast.length) process.exitCode = 1;
 }

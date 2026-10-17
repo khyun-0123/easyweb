@@ -1,0 +1,112 @@
+{
+  "siteId": "library",
+  "name": "국립중앙도서관",
+  "type": "library",
+  "observedAt": "2026-10-17T17:12:14.201Z",
+  "pages": [
+    {
+      "id": "library-blind-v5",
+      "url": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "title": "국립중앙도서관>도서관 이용>이용안내>견학>견학안내",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v5/fixtures/library.html",
+      "observation": {
+        "method": "Independent anonymous headless Chromium public-source observation with actual CDP accessibility snapshots, safe original DOM ancestry and fixed sibling/heading context. No engine, implementation or evaluation results read or run.",
+        "observedAt": "2026-10-17T17:12:14.201Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "Source task focus/hit-test and three safe public destination GET checks are recorded in docs/evidence/run003/blind-v5-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions, no full-page layout, source CSS/media or application scripts. Original selected-control labels, href/target, ancestor tags/classes/IDs and nearby fixed context are retained.",
+          "Source visible checks establish nonzero boxes and absence of CSS hiding/inert/aria-hidden; only one designated task control per page received read-only focus and center hit testing.",
+          "Source accessibility is actual Chromium AX data, and Playwright ariaSnapshot is additionally stored where its selector injection works. NL uses a CDP isolated world due a source-page conflict in Playwright selector injection. No site security, authentication or certificate settings were changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-blind-v5-feature-2",
+          "category": "help",
+          "label": "본관자료실 안내",
+          "sourceIds": [
+            "library-blind-v5-control-2"
+          ],
+          "action": "navigate",
+          "href": "https://nl.go.kr/NL/contents/N40404000000.do"
+        },
+        {
+          "id": "library-blind-v5-feature-5",
+          "category": "apply",
+          "label": "도서관 견학 신청",
+          "sourceIds": [
+            "library-blind-v5-control-5"
+          ],
+          "action": "navigate",
+          "href": "https://www.nl.go.kr/NL/contents/N30702000000.do"
+        },
+        {
+          "id": "library-blind-v5-feature-6",
+          "category": "apply",
+          "label": "신청확인 및 취소",
+          "sourceIds": [
+            "library-blind-v5-control-6"
+          ],
+          "action": "navigate",
+          "href": "https://www.nl.go.kr/NL/contents/N60501050000.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-blind-v5-control-1",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "library-blind-v5-control-2",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "library-blind-v5-control-3",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "library-blind-v5-control-4",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "library-blind-v5-control-5",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "library-blind-v5-control-6",
+          "category": "apply",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "library-blind-v5-task",
+        "instruction": "견학안내 본문의 본관자료실 안내 공개 페이지에 도달하세요. 견학 신청·신청 확인·취소·로그인은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "library-blind-v5-control-2"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "견학안내 본문의 프로그램·시설 안내와 견학 신청·자기 신청 확인 링크를 모두 선정했다. 자기 신청내역 확인과 신청확인 및 취소의 공개 진입 위치는 apply이며 정보 검색 search와 구분한다. 취소 완료나 인증을 수행한 의미가 아니다.",
+        "Fixture base href resolves original relative public hrefs against the observed source URL. Original JavaScript hrefs are inert under script-src none; original event implementations are omitted. No actual user input values or authenticated content are included."
+      ]
+    }
+  ]
+}

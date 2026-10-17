@@ -1,22 +1,28 @@
-import { candidateLabel, contextLabels, pagePurpose, sourceContext, sourceSnapshot } from './analyzer';
+import { candidateLabel, contextLabels, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache } from './analyzer';
 import type { Candidate } from './types';
 
-export function isCandidateCurrent(candidate: Candidate): boolean {
-  if (candidateLabel(candidate.element) !== candidate.label) return false;
+export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache): boolean {
+  const label = candidateLabel(candidate.element);
+  if (label !== candidate.label) return false;
   if (sourceContext(candidate.element) !== candidate.context) return false;
   const labels = contextLabels(candidate.element);
   if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
   if (pagePurpose(candidate.element, labels) !== candidate.pagePurpose) return false;
-  const current = sourceSnapshot(candidate.element);
+  const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent);
   return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl &&
     current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
+}
+
+export function areCandidatesCurrent(candidates: readonly Candidate[]): boolean {
+  const collectionCache: CollectionCache = new WeakMap();
+  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache));
 }
 
 export function watchCandidates(getCandidates: () => Candidate[], onStale: () => void): () => void {
   let stopped = false;
   let scheduled: number | undefined;
   const check = () => {
-    if (!stopped && getCandidates().some(candidate => !isCandidateCurrent(candidate))) onStale();
+    if (!stopped && !areCandidatesCurrent(getCandidates())) onStale();
   };
   const observer = new MutationObserver(records => {
     if (records.every(record => record.target instanceof Element && !!record.target.closest('[data-easyweb-host]'))) return;

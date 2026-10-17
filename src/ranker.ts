@@ -125,3 +125,43 @@ export function rank(candidates: Candidate[]): Candidate[] {
   }
   return ordered(selected);
 }
+
+function alreadyShown(selected: readonly Candidate[]): { destinations: Set<string>; controls: Set<HTMLElement> } {
+  const destinations = new Set<string>();
+  const controls = new Set<HTMLElement>();
+  for (const candidate of selected) {
+    const href = destination(candidate);
+    if (href) destinations.add(href); else controls.add(candidate.element);
+  }
+  return { destinations, controls };
+}
+
+// The first screen keeps rank()'s selection policy. This inexpensive probe only
+// decides whether another real, distinct control exists; it does not sort or
+// revalidate all hidden controls on initial opening or on observer ticks.
+export function hasMoreMenus(candidates: readonly Candidate[], selected: readonly Candidate[]): boolean {
+  const shown = alreadyShown(selected);
+  return candidates.some(candidate => {
+    if (!candidate.category) return false;
+    const href = destination(candidate);
+    return href ? !shown.destinations.has(href) : !shown.controls.has(candidate.element);
+  });
+}
+
+// Sorting and overflow traversal start only when the user asks for more. Each
+// yielded object retains its original source, action and snapshot. Categories
+// no longer discard overflow; the UI bounds each subsequent screen separately.
+export function* remainingMenus(candidates: readonly Candidate[], selected: readonly Candidate[]): Generator<Candidate> {
+  const shown = alreadyShown(selected);
+  for (const candidate of ordered(candidates.filter(candidate => candidate.category))) {
+    const href = destination(candidate);
+    if (href) {
+      if (shown.destinations.has(href)) continue;
+      shown.destinations.add(href);
+    } else {
+      if (shown.controls.has(candidate.element)) continue;
+      shown.controls.add(candidate.element);
+    }
+    yield candidate;
+  }
+}
