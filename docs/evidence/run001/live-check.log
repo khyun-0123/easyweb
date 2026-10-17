@@ -1,0 +1,104 @@
+
+> easyweb@0.2.0 test:live
+> npm run build && node scripts/check-live.mjs
+
+
+> easyweb@0.2.0 build
+> node scripts/build.mjs
+
+
+  dist/content.js         37.7kb
+  dist/background.js       979b 
+  dist/content.js.map     61.8kb
+  dist/background.js.map   1.5kb
+
+⚡ Done in 3ms
+{
+  "checkedAt": "2026-10-17T14:54:31.375Z",
+  "note": "공개 페이지의 탐지·표시 확인. 실제 기능 클릭, 로그인, 과제 성공 및 사용자 도구 모음 실행은 별도 확인 필요.",
+  "results": [
+    {
+      "target": "https://www.smu.ac.kr/",
+      "finalUrl": "https://www.smu.ac.kr/kor/index.do",
+      "title": "상명대학교",
+      "httpStatus": 200,
+      "overlayVisible": true,
+      "candidateCount": 87,
+      "classifiedCount": 11,
+      "selected": [
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "search"
+        },
+        {
+          "label": "수강신청",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "apply"
+        },
+        {
+          "label": "학사안내",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+          "action": "navigate",
+          "target": "_self",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "academic"
+        },
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "login"
+        },
+        {
+          "label": "통합검색",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "category": "search"
+        },
+        {
+          "label": "대학생활",
+          "href": "https://www.smu.ac.kr/kor/life/notice.do",
+          "action": "navigate",
+          "target": "_self",
+          "context": "primary",
+          "score": 70,
+          "reasons": [
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "category": "notice"
+        }
+      ],
+      "pageErrors": []
+    }
+  ]
+}

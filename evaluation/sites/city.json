@@ -1,0 +1,332 @@
+{
+  "siteId": "city",
+  "name": "천안시청",
+  "type": "municipality",
+  "observedAt": "2026-10-17T14:30:39.952Z",
+  "pages": [
+    {
+      "id": "city-home",
+      "url": "https://www.cheonan.go.kr/",
+      "finalUrl": "https://www.cheonan.go.kr/kor.do",
+      "title": "천안시청",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/city-home.html",
+      "observation": {
+        "method": "Playwright Chromium read-only GET and manual public DOM review; independent expected functions fixed before classifier evaluation",
+        "observedAt": "2026-10-17T14:30:39.952Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": "new unauthenticated ko-KR desktop context; DOMContentLoaded plus 1800ms; no input, menu activation or form submission",
+        "limitations": "Reduced selected-control DOM reconstruction; original landmark/ancestor tags and public labels retained, site CSS/media/scripts omitted; CSS visibility does not establish unobscured clickability."
+      },
+      "expected": [
+        {
+          "id": "site-search",
+          "category": "search",
+          "label": "통합검색",
+          "sourceIds": [
+            "city-home-search-link"
+          ],
+          "action": "navigate",
+          "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp"
+        },
+        {
+          "id": "news-menu",
+          "category": "notice",
+          "label": "소식알림",
+          "sourceIds": [
+            "city-home-news-menu"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "civil-application-guide",
+          "category": "apply",
+          "label": "온라인 민원신청",
+          "sourceIds": [
+            "city-home-civil-application"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do"
+        },
+        {
+          "id": "counseling-guide",
+          "category": "help",
+          "label": "무료상담운영",
+          "sourceIds": [
+            "city-home-counseling"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/sub01_03_02.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-home-search-link",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-home-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-home-sitemap",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-home-civil-menu",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-home-news-menu",
+          "category": "notice",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-home-search-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-home-search-button",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-home-civil-application",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-home-counseling",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-home-directions",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "city-home-open-counseling",
+        "instruction": "자주 찾는 서비스에서 무료상담운영 안내 페이지에 도달하세요.",
+        "expectedSourceIds": [
+          "city-home-counseling"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "Original role=button menu anchors and their aria-expanded/aria-haspopup attributes are retained when sampled.",
+        "Feedback input is empty in the fixture. The opinion-submit control is accepted only as an original apply-control location, never as an automatic submission."
+      ]
+    },
+    {
+      "id": "city-civil-guide",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+      "title": "민원 신청안내 < 민원안내 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/city-civil-guide.html",
+      "observation": {
+        "method": "Playwright Chromium read-only GET and manual public DOM review; independent expected functions fixed before classifier evaluation",
+        "observedAt": "2026-10-17T14:30:46.181Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": "new unauthenticated ko-KR desktop context; DOMContentLoaded plus 1800ms; no input, menu activation or form submission",
+        "limitations": "Reduced selected-control DOM reconstruction; original landmark/ancestor tags and public labels retained, site CSS/media/scripts omitted; CSS visibility does not establish unobscured clickability."
+      },
+      "expected": [
+        {
+          "id": "civil-office-guide",
+          "category": "help",
+          "label": "민원실 안내",
+          "sourceIds": [
+            "city-civil-guide-civil-office"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/sub01_01_03.do"
+        },
+        {
+          "id": "passport-guide",
+          "category": "apply",
+          "label": "여권 신청안내",
+          "sourceIds": [
+            "city-civil-guide-passport-guide"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/sub01_01_06.do"
+        },
+        {
+          "id": "civil-application-guide",
+          "category": "apply",
+          "label": "민원신청 바로가기",
+          "sourceIds": [
+            "city-civil-guide-civil-application"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-civil-guide-search-link",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-sitemap",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-civil-office",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-passport-guide",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-public-notices",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-civil-application",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-civil-guide-feedback-submit",
+          "category": "apply",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-civil-guide-open-passport-guide",
+        "instruction": "민원 신청안내 페이지의 왼쪽 메뉴에서 여권 신청안내 페이지에 도달하세요. 실제 신청은 하지 마세요.",
+        "expectedSourceIds": [
+          "city-civil-guide-passport-guide"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "Original role=button menu anchors and their aria-expanded/aria-haspopup attributes are retained when sampled.",
+        "Feedback input is empty in the fixture. The opinion-submit control is accepted only as an original apply-control location, never as an automatic submission."
+      ]
+    },
+    {
+      "id": "city-counseling",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_02.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_03_02.do",
+      "title": "무료상담운영 < 기타 민원서비스 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/fixtures/city-counseling.html",
+      "observation": {
+        "method": "Playwright Chromium read-only GET and manual public DOM review; independent expected functions fixed before classifier evaluation",
+        "observedAt": "2026-10-17T14:30:48.956Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": "new unauthenticated ko-KR desktop context; DOMContentLoaded plus 1800ms; no input, menu activation or form submission",
+        "limitations": "Reduced selected-control DOM reconstruction; original landmark/ancestor tags and public labels retained, site CSS/media/scripts omitted; CSS visibility does not establish unobscured clickability."
+      },
+      "expected": [
+        {
+          "id": "site-search",
+          "category": "search",
+          "label": "통합검색",
+          "sourceIds": [
+            "city-counseling-search-link"
+          ],
+          "action": "navigate",
+          "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp"
+        },
+        {
+          "id": "waste-guide",
+          "category": "apply",
+          "label": "대형폐기물 처리신청",
+          "sourceIds": [
+            "city-counseling-waste-guide"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/sub01_03_06.do"
+        },
+        {
+          "id": "public-notices",
+          "category": "notice",
+          "label": "공고/고시 바로가기",
+          "sourceIds": [
+            "city-counseling-public-notices"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-counseling-search-link",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-counseling-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-counseling-sitemap",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-counseling-waste-guide",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-counseling-public-notices",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-counseling-feedback-submit",
+          "category": "apply",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-counseling-open-public-notices",
+        "instruction": "무료상담운영 페이지의 공고/고시 바로가기 링크에 도달하세요.",
+        "expectedSourceIds": [
+          "city-counseling-public-notices"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "Original role=button menu anchors and their aria-expanded/aria-haspopup attributes are retained when sampled.",
+        "Feedback input is empty in the fixture. The opinion-submit control is accepted only as an original apply-control location, never as an automatic submission."
+      ]
+    }
+  ]
+}

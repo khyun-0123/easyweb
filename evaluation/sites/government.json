@@ -1,0 +1,239 @@
+{
+  "siteId": "government",
+  "name": "국민안전24",
+  "type": "government-service",
+  "observedAt": "2026-10-17T14:29:22.443Z",
+  "pages": [
+    {
+      "id": "gov-home",
+      "url": "https://www.safekorea.go.kr/idsiSFK/neo/main/main.html",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "title": "국민안전24",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/gov-home.html",
+      "observation": {
+        "method": "Playwright Chromium read-only navigation; manual review of rendered control text, link destinations, safe attributes and ancestor/landmark context; screenshots additionally reviewed for gov-search, agency-faq and library-program.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Minimal fixture styling does not reproduce original geometry, overlays, scrolling, images, scripts or event handlers.",
+          "Script-backed links/buttons are locate only; the fixture does not simulate their application behavior."
+        ]
+      },
+      "expected": [
+        {
+          "id": "gov-home-search",
+          "category": "search",
+          "label": "검색",
+          "sourceIds": [
+            "gov-home-search-link"
+          ],
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do"
+        },
+        {
+          "id": "gov-home-help",
+          "category": "help",
+          "label": "Q&A",
+          "sourceIds": [
+            "gov-home-qa"
+          ],
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "gov-home-search-link",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "gov-home-qa",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "gov-home-task",
+        "instruction": "국민안전24 홈에서 검색 페이지로 이동하세요. 검색어는 입력하지 않습니다.",
+        "expectedSourceIds": [
+          "gov-home-search-link"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "정부24 접속 차단 후 동일 정부서비스 유형인 행정안전부 국민안전24로 대체.",
+        "입력 URL은 국민재난안전포털의 기존 공개 주소이며 국민안전24 새 주소로 정상 리디렉션됨."
+      ]
+    },
+    {
+      "id": "gov-search",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+      "title": "국민안전24",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/gov-search.html",
+      "observation": {
+        "method": "Playwright Chromium read-only navigation; manual review of rendered control text, link destinations, safe attributes and ancestor/landmark context; screenshots additionally reviewed for gov-search, agency-faq and library-program.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Minimal fixture styling does not reproduce original geometry, overlays, scrolling, images, scripts or event handlers.",
+          "Script-backed links/buttons are locate only; the fixture does not simulate their application behavior."
+        ]
+      },
+      "expected": [
+        {
+          "id": "gov-search-search",
+          "category": "search",
+          "label": "검색어을 입력하세요.",
+          "sourceIds": [
+            "gov-search-input",
+            "gov-search-submit"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "gov-search-help",
+          "category": "help",
+          "label": "Q&A",
+          "sourceIds": [
+            "gov-search-qa"
+          ],
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "gov-search-search-link",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "gov-search-qa",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "gov-search-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "gov-search-submit",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "gov-search-tab",
+          "category": "search",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "gov-search-task",
+        "instruction": "검색어 입력 제어를 찾아 원본 위치로 안내받으세요. 입력과 검색 실행은 하지 않습니다.",
+        "expectedSourceIds": [
+          "gov-search-input"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "placeholder의 원문 오타 “검색어을 입력하세요.”를 수정하지 않고 보존.",
+        "빈 검색 페이지를 주소로 직접 관찰했으며 검색어를 제출하지 않음."
+      ]
+    },
+    {
+      "id": "gov-help",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "title": "국민안전24 | 이용안내 | Q&A",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/fixtures/gov-help.html",
+      "observation": {
+        "method": "Playwright Chromium read-only navigation; manual review of rendered control text, link destinations, safe attributes and ancestor/landmark context; screenshots additionally reviewed for gov-search, agency-faq and library-program.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Minimal fixture styling does not reproduce original geometry, overlays, scrolling, images, scripts or event handlers.",
+          "Script-backed links/buttons are locate only; the fixture does not simulate their application behavior."
+        ]
+      },
+      "expected": [
+        {
+          "id": "gov-help-help",
+          "category": "help",
+          "label": "국민신문고 홈페이지 바로가기",
+          "sourceIds": [
+            "gov-help-epeople"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "gov-help-search",
+          "category": "search",
+          "label": "검색",
+          "sourceIds": [
+            "gov-help-search-link"
+          ],
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "gov-help-search-link",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "gov-help-qa",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "gov-help-epeople",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "gov-help-task",
+        "instruction": "국민신문고 홈페이지 바로가기 원본 버튼을 찾으세요. 버튼을 누르거나 민원을 접수하지 않습니다.",
+        "expectedSourceIds": [
+          "gov-help-epeople"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "원본은 onclick으로 새 창을 여는 button이며 href가 없으므로 locate 기대값. 원본 핸들러의 공개 목적지는 https://www.epeople.go.kr/index.jsp 이지만 자동 실행하지 않음."
+      ]
+    }
+  ]
+}

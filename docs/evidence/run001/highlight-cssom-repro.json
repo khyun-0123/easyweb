@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-10-17T14:54:05.013Z",
+  "scope": "Synthetic isolated Chromium DOM observation for repeated EasyWeb source highlighting cleanup. No live third-party pages, classifier or user inputs were involved.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1",
+    "headless": true,
+    "pageUrl": "about:blank"
+  },
+  "reproduction": {
+    "script": "/tmp/easyweb-cssom-style-repro.cjs",
+    "command": "node /tmp/easyweb-cssom-style-repro.cjs",
+    "commonSteps": [
+      "Create a new div with no style attribute and append it to the document.",
+      "Set inline outline: 4px solid #087e76 !important and outline-offset: 5px !important through CSSStyleDeclaration.setProperty.",
+      "Remove both properties through CSSStyleDeclaration.removeProperty.",
+      "Apply the variant-specific getAttribute read timing around removeAttribute(style).",
+      "Read the final style attribute once, then remove the synthetic div."
+    ],
+    "variants": {
+      "no-read-before-deletion": "control.removeAttribute('style'); return control.getAttribute('style');",
+      "read-before-deletion": "control.getAttribute('style'); control.removeAttribute('style'); return control.getAttribute('style');",
+      "read-after-deletion": "control.removeAttribute('style'); control.getAttribute('style'); return control.getAttribute('style');"
+    },
+    "coreBrowserCode": "const control = document.createElement('div'); document.body.append(control); control.style.setProperty('outline', '4px solid #087e76', 'important'); control.style.setProperty('outline-offset', '5px', 'important'); control.style.removeProperty('outline'); control.style.removeProperty('outline-offset'); /* Optional: control.getAttribute('style') here, before deletion. */ control.removeAttribute('style'); const result = control.getAttribute('style');"
+  },
+  "results": [
+    {
+      "variant": "no-read-before-deletion",
+      "initialStyleAttribute": null,
+      "finalStyleAttribute": ""
+    },
+    {
+      "variant": "read-before-deletion",
+      "initialStyleAttribute": null,
+      "serializedBeforeDeletion": "",
+      "finalStyleAttribute": null
+    },
+    {
+      "variant": "read-after-deletion",
+      "initialStyleAttribute": null,
+      "firstReadAfterDeletion": "",
+      "finalStyleAttribute": ""
+    }
+  ],
+  "interpretation": "In this observed environment, after CSSOM property removal the subsequent attribute read returned an empty style attribute when no read preceded attribute deletion. Reading the serialized style attribute before deletion produced a final null value. This supports synchronizing the serialized style attribute before removing an originally absent empty style attribute in the highlight restore path.",
+  "limitations": [
+    "These are observations from one installed Chromium version and one synthetic DOM sequence.",
+    "The experiment does not establish whether the behavior is a browser defect or whether other browser versions behave identically.",
+    "The script does not test the full extension, reinjection UI or actual user task completion. Highlight Playwright regression results are recorded separately."
+  ]
+}

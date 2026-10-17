@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EasyWeb · 대학 홈페이지 예시</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f5f7fa;color:#20334a;font:17px/1.6 -apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif}header,main,footer{max-width:1100px;margin:auto;padding:26px 32px}header{background:#fff;border-bottom:1px solid #dce3ea}nav{display:flex;gap:24px;flex-wrap:wrap}a{color:#26547f}h1{font-size:38px;line-height:1.3}.hero{background:#dfe9f0;padding:40px;border-radius:18px;margin:24px 0}.hero p{max-width:650px}button{font:inherit;min-height:48px;padding:10px 20px;border:1px solid #adbcc8;border-radius:10px;cursor:pointer;background:white;color:#20334a}.launch{background:#08796e;color:white;border:none;font-weight:700}.badge{font-size:13px;color:#627589}section{margin-bottom:30px}label{display:block}input{font:inherit;padding:12px;border:1px solid #adbcc8;border-radius:8px;max-width:100%}.cards{display:flex;gap:20px;flex-wrap:wrap}.cards a{background:white;padding:22px;border:1px solid #dce3ea;border-radius:12px}footer{font-size:14px;color:#687a8b}
+  </style>
+</head>
+<body>
+  <header>
+    <p><strong>가상대학교</strong> <span class="badge">EasyWeb 테스트용 예시 · 실제 대학 사이트가 아닙니다</span></p>
+    <nav aria-label="주요 메뉴">
+      <a href="/destination?task=login">로그인</a>
+      <button id="site-search" aria-label="통합검색 열기">검색</button>
+      <a href="/destination?task=notice">공지사항</a>
+      <a href="/destination?task=academic">학사정보</a>
+      <a href="/destination?task=apply">시설 예약 신청</a>
+      <a href="/destination?task=help">자주 묻는 질문</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <span class="badge">LOCAL DEMO · v0.2</span>
+      <h1>복잡한 페이지의 주요 기능을<br>쉬운 화면으로 만나보세요.</h1>
+      <p>아래 버튼은 이 로컬 예시에서만 확장 프로그램의 화면 코드를 실행합니다. 실제 Chrome 확장의 권한과 도구 모음 실행은 별도로 확인해야 합니다.</p>
+      <button id="demo-launch" class="launch">EasyWeb 쉬운 화면 열기</button>
+    </section>
+    <section><h2>대학 소식</h2><div class="cards"><a href="/destination?task=news">가상대학교 연구 소식</a><a href="/destination?task=event">이번 달 행사</a></div></section>
+    <section><h2>정보 찾기</h2><label for="query">통합검색</label><input id="query" type="search" placeholder="검색어를 입력하세요"><p id="search-state" role="status"></p></section>
+    <section><h2>계정 입력 예시</h2><p>테스트용 입력창이며 전송되지 않습니다.</p><label for="password">비밀번호</label><input id="password" type="password" autocomplete="off"></section>
+    <a href="/destination?task=hidden" hidden>로그인 숨김 메뉴</a>
+    <div style="display:none"><a href="/destination?task=hidden2">검색 숨김 메뉴</a></div>
+    <button disabled>공지사항 비활성</button>
+  </main>
+  <footer><a href="/destination?task=footer-login">로그인</a> · 가상대학교 예시 페이지 / 모든 링크는 로컬 확인 페이지로 이동합니다.</footer>
+  <script>
+    document.getElementById('demo-launch').addEventListener('click', async () => {
+      const response = await fetch('/content.js');
+      const code = await response.text();
+      const script = document.createElement('script');
+      script.textContent = code;
+      document.documentElement.append(script);
+      script.remove();
+    });
+    document.getElementById('site-search').addEventListener('click', () => {
+      document.getElementById('query').focus();
+      document.getElementById('search-state').textContent = '원본 검색 기능을 실행했어요.';
+    });
+  </script>
+</body>
+</html>

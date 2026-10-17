@@ -1,0 +1,304 @@
+{
+  "siteId": "public-agency",
+  "name": "국민연금공단",
+  "type": "public-agency",
+  "observedAt": "2026-10-17T14:29:30.455Z",
+  "pages": [
+    {
+      "id": "agency-home",
+      "url": "https://www.nps.or.kr/main.do",
+      "finalUrl": "https://www.nps.or.kr/main.do",
+      "title": "NPS 국민연금공단 - 국민을 든든하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/agency-home.html",
+      "observation": {
+        "method": "Playwright Chromium read-only navigation; manual review of rendered control text, link destinations, safe attributes and ancestor/landmark context; screenshots additionally reviewed for gov-search, agency-faq and library-program.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Minimal fixture styling does not reproduce original geometry, overlays, scrolling, images, scripts or event handlers.",
+          "Script-backed links/buttons are locate only; the fixture does not simulate their application behavior."
+        ]
+      },
+      "expected": [
+        {
+          "id": "agency-home-news",
+          "category": "notice",
+          "label": "새소식 더보기",
+          "sourceIds": [
+            "agency-home-notice"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897"
+        },
+        {
+          "id": "agency-home-search",
+          "category": "search",
+          "label": "검색어",
+          "sourceIds": [
+            "agency-home-input"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "agency-home-faq",
+          "category": "help",
+          "label": "바로가기",
+          "sourceIds": [
+            "agency-home-faq"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "agency-home-login",
+          "category": "login",
+          "label": "로그인",
+          "sourceIds": [
+            "agency-home-login"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "agency-home-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "agency-home-notice",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "agency-home-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "agency-home-faq",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "agency-home-task",
+        "instruction": "새소식 전체 목록으로 이동하세요.",
+        "expectedSourceIds": [
+          "agency-home-notice"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "FAQ 원본 링크는 javascript:goMenuPage(...)이므로 목적지 주소를 추정 이동시키지 않고 원본 위치로 안내.",
+        "로그인 링크는 진입 링크 관찰만 포함. 인증은 수행하지 않음."
+      ]
+    },
+    {
+      "id": "agency-notice",
+      "url": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+      "title": "연금소식 > 새소식 - 목록 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/agency-notice.html",
+      "observation": {
+        "method": "Playwright Chromium read-only navigation; manual review of rendered control text, link destinations, safe attributes and ancestor/landmark context; screenshots additionally reviewed for gov-search, agency-faq and library-program.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Minimal fixture styling does not reproduce original geometry, overlays, scrolling, images, scripts or event handlers.",
+          "Script-backed links/buttons are locate only; the fixture does not simulate their application behavior."
+        ]
+      },
+      "expected": [
+        {
+          "id": "agency-notice-search",
+          "category": "search",
+          "label": "검색어 입력",
+          "sourceIds": [
+            "agency-notice-input"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "agency-notice-article",
+          "category": "notice",
+          "label": "국민연금 「점심시간 휴무제」 실시 안내",
+          "sourceIds": [
+            "agency-notice-article"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M1.do?menuId=MN24000897&pstId=ZZ202600000000001125&hmpgCd=01&hmpgBbsCd=BS20240137&sortSe=FR&pageIndex=1&searchText=&searchGbu="
+        },
+        {
+          "id": "agency-notice-login",
+          "category": "login",
+          "label": "로그인",
+          "sourceIds": [
+            "agency-notice-login"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "agency-notice-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "agency-notice-global-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "agency-notice-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "agency-notice-article",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "agency-notice-news-menu",
+          "category": "notice",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "agency-notice-task",
+        "instruction": "국민연금 「점심시간 휴무제」 실시 안내 공개 게시글의 링크로 이동하세요.",
+        "expectedSourceIds": [
+          "agency-notice-article"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "목록의 검색 필드와 공개 게시글 링크를 관찰. 검색어·작성일·만족도 폼은 입력하거나 제출하지 않음."
+      ]
+    },
+    {
+      "id": "agency-faq",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "title": "국민참여 > 상담센터 > 자주찾는 질문(FAQ) > 국민연금 제도 - 제도 일반 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/fixtures/agency-faq.html",
+      "observation": {
+        "method": "Playwright Chromium read-only navigation; manual review of rendered control text, link destinations, safe attributes and ancestor/landmark context; screenshots additionally reviewed for gov-search, agency-faq and library-program.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Minimal fixture styling does not reproduce original geometry, overlays, scrolling, images, scripts or event handlers.",
+          "Script-backed links/buttons are locate only; the fixture does not simulate their application behavior."
+        ]
+      },
+      "expected": [
+        {
+          "id": "agency-faq-question",
+          "category": "help",
+          "label": "Q국민연금제도는 무엇이고, 도입 배경에 대해 알려주세요.",
+          "sourceIds": [
+            "agency-faq-question"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "agency-faq-ebook",
+          "category": "help",
+          "label": "전자책 보기",
+          "sourceIds": [
+            "agency-faq-ebook"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/html/Ebook/2026_FAQ/index.html"
+        },
+        {
+          "id": "agency-faq-search",
+          "category": "search",
+          "label": "검색",
+          "sourceIds": [
+            "agency-faq-global-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "agency-faq-login",
+          "category": "login",
+          "label": "로그인",
+          "sourceIds": [
+            "agency-faq-login"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "agency-faq-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "agency-faq-global-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "agency-faq-faq-menu",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "agency-faq-question",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "agency-faq-ebook",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "agency-faq-task",
+        "instruction": "“국민연금제도는 무엇이고, 도입 배경에 대해 알려주세요.” 질문의 원본 제어를 찾으세요. 자동 펼침은 하지 않습니다.",
+        "expectedSourceIds": [
+          "agency-faq-question"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "질문은 javascript:;를 사용하는 원본 펼침 제어이므로 locate. 질문 답변을 자동 펼치거나 사이트 스크립트를 복제하지 않음."
+      ]
+    }
+  ]
+}

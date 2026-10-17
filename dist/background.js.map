@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/background.ts"],
+  "sourcesContent": ["chrome.action.onClicked.addListener(async (tab) => {\n  if (!tab.id) return;\n  try {\n    await chrome.scripting.executeScript({\n      target: { tabId: tab.id },\n      files: ['content.js'],\n    });\n    await chrome.action.setBadgeText({ tabId: tab.id, text: '' });\n    await chrome.action.setTitle({ tabId: tab.id, title: 'EasyWeb \uC26C\uC6B4 \uD654\uBA74 \uC5F4\uAE30 / \uB2EB\uAE30' });\n  } catch {\n    await chrome.action.setBadgeText({ tabId: tab.id, text: '!' });\n    await chrome.action.setBadgeBackgroundColor({ tabId: tab.id, color: '#a33c29' });\n    await chrome.action.setTitle({\n      tabId: tab.id,\n      title: '\uC774 \uD398\uC774\uC9C0\uC5D0\uC11C\uB294 EasyWeb\uC744 \uC2E4\uD589\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uC77C\uBC18 \uC6F9\uC0AC\uC774\uD2B8\uC5D0\uC11C \uB2E4\uC2DC \uC2E4\uD589\uD574\uC8FC\uC138\uC694.',\n    });\n  }\n});\n"],
+  "mappings": ";;;AAAA,SAAO,OAAO,UAAU,YAAY,OAAO,QAAQ;AACjD,QAAI,CAAC,IAAI,GAAI;AACb,QAAI;AACF,YAAM,OAAO,UAAU,cAAc;AAAA,QACnC,QAAQ,EAAE,OAAO,IAAI,GAAG;AAAA,QACxB,OAAO,CAAC,YAAY;AAAA,MACtB,CAAC;AACD,YAAM,OAAO,OAAO,aAAa,EAAE,OAAO,IAAI,IAAI,MAAM,GAAG,CAAC;AAC5D,YAAM,OAAO,OAAO,SAAS,EAAE,OAAO,IAAI,IAAI,OAAO,gEAAwB,CAAC;AAAA,IAChF,QAAQ;AACN,YAAM,OAAO,OAAO,aAAa,EAAE,OAAO,IAAI,IAAI,MAAM,IAAI,CAAC;AAC7D,YAAM,OAAO,OAAO,wBAAwB,EAAE,OAAO,IAAI,IAAI,OAAO,UAAU,CAAC;AAC/E,YAAM,OAAO,OAAO,SAAS;AAAA,QAC3B,OAAO,IAAI;AAAA,QACX,OAAO;AAAA,MACT,CAAC;AAAA,IACH;AAAA,EACF,CAAC;",
+  "names": []
+}

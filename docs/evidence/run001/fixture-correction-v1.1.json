@@ -1,0 +1,69 @@
+{
+  "version": "1.1",
+  "kind": "fixture fidelity correction only",
+  "recordedAt": "2026-10-17T14:44:47.559644+00:00",
+  "pageId": "library-home",
+  "sourceId": "library-home-tip",
+  "fixture": "evaluation/fixtures/library-home.html",
+  "archivedOriginal": "docs/evidence/run001/baseline/fixtures/library-home-v1.html",
+  "beforeSha256": "3d34b74ed7d24ac4938c637f35c3809972a91340a836c58d3571d734be981aff",
+  "afterSha256": "b518693067b78e8e05a4a40e6b7c94fab60a62238c3957e802e62e93ca8ab0ae",
+  "archiveSha256": "3d34b74ed7d24ac4938c637f35c3809972a91340a836c58d3571d734be981aff",
+  "sourceObservationEvidence": {
+    "publicRecord": "docs/evidence/run001/site-observations-public.json",
+    "pageId": "library-home",
+    "sourceId": "library-home-tip",
+    "observedAt": "2026-10-17T14:32:56.255Z",
+    "url": "https://www.nl.go.kr/",
+    "finalUrl": "https://www.nl.go.kr/",
+    "captureSnapshot": "tmp/selected-library-home-nl.json",
+    "captureSnapshotSha256": "9c42031e35918d3889fc7271e52e9c67dd8e9e161f35ce9e6970476678062780",
+    "observedAttributes": {
+      "tag": "a",
+      "rawHref": "#",
+      "role": null,
+      "tabindex": null,
+      "onclickPresent": true,
+      "ariaLabel": "search_tip"
+    },
+    "handlerEvidenceBoundary": "Presence only was checked from the original captured opening tag. Third-party handler code is not copied into this record or corrected fixture."
+  },
+  "reason": "The initial reconstruction converted the raw fragment href=\"#\" to an absolute URL ending in # and removed inline onclick presence. Both attributes carry original-control semantics. The correction preserves the observed raw fragment and handler presence without copying or implementing the third-party popup. This is a data-quality correction, not a classifier-rule or truth-label change.",
+  "attributeDiff": {
+    "rawHref": {
+      "before": "https://www.nl.go.kr/#",
+      "after": "#"
+    },
+    "onclickPresent": {
+      "before": false,
+      "after": true
+    },
+    "localInertMarker": {
+      "before": null,
+      "after": "return false"
+    }
+  },
+  "exactUnifiedDiff": "--- library-home-v1.html\n+++ library-home-v1.1.html\n@@ -1,7 +1,7 @@\n <!doctype html><html lang=\"ko\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>국립중앙도서관</title>\n-<!-- Reconstructed public-menu subset. Not a full-page copy or live extension validation. Scripts, event handlers, network assets and editable input values are omitted. -->\n+<!-- Reconstructed public-menu subset. Not a full-page copy or live extension validation. Third-party scripts and event-handler implementations, network assets and editable input values are omitted. library-home-tip retains an inert local onclick presence marker. -->\n <style>body{font:18px/1.5 system-ui,sans-serif;margin:24px;color:#111;background:#fff}div,nav,form{margin-block:12px}a,button,input{margin:8px;padding:8px}input{min-height:28px}</style></head><body><div class=\"top_line_bnr\"><a title=\"로그인\" href=\"javascript:anyidAdaptor.ssoLoginPage(&#x27;&#x27;,&#x27;&#x27;);\" data-eval-id=\"library-home-login\">로그인</a>\n <a title=\"새 창 열림\" target=\"_blank\" href=\"https://www.nl.go.kr/EN/main/index.do\" data-eval-id=\"library-home-language\">English</a></div>\n <div id=\"intro_contents_wrap\"><div class=\"intro_visual\"><form id=\"comSchForm\"><fieldset><div class=\"total_srch_pop_intro_input\"><input type=\"text\" title=\"검색어 입력\" placeholder=\"검색어를 입력해 주세요\" data-eval-id=\"library-home-input\">\n <button type=\"submit\" data-eval-id=\"library-home-submit\">검색</button></div></fieldset></form><p class=\"btn_advd_srch\"><a href=\"javascript:;\" data-eval-id=\"library-home-advanced\">고급검색</a>\n-<a aria-label=\"search_tip\" href=\"https://www.nl.go.kr/#\" data-eval-id=\"library-home-tip\">검색방법 ?</a></p><a href=\"https://www.nl.go.kr/NL\" data-eval-id=\"library-home-representative\">대표 누리집 바로가기 →</a></div><button type=\"button\" role=\"button\" data-eval-id=\"library-home-carousel\">유관기관 다음 슬라이드</button></div></body></html>\n+<a aria-label=\"search_tip\" href=\"#\" onclick=\"return false\" data-eval-id=\"library-home-tip\">검색방법 ?</a></p><a href=\"https://www.nl.go.kr/NL\" data-eval-id=\"library-home-representative\">대표 누리집 바로가기 →</a></div><button type=\"button\" role=\"button\" data-eval-id=\"library-home-carousel\">유관기관 다음 슬라이드</button></div></body></html>\n",
+  "metadataChange": "Only library-home observation limitation and correction note were updated in evaluation/sites/library.json. Other pages are unchanged.",
+  "invariants": {
+    "truthLabelsUnchanged": true,
+    "expectedUnchanged": true,
+    "acceptedUnchanged": true,
+    "taskUnchanged": true,
+    "splitUnchanged": true,
+    "pageCountsUnchanged": true,
+    "holdoutUnchanged": true,
+    "sourceCodeUnchanged": true
+  },
+  "validationScope": "Attribute fidelity and data invariants only. No classifier results, product evaluation, destination reach or user study are claimed. Baseline and current evaluations must both be regenerated on the corrected fixture version.",
+  "validation": {
+    "status": "PASS",
+    "checks": [
+      "Archive byte-identical to original fixture",
+      "Original opening tag supports href=#, absent role/tabindex and onclick presence",
+      "Corrected fixture retains href=# and only an inert local onclick marker",
+      "Expected, accepted, task, labels, counts and split unchanged",
+      "Other library pages and holdout unchanged"
+    ]
+  }
+}

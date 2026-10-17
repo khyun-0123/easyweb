@@ -1,0 +1,294 @@
+{
+  "siteId": "library",
+  "name": "국립중앙도서관",
+  "type": "library",
+  "observedAt": "2026-10-17T14:33:13.872Z",
+  "pages": [
+    {
+      "id": "library-home",
+      "url": "https://www.nl.go.kr/",
+      "finalUrl": "https://www.nl.go.kr/",
+      "title": "국립중앙도서관",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/library-home.html",
+      "observation": {
+        "method": "Read-only Playwright Chromium navigation; manually reviewed primitive-string visible-control extracts, safe attributes, absolute hrefs and ancestor context. Screenshot review additionally performed on library-search and library-help.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry, download or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Original div-based header/footer/container context is retained without adding semantic header/main/footer landmarks. Minimal styling does not reproduce geometry, images, overlays or scripts.",
+          "Script-backed controls are original-control locate only. Third-party event-handler implementations are omitted; library-home-tip retains only an inert local onclick=\"return false\" presence marker. Popup behavior is not simulated.",
+          "Initial object-returning page.evaluate extracts were undefined; title, body locator and primitive-string extracts worked without changing security or certificate settings. The extraction-method anomaly is not treated as a site access failure."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-home-search",
+          "category": "search",
+          "label": "검색어 입력",
+          "sourceIds": [
+            "library-home-input",
+            "library-home-submit"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-home-login",
+          "category": "login",
+          "label": "로그인",
+          "sourceIds": [
+            "library-home-login"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-home-search-help",
+          "category": "help",
+          "label": "search_tip",
+          "sourceIds": [
+            "library-home-tip"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-home-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-home-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-home-submit",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-home-advanced",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-home-tip",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-home-task",
+        "instruction": "첫 화면의 검색어 입력 제어를 찾아 원본 위치로 안내받으세요. 입력하거나 검색하지 않습니다.",
+        "expectedSourceIds": [
+          "library-home-input"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "로그인 원본 링크는 javascript:anyidAdaptor.ssoLoginPage(...)이므로 locate. 인증은 수행하지 않음.",
+        "검색방법 ? 링크는 href=#이지만 aria-label=search_tip인 원본 팝업 제어이며 단순 앵커 이동으로 판정하지 않음.",
+        "Fixture v1.1 fidelity correction: library-home-tip preserves the observed raw href=\"#\" and onclick attribute presence with the inert local marker onclick=\"return false\". Original third-party handler code is not copied. Truth labels, expected/accepted groups, task, counts and split are unchanged. See docs/evidence/run001/fixture-correction-v1.1.json."
+      ]
+    },
+    {
+      "id": "library-search",
+      "url": "https://www.nl.go.kr/NL/contents/N10100000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N10100000000.do",
+      "title": "국립중앙도서관>자료검색>소장자료",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/library-search.html",
+      "observation": {
+        "method": "Read-only Playwright Chromium navigation; manually reviewed primitive-string visible-control extracts, safe attributes, absolute hrefs and ancestor context. Screenshot review additionally performed on library-search and library-help.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry, download or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Original div-based header/footer/container context is retained without adding semantic header/main/footer landmarks. Minimal styling does not reproduce geometry, images, overlays or scripts.",
+          "Script-backed controls and direct file-download endpoints are original-control locate only. Event handlers and download behavior are not simulated.",
+          "Initial object-returning page.evaluate extracts were undefined; title, body locator and primitive-string extracts worked without changing security or certificate settings. The extraction-method anomaly is not treated as a site access failure."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-search-search",
+          "category": "search",
+          "label": "검색어를 입력해주세요.",
+          "sourceIds": [
+            "library-search-input",
+            "library-search-submit"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-search-viewer",
+          "category": "help",
+          "label": "뷰어프로그램 안내",
+          "sourceIds": [
+            "library-search-viewer"
+          ],
+          "action": "navigate",
+          "href": "https://www.nl.go.kr/NL/contents/N71300000000.do"
+        },
+        {
+          "id": "library-search-login",
+          "category": "login",
+          "label": "로그인",
+          "sourceIds": [
+            "library-search-login"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-search-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-search-global-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-search-viewer",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "library-search-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-search-submit",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-search-advanced",
+          "category": "search",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-search-task",
+        "instruction": "뷰어프로그램 안내 공개 페이지의 링크로 이동하세요. 프로그램을 내려받지 않습니다.",
+        "expectedSourceIds": [
+          "library-search-viewer"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "소장자료 검색 입력창은 placeholder 없이 고정 aria-label=검색어를 입력해주세요. 로 이름이 제공됨.",
+        "이 입력 제어의 실 입력값을 읽거나 저장하지 않음."
+      ]
+    },
+    {
+      "id": "library-help",
+      "url": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "title": "국립중앙도서관>사이트 이용안내>뷰어 프로그램 안내",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/fixtures/library-help.html",
+      "observation": {
+        "method": "Read-only Playwright Chromium navigation; manually reviewed primitive-string visible-control extracts, safe attributes, absolute hrefs and ancestor context. Screenshot review additionally performed on library-search and library-help.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous headless Chromium context; no login, hover, user data entry, download or form submission.",
+          "Controls had CSS layout boxes and visibility was not hidden at 1440x1080; below-fold controls are included."
+        ],
+        "limitations": [
+          "Manually reconstructed public-menu subset only; not a full DOM/page copy or live extension-click validation.",
+          "Original div-based header/footer/container context is retained without adding semantic header/main/footer landmarks. Minimal styling does not reproduce geometry, images, overlays or scripts.",
+          "Script-backed controls and direct file-download endpoints are original-control locate only. Event handlers and download behavior are not simulated.",
+          "Initial object-returning page.evaluate extracts were undefined; title, body locator and primitive-string extracts worked without changing security or certificate settings. The extraction-method anomaly is not treated as a site access failure."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-help-download",
+          "category": "help",
+          "label": "통합뷰어 설치 다운로드",
+          "sourceIds": [
+            "library-help-download"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-help-search",
+          "category": "search",
+          "label": "통합검색",
+          "sourceIds": [
+            "library-help-global-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-help-login",
+          "category": "login",
+          "label": "로그인",
+          "sourceIds": [
+            "library-help-login"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-help-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-help-global-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-help-download",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-help-sitemap",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "library-help-task",
+        "instruction": "통합뷰어 설치 다운로드 원본 링크를 찾으세요. 다운로드하거나 프로그램을 설치하지 않습니다.",
+        "expectedSourceIds": [
+          "library-help-download"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "원본 href=https://www.nl.go.kr/afile/fileDownload/an9mn 는 직접 파일 다운로드 엔드포인트이므로 locate 기대값. 링크 URL만으로 자동 다운로드를 실행하지 않는 경계를 고정.",
+        "실제 파일 다운로드·실행·설치는 하지 않음."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-17T14:20:00.298Z",
+  "purpose": "작업명세서 작성용 재현. 개인 데이터 없이 로컬 가상 DOM 사용.",
+  "baseline": {
+    "typecheck": "PASS",
+    "testsPassed": 11
+  },
+  "observed": {
+    "editableSentinelRead": true,
+    "ariaLabeledTextSearchCollected": false,
+    "urlOnlyLoginDetected": false
+  },
+  "interpretation": {
+    "editableSentinelRead": "true이면 사용자 정의 편집 요소의 입력 내용이 후보 문구로 읽히는 결함",
+    "ariaLabeledTextSearchCollected": "false이면 aria-label만 있는 일반 텍스트 검색창 누락",
+    "urlOnlyLoginDetected": "false이면 URL만으로 로그인 분류가 채택되지 않음"
+  }
+}

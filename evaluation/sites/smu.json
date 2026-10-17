@@ -1,0 +1,329 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "type": "university",
+  "observedAt": "2026-10-17T14:30:33.483Z",
+  "pages": [
+    {
+      "id": "smu-home",
+      "url": "https://www.smu.ac.kr/kor/index.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/index.do",
+      "title": "상명대학교",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/smu-home.html",
+      "observation": {
+        "method": "Playwright Chromium read-only GET and manual public DOM review; independent expected functions fixed before classifier evaluation",
+        "observedAt": "2026-10-17T14:30:33.483Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": "new unauthenticated ko-KR desktop context; DOMContentLoaded plus 1800ms; no input, menu activation or form submission",
+        "limitations": "Reduced selected-control DOM reconstruction; original landmark/ancestor tags and public labels retained, site CSS/media/scripts omitted; CSS visibility does not establish unobscured clickability."
+      },
+      "expected": [
+        {
+          "id": "academic-calendar",
+          "category": "academic",
+          "label": "학사안내",
+          "sourceIds": [
+            "smu-home-academic"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do"
+        },
+        {
+          "id": "public-search",
+          "category": "search",
+          "label": "검색",
+          "sourceIds": [
+            "smu-home-search-input"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "notices",
+          "category": "notice",
+          "label": "싱명 더보기",
+          "sourceIds": [
+            "smu-home-notices"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/notice.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-home-academic",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-home-enrollment",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-home-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-home-search-popup",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-home-search-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-home-search-submit",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-home-notices",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-home-calendar-more",
+          "category": "academic",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "smu-home-open-academic-calendar",
+        "instruction": "학사안내를 통해 공개 학사일정 페이지에 도달하세요.",
+        "expectedSourceIds": [
+          "smu-home-academic"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "Original header/nav/div/ul ancestor tags are retained; no synthetic navigation landmark was added.",
+        "Login and popup/search controls are locate-only because their original actions depend on site JavaScript.",
+        "The observed notice-more screen-reader text is actually “싱명”; its title says “상명 더보기”. This source typo is preserved.",
+        "Initial home page included a presentation popup and sliders; the reduced fixture omits unrelated presentation content and does not claim to reproduce occlusion."
+      ]
+    },
+    {
+      "id": "smu-notices",
+      "url": "https://www.smu.ac.kr/kor/life/notice.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/notice.do",
+      "title": "상명대학교 국문 | 통합공지 게시판목록 | 상명대학교 국문 | 목록",
+      "httpStatus": 200,
+      "split": "calibration",
+      "fixture": "evaluation/fixtures/smu-notices.html",
+      "observation": {
+        "method": "Playwright Chromium read-only GET and manual public DOM review; independent expected functions fixed before classifier evaluation",
+        "observedAt": "2026-10-17T14:30:35.786Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": "new unauthenticated ko-KR desktop context; DOMContentLoaded plus 1800ms; no input, menu activation or form submission",
+        "limitations": "Reduced selected-control DOM reconstruction; original landmark/ancestor tags and public labels retained, site CSS/media/scripts omitted; CSS visibility does not establish unobscured clickability."
+      },
+      "expected": [
+        {
+          "id": "academic-calendar",
+          "category": "academic",
+          "label": "학사안내",
+          "sourceIds": [
+            "smu-notices-academic"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do"
+        },
+        {
+          "id": "board-search",
+          "category": "search",
+          "label": "검색어를 입력해 주세요",
+          "sourceIds": [
+            "smu-notices-board-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "exam-notice",
+          "category": "notice",
+          "label": "[학사운영팀] 2026학년도 제2학기 중간고사 시행계획 안내",
+          "sourceIds": [
+            "smu-notices-exam-notice"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/notice.do?mode=view&articleNo=769524&article.offset=0&articleLimit=10"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-notices-academic",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-notices-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-notices-search-popup",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-notices-board-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-notices-board-search-submit",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-notices-tuition-notice",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-notices-exam-notice",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-notices-next-page",
+          "category": "notice",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "smu-notices-reach-notice-search",
+        "instruction": "통합공지에서 검색어 입력 위치를 찾으세요. 검색어 입력이나 제출은 하지 마세요.",
+        "expectedSourceIds": [
+          "smu-notices-board-search"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "Original header/nav/div/ul ancestor tags are retained; no synthetic navigation landmark was added.",
+        "Login and popup/search controls are locate-only because their original actions depend on site JavaScript."
+      ]
+    },
+    {
+      "id": "smu-calendar",
+      "url": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+      "title": "상명대학교 국문 | 학사안내 | 학사일정",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/fixtures/smu-calendar.html",
+      "observation": {
+        "method": "Playwright Chromium read-only GET and manual public DOM review; independent expected functions fixed before classifier evaluation",
+        "observedAt": "2026-10-17T14:30:37.924Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": "new unauthenticated ko-KR desktop context; DOMContentLoaded plus 1800ms; no input, menu activation or form submission",
+        "limitations": "Reduced selected-control DOM reconstruction; original landmark/ancestor tags and public labels retained, site CSS/media/scripts omitted; CSS visibility does not establish unobscured clickability."
+      },
+      "expected": [
+        {
+          "id": "site-search",
+          "category": "search",
+          "label": "검색",
+          "sourceIds": [
+            "smu-calendar-search-popup"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "list-view",
+          "category": "academic",
+          "label": "리스트로 일정 보기",
+          "sourceIds": [
+            "smu-calendar-list-view"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do?mode=list"
+        },
+        {
+          "id": "midterm-event",
+          "category": "academic",
+          "label": "2026-2학기 중간고사",
+          "sourceIds": [
+            "smu-calendar-exam-start",
+            "smu-calendar-exam-end"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-calendar-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-calendar-search-popup",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-calendar-calendar-view",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-calendar-list-view",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-calendar-previous-month",
+          "category": "academic",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-calendar-next-month",
+          "category": "academic",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-calendar-exam-start",
+          "category": "academic",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-calendar-exam-end",
+          "category": "academic",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-calendar-lecture-review",
+          "category": "academic",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "smu-calendar-open-calendar-list",
+        "instruction": "학사일정의 리스트로 일정 보기 링크에 도달하세요.",
+        "expectedSourceIds": [
+          "smu-calendar-list-view"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "Original header/nav/div/ul ancestor tags are retained; no synthetic navigation landmark was added.",
+        "Login and popup/search controls are locate-only because their original actions depend on site JavaScript.",
+        "Calendar event anchors have no href and depend on original JavaScript. They remain anchors without fabricated URL or role, and the expected action is locate.",
+        "The two midterm anchors are original continuation segments of the same event and jointly satisfy one expected function."
+      ]
+    }
+  ]
+}

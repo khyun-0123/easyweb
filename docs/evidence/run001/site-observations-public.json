@@ -1,0 +1,4005 @@
+{
+  "run": "RUN-001",
+  "scope": "S02 independent public-site truth data only; 3 sites / 9 source pages / 9 public tasks",
+  "observedAt": "2026-10-17T14:33:13.872Z",
+  "environment": {
+    "browser": "Playwright bundled headless Chromium 156.0.8078.4",
+    "viewport": {
+      "width": 1440,
+      "height": 1080
+    },
+    "context": "Fresh anonymous browser contexts; read-only public-page navigation; no login, form entry, form submit, application, download or payment."
+  },
+  "method": "Human review of rendered visible-control extracts, raw/absolute hrefs, safe labels/attributes and ancestor context. Screenshot review performed on gov-search, agency-faq, library-search and library-help. National Library required primitive-string extracts after object-returning evaluation gave undefined. No classifier or ranker was inspected and no product evaluation was run before the truth records.",
+  "sourceEvidencePolicy": "Only selected public controls and relevant context are retained here. Fixtures are small manually reconstructed menu subsets; full site HTML, script bundles, editable input values and authentication data are not retained as evidence.",
+  "substitutions": [
+    {
+      "site": "정부24",
+      "url": "https://www.gov.kr/portal/main/nologin",
+      "finalUrl": "https://plus.gov.kr/mbuster/Mbuster_T",
+      "httpStatus": 200,
+      "title": "정부24 | 정부24",
+      "observation": "서비스 접속이 차단되었습니다. 현재 접속하신 단말에서는 접속이 불가능합니다.",
+      "result": "No usable public menu controls. No bypass attempted. Replaced by same government-service type 국민안전24."
+    }
+  ],
+  "otherExploration": [
+    {
+      "site": "복지로",
+      "url": "https://www.bokjiro.go.kr/ssis-tbu/index.do",
+      "httpStatus": 200,
+      "observation": "Public rendered controls observed; many use script-backed empty hrefs. Not selected after 국민안전24 provided stable public links. Not a blocked site or product failure."
+    },
+    {
+      "site": "국민신문고",
+      "url": "https://www.epeople.go.kr/nep/pttn/gnrlPttn/gnrlPttn.npaid",
+      "httpStatus": 404,
+      "title": "에러페이지",
+      "observation": "Exploratory direct URL was not found; this does not establish the entire site is unavailable. Not selected."
+    },
+    {
+      "site": "국립중앙도서관",
+      "urls": [
+        "https://www.nl.go.kr/",
+        "https://www.nl.go.kr/NL/contents/N10100000000.do"
+      ],
+      "httpStatus": 200,
+      "observation": "Initial object-returning page.evaluate result was undefined. A separate default urllib request failed certificate-chain verification (CERTIFICATE_VERIFY_FAILED / self-signed certificate in certificate chain). Normal Playwright title/body locator and primitive-string extracts then verified public pages without disabling certificate checks or changing security settings.",
+      "result": "Resolved observation-method limitation; original preferred library retained. Not a site access failure or substitution."
+    },
+    {
+      "site": "서울도서관",
+      "urls": [
+        "https://lib.seoul.go.kr/",
+        "https://lib.seoul.go.kr/bbs/list/3",
+        "https://lib.seoul.go.kr/lecture/applyList"
+      ],
+      "httpStatus": 200,
+      "observation": "Exploratory public pages and destinations were observed while the National Library extraction anomaly was unresolved.",
+      "result": "Not selected because preferred 국립중앙도서관 was then verified. No Seoul Library page or task is included in fixed evaluation data."
+    }
+  ],
+  "pages": [
+    {
+      "pageId": "gov-home",
+      "siteId": "government",
+      "url": "https://www.safekorea.go.kr/idsiSFK/neo/main/main.html",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "httpStatus": 200,
+      "title": "국민안전24",
+      "observedAt": "2026-10-17T14:29:18.701Z",
+      "selectedControls": [
+        {
+          "sourceId": "gov-home-language",
+          "tag": "A",
+          "label": "ENG",
+          "safeAttributes": {
+            "href": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do"
+          },
+          "absoluteHref": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "gnb-list",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "gnb-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "brand-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-home-brand",
+          "tag": "A",
+          "label": "국민안전24",
+          "safeAttributes": {
+            "href": "/safekorea-kor"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor",
+          "ancestorContext": [
+            {
+              "tag": "H1",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "logo-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "국민안전24"
+              ]
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-home-search-link",
+          "tag": "A",
+          "label": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor/main/searchMain.do",
+            "title": "검색"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "top-search",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "nav-list",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "main-menu",
+              "class": "nav-listarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / navigate"
+        },
+        {
+          "sourceId": "gov-home-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "privacy",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-home-qa",
+          "tag": "A",
+          "label": "Q&A",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / navigate"
+        },
+        {
+          "sourceId": "gov-home-settings",
+          "tag": "A",
+          "label": "설정",
+          "safeAttributes": {
+            "href": "/safekorea-kor/main/main_settings.do"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/main/main_settings.do",
+          "ancestorContext": [
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "icon-setting",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-thirdcon main-thirdcon-new",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-secondcon new-secondcon",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content-main",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "main-content",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/gov-home.html",
+      "notes": [
+        "정부24 접속 차단 후 동일 정부서비스 유형인 행정안전부 국민안전24로 대체.",
+        "입력 URL은 국민재난안전포털의 기존 공개 주소이며 국민안전24 새 주소로 정상 리디렉션됨."
+      ]
+    },
+    {
+      "pageId": "gov-search",
+      "siteId": "government",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+      "httpStatus": 200,
+      "title": "국민안전24",
+      "observedAt": "2026-10-17T14:29:20.551Z",
+      "selectedControls": [
+        {
+          "sourceId": "gov-search-language",
+          "tag": "A",
+          "label": "ENG",
+          "safeAttributes": {
+            "href": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do"
+          },
+          "absoluteHref": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "gnb-list",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "gnb-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "brand-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-search-brand",
+          "tag": "A",
+          "label": "국민안전24",
+          "safeAttributes": {
+            "href": "/safekorea-kor"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor",
+          "ancestorContext": [
+            {
+              "tag": "H1",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "logo-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "국민안전24"
+              ]
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-search-search-link",
+          "tag": "A",
+          "label": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor/main/searchMain.do",
+            "title": "검색"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "top-search",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "nav-list",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "main-menu",
+              "class": "nav-listarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / navigate"
+        },
+        {
+          "sourceId": "gov-search-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "privacy",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-search-qa",
+          "tag": "A",
+          "label": "Q&A",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / navigate"
+        },
+        {
+          "sourceId": "gov-search-input",
+          "tag": "INPUT",
+          "label": "",
+          "safeAttributes": {
+            "type": "text",
+            "placeholder": "검색어을 입력하세요."
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tot-search",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tot-searcharea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "gov-search-submit",
+          "tag": "BUTTON",
+          "label": "검색",
+          "safeAttributes": {},
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tot-search",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tot-searcharea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "gov-search-tab",
+          "tag": "A",
+          "label": "통합검색",
+          "safeAttributes": {
+            "href": "javascript:goSearch(0);"
+          },
+          "absoluteHref": "javascript:goSearch(0);",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "active",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "tot-searchtab",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/gov-search.html",
+      "notes": [
+        "placeholder의 원문 오타 “검색어을 입력하세요.”를 수정하지 않고 보존.",
+        "빈 검색 페이지를 주소로 직접 관찰했으며 검색어를 제출하지 않음."
+      ]
+    },
+    {
+      "pageId": "gov-help",
+      "siteId": "government",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "httpStatus": 200,
+      "title": "국민안전24 | 이용안내 | Q&A",
+      "observedAt": "2026-10-17T14:29:22.443Z",
+      "selectedControls": [
+        {
+          "sourceId": "gov-help-language",
+          "tag": "A",
+          "label": "ENG",
+          "safeAttributes": {
+            "href": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do"
+          },
+          "absoluteHref": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "gnb-list",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "gnb-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "brand-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-help-brand",
+          "tag": "A",
+          "label": "국민안전24",
+          "safeAttributes": {
+            "href": "/safekorea-kor"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor",
+          "ancestorContext": [
+            {
+              "tag": "H1",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "logo-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "국민안전24"
+              ]
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-help-search-link",
+          "tag": "A",
+          "label": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor/main/searchMain.do",
+            "title": "검색"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "top-search",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "nav-list",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "main-menu",
+              "class": "nav-listarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / navigate"
+        },
+        {
+          "sourceId": "gov-help-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "privacy",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "gov-help-qa",
+          "tag": "A",
+          "label": "Q&A",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / navigate"
+        },
+        {
+          "sourceId": "gov-help-epeople",
+          "tag": "BUTTON",
+          "label": "국민신문고 홈페이지 바로가기",
+          "safeAttributes": {},
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "link-boxarea bg-qna",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "국민의 작은소리도 크게 듣겠습니다."
+              ]
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "국민신문고"
+              ]
+            },
+            {
+              "tag": "DIV",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / locate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/gov-help.html",
+      "notes": [
+        "원본은 onclick으로 새 창을 여는 button이며 href가 없으므로 locate 기대값. 원본 핸들러의 공개 목적지는 https://www.epeople.go.kr/index.jsp 이지만 자동 실행하지 않음."
+      ]
+    },
+    {
+      "pageId": "agency-home",
+      "siteId": "public-agency",
+      "url": "https://www.nps.or.kr/main.do",
+      "finalUrl": "https://www.nps.or.kr/main.do",
+      "httpStatus": 200,
+      "title": "NPS 국민연금공단 - 국민을 든든하게 연금을 튼튼하게",
+      "observedAt": "2026-10-17T14:29:25.158Z",
+      "selectedControls": [
+        {
+          "sourceId": "agency-home-language",
+          "tag": "BUTTON",
+          "label": "Language",
+          "safeAttributes": {
+            "type": "button",
+            "aria-label": "Language 목록 접힘",
+            "aria-expanded": "false"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "userSelect select-lang",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "agency-home-login",
+          "tag": "A",
+          "label": "로그인",
+          "safeAttributes": {
+            "href": "/lgn/loginForm.do"
+          },
+          "absoluteHref": "https://www.nps.or.kr/lgn/loginForm.do",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu-login",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: login / navigate"
+        },
+        {
+          "sourceId": "agency-home-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/comm/footer/getOHAH0003M0.do"
+          },
+          "absoluteHref": "https://www.nps.or.kr/comm/footer/getOHAH0003M0.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "footer-guide",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "row2",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "footer",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "agency-home-notice",
+          "tag": "A",
+          "label": "새소식 더보기",
+          "safeAttributes": {
+            "href": "/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897"
+          },
+          "absoluteHref": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "newsCon1",
+              "class": "main-news-list tabPage active",
+              "role": "tabpanel",
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tabContents",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-news tabWrap",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "소식ㆍ정보"
+              ]
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "col-box",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-visual",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: notice / navigate"
+        },
+        {
+          "sourceId": "agency-home-input",
+          "tag": "INPUT",
+          "label": "",
+          "safeAttributes": {
+            "type": "text",
+            "title": "검색어",
+            "placeholder": "검색어를 입력해주세요"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-search-form",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-search",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FIELDSET",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FORM",
+              "id": "search",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-search-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-section shortcut",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "어떤 도움이 필요하세요?"
+              ]
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "agency-home-faq",
+          "tag": "A",
+          "label": "바로가기",
+          "safeAttributes": {
+            "href": "javascript:goMenuPage('MN24000987','/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131','자주찾는 질문(FAQ)','N');"
+          },
+          "absoluteHref": "javascript:goMenuPage('MN24000987','/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131%27,%27%EC%9E%90%EC%A3%BC%EC%B0%BE%EB%8A%94%20%EC%A7%88%EB%AC%B8(FAQ)%27,%27N%27);",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "link-faq-box",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "link-box-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-section shortcut",
+              "role": null,
+              "ariaLabel": null,
+              "headings": [
+                "어떤 도움이 필요하세요?"
+              ]
+            },
+            {
+              "tag": "MAIN",
+              "id": "contents",
+              "class": "main-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / locate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/agency-home.html",
+      "notes": [
+        "FAQ 원본 링크는 javascript:goMenuPage(...)이므로 목적지 주소를 추정 이동시키지 않고 원본 위치로 안내.",
+        "로그인 링크는 진입 링크 관찰만 포함. 인증은 수행하지 않음."
+      ]
+    },
+    {
+      "pageId": "agency-notice",
+      "siteId": "public-agency",
+      "url": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+      "httpStatus": 200,
+      "title": "연금소식 > 새소식 - 목록 - 국민을 튼튼하게 연금을 튼튼하게",
+      "observedAt": "2026-10-17T14:29:27.885Z",
+      "selectedControls": [
+        {
+          "sourceId": "agency-notice-language",
+          "tag": "BUTTON",
+          "label": "Language",
+          "safeAttributes": {
+            "type": "button",
+            "aria-label": "Language 목록 접힘",
+            "aria-expanded": "false"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "userSelect select-lang",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "agency-notice-login",
+          "tag": "A",
+          "label": "로그인",
+          "safeAttributes": {
+            "href": "/lgn/loginForm.do"
+          },
+          "absoluteHref": "https://www.nps.or.kr/lgn/loginForm.do",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu-login",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: login / navigate"
+        },
+        {
+          "sourceId": "agency-notice-global-search",
+          "tag": "A",
+          "label": "검색",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top-navi",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "agency-notice-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/comm/footer/getOHAH0003M0.do"
+          },
+          "absoluteHref": "https://www.nps.or.kr/comm/footer/getOHAH0003M0.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "footer-guide",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "row2",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "footer",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "agency-notice-input",
+          "tag": "INPUT",
+          "label": "",
+          "safeAttributes": {
+            "type": "text",
+            "title": "검색어 입력"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-input",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-form",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FIELDSET",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FORM",
+              "id": "searchForm",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "agency-notice-article",
+          "tag": "A",
+          "label": "국민연금 「점심시간 휴무제」 실시 안내",
+          "safeAttributes": {
+            "href": "/pnsgdnc/newgdnc/getOHAE0001M1.do?menuId=MN24000897&pstId=ZZ202600000000001125&hmpgCd=01&hmpgBbsCd=BS20240137&sortSe=FR&pageIndex=1&searchText=&searchGbu="
+          },
+          "absoluteHref": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M1.do?menuId=MN24000897&pstId=ZZ202600000000001125&hmpgCd=01&hmpgBbsCd=BS20240137&sortSe=FR&pageIndex=1&searchText=&searchGbu=",
+          "ancestorContext": [
+            {
+              "tag": "TD",
+              "id": "",
+              "class": "title",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "TR",
+              "id": "",
+              "class": "notice",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "TBODY",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "TABLE",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-list m-data-list type-flex",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: notice / navigate"
+        },
+        {
+          "sourceId": "agency-notice-news-menu",
+          "tag": "A",
+          "label": "새소식",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "selected active",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "side-dep1",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "NAV",
+              "id": "sideMenu",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "sideNav",
+              "class": "side-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: notice / locate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/agency-notice.html",
+      "notes": [
+        "목록의 검색 필드와 공개 게시글 링크를 관찰. 검색어·작성일·만족도 폼은 입력하거나 제출하지 않음."
+      ]
+    },
+    {
+      "pageId": "agency-faq",
+      "siteId": "public-agency",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "httpStatus": 200,
+      "title": "국민참여 > 상담센터 > 자주찾는 질문(FAQ) > 국민연금 제도 - 제도 일반 - 국민을 튼튼하게 연금을 튼튼하게",
+      "observedAt": "2026-10-17T14:29:30.455Z",
+      "selectedControls": [
+        {
+          "sourceId": "agency-faq-language",
+          "tag": "BUTTON",
+          "label": "Language",
+          "safeAttributes": {
+            "type": "button",
+            "aria-label": "Language 목록 접힘",
+            "aria-expanded": "false"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "userSelect select-lang",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "agency-faq-login",
+          "tag": "A",
+          "label": "로그인",
+          "safeAttributes": {
+            "href": "/lgn/loginForm.do"
+          },
+          "absoluteHref": "https://www.nps.or.kr/lgn/loginForm.do",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu-login",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: login / navigate"
+        },
+        {
+          "sourceId": "agency-faq-global-search",
+          "tag": "A",
+          "label": "검색",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top-navi",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "agency-faq-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/comm/footer/getOHAH0003M0.do"
+          },
+          "absoluteHref": "https://www.nps.or.kr/comm/footer/getOHAH0003M0.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "footer-guide",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "row2",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-inner",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "FOOTER",
+              "id": "footer",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: general brand, language/settings, or privacy control outside the six task categories"
+        },
+        {
+          "sourceId": "agency-faq-faq-menu",
+          "tag": "A",
+          "label": "자주찾는 질문(FAQ)",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "selected active is-sub",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "side-dep2",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "selected active is-sub",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "side-dep1",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "NAV",
+              "id": "sideMenu",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "sideNav",
+              "class": "side-menu",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / locate"
+        },
+        {
+          "sourceId": "agency-faq-question",
+          "tag": "A",
+          "label": "Q국민연금제도는 무엇이고, 도입 배경에 대해 알려주세요.",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "accItem",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "accWrap faq-list-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "tabPage1",
+              "class": "tabPage active",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tabContents",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tabWrap con-tab",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / locate"
+        },
+        {
+          "sourceId": "agency-faq-ebook",
+          "tag": "A",
+          "label": "전자책 보기",
+          "safeAttributes": {
+            "href": "https://www.nps.or.kr/html/Ebook/2026_FAQ/index.html",
+            "target": "_blank",
+            "title": "새창열림"
+          },
+          "absoluteHref": "https://www.nps.or.kr/html/Ebook/2026_FAQ/index.html",
+          "ancestorContext": [
+            {
+              "tag": "P",
+              "id": "",
+              "class": "aright mgb10",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "headings": []
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / navigate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/agency-faq.html",
+      "notes": [
+        "질문은 javascript:;를 사용하는 원본 펼침 제어이므로 locate. 질문 답변을 자동 펼치거나 사이트 스크립트를 복제하지 않음."
+      ]
+    },
+    {
+      "pageId": "library-home",
+      "siteId": "library",
+      "url": "https://www.nl.go.kr/",
+      "finalUrl": "https://www.nl.go.kr/",
+      "httpStatus": 200,
+      "title": "국립중앙도서관",
+      "observedAt": "2026-10-17T14:32:56.255Z",
+      "selectedControls": [
+        {
+          "sourceId": "library-home-login",
+          "tag": "A",
+          "label": "로그인",
+          "safeAttributes": {
+            "href": "javascript:anyidAdaptor.ssoLoginPage('','');",
+            "title": "로그인"
+          },
+          "absoluteHref": "javascript:anyidAdaptor.ssoLoginPage('','');",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_header_utils right",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_flag_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_link_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_line_bnr",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: login / locate"
+        },
+        {
+          "sourceId": "library-home-language",
+          "tag": "A",
+          "label": "English",
+          "safeAttributes": {
+            "href": "/EN/main/index.do",
+            "title": "새 창 열림",
+            "target": "_blank"
+          },
+          "absoluteHref": "https://www.nl.go.kr/EN/main/index.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_header_utils right",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_flag_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_link_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top_line_bnr",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-home-input",
+          "tag": "INPUT",
+          "label": "",
+          "safeAttributes": {
+            "type": "text",
+            "title": "검색어 입력",
+            "placeholder": "검색어를 입력해 주세요"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "total_srch_pop_intro_input",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FIELDSET",
+              "id": "",
+              "class": "total_srch_pop_intro_field",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FORM",
+              "id": "comSchForm",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "intro_visual",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "intro_contents_wrap",
+              "class": "intro_contents_wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-home-submit",
+          "tag": "BUTTON",
+          "label": "검색",
+          "safeAttributes": {
+            "type": "submit"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "total_srch_pop_intro_input",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FIELDSET",
+              "id": "",
+              "class": "total_srch_pop_intro_field",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FORM",
+              "id": "comSchForm",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "intro_visual",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "intro_contents_wrap",
+              "class": "intro_contents_wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-home-advanced",
+          "tag": "A",
+          "label": "고급검색",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "P",
+              "id": "",
+              "class": "btn_advd_srch",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "intro_visual",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "intro_contents_wrap",
+              "class": "intro_contents_wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-home-tip",
+          "tag": "A",
+          "label": "검색방법 ?",
+          "safeAttributes": {
+            "href": "#",
+            "aria-label": "search_tip"
+          },
+          "absoluteHref": "https://www.nl.go.kr/#",
+          "ancestorContext": [
+            {
+              "tag": "P",
+              "id": "",
+              "class": "btn_advd_srch",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "intro_visual",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "intro_contents_wrap",
+              "class": "intro_contents_wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / locate"
+        },
+        {
+          "sourceId": "library-home-representative",
+          "tag": "A",
+          "label": "대표 누리집 바로가기 →",
+          "safeAttributes": {
+            "href": "/NL"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL",
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "home_banner_item",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "home_banner_pause",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "intro_contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "intro_contents_wrap",
+              "class": "intro_contents_wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-home-carousel",
+          "tag": "BUTTON",
+          "label": "유관기관 다음 슬라이드",
+          "safeAttributes": {
+            "type": "button",
+            "role": "button"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "custom_paging",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "intro_contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "intro_contents_wrap",
+              "class": "intro_contents_wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/library-home.html",
+      "notes": [
+        "로그인 원본 링크는 javascript:anyidAdaptor.ssoLoginPage(...)이므로 locate. 인증은 수행하지 않음.",
+        "검색방법 ? 링크는 href=#이지만 aria-label=search_tip인 원본 팝업 제어이며 단순 앵커 이동으로 판정하지 않음."
+      ]
+    },
+    {
+      "pageId": "library-search",
+      "siteId": "library",
+      "url": "https://www.nl.go.kr/NL/contents/N10100000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N10100000000.do",
+      "httpStatus": 200,
+      "title": "국립중앙도서관>자료검색>소장자료",
+      "observedAt": "2026-10-17T14:32:58.502Z",
+      "selectedControls": [
+        {
+          "sourceId": "library-search-language",
+          "tag": "A",
+          "label": "English",
+          "safeAttributes": {
+            "href": "/EN/main/index.do",
+            "title": "새창 열림",
+            "target": "_blank"
+          },
+          "absoluteHref": "https://www.nl.go.kr/EN/main/index.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "nl_header_utils",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-search-brand",
+          "tag": "A",
+          "label": "국립중앙도서관",
+          "safeAttributes": {
+            "href": "/NL",
+            "title": "메인페이지로 이동"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL",
+          "ancestorContext": [
+            {
+              "tag": "H1",
+              "id": "",
+              "class": "logo",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-search-login",
+          "tag": "A",
+          "label": "로그인",
+          "safeAttributes": {
+            "href": "javascript:anyidAdaptor.ssoLoginPage('','');"
+          },
+          "absoluteHref": "javascript:anyidAdaptor.ssoLoginPage('','');",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "login",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: login / locate"
+        },
+        {
+          "sourceId": "library-search-global-search",
+          "tag": "A",
+          "label": "통합검색",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "total_search",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-search-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/NL/contents/N70100000000.do"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL/contents/N70100000000.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "prv",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "policy_links",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_copyright",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_cont_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "footer",
+              "class": "nl_new_footer",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-search-viewer",
+          "tag": "A",
+          "label": "뷰어프로그램 안내",
+          "safeAttributes": {
+            "href": "https://www.nl.go.kr/NL/contents/N71300000000.do"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_link_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_cont",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_cont_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "footer",
+              "class": "nl_new_footer",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / navigate"
+        },
+        {
+          "sourceId": "library-search-input",
+          "tag": "INPUT",
+          "label": "",
+          "safeAttributes": {
+            "type": "text",
+            "aria-label": "검색어를 입력해주세요."
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "input_text_wrap input_text_wrap2",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FORM",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "collect_search_wrap ",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_content",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "content",
+              "class": "contents",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-search-submit",
+          "tag": "BUTTON",
+          "label": "검색하기",
+          "safeAttributes": {
+            "type": "button"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "search-btn-wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FORM",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "collect_search_wrap ",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_content",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "content",
+              "class": "contents",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-search-advanced",
+          "tag": "BUTTON",
+          "label": "고급검색",
+          "safeAttributes": {
+            "type": "button"
+          },
+          "absoluteHref": null,
+          "ancestorContext": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "search-btn-wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "FORM",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "collect_search_wrap ",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_content",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "content",
+              "class": "contents",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/library-search.html",
+      "notes": [
+        "소장자료 검색 입력창은 placeholder 없이 고정 aria-label=검색어를 입력해주세요. 로 이름이 제공됨.",
+        "이 입력 제어의 실 입력값을 읽거나 저장하지 않음."
+      ]
+    },
+    {
+      "pageId": "library-help",
+      "siteId": "library",
+      "url": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "httpStatus": 200,
+      "title": "국립중앙도서관>사이트 이용안내>뷰어 프로그램 안내",
+      "observedAt": "2026-10-17T14:33:13.872Z",
+      "selectedControls": [
+        {
+          "sourceId": "library-help-language",
+          "tag": "A",
+          "label": "English",
+          "safeAttributes": {
+            "href": "/EN/main/index.do",
+            "title": "새창 열림",
+            "target": "_blank"
+          },
+          "absoluteHref": "https://www.nl.go.kr/EN/main/index.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "nl_header_utils",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-help-brand",
+          "tag": "A",
+          "label": "국립중앙도서관",
+          "safeAttributes": {
+            "href": "/NL",
+            "title": "메인페이지로 이동"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL",
+          "ancestorContext": [
+            {
+              "tag": "H1",
+              "id": "",
+              "class": "logo",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-help-login",
+          "tag": "A",
+          "label": "로그인",
+          "safeAttributes": {
+            "href": "javascript:anyidAdaptor.ssoLoginPage('','');"
+          },
+          "absoluteHref": "javascript:anyidAdaptor.ssoLoginPage('','');",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "login",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: login / locate"
+        },
+        {
+          "sourceId": "library-help-global-search",
+          "tag": "A",
+          "label": "통합검색",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "total_search",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: search / locate"
+        },
+        {
+          "sourceId": "library-help-privacy",
+          "tag": "A",
+          "label": "개인정보처리방침",
+          "safeAttributes": {
+            "href": "/NL/contents/N70100000000.do"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL/contents/N70100000000.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "prv",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "policy_links",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_copyright",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_cont_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "footer",
+              "class": "nl_new_footer",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "distractor: language, brand/general site entry or carousel control outside the six task categories"
+        },
+        {
+          "sourceId": "library-help-download",
+          "tag": "A",
+          "label": "통합뷰어 설치 다운로드",
+          "safeAttributes": {
+            "href": "/afile/fileDownload/an9mn",
+            "title": "새 창으로 열림"
+          },
+          "absoluteHref": "https://www.nl.go.kr/afile/fileDownload/an9mn",
+          "ancestorContext": [
+            {
+              "tag": "P",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "viewer_exe",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_content",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "content_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "content",
+              "class": "contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "container",
+              "class": "container",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / locate"
+        },
+        {
+          "sourceId": "library-help-sitemap",
+          "tag": "A",
+          "label": "누리집 안내 지도",
+          "safeAttributes": {
+            "href": "/NL/contents/N71100000000.do"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL/contents/N71100000000.do",
+          "ancestorContext": [
+            {
+              "tag": "LI",
+              "id": "SNB2_N71100000000",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "NAV",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_lnb_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_cont_wrap",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "content",
+              "class": "contents",
+              "role": null,
+              "ariaLabel": null
+            },
+            {
+              "tag": "DIV",
+              "id": "container",
+              "class": "container",
+              "role": null,
+              "ariaLabel": null
+            }
+          ],
+          "cssDisplayed": true,
+          "manualJudgment": "relevant: help / navigate"
+        }
+      ],
+      "truthEstablishedBeforeProductEvaluation": true,
+      "fixture": "evaluation/fixtures/library-help.html",
+      "notes": [
+        "원본 href=https://www.nl.go.kr/afile/fileDownload/an9mn 는 직접 파일 다운로드 엔드포인트이므로 locate 기대값. 링크 URL만으로 자동 다운로드를 실행하지 않는 경계를 고정.",
+        "실제 파일 다운로드·실행·설치는 하지 않음."
+      ]
+    }
+  ],
+  "publicDestinationChecks": [
+    {
+      "sourcePageId": "agency-notice",
+      "label": "국민연금 「점심시간 휴무제」 실시 안내",
+      "url": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M1.do?menuId=MN24000897&pstId=ZZ202600000000001125&hmpgCd=01&hmpgBbsCd=BS20240137&sortSe=FR&pageIndex=1&searchText=&searchGbu=",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M1.do?menuId=MN24000897&pstId=ZZ202600000000001125&hmpgCd=01&hmpgBbsCd=BS20240137&sortSe=FR&pageIndex=1&searchText=&searchGbu=",
+      "httpStatus": 200,
+      "title": "연금소식 > 새소식 - 상세 - 국민을 튼튼하게 연금을 튼튼하게",
+      "observedAt": "2026-10-17T14:30:27.581Z"
+    },
+    {
+      "sourcePageId": "library-search",
+      "label": "뷰어프로그램 안내",
+      "url": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "httpStatus": 200,
+      "title": "국립중앙도서관>사이트 이용안내>뷰어 프로그램 안내",
+      "observedAt": "2026-10-17T14:33:13.872Z"
+    }
+  ],
+  "validationBoundary": "This is observed-public-link and fixture-source evidence. It is not production extension install/click evidence, complete-page extraction validation or user usability evidence.",
+  "actualElapsedTime": "UNKNOWN",
+  "actualTokens": "UNKNOWN",
+  "fixtureContractValidation": {
+    "status": "PASS",
+    "observedAt": "2026-10-17T14:34:42.522Z",
+    "scope": "Only source-data/fixture contract checks; no product classifier or extension run.",
+    "checks": [
+      "3 distinct pages/site; first two calibration and third holdout",
+      "At least two expected function groups/page",
+      "All expected, accepted and task source IDs exist uniquely in fixture and selected observation evidence",
+      "Page final URL, title and HTTP status match observation evidence",
+      "Every expected source has a matching manually accepted category and action",
+      "Every task source is CSS-visible in its local fixture",
+      "All ordinary expected navigation hrefs are absolute; script-backed accepted controls use locate",
+      "No script tags, onclick/onsubmit handlers, or editable input values retained"
+    ],
+    "counts": {
+      "sites": 3,
+      "pages": 9,
+      "expected": 26,
+      "tasks": 9,
+      "controls": 64,
+      "accepted": 39,
+      "calibration": 6,
+      "holdout": 3
+    }
+  }
+}
