@@ -3,11 +3,11 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 if (process.argv.includes('--help')) {
-  console.log('node scripts/verify.mjs [--with-core] [--output-dir=docs/evidence/run008]\nRuns typecheck, build, and local Playwright regression tests. --with-core also runs the post-development core fixture suite and mixed, flat and table synthetic performance benchmarks. Never runs live sites, blind evaluation, native UI checks, or a user study.');
+  console.log('node scripts/verify.mjs [--with-core] [--output-dir=docs/evidence/run009]\nRuns typecheck, build, and local Playwright regression tests. --with-core also runs the post-development core fixture suite and mixed, flat and table synthetic performance benchmarks. Never runs live sites, blind evaluation, native UI checks, or a user study.');
   process.exit(0);
 }
 const withCore = process.argv.includes('--with-core');
-const outputDir = path.resolve(process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run008');
+const outputDir = path.resolve(process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run009');
 await mkdir(outputDir, { recursive: true });
 const startedAt = new Date().toISOString();
 const stages = [];

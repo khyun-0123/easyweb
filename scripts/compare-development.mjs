@@ -5,14 +5,14 @@ import path from 'node:path';
 
 // Explicitly exposed sources only. A new blind suite must never be added here
 // until its first frozen evaluation is preserved and exposure is documented.
-const suites = ['core','blind-v2','blind-v3','development-v4-corrected','blind-v5','blind-v6','development-v6-corrected','development-v6-corrected-v2','blind-v7-v2','development-v7-corrected','development-v7-corrected-v2','blind-v8','blind-v9-v2'];
-const uniqueSuites = ['core','blind-v2','blind-v3','development-v4-corrected','blind-v5','development-v6-corrected-v2','development-v7-corrected-v2','blind-v8','blind-v9-v2'];
+const suites = ['core','blind-v2','blind-v3','development-v4-corrected','blind-v5','blind-v6','development-v6-corrected','development-v6-corrected-v2','blind-v7-v2','development-v7-corrected','development-v7-corrected-v2','blind-v8','blind-v9-v2','blind-v10'];
+const uniqueSuites = ['core','blind-v2','blind-v3','development-v4-corrected','blind-v5','development-v6-corrected-v2','development-v7-corrected-v2','blind-v8','blind-v9-v2','blind-v10'];
 if (process.argv.includes('--help')) {
-  console.log('node scripts/compare-development.mjs [--output-dir=docs/evidence/run008/final-development-comparison]\nSame-source generic/institution exposed-data comparison, including initial-six and separate menu-flow results. Keeps raw and corrected suite rows; the 55-page aggregate counts each source page once using explicitly named corrected versions. Never executes fresh holdouts or live sites.');
+  console.log('node scripts/compare-development.mjs [--output-dir=docs/evidence/run009/final-development-comparison]\nSame-source generic/institution exposed-data comparison, including initial-six and separate menu-flow results. Keeps raw and corrected suite rows; the 60-page aggregate counts each source page once using explicitly named corrected versions. Never executes fresh holdouts or live sites.');
   process.exit(0);
 }
 for (const arg of process.argv.slice(2)) if (!/^--output-dir=.+$/.test(arg)) throw Error(`Unknown option: ${arg}`);
-const outputDir=path.resolve(process.argv.find(arg=>arg.startsWith('--output-dir='))?.slice('--output-dir='.length)??'docs/evidence/run008/final-development-comparison');
+const outputDir=path.resolve(process.argv.find(arg=>arg.startsWith('--output-dir='))?.slice('--output-dir='.length)??'docs/evidence/run009/final-development-comparison');
 await mkdir(outputDir,{recursive:true});
 if ((await readdir(outputDir)).length) throw Error('Comparison requires an empty output directory; keep previous source comparisons intact');
 async function hashes(dir='src') {
@@ -57,11 +57,11 @@ const uniquePageAggregates=['generic','institution'].map(mode=>{
   const summary=aggregate(chosen.map(row=>row.summary));
   const ids=[...new Set(chosen.flatMap(row=>row.sites.map(site=>normalizedSiteId(site.siteId))))];
   const sites=ids.map(siteId=>({siteId,...aggregate(chosen.flatMap(row=>row.sites.filter(site=>normalizedSiteId(site.siteId)===siteId)))}));
-  if(summary.pages!==55 || sites.length!==5 || sites.some(site=>site.pages!==11)) throw Error('Expected55unique pages and11pages for each of the same5institutions after ID normalization');
+  if(summary.pages!==60 || sites.length!==5 || sites.some(site=>site.pages!==12)) throw Error('Expected60unique pages and12pages for each of the same5institutions after ID normalization');
   const status=summary.precision>=.9&&summary.recall>=.85&&sites.every(site=>site.precision>=.8&&site.recall>=.75)?'PASS':'FAIL';
-  return {mode,suites:uniqueSuites,summary,sites,quality:{status,thresholds:{overallPrecision:.9,overallRecall:.85,sitePrecision:.8,siteRecall:.75}},scope:'Exposed 55-source-page aggregate only; each source counted once. All individual/raw suite failures stay in rows. This aggregate does not replace first independent results, live task completion, or full S07 acceptance.'};
+  return {mode,suites:uniqueSuites,summary,sites,quality:{status,thresholds:{overallPrecision:.9,overallRecall:.85,sitePrecision:.8,siteRecall:.75}},scope:'Exposed 60-source-page aggregate only; each source counted once. All individual/raw suite failures stay in rows. This aggregate does not replace first independent results, live task completion, or full S07 acceptance.'};
 });
-const report={startedAt,checkedAt:new Date().toISOString(),classification:'EXPOSED_DEVELOPMENT_ONLY',uniqueExposedPages:55,sourceFiles:sourceBefore,sourceAfter,stableBeforeAndAfter,siteAliases,rows,uniquePageAggregates};
+const report={startedAt,checkedAt:new Date().toISOString(),classification:'EXPOSED_DEVELOPMENT_ONLY',uniqueExposedPages:60,sourceFiles:sourceBefore,sourceAfter,stableBeforeAndAfter,siteAliases,rows,uniquePageAggregates};
 await writeFile(path.join(outputDir,'summary.json'),JSON.stringify(report,null,2)+'\n');
 if(!stableBeforeAndAfter)throw Error('Product source changed while comparing modes; results cannot be treated as a same-source comparison');
 console.log(JSON.stringify({stableBeforeAndAfter,uniquePageAggregates,report:path.join(outputDir,'summary.json')},null,2));

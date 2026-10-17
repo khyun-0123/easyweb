@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({ testDir:'../../../../tests', testMatch:'service-relations.spec.mjs', fullyParallel:false, workers:1, reporter:[['list'],['json',{outputFile:new URL('./test-results.json',import.meta.url).pathname}]], outputDir:new URL('./test-artifacts',import.meta.url).pathname, use:{browserName:'chromium',headless:true,viewport:{width:1400,height:1000}} });

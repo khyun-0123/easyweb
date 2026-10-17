@@ -1,0 +1,1529 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+      "/Users/khyun_03/easyweb/node_modules/.bin/playwright",
+      "test",
+      "--config",
+      "docs/evidence/run009/analyzer-performance/playwright.config.mjs",
+      "tests/analysis-batch-performance.spec.mjs",
+      "tests/navigation-utility.spec.mjs",
+      "tests/analyzer-context.spec.mjs"
+    ],
+    "configFile": "/Users/khyun_03/easyweb/docs/evidence/run009/analyzer-performance/playwright.config.mjs",
+    "rootDir": "/Users/khyun_03/easyweb/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/khyun_03/easyweb/docs/evidence/run009/analyzer-performance/docs/evidence/run009/analyzer-performance/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/khyun_03/easyweb/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/khyun_03/easyweb/docs/evidence/run009/analyzer-performance/docs/evidence/run009/analyzer-performance/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/Users/khyun_03/easyweb/tests",
+        "snapshotDir": "/Users/khyun_03/easyweb/tests",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "browserName": "chromium",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./docs/evidence/run009/analyzer-performance/focused-tests.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "analysis-batch-performance.spec.mjs",
+      "file": "analysis-batch-performance.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "큰 문서 목록은 모든 후보마다 전체 자식을 열거하지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 78,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:21.933Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-56ebc48a691138c3e60c",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "단일 배치의 반복 원본검사는 가시성과 작은 메뉴 구조를 다시 순회하지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 62,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.102Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-0650f0feba8ee985cfdb",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "문단 없는 부모의 전체 제어 목록은 문맥 fallback을 위해 수집하지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 191,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.171Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-3627ca7fc27703d13ff9",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "같은 작은 부모의 고정 문단은 배치당 한번 검사하고 새 분석은 변경을 읽는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 53,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-2a029d6b598bde809393",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "같은 프레임의 같은 문구 대상 교체와 중복 id를 새 배치에서 다시 확인한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 55,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.424Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-5e896ec58f7a563d4af9",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "위험 속성·관계·폼 변경과 같은 문구 원본 교체는 다음 검사에서 stale다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 62,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.483Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-2eee04930e101dda8785",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "배치 캐시와 문단 fallback은 입력·checked·중첩 편집 텍스트 getter를 읽지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 58,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.549Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d0d3bbf0120b04a7720-842d19ce9b1b6a7e82c6",
+          "file": "analysis-batch-performance.spec.mjs",
+          "line": 131,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "analyzer-context.spec.mjs",
+      "file": "analyzer-context.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "가까운 제목과 상위 제목을 함께 수집하고 사용자 입력·문서 title은 읽지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 68,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-8ed0823bc28496ee4095",
+          "file": "analyzer-context.spec.mjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "전역 FAQ 링크는 본문의 목적이 아니고 가까운 영역의 로컬 FAQ 목차만 근거가 된다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-21dcebba6b2255dd34ed",
+          "file": "analyzer-context.spec.mjs",
+          "line": 23,
+          "column": 1
+        },
+        {
+          "title": "href 없는 일정 항목은 학사 페이지의 표·그리드 안에서만 수집한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 70,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.762Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-9f2f774b38d6a14c85a7",
+          "file": "analyzer-context.spec.mjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "숨겨진 페이지 표제와 로컬 FAQ는 보이는 기능의 목적 근거로 쓰지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 57,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.835Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-b6a7c7cc8bf1ad3304ed",
+          "file": "analyzer-context.spec.mjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "표제·목적 문맥이 바뀌면 기존 카드의 유효성이 사라진다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 69,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-bb5a6b9d2f1d1691587d",
+          "file": "analyzer-context.spec.mjs",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "질문 의미 표식과 전역·로컬 메뉴 구조 변화도 기존 후보에서 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 63,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:22.972Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-6ea4719d0f98d3343f11",
+          "file": "analyzer-context.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "대문자 aria 숨김·비활성을 제외하고 공백 있는 대상 창 이름을 그대로 해석한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 53,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.038Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-cb73b0d29596f2401b2c",
+          "file": "analyzer-context.spec.mjs",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "현재 메뉴·펼침 상태·하위 메뉴 구조 변화는 추천 우선순위의 이전 근거를 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 67,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.094Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-52c27538b99d8bebf79a",
+          "file": "analyzer-context.spec.mjs",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "중첩된 본문 목록은 앞선 한 겹 표제 문맥만 사용하고 전역 메뉴 제목은 제외한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 74,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-e8952283530fa40e28bd",
+          "file": "analyzer-context.spec.mjs",
+          "line": 87,
+          "column": 1
+        },
+        {
+          "title": "여러 질문 표식·목록 역할·문서 영역·형제 질문 변경의 이전 의미를 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 76,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.243Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-1ff319280b99c8ebc671",
+          "file": "analyzer-context.spec.mjs",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "서식 읽기의 표 행·순서 있는 절차 목록 근거가 사라지면 이전 후보를 막는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 68,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.323Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-c37bd032e7ae8cc5823d",
+          "file": "analyzer-context.spec.mjs",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "고정 제목과 검색 placeholder를 함께 판단하되 값은 읽지 않고 변경 뒤 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 58,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-bc9f3faa89c482075b3d",
+          "file": "analyzer-context.spec.mjs",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "질문·답변 목록의 제어 title과 정의 목록 의미 변경도 실행 전에 막는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 63,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.457Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-613baf27f6f61553d224",
+          "file": "analyzer-context.spec.mjs",
+          "line": 134,
+          "column": 1
+        },
+        {
+          "title": "정보 패널 버튼이 폼 제출 제어로 연결되면 이전 카드의 의미를 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 65,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.524Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-fb03447bd8be31d76576",
+          "file": "analyzer-context.spec.mjs",
+          "line": 150,
+          "column": 1
+        },
+        {
+          "title": "다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 62,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-60e273dd21118efaf3c4",
+          "file": "analyzer-context.spec.mjs",
+          "line": 159,
+          "column": 1
+        },
+        {
+          "title": "h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 82,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.658Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-f12946fd0deede2e2ac7",
+          "file": "analyzer-context.spec.mjs",
+          "line": 166,
+          "column": 1
+        },
+        {
+          "title": "낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 67,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.743Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-5cac4e718a1fd1641f63",
+          "file": "analyzer-context.spec.mjs",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 68,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-42e8bc0c6495d03d6a88",
+          "file": "analyzer-context.spec.mjs",
+          "line": 184,
+          "column": 1
+        },
+        {
+          "title": "동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 67,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.885Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-af0fa98c2cbb0fb0596f",
+          "file": "analyzer-context.spec.mjs",
+          "line": 192,
+          "column": 1
+        },
+        {
+          "title": "목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 72,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:23.955Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-a83fb3567807926c20eb",
+          "file": "analyzer-context.spec.mjs",
+          "line": 205,
+          "column": 1
+        },
+        {
+          "title": "동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 60,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.031Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d884fa331a8424a34ed1-7be6af9e722dc2c83229",
+          "file": "analyzer-context.spec.mjs",
+          "line": 221,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "navigation-utility.spec.mjs",
+      "file": "navigation-utility.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "명시된 breadcrumb navigation과 정확한 구조 표식은 위치 경로다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.097Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-fa1641f5f9acb56df4c3",
+          "file": "navigation-utility.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "breadcrumb 유사 class·일반 navigation 목록·본문 설명 링크는 보존한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 45,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.154Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-f671f7cae216341981ec",
+          "file": "navigation-utility.spec.mjs",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "rel의 정확한 home token만 위치 이동 표식으로 취급한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 52,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.203Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-dbc215cf19efeeb63b08",
+          "file": "navigation-utility.spec.mjs",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "명확한 skip 이름과 유일한 실제 main·navigation target을 연결한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 55,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.259Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-eef30f677e0e57d8d29a",
+          "file": "navigation-utility.spec.mjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "없는·중복·상호작용·편집 target과 모호한 skip 이름은 위치 기능으로 단정하지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.318Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-704e8bf170c7b85e43ee",
+          "file": "navigation-utility.spec.mjs",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "실제 readonly fragment 설명과 일반 링크는 breadcrumb나 skip으로 바꾸지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 55,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.383Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-20b8cf605aa1b81ecf34",
+          "file": "navigation-utility.spec.mjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "의미 있는 자식 메뉴가 있는 순수 JS·fragment 부모만 branch로 표시한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 50,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-d7601cb42a09b16b2220",
+          "file": "navigation-utility.spec.mjs",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "명시적인 disclosure는 같은 지역의 실제 menu/list만 가리켜야 한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 54,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.495Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-0e774e0dada6c105a374",
+          "file": "navigation-utility.spec.mjs",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "독립 문서 목적지·leaf JS·내용 없는 submenu는 branch로 만들지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 48,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.552Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-6c0b2b64aaaeb58829de",
+          "file": "navigation-utility.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "FAQ 답변과 readonly 패널은 aria-expanded나 목록이 있어도 보존한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-85fbf7d42ba29c5e6590",
+          "file": "navigation-utility.spec.mjs",
+          "line": 60,
+          "column": 1
+        },
+        {
+          "title": "form·editor·외부 form 소유 제어와 숨은 제어는 관계에서 제외한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 55,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.668Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-7ef119f4a51ff905f61f",
+          "file": "navigation-utility.spec.mjs",
+          "line": 65,
+          "column": 1
+        },
+        {
+          "title": "입력·checked·편집 내용의 getter를 호출하거나 결과로 내보내지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 50,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.727Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-9aca26e8080c54c027b2",
+          "file": "navigation-utility.spec.mjs",
+          "line": 70,
+          "column": 1
+        },
+        {
+          "title": "아래쪽 무관한 list·article heading은 직접 제어 관계를 대신하지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 57,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:53:24.781Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0486343b8bb734ff863-f61b13ef8c32464b5d9b",
+          "file": "navigation-utility.spec.mjs",
+          "line": 80,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T19:53:21.695Z",
+    "duration": 3167.697,
+    "expected": 41,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

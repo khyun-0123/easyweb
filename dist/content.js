@@ -70,43 +70,74 @@
   var breadcrumbName = /^(?:breadcrumbs?(?:\s+(?:trail|navigation))?|현재\s*위치(?:\s*안내)?|사이트\s*경로)$/i;
   var breadcrumbClass = /^(?:breadcrumbs?|breadcrumb[-_]nav(?:igation)?|breadcrumb[-_]trail)$/i;
   var noOpScript = /^javascript:\s*(?:;|void\s*\(\s*0\s*\)\s*;?)?$/i;
-  function visibleSource(element) {
-    return element.isConnected && !element.closest('[hidden],[inert],[aria-hidden="true" i],[aria-disabled="true" i]') && !!element.getClientRects().length && getComputedStyle(element).visibility !== "hidden";
+  function createNavigationCache() {
+    return { controls: /* @__PURE__ */ new WeakMap(), items: /* @__PURE__ */ new WeakMap(), menus: /* @__PURE__ */ new WeakMap(), breadcrumbs: /* @__PURE__ */ new WeakMap(), targets: /* @__PURE__ */ new Map(), visibility: /* @__PURE__ */ new WeakMap() };
   }
-  function uniqueTarget(id) {
+  function visibleSource(element, cache) {
+    const known = cache?.visibility.get(element);
+    if (known !== void 0) return known;
+    const visible = element.isConnected && !element.closest('[hidden],[inert],[aria-hidden="true" i],[aria-disabled="true" i]') && !!element.getClientRects().length && getComputedStyle(element).visibility !== "hidden";
+    cache?.visibility.set(element, visible);
+    return visible;
+  }
+  function uniqueTarget(id, cache) {
     if (!id || id.length > 128) return;
+    if (cache?.targets.has(id)) return cache.targets.get(id);
     const nodes = document.querySelectorAll(`#${CSS.escape(id)}`);
-    return nodes.length === 1 && nodes[0] instanceof HTMLElement ? nodes[0] : void 0;
+    const target = nodes.length === 1 && nodes[0] instanceof HTMLElement ? nodes[0] : void 0;
+    cache?.targets.set(id, target);
+    return target;
   }
-  function fragmentTarget(element) {
+  function fragmentTarget(element, cache) {
     const raw = element.getAttribute("href")?.trim() ?? "";
     if (!raw.startsWith("#") || raw.length < 2) return;
     try {
-      return uniqueTarget(decodeURIComponent(raw.slice(1)));
+      return uniqueTarget(decodeURIComponent(raw.slice(1)), cache);
     } catch {
       return;
     }
   }
-  function directItems(list) {
-    if (!list.matches(listSelector) || list.matches('[role~="tabpanel" i],[role~="listbox" i]')) return [];
+  function directItems(list, cache) {
+    const known = cache?.items.get(list);
+    if (known) return known;
+    if (!list.matches(listSelector) || list.matches('[role~="tabpanel" i],[role~="listbox" i]') || !list.childElementCount || list.childElementCount > 24) {
+      cache?.items.set(list, []);
+      return [];
+    }
     const children = [...list.children];
-    return children.length > 0 && children.length <= 24 && children.every((child) => child instanceof HTMLElement && child.matches(itemSelector)) ? children : [];
+    const items = children.every((child) => child instanceof HTMLElement && child.matches(itemSelector)) ? children : [];
+    cache?.items.set(list, items);
+    return items;
   }
-  function menuList(list) {
+  function menuList(list, cache) {
+    const known = cache?.menus.get(list);
+    if (known !== void 0) return known;
+    const menu = inspectMenuList(list, cache);
+    cache?.menus.set(list, menu);
+    return menu;
+  }
+  function inspectMenuList(list, cache) {
     if (list.closest(`${editable},${form},article,[role~="article" i]`) || list.querySelector(`${editable},${form}`)) return false;
-    const items = directItems(list);
+    const items = directItems(list, cache);
     return items.length > 0 && items.every((item) => item.matches('a[href],button,[role~="button" i]') || !!item.querySelector(':scope > a[href],:scope > button,:scope > [role~="button" i],:scope > div > a[href]'));
   }
-  function breadcrumb(element) {
+  function breadcrumb(element, cache) {
     const list = element.closest('ol,ul,[role~="list" i]');
     if (!list) return false;
-    const items = directItems(list);
+    const items = directItems(list, cache);
     if (!items.length || items.length > 12 || element.closest(itemSelector)?.parentElement !== list) return false;
+    const known = cache?.breadcrumbs.get(list);
+    if (known !== void 0) return known;
+    const isBreadcrumb = breadcrumbList(list, items.length);
+    cache?.breadcrumbs.set(list, isBreadcrumb);
+    return isBreadcrumb;
+  }
+  function breadcrumbList(list, itemCount) {
     for (let container = list, level = 0; container && level < 4; container = container.parentElement, level++) {
       if (container.matches("main,section,article,body")) break;
       const navigation = container.matches('nav,[role~="navigation" i]');
       if (breadcrumbName.test(container.getAttribute("aria-label") ?? "") && (navigation || container === list)) return true;
-      if (navigation && items.length >= 2 && (container.getAttribute("class") ?? "").split(/\s+/).some((token) => breadcrumbClass.test(token))) return true;
+      if (navigation && itemCount >= 2 && (container.getAttribute("class") ?? "").split(/\s+/).some((token) => breadcrumbClass.test(token))) return true;
     }
     return false;
   }
@@ -114,51 +145,58 @@
     if (/^(?:본문(?:\s*내용)?|주요\s*(?:내용|콘텐츠)|콘텐츠)(?:\s*(?:으로|로))?\s*(?:바로\s*가기|이동|건너\s*뛰기)$/.test(label) || /^(?:(?:skip|jump|go)(?:\s+directly)?\s+to\s+(?:the\s+)?(?:main\s+)?content|skip\s+(?:the\s+)?navigation)$/i.test(label)) return "content";
     if (/^(?:메뉴|주\s*메뉴|대\s*메뉴|주요\s*메뉴|메인\s*메뉴|내비게이션|네비게이션)(?:\s*(?:으로|로))?\s*(?:바로\s*가기|이동|건너\s*뛰기)$/.test(label) || /^(?:skip|jump|go)(?:\s+directly)?\s+to\s+(?:the\s+)?(?:main\s+)?(?:navigation|menu)$/i.test(label)) return "navigation";
   }
-  function skipTarget(target, kind) {
-    if (!visibleSource(target) || target.closest(`${editable},${form}`) || target.matches('a,button,[role~="button" i],[role~="tab" i],[role~="tabpanel" i]')) return false;
+  function skipTarget(target, kind, cache) {
+    if (!visibleSource(target, cache) || target.closest(`${editable},${form}`) || target.matches('a,button,[role~="button" i],[role~="tab" i],[role~="tabpanel" i]')) return false;
     if (kind === "content" && target.matches('main,[role~="main" i]') || kind === "navigation" && target.matches('nav,[role~="navigation" i]')) return true;
     if (!target.matches("div,section,ul,ol")) return false;
     if (kind === "content") return !!target.querySelector(`:scope > ${headingSelector},:scope > div > ${headingSelector}`);
-    return menuList(target) || [...target.querySelectorAll(":scope > ul,:scope > ol,:scope > div > ul,:scope > div > ol")].some(menuList);
+    return menuList(target, cache) || [...target.querySelectorAll(":scope > ul,:scope > ol,:scope > div > ul,:scope > div > ol")].some((list) => menuList(list, cache));
   }
-  function locallyControlled(element) {
+  function locallyControlled(element, cache) {
     const ids = (element.getAttribute("aria-controls") ?? "").split(/\s+/).filter(Boolean);
     if (ids.length !== 1) return;
-    const target = uniqueTarget(ids[0]);
+    const target = uniqueTarget(ids[0], cache);
     if (!target || target === element || element.contains(target) || element.closest(regionSelector) !== target.closest(regionSelector)) return;
     const parent = element.parentElement;
     return parent && parent !== document.body && (target.parentElement === parent || !!element.closest(itemSelector)?.contains(target)) ? target : void 0;
   }
-  function navigationUtility(element, label) {
-    if (!element.matches('a[href],button,[role~="button" i]') || !visibleSource(element) || element.closest(`${editable},${form}`) || element.querySelector(editable) || element instanceof HTMLButtonElement && !!element.form) return;
-    const name = label.normalize("NFKC").replace(/\s+/g, " ").trim();
-    if (!name || name.length > 100) return;
+  function navigationUtility(element, label, cache) {
+    const known = cache?.controls.get(element);
+    if (known?.label === label) return known.utility;
+    const utility2 = inspectNavigationUtility(element, label, cache);
+    cache?.controls.set(element, { label, utility: utility2 });
+    return utility2;
+  }
+  function inspectNavigationUtility(element, label, cache) {
+    if (!element.matches('a[href],button,[role~="button" i]') || !visibleSource(element, cache) || element.closest(`${editable},${form}`) || element.querySelector(editable) || element instanceof HTMLButtonElement && !!element.form) return;
+    const name2 = label.normalize("NFKC").replace(/\s+/g, " ").trim();
+    if (!name2 || name2.length > 100) return;
     const anchor = element instanceof HTMLAnchorElement;
     if (anchor) {
-      if ((element.getAttribute("rel") ?? "").split(/\s+/).some((token) => token.toLowerCase() === "home") || breadcrumb(element)) return "position";
-      const kind = skipKind(name), target = kind ? fragmentTarget(element) : void 0;
-      if (kind && target && skipTarget(target, kind)) return "position";
+      if ((element.getAttribute("rel") ?? "").split(/\s+/).some((token) => token.toLowerCase() === "home") || breadcrumb(element, cache)) return "position";
+      const kind = skipKind(name2), target = kind ? fragmentTarget(element, cache) : void 0;
+      if (kind && target && skipTarget(target, kind, cache)) return "position";
     }
-    if (element.matches('[role~="tab" i]') || element.closest('dl,[role~="tabpanel" i]') || /[?？]$/.test(name)) return;
+    if (element.matches('[role~="tab" i]') || element.closest('dl,[role~="tabpanel" i]') || /[?？]$/.test(name2)) return;
     const raw = element.getAttribute("href")?.trim() ?? "";
     if (anchor && raw && !raw.startsWith("#") && !/^javascript:/i.test(raw)) return;
     const expanded = /^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "");
     const popup = element.getAttribute("aria-haspopup")?.toLowerCase();
     if (popup && popup !== "menu" && popup !== "true") return;
-    const controls = element.hasAttribute("aria-controls");
-    if (controls) {
-      const target = locallyControlled(element);
-      return expanded && target && menuList(target) ? "branch" : void 0;
+    const controls3 = element.hasAttribute("aria-controls");
+    if (controls3) {
+      const target = locallyControlled(element, cache);
+      return expanded && target && menuList(target, cache) ? "branch" : void 0;
     }
     if (expanded && raw.startsWith("#") && raw.length > 1) {
-      const target = fragmentTarget(element);
-      return target && target.parentElement === element.parentElement && menuList(target) ? "branch" : void 0;
+      const target = fragmentTarget(element, cache);
+      return target && target.parentElement === element.parentElement && menuList(target, cache) ? "branch" : void 0;
     }
     const item = element.closest(itemSelector);
     const direct = item && (element.parentElement === item || element.parentElement?.parentElement === item) ? item.querySelector(`:scope > :is(${listSelector})`) : null;
-    if (direct && menuList(direct) && anchor && (raw === "#" || noOpScript.test(raw))) return "branch";
+    if (direct && menuList(direct, cache) && anchor && (raw === "#" || noOpScript.test(raw))) return "branch";
     const sibling = element.nextElementSibling;
-    if (expanded && sibling instanceof HTMLElement && menuList(sibling) && (popup === "menu" || popup === "true" || !!element.closest('nav,[role~="navigation" i]'))) return "branch";
+    if (expanded && sibling instanceof HTMLElement && menuList(sibling, cache) && (popup === "menu" || popup === "true" || !!element.closest('nav,[role~="navigation" i]'))) return "branch";
   }
 
   // src/analyzer.ts
@@ -258,12 +296,12 @@
     };
     let parent = element.parentElement;
     for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-      let headings3 = cache?.get(parent);
-      if (!headings3) {
-        headings3 = [...parent.querySelectorAll(`:scope > ${headingSelector2}, :scope > :is(div,section) > ${headingSelector2}, :scope > :is(div,section) > :is(div,section) > ${headingSelector2}`)].map((heading2) => ({ element: heading2, label: clean(getSafeLabel(heading2)), visible: isVisible(heading2) }));
-        cache?.set(parent, headings3);
+      let summary = cache?.get(parent);
+      if (!summary) {
+        summary = { headings: [...parent.querySelectorAll(`:scope > ${headingSelector2}, :scope > :is(div,section) > ${headingSelector2}, :scope > :is(div,section) > :is(div,section) > ${headingSelector2}`)].map((heading2) => ({ element: heading2, label: clean(getSafeLabel(heading2)), visible: isVisible(heading2) })) };
+        cache?.set(parent, summary);
       }
-      const preceding = headings3.filter(({ element: heading2, visible }) => {
+      const preceding = summary.headings.filter(({ element: heading2, visible }) => {
         let branch = heading2;
         while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
         if (branch !== heading2 && branch.contains(element)) return false;
@@ -271,11 +309,15 @@
       });
       const label = preceding.at(-1);
       if (label) add(label.label);
-      if (!label && level < 2 && parent.querySelectorAll("a, button, input").length <= 3) {
-        const firstParagraph = parent.querySelector(":scope > p");
-        if (firstParagraph && isVisible(firstParagraph) && firstParagraph.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING) {
-          const text = clean(staticText(firstParagraph));
-          if (text && text.length <= 40) add(text);
+      if (!label && level < 2) {
+        if (summary.paragraph === void 0) {
+          const paragraph2 = parent.querySelector(":scope > p");
+          const visible = !!paragraph2 && parent.querySelectorAll("a, button, input").length <= 3 && isVisible(paragraph2);
+          summary.paragraph = paragraph2 && visible ? { element: paragraph2, label: clean(staticText(paragraph2)), visible } : null;
+        }
+        const paragraph = summary.paragraph;
+        if (paragraph?.visible && paragraph.element.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING) {
+          if (paragraph.label && paragraph.label.length <= 40) add(paragraph.label);
         }
       }
       if (labels.length >= 3) break;
@@ -287,8 +329,8 @@
     if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return "help";
     const words = (location.pathname.split("/").at(-1) ?? "").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2").replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase().split(/[^a-z]+/).filter(Boolean);
     if (words.some((word) => /^(?:instruction|instructions)$/.test(word)) || words.some((word, index) => word === "action" && /^tips?$/.test(words[index + 1] ?? ""))) return "help";
-    const headings3 = document.querySelectorAll(`main > ${headingSelector2}, [role~="main"] > ${headingSelector2}, .page-title > ${headingSelector2}`);
-    for (const heading2 of headings3) {
+    const headings5 = document.querySelectorAll(`main > ${headingSelector2}, [role~="main"] > ${headingSelector2}, .page-title > ${headingSelector2}`);
+    for (const heading2 of headings5) {
       if (!isVisible(heading2)) continue;
       const text = clean(getSafeLabel(heading2));
       if (text.length > 60) continue;
@@ -333,14 +375,14 @@
     let summary = cache?.get(container);
     if (!summary) {
       const eligible = (peer) => !peer.closest(collectionExcludedSelector) && !((peer instanceof HTMLButtonElement || peer instanceof HTMLInputElement) && peer.form) && isInformationTopicLabel(candidateLabel(peer));
-      const controls = tabs ? [...container.querySelectorAll('[role~="tab" i]')].filter((peer) => peer.closest(collectionSelector) === container && eligible(peer)) : [...container.querySelectorAll(':scope > li, :scope > [role~="listitem" i]')].flatMap((item) => {
+      const controls3 = tabs ? [...container.querySelectorAll('[role~="tab" i]')].filter((peer) => peer.closest(collectionSelector) === container && eligible(peer)) : [...container.querySelectorAll(':scope > li, :scope > [role~="listitem" i]')].flatMap((item) => {
         const control2 = [...item.querySelectorAll(collectionControlSelector)].find((peer) => peer.closest(collectionSelector) === container && eligible(peer));
         return control2 ? [control2] : [];
       });
       let peers = 0;
       let informationPeer = false;
       let facets = 0;
-      for (const peer of controls) {
+      for (const peer of controls3) {
         const label = candidateLabel(peer);
         if (!label) continue;
         peers = Math.min(2, peers + 1);
@@ -391,8 +433,8 @@
   }
   function cardTitle(element, cache) {
     if (element.hasAttribute("aria-label") || element.hasAttribute("aria-labelledby")) return {};
-    const fixedTitles = (container) => [...container.querySelectorAll(`${headingSelector2},strong,b`)].filter((node) => !node.closest(editableSelector) && withinContentBranch(node, container) && isVisible(node)).filter((node) => !node.parentElement?.closest(`${headingSelector2},strong,b`)).map((node) => ({ node, label: clean(staticText(node)) })).filter(({ label }) => isInformationTopicLabel(label));
-    const titles = fixedTitles(element);
+    const fixedTitles2 = (container) => [...container.querySelectorAll(`${headingSelector2},strong,b`)].filter((node) => !node.closest(editableSelector) && withinContentBranch(node, container) && isVisible(node)).filter((node) => !node.parentElement?.closest(`${headingSelector2},strong,b`)).map((node) => ({ node, label: clean(staticText(node)) })).filter(({ label }) => isInformationTopicLabel(label));
+    const titles = fixedTitles2(element);
     if (titles.length === 1 && !element.querySelector(collectionControlSelector)) {
       const { node, label } = titles[0];
       const description = [...element.querySelectorAll("p,div,dl,ul")].some((block) => !block.contains(node) && !block.closest(editableSelector) && isVisible(block) && !!clean(staticText(block)) && !!(node.compareDocumentPosition(block) & Node.DOCUMENT_POSITION_FOLLOWING));
@@ -407,7 +449,7 @@
         cache?.set(parent, summary);
       }
       if (summary.cardControls.length !== 1 || summary.cardControls[0] !== element) break;
-      const neighbours = fixedTitles(parent).filter(({ node }) => !element.contains(node) && !!(node.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING));
+      const neighbours = fixedTitles2(parent).filter(({ node }) => !element.contains(node) && !!(node.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING));
       if (neighbours.length === 1) return { title: neighbours[0].label, relatedLabel: neighbours[0].label };
     }
     return {};
@@ -441,15 +483,15 @@
     if (!container || container.matches("body,main,section,article,form,header,footer") || container.childElementCount > 24) return empty;
     let summary = cache?.get(container);
     if (!summary?.topicControls) {
-      const controls2 = [...container.querySelectorAll(collectionControlSelector)].filter((control2) => !control2.closest(collectionExcludedSelector) && !(control2 instanceof HTMLButtonElement && control2.form) && isInformationTopicLabel(candidateLabel(control2)) && (semanticCollection ? control2.closest(collectionSelector) === container : control2.parentElement === container || control2.parentElement?.parentElement === container));
-      summary = { ...summary, topicControls: controls2 };
+      const controls4 = [...container.querySelectorAll(collectionControlSelector)].filter((control2) => !control2.closest(collectionExcludedSelector) && !(control2 instanceof HTMLButtonElement && control2.form) && isInformationTopicLabel(candidateLabel(control2)) && (semanticCollection ? control2.closest(collectionSelector) === container : control2.parentElement === container || control2.parentElement?.parentElement === container));
+      summary = { ...summary, topicControls: controls4 };
       cache?.set(container, summary);
     }
-    const controls = summary.topicControls;
-    if (controls.length < 2 || controls.length > 12 || !controls.includes(element)) return empty;
+    const controls3 = summary.topicControls;
+    if (controls3.length < 2 || controls3.length > 12 || !controls3.includes(element)) return empty;
     if (!summary.followingHeadings) {
-      const headings3 = followingContentHeadings(container, cache);
-      summary = { ...summary, followingHeadings: headings3 };
+      const headings5 = followingContentHeadings(container, cache);
+      summary = { ...summary, followingHeadings: headings5 };
       cache?.set(container, summary);
     }
     const associatedHeadings = [...summary.followingHeadings];
@@ -459,13 +501,13 @@
         for (const label of fixedHeadingLabels(target)) if (!associatedHeadings.includes(label)) associatedHeadings.push(label);
       }
     }
-    const controlledTopic = controlsTarget(element) && controls.filter(controlsTarget).length >= 2 || expanded(element) && controls.filter(expanded).length >= 2 || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]') || !!element.closest('[role~="group" i]') && controls.every((control2) => !!control2.closest('[role~="group" i]'));
+    const controlledTopic = controlsTarget(element) && controls3.filter(controlsTarget).length >= 2 || expanded(element) && controls3.filter(expanded).length >= 2 || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]') || !!element.closest('[role~="group" i]') && controls3.every((control2) => !!control2.closest('[role~="group" i]'));
     const linkedTopic = controlsTarget(element) || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]');
     const localParent = container.parentElement;
     const outsideCollection = localParent?.matches("div") ? [...localParent.children].filter((child) => child !== container) : [];
     const isolatedCollection = !outsideCollection.some((child) => child.matches(`${contentBoundarySelector},${editableSelector},${collectionControlSelector}`) || child.querySelector(`${contentBoundarySelector},${editableSelector},${collectionControlSelector}`));
-    const collectionPeers = semanticCollection && isolatedCollection && !container.querySelector(`form,[role~="form" i],${editableSelector}`) ? controls.map((control2) => ({ label: candidateLabel(control2), ...sourceAction(control2, candidateLabel(control2)), isLink: control2.matches("a[href]") })) : [];
-    return { topicPeers: Math.min(controls.length, 2), controlledTopic, linkedTopic, associatedHeadings, collectionPeers };
+    const collectionPeers = semanticCollection && isolatedCollection && !container.querySelector(`form,[role~="form" i],${editableSelector}`) ? controls3.map((control2) => ({ label: candidateLabel(control2), ...sourceAction(control2, candidateLabel(control2)), isLink: control2.matches("a[href]") })) : [];
+    return { topicPeers: Math.min(controls3.length, 2), controlledTopic, linkedTopic, associatedHeadings, collectionPeers };
   }
   var preparationNodeIds = /* @__PURE__ */ new WeakMap();
   var nextPreparationNodeId = 1;
@@ -512,16 +554,16 @@
     let parent = table.parentElement;
     for (let level = 0; parent && parent !== document.body && level < 6; level++, parent = parent.parentElement) {
       if (parent.matches('article,aside,nav,header,footer,[role~="article" i],[role~="navigation" i],[role~="banner" i],[role~="contentinfo" i]')) break;
-      const headings3 = [...parent.querySelectorAll(`:scope > ${headingSelector2}, :scope > div > ${headingSelector2}`)];
-      const heading2 = headings3.filter((node) => headingBelongsTo(node, table) && !!(node.compareDocumentPosition(table) & Node.DOCUMENT_POSITION_FOLLOWING)).at(-1);
+      const headings5 = [...parent.querySelectorAll(`:scope > ${headingSelector2}, :scope > div > ${headingSelector2}`)];
+      const heading2 = headings5.filter((node) => headingBelongsTo(node, table) && !!(node.compareDocumentPosition(table) & Node.DOCUMENT_POSITION_FOLLOWING)).at(-1);
       if (heading2) return preparationPurposeName(fixedPreparationName(heading2, 120)) ? heading2 : void 0;
       if (parent.matches('main,section,[role~="main" i],[role~="region" i]')) break;
     }
   }
-  function preparationDownloadMarker(element, name) {
+  function preparationDownloadMarker(element, name2) {
     const file = /\.(?:pdf|hwp|hwpx|docx?|zip)$/i;
-    const operation = /^(?:pdf|hwp|hwpx|docx?|zip)\s*(?:파일\s*|file\s*)?(?:다운로드|내려\s*받기|download)$/i;
-    if (file.test(name) || operation.test(name) || operation.test(element.getAttribute("title") ?? "") || file.test(element.getAttribute("download") ?? "")) return true;
+    const operation2 = /^(?:pdf|hwp|hwpx|docx?|zip)\s*(?:파일\s*|file\s*)?(?:다운로드|내려\s*받기|download)$/i;
+    if (file.test(name2) || operation2.test(name2) || operation2.test(element.getAttribute("title") ?? "") || file.test(element.getAttribute("download") ?? "")) return true;
     try {
       return file.test(new URL(element.getAttribute("href") ?? "", document.baseURI).pathname);
     } catch {
@@ -533,8 +575,8 @@
     const row = element.closest("tr");
     const table = row?.closest("table");
     if (!(row instanceof HTMLTableRowElement) || !(table instanceof HTMLTableElement) || row.querySelector(`table,[role~="grid" i],${editableSelector}`)) return;
-    const name = fixedPreparationName(element, 100);
-    if (!name || sourceAction(element, name).action !== "locate" || !preparationDownloadMarker(element, name)) return;
+    const name2 = fixedPreparationName(element, 100);
+    if (!name2 || sourceAction(element, name2).action !== "locate" || !preparationDownloadMarker(element, name2)) return;
     let rowSummary = cache?.get(row);
     if (!rowSummary?.preparationAttachments) {
       const attachments = /* @__PURE__ */ new Map();
@@ -573,8 +615,8 @@
             ...title.querySelectorAll("*")
           ];
           for (const source of sources) {
-            const fixedName2 = fixedPreparationName(source, 100);
-            if (!fixedName2 || sourceAction(source, fixedName2).action !== "locate" || !preparationDownloadMarker(source, fixedName2)) continue;
+            const fixedName4 = fixedPreparationName(source, 100);
+            if (!fixedName4 || sourceAction(source, fixedName4).action !== "locate" || !preparationDownloadMarker(source, fixedName4)) continue;
             const lineage = [];
             for (const node of [source, title, layout.purpose]) {
               for (let parent = node, level = 0; parent && parent !== document.body && level < 10; parent = parent.parentElement, level++) lineage.push(parent);
@@ -593,7 +635,7 @@
     const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
     const form3 = element.closest('form, [role~="form" i]') ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
     const metadataWords = (text) => text.replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase().split(/[^a-z]+/).filter(Boolean);
-    const searchMetadata = (target) => ["id", "class"].some((name) => metadataWords(target.getAttribute(name) ?? "").includes("search")) || /검색|\bsearch\b/i.test(target.getAttribute("aria-label") ?? "");
+    const searchMetadata = (target) => ["id", "class"].some((name2) => metadataWords(target.getAttribute(name2) ?? "").includes("search")) || /검색|\bsearch\b/i.test(target.getAttribute("aria-label") ?? "");
     const filter = bodyControl && !!form3 && searchMetadata(form3) && searchMetadata(element) && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
     let title;
     let cardRelatedLabel;
@@ -623,13 +665,13 @@
         const attachmentColumn = (text) => /^(?:첨부|서식|첨부파일|attachment|forms?)$/i.test(text);
         const download = (control2) => /^(?:자료\s*받기|다운로드|서식\s*받기|download)$/i.test(candidateLabel(control2));
         const cells = [...row.querySelectorAll(':scope > td, :scope > th, :scope > [role~="cell" i], :scope > [role~="gridcell" i]')];
-        const controls = [...row.querySelectorAll('a[href], button, [role~="button" i]')].filter((control2) => control2.closest('tr, [role~="row" i]') === row && !!candidateLabel(control2));
+        const controls3 = [...row.querySelectorAll('a[href], button, [role~="button" i]')].filter((control2) => control2.closest('tr, [role~="row" i]') === row && !!candidateLabel(control2));
         const columns = tableSummary.columns;
         const materials = /* @__PURE__ */ new Map();
         if (columns.some(titleColumn) && columns.some(attachmentColumn)) {
           if (cells.length === columns.length) {
-            const titles = cells.flatMap((cell, index) => titleColumn(columns[index]) ? controls.filter((control2) => control2.matches("a[href]") && cell.contains(control2)).slice(0, 1) : []);
-            const attachments = controls.filter((control2) => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control2)) && download(control2));
+            const titles = cells.flatMap((cell, index) => titleColumn(columns[index]) ? controls3.filter((control2) => control2.matches("a[href]") && cell.contains(control2)).slice(0, 1) : []);
+            const attachments = controls3.filter((control2) => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control2)) && download(control2));
             if (titles.length && attachments.length) {
               const labels = [...new Set(titles.map(candidateLabel))];
               titles.forEach((control2) => materials.set(control2, candidateLabel(control2)));
@@ -643,10 +685,10 @@
       materialRow = rowSummary.materials.has(element);
       relatedLabel = rowSummary.materials.get(element);
     }
-    const preparation = preparationAttachmentEvidence(element, cache);
-    const preparationAttachment = !!preparation;
-    const preparationAttachmentNodes = preparation?.nodes ?? [];
-    if (preparation) relatedLabel = preparation.label;
+    const preparation2 = preparationAttachmentEvidence(element, cache);
+    const preparationAttachment = !!preparation2;
+    const preparationAttachmentNodes = preparation2?.nodes ?? [];
+    if (preparation2) relatedLabel = preparation2.label;
     let informationPanels = false;
     if (bodyControl && !form3 && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "")) {
       const parent2 = element.parentElement;
@@ -667,8 +709,8 @@
       };
       let summary = cache?.get(parent2);
       if (!summary?.panels) {
-        const controls = [...parent2.children].filter((child) => child instanceof HTMLElement && child.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(child.getAttribute("aria-expanded") ?? "") && !(child instanceof HTMLButtonElement && child.form) && isInformationTopicLabel(candidateLabel(child)));
-        const panels = controls.length >= 2 && controls.filter((control2) => /(?:안내|절차|방법|예시|기준|종류)$/.test(candidateLabel(control2))).length >= 2 ? new Set(controls) : /* @__PURE__ */ new Set();
+        const controls3 = [...parent2.children].filter((child) => child instanceof HTMLElement && child.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(child.getAttribute("aria-expanded") ?? "") && !(child instanceof HTMLButtonElement && child.form) && isInformationTopicLabel(candidateLabel(child)));
+        const panels = controls3.length >= 2 && controls3.filter((control2) => /(?:안내|절차|방법|예시|기준|종류)$/.test(candidateLabel(control2))).length >= 2 ? new Set(controls3) : /* @__PURE__ */ new Set();
         summary = { ...summary, panels };
         cache?.set(parent2, summary);
       }
@@ -680,11 +722,11 @@
     if (parent) {
       let summary = cache?.get(parent);
       if (!summary?.groups) {
-        const controls = [...parent.children].filter((child) => child.matches('[role~="group" i]')).flatMap((child) => {
+        const controls3 = [...parent.children].filter((child) => child.matches('[role~="group" i]')).flatMap((child) => {
           const groupControls = [...child.querySelectorAll('a[href], button, [role~="button" i]')].filter((control2) => !control2.closest('form, [role~="form" i]') && !(control2 instanceof HTMLButtonElement && control2.form) && !!candidateLabel(control2));
           return groupControls.length === 1 ? groupControls : [];
         });
-        summary = { ...summary, groups: controls.length >= 2 ? new Set(controls) : /* @__PURE__ */ new Set() };
+        summary = { ...summary, groups: controls3.length >= 2 ? new Set(controls3) : /* @__PURE__ */ new Set() };
         cache?.set(parent, summary);
       }
       grouped = summary.groups.has(element);
@@ -692,13 +734,17 @@
     const topics = bodyControl && !form3 ? topicEvidence(element, cache) : { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [], collectionPeers: [] };
     return { filter, title, materialRow, preparationAttachment, preparationAttachmentNodes, relatedLabel, informationPanels, grouped, ...topics };
   }
-  function sourceSnapshot(element, safeLabel = candidateLabel(element), collectionCache, includeCollection = false, includeSupplemental = false, supplementalCache) {
+  function sourceSnapshot(element, safeLabel = candidateLabel(element), collectionCache, includeCollection = false, includeSupplemental = false, supplementalCache, navigationCache) {
     return {
       pageUrl: location.href,
       baseUrl: document.baseURI,
       attributes: JSON.stringify([
-        ...["href", "target", "onclick", "aria-controls", "aria-current", "aria-expanded", "download", "type", "form", "role", "title", "placeholder", "contenteditable"].map((name) => element.getAttribute(name)),
-        element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? [element.type, !!element.form] : null,
+        ...["href", "target", "onclick", "aria-controls", "aria-current", "aria-expanded", "download", "type", "form", "role", "title", "placeholder", "contenteditable"].map((name2) => element.getAttribute(name2)),
+        element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? [
+          element.type,
+          !!element.form,
+          element.form ? ["action", "method", "onsubmit"].map((name2) => element.form.getAttribute(name2)) : null
+        ] : null,
         document.querySelector("base[target]")?.getAttribute("target"),
         [...element.querySelectorAll(":scope > abbr")].map((marker) => [marker.getAttribute("title"), isVisible(marker)]),
         !!element.closest('table, [role~="grid"]'),
@@ -718,13 +764,14 @@
         !!element.closest('form, [role~="form" i]'),
         sourceDownloadEvidence(element, safeLabel),
         sourceAction(element, safeLabel),
-        navigationUtility(element, safeLabel) ?? null
+        navigationUtility(element, safeLabel, navigationCache) ?? null
       ])
     };
   }
   function analyzePage() {
     const commonPurpose = documentPurpose();
     const contextCache = /* @__PURE__ */ new WeakMap();
+    const navigationCache = createNavigationCache();
     const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
     const elements = document.querySelectorAll(selector + (commonPurpose === "academic-calendar" ? ', table a:not([href]), [role~="grid"] a:not([href])' : ""));
     const candidates = [];
@@ -760,7 +807,7 @@
         context: sourceContext(element),
         score: 0,
         reasons: [],
-        snapshot: sourceSnapshot(element, label),
+        snapshot: sourceSnapshot(element, label, void 0, false, false, void 0, navigationCache),
         sectionLabel: labels[0],
         contextLabels: labels,
         pagePurpose: pagePurpose(element, labels, commonPurpose ?? null)
@@ -810,8 +857,8 @@
   }
   function headingName(element, hidden = false) {
     if (!element.matches(headingSelector3) || element.closest(editable3) || element.hasAttribute("aria-labelledby")) return "";
-    const name = normalize(hidden ? getSafeLabel(element) : candidateLabel(element));
-    return name.length >= 2 && name.length <= 100 ? name : "";
+    const name2 = normalize(hidden ? getSafeLabel(element) : candidateLabel(element));
+    return name2.length >= 2 && name2.length <= 100 ? name2 : "";
   }
   function headings(container, hidden = false) {
     const nodes = [...container.querySelectorAll(headingSelector3)];
@@ -836,7 +883,7 @@
       return ["unresolved"];
     }
   }
-  function evidence(candidate, adapter, rule, category, dependencies, score = 70, facts = {}) {
+  function evidence(candidate, cache, adapter, rule, category, dependencies, score = 70, facts = {}) {
     const unique = evidenceNodes([candidate.element, ...dependencies], dependencies.filter((node) => node.matches(".s_tit,p")));
     if (!unique) return;
     return {
@@ -864,31 +911,37 @@
         !!facts.readonlyPanel,
         facts.contentScope ?? "",
         facts.tokens ?? [],
-        unique.map((node) => [
-          node.tagName,
-          ...["id", "class", "role", "aria-controls", "aria-expanded", "aria-hidden", "hidden"].map((name) => node.getAttribute(name)),
-          node instanceof HTMLElement ? linkStructure(node) : null,
-          node instanceof HTMLElement && node.matches(headingSelector3) ? headingName(node, true) : node instanceof HTMLElement && node.matches("a[href],button,.s_tit") ? fixedName(node) : ""
-        ])
+        unique.map((node) => {
+          const previous = cache?.get(node);
+          if (previous?.nodeFacts) return previous.nodeFacts;
+          const nodeFacts = [
+            node.tagName,
+            ...["id", "class", "role", "aria-controls", "aria-expanded", "aria-hidden", "hidden"].map((name2) => node.getAttribute(name2)),
+            node instanceof HTMLElement ? linkStructure(node) : null,
+            node instanceof HTMLElement && node.matches(headingSelector3) ? headingName(node, true) : node instanceof HTMLElement && node.matches("a[href],button,.s_tit") ? fixedName(node) : ""
+          ];
+          cache?.set(node, { ...previous, nodeFacts });
+          return nodeFacts;
+        })
       ])
     };
   }
-  function education(candidate, name) {
-    if (serviceEntry.test(name)) return;
+  function education(candidate, name2, cache) {
+    if (serviceEntry.test(name2)) return;
     const element = candidate.element;
     const root = element.closest("#contents");
     if (!root) return;
     const titles = headings(root).filter((node) => /교육|훈련/.test(headingName(node)));
     if (!titles.length) return;
     const menu = element.closest("#lnbmenu");
-    if (menu && element.matches("a[href]") && element.closest("li") && /(?:교육|훈련)/.test(name) && /(?:개요|계획|자료|안내|소개)$/.test(name)) {
+    if (menu && element.matches("a[href]") && element.closest("li") && /(?:교육|훈련)/.test(name2) && /(?:개요|계획|자료|안내|소개)$/.test(name2)) {
       const destination2 = sourceURL(element);
       if (destination2 && /^(?:\/safekorea-kor\/edtr\/|\/safekorea-kor\/cmmn\/bbs\/)/.test(destination2.pathname)) {
-        return evidence(candidate, "safekorea-education", "local-reading-menu", "help", [root, menu, ...titles], 65, { contentScope: "navigation" });
+        return evidence(candidate, cache, "safekorea-education", "local-reading-menu", "help", [root, menu, ...titles], 65, { contentScope: "navigation" });
       }
     }
     const tabs = element.closest(".tab-area");
-    if (!tabs || element.parentElement !== tabs || !element.matches("button.tab-list") || !/^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "") || !/(?:교육|훈련)/.test(name) || !/(?:개요|개념|안내|소개)$/.test(name)) return;
+    if (!tabs || element.parentElement !== tabs || !element.matches("button.tab-list") || !/^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "") || !/(?:교육|훈련)/.test(name2) || !/(?:개요|개념|안내|소개)$/.test(name2)) return;
     const peers = [...tabs.children].filter((node) => node instanceof HTMLElement && node.matches("button.tab-list[aria-expanded]") && !!candidateLabel(node));
     if (peers.length < 2 || peers.length > 8 || !peers.includes(element) || peers.some((peer) => !/^(?:true|false)$/i.test(peer.getAttribute("aria-expanded") ?? ""))) return;
     const panels = peers.map((peer) => peer.nextElementSibling);
@@ -898,6 +951,7 @@
     if (!panelHeadings.length) return;
     return evidence(
       candidate,
+      cache,
       "safekorea-education",
       "local-overview-panels",
       "help",
@@ -906,9 +960,9 @@
       { contentScope: "content" }
     );
   }
-  function pension(candidate, name) {
+  function pension(candidate, name2, cache) {
     const element = candidate.element;
-    if (!element.matches("a[href]") || serviceEntry.test(name) || /(?:납부|결제|지급|환급|삭제|탈퇴)(?:\s*하기)?$/.test(name)) return;
+    if (!element.matches("a[href]") || serviceEntry.test(name2) || /(?:납부|결제|지급|환급|삭제|탈퇴)(?:\s*하기)?$/.test(name2)) return;
     const wrap = element.closest(".tabWrap.con-tab");
     const nav = element.closest("ul.tabNav");
     if (!wrap || !nav || nav.parentElement !== wrap || !element.closest("li")) return;
@@ -926,14 +980,15 @@
     if (!panel.matches("div.tabPage") || panel.closest(".tabWrap.con-tab") !== wrap || !panel.parentElement?.matches("div.tabContents") || panel.parentElement.parentElement !== wrap || panel.closest(editable3)) return;
     const peers = [...nav.querySelectorAll(":scope > li > a[href]")];
     if (peers.length < 2 || peers.length > 12 || !peers.includes(element)) return;
-    const titles = headings(panel, true).filter((node) => headingName(node, true) === name);
+    const titles = headings(panel, true).filter((node) => headingName(node, true) === name2);
     if (!titles.length) return;
     const interactiveRoles = ["button", "link", "checkbox", "radio", "switch", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "treeitem", "tab", "dialog"].map((role) => `[role~="${role}" i]`).join(",");
     const interactivePanel = `${editable3},${excluded},a,button,label[for],${interactiveRoles},[tabindex],[onclick],iframe,object,embed,details,summary,audio[controls],video[controls]`;
     const readonlyPanel = !panel.matches(interactivePanel) && !panel.querySelector(interactivePanel);
-    if (!readonlyPanel && !/(?:국민\s*연금|사회\s*보장|노후)/.test(name)) return;
+    if (!readonlyPanel && !/(?:국민\s*연금|사회\s*보장|노후)/.test(name2)) return;
     return evidence(
       candidate,
+      cache,
       "nps-explanation",
       "named-local-explanation-panel",
       "help",
@@ -942,8 +997,8 @@
       readonlyPanel ? { readonlyPanel: true, contentScope: "content" } : {}
     );
   }
-  function university(candidate, name) {
-    const academic = academicTabs(candidate, name);
+  function university(candidate, name2, cache) {
+    const academic = academicTabs(candidate, name2, cache);
     if (academic) return academic;
     const element = candidate.element;
     const board = element.closest(".common-board");
@@ -953,14 +1008,17 @@
     const destination2 = sourceURL(element);
     if (!destination2 || destination2.pathname !== location.pathname) return;
     if (!["articleNo", "articleId", "article_no", "article_id"].some((key) => destination2.searchParams.has(key))) return;
-    const boardTitles = headings(board).filter((node) => /(?:IT|전산|정보화|서비스).*게시판/i.test(headingName(node)));
+    const cachedBoard = cache?.get(board);
+    const boardTitles = cachedBoard?.boardTitles ?? headings(board).filter((node) => /(?:IT|전산|정보화|서비스).*게시판/i.test(headingName(node)));
+    if (cache && !cachedBoard?.boardTitles) cache.set(board, { ...cachedBoard, boardTitles });
     if (!boardTitles.length) return;
-    const label = name.replace(/^\[[^\]]{1,30}\]\s*/, "");
+    const label = name2.replace(/^\[[^\]]{1,30}\]\s*/, "");
     const incident = /일시\s*(?:중지|중단|장애|순단)|(?:서비스|시스템|네트워크|서버|접속|운영).{0,24}(?:중지|중단|장애|순단)|(?:점검|이관|패치|업그레이드).{0,24}(?:작업|일정)|(?:운영\s*방법|정책|서비스).{0,12}변경/.test(label);
     const instruction = /(?:설치|설정|사용|이용|활용|추가|해결|복구|대처|대응).{0,24}(?:방법|절차|매뉴얼|설명서|가이드|안내)/.test(label);
     if (incident === instruction) return;
     return evidence(
       candidate,
+      cache,
       "smu-it-documents",
       incident ? "incident-document" : "instruction-document",
       incident ? "notice" : "help",
@@ -975,9 +1033,9 @@
     const destination2 = sourceURL(element);
     return !!destination2 && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(destination2.pathname) && !/\/(?:apply|application|reserve|reservation|login|signin|sso|portal|issue)\.do$/i.test(destination2.pathname) && !["articleNo", "articleId", "article_no", "article_id"].some((key) => destination2.searchParams.has(key));
   }
-  function academicTabs(candidate, name) {
+  function academicTabs(candidate, name2, cache) {
     const element = candidate.element;
-    if (!element.matches("a[href]") || !academicTopic.test(name) || academicOperation.test(name)) return;
+    if (!element.matches("a[href]") || !academicTopic.test(name2) || academicOperation.test(name2)) return;
     const list = element.closest("ul.tab-ul");
     const outer = element.closest(".tab-outer");
     if (!list || !outer || !outer.contains(list) || !outer.parentElement?.matches(".contents-wrap")) return;
@@ -989,8 +1047,8 @@
     if (titles.length !== 1) return;
     const peers = [...list.querySelectorAll(":scope > li > a[href]")];
     if (peers.length < 2 || peers.length > 12 || !peers.includes(element) || !academicDocument(element)) return;
-    const selected2 = peers.filter((peer) => peer.parentElement?.matches(".active,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
-    if (selected2.length !== 1 || normalize(candidateLabel(selected2[0])) !== headingName(titles[0]) || !academicTopic.test(headingName(titles[0]))) return;
+    const selected4 = peers.filter((peer) => peer.parentElement?.matches(".active,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
+    if (selected4.length !== 1 || normalize(candidateLabel(selected4[0])) !== headingName(titles[0]) || !academicTopic.test(headingName(titles[0]))) return;
     const educational = peers.filter((peer) => {
       const label = normalize(candidateLabel(peer));
       return !!label && academicTopic.test(label) && !academicOperation.test(label) && academicDocument(peer);
@@ -998,10 +1056,11 @@
     if (educational.length < 2 || educational.length <= peers.length / 2) return;
     return evidence(
       candidate,
+      cache,
       "smu-academic-documents",
       "selected-topic-following-content",
       "academic",
-      [outer.parentElement, outer, list, section, content, ...titles, ...selected2, ...educational],
+      [outer.parentElement, outer, list, section, content, ...titles, ...selected4, ...educational],
       70,
       { contentScope: "navigation" }
     );
@@ -1011,21 +1070,21 @@
     if (!element.matches("button.download_btn") || element.closest(`${editable3},${excluded}`) || !candidateLabel(element)) return;
     const heading2 = element.parentElement;
     const branch = element.closest(".link_api_cont");
-    const name = normalize(candidateLabel(element));
-    if (!heading2?.matches("h4.tit") || !branch || heading2.parentElement !== branch || !guideDownloadName.test(name) || headingName(heading2) !== name) return;
+    const name2 = normalize(candidateLabel(element));
+    if (!heading2?.matches("h4.tit") || !branch || heading2.parentElement !== branch || !guideDownloadName.test(name2) || headingName(heading2) !== name2) return;
     return { heading: heading2, branch };
   }
   function semanticTabName(element) {
-    const name = normalize(candidateLabel(element));
+    const name2 = normalize(candidateLabel(element));
     const state = [...element.querySelectorAll(":scope > .sr-only")].some((node) => /^(?:선택됨|selected)$/i.test(normalize(candidateLabel(node))));
-    return state ? name.replace(/\s*(?:선택됨|selected)$/i, "").trim() : name;
+    return state ? name2.replace(/\s*(?:선택됨|selected)$/i, "").trim() : name2;
   }
   var copyTopic = /복사|복제|출력|인쇄|스캔/;
-  function copyingTabs(candidate, region, info, slider, wrapper, peers) {
+  function copyingTabs(candidate, region, info, slider, wrapper, peers, cache) {
     const titles = [...info.querySelectorAll(":scope > h3")].filter((node) => copyTopic.test(headingName(node)));
     if (!titles.length || peers.some((peer) => !copyTopic.test(semanticTabName(peer)))) return;
-    const selected2 = peers.filter((peer) => peer.parentElement?.matches(".on,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
-    if (selected2.length !== 1) return;
+    const selected4 = peers.filter((peer) => peer.parentElement?.matches(".on,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
+    if (selected4.length !== 1) return;
     const bodies = [...region.querySelectorAll(":scope > .content_wrap > .sub_content > .copy_data_wrap")];
     if (bodies.length !== 1 || bodies[0].closest(excluded)) return;
     const body = bodies[0];
@@ -1035,6 +1094,7 @@
     if (!instruction.length) return;
     return evidence(
       candidate,
+      cache,
       "nl-reading-guides",
       "local-copying-instruction-tabs",
       "help",
@@ -1047,15 +1107,15 @@
         ...titles,
         ...instruction,
         ...peers,
-        ...selected2.map((peer) => peer.parentElement)
+        ...selected4.map((peer) => peer.parentElement)
       ],
       70,
       { contentScope: "content" }
     );
   }
-  function refundEntry(candidate, name, region) {
+  function refundEntry(candidate, name2, region, cache) {
     const element = candidate.element;
-    if (candidate.action !== "navigate" || !element.matches("a[href]") || !/(?:환급|환불|반환)/.test(name)) return;
+    if (candidate.action !== "navigate" || !element.matches("a[href]") || !/(?:환급|환불|반환)/.test(name2)) return;
     const destination2 = sourceURL(element);
     if (!destination2 || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination2.pathname) || destination2.pathname === location.pathname) return;
     const paragraph = element.parentElement;
@@ -1067,6 +1127,7 @@
     if (!/(?:신청|접수)\s*(?:방법|절차)/.test(method) || !/(?:메뉴|항목).{0,18}(?:직접\s*)?(?:신청|접수)/.test(method)) return;
     return evidence(
       candidate,
+      cache,
       "nl-service-entry",
       "explicit-refund-application-method",
       "apply",
@@ -1075,13 +1136,14 @@
       { pageTask: "control", contentScope: "content", tokens: ["application-method", "named-menu-entry"] }
     );
   }
-  function library(candidate, name) {
+  function library(candidate, name2, cache) {
     const element = candidate.element;
     const region = element.closest("#sub_content");
     if (!region) return;
     const ownGuide = libraryGuideButton(element);
     if (ownGuide) return evidence(
       candidate,
+      cache,
       "nl-reading-guides",
       "editorial-guide-download",
       "help",
@@ -1089,9 +1151,9 @@
       70,
       { contentScope: "content" }
     );
-    const refund = refundEntry(candidate, name, region);
+    const refund = refundEntry(candidate, name2, region, cache);
     if (refund) return refund;
-    if (!element.matches("a[href]") || serviceEntry.test(name)) return;
+    if (!element.matches("a[href]") || serviceEntry.test(name2)) return;
     const group = element.parentElement;
     const wrapper = group?.parentElement;
     const slider = wrapper?.parentElement;
@@ -1103,7 +1165,7 @@
       const destination2 = sourceURL(peer);
       return !destination2 || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination2.pathname) || !candidateLabel(peer) || serviceEntry.test(semanticTabName(peer));
     })) return;
-    const copying = copyingTabs(candidate, region, info, slider, wrapper, peers);
+    const copying = copyingTabs(candidate, region, info, slider, wrapper, peers, cache);
     if (copying) return copying;
     const titles = [...info.querySelectorAll(":scope > h3")].filter((node) => /검색/.test(headingName(node)));
     if (!titles.length) return;
@@ -1117,6 +1179,7 @@
     const guide = libraryGuideButton(guides[0]);
     return evidence(
       candidate,
+      cache,
       "nl-reading-guides",
       "local-explanatory-guide-tabs",
       "help",
@@ -1125,7 +1188,7 @@
       { contentScope: "content" }
     );
   }
-  function safetyGuidance(candidate, name) {
+  function safetyGuidance(candidate, name2, cache) {
     const element = candidate.element;
     if (!(element instanceof HTMLButtonElement) || element.type !== "button" || element.form) return;
     const region = element.closest(".cont-area");
@@ -1133,9 +1196,10 @@
     if (!region || !content || !content.closest("#contents")) return;
     const titles = headings(content).filter((node) => node.closest(".cont-area") === region && /안전.*점검|점검.*(?:안내|가이드)|체크.*가이드|check\s*guide/i.test(headingName(node)));
     if (!titles.length) return;
-    if (element.matches(".btn-down") && /(?:점검표|체크리스트|checklist)\s*(?:다운로드|내려\s*받기)$/i.test(name)) {
+    if (element.matches(".btn-down") && /(?:점검표|체크리스트|checklist)\s*(?:다운로드|내려\s*받기)$/i.test(name2)) {
       return evidence(
         candidate,
+        cache,
         "safekorea-safety-guidance",
         "checklist-preparation-document",
         "help",
@@ -1147,9 +1211,10 @@
     const area = element.parentElement;
     const list = area?.previousElementSibling;
     const guide = list?.previousElementSibling;
-    if (!element.matches(".btn-golist") || !area?.matches(".button-rightarea") || area.parentElement !== region || !/(?:점검|체크).*(?:리스트|목록|안내).*(?:시작|보기|확인)$/.test(name) || !(list instanceof HTMLElement) || !list.matches("ul.comm-list") || list.children.length > 12 || list.querySelector(`${editable3},form,button`) || !(guide instanceof HTMLElement) || !guide.matches("h3") || !/(?:체크|점검)\s*(?:가이드|안내)|check\s*guide/i.test(headingName(guide))) return;
+    if (!element.matches(".btn-golist") || !area?.matches(".button-rightarea") || area.parentElement !== region || !/(?:점검|체크).*(?:리스트|목록|안내).*(?:시작|보기|확인)$/.test(name2) || !(list instanceof HTMLElement) || !list.matches("ul.comm-list") || list.children.length > 12 || list.querySelector(`${editable3},form,button`) || !(guide instanceof HTMLElement) || !guide.matches("h3") || !/(?:체크|점검)\s*(?:가이드|안내)|check\s*guide/i.test(headingName(guide))) return;
     return evidence(
       candidate,
+      cache,
       "safekorea-safety-guidance",
       "guided-safety-instruction",
       "help",
@@ -1158,14 +1223,14 @@
       { pageTask: "control", contentScope: "content" }
     );
   }
-  function institutionEvidence(candidate, _cache) {
+  function institutionEvidence(candidate, cache) {
     const handler = location.hostname === "www.safekorea.go.kr" && /^\/safekorea-kor\/edtr\//.test(location.pathname) ? education : location.hostname === "www.safekorea.go.kr" && /^\/safekorea-kor\/acts\/asck\//.test(location.pathname) ? safetyGuidance : location.hostname === "www.nps.or.kr" && /^\/pnsinfo\/ntpsklg\//.test(location.pathname) ? pension : location.hostname === "www.smu.ac.kr" && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(location.pathname) ? university : location.hostname === "www.nl.go.kr" && /^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(location.pathname) ? library : void 0;
     if (!handler) return;
     const element = candidate.element;
     if (location.protocol !== "https:" || location.port || candidate.context === "footer" || !isVisible(element) || element.closest(`${editable3},${excluded}`) || !element.matches("a[href],button") || candidateLabel(element) !== candidate.label) return;
-    const name = normalize(candidate.label);
-    if (!name || name.length > 100) return;
-    return handler(candidate, name);
+    const name2 = normalize(candidate.label);
+    if (!name2 || name2.length > 100) return;
+    return handler(candidate, name2, cache);
   }
 
   // src/content-evidence.ts
@@ -1221,8 +1286,8 @@
       return false;
     }
   }
-  function currentSelection(controls) {
-    const active = controls.filter(selected);
+  function currentSelection(controls3) {
+    const active = controls3.filter(selected);
     return active.length === 1 && currentDocument(active[0]) ? active[0] : void 0;
   }
   function localLists(container) {
@@ -1244,12 +1309,12 @@
     return element.matches(headings2) && !element.closest(`${editable4},${excluded2},${form2}`) && !element.hasAttribute("aria-labelledby") ? normalize2(candidateLabel(element)) : "";
   }
   function documentRelation(list, active) {
-    const name = normalize2(candidateLabel(active));
+    const name2 = normalize2(candidateLabel(active));
     const main = list.closest('main,[role~="main" i]');
     if (main) {
       const region = list.closest('section,[role~="region" i]') ?? main;
       if (region.childElementCount <= 12) {
-        const titles = [...region.children].filter((node) => node instanceof HTMLElement && fixedHeading(node) === name && !!(node.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING));
+        const titles = [...region.children].filter((node) => node instanceof HTMLElement && fixedHeading(node) === name2 && !!(node.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING));
         if (titles.length === 1) return [main, region, titles[0]];
       }
     }
@@ -1261,7 +1326,7 @@
       if (parents.length === 1) return [container, content, parents[0].list, parents[0].active, parents[0].active.parentElement];
     }
   }
-  function evidence2(candidate, level, rule, dependencies, tokens = []) {
+  function evidence2(candidate, level, rule, dependencies, tokens = [], cache) {
     const nodes = evidenceNodes([candidate.element, ...dependencies]);
     if (!nodes) return;
     return {
@@ -1276,23 +1341,111 @@
         candidate.label,
         candidate.action,
         tokens,
-        nodes.map((node) => [
-          node.tagName,
-          ...["class", "role", "aria-current", "aria-selected", "aria-expanded", "aria-hidden", "hidden"].map((name) => node.getAttribute(name)),
-          node instanceof HTMLElement && node.matches(headings2) ? fixedHeading(node) : node instanceof HTMLElement && node.matches("a[href],button") ? candidateLabel(node) : "",
-          node instanceof HTMLElement && node.matches("a[href]") ? currentDocument(node) : null
-        ])
+        nodes.map((node) => {
+          const previous = cache?.get(node);
+          if (previous?.nodeFacts) return previous.nodeFacts;
+          const nodeFacts = [
+            node.tagName,
+            ...["class", "role", "aria-current", "aria-selected", "aria-expanded", "aria-hidden", "hidden"].map((name2) => node.getAttribute(name2)),
+            node instanceof HTMLElement && node.matches(headings2) ? fixedHeading(node) : node instanceof HTMLElement && node.matches("a[href],button") ? candidateLabel(node) : "",
+            node instanceof HTMLElement && node.matches("a[href]") ? currentDocument(node) : null
+          ];
+          cache?.set(node, { ...previous, nodeFacts });
+          return nodeFacts;
+        })
       ])
     };
   }
-  function contentEvidence(candidate, _cache, supplementalCache) {
+  function sameContentSearch(candidate, cache) {
     const element = candidate.element;
+    if (candidate.category !== "search" || candidate.pageTask !== "control" || candidate.context !== "body" || candidate.action !== "locate" || element.closest(excluded2)) return;
+    const owner = element instanceof HTMLInputElement || element instanceof HTMLButtonElement ? element.form : null;
+    if (!(owner instanceof HTMLFormElement) || !owner.contains(element) || !["get", "post"].includes(owner.method.toLowerCase()) || owner.closest(excluded2) || dangerous.test((owner.getAttribute("onsubmit") ?? "").replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_-]/g, " ")) || !(element instanceof HTMLInputElement && ["text", "search"].includes(element.type) || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && ["button", "submit"].includes(element.type) && /^(?:검색|search)$/i.test(candidate.label)) || owner.querySelector('[contenteditable]:not([contenteditable="false" i]),textarea,[role~="textbox" i],[role~="searchbox" i]')) return;
+    const old = cache?.get(owner);
+    if (old?.searchRelation !== void 0) return old.searchRelation ?? void 0;
+    const compute = () => {
+      try {
+        const action = new URL(owner.getAttribute("action") || location.href, document.baseURI);
+        if (action.origin !== location.origin || action.pathname !== location.pathname || action.pathname.split("/").some((part) => {
+          try {
+            return dangerous.test(decodeURIComponent(part).replace(/[_.-]/g, " "));
+          } catch {
+            return true;
+          }
+        })) return;
+        for (const key of action.searchParams.keys()) if (/^(?:logout|signout|delete|remove|payment|checkout|final_submit)$/i.test(key) || /^(?:action|cmd|command|mode|task|operation)$/i.test(key) && action.searchParams.getAll(key).some((value) => dangerous.test(value) || /^submit$/i.test(value))) return;
+      } catch {
+        return;
+      }
+      const inputs = [...owner.querySelectorAll('input:not([type="hidden" i])')];
+      if (inputs.some((node) => !["text", "search", "button", "submit"].includes(node.type))) return;
+      const fields = inputs.filter((node) => ["text", "search"].includes(node.type));
+      if (fields.length !== 1 || !isVisible(fields[0]) || !isSearchControl(fields[0], candidateLabel(fields[0]))) return;
+      const buttons = [...owner.querySelectorAll('button,input[type="button" i],input[type="submit" i]')];
+      const submits = buttons.filter((node) => ["button", "submit"].includes(node.type) && isVisible(node) && /^(?:검색|search)$/i.test(candidateLabel(node)));
+      if (submits.length !== 1 || owner.method.toLowerCase() === "post" && submits[0].type !== "button" || buttons.some((node) => dangerous.test(candidateLabel(node)))) return;
+      if (element !== fields[0] && element !== submits[0]) return;
+      const legends = [...owner.querySelectorAll("legend")].filter((node) => /검색|search/i.test(candidateLabel(node)));
+      for (let region = owner.parentElement, depth = 0; region && depth < 3; region = region.parentElement, depth++) {
+        if (region.matches(`html,body,${excluded2},${form2}`) || region.childElementCount > 16) break;
+        let titles = [...region.children].filter((node) => node instanceof HTMLElement && !!fixedHeading(node) && /게시판|목록|자료|증명|서비스|board|catalog|services?/i.test(fixedHeading(node)) && !!(node.compareDocumentPosition(owner) & Node.DOCUMENT_POSITION_FOLLOWING));
+        const contextNodes = [];
+        if (!titles.length && legends.length) {
+          const groups = [...region.children].filter((node) => node instanceof HTMLElement && node.matches('ul,ol,[role~="tablist" i]') && node.childElementCount >= 2 && node.childElementCount <= 12 && !!(node.compareDocumentPosition(owner) & Node.DOCUMENT_POSITION_FOLLOWING));
+          for (const group of groups) {
+            const peers = [...group.querySelectorAll(":scope > li > a[href]")];
+            const active = peers.filter(selected);
+            if (active.length === 1 && normalize2(candidateLabel(active[0])) === normalize2(candidate.sectionLabel ?? "") && !dangerous.test(candidateLabel(active[0]))) {
+              titles.push(active[0]);
+              contextNodes.push(group, ...peers);
+            }
+          }
+        }
+        const contextName = titles[0]?.matches(headings2) ? fixedHeading(titles[0]) : titles[0] ? candidateLabel(titles[0]) : "";
+        if (titles.length !== 1 || !legends.length && !/게시판|board/i.test(contextName)) continue;
+        const containers = [];
+        for (const child of region.children) {
+          if (!(child instanceof HTMLElement) || child === owner || child.matches(`${excluded2},${form2},${editable4}`) || !(owner.compareDocumentPosition(child) & Node.DOCUMENT_POSITION_FOLLOWING)) continue;
+          if (child.matches('ul,ol,table,[role~="list" i]')) containers.push(child);
+          else if (child.childElementCount <= 6) containers.push(...[...child.children].filter((node) => node instanceof HTMLElement && node.matches('ul,ol,table,[role~="list" i]')));
+        }
+        const contentLists = containers.filter((list2) => list2.childElementCount >= 2 && !/(?:^|[\s_-])(?:paging|pagination|pager)(?:[\s_-]|$)/i.test(`${list2.getAttribute("class") ?? ""} ${list2.getAttribute("id") ?? ""}`) && !/페이지\s*(?:이동|탐색)|page\s*navigation/i.test(list2.getAttribute("aria-label") ?? ""));
+        if (contentLists.length !== 1) continue;
+        const list = contentLists[0];
+        const rows = list instanceof HTMLTableElement ? list.tBodies[0] : list;
+        if (!rows || rows.childElementCount < 2) continue;
+        const rowNodes = [];
+        let count = 0, visited = 0;
+        for (let row = rows.firstElementChild; row && visited++ < 12 && count < 2; row = row.nextElementSibling) {
+          if (row.querySelector(`${editable4},${form2}`)) continue;
+          const links = [...row.querySelectorAll("a[href]")];
+          if (!links.length || links.length > 4 || links.some((link) => candidateLabel(link).length < 4 || /^\d+$/.test(candidateLabel(link)) || dangerous.test(candidateLabel(link)))) continue;
+          rowNodes.push(row, ...links);
+          count++;
+        }
+        if (count !== 2) continue;
+        return { group: owner, dependencies: [owner, region, ...titles, ...contextNodes, ...legends, fields[0], submits[0], ...fields[0].parentElement ? [fields[0].parentElement] : [], list, rows, ...rowNodes] };
+      }
+    };
+    const result = compute();
+    cache?.set(owner, { ...old, searchRelation: result ?? null });
+    return result;
+  }
+  function contentEvidence(candidate, cache, supplementalCache) {
+    const element = candidate.element;
+    if (candidate.category && candidate.score >= 55 && isVisible(element) && candidateLabel(element) === candidate.label) {
+      const localSearch = sameContentSearch(candidate, cache);
+      if (localSearch) {
+        const proof2 = evidence2(candidate, 1, "same-content-query-form", localSearch.dependencies, [], cache);
+        if (proof2) return { ...proof2, taskGroup: localSearch.group };
+      }
+    }
     if (!candidate.category || !candidate.pageTask || candidate.score < 55 || candidate.context === "footer" || !isVisible(element) || candidateLabel(element) !== candidate.label || element.closest(`${excluded2},${editable4}`) || utility(element) || !element.matches('a[href],button,[role~="button" i],[role~="tab" i]')) return;
     const supplement = candidate.supplementalDependent ? supplementalEvidence(element, supplementalCache) : void 0;
     const prep = supplement;
-    const preparation = element.matches("a[href]") && candidate.action === "locate" && !!prep?.preparationAttachment;
-    if (element.closest(form2) && !preparation || element instanceof HTMLButtonElement && !!element.form) return;
-    if (preparation) {
+    const preparation2 = element.matches("a[href]") && candidate.action === "locate" && !!prep?.preparationAttachment;
+    if (element.closest(form2) && !preparation2 || element instanceof HTMLButtonElement && !!element.form) return;
+    if (preparation2) {
       const row2 = element.closest('tr,li,[role~="row" i],[role~="listitem" i]');
       const table = row2?.closest('table,[role~="grid" i]');
       const owner = element.closest(form2) ?? row2?.parentElement;
@@ -1301,7 +1454,8 @@
         2,
         "explicit-preparation-attachment",
         [row2, owner, ...table ? [table] : []],
-        [prep?.preparationAttachmentNodes ?? [], supplement?.relatedLabel ?? ""]
+        [prep?.preparationAttachmentNodes ?? [], supplement?.relatedLabel ?? ""],
+        cache
       );
     }
     const institution = candidate.institutionEvidence;
@@ -1319,17 +1473,525 @@
           candidate,
           2,
           "current-topic-document-group",
-          [list, active, active.parentElement, ...documents, ...documents.map((peer) => peer.parentElement), ...relation]
+          [list, active, active.parentElement, ...documents, ...documents.map((peer) => peer.parentElement), ...relation],
+          [],
+          cache
         );
       }
     }
+    if (candidate.relationEvidence?.contentScope === "content") return evidence2(
+      candidate,
+      1,
+      "verified-current-content-relation",
+      [...candidate.relationEvidence.dependencies],
+      [candidate.relationEvidence.rule, candidate.relationEvidence.category, candidate.relationEvidence.pageTask],
+      cache
+    );
     if (institution?.contentScope === "content") return evidence2(
       candidate,
       1,
       "institution-current-content",
       [...institution.dependencies],
-      [institution.version, institution.fingerprint]
+      [institution.version, institution.adapter, institution.rule, institution.category, institution.pageTask, !!institution.readonlyPanel],
+      cache
     );
+  }
+
+  // src/service-relations.ts
+  var editable5 = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var excluded3 = 'header,footer,nav,aside,article,form,[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i],[role~="complementary" i],[role~="article" i],[role~="form" i]';
+  var controls = 'a[href],button,[role~="button" i],[role~="tab" i]';
+  var headings3 = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
+  var fixedTitles = `${headings3},strong`;
+  var danger = /로그아웃|탈퇴|삭제|결제|납부|구매|최종\s*제출|\b(?:log[\s_-]*out|sign[\s_-]*out|delete|remove|unregister|withdraw|pay|payment|checkout|purchase|final[\s_-]*submit|submit[\s_-]*final)\b/i;
+  var commandKey = /^(?:action|cmd|command|mode|task|event|method|operation|do)$/i;
+  var riskKey = /^(?:logout|signout|delete|remove|payment|checkout|final_submit)$/i;
+  var details = /^(?:상세\s*보기|자세히\s*보기|세부\s*정보|details?)$/i;
+  var issue = /^(?:발급(?:\s*(?:하기|신청))?|신청(?:\s*하기)?|예약(?:\s*하기)?|접수(?:\s*하기)?)$/;
+  var preview = /^(?:미리\s*보기|견본\s*보기|preview)$/i;
+  var mediaView = /^(?:(?:센터|기관|활동|현장)\s*)?(?:소식|사진(?:\s*자료)?|영상(?:\s*자료)?|동영상(?:\s*자료)?|news|photos?|videos?)$/i;
+  var normalize3 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var compact = (value) => normalize3(value).replace(/\s+/g, "");
+  function name(element) {
+    return normalize3(candidateLabel(element));
+  }
+  function decoded(value) {
+    for (let i = 0; i < 2; i++) {
+      try {
+        const next = decodeURIComponent(value);
+        if (next === value) break;
+        value = next;
+      } catch {
+        break;
+      }
+    }
+    return value;
+  }
+  function unsafeScript(value) {
+    const text = decoded(value);
+    return danger.test(text) || /(?:delete|remove|logout|signout|pay|purchase|submit)(?:[A-Z][\w$]*)?\s*\(/.test(text);
+  }
+  function safeURL(element) {
+    const raw = element.getAttribute("href");
+    if (!raw) return !element.matches("a");
+    if (/^javascript:/i.test(raw.trim())) return !unsafeScript(raw);
+    try {
+      const url = new URL(raw, document.baseURI);
+      if (!/^https?:$/.test(url.protocol)) return false;
+      if (url.pathname.split("/").some((part) => danger.test(decoded(part).replace(/[_.-]/g, " ")))) return false;
+      for (const [key, value] of url.searchParams) if (riskKey.test(key) || commandKey.test(key) && (danger.test(decoded(value)) || /^submit$/i.test(decoded(value)))) return false;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  function safeControl(element) {
+    if (!isVisible(element) || element.closest(`${excluded3},${editable5}`) || element.querySelector(editable5) || element.matches("[aria-expanded],[aria-haspopup],[aria-controls]") || element instanceof HTMLButtonElement && !!element.form) return false;
+    const label = name(element);
+    return !!label && !danger.test(label) && !danger.test(element.getAttribute("title") ?? "") && safeURL(element) && [...element.attributes].filter((attribute) => /^on/i.test(attribute.name)).every((attribute) => !unsafeScript(attribute.value));
+  }
+  function fixedName2(element) {
+    if (!element.matches(fixedTitles) || element.closest(`${excluded3},${editable5},${controls}`) || element.querySelector(`${editable5},${controls}`) || element.hasAttribute("aria-labelledby")) return "";
+    const label = name(element);
+    return label.length >= 2 && label.length <= 80 && !danger.test(label) ? label : "";
+  }
+  function scan(root, selector, limit = 160, prune = excluded3) {
+    const pending = [...root.children].reverse();
+    const matches = [];
+    let visited = 0;
+    while (pending.length) {
+      const element = pending.pop();
+      if (++visited > limit) return;
+      if (!(element instanceof HTMLElement) || element.matches(`script,style,template,noscript,${prune}`)) continue;
+      if (element.matches(selector)) matches.push(element);
+      if (element.matches(editable5)) continue;
+      pending.push(...[...element.children].reverse());
+    }
+    return matches;
+  }
+  function currentDocument2(element) {
+    const raw = element.getAttribute("href");
+    if (!raw || !safeURL(element)) return false;
+    try {
+      const url = new URL(raw, document.baseURI);
+      return /^https?:$/.test(url.protocol) && url.origin === location.origin && url.pathname === location.pathname && url.search === location.search && !url.hash;
+    } catch {
+      return false;
+    }
+  }
+  function selected2(element) {
+    return [element, element.parentElement].some((node) => !!node && (/^(?:page|true)$/i.test(node.getAttribute("aria-current") ?? "") || /^true$/i.test(node.getAttribute("aria-selected") ?? "") || /(?:^|\s)(?:active|selected|current|on|is-active)(?:\s|$)/i.test(node.getAttribute("class") ?? "")));
+  }
+  function evidence3(candidate, rule, category, pageTask, dependencies, titles, relatedLabel) {
+    const nodes = evidenceNodes([candidate.element, ...dependencies], titles);
+    if (!nodes) return;
+    return {
+      rule,
+      category,
+      score: 70,
+      pageTask,
+      contentScope: "content",
+      relatedLabel,
+      dependencies: nodes,
+      // Source snapshots own complete action/href/target checks. Opaque queries
+      // and original scripts are never serialized into this semantic proof.
+      fingerprint: JSON.stringify([
+        rule,
+        category,
+        pageTask,
+        candidate.label,
+        candidate.action,
+        relatedLabel,
+        location.origin,
+        location.pathname,
+        nodes.map((node) => [
+          node.tagName,
+          ...["class", "role", "aria-selected", "aria-current", "aria-expanded", "aria-hidden", "hidden", "title"].map((key) => node.getAttribute(key)),
+          node instanceof HTMLElement && titles.includes(node) ? fixedName2(node) : node instanceof HTMLElement && node.matches(controls) ? name(node) : "",
+          node instanceof HTMLElement && node.matches("a[href]") ? currentDocument2(node) : null
+        ])
+      ])
+    };
+  }
+  function localTask(candidate) {
+    const own = /^(?:나의|내|본인|my)\s*(.+?)(?:\s*(?:보기|조회|현황|내역|상태))$/i;
+    const publicReading = /^(.+?)\s*공개(?:\s*(?:목록|내역))?$/;
+    const taskTitle = /^(.{2,28}?)\s*(?:신청|예약|접수)(?:\s*하기)?$/;
+    const ownName = name(candidate.element);
+    if (!own.test(ownName) && !publicReading.test(ownName) && !/(?:신청|예약|접수)/.test(ownName)) return;
+    for (let root = candidate.element.parentElement, depth = 0; root && depth < 7; root = root.parentElement, depth++) {
+      if (root.matches(`html,body,${excluded3},${editable5}`)) break;
+      const lists2 = scan(root, 'ul,ol,[role~="tablist" i]', 120);
+      if (!lists2) continue;
+      for (const list of lists2) {
+        if (list.childElementCount < 2 || list.childElementCount > 6 || list.querySelector(editable5)) continue;
+        const peers = scan(list, controls, 40);
+        if (!peers || peers.length !== list.childElementCount || !peers.every(safeControl)) continue;
+        const chosen = peers.filter(selected2);
+        if (chosen.length !== 1 || !currentDocument2(chosen[0])) continue;
+        const title = name(chosen[0]);
+        const task = title.match(taskTitle);
+        if (!task) continue;
+        const subject = compact(task[1]);
+        if (subject.length < 2) continue;
+        const role = (peer) => {
+          const label = name(peer);
+          if (peer === chosen[0] && compact(label) === compact(title)) return "apply";
+          const privateView = label.match(own);
+          if (privateView && compact(privateView[1]) === subject) return "apply";
+          const published = label.match(publicReading);
+          if (published && compact(published[1]) === subject) return "help";
+        };
+        if (peers.some((peer) => !role(peer))) continue;
+        const titles = scan(root, fixedTitles, 120);
+        if (!titles) continue;
+        const matches = titles.filter((node) => fixedName2(node) === title && !!(list.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING));
+        const heading2 = matches.length === 1 ? matches[0] : void 0;
+        if (!heading2) continue;
+        const listRegion = list.closest('section,[role~="region" i]');
+        if (heading2.closest('section,[role~="region" i]') !== listRegion) continue;
+        let category = peers.includes(candidate.element) ? role(candidate.element) : void 0;
+        if (!category) {
+          const entry = compact(ownName).replace(/\([^)]*\)/g, "").replace(/바로가기$/, "");
+          if (!peers.includes(candidate.element) && entry === compact(title) && !!(heading2.compareDocumentPosition(candidate.element) & Node.DOCUMENT_POSITION_FOLLOWING)) category = "apply";
+        }
+        if (category) return evidence3(
+          candidate,
+          "current-local-task-roles",
+          category,
+          category === "help" ? "reading" : "control",
+          [root, list, ...peers, heading2, ...peers.map((peer) => peer.parentElement)],
+          [heading2],
+          title
+        );
+      }
+    }
+  }
+  function supportView(candidate) {
+    if (!mediaView.test(name(candidate.element).replace(/\s*선택됨$/, ""))) return;
+    const group = candidate.element.parentElement;
+    if (!group || group.childElementCount < 2 || group.childElementCount > 6 || group.querySelector(editable5)) return;
+    const peers = [...group.children];
+    if (!peers.every((peer) => peer instanceof HTMLElement && peer.matches(controls) && safeControl(peer) && mediaView.test(name(peer).replace(/\s*선택됨$/, "")))) return;
+    const owner = group.parentElement;
+    const previous = group.previousElementSibling;
+    const content = group.nextElementSibling;
+    if (!owner || !previous || !(previous instanceof HTMLElement) || !(content instanceof HTMLElement) || previous.matches(`section,${excluded3},${editable5}`) || content.matches(`${excluded3},${editable5}`)) return;
+    const titles = previous.matches(headings3) ? [previous] : scan(previous, headings3, 60);
+    const title = titles?.filter((node) => /(?:지원|상담)\s*센터|상담소|support\s*(?:center|centre)/i.test(fixedName2(node)));
+    if (title?.length !== 1) return;
+    const tables = scan(content, "table", 350);
+    if (!tables || tables.length !== 1) return;
+    const table = tables[0];
+    const cells = [...table.querySelectorAll("thead th")];
+    const titleCells = cells.filter((node) => !node.querySelector(`${editable5},${controls}`) && /^(?:제목|자료명|title)$/i.test(name(node)));
+    const rows = [...table.querySelectorAll("tbody tr")];
+    if (titleCells.length !== 1 || rows.length < 1 || rows.length > 30 || table.querySelector(editable5)) return;
+    const links = rows.flatMap((row) => [...row.querySelectorAll("a[href]")]);
+    if (!links.length || links.length > 30 || !links.every(safeControl)) return;
+    return evidence3(
+      candidate,
+      "support-content-reading-views",
+      "help",
+      "reading",
+      [owner, group, previous, content, title[0], table, ...cells, ...rows, ...peers, ...links],
+      [title[0], ...titleCells],
+      fixedName2(title[0])
+    );
+  }
+  function serviceCard(candidate) {
+    const label = name(candidate.element);
+    if (!details.test(label) && !issue.test(label) && !preview.test(label)) return;
+    const card = candidate.element.closest('li,[role~="listitem" i],section,[role~="group" i]');
+    if (!card || card.closest(`${excluded3},${editable5}`) || card.querySelector(`${editable5},form,[role~="form" i]`)) return;
+    const nodes = scan(card, `${controls},${fixedTitles}`, 100);
+    if (!nodes) return;
+    const peers = nodes.filter((node) => node.matches(controls));
+    const titles = nodes.filter((node) => node.matches(fixedTitles) && !!fixedName2(node));
+    if (peers.length !== 3 || titles.length !== 1 || !peers.includes(candidate.element) || !peers.every(safeControl)) return;
+    const title = titles[0];
+    const topic = fixedName2(title);
+    if (!/증명|확인서|영수증|내역서|certificate|statement|receipt|record/i.test(topic) || !(title.compareDocumentPosition(peers[0]) & Node.DOCUMENT_POSITION_FOLLOWING)) return;
+    if (peers.filter((peer) => details.test(name(peer))).length !== 1 || peers.filter((peer) => issue.test(name(peer))).length !== 1 || peers.filter((peer) => preview.test(name(peer))).length !== 1) return;
+    if (peers.some((peer) => {
+      const metadata = normalize3(peer.getAttribute("title") ?? "").replace(/^\(?(?:새창열림|새\s*창|new\s*window)\)?\s*/i, "");
+      return !!metadata && metadata !== name(peer) && metadata !== `${topic} ${name(peer)}`;
+    })) return;
+    const category = issue.test(label) ? "apply" : "help";
+    return evidence3(
+      candidate,
+      "single-service-own-actions",
+      category,
+      category === "apply" ? "control" : "reading",
+      [card, title, ...peers],
+      [title],
+      topic
+    );
+  }
+  function serviceRelation(candidate, _cache) {
+    const element = candidate.element;
+    if (candidate.context === "footer" || !element.matches(controls) || !safeControl(element) || candidateLabel(element) !== candidate.label) return;
+    return serviceCard(candidate) ?? supportView(candidate) ?? localTask(candidate);
+  }
+
+  // src/document-relations.ts
+  var editable6 = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var excluded4 = 'header,footer,nav,aside,article,form,[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i],[role~="complementary" i],[role~="article" i],[role~="form" i]';
+  var controls2 = 'a[href],button,[role~="button" i],[role~="tab" i]';
+  var headings4 = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
+  var normalize4 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var preparation = /서식|신청서|신고서|동의서|청구서|작성\s*(?:예|견본)|\b(?:application|consent|request)\s+forms?\b/i;
+  var operation = /신청|예약|접수|로그인|인증|제출|결제|납부|구매|삭제|탈퇴|(?:발급|지급|조회)\s*하기|\b(?:apply|reserve|submit|login|checkout|payment|delete)\b/i;
+  var documentKind2 = /(?:가이드북|안내\s*책자|안내서|설명서|매뉴얼|편람|지침서|핸드북|업무\s*가이드|\b(?:guidebook|handbook|manual))\s*(?:\([^()]{1,30}\))?$/i;
+  var support = /장학(?:금)?|학자금|학업\s*지원|학생\s*지원|학비\s*지원|\b(?:scholarship|student\s+(?:finance|support|funding))\b/i;
+  var regulation = /규정|규칙|(?:시행|운영)?\s*세칙|\b(?:regulations?|rules?|bylaws?)\b/i;
+  var interactive = 'button,input,textarea,select,form,[contenteditable]:not([contenteditable="false" i]),' + ["button", "tab", "checkbox", "radio", "switch", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "treeitem", "listbox", "tree", "menu", "menubar", "grid", "scrollbar", "radiogroup", "tablist"].map((role) => `[role~="${role}" i]`).join(",");
+  function fixedName3(element, own = false) {
+    if (!isVisible(element) || element.closest(`${editable6},${excluded4}`) || element.hasAttribute("aria-labelledby") || !own && element.matches(`${interactive},${controls2}`)) return "";
+    const pending = [...element.children];
+    let visits = 0;
+    while (pending.length) {
+      const node = pending.pop();
+      if (++visits > 64 || node.matches(`${editable6},form,[aria-labelledby]`) || !own && node.matches(`${interactive},${controls2}`) || node instanceof HTMLElement && !isVisible(node)) return "";
+      pending.push(...node.children);
+    }
+    return normalize4(own ? candidateLabel(element) : getSafeLabel(element));
+  }
+  function safeName(element, own = false) {
+    const value = fixedName3(element, own);
+    return value.length >= 2 && value.length <= 120 ? value : "";
+  }
+  function plainTable(table) {
+    const pending = [...table.children];
+    let visits = 0;
+    while (pending.length) {
+      const node = pending.pop();
+      if (++visits > 2048 || node.matches(`table,${editable6},${interactive}`)) return false;
+      pending.push(...node.children);
+    }
+    return true;
+  }
+  function tableProof(element) {
+    const table = element.closest("table");
+    if (!(table instanceof HTMLTableElement) || table.closest(`${excluded4},${editable6}`) || table.matches(interactive) || !isVisible(table) || !table.caption || !table.tHead || table.tHead.rows.length !== 1 || table.tBodies.length !== 1) return;
+    const header = table.tHead;
+    const headerRow = header.rows[0];
+    const headers = [...headerRow.cells];
+    const body = table.tBodies[0];
+    const rows = [...body.rows];
+    if (headers.length < 2 || headers.length > 8 || rows.length < 1 || rows.length > 80 || !plainTable(table) || headers.some((cell) => cell.tagName !== "TH" || cell.colSpan !== 1 || cell.rowSpan !== 1) || !isVisible(header) || !isVisible(body)) return;
+    const captionName = safeName(table.caption);
+    if (!captionName) return;
+    const names = headers.map((cell) => safeName(cell));
+    if (names.some((name2) => !name2)) return;
+    return { table, caption: table.caption, captionName, header, headerRow, headers, names, body, rows };
+  }
+  function column(proof2, pattern) {
+    const matches = proof2.names.map((name2, index) => pattern.test(name2) ? index : -1).filter((index) => index >= 0);
+    return matches.length === 1 ? matches[0] : void 0;
+  }
+  function simpleRow(proof2, element) {
+    const row = element.closest("tr");
+    if (!(row instanceof HTMLTableRowElement) || row.parentElement !== proof2.body || !proof2.rows.includes(row) || row.querySelector("table") || !isVisible(row)) return;
+    const cells = [...row.cells];
+    if (cells.length !== proof2.headers.length || cells.some((cell) => cell.colSpan !== 1 || cell.rowSpan !== 1 || !isVisible(cell))) return;
+    return cells;
+  }
+  function tableNodes(proof2) {
+    return [proof2.table, proof2.caption, proof2.header, proof2.headerRow, ...proof2.headers, proof2.body];
+  }
+  function proof(candidate, rule, category, dependencies, fixedNames, tokens, relatedLabel) {
+    const nodes = evidenceNodes([
+      candidate.element,
+      ...dependencies,
+      ...dependencies.flatMap((node) => node.parentElement ? [node.parentElement] : [])
+    ], fixedNames);
+    if (!nodes) return;
+    const named = new Set(fixedNames);
+    return {
+      rule,
+      category,
+      score: 70,
+      pageTask: "reading",
+      contentScope: "content",
+      ...relatedLabel ? { relatedLabel } : {},
+      dependencies: nodes,
+      // Source snapshot/current action owns href, target and script safety. No
+      // document numbers, opaque query values or source script enter this proof.
+      fingerprint: JSON.stringify([
+        rule,
+        category,
+        candidate.label,
+        candidate.action,
+        tokens,
+        relatedLabel ?? "",
+        nodes.map((node) => [
+          node.tagName,
+          ...["class", "role", "aria-current", "aria-selected", "aria-expanded", "aria-hidden", "hidden", "rowspan", "colspan"].map((name2) => node.getAttribute(name2)),
+          named.has(node) ? safeName(node, node.matches(controls2)) : ""
+        ])
+      ])
+    };
+  }
+  function listedDocument(candidate, table) {
+    const element = candidate.element;
+    if (!documentKind2.test(candidate.label) || preparation.test(candidate.label) || /(?:발간|제작|배포)\s*(?:행사|보도|소식)|뉴스|기사|채용|입찰/.test(candidate.label)) return;
+    const title = column(table, /^(?:제목|문서명|자료명|title|document)$/i);
+    const date = column(table, /^(?:작성일|등록일|게시일|발행일|date|published)$/i);
+    const attachment = column(table, /^(?:첨부(?:파일)?|파일|attachments?|files?)$/i);
+    const department = column(table, /^(?:부서|담당부서|작성부서|department)$/i);
+    const cells = simpleRow(table, element);
+    if (title === void 0 || date === void 0 || attachment === void 0 || department === void 0 || (/* @__PURE__ */ new Set([title, date, attachment, department])).size !== 4 || !cells || cells[title] !== element.closest("td,th") || cells[title].querySelectorAll(controls2).length !== 1 || cells[title].querySelector(interactive) || cells.some((cell, index) => index !== title && cell.querySelector(controls2))) return;
+    const row = element.closest("tr");
+    return proof(
+      candidate,
+      "listed-fixed-document-kind",
+      "help",
+      [...tableNodes(table), row, ...cells],
+      [table.caption, ...table.headers, element],
+      ["title-date-department-attachment", "own-document-kind"]
+    );
+  }
+  function directoryRows(table, floor) {
+    const grid = Array.from({ length: table.rows.length }, () => []);
+    const nodes = [];
+    for (const [rowIndex, row] of table.rows.entries()) {
+      if (!isVisible(row) || row.querySelector("table")) return;
+      nodes.push(row);
+      let index = 0;
+      for (const cell of row.cells) {
+        while (grid[rowIndex][index]) index++;
+        if (index >= table.headers.length || cell.colSpan !== 1 || !isVisible(cell) || cell.rowSpan < 1 || cell.rowSpan > table.rows.length - rowIndex || cell.rowSpan !== 1 && index !== floor) return;
+        nodes.push(cell);
+        for (let offset = 0; offset < cell.rowSpan; offset++) {
+          if (grid[rowIndex + offset][index]) return;
+          grid[rowIndex + offset][index] = cell;
+        }
+        index++;
+      }
+      if (grid[rowIndex].length !== table.headers.length || table.headers.some((_, columnIndex) => !grid[rowIndex][columnIndex])) return;
+    }
+    return { grid, nodes };
+  }
+  function directory(candidate, table) {
+    if (!/(?:자료실|열람실|시설|공간).{0,16}(?:이용\s*안내|사용\s*안내)|\b(?:room|facility)\s+(?:information|directory|guide)\b/i.test(table.captionName) || /예약|신청|결제|대여|구매|\b(?:booking|reservation|payment)\b/i.test(table.captionName)) return;
+    const floor = column(table, /^(?:층수|층|위치|floor|location)$/i);
+    const kind = column(table, /^(?:구분|유형|종류|type)$/i);
+    const name2 = column(table, /^(?:자료\s*설명|시설명|공간명|자료실명|name|description)$/i);
+    const contact = column(table, /^(?:이용\s*문의|문의|연락처|contact)$/i);
+    if (floor === void 0 || kind === void 0 || name2 === void 0 || contact === void 0 || (/* @__PURE__ */ new Set([floor, kind, name2, contact])).size !== 4 || table.headers.length !== 4) return;
+    const rows = directoryRows(table, floor);
+    const row = candidate.element.closest("tr");
+    const index = row ? table.rows.indexOf(row) : -1;
+    const cells = rows?.grid[index];
+    if (!rows || !row || !cells || cells[name2] !== candidate.element.closest("td,th") || cells[name2].rowSpan !== 1 || cells[name2].querySelectorAll(controls2).length !== 1 || cells[name2].querySelector(interactive) || row.querySelectorAll(controls2).length !== 1 || operation.test(candidate.label) || candidate.label.length > 70) return;
+    return proof(
+      candidate,
+      "aligned-information-directory",
+      "help",
+      [...tableNodes(table), ...rows.nodes],
+      [table.caption, ...table.headers, candidate.element],
+      ["unique-descriptive-column", "readonly-directory", "floor-only-rowspan"]
+    );
+  }
+  function canonicalRule(value) {
+    return normalize4(value).replace(/\s*(?:다운로드|내려\s*받기|download)\s*$/i, "").replace(/(?:시행|운영)\s*세칙/g, "\uC138\uCE59").replace(/\s+/g, "").toLocaleLowerCase();
+  }
+  function academicDocument2(candidate, table) {
+    const element = candidate.element;
+    if (candidate.action !== "locate" || !element.matches("a[href]") || !/^(?:pdf\s*(?:파일\s*)?(?:다운로드|내려\s*받기|download)|(?:파일\s*)?(?:다운로드|download)\s*\(?pdf\)?)$/i.test(candidate.label) || !support.test(table.captionName) || !regulation.test(table.captionName) || preparation.test(table.captionName)) return;
+    const title = column(table, /^(?:구분|문서명|자료명|제목|title|document)$/i);
+    const download = column(table, /^(?:파일\s*\(\s*pdf\s*\)\s*(?:다운로드|내려\s*받기)|pdf\s*(?:다운로드|download)|download\s*\(\s*pdf\s*\))$/i);
+    const cells = simpleRow(table, element);
+    if (title === void 0 || download === void 0 || title === download || !cells || cells[download] !== element.closest("td,th") || cells[download].querySelectorAll(controls2).length !== 1 || cells[title].querySelector(controls2) || element.closest("tr")?.querySelectorAll(controls2).length !== 1) return;
+    const rowTitle = safeName(cells[title]);
+    const authoredTitle = normalize4(element.getAttribute("title") ?? "");
+    if (!rowTitle || !support.test(rowTitle) || !regulation.test(rowTitle) || preparation.test(rowTitle) || !authoredTitle || authoredTitle.length > 120 || !support.test(authoredTitle) || !regulation.test(authoredTitle) || preparation.test(authoredTitle) || canonicalRule(rowTitle) !== canonicalRule(authoredTitle)) return;
+    const row = element.closest("tr");
+    return proof(
+      candidate,
+      "academic-support-regulation-file",
+      "academic",
+      [...tableNodes(table), row, ...cells],
+      [table.caption, ...table.headers, cells[title], element],
+      [authoredTitle, "fixed-row-document-title", "pdf-download-column"],
+      rowTitle
+    );
+  }
+  function selected3(element) {
+    return [element, element.parentElement].some((node) => !!node && (/^(?:page|true)$/i.test(node.getAttribute("aria-current") ?? "") || /^true$/i.test(node.getAttribute("aria-selected") ?? "") || /(?:^|\s)(?:active|selected|current|is-active)(?:\s|$)/i.test(node.getAttribute("class") ?? "")));
+  }
+  function readingURL(element) {
+    if (element.matches("[onclick],[aria-controls],[aria-expanded],[aria-haspopup]")) return;
+    try {
+      const url = new URL(element.getAttribute("href") ?? "", document.baseURI);
+      return /^https?:$/.test(url.protocol) && url.origin === location.origin ? url : void 0;
+    } catch {
+      return;
+    }
+  }
+  function headingKey(value) {
+    return normalize4(value).replace(/\s*\([^()]{1,30}\)\s*$/, "").replace(/\s+/g, "").toLocaleLowerCase();
+  }
+  function localHeadings(root) {
+    const pending = [...root.children].map((node) => ({ node, depth: 0 }));
+    const found = [];
+    let visits = 0;
+    while (pending.length) {
+      if (++visits > 80) return [];
+      const { node, depth } = pending.shift();
+      if (!(node instanceof HTMLElement) || node.matches(`${excluded4},${editable6},ul,ol,table`)) continue;
+      if (node.matches(headings4)) {
+        if (safeName(node)) found.push(node);
+        continue;
+      }
+      if (depth < 2 && !node.matches('section,[role~="region" i]')) pending.push(...[...node.children].map((child) => ({ node: child, depth: depth + 1 })));
+    }
+    return found;
+  }
+  function academicTabs2(candidate) {
+    const element = candidate.element;
+    if (candidate.action !== "navigate" || !element.matches("a[href]") || !support.test(candidate.label) || operation.test(candidate.label) || preparation.test(candidate.label)) return;
+    const list = element.closest('ul,ol,[role~="list" i],[role~="tablist" i]');
+    if (!list || list.childElementCount < 2 || list.childElementCount > 12 || list.querySelector(`${editable6},form`)) return;
+    const peers = [...list.querySelectorAll(':scope > li > a[href],:scope > [role~="listitem" i] > a[href]')];
+    if (peers.length !== list.childElementCount || !peers.includes(element) || peers.some((peer) => !safeName(peer, true) || !support.test(safeName(peer, true)) || operation.test(safeName(peer, true)) || preparation.test(safeName(peer, true)) || !readingURL(peer) || peer.parentElement?.querySelectorAll(controls2).length !== 1)) return;
+    const active = peers.filter(selected3);
+    if (active.length !== 1) return;
+    const current = readingURL(active[0]);
+    if (!current || current.pathname !== location.pathname || current.search !== location.search) return;
+    for (let wrapper = list, depth = 0; wrapper && depth < 5; wrapper = wrapper.parentElement, depth++) {
+      if (wrapper.matches(`html,body,${excluded4},${editable6}`)) break;
+      const region = wrapper.nextElementSibling;
+      if (!(region instanceof HTMLElement) || !region.matches('section,[role~="region" i]') || region.closest(`${excluded4},${editable6}`) || !isVisible(region)) continue;
+      const titles = localHeadings(region).filter((title) => support.test(safeName(title)) && headingKey(safeName(title)) === headingKey(safeName(active[0], true)));
+      if (titles.length !== 1) continue;
+      const owner = wrapper.parentElement;
+      if (!owner) continue;
+      const pageTitles = localHeadings(owner).filter((title) => !wrapper.contains(title) && !region.contains(title) && /학사|학업|학생|\bacademic\b/i.test(safeName(title)) && support.test(safeName(title)) && !!(title.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING));
+      if (pageTitles.length !== 1) continue;
+      return proof(
+        candidate,
+        "selected-academic-support-documents",
+        "academic",
+        [owner, wrapper, region, list, ...titles, ...pageTitles, ...peers, ...peers.map((peer) => peer.parentElement)],
+        [...titles, ...pageTitles, ...peers],
+        ["unique-current-document", "matching-fixed-content-heading", "academic-support-owner"]
+      );
+    }
+  }
+  function documentRelation2(candidate, _cache) {
+    const element = candidate.element;
+    if (candidate.context === "footer" || !element.matches("a[href],button") || !isVisible(element) || element.closest(`${editable6},${excluded4}`) || element.querySelector(editable6) || element.hasAttribute("aria-labelledby") || safeName(element, true) !== candidate.label || element instanceof HTMLButtonElement && (element.type !== "button" || !!element.form)) return;
+    const table = tableProof(element);
+    if (table) return academicDocument2(candidate, table) ?? directory(candidate, table) ?? listedDocument(candidate, table);
+    return academicTabs2(candidate);
+  }
+
+  // src/relations.ts
+  var createRelationCache = () => ({ service: /* @__PURE__ */ new WeakMap(), document: /* @__PURE__ */ new WeakMap() });
+  function relationEvidence(candidate, cache) {
+    return documentRelation2(candidate, cache?.document) ?? serviceRelation(candidate, cache?.service);
   }
 
   // src/classifier.ts
@@ -1341,7 +2003,7 @@
     { category: "help", label: /이용\s*안내|도움말|자주\s*(?:묻는|하는|찾는)\s*질문|검색\s*(?:방법|안내)|뷰어\s*(?:설치\s*)?(?:다운로드|프로그램\s*안내)|(?:민원실|상담)\s*(?:안내|운영)|\b(?:faq|help)\b|\bq\s*&\s*a\b|\bcontact\s+us\b|\buser\s+guide\b|\bsearch\s+(?:help|guide|tips?|instructions)\b|\bviewer\s+(?:install\s+)?download\b/i, section: /^(?:이용\s*안내|도움말|자주\s*(?:묻는|하는|찾는)\s*질문(?:\s*\(FAQ\))?|문의|검색\s*(?:방법|안내)|뷰어\s*(?:설치\s*)?(?:다운로드|프로그램\s*안내)|(?:민원실|상담)\s*(?:안내|운영)|faq|help|q\s*&\s*a|contact\s+us|user\s+guide|search\s+(?:help|guide|tips?|instructions)|viewer\s+(?:install\s+)?download)$/i, endpoints: /* @__PURE__ */ new Set(["help", "faq"]) },
     { category: "apply", label: /신청|접수|예약|조회|\b(?:apply|applications?|reservations?|booking)\b/i, section: /^(?:신청(?:\s*[·/]\s*조회)?|접수|예약|조회|apply|applications?|reservations?|booking)$/i, endpoints: /* @__PURE__ */ new Set(["apply", "application", "reservation", "booking"]) }
   ];
-  var normalize3 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var normalize5 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
   var dangerous2 = /로그아웃|탈퇴|삭제|결제|납부|구매|최종\s*제출|\b(?:log[\s_-]*out|sign[\s_-]*out|delete|remove|unregister|withdraw|pay|payment|checkout|purchase|final[\s_-]*submit|submit[\s_-]*final)\b/i;
   var actionKeys = ["action", "cmd", "command", "mode", "task", "event", "method", "operation", "do"];
   var riskyFlagKeys = /* @__PURE__ */ new Set(["logout", "signout", "delete", "remove", "payment", "checkout", "final_submit"]);
@@ -1384,7 +2046,7 @@
     return dangerous2.test(script);
   }
   function contextsFor(candidate, label) {
-    return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize3).filter((value) => value !== label);
+    return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize5).filter((value) => value !== label);
   }
   function hasAcademicContext(candidate, label) {
     const academic = rules.find((rule) => rule.category === "academic");
@@ -1410,15 +2072,15 @@
     const listed = !!candidate.element.closest('tr, li, [role~="row"], [role~="listitem"]');
     const document2 = !!url && candidate.action === "navigate" && candidate.element.matches("a[href]") && listed && formTitle.test(label) && contexts.some((value) => formsHeading.test(value));
     const download = candidate.action === "locate" && candidate.element.matches('a, button, [role~="button"]') && !!candidate.element.closest("ol") && listed && formDownload.test(label) && contexts.some((value) => value.length <= 40 && procedureHeading.test(value));
-    const preparation = candidate.action === "locate" && candidate.element.matches("a[href]") && listed && isDocumentDownload(candidate.element, candidate.label) && formTitle.test(label) && contexts.some((value) => formsHeading.test(value) || preparationHeading.test(value));
-    if (!document2 && !download && !preparation) return;
+    const preparation2 = candidate.action === "locate" && candidate.element.matches("a[href]") && listed && isDocumentDownload(candidate.element, candidate.label) && formTitle.test(label) && contexts.some((value) => formsHeading.test(value) || preparationHeading.test(value));
+    if (!document2 && !download && !preparation2) return;
     if (rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return "conflict";
     return document2 ? "document" : "download";
   }
   function pathParts(url) {
     return url.pathname.split("/").filter(Boolean).map((part) => {
       try {
-        return normalize3(decodeURIComponent(part)).toLowerCase();
+        return normalize5(decodeURIComponent(part)).toLowerCase();
       } catch {
         return part.toLowerCase();
       }
@@ -1430,7 +2092,7 @@
       const folded = key.replace(/[A-Z]/g, (letter) => letter.toLowerCase());
       if (riskyFlagKeys.has(folded)) return true;
       if (actionKeys.includes(folded) && url.searchParams.getAll(key).some((value) => {
-        const command = normalize3(value);
+        const command = normalize5(value);
         return dangerous2.test(command) || /^(?:submit|final[\s_-]*submit|submit[\s_-]*final)$/i.test(command);
       })) return true;
     }
@@ -1450,7 +2112,7 @@
     if (url && notice.endpoints.has(target) && hasDocumentReference(url)) return "endpoint";
     if (candidate.element.closest('article, [role~="article"]')) return;
     const listedLink = candidate.element.matches("a[href]") && !!candidate.element.closest('tr, li, [role~="row"], [role~="listitem"]');
-    if (!listedLink || ![section, ...candidate.contextLabels ?? []].some((value) => notice.section.test(normalize3(value)) || noticeListHeading.test(normalize3(value)))) return;
+    if (!listedLink || ![section, ...candidate.contextLabels ?? []].some((value) => notice.section.test(normalize5(value)) || noticeListHeading.test(normalize5(value)))) return;
     if (rules.some((rule) => rule.category !== "notice" && rule.endpoints.has(target))) return "conflict";
     return "collection";
   }
@@ -1471,9 +2133,9 @@
     if (candidate.context !== "body" || !applicationControlLabel.test(label) || !candidate.element.matches('a[href], button, [role~="button"], input[type="button"], input[type="submit"]') || url && hasDocumentReference(url) || isDocumentDownload(candidate.element, candidate.label) || rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return false;
     return !((candidate.element instanceof HTMLButtonElement || candidate.element instanceof HTMLInputElement) && candidate.element.type === "submit" && candidate.element.form);
   }
-  function structuredContext(candidate, label, collection, url) {
+  function structuredContext(candidate, label, collection, url, navigationCache) {
     const element = candidate.element;
-    if (navigationUtility(element, label)) return;
+    if (navigationUtility(element, label, navigationCache)) return;
     if (!collection.kind || candidate.context === "footer" || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label) || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]') || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
     let destination2 = url;
     const raw = element.getAttribute("href")?.trim() ?? "";
@@ -1507,15 +2169,15 @@
   }
   function contextualReading(candidate, label) {
     if (candidate.context === "footer" || candidate.element.closest('article, [role~="article"]')) return;
-    const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize3);
+    const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize5);
     const helpContext = candidate.pagePurpose === "help" || contexts.some((value) => rules.find((rule) => rule.category === "help").section.test(value)) || isQuestionCollection(candidate.element);
     const term = candidate.element.closest("dt");
-    const definitionQuestion = !!term?.closest("dl") && isVisible(term) && isVisible(candidate.element) && [candidate.element, term].some((element) => answerToggle.test(normalize3(element.getAttribute("title") ?? "")));
+    const definitionQuestion = !!term?.closest("dl") && isVisible(term) && isVisible(candidate.element) && [candidate.element, term].some((element) => answerToggle.test(normalize5(element.getAttribute("title") ?? "")));
     if (definitionQuestion && label.length >= 4 && candidate.element.matches('a, button, [role~="button"]')) {
       return { category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC9C8\uBB38 \uC77D\uAE30", "\uC815\uC758 \uBAA9\uB85D\uACFC \uBA85\uC2DC\uC801 \uB2F5\uBCC0 \uC5F4\uAE30 \uD45C\uC2DC"], pageTask: "reading" };
     }
     if (helpContext) {
-      const questionMarker = [...candidate.element.querySelectorAll(":scope > abbr[title]")].some((marker) => marker instanceof HTMLElement && isVisible(marker) && /^(?:질문|question)$/i.test(normalize3(marker.getAttribute("title") ?? "")));
+      const questionMarker = [...candidate.element.querySelectorAll(":scope > abbr[title]")].some((marker) => marker instanceof HTMLElement && isVisible(marker) && /^(?:질문|question)$/i.test(normalize5(marker.getAttribute("title") ?? "")));
       if (label.length >= 4 && (questionMarker || interrogative.test(label)) && candidate.element.matches('a, button, [role~="button"]') && candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]')) {
         return { category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC9C8\uBB38 \uC77D\uAE30", "\uBA85\uC2DC\uC801 \uC9C8\uBB38 \uD45C\uC2DC\uC640 \uB3C4\uC6C0\uB9D0 \uBB38\uB9E5"], pageTask: "reading" };
       }
@@ -1529,11 +2191,11 @@
       return { category: "academic", score: 60, reasons: ["\uD559\uC0AC\uC77C\uC815 \uD56D\uBAA9 \uC77D\uAE30", "\uD559\uC0AC\uC77C\uC815 \uBAA9\uC801\uACFC \uD45C \uC548\uC758 \uC6D0\uBCF8 \uD589\uC0AC"], pageTask: "reading" };
     }
   }
-  function supplementalClassification(candidate, label, target, supplementalCache, url) {
+  function supplementalClassification(candidate, label, target, supplementalCache, url, navigationCache) {
     const element = candidate.element;
-    if (navigationUtility(element, label)) return;
+    if (navigationUtility(element, label, navigationCache)) return;
     if (candidate.context !== "body" || !element.matches('a[href], button, [role~="button" i]') || element.closest('article, [role~="article" i]')) return;
-    const evidence3 = supplementalEvidence(element, supplementalCache);
+    const evidence4 = supplementalEvidence(element, supplementalCache);
     const raw = element.getAttribute("href")?.trim() ?? "";
     if (hasDangerousScript(element)) return;
     let destination2 = url;
@@ -1555,18 +2217,18 @@
       reasons: [reason, "\uACE0\uC815 \uC6D0\uBCF8 \uC81C\uC5B4 \uAD6C\uC870"],
       pageTask: task,
       supplementalDependent: true,
-      relatedLabel: evidence3.relatedLabel,
-      snapshot: sourceSnapshot(element, candidate.label, void 0, false, true, supplementalCache)
+      relatedLabel: evidence4.relatedLabel,
+      snapshot: sourceSnapshot(element, candidate.label, void 0, false, true, supplementalCache, navigationCache)
     });
-    if (!dangerous2.test(label) && evidence3.filter && isInformationTopicLabel(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uAC80\uC0C9 \uC591\uC2DD\uC758 \uBD84\uC57C \uD544\uD130", "control");
-    if (evidence3.preparationAttachment && candidate.action === "locate" && element.matches("a[href]") && !!evidence3.relatedLabel && !dangerous2.test(label) && !dangerous2.test(evidence3.relatedLabel) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) {
+    if (!dangerous2.test(label) && evidence4.filter && isInformationTopicLabel(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uAC80\uC0C9 \uC591\uC2DD\uC758 \uBD84\uC57C \uD544\uD130", "control");
+    if (evidence4.preparationAttachment && candidate.action === "locate" && element.matches("a[href]") && !!evidence4.relatedLabel && !dangerous2.test(label) && !dangerous2.test(evidence4.relatedLabel) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) {
       return result("apply", 70, "\uAC19\uC740 \uC11C\uC2DD \uD589\uC758 \uACE0\uC815 \uC81C\uBAA9\uACFC \uCCA8\uBD80 \uC790\uB8CC", "reading");
     }
     const contexts = contextsFor(candidate, label);
-    if (!dangerous2.test(label) && evidence3.materialRow && label.length >= 2 && label.length <= 60 && !rules.some((rule) => !["apply", "academic"].includes(rule.category) && rule.label.test(label)) && contexts.some((text) => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uC2E0\uCCAD \uC900\uBE44 \uD3B8\uB78C\uC758 \uC6D0\uBCF8 \uC11C\uC2DD \uC790\uB8CC", "reading");
+    if (!dangerous2.test(label) && evidence4.materialRow && label.length >= 2 && label.length <= 60 && !rules.some((rule) => !["apply", "academic"].includes(rule.category) && rule.label.test(label)) && contexts.some((text) => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uC2E0\uCCAD \uC900\uBE44 \uD3B8\uB78C\uC758 \uC6D0\uBCF8 \uC11C\uC2DD \uC790\uB8CC", "reading");
     if (contextualReading(candidate, label)?.category === "academic" || issuanceIntent.test(label) && contexts.some((text) => procedureHeading.test(text))) return;
     const guideContext = contexts.some((text) => text.length <= 60 && /안내$/.test(text));
-    const readingContexts = [...contexts, ...evidence3.associatedHeadings];
+    const readingContexts = [...contexts, ...evidence4.associatedHeadings];
     const guideReading = candidate.pagePurpose === "help" || readingContexts.some((text) => text.length <= 60 && (/(?:안내|설명서|도움말|사용\s*법|이용\s*법|가이드|요령|수칙|매뉴얼|\b(?:instructions?|guide|manual|help))$/i.test(text) || /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)$/i.test(text)));
     const academicPeer = (peer) => {
       if (!peer.isLink || peer.action !== "navigate" || !peer.href || !isInformationTopicLabel(peer.label) || !academicConcept.test(peer.label) || !academicGuideEnd.test(peer.label) || dangerous2.test(peer.label)) return false;
@@ -1578,13 +2240,13 @@
         return false;
       }
     };
-    const educationPeers = evidence3.collectionPeers.filter(academicPeer);
-    if (candidate.action === "navigate" && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches("a[href]") }) && educationPeers.length >= 2 && educationPeers.length > evidence3.collectionPeers.length / 2) {
+    const educationPeers = evidence4.collectionPeers.filter(academicPeer);
+    if (candidate.action === "navigate" && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches("a[href]") }) && educationPeers.length >= 2 && educationPeers.length > evidence4.collectionPeers.length / 2) {
       return candidate.pagePurpose === "help" ? result("help", 70, "\uBA85\uC2DC\uC801 \uB3C4\uC6C0\uB9D0 \uBAA9\uC801\uACFC \uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150 \uBAA9\uB85D", "reading") : result("academic", 70, "\uAC19\uC740 \uCD9C\uCC98 \uC77D\uAE30 \uB9C1\uD06C\uC640 \uB2E4\uC218\uC758 \uACE0\uC815 \uAD50\uC721 \uAC1C\uB150", "reading");
     }
-    const readingTopic = evidence3.topicPeers >= 2 && (evidence3.controlledTopic || evidence3.associatedHeadings.length > 0) && !(destination2 && hasDocumentReference(destination2));
+    const readingTopic = evidence4.topicPeers >= 2 && (evidence4.controlledTopic || evidence4.associatedHeadings.length > 0) && !(destination2 && hasDocumentReference(destination2));
     const competingTask = rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label)));
-    const readingSubject = evidence3.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
+    const readingSubject = evidence4.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
     const academicTopic2 = !dangerous2.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label) && readingContexts.some((text) => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text)) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target));
     if (academicTopic2 && candidate.pagePurpose !== "help") return result("academic", 70, "\uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150\uACFC \uC5F0\uACB0\uB41C \uB0B4\uC6A9 \uC81C\uBAA9", "reading");
     if (!dangerous2.test(label) && readingTopic && isInformationTopicLabel(label) && !isSearchControl(element, candidate.label) && !element.closest('form, [role~="form" i]') && !isDocumentDownload(element, candidate.label) && (!competingTask || readingSubject) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target)) && guideReading) {
@@ -1596,8 +2258,8 @@
     if (!dangerous2.test(label) && guideReading && candidate.action === "locate" && label.length <= 60 && element.matches('button, [role~="button" i]') && !element.closest('form, [role~="form" i]') && /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|받기|download)$/i.test(label)) {
       return result("help", 70, "\uC548\uB0B4 \uBB38\uB9E5\uC758 \uBA85\uC2DC\uC801 \uAC00\uC774\uB4DC \uC790\uB8CC \uC81C\uC5B4", "reading");
     }
-    if (!dangerous2.test(label) && isInformationTopicLabel(label) && candidate.action === "locate" && (evidence3.informationPanels || guideContext && evidence3.grouped) && !rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label))) && !isDocumentDownload(element, candidate.label) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return result("help", 65, "\uACF5\uAC1C \uC815\uBCF4 \uD328\uB110\xB7\uC548\uB0B4 \uC8FC\uC81C \uC77D\uAE30", "reading");
-    const title = evidence3.title;
+    if (!dangerous2.test(label) && isInformationTopicLabel(label) && candidate.action === "locate" && (evidence4.informationPanels || guideContext && evidence4.grouped) && !rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label))) && !isDocumentDownload(element, candidate.label) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return result("help", 65, "\uACF5\uAC1C \uC815\uBCF4 \uD328\uB110\xB7\uC548\uB0B4 \uC8FC\uC81C \uC77D\uAE30", "reading");
+    const title = evidence4.title;
     if (!title || dangerous2.test(title.replace(/납부(?=\s*(?:내역|기록))/, "")) || isDocumentDownload(element, candidate.label) || destination2 && hasDocumentReference(destination2) || element.closest('form, [role~="form" i]')) return;
     if (/^(?=.{2,36}$).*(?:모의\s*계산|간단\s*계산|simulation|calculator)$/i.test(title) && !dangerous2.test(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uBA85\uC2DC\uC801 \uBAA8\uC758\xB7\uAC04\uB2E8 \uACC4\uC0B0 \uCE74\uB4DC", "control");
     if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title) && !dangerous2.test(label.replace(/납부(?=\s*(?:내역|기록))/g, "")) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uAC1C\uC778 \uB0B4\uC5ED\xB7\uAE30\uB85D \uD655\uC778 \uCE74\uB4DC", "control");
@@ -1612,11 +2274,14 @@
     const collectionCache = /* @__PURE__ */ new WeakMap();
     const supplementalCache = /* @__PURE__ */ new WeakMap();
     const contentCache = /* @__PURE__ */ new WeakMap();
+    const institutionCache = /* @__PURE__ */ new WeakMap();
+    const navigationCache = createNavigationCache();
+    const relationCache = createRelationCache();
     const classified = candidates.flatMap((candidate) => {
-      const sourceLabel = normalize3(candidate.label).replace(/[_-]+/g, " ");
+      const sourceLabel = normalize5(candidate.label).replace(/[_-]+/g, " ");
       const documentDownload = candidate.action === "locate" && isDocumentDownload(candidate.element, candidate.label);
       const label = documentDownload ? sourceLabel.replace(documentExtension, "").trim() : sourceLabel;
-      const utility2 = navigationUtility(candidate.element, candidate.label);
+      const utility2 = navigationUtility(candidate.element, candidate.label, navigationCache);
       if (utility2 === "position") return [];
       if (orderingLabel.test(label)) return [];
       if (hasDangerousScript(candidate.element)) return [];
@@ -1651,32 +2316,47 @@
       if (mode === "institution" && candidate.context !== "footer" && isVisible(element) && element.matches('a[href], button, [role~="button" i], [role~="tab" i]') && !element.closest('form, [role~="form" i], input, textarea, select, [contenteditable]:not([contenteditable="false" i]), [role~="textbox" i], [role~="searchbox" i], [role~="combobox" i], [role~="spinbutton" i], [role~="slider" i]') && !(element instanceof HTMLButtonElement && element.form)) {
         const inspectionParts = inspectionURL ? pathParts(inspectionURL) : [];
         const inspectionTarget = endpoint(inspectionParts);
-        const notice = noticeDocumentEvidence(candidate, label, normalize3(candidate.sectionLabel ?? ""), inspectionTarget, inspectionURL);
+        const notice = noticeDocumentEvidence(candidate, label, normalize5(candidate.sectionLabel ?? ""), inspectionTarget, inspectionURL);
         const supportedAnchor = !(element instanceof HTMLAnchorElement) || !!inspectionURL || (element.getAttribute("href") ?? "").trim().startsWith("#");
         const article = !!element.closest('article, [role~="article" i]') || isArticle(candidate, inspectionParts, inspectionURL);
         if (supportedAnchor && notice !== "conflict" && (!article || !!notice || corroboratedArticleService(candidate, label, inspectionTarget, inspectionParts, inspectionURL))) {
-          const evidence3 = institutionEvidence(candidate);
-          const conflict = evidence3 && rules.some((rule) => rule.category !== evidence3.category && rule.endpoints.has(inspectionTarget));
-          const readonlyDeadline = evidence3?.readonlyPanel === true && evidence3.contentScope === "content" && evidence3.category === "help" && evidence3.pageTask === "reading" && candidate.action === "locate" && element instanceof HTMLAnchorElement && /^#[^\s]+$/.test(element.getAttribute("href")?.trim() ?? "") && /^(?=.{2,60}$).*(?:납부\s*(?:기한|기간|일정)|\bpayment\s+(?:deadline|period|schedule))$/i.test(label) && !dangerous2.test(label.replace(/납부|\bpayment\b/gi, ""));
-          if (evidence3 && !conflict && (!dangerous2.test(label) || readonlyDeadline)) return [{
+          const evidence4 = institutionEvidence(candidate, institutionCache);
+          const conflict = evidence4 && rules.some((rule) => rule.category !== evidence4.category && rule.endpoints.has(inspectionTarget));
+          const readonlyDeadline = evidence4?.readonlyPanel === true && evidence4.contentScope === "content" && evidence4.category === "help" && evidence4.pageTask === "reading" && candidate.action === "locate" && element instanceof HTMLAnchorElement && /^#[^\s]+$/.test(element.getAttribute("href")?.trim() ?? "") && /^(?=.{2,60}$).*(?:납부\s*(?:기한|기간|일정)|\bpayment\s+(?:deadline|period|schedule))$/i.test(label) && !dangerous2.test(label.replace(/납부|\bpayment\b/gi, ""));
+          if (evidence4 && !conflict && (!dangerous2.test(label) || readonlyDeadline)) return [{
             ...candidate,
-            category: evidence3.category,
-            score: evidence3.score,
-            pageTask: evidence3.pageTask,
-            institutionEvidence: evidence3,
+            category: evidence4.category,
+            score: evidence4.score,
+            pageTask: evidence4.pageTask,
+            institutionEvidence: evidence4,
             reasons: ["\uC6D0\uBCF8 \uBA54\uB274\uC640 \uC548\uB0B4 \uB0B4\uC6A9\uC758 \uAD00\uACC4", "\uAE30\uAD00 \uD398\uC774\uC9C0\uC758 \uBA85\uC2DC\uC801 \uC77D\uAE30 \uBAA9\uC801"]
+          }];
+        }
+      }
+      if (!dangerous2.test(label) && candidate.context === "body" && isVisible(element) && element.matches('a[href],button,[role~="button" i],[role~="tab" i]') && !element.closest('form,[role~="form" i],article,[role~="article" i],input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]') && !(element instanceof HTMLButtonElement && element.form)) {
+        const relationTarget = inspectionURL ? endpoint(pathParts(inspectionURL)) : target;
+        const relation = relationEvidence(candidate, relationCache);
+        if (relation && !rules.some((rule) => rule.category !== relation.category && rule.endpoints.has(relationTarget)) && !noticeDocumentEvidence(candidate, label, normalize5(candidate.sectionLabel ?? ""), relationTarget, inspectionURL)) {
+          return [{
+            ...candidate,
+            relationEvidence: relation,
+            category: relation.category,
+            score: relation.score,
+            pageTask: relation.pageTask,
+            relatedLabel: relation.relatedLabel,
+            reasons: ["\uACE0\uC815 \uC6D0\uBCF8 \uC81C\uC5B4\uC640 \uAC19\uC740 \uBCF8\uBB38\uC758 \uAD00\uACC4", "\uC2E4\uC81C \uBAA9\uB85D\xB7\uD45C\xB7\uC11C\uBE44\uC2A4 \uD56D\uBAA9\uC758 \uBA85\uC2DC\uC801 \uC5ED\uD560"]
           }];
         }
       }
       const readonlyHelp = readonlyHelpDocument(candidate, label, target, url);
       if (readonlyHelp) return [readonlyHelp];
-      const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
+      const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url, navigationCache);
       if (supplemental) return [supplemental];
       if (dangerous2.test(label) && !academicInfo) return [];
       const searchControl = isSearchControl(candidate.element, label);
       const searchGuidance = !searchControl && searchGuidanceLabel.test(label);
       const inquiry = label.split(/[\s\p{P}\p{S}]+/u).some((word) => inquiryWord.test(word));
-      const section = normalize3(candidate.sectionLabel ?? "");
+      const section = normalize5(candidate.sectionLabel ?? "");
       const knownEndpoint = rules.some((rule) => rule.endpoints.has(target));
       const documentEvidence = noticeDocumentEvidence(candidate, label, section, target, url);
       if (documentEvidence === "conflict") return [];
@@ -1735,11 +2415,11 @@
         }
       }
       if (!best) {
-        const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url);
+        const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url, navigationCache);
         if (structured) return [{
           ...structured,
           collectionDependent: true,
-          snapshot: sourceSnapshot(candidate.element, candidate.label, collectionCache, true)
+          snapshot: sourceSnapshot(candidate.element, candidate.label, collectionCache, true, false, void 0, navigationCache)
         }];
       }
       if ((!best || best.category === "academic") && (academicReading(candidate, label, target, url) || academicLocalDestination(candidate, label, target, url))) {
@@ -1756,8 +2436,8 @@
       return best && best.score >= 55 ? [best] : [];
     });
     return classified.map((candidate) => {
-      const evidence3 = contentEvidence(candidate, contentCache, supplementalCache);
-      return evidence3 ? { ...candidate, contentEvidence: evidence3 } : candidate;
+      const evidence4 = contentEvidence(candidate, contentCache, supplementalCache);
+      return evidence4 ? { ...candidate, contentEvidence: evidence4 } : candidate;
     });
   }
 
@@ -1843,9 +2523,9 @@
     });
     const applySourceOrder = (peers) => {
       for (const positions of peers.values()) {
-        const controls = positions.map((index) => sorted[index]).sort(sourceOrder);
+        const controls3 = positions.map((index) => sorted[index]).sort(sourceOrder);
         positions.forEach((index, offset) => {
-          sorted[index] = controls[offset];
+          sorted[index] = controls3[offset];
         });
       }
     };
@@ -1855,85 +2535,85 @@
   }
   function rank(candidates) {
     const destinations = /* @__PURE__ */ new Set();
-    const controls = /* @__PURE__ */ new Set();
+    const controls3 = /* @__PURE__ */ new Set();
     const unique = ordered(candidates.filter((candidate) => candidate.category)).filter((candidate) => {
       const href = destination(candidate);
       if (href) {
         if (destinations.has(href)) return false;
         destinations.add(href);
       } else {
-        if (controls.has(candidate.element)) return false;
-        controls.add(candidate.element);
+        if (controls3.has(candidate.element)) return false;
+        controls3.add(candidate.element);
       }
       return true;
     });
     const counts = /* @__PURE__ */ new Map();
-    const selected2 = [];
+    const selected4 = [];
     for (const level of [2, 1]) {
       const content = unique.filter((candidate) => contentPriority(candidate) === level);
       const categories = /* @__PURE__ */ new Set();
       const add = (candidate) => {
-        selected2.push(candidate);
+        selected4.push(candidate);
         counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
       };
       for (const candidate of content) {
         if (categories.has(candidate.category)) continue;
         categories.add(candidate.category);
         add(candidate);
-        if (selected2.length === MAX_CARDS) return ordered(selected2);
+        if (selected4.length === MAX_CARDS) return ordered(selected4);
       }
       for (const candidate of content) {
-        if (selected2.includes(candidate)) continue;
+        if (selected4.includes(candidate) || candidate.contentEvidence?.taskGroup && selected4.some((item) => item.contentEvidence?.taskGroup === candidate.contentEvidence?.taskGroup)) continue;
         add(candidate);
-        if (selected2.length === MAX_CARDS) return ordered(selected2);
+        if (selected4.length === MAX_CARDS) return ordered(selected4);
       }
     }
     for (const candidate of unique) {
-      if (selected2.length >= MAX_PAGE_TASKS) break;
-      if (!candidate.category || selected2.includes(candidate) || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
+      if (selected4.length >= MAX_PAGE_TASKS) break;
+      if (!candidate.category || selected4.includes(candidate) || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
       counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
-      selected2.push(candidate);
-      if (selected2.length === MAX_PAGE_TASKS) break;
+      selected4.push(candidate);
+      if (selected4.length === MAX_PAGE_TASKS) break;
     }
     for (const candidate of unique) {
       if (!candidate.category || counts.has(candidate.category)) continue;
       counts.set(candidate.category, 1);
-      selected2.push(candidate);
-      if (selected2.length === MAX_CARDS) return ordered(selected2);
+      selected4.push(candidate);
+      if (selected4.length === MAX_CARDS) return ordered(selected4);
     }
     for (const candidate of unique) {
-      if (!candidate.category || selected2.includes(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
+      if (!candidate.category || selected4.includes(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
       counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
-      selected2.push(candidate);
-      if (selected2.length === MAX_CARDS) break;
+      selected4.push(candidate);
+      if (selected4.length === MAX_CARDS) break;
     }
-    if (selected2.length < MAX_CARDS) for (const candidate of unique) {
-      if (selected2.includes(candidate)) continue;
-      selected2.push(candidate);
-      if (selected2.length === MAX_CARDS) break;
+    if (selected4.length < MAX_CARDS) for (const candidate of unique) {
+      if (selected4.includes(candidate)) continue;
+      selected4.push(candidate);
+      if (selected4.length === MAX_CARDS) break;
     }
-    return ordered(selected2);
+    return ordered(selected4);
   }
-  function alreadyShown(selected2) {
+  function alreadyShown(selected4) {
     const destinations = /* @__PURE__ */ new Set();
-    const controls = /* @__PURE__ */ new Set();
-    for (const candidate of selected2) {
+    const controls3 = /* @__PURE__ */ new Set();
+    for (const candidate of selected4) {
       const href = destination(candidate);
       if (href) destinations.add(href);
-      else controls.add(candidate.element);
+      else controls3.add(candidate.element);
     }
-    return { destinations, controls };
+    return { destinations, controls: controls3 };
   }
-  function hasMoreMenus(candidates, selected2) {
-    const shown = alreadyShown(selected2);
+  function hasMoreMenus(candidates, selected4) {
+    const shown = alreadyShown(selected4);
     return candidates.some((candidate) => {
       if (!candidate.category) return false;
       const href = destination(candidate);
       return href ? !shown.destinations.has(href) : !shown.controls.has(candidate.element);
     });
   }
-  function* remainingMenus(candidates, selected2) {
-    const shown = alreadyShown(selected2);
+  function* remainingMenus(candidates, selected4) {
+    const shown = alreadyShown(selected4);
     for (const candidate of ordered(candidates.filter((candidate2) => candidate2.category))) {
       const href = destination(candidate);
       if (href) {
@@ -1948,7 +2628,7 @@
   }
 
   // src/page-session.ts
-  function isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache) {
+  function isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache, institutionCache, navigationCache, relationCache) {
     const label = candidateLabel(candidate.element);
     if (label !== candidate.label) return false;
     if (sourceContext(candidate.element) !== candidate.context) return false;
@@ -1957,15 +2637,20 @@
     if (pagePurpose(candidate.element, labels, commonPurpose) !== candidate.pagePurpose) return false;
     if (candidate.institutionEvidence) {
       const previous = candidate.institutionEvidence;
-      const evidence3 = institutionEvidence(candidate);
-      if (!evidence3 || evidence3.adapter !== previous.adapter || evidence3.version !== previous.version || evidence3.rule !== previous.rule || evidence3.category !== previous.category || evidence3.score !== previous.score || evidence3.pageTask !== previous.pageTask || evidence3.readonlyPanel !== previous.readonlyPanel || evidence3.contentScope !== previous.contentScope || evidence3.fingerprint !== previous.fingerprint || evidence3.dependencies.length !== previous.dependencies.length || evidence3.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+      const evidence4 = institutionEvidence(candidate, institutionCache);
+      if (!evidence4 || evidence4.adapter !== previous.adapter || evidence4.version !== previous.version || evidence4.rule !== previous.rule || evidence4.category !== previous.category || evidence4.score !== previous.score || evidence4.pageTask !== previous.pageTask || evidence4.readonlyPanel !== previous.readonlyPanel || evidence4.contentScope !== previous.contentScope || evidence4.fingerprint !== previous.fingerprint || evidence4.dependencies.length !== previous.dependencies.length || evidence4.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+    }
+    if (candidate.relationEvidence) {
+      const previous = candidate.relationEvidence;
+      const evidence4 = relationEvidence(candidate, relationCache);
+      if (!evidence4 || evidence4.rule !== previous.rule || evidence4.category !== previous.category || evidence4.score !== previous.score || evidence4.pageTask !== previous.pageTask || evidence4.contentScope !== previous.contentScope || evidence4.relatedLabel !== previous.relatedLabel || evidence4.fingerprint !== previous.fingerprint || evidence4.dependencies.length !== previous.dependencies.length || evidence4.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
     }
     if (candidate.contentEvidence) {
       const previous = candidate.contentEvidence;
-      const evidence3 = contentEvidence(candidate, contentCache, supplementalCache);
-      if (!evidence3 || evidence3.level !== previous.level || evidence3.rule !== previous.rule || evidence3.fingerprint !== previous.fingerprint || evidence3.dependencies.length !== previous.dependencies.length || evidence3.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+      const evidence4 = contentEvidence(candidate, contentCache, supplementalCache);
+      if (!evidence4 || evidence4.level !== previous.level || evidence4.rule !== previous.rule || evidence4.taskGroup !== previous.taskGroup || evidence4.fingerprint !== previous.fingerprint || evidence4.dependencies.length !== previous.dependencies.length || evidence4.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
     }
-    const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache);
+    const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache, navigationCache);
     return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl && current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
   }
   function areCandidatesCurrent(candidates) {
@@ -1973,8 +2658,11 @@
     const supplementalCache = /* @__PURE__ */ new WeakMap();
     const contextCache = /* @__PURE__ */ new WeakMap();
     const contentCache = /* @__PURE__ */ new WeakMap();
+    const institutionCache = /* @__PURE__ */ new WeakMap();
+    const navigationCache = createNavigationCache();
+    const relationCache = createRelationCache();
     const commonPurpose = documentPurpose() ?? null;
-    return candidates.every((candidate) => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache));
+    return candidates.every((candidate) => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache, institutionCache, navigationCache, relationCache));
   }
   function watchCandidates(getCandidates, onStale) {
     let stopped = false;
@@ -1994,7 +2682,7 @@
       childList: true,
       characterData: true,
       attributes: true,
-      attributeFilter: ["href", "rel", "target", "onclick", "aria-controls", "aria-current", "aria-selected", "aria-expanded", "aria-haspopup", "download", "type", "form", "id", "role", "tabindex", "disabled", "aria-disabled", "aria-hidden", "hidden", "class", "style", "aria-label", "aria-labelledby", "title", "placeholder", "contenteditable"]
+      attributeFilter: ["href", "action", "method", "onsubmit", "rel", "target", "onclick", "aria-controls", "aria-current", "aria-selected", "aria-expanded", "aria-haspopup", "download", "type", "form", "id", "role", "tabindex", "disabled", "aria-disabled", "aria-hidden", "hidden", "class", "style", "aria-label", "aria-labelledby", "title", "placeholder", "contenteditable"]
     });
     const interval = window.setInterval(check, 300);
     window.addEventListener("popstate", check);
@@ -2141,6 +2829,7 @@
   };
 
   // src/easy-mode.ts
+  var renderedSources = /* @__PURE__ */ new WeakMap();
   var paths = {
     brand: '<path d="M6 5h14M6 12h11M6 19h14M3 5h.01M3 12h.01M3 19h.01"/>',
     user: '<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',
@@ -2154,11 +2843,11 @@
     external: '<path d="M14 3h7v7m0-7L11 13M10 3H3v18h18v-7"/>',
     refresh: '<path d="M20 7a9 9 0 1 0 1 9M20 2v6h-6"/>'
   };
-  function icon(name) {
+  function icon(name2) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 24 24");
     svg.setAttribute("aria-hidden", "true");
-    svg.innerHTML = paths[name] ?? paths.help;
+    svg.innerHTML = paths[name2] ?? paths.help;
     return svg;
   }
   function el(tag, className = "", text) {
@@ -2213,9 +2902,9 @@
     const brand = el("div", "brand");
     const mark = el("span", "brand-mark");
     mark.append(icon("brand"));
-    const name = el("div", "", "EasyWeb");
-    name.append(el("small", "", "\uBCF5\uC7A1\uD55C \uD654\uBA74\uC744 \uB354 \uC27D\uAC8C"));
-    brand.append(mark, name);
+    const name2 = el("div", "", "EasyWeb");
+    name2.append(el("small", "", "\uBCF5\uC7A1\uD55C \uD654\uBA74\uC744 \uB354 \uC27D\uAC8C"));
+    brand.append(mark, name2);
     const closeButton = el("button", "close");
     closeButton.type = "button";
     closeButton.append(icon("close"), el("span", "", "\uC6D0\uBCF8 \uD654\uBA74 \uBCF4\uAE30"));
@@ -2299,6 +2988,7 @@
       const info = CATEGORY_INFO[candidate.category];
       const item = candidate.action === "navigate" ? el("a", "card") : el("button", "card");
       item.dataset.category = candidate.category;
+      renderedSources.set(item, candidate);
       const guard = (event) => {
         if (!stale && isCandidateCurrent(candidate)) return true;
         event.preventDefault();

@@ -1,0 +1,93 @@
+{
+  "status": "PREPARED_NOT_EXECUTED_WAITING_FOR_ROOT_START_SIGNAL",
+  "classification": "OFFLINE_ARTIFACT_CONSISTENCY_AUDIT_PREPARATION_ONLY",
+  "baselineCommit": "bdc3e1c851807efe23cb25f695888f70406fd2dd",
+  "version": "0.10.0",
+  "writeScope": ["docs/evidence/run009/artifact-audit/", "docs/evidence/run009/final-review.json"],
+  "executionBoundary": {
+    "beforeStartSignal": "Read previous audit procedures and prepare scripts/checklists only. No final success/failure assertion while closing reports and ZIP do not exist.",
+    "afterStartSignal": "Read saved final source-bound validation records and verify source/archive/history/ZIP/document bytes offline.",
+    "productSourceBuildTestQualityPerformanceBrowserNetworkReruns": false,
+    "cuaNativeVisibleBrowserExistingProfileAndServerOperations": false
+  },
+  "proceduresRead": [
+    "docs/evidence/run008/artifact-audit/audit.py",
+    "docs/evidence/run008/artifact-audit/assemble-final.py",
+    "docs/evidence/run008/artifact-audit/historical-audit/audit.py",
+    "docs/evidence/run008/artifact-audit/document-audit/audit-documents.py",
+    "docs/evidence/run008/artifact-audit/prepared-checks.json",
+    "docs/evidence/run008/final-review.json",
+    "scripts/package.mjs",
+    "scripts/build.mjs",
+    "scripts/verify.mjs"
+  ],
+  "plannedChecks": [
+    {
+      "area": "historical preservation",
+      "checks": [
+        "Compare all baseline Git blobs below docs/evidence, evaluation, output and RUN001-RUN008 reports to current bytes.",
+        "Keep evaluation/README.md and evaluation/protocol-tests.mjs outside original-data comparisons and audit them as current documentation/tool files.",
+        "Compare the unchanged original v10 first actual report to e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131.",
+        "Verify original/protocol v10 dataset freezes still declare identical 388 path/hash pairs and all payload bytes/read-only bits match.",
+        "Historical v0.9 freezes, archive, first execution error, first FAIL, QA, all previous output ZIPs and correction ancestry remain covered by baseline blob preservation."
+      ]
+    },
+    {
+      "area": "final source and tools",
+      "checks": [
+        "Require exactly the complete current product surface: 20 src files plus extension/manifest.json = 21 product files.",
+        "Match every declared product/tool freeze entry with current bytes and its frozen archive copy.",
+        "Require all modified validation/package tool files to be covered by final freeze or explicitly accounted for.",
+        "Capture opening/closing source and tool hashes; no success if source changes during audit.",
+        "Earlier 10 focused integration tests bind their older bundle; final overall verify must include those tests on the actual final product source."
+      ]
+    },
+    {
+      "area": "latest saved verification",
+      "checks": [
+        "Cross-check complete local verify stages and raw Playwright expected/unexpected/flaky/skipped/error statistics; verify 10 independent integration test titles occur in full-suite report.",
+        "Check source-bound automatic accessibility21 and live public15 records, retaining HTTP9/original guidance6 and no actual business/human completion claims.",
+        "Check both modes of closing60 development comparison: one unique original page count, arithmetic, 28 suite rows, all original/corrected per-suite FAILs retained.",
+        "Verify v8 board-search recovery against its final saved report while preserving previous 15→14/15 regression and first independent failures.",
+        "Check existing mixed/flat/table and institution analyzer/overlay thresholds separately from stricter whole-pipeline300ms diagnostics and currentness timings."
+      ]
+    },
+    {
+      "area": "candidate ZIP",
+      "checks": [
+        "Verify archive SHA256/length against metadata and SHA256SUMS; source and dist digests recompute correctly.",
+        "Check ZIP integrity, five exact dist entries, no duplicate/absolute/traversal names, source/dist/ZIP manifest equality.",
+        "Verify deterministic sorted paths, 1980 timestamp, stored compression and regular0644 modes.",
+        "Require0.10.0 package/manifest agreement, MV3 activeTab+scripting only, no host/optional permissions or automatic content scripts.",
+        "Validate saved double-build/double-ZIP/source-stability records and exact ZIP/dist bytes without independently rebuilding."
+      ]
+    },
+    {
+      "area": "documentation and acceptance",
+      "checks": [
+        "Check README, AGENTS, WORK_SPEC, PROGRESS, RUN009, INSTALL, PRETEST, MANUAL_CHECK, SUPPORT_MATRIX, ACCESSIBILITY, ACTION_POLICY, VALIDATION and evaluation README current links/claims.",
+        "Resolve local Markdown path references; external destinations and fragment anchors are outside this audit.",
+        "Keep max6+other/previous menus, ordinary HTTP direct navigation, input/danger/currentness safeguards and existing servers untouched.",
+        "Cross-check numerical claims with exact saved evidence and distinguish exposed-development improvements from original independent results.",
+        "Require overall5/10 NOT_MET, native install/VoiceOver/actual zoom NOT_RUN, pretest/formal observations0 and original10-stage requirements unchanged.",
+        "Keep account input/output/cache/billing/cost and whole-run elapsed UNKNOWN; bounded goal counters are not billed token usage.",
+        "User requested stopping after current version; goal may be paused by root and never marked10/10 complete from this artifact audit."
+      ]
+    }
+  ],
+  "plannedOutputs": [
+    "audit.json",
+    "historical-preservation.json",
+    "hash-checks.json",
+    "zip-entries.json",
+    "markdown-links.json",
+    "source-stability.json",
+    "docs/evidence/run009/final-review.json"
+  ],
+  "limits": [
+    "No final audit execution or approval has occurred during preparation.",
+    "Artifact consistency does not establish quality/performance/accessibility/native/human acceptance.",
+    "Read-only permission bits are observations, not protection against privileged later changes.",
+    "Earlier focused behavior review remains tied to its tested bundle after later content-evidence edits."
+  ]
+}

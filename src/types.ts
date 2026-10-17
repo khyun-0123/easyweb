@@ -22,7 +22,19 @@ export interface InstitutionEvidence {
   dependencies: readonly Element[];
 }
 
+export interface RelationEvidence {
+  relatedLabel?: string;
+  rule: string;
+  category: Category;
+  score: 65 | 70;
+  pageTask: 'reading' | 'control';
+  contentScope: 'content';
+  fingerprint: string;
+  dependencies: readonly Element[];
+}
+
 export interface ContentEvidence {
+  taskGroup?: Element;
   level: 1 | 2;
   rule: string;
   fingerprint: string;
@@ -51,6 +63,7 @@ export interface Candidate {
   relatedLabel?: string;
   institutionEvidence?: InstitutionEvidence;
   contentEvidence?: ContentEvidence;
+  relationEvidence?: RelationEvidence;
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

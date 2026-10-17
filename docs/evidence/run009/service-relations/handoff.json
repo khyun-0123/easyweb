@@ -1,0 +1,115 @@
+{
+  "classification": "EXPOSED_DEVELOPMENT_SERVICE_RELATION_MODULE_HANDOFF",
+  "createdAtUtc": "2026-10-17T19:55:19.411922+00:00",
+  "ownership": [
+    "src/service-relations.ts",
+    "tests/service-relations.spec.mjs",
+    "docs/evidence/run009/service-relations/"
+  ],
+  "productChanges": [
+    "Three conservative structural relationships only; action/href/target and own label preserved.",
+    "Optional relatedLabel carries the fixed task/card/content title.",
+    "Actual dependency Element references include fixed title descendants via evidenceNodes.",
+    "Relationships recomputed per call; no persistent cache, source activation, input value/checked/editable text access."
+  ],
+  "rules": [
+    {
+      "rule": "current-local-task-roles",
+      "proof": "2-6 local fixed-role task links, unique selected current-document link, following identical fixed title in same semantic region, shared own task subject",
+      "categories": {
+        "ownStatus": "apply/control",
+        "publicReading": "help/reading",
+        "applicationEntry": "apply/control"
+      }
+    },
+    {
+      "rule": "support-content-reading-views",
+      "proof": "2-6 own fixed media/news controls, immediately preceding support-center heading, following actual table with unique title column and safe readonly content links",
+      "category": "help/reading"
+    },
+    {
+      "rule": "single-service-own-actions",
+      "proof": "one fixed document-service title and exactly own details/issue/preview controls in one bounded card",
+      "categories": {
+        "details": "help/reading",
+        "issueEntry": "apply/control",
+        "preview": "help/reading"
+      }
+    }
+  ],
+  "verification": {
+    "command": "npx playwright test --config docs/evidence/run009/service-relations/playwright.config.mjs",
+    "final": {
+      "startTime": "2026-10-17T19:54:40.712Z",
+      "duration": 2786.3579999999997,
+      "expected": 34,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "typecheck": "PASS npx tsc --noEmit",
+    "testBundle": {
+      "sha256": "0e1efc7107ab129332c6e6e62287a6fa1d4060b61746c8f01f61dfbacc95dd65",
+      "scope": "Direct serviceRelation module + current analyzer bundle; no classifier/ranker/integration/quality/native claims.",
+      "headless": true,
+      "externalRequests": 0
+    },
+    "knownModuleTrace": {
+      "path": "docs/evidence/run009/service-relations/known-module-trace.json",
+      "bundleSha256": "645e4bf86e9b1728371912283a020571b6e406686ea1e7a0564b435a753dba75",
+      "controls": 9,
+      "relationsProduced": 9,
+      "scope": "Direct module trace on previously exposed v10 offline material only; no classifier/ranker/quality/independent/native evaluation.",
+      "externalNetworkRequests": 0
+    }
+  },
+  "baselineAndIntermediate": [
+    {
+      "path": "docs/evidence/run009/service-relations/baseline-stub.log",
+      "result": "No tests found from incorrect relative testDir; no product coverage."
+    },
+    {
+      "path": "docs/evidence/run009/service-relations/baseline-stub-valid.log",
+      "result": "Stub always returned undefined. Positive relationship/private/stale tests failed; negative tests passed vacuously. This is module capability baseline, not frozen v0.9 quality evaluation. The original v0.9 raw-but-unclassified diagnosis remains untouched."
+    },
+    {
+      "path": "docs/evidence/run009/service-relations/first-implementation.log",
+      "result": "29/30 PASS. Preview synthetic fixture lacked explicit download metadata, so existing policy correctly produced navigate while assertion incorrectly expected locate. Synthetic fixture gained download attr; product action policy unchanged."
+    },
+    {
+      "path": "docs/evidence/run009/service-relations/intermediate-syntax-error.log",
+      "result": "Parenthesis typo during simplification; compile failure preserved and fixed."
+    },
+    {
+      "path": "docs/evidence/run009/service-relations/known-module-trace-before-final-guards.json",
+      "result": "Earlier direct known-fixture module trace before nested-form/aria-controls/title guard additions; not final source hash."
+    },
+    {
+      "result": "First exploratory known-fixture inline addScriptTag was rejected by fixture CSP before module execution. Retried through established CDP isolated extension-like world without modifying fixture/CSP or disabling security."
+    }
+  ],
+  "sourceHashesAtHandoff": {
+    "src/service-relations.ts": "c99b7f55bb1416e07dcf0f6f84b7e194145f9106e5923f01e67f36329719a084",
+    "tests/service-relations.spec.mjs": "44de928ec77191d29c28021b0922f0d51db9353c9aeffbb3da18f7c59abf7d09",
+    "src/analyzer.ts": "1d0f37dca7cc14bdca321702e09b83eb4fd1517f687a7bd3257b348cac7ece58",
+    "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/navigation-utility.ts": "4dcfe6281aab9b986e2cee6447b65c9d263804476389f2f9c7947be19b2fac2b",
+    "src/types.ts": "1f142e80fd1841fcef2ed83c88669c3366f8a8cd4b2b0bf2519f53215ab0cd85"
+  },
+  "evidenceHashes": {
+    "docs/evidence/run009/service-relations/final-focused.log": "a618cc12bdcd0b21d588be8a13f28719b588f29f1185d1fd079782075b5ace72",
+    "docs/evidence/run009/service-relations/test-results.json": "27b9cdd0f1bc1ec485a63b05be7907793d7c811c831f045e82821a5af971aea6",
+    "docs/evidence/run009/service-relations/known-module-trace.json": "e087910cb0bd1068c3180904b0bb4699edea21f47d87870a42b65bb826ec341a",
+    "docs/evidence/run009/service-relations/playwright.config.mjs": "8b90159195d8a01f6b1baa65846b3ce452d5b00bbee66c17c5a65d10b1b7c419"
+  },
+  "limits": [
+    "Direct module+analyzer tests only; root must verify final classifier/ranker/currentness integration and full regression.",
+    "No new independent material, quality/bench/live/native/user checks, or site action execution.",
+    "Generic relationships intentionally abandon ambiguous/mixed cards, sidebars/global navigation/articles/forms/editors/hidden peers/dangerous peer metadata or commands.",
+    "The supplied cache is unused. Bounded scans may omit larger structures rather than infer unsupported relationships.",
+    "Root and other workers may change unrelated dependencies; this handoff source hash is an intermediate module handoff, not final engine freeze.",
+    "Existing 4173/4183 servers untouched; only fresh isolated headless Chromium used."
+  ],
+  "writeStatus": "COMPLETE_STOPPED_AFTER_HANDOFF"
+}

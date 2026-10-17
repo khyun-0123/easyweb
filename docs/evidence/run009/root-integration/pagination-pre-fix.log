@@ -1,0 +1,28 @@
+
+Running 1 test using 1 worker
+
+(node:31714) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents (104ms)
+
+
+  1) tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "same-content-query-form"
+    Received: undefined
+
+      15 | async function classify(page){return page.evaluate(()=>{window.candidates=V10Query.classify(V10Query.analyzePage());return candidates.map(c=>({id:c.element.id,category:c.category,rule:c.contentEvidence?.rule,group:!!c.contentEvidence?.taskGroup}));});}
+      16 | test('@positive a verified query for the same board keeps one first-screen slot beside its documents',async({page})=>{
+    > 17 |  await setup(page);const all=await classify(page);expect(all.find(c=>c.id==='query')?.rule).toBe('same-content-query-form');expect(all.find(c=>c.id==='global-query')?.rule).toBeUndefined();
+         |                                                                                             ^
+      18 |  const result=await page.evaluate(()=>{const first=V10Query.rank(candidates);const rest=[...V10Query.remainingMenus(candidates,first)];return {first:first.map(c=>c.element.id),all:[...first,...rest].map(c=>c.element.id)};});
+      19 |  expect(result.first).toHaveLength(6);expect(result.first).toContain('query');expect(result.first).not.toContain('submit');expect(result.first.filter(id=>id.startsWith('doc-')).length).toBe(5);expect(new Set(result.all).size).toBe(result.all.length);expect(result.all).toContain('submit');
+      20 | });
+        at /Users/khyun_03/easyweb/tests/content-query-v10.spec.mjs:17:93
+
+    Error Context: test-results/content-query-v10--positiv-20c75-n-slot-beside-its-documents/error-context.md
+
+  1 failed
+    tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents 

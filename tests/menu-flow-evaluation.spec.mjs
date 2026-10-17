@@ -40,13 +40,32 @@ test('추가 화면의 실제 표시 경로를 세되 첫 화면 재현율과 �
   } finally { await cdp.detach(); }
 });
 
-test('같은 이름·목적지로 원본을 하나로 식별할 수 없으면 표시 정답을 만들어 세지 않는다', async ({ page }) => {
+test('같은 이름·목적지여도 실제 카드의 원본 결속으로 중복 제거된 제어를 식별한다', async ({ page }) => {
   const { cdp, executionContextId, destinations } = await fixture(page, '<a data-eval-id="one" href="/help/shared">도움말</a><a data-eval-id="two" href="/help/shared">도움말</a>');
   const target = { accepted: [{ sourceId: 'one', category: 'help', action: 'navigate' }, { sourceId: 'two', category: 'help', action: 'navigate' }],
     expected: [{ id: 'feature', sourceIds: ['one', 'two'], category: 'help', action: 'navigate', href: destinations.one }], task: { expectedSourceIds: ['one', 'two'] } };
   try {
     const flow = await observeMenuFlow(page, cdp, executionContextId, bundle, target, destinations, 2);
+    expect(flow.unresolvedMappings).toEqual([]);
+    expect(flow.selected).toHaveLength(1);
+    expect(['one', 'two']).toContain(flow.selected[0].sourceId);
+    expect(flow.selected[0].sourceMatches).toBe(1);
+    expect(flow.selected[0].bindingMethod).toBe('actual-rendered-card-source');
+    expect(flow.matched).toBe(1);
+    expect(flow.correct).toBe(1);
+    expect(flow.taskRecommended).toBe(true);
+  } finally { await cdp.detach(); }
+});
+
+
+test('실제 카드 결속이 있어도 원본에 평가 식별자가 없으면 정답을 만들어 세지 않는다', async ({ page }) => {
+  const { cdp, executionContextId, destinations } = await fixture(page, '<a href="/help/shared">도움말</a>');
+  const target = { accepted: [{ sourceId: 'unobserved', category: 'help', action: 'navigate' }],
+    expected: [{ id: 'feature', sourceIds: ['unobserved'], category: 'help', action: 'navigate' }], task: { expectedSourceIds: ['unobserved'] } };
+  try {
+    const flow = await observeMenuFlow(page, cdp, executionContextId, bundle, target, destinations, 2);
     expect(flow.unresolvedMappings).toHaveLength(1);
+    expect(flow.selected[0].sourceId).toBeNull();
     expect(flow.matched).toBe(0);
     expect(flow.correct).toBe(0);
     expect(flow.taskRecommended).toBe(false);

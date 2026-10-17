@@ -3,7 +3,8 @@ import { supplementalEvidence, type SupplementalCache } from './analyzer';
 
 const MAX_CARDS = 6;
 // A focused page can offer a help index, a question and a reading control.
-// Category diversity still gets first choice; the total remains six cards.
+// Positive local content tiers come first; fallback category reservations keep
+// alternatives visible while the total remains six cards.
 const MAX_PER_CATEGORY = 3;
 const MAX_PAGE_TASKS = 3;
 const contextOrder = { primary: 0, body: 1, footer: 2 };
@@ -148,7 +149,8 @@ export function rank(candidates: Candidate[]): Candidate[] {
       if (selected.length === MAX_CARDS) return ordered(selected);
     }
     for (const candidate of content) {
-      if (selected.includes(candidate)) continue;
+      if (selected.includes(candidate) || candidate.contentEvidence?.taskGroup
+        && selected.some(item => item.contentEvidence?.taskGroup === candidate.contentEvidence?.taskGroup)) continue;
       add(candidate);
       if (selected.length === MAX_CARDS) return ordered(selected);
     }

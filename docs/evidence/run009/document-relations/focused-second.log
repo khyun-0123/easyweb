@@ -1,0 +1,59 @@
+
+Running 19 tests using 1 worker
+
+(node:28864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/document-relations.spec.mjs:38:1 › 고정 문서종류가 실제 제목·날짜·부서·첨부 열의 고유 문서 제어를 설명한다 (91ms)
+  ✓   2 tests/document-relations.spec.mjs:46:1 › 뉴스·일반 제목·서식 언급만으로 문서 분류를 만들지 않는다 (99ms)
+  ✓   3 tests/document-relations.spec.mjs:51:1 › 문서표의 중복·누락·병합·중첩·복수제목 관계는 거절한다 (118ms)
+  ✓   4 tests/document-relations.spec.mjs:66:1 › 정보디렉토리는 낯선 이름·열 재배열·층수의 수직병합을 정렬한다 (81ms)
+  ✓   5 tests/document-relations.spec.mjs:74:1 › 디렉토리 예약·신청·업무제어 표나 제어 이름은 읽기근거를 얻지 않는다 (94ms)
+  ✓   6 tests/document-relations.spec.mjs:79:1 › 디렉토리 의미열 병합·잘못된 층수범위·행누락·중첩·다중제어를 거절한다 (133ms)
+  ✘   7 tests/document-relations.spec.mjs:96:1 › 학업지원 PDF는 고정행제목을 primary관련이름으로 쓰고 title속성은 규정계열만 교차검증한다 (71ms)
+(node:28886) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   8 tests/document-relations.spec.mjs:103:1 › 일반 파일·다른 제목·결제·서식·모호한 학업표는 새 근거를 얻지 않는다 (125ms)
+  ✓   9 tests/document-relations.spec.mjs:108:1 › 선택 문서와 본문·학사 heading이 맞는 학업지원 탭은 다른문서 fragment도 navigate를 보존한다 (59ms)
+  ✓  10 tests/document-relations.spec.mjs:112:1 › 학업 탭은 선택중복·다른문서선택·다른본문·전역메뉴·업무 peer를 거절한다 (125ms)
+  ✓  11 tests/document-relations.spec.mjs:128:1 › 입력·편집·사적값·숨김·기사·form 경계는 모든 관계에서 거절한다 (237ms)
+  ✓  12 tests/document-relations.spec.mjs:143:1 › 표 caption·header·행제목의 숨김/편집/ARIA참조는 표근거를 취소한다 (141ms)
+  ✓  13 tests/document-relations.spec.mjs:152:1 › 입력 value/checked와 편집 text getter를 읽거나 로그에 넣지 않는다 (60ms)
+  ✓  14 tests/document-relations.spec.mjs:163:1 › 같은 batch/newbatch 모두 의미를 재계산하고 source 계약은 불변이다 (62ms)
+  ✓  15 tests/document-relations.spec.mjs:175:1 › 동일문구 노드교체는 제목하위장식·표·행·열·부모의 실제 dependency 교체로 검출된다 (275ms)
+  ✓  16 tests/document-relations.spec.mjs:190:1 › 깊거나 과도한 이름장식·큰 표·80방문초과 지역은 보수적으로 포기한다 (85ms)
+  ✓  17 tests/document-relations.spec.mjs:199:1 › 동일 이름의 규정 PDF 두 행은 행별 dependency와 제목을 유지한다 (61ms)
+  ✓  18 tests/document-relations.spec.mjs:207:1 › 모듈은 원본 이벤트·링크·다운로드·form을 활성화하지 않는다 (58ms)
+  ✓  19 tests/document-relations.spec.mjs:212:1 › 이미 노출된 세 원본 fixture의 7 관계를 개발자료로만 확인한다 (1.3s)
+
+
+  1) tests/document-relations.spec.mjs:96:1 › 학업지원 PDF는 고정행제목을 primary관련이름으로 쓰고 title속성은 규정계열만 교차검증한다 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+    @@ -2,7 +2,7 @@
+        "action": "locate",
+        "category": "academic",
+        "label": "pdf 다운로드",
+        "relatedLabel": "연구장학금 지급에 관한 시행세칙",
+        "rule": "academic-support-regulation-file",
+    -   "target": "_blank",
+    +   "target": null,
+      }
+
+       97 |   for (const columns of [['구분','파일(PDF) 다운로드'], ['파일(PDF) 다운로드','구분']]) {
+       98 |     await setup(page, academicTable({ columns }));
+    >  99 |     expect(await relation(page)).toMatchObject({ rule: 'academic-support-regulation-file', category: 'academic', relatedLabel: '연구장학금 지급에 관한 시행세칙', label: 'pdf 다운로드', action: 'locate', target: '_blank' });
+          |                                  ^
+      100 |     await page.unrouteAll();
+      101 |   }
+      102 | });
+        at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:99:34
+
+    Error Context: docs/evidence/run009/document-relations/test-artifacts/document-relations-학업지원-PD-9b814-으로-쓰고-title속성은-규정계열만-교차검증한다/error-context.md
+
+  1 failed
+    tests/document-relations.spec.mjs:96:1 › 학업지원 PDF는 고정행제목을 primary관련이름으로 쓰고 title속성은 규정계열만 교차검증한다 
+  18 passed (4.0s)

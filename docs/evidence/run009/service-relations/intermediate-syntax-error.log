@@ -1,0 +1,79 @@
+
+Running 30 tests using 1 worker
+
+(node:28167) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✘ [ERROR] Expected ";" but found ")"
+
+    src/service-relations.ts:133:85:
+      133 │ ...pareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING)));
+          │                                                                   ^
+          ╵                                                                   ;
+
+  ✘   1 tests/service-relations.spec.mjs:24:1 › 현재 문서와 같은 고정 제목의 지역 업무 탭은 각자의 역할을 구분한다 (0ms)
+  -   2 tests/service-relations.spec.mjs:27:1 › 실제 지원센터 게시물 목록과 인접한 보기 버튼은 읽기로 연결한다
+  -   3 tests/service-relations.spec.mjs:30:1 › 한 고정 서비스 제목의 세 행동은 label과 원본 실행 계약을 보존한다
+  -   4 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 선택문서 불일치
+  -   5 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 선택 2개
+  -   6 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 제목 없음
+  -   7 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 다른 지역 제목
+  -   8 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 위험한 동료
+  -   9 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 중첩 편집 동료
+  -  10 tests/service-relations.spec.mjs:41:3 › 지역 업무 근거 반례: 업무 주제 충돌
+  -  11 tests/service-relations.spec.mjs:49:3 › 지원센터 보기 반례: 고정 지원 제목 없음
+  -  12 tests/service-relations.spec.mjs:49:3 › 지원센터 보기 반례: 실제 목록 없음
+  -  13 tests/service-relations.spec.mjs:49:3 › 지원센터 보기 반례: 제목 열 없음
+  -  14 tests/service-relations.spec.mjs:49:3 › 지원센터 보기 반례: 위험한 동료
+  -  15 tests/service-relations.spec.mjs:49:3 › 지원센터 보기 반례: 상태/업무 버튼 혼합
+  -  16 tests/service-relations.spec.mjs:49:3 › 지원센터 보기 반례: 목록의 원본 업무 명령
+  -  17 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 제목 2개
+  -  18 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 제목 입력영역
+  -  19 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 다른 카드 제목
+  -  20 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 업무 양식
+  -  21 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 숨긴 동료
+  -  22 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 위험한 버튼
+  -  23 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 추가 동작
+  -  24 tests/service-relations.spec.mjs:59:3 › 다중 행동 카드 반례: 제목과 무관한 링크 제목
+  -  25 tests/service-relations.spec.mjs:60:1 › 전역 메뉴·기사·사이드바는 지역 서비스 근거를 얻지 않는다
+  -  26 tests/service-relations.spec.mjs:61:1 › 사적 getter와 편집 노드는 읽지 않으며 결과에도 포함하지 않는다
+  -  27 tests/service-relations.spec.mjs:65:149 › 탭 고정제목 하위노드 동일 문구 교체는 실제 의존 노드를 교체한다
+  -  28 tests/service-relations.spec.mjs:65:149 › 지원센터 제목 하위노드 동일 문구 교체는 실제 의존 노드를 교체한다
+  -  29 tests/service-relations.spec.mjs:65:149 › 카드 제목 하위노드 동일 문구 교체는 실제 의존 노드를 교체한다
+  -  30 tests/service-relations.spec.mjs:68:1 › 같은 batch cache를 전달해도 관계 변경 뒤 새 고정 근거를 재검사한다
+
+
+  1) tests/service-relations.spec.mjs:24:1 › 현재 문서와 같은 고정 제목의 지역 업무 탭은 각자의 역할을 구분한다 ────────────────
+
+    Error: Build failed with 1 error:
+    src/service-relations.ts:133:85: ERROR: Expected ";" but found ")"
+        at failureErrorWithLog (/Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:1752:15)
+        at /Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:1211:25
+        at /Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:1163:52
+        at buildResponseToResult (/Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:1209:7)
+        at /Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:1236:16
+        at responseCallbacks.<computed> (/Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:886:9)
+        at handleIncomingPacket (/Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:941:12)
+        at Socket.readFromStdout (/Users/khyun_03/easyweb/node_modules/esbuild/lib/main.js:864:7)
+
+    {
+      detail: undefined,
+      id: '',
+      location: {
+        column: 85,
+        file: 'src/service-relations.ts',
+        length: 1,
+        line: 133,
+        lineText: '        && !!(list.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING)));',
+        namespace: '',
+        suggestion: ';'
+      },
+      notes: [],
+      pluginName: '',
+      text: 'Expected ";" but found ")"'
+    }
+
+    Error Context: docs/evidence/run009/service-relations/test-artifacts/service-relations-현재-문서와-같은-고정-제목의-지역-업무-탭은-각자의-역할을-구분한다/error-context.md
+
+  1 failed
+    tests/service-relations.spec.mjs:24:1 › 현재 문서와 같은 고정 제목의 지역 업무 탭은 각자의 역할을 구분한다 ─────────────────
+  29 did not run

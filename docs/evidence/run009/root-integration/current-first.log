@@ -1,0 +1,18 @@
+
+Running 11 tests using 1 worker
+
+(node:30262) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents (105ms)
+  ✓   2 tests/content-query-v10.spec.mjs:21:1 › @positive batch institution summaries avoid rereading a shared fixed heading and fresh checks still detect replacement (92ms)
+  ✓   3 tests/content-query-v10.spec.mjs:28:1 › same-frame changes to form method/action/handler, field owner or heading invalidate the old query proof (227ms)
+  ✓   4 tests/content-query-v10.spec.mjs:39:1 › private field values and checked state are absent from query proof, snapshots and UI metadata (86ms)
+  ✓   5 tests/content-query-v10.spec.mjs:43:120 › post cannot acquire the new same-content query proof (84ms)
+  ✓   6 tests/content-query-v10.spec.mjs:43:120 › unrelated-heading cannot acquire the new same-content query proof (84ms)
+  ✓   7 tests/content-query-v10.spec.mjs:43:120 › no-content cannot acquire the new same-content query proof (79ms)
+  ✓   8 tests/content-query-v10.spec.mjs:43:120 › foreign-action cannot acquire the new same-content query proof (85ms)
+  ✓   9 tests/content-query-v10.spec.mjs:43:120 › dangerous-action cannot acquire the new same-content query proof (84ms)
+  ✓  10 tests/content-query-v10.spec.mjs:43:120 › dangerous-handler cannot acquire the new same-content query proof (87ms)
+  ✓  11 tests/menu-source-identity.spec.mjs:6:1 › same-named source buttons retain actual source identity over multiple menu pages (127ms)
+
+  11 passed (1.6s)

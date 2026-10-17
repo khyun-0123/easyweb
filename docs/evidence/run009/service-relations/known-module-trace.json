@@ -1,0 +1,141 @@
+{
+  "scope": "Direct module trace on previously exposed v10 offline material only; no classifier/ranker/quality/independent/native evaluation.",
+  "bundleSha256": "645e4bf86e9b1728371912283a020571b6e406686ea1e7a0564b435a753dba75",
+  "world": "fresh isolated CDP world; original fixture and CSP unchanged",
+  "results": [
+    {
+      "name": "city",
+      "items": [
+        {
+          "id": "city-c0822",
+          "collected": true,
+          "label": "나의민원보기",
+          "action": "navigate",
+          "relation": {
+            "rule": "current-local-task-roles",
+            "category": "apply",
+            "pageTask": "control",
+            "relatedLabel": "민원신청",
+            "dependencyCount": 9
+          }
+        },
+        {
+          "id": "city-c0823",
+          "collected": true,
+          "label": "민원공개",
+          "action": "navigate",
+          "relation": {
+            "rule": "current-local-task-roles",
+            "category": "help",
+            "pageTask": "reading",
+            "relatedLabel": "민원신청",
+            "dependencyCount": 9
+          }
+        },
+        {
+          "id": "city-c0824",
+          "collected": true,
+          "label": "민원신청(국민신문고) 바로가기",
+          "action": "navigate",
+          "relation": {
+            "rule": "current-local-task-roles",
+            "category": "apply",
+            "pageTask": "control",
+            "relatedLabel": "민원신청",
+            "dependencyCount": 11
+          }
+        }
+      ]
+    },
+    {
+      "name": "government",
+      "items": [
+        {
+          "id": "government-c0201",
+          "collected": true,
+          "label": "센터소식 선택됨",
+          "action": "locate",
+          "relation": {
+            "rule": "support-content-reading-views",
+            "category": "help",
+            "pageTask": "reading",
+            "relatedLabel": "심리회복지원센터",
+            "dependencyCount": 44
+          }
+        },
+        {
+          "id": "government-c0202",
+          "collected": true,
+          "label": "사진자료",
+          "action": "locate",
+          "relation": {
+            "rule": "support-content-reading-views",
+            "category": "help",
+            "pageTask": "reading",
+            "relatedLabel": "심리회복지원센터",
+            "dependencyCount": 44
+          }
+        },
+        {
+          "id": "government-c0203",
+          "collected": true,
+          "label": "영상자료",
+          "action": "locate",
+          "relation": {
+            "rule": "support-content-reading-views",
+            "category": "help",
+            "pageTask": "reading",
+            "relatedLabel": "심리회복지원센터",
+            "dependencyCount": 44
+          }
+        }
+      ]
+    },
+    {
+      "name": "public-agency",
+      "items": [
+        {
+          "id": "public-agency-c0545",
+          "collected": true,
+          "label": "상세보기",
+          "action": "navigate",
+          "relation": {
+            "rule": "single-service-own-actions",
+            "category": "help",
+            "pageTask": "reading",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "dependencyCount": 7
+          }
+        },
+        {
+          "id": "public-agency-c0546",
+          "collected": true,
+          "label": "발급하기",
+          "action": "locate",
+          "relation": {
+            "rule": "single-service-own-actions",
+            "category": "apply",
+            "pageTask": "control",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "dependencyCount": 7
+          }
+        },
+        {
+          "id": "public-agency-c0547",
+          "collected": true,
+          "label": "미리보기",
+          "action": "locate",
+          "relation": {
+            "rule": "single-service-own-actions",
+            "category": "help",
+            "pageTask": "reading",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "dependencyCount": 7
+          }
+        }
+      ]
+    }
+  ],
+  "abortedFixtureSubrequests": 0,
+  "externalNetworkRequests": 0
+}

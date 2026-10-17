@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-10-17T20:02:40.376Z",
+  "completedAt": "2026-10-17T20:03:44.331Z",
+  "localRegressionStatus": "FAIL",
+  "requestedChecksStatus": "FAIL",
+  "requestedMode": "local-with-core",
+  "scope": "Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.",
+  "excluded": [
+    "live public-site observations and task completion",
+    "fresh blind evaluation",
+    "native extension installation and activeTab gesture",
+    "actual VoiceOver speech",
+    "real user study"
+  ],
+  "stages": [
+    {
+      "name": "typecheck",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 127.89866700000002,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run009/verify-typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/build.mjs"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 71.63429199999999,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run009/verify-build.log"
+    },
+    {
+      "name": "playwright",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--reporter=list,json"
+      ],
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedMilliseconds": 63749.710417,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run009/verify-playwright.log"
+    }
+  ],
+  "tests": {
+    "expected": 491,
+    "unexpected": 1,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMilliseconds": 63484.499,
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run009/playwright-local.json"
+  },
+  "coreQuality": null,
+  "performance": null,
+  "structuralPerformance": null
+}

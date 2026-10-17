@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "classification": "RUN009_DEVELOPMENT_OPTIMIZATION_NOT_INDEPENDENT_QUALITY_OR_FINAL_PERFORMANCE_ACCEPTANCE",
+  "status": "FOCUSED_VALIDATION_PASS_HANDOFF_READY",
+  "createdAtUtc": "2026-10-17T19:53:54.817309+00:00",
+  "baselineCommit": "bdc3e1c851807efe23cb25f695888f70406fd2dd",
+  "ownedFiles": [
+    "src/analyzer.ts",
+    "src/navigation-utility.ts",
+    "tests/analysis-batch-performance.spec.mjs"
+  ],
+  "rules": [
+    "No classifier/ranker/category/threshold/action/href/target changes in this worker.",
+    "NavigationCache is opt-in and belongs to one synchronous DOM-read analysis/classification/currentness batch only. No global cache, observer/frame cache or persistent semantic cache.",
+    "Create a fresh cache for every later card/menu/after-focus/currentness call. Standalone calls without a cache remain uncached.",
+    "Only fixed safe supplied labels, element identities, bounded direct list membership (at most 24), menu/breadcrumb booleans, unique-id lookups and visibility booleans are cached. No ancestor whole-region text, input value, checked state or editable subtree text is read.",
+    "Existing document source attributes/actions and currentness checks remain in sourceSnapshot. Cache optional parameter is appended after six existing parameters.",
+    "Context paragraph fallback first requires an actual direct p and the same at-most-three-controls condition. Its safe fixed label and visibility are recomputed in each fresh ContextCache.",
+    "Original RUN008 firstFAIL/freeze/source archives/evaluation records are unchanged. Existing 60 pages remain development-exposed; no new sample was opened."
+  ],
+  "api": {
+    "createNavigationCache": "import {createNavigationCache,type NavigationCache} from ./navigation-utility; const navigationCache=createNavigationCache();",
+    "navigationUtility": "navigationUtility(element,safeLabel,navigationCache?)",
+    "sourceSnapshot": "sourceSnapshot(element,safeLabel,collectionCache?,includeCollection=false,includeSupplemental=false,supplementalCache?,navigationCache?)",
+    "analyzePage": "Creates a fresh NavigationCache and ContextCache internally.",
+    "ContextCache": "WeakMap<Element,ContextSummary>; callers creating new WeakMap() remain compatible; summary is analyzer-internal.",
+    "rootIntegration": "Root owns classifier/page-session batch plumbing, including new caches per areCandidatesCurrent invocation and uncached/fresh standalone isCandidateCurrent. This worker did not edit those files."
+  },
+  "diagnosis": {
+    "directListEnumeration": "Original directItems converted list.children to an array before checking <=24. At 1000 controls sharing a list, this enumerated 1000000 children. Child bound now precedes enumeration; cached negative summary avoids repeated structural work.",
+    "paragraphFallback": "Original context fallback queried every a/button/input before checking whether a direct p existed. Flat1000 fixture returned1001000 matching controls. A direct p existence check and per-parent summary reduce these queries to0 for paragraph-free lists.",
+    "batchReuse": "The same control utility and source snapshot now share final navigation result and avoid repeated visibility/layout checks inside an explicitly supplied batch.",
+    "operationComparisons": [
+      {
+        "shape": "nested-board",
+        "controls": 250,
+        "before": {
+          "candidateCount": 250,
+          "childrenAccesses": 250,
+          "childrenEnumeratedUpperBound": 62500,
+          "fallbackControlQueries": {
+            "calls": 500,
+            "matched": 500
+          }
+        },
+        "after": {
+          "candidateCount": 250,
+          "childrenAccesses": 0,
+          "childrenEnumeratedUpperBound": 0,
+          "fallbackControlQueries": {
+            "calls": 0,
+            "matched": 0
+          }
+        }
+      },
+      {
+        "shape": "nested-board",
+        "controls": 1000,
+        "before": {
+          "candidateCount": 1000,
+          "childrenAccesses": 1000,
+          "childrenEnumeratedUpperBound": 1000000,
+          "fallbackControlQueries": {
+            "calls": 2000,
+            "matched": 2000
+          }
+        },
+        "after": {
+          "candidateCount": 1000,
+          "childrenAccesses": 0,
+          "childrenEnumeratedUpperBound": 0,
+          "fallbackControlQueries": {
+            "calls": 0,
+            "matched": 0
+          }
+        }
+      },
+      {
+        "shape": "flat-list",
+        "controls": 250,
+        "before": {
+          "candidateCount": 250,
+          "childrenAccesses": 250,
+          "childrenEnumeratedUpperBound": 62500,
+          "fallbackControlQueries": {
+            "calls": 500,
+            "matched": 62750
+          }
+        },
+        "after": {
+          "candidateCount": 250,
+          "childrenAccesses": 0,
+          "childrenEnumeratedUpperBound": 0,
+          "fallbackControlQueries": {
+            "calls": 0,
+            "matched": 0
+          }
+        }
+      },
+      {
+        "shape": "flat-list",
+        "controls": 1000,
+        "before": {
+          "candidateCount": 1000,
+          "childrenAccesses": 1000,
+          "childrenEnumeratedUpperBound": 1000000,
+          "fallbackControlQueries": {
+            "calls": 2000,
+            "matched": 1001000
+          }
+        },
+        "after": {
+          "candidateCount": 1000,
+          "childrenAccesses": 0,
+          "childrenEnumeratedUpperBound": 0,
+          "fallbackControlQueries": {
+            "calls": 0,
+            "matched": 0
+          }
+        }
+      }
+    ]
+  },
+  "validation": {
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    "focused": {
+      "command": "npx playwright test --config docs/evidence/run009/analyzer-performance/playwright.config.mjs tests/analysis-batch-performance.spec.mjs tests/navigation-utility.spec.mjs tests/analyzer-context.spec.mjs",
+      "expected": 41,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "report": "docs/evidence/run009/analyzer-performance/focused-tests.json",
+      "scope": "7 new operation/cache/privacy/stale tests,21 existing analyzer context tests,13 existing navigation utility tests; fresh isolated headless with no webServer."
+    },
+    "privateAccess": "Poisoned input.value/input.checked/textarea.value/editable textContent/innerText/child nodeValue getters:0 reads in the focused test.",
+    "nextBatchCurrentness": "Same-frame equal-text target clone re-resolves to the new actual node; duplicate IDs reject; rel/href/onclick/target/aria-current/form move and original equal-markup clone reject stale candidates.",
+    "batchLayout": "1 getClientRects call for source initial navigation result;20 navigationUtility+sourceSnapshot repetitions add0 calls; fresh batch adds a layout call."
+  },
+  "limits": [
+    "Wall timings in operations-before/after are diagnostic only while other workers were active. No p95/final 300ms pipeline acceptance claim is made.",
+    "Source-stable final sequential generic/institution pipeline/currentness/overlay benchmarks must be run by root after workers stop.",
+    "No full suite/core/live/native/install/VoiceOver/zoom/human-use/independent quality claims or commits were made.",
+    "A caller must not reuse NavigationCache across DOM writes or asynchronous boundaries. API documentation states this lifetime and root integration must preserve it."
+  ],
+  "sourceSha256": {
+    "src/analyzer.ts": "1d0f37dca7cc14bdca321702e09b83eb4fd1517f687a7bd3257b348cac7ece58",
+    "src/navigation-utility.ts": "4dcfe6281aab9b986e2cee6447b65c9d263804476389f2f9c7947be19b2fac2b",
+    "tests/analysis-batch-performance.spec.mjs": "1eb7b96cf58f5cab0ba6fb63b42742d29d90ec4c977b179387784344c9ab3b26"
+  },
+  "baselineSourceSha256": {
+    "src/analyzer.ts": "fdf4ed47f0e4cd5d4aa8b3de503dc6c1bd84998830860ceca2849fdb71faf3a6",
+    "src/navigation-utility.ts": "d4ad0d0e26540e9eb949dc783ea23c763452c2c798e2a502828f7381a5e225aa"
+  },
+  "evidenceSha256": {
+    "docs/evidence/run009/analyzer-performance/operations-before.json": "f64c0bea8b64a8afa24838000cd98ad30a8dbe2e7f134030bb33b8ad06a23133",
+    "docs/evidence/run009/analyzer-performance/operations-before-expanded.json": "78687e905e491af040507586c38ab6124537120d2530d0d3b8dd458f2bf7fb54",
+    "docs/evidence/run009/analyzer-performance/operations-after.json": "cb034d4a5958a2b93305966d735b6e7a3ac1dfd7292c54478f7109c1026508dc",
+    "docs/evidence/run009/analyzer-performance/focused-tests.json": "1e530566a134ea546dd046a0f281de8ea36e4027555364ffce3bd25073e6bd47",
+    "docs/evidence/run009/analyzer-performance/profile.mjs": "d6affb7e166995c763e50bd485c3e6a94519c9330784b50f0d4584e7fdad6631",
+    "docs/evidence/run009/analyzer-performance/playwright.config.mjs": "56fdbabdb038058960cc8cfebce032eeba4be6d1fff21d1295b7b075bac11eb3"
+  }
+}

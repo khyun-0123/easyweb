@@ -1,0 +1,79 @@
+
+Running 1 test using 1 worker
+
+(node:30263) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/menu-source-identity.spec.mjs:6:1 › same-named source buttons retain actual source identity over multiple menu pages (227ms)
+
+
+  1) tests/menu-source-identity.spec.mjs:6:1 › same-named source buttons retain actual source identity over multiple menu pages 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 50
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "label": "조회",
+    +     "page": 1,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 1,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 1,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 1,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 1,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 1,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 2,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    +   Object {
+    +     "label": "조회",
+    +     "page": 2,
+    +     "relatedLabel": undefined,
+    +     "sourceMatches": 8,
+    +   },
+    + ]
+
+      14 |  const bundle=await build({mode:'institution'});const cdp=await page.context().newCDPSession(page);await cdp.send('Page.enable');const {frameTree}=await cdp.send('Page.getFrameTree');const {executionContextId}=await cdp.send('Page.createIsolatedWorld',{frameId:frameTree.frame.id,worldName:'menu-source-identity'});
+      15 |  const report=await observeMenuFlow(page,cdp,executionContextId,bundle,target,{},8);await cdp.detach();
+    > 16 |  expect(report.pages.map(p=>p.cards.length)).toEqual([6,2]);expect(report.unresolvedMappings).toEqual([]);expect(report.repeatedCards).toEqual([]);expect(report.matched).toBe(8);expect(new Set(report.selected.map(c=>c.sourceId)).size).toBe(8);expect(report.firstReachedPage['purpose-7']).toBe(2);
+         |                                                                                               ^
+      17 | });
+      18 |
+        at /Users/khyun_03/easyweb/tests/menu-source-identity.spec.mjs:16:95
+
+    Error Context: test-results/menu-source-identity-same--6b136-ty-over-multiple-menu-pages/error-context.md
+
+  1 failed
+    tests/menu-source-identity.spec.mjs:6:1 › same-named source buttons retain actual source identity over multiple menu pages 

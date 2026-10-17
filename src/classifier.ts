@@ -1,9 +1,10 @@
 import type { Candidate, Category } from './types';
 import { collectionEvidence, supplementalEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache, type SupplementalCache } from './analyzer';
 import { isDocumentDownload } from './action-policy';
-import { institutionEvidence, type ClassificationMode } from './institution-evidence';
+import { institutionEvidence, type InstitutionEvidenceCache, type ClassificationMode } from './institution-evidence';
 import { contentEvidence, type ContentEvidenceCache } from './content-evidence';
-import { navigationUtility } from './navigation-utility';
+import { navigationUtility, createNavigationCache, type NavigationCache } from './navigation-utility';
+import { relationEvidence, createRelationCache } from './relations';
 
 export interface ClassificationOptions { mode?: ClassificationMode }
 
@@ -200,9 +201,9 @@ function applicationPageControl(candidate: Candidate, label: string, target: str
     && candidate.element.type === 'submit' && candidate.element.form);
 }
 
-function structuredContext(candidate: Candidate, label: string, collection: ReturnType<typeof collectionEvidence>, url?: URL): Candidate | undefined {
+function structuredContext(candidate: Candidate, label: string, collection: ReturnType<typeof collectionEvidence>, url?: URL, navigationCache?: NavigationCache): Candidate | undefined {
   const element = candidate.element;
-  if (navigationUtility(element, label)) return;
+  if (navigationUtility(element, label, navigationCache)) return;
   if (!collection.kind || candidate.context === 'footer' || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label)
     || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]')
     || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
@@ -266,9 +267,9 @@ function contextualReading(candidate: Candidate, label: string): { category: Cat
   }
 }
 
-function supplementalClassification(candidate: Candidate, label: string, target: string, supplementalCache: SupplementalCache, url?: URL): Candidate | undefined {
+function supplementalClassification(candidate: Candidate, label: string, target: string, supplementalCache: SupplementalCache, url?: URL, navigationCache?: NavigationCache): Candidate | undefined {
   const element = candidate.element;
-  if (navigationUtility(element, label)) return;
+  if (navigationUtility(element, label, navigationCache)) return;
   if (candidate.context !== 'body' || !element.matches('a[href], button, [role~="button" i]')
     || element.closest('article, [role~="article" i]')) return;
   // Inspect only the source's fixed structural metadata; original actions are
@@ -287,7 +288,7 @@ function supplementalClassification(candidate: Candidate, label: string, target:
   const result = (category: Category, score: number, reason: string, task: NonNullable<Candidate['pageTask']>): Candidate => ({
     ...candidate, category, score, reasons: [reason, '고정 원본 제어 구조'], pageTask: task, supplementalDependent: true,
     relatedLabel: evidence.relatedLabel,
-    snapshot: sourceSnapshot(element, candidate.label, undefined, false, true, supplementalCache),
+    snapshot: sourceSnapshot(element, candidate.label, undefined, false, true, supplementalCache, navigationCache),
   });
   if (!dangerous.test(label) && evidence.filter && isInformationTopicLabel(label)
     && !rules.some(rule => rule.category !== 'search' && rule.endpoints.has(target))) return result('search', 70, '검색 양식의 분야 필터', 'control');
@@ -389,6 +390,9 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
   const collectionCache: CollectionCache = new WeakMap();
   const supplementalCache: SupplementalCache = new WeakMap();
   const contentCache: ContentEvidenceCache = new WeakMap();
+  const institutionCache: InstitutionEvidenceCache = new WeakMap();
+  const navigationCache = createNavigationCache();
+  const relationCache = createRelationCache();
   const classified = candidates.flatMap<Candidate>(candidate => {
     // Machine-authored accessible names can separate words with _ or -. This
     // lexical view does not alter source labels, URL paths or action metadata.
@@ -397,7 +401,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
     // File names remain unchanged in Candidate/UI. Strip a known document
     // suffix only from this lexical view of an explicit download control.
     const label = documentDownload ? sourceLabel.replace(documentExtension, '').trim() : sourceLabel;
-    const utility = navigationUtility(candidate.element, candidate.label);
+    const utility = navigationUtility(candidate.element, candidate.label, navigationCache);
     if (utility === 'position') return [];
     if (orderingLabel.test(label)) return [];
     // Reject an explicit dangerous command before any lexical fallback can
@@ -447,7 +451,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
         || !!inspectionURL || (element.getAttribute('href') ?? '').trim().startsWith('#');
       const article = !!element.closest('article, [role~="article" i]') || isArticle(candidate, inspectionParts, inspectionURL);
       if (supportedAnchor && notice !== 'conflict' && (!article || !!notice || corroboratedArticleService(candidate, label, inspectionTarget, inspectionParts, inspectionURL))) {
-        const evidence = institutionEvidence(candidate);
+        const evidence = institutionEvidence(candidate, institutionCache);
         const conflict = evidence && rules.some(rule => rule.category !== evidence.category && rule.endpoints.has(inspectionTarget));
         // A payment deadline is information only when the source actually
         // controls a unique noninteractive local explanation panel. This never
@@ -463,9 +467,25 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
           reasons: ['원본 메뉴와 안내 내용의 관계', '기관 페이지의 명시적 읽기 목적'] }];
       }
     }
+    // Independently named controls may share a verified local task/list/table
+    // relationship. Common unsafe-command checks have already run. This branch
+    // never changes a source name, action, href, target or an actual form submit.
+    if (!dangerous.test(label) && candidate.context === 'body' && isVisible(element)
+      && element.matches('a[href],button,[role~="button" i],[role~="tab" i]')
+      && !element.closest('form,[role~="form" i],article,[role~="article" i],input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]')
+      && !(element instanceof HTMLButtonElement && element.form)) {
+      const relationTarget = inspectionURL ? endpoint(pathParts(inspectionURL)) : target;
+      const relation = relationEvidence(candidate, relationCache);
+      if (relation && !rules.some(rule => rule.category !== relation.category && rule.endpoints.has(relationTarget))
+        && !noticeDocumentEvidence(candidate, label, normalize(candidate.sectionLabel ?? ''), relationTarget, inspectionURL)) {
+        return [{ ...candidate, relationEvidence: relation, category: relation.category, score: relation.score,
+          pageTask: relation.pageTask, relatedLabel: relation.relatedLabel,
+          reasons: ['고정 원본 제어와 같은 본문의 관계', '실제 목록·표·서비스 항목의 명시적 역할'] }];
+      }
+    }
     const readonlyHelp = readonlyHelpDocument(candidate, label, target, url);
     if (readonlyHelp) return [readonlyHelp];
-    const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
+    const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url, navigationCache);
     if (supplemental) return [supplemental];
     if (dangerous.test(label) && !academicInfo) return [];
     // The safe candidate name is fixed metadata, never the input's current value.
@@ -553,9 +573,9 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
       }
     }
     if (!best) {
-      const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url);
+      const structured = structuredContext(candidate, label, collectionEvidence(candidate.element, collectionCache), url, navigationCache);
       if (structured) return [{ ...structured, collectionDependent: true,
-        snapshot: sourceSnapshot(candidate.element, candidate.label, collectionCache, true) }];
+        snapshot: sourceSnapshot(candidate.element, candidate.label, collectionCache, true, false, undefined, navigationCache) }];
     }
     if ((!best || best.category === 'academic') && (academicReading(candidate, label, target, url) || academicLocalDestination(candidate, label, target, url))) {
       return [{ ...candidate, category: 'academic' as const, score: 70, reasons: ['학사 안내 문서 읽기', '학사 제목과 목록의 교육 개념·지침'], pageTask: 'reading' as const }];

@@ -1,0 +1,1397 @@
+{
+  "startedAtUtc": "2026-10-17T20:12:17.308607+00:00",
+  "completedAtUtc": "2026-10-17T20:12:17.356188+00:00",
+  "classification": "OFFLINE_DOCUMENT_LINK_AND_RECORDED_NUMBER_CONSISTENCY_AUDIT_NOT_PRODUCT_EXECUTION_OR_ACCEPTANCE",
+  "status": "PASS",
+  "scope": "Only offline reading and static local Markdown-link/number consistency checks. Writes restricted to this document-audit directory.",
+  "counts": {
+    "markdownFiles": 27,
+    "primaryDocuments": 13,
+    "checks": 28,
+    "passed": 28,
+    "failed": 0,
+    "evidenceJsonFiles": 45
+  },
+  "linkSummary": {
+    "EXISTS": 575,
+    "EXCLUDED_EXTERNAL": 21
+  },
+  "findings": [],
+  "checks": [
+    {
+      "name": "recordedLocal493NoFailuresFlakySkip",
+      "status": "PASS",
+      "observation": {
+        "expected": 493,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "durationMilliseconds": 63815.713,
+        "report": "/Users/khyun_03/easyweb/docs/evidence/run009/playwright-local.json"
+      },
+      "evidence": [
+        "docs/evidence/run009/local-verification.json",
+        "docs/evidence/run009/playwright-local.json"
+      ]
+    },
+    {
+      "name": "recordedTypeBuildAndRequestedChecksPASS",
+      "status": "PASS",
+      "observation": [
+        {
+          "name": "typecheck",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "name": "build",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "name": "playwright",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "name": "core-evaluation",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "name": "performance",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "name": "performance-flat",
+          "status": "PASS",
+          "exitCode": 0
+        },
+        {
+          "name": "performance-table",
+          "status": "PASS",
+          "exitCode": 0
+        }
+      ],
+      "evidence": [
+        "docs/evidence/run009/local-verification.json"
+      ]
+    },
+    {
+      "name": "recordedCore72of74_45of45_15",
+      "status": "PASS",
+      "observation": {
+        "pages": 15,
+        "correct": 72,
+        "recommended": 74,
+        "matched": 45,
+        "expected": 45,
+        "precision": 0.972972972972973,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "evidence": [
+        "docs/evidence/run009/local-verification.json"
+      ]
+    },
+    {
+      "name": "recorded493IncludesLatest10FocusedTests",
+      "status": "PASS",
+      "observation": {
+        "totalSpecs": 493,
+        "testFiles": 42,
+        "perFile": {
+          "a11y.spec.mjs": 8,
+          "action-policy.spec.mjs": 6,
+          "action-preservation.spec.mjs": 9,
+          "analysis-batch-performance.spec.mjs": 7,
+          "analyzer-context.spec.mjs": 21,
+          "background.spec.mjs": 1,
+          "classifier-ranking.spec.mjs": 68,
+          "content-query-v10.spec.mjs": 11,
+          "content-relevance.spec.mjs": 20,
+          "context-relationships.spec.mjs": 8,
+          "document-relations.spec.mjs": 20,
+          "download-signals.spec.mjs": 9,
+          "dynamic-page.spec.mjs": 4,
+          "easyweb.spec.mjs": 10,
+          "evaluation-data.spec.mjs": 1,
+          "evaluation-metrics.spec.mjs": 5,
+          "extension.spec.mjs": 1,
+          "filter-ordering.spec.mjs": 8,
+          "final-v10-integration.spec.mjs": 10,
+          "generic-controls.spec.mjs": 13,
+          "highlight.spec.mjs": 2,
+          "independent-download-review.spec.mjs": 6,
+          "independent-reading-safety.spec.mjs": 24,
+          "information-topics.spec.mjs": 3,
+          "institution-evidence.spec.mjs": 65,
+          "institution-integration.spec.mjs": 16,
+          "manual-check.spec.mjs": 5,
+          "material-context.spec.mjs": 3,
+          "menu-flow-evaluation.spec.mjs": 3,
+          "menu-source-identity.spec.mjs": 1,
+          "more-menus.spec.mjs": 11,
+          "navigation-policy-integration.spec.mjs": 4,
+          "navigation-utility.spec.mjs": 13,
+          "original-notice.spec.mjs": 6,
+          "preparation-and-status.spec.mjs": 5,
+          "preparation-attachments.spec.mjs": 11,
+          "privacy.spec.mjs": 6,
+          "ranker-capacity.spec.mjs": 4,
+          "reading-policy-integration.spec.mjs": 6,
+          "release-tools.spec.mjs": 4,
+          "service-relations.spec.mjs": 34,
+          "structural-context.spec.mjs": 21
+        }
+      },
+      "evidence": [
+        "docs/evidence/run009/playwright-local.json"
+      ]
+    },
+    {
+      "name": "recordedA11y21SeparateFromManual",
+      "status": "PASS",
+      "observation": {
+        "cases": 21,
+        "errors": 0,
+        "violations": 0,
+        "seriousOrCritical": 0,
+        "incomplete": 0,
+        "horizontalOverflowCases": [],
+        "smallTargets": [],
+        "lowComponentContrast": [],
+        "lowFocusContrast": []
+      },
+      "evidence": [
+        "docs/evidence/run009/a11y-automated.json",
+        "docs/ACCESSIBILITY.md"
+      ]
+    },
+    {
+      "name": "recordedPublic15HTTP9Original6",
+      "status": "PASS",
+      "observation": {
+        "observedTasks": 15,
+        "notRecommended": 0,
+        "observationErrors": 0,
+        "controlPresent": 15,
+        "recommended": 15,
+        "firstGuidanceReached": 6,
+        "guidanceRetries": 0,
+        "originalGuidanceReached": 6,
+        "actualCardLinksClicked": 9,
+        "destinationReached": 9,
+        "passed": 15,
+        "allDatasetTasksAttempted": true,
+        "allPassed": true
+      },
+      "evidence": [
+        "docs/evidence/run009/tasks-live.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "recordedKnown60TwoModes28Runs",
+      "status": "PASS",
+      "observation": {
+        "uniquePages": 60,
+        "rows": 28,
+        "modes": {
+          "generic": 14,
+          "institution": 14
+        },
+        "sourceFiles": 21,
+        "stable": true
+      },
+      "evidence": [
+        "docs/evidence/run009/closing-development-comparison/summary.json"
+      ]
+    },
+    {
+      "name": "recordedKnown60UniqueAggregates",
+      "status": "PASS",
+      "observation": {
+        "generic": {
+          "pages": 60,
+          "correct": 263,
+          "recommended": 272,
+          "matched": 148,
+          "expected": 170,
+          "tasksRecommended": 53,
+          "precision": 0.9669117647058824,
+          "recall": 0.8705882352941177
+        },
+        "institution": {
+          "pages": 60,
+          "correct": 286,
+          "recommended": 290,
+          "matched": 169,
+          "expected": 170,
+          "tasksRecommended": 60,
+          "precision": 0.9862068965517241,
+          "recall": 0.9941176470588236
+        }
+      },
+      "evidence": [
+        "docs/evidence/run009/closing-development-comparison/summary.json"
+      ]
+    },
+    {
+      "name": "recordedFiveIndividualInstitutionFAILsRetained",
+      "status": "PASS",
+      "observation": [
+        "blind-v5",
+        "blind-v6",
+        "development-v6-corrected",
+        "blind-v7-v2",
+        "development-v7-corrected"
+      ],
+      "evidence": [
+        "docs/evidence/run009/closing-development-comparison/summary.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "recorded28RowsMatchIndividualReports",
+      "status": "PASS",
+      "observation": [
+        {
+          "mode": "generic",
+          "suite": "core",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v2",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v3",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "development-v4-corrected",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v5",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v6",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "development-v6-corrected",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "development-v6-corrected-v2",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v7-v2",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "development-v7-corrected",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "development-v7-corrected-v2",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v8",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v9-v2",
+          "matches": true
+        },
+        {
+          "mode": "generic",
+          "suite": "blind-v10",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "core",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v2",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v3",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "development-v4-corrected",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v5",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v6",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "development-v6-corrected",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "development-v6-corrected-v2",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v7-v2",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "development-v7-corrected",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "development-v7-corrected-v2",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v8",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v9-v2",
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "suite": "blind-v10",
+          "matches": true
+        }
+      ],
+      "evidence": [
+        "docs/evidence/run009/closing-development-comparison/summary.json"
+      ]
+    },
+    {
+      "name": "recordedV10DevelopmentFirstAndAdditionalSeparate",
+      "status": "PASS",
+      "observation": {
+        "summary": {
+          "pages": 5,
+          "correct": 29,
+          "recommended": 30,
+          "matched": 15,
+          "expected": 15,
+          "precision": 0.9666666666666667,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "menuFlow": {
+          "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+          "summary": {
+            "pages": 5,
+            "correct": 89,
+            "recommended": 93,
+            "matched": 15,
+            "expected": 15,
+            "precision": 0.956989247311828,
+            "recall": 1,
+            "tasksRecommended": 5
+          },
+          "sites": [
+            {
+              "siteId": "city",
+              "pages": 1,
+              "correct": 11,
+              "recommended": 11,
+              "matched": 3,
+              "expected": 3,
+              "precision": 1,
+              "recall": 1,
+              "tasksRecommended": 1
+            },
+            {
+              "siteId": "government",
+              "pages": 1,
+              "correct": 8,
+              "recommended": 9,
+              "matched": 3,
+              "expected": 3,
+              "precision": 0.8888888888888888,
+              "recall": 1,
+              "tasksRecommended": 1
+            },
+            {
+              "siteId": "library",
+              "pages": 1,
+              "correct": 17,
+              "recommended": 20,
+              "matched": 3,
+              "expected": 3,
+              "precision": 0.85,
+              "recall": 1,
+              "tasksRecommended": 1
+            },
+            {
+              "siteId": "public-agency",
+              "pages": 1,
+              "correct": 42,
+              "recommended": 42,
+              "matched": 3,
+              "expected": 3,
+              "precision": 1,
+              "recall": 1,
+              "tasksRecommended": 1
+            },
+            {
+              "siteId": "smu",
+              "pages": 1,
+              "correct": 11,
+              "recommended": 11,
+              "matched": 3,
+              "expected": 3,
+              "precision": 1,
+              "recall": 1,
+              "tasksRecommended": 1
+            }
+          ],
+          "unresolvedMappings": 0,
+          "repeatedCards": 0
+        }
+      },
+      "evidence": [
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v10/evaluation-current-institution-blind-v10-all.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "recordedV8SearchRecall15Recovered",
+      "status": "PASS",
+      "observation": {
+        "pages": 5,
+        "correct": 25,
+        "recommended": 25,
+        "matched": 15,
+        "expected": 15,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "evidence": [
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v8/evaluation-current-institution-blind-v8-all.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "priorFirstV10FAILHashAndScorePreserved",
+      "status": "PASS",
+      "observation": {
+        "summary": {
+          "pages": 5,
+          "correct": 26,
+          "recommended": 28,
+          "matched": 2,
+          "expected": 15,
+          "precision": 0.9285714285714286,
+          "recall": 0.13333333333333333,
+          "tasksRecommended": 0
+        },
+        "sha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+        "menuFlow": {
+          "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+          "summary": {
+            "pages": 5,
+            "correct": 32,
+            "recommended": 40,
+            "matched": 3,
+            "expected": 15,
+            "precision": 0.8,
+            "recall": 0.2,
+            "tasksRecommended": 0
+          },
+          "sites": [
+            {
+              "siteId": "city",
+              "pages": 1,
+              "correct": 8,
+              "recommended": 9,
+              "matched": 1,
+              "expected": 3,
+              "precision": 0.8888888888888888,
+              "recall": 0.3333333333333333,
+              "tasksRecommended": 0
+            },
+            {
+              "siteId": "government",
+              "pages": 1,
+              "correct": 4,
+              "recommended": 4,
+              "matched": 1,
+              "expected": 3,
+              "precision": 1,
+              "recall": 0.3333333333333333,
+              "tasksRecommended": 0
+            },
+            {
+              "siteId": "library",
+              "pages": 1,
+              "correct": 10,
+              "recommended": 13,
+              "matched": 0,
+              "expected": 3,
+              "precision": 0.7692307692307693,
+              "recall": 0,
+              "tasksRecommended": 0
+            },
+            {
+              "siteId": "public-agency",
+              "pages": 1,
+              "correct": 4,
+              "recommended": 8,
+              "matched": 1,
+              "expected": 3,
+              "precision": 0.5,
+              "recall": 0.3333333333333333,
+              "tasksRecommended": 0
+            },
+            {
+              "siteId": "smu",
+              "pages": 1,
+              "correct": 6,
+              "recommended": 6,
+              "matched": 0,
+              "expected": 3,
+              "precision": 1,
+              "recall": 0,
+              "tasksRecommended": 0
+            }
+          ],
+          "unresolvedMappings": 9,
+          "repeatedCards": 4
+        }
+      },
+      "evidence": [
+        "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "recordedExistingThreeSyntheticCriteriaPASS",
+      "status": "PASS",
+      "observation": [
+        {
+          "file": "docs/evidence/run009/performance.json",
+          "status": "PASS",
+          "samples": 10,
+          "analyzer": 27.2,
+          "ready": 106.9
+        },
+        {
+          "file": "docs/evidence/run009/performance-flat.json",
+          "status": "PASS",
+          "samples": 10,
+          "analyzer": 29.7,
+          "ready": 142.4
+        },
+        {
+          "file": "docs/evidence/run009/performance-table.json",
+          "status": "PASS",
+          "samples": 10,
+          "analyzer": 93,
+          "ready": 273.9
+        }
+      ],
+      "evidence": [
+        "docs/evidence/run009/performance.json",
+        "docs/evidence/run009/performance-flat.json",
+        "docs/evidence/run009/performance-table.json"
+      ]
+    },
+    {
+      "name": "recordedAdditionalPipelineOverallFAILPreserved",
+      "status": "PASS",
+      "observation": {
+        "generic": {
+          "status": "FAIL",
+          "existingBenchmarkStatus": "PASS",
+          "additionalPipelineDiagnosticStatus": "FAIL",
+          "analyzerP95Milliseconds": 206,
+          "analysisPipelineP95Milliseconds": 327.1,
+          "currentnessBatchP95Milliseconds": 178.4,
+          "overlayReadyP95Milliseconds": 349.4
+        },
+        "institution": {
+          "status": "PASS",
+          "existingBenchmarkStatus": "PASS",
+          "additionalPipelineDiagnosticStatus": "PASS",
+          "analyzerP95Milliseconds": 206.3,
+          "analysisPipelineP95Milliseconds": 284.2,
+          "currentnessBatchP95Milliseconds": 241.9,
+          "overlayReadyP95Milliseconds": 305.9
+        }
+      },
+      "evidence": [
+        "docs/evidence/run009/institution-performance-final/performance.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "recordedFreeze21Source17Tools42Tests",
+      "status": "PASS",
+      "observation": {
+        "source": 21,
+        "tools": 17,
+        "tests": 42,
+        "archive": "docs/evidence/run009/v0.10-final-engine",
+        "verificationSourceStable": true
+      },
+      "evidence": [
+        "docs/evidence/run009/v0.10-engine-freeze.json",
+        "docs/evidence/run009/verification-command-completion.json",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "name": "recordedPackageNumberAndManifestClaims",
+      "status": "PASS",
+      "observation": {
+        "archive": {
+          "file": "EasyWeb-0.10.0-candidate.zip",
+          "sha256": "ce0650d3a747da1c9b157a77db7fbaae11a99cda2a40f7d46ef22662cfdf403b",
+          "bytes": 605239,
+          "installFolder": "EasyWeb-0.10.0-candidate",
+          "compression": "stored",
+          "fixedEntryTimestamp": "1980-01-01T00:00:00",
+          "sortedPaths": true,
+          "fixedFileMode": "0644"
+        },
+        "reproducibility": {
+          "twoBuildsIdentical": true,
+          "twoArchivesIdentical": true,
+          "sourceStable": true,
+          "note": "Archive metadata and bytes are deterministic for identical dist bytes; createdAt in this separate report is informational."
+        },
+        "manifest": {
+          "sha256": "14bb753f067fcac52fca67c7c3237be615e87c01745ee2f638ba663facc040c7",
+          "version": "0.10.0",
+          "manifestVersion": 3,
+          "permissions": [
+            "activeTab",
+            "scripting"
+          ],
+          "hostPermissions": [],
+          "equalsSourceManifest": true
+        }
+      },
+      "evidence": [
+        "output/run009/EasyWeb-0.10.0-candidate.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "recordedAcceptanceManualHumanUnchanged",
+      "status": "PASS",
+      "observation": {
+        "completedStages": 5,
+        "totalStages": 10,
+        "overallAcceptance": "NOT_MET",
+        "states": {
+          "S01": "DONE",
+          "S02": "DONE",
+          "S03": "DONE",
+          "S04": "DONE",
+          "S05": "DONE_DEFINED_SCOPE",
+          "S06": "NEEDS_MANUAL",
+          "S07": "IN_PROGRESS_NOT_MET",
+          "S08": "NEEDS_MANUAL",
+          "S09": "NEEDS_USER",
+          "S10": "IN_PROGRESS"
+        },
+        "currentNativeInstall": "NOT_RUN",
+        "actualVoiceOverSpeech": "NOT_RUN",
+        "actualBrowserZoom": "NOT_RUN",
+        "pretestActualObservations": 0,
+        "formalStudyActualObservations": 0,
+        "CUAOrNativeAutomationCount": 0,
+        "newIndependentValidationThisVersion": false
+      },
+      "evidence": [
+        "docs/evidence/run009/release-gate.json",
+        "docs/PROGRESS.md",
+        "docs/WORK_SPEC.md",
+        "docs/PRETEST.md",
+        "docs/MANUAL_CHECK.md"
+      ]
+    },
+    {
+      "name": "recordedPauseAfterHandoffDistinctFromActiveSnapshot",
+      "status": "PASS",
+      "observation": {
+        "goalStatusAtRecord": "active",
+        "disposition": "USER_REQUESTED_PAUSE_AFTER_CURRENT_VERSION_HANDOFF",
+        "usageScope": "Begins after initial revalidation/delegation; end precedes final artifact audit/document corrections/local commit/tag and requested pause. Not whole RUN009 or goal elapsed time.",
+        "afterClosing": "Pause the existing full10/10 goal at the user request; do not claim it complete and do not start another version.",
+        "actualPauseNotVerifiedByThisAudit": true
+      },
+      "evidence": [
+        "docs/evidence/run009/release-gate.json",
+        "docs/evidence/run009/goal-usage-snapshot.json",
+        "docs/evidence/run009/user-stop-boundary.json"
+      ]
+    },
+    {
+      "name": "recordedBillingUnknownAndElapsedBoundary",
+      "status": "PASS",
+      "observation": {
+        "wholeRunElapsed": "UNKNOWN",
+        "billing": {
+          "inputTokens": "UNKNOWN",
+          "outputTokens": "UNKNOWN",
+          "cachedTokens": "UNKNOWN",
+          "reasoningTokens": "UNKNOWN",
+          "accountBilledTokens": "UNKNOWN",
+          "cost": "UNKNOWN"
+        },
+        "scope": "Begins after initial revalidation/delegation; end precedes final artifact audit/document corrections/local commit/tag and requested pause. Not whole RUN009 or goal elapsed time."
+      },
+      "evidence": [
+        "docs/evidence/run009/goal-usage-snapshot.json",
+        "docs/RUN_009_REPORT.md"
+      ]
+    },
+    {
+      "name": "primaryDocumentsCurrentClaimsMatchSavedEvidence",
+      "status": "PASS",
+      "observation": [
+        {
+          "file": "README.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "0.10.0개발후보",
+            "5/10",
+            "493",
+            "286/290",
+            "169/170",
+            "최초독립실패2/15",
+            "일시정지"
+          ],
+          "sha256": "21013296758d3db66ae0141f9a0be2de78661f4736e52f8db130d35150ae18e9"
+        },
+        {
+          "file": "AGENTS.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "0.10",
+            "493/493",
+            "72/74",
+            "45/45",
+            "286/290",
+            "169/170",
+            "263/272",
+            "148/170",
+            "284.2msPASS",
+            "327.1msFAIL",
+            "21제품파일·17도구·42test파일",
+            "NOT_RUN",
+            "NOT_MET"
+          ],
+          "sha256": "c79fc269e3f06152c9caae8ae033ed2c36ad187cf8857bacdb1b30a9da2fe03a"
+        },
+        {
+          "file": "docs/WORK_SPEC.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "현재구현:v0.10.0",
+            "RUN-008당시",
+            "v8검색15/15복구",
+            "284.2ms",
+            "327.1ms",
+            "사용자의재개지시후",
+            "이번0.10마감에서다음버전이나새자료수집을시작하지않는다",
+            "5/10",
+            "NOT_RUN"
+          ],
+          "sha256": "957b585ea25303300303f88b4c9d81fe7ae84623dfe61622d505645a3f83c8f1"
+        },
+        {
+          "file": "docs/PROGRESS.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "현재버전마감",
+            "5/10·NOT_MET",
+            "493/493",
+            "286/290",
+            "169/170",
+            "327.1ms",
+            "사용자재개지시후"
+          ],
+          "sha256": "0f09307f4e996f76d9a543972e7114fc134af1aa913a4548728c3fd27aa36c9b"
+        },
+        {
+          "file": "docs/RUN_009_REPORT.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "605,239bytes",
+            "ce0650d3a747da1c9b157a77db7fbaae11a99cda2a40f7d46ef22662cfdf403b",
+            "493/493",
+            "72/74",
+            "45/45",
+            "286/290",
+            "169/170",
+            "263/272",
+            "148/170",
+            "29/30",
+            "89/93",
+            "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+            "범용추가진단은미달",
+            "status/명령exit는FAIL",
+            "5/10·NOT_MET",
+            "NOT_RUN",
+            "UNKNOWN"
+          ],
+          "sha256": "9921194a1025f2f4f1974cfdf5b691d1ad0dce8f9e50c715be8666cabf9127c0"
+        },
+        {
+          "file": "docs/INSTALL.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "0.10.0개발후보",
+            "5/10",
+            "NOT_RUN",
+            "0건",
+            "실제파일응답·실행은미관찰",
+            "activeTab",
+            "scripting"
+          ],
+          "sha256": "1d6c6ece998bd34651381e0bca2847f3518e23f1263a6bd45fd7f49571647b2a"
+        },
+        {
+          "file": "docs/PRETEST.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "v0.10.0개발후보",
+            "실제시험미실시",
+            "최초독립결과는2/15",
+            "개발재평가는15/15",
+            "실제관찰은**0건**",
+            "NOT_RUN",
+            "NOT_MET"
+          ],
+          "sha256": "4e5b198eaeebe9a40541b87cabb65c9cf8f08a7eb484fff20be323d44dd6b671"
+        },
+        {
+          "file": "docs/MANUAL_CHECK.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "실제수동결과:NOT_RUN",
+            "컴퓨터유즈자동화는재개하지않는다",
+            "실제VoiceOver",
+            "200%",
+            "400%",
+            "원본위치안내"
+          ],
+          "sha256": "e854404857dfc348c5f2f9070553506856a723034122584b080bddecbd02fe28"
+        },
+        {
+          "file": "docs/SUPPORT_MATRIX.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "0.10.0개발후보",
+            "5/10",
+            "286/290",
+            "169/170",
+            "29/30",
+            "15/15",
+            "327.1msFAIL",
+            "NOT_RUN",
+            "0건"
+          ],
+          "sha256": "ccbbf95745e66ae41cefa1fcd28cb3eb7178bc60a2d83e7051f01f19032fded0"
+        },
+        {
+          "file": "docs/ACCESSIBILITY.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "v0.10.0개발후보",
+            "21가지상태",
+            "현재버전의실제VoiceOver발화·브라우저확대·네이티브설치검사는**NOT_RUN**",
+            "과거예비관찰",
+            "v0.10검증으로승계하지않는다"
+          ],
+          "sha256": "271f505807bde36c0c9ff980ae04b9e810e25029522e43e901024d0e45ce04be"
+        },
+        {
+          "file": "docs/ACTION_POLICY.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "일반링크는바로이동",
+            "원본handler자동호출안함",
+            "원본위치안내",
+            "activeTab",
+            "scripting",
+            "실제파일응답·본문·실행은미관찰"
+          ],
+          "sha256": "f2dfe322e042cd48a95fc644ecf58e23337403d8edfb5c4f6d9c3a6e36dd4cb2"
+        },
+        {
+          "file": "docs/VALIDATION.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "현재검증:RUN-009",
+            "493/493PASS",
+            "5/10NOT_MET",
+            "284.2ms추가진단PASS",
+            "327.1msFAIL",
+            "NOT_RUN",
+            "사람0건",
+            "이전실행당시기록"
+          ],
+          "sha256": "659dd52bc1b76847793b0cde77cbeff9714aea91fd49cf364d0706ac82d9de7a"
+        },
+        {
+          "file": "evaluation/README.md",
+          "missingRequiredClaims": [],
+          "verifiedClaims": [
+            "현재v0.10.0",
+            "5/10·NOT_MET",
+            "현재28회비교",
+            "각14suite",
+            "286/290",
+            "169/170",
+            "263/272",
+            "148/170",
+            "29/30",
+            "RUN-008당시평가경계",
+            "RUN-007당시평가경계",
+            "이번마감에새독립자료수집/평가를하지않았다"
+          ],
+          "sha256": "e12b4506ab33a5c6a8eaef62225270f11aa914553f1d84e4c26c27968476357e"
+        }
+      ],
+      "evidence": [
+        "README.md",
+        "AGENTS.md",
+        "docs/WORK_SPEC.md",
+        "docs/PROGRESS.md",
+        "docs/RUN_009_REPORT.md",
+        "docs/INSTALL.md",
+        "docs/PRETEST.md",
+        "docs/MANUAL_CHECK.md",
+        "docs/SUPPORT_MATRIX.md",
+        "docs/ACCESSIBILITY.md",
+        "docs/ACTION_POLICY.md",
+        "docs/VALIDATION.md",
+        "evaluation/README.md"
+      ]
+    },
+    {
+      "name": "reportPerformanceTableMatchesRoundedSavedValues",
+      "status": "PASS",
+      "observation": {
+        "expected": {
+          "generic": {
+            "status": "FAIL",
+            "existingBenchmarkStatus": "PASS",
+            "additionalPipelineDiagnosticStatus": "FAIL",
+            "analyzerP95Milliseconds": 206,
+            "analysisPipelineP95Milliseconds": 327.1,
+            "currentnessBatchP95Milliseconds": 178.4,
+            "overlayReadyP95Milliseconds": 349.4
+          },
+          "institution": {
+            "status": "PASS",
+            "existingBenchmarkStatus": "PASS",
+            "additionalPipelineDiagnosticStatus": "PASS",
+            "analyzerP95Milliseconds": 206.3,
+            "analysisPipelineP95Milliseconds": 284.2,
+            "currentnessBatchP95Milliseconds": 241.9,
+            "overlayReadyP95Milliseconds": 305.9
+          }
+        },
+        "existing": [
+          {
+            "file": "docs/evidence/run009/performance.json",
+            "status": "PASS",
+            "samples": 10,
+            "analyzer": 27.2,
+            "ready": 106.9
+          },
+          {
+            "file": "docs/evidence/run009/performance-flat.json",
+            "status": "PASS",
+            "samples": 10,
+            "analyzer": 29.7,
+            "ready": 142.4
+          },
+          {
+            "file": "docs/evidence/run009/performance-table.json",
+            "status": "PASS",
+            "samples": 10,
+            "analyzer": 93,
+            "ready": 273.9
+          }
+        ]
+      },
+      "evidence": [
+        "docs/RUN_009_REPORT.md",
+        "docs/evidence/run009/institution-performance-final/performance.json"
+      ]
+    },
+    {
+      "name": "manualResultTableRemainsBlankNOT_RUN",
+      "status": "PASS",
+      "observation": {
+        "rows": 13,
+        "states": [
+          "| M01 | 도구 모음 열기·닫기·반복, 중복 화면 없음 | NOT_RUN | — |",
+          "| M02 | Tab/Shift+Tab 순환·초점 표시·Esc 원본 복귀 | NOT_RUN | — |",
+          "| M03 | VoiceOver 제목·이름·링크/버튼 역할 | NOT_RUN | — |",
+          "| M04 | 다시 찾기 상태 발화·초점 유지 | NOT_RUN | — |",
+          "| M05 | 원본 안내 성공 발화·원본 초점·자동 실행 0 | NOT_RUN | — |",
+          "| M06 | 예약 변경 후 이전 후보 차단·다시 찾기 복구 | NOT_RUN | — |",
+          "| M07 | 가려짐 실패 발화·닫기 초점·가림막 제거 후 복구 | NOT_RUN | — |",
+          "| M08 | 최종 설치 빌드 실제 200% 확대 | NOT_RUN | — |",
+          "| M09 | 최종 설치 빌드 실제 400% 확대 | NOT_RUN | — |",
+          "| M10 | 실제 배정 단축키 열기·닫기·재실행 | NOT_RUN | — |",
+          "| M11 | 로컬 링크 이동·새로고침·뒤로 가기 후 재실행 | NOT_RUN | — |",
+          "| M12 | 제한 페이지 오류 후 일반 페이지 복구 | NOT_RUN | — |",
+          "| M13 | 같은 자료 버튼의 관련 제목 발화·추가/이전 메뉴·초점·실행 0 | NOT_RUN | — |"
+        ]
+      },
+      "evidence": [
+        "docs/MANUAL_CHECK.md"
+      ]
+    },
+    {
+      "name": "historicalSectionsClearlyDistinguishedFromCurrent",
+      "status": "PASS",
+      "observation": {
+        "evaluation": "Current 0.10 section precedes explicitly historical RUN008/RUN007 sections; historical uses of 현재 remain inside those sections.",
+        "validation": "Current RUN009 heading precedes 이전 실행 당시 기록.",
+        "workSpec": "RUN008 data are under 당시 추가 기록; current RUN009 close follows."
+      },
+      "evidence": [
+        "evaluation/README.md",
+        "docs/VALIDATION.md",
+        "docs/WORK_SPEC.md"
+      ]
+    },
+    {
+      "name": "allLocalMarkdownLinksExist",
+      "status": "PASS",
+      "observation": {
+        "files": 27,
+        "summary": {
+          "EXISTS": 575,
+          "EXCLUDED_EXTERNAL": 21
+        },
+        "missing": [],
+        "finalReviewLinkExistenceOnly": true
+      },
+      "evidence": [
+        "docs/evidence/run009/artifact-audit/document-audit/markdown-links.json"
+      ]
+    },
+    {
+      "name": "openingDocumentSnapshotMatchesAuditBytes",
+      "status": "PASS",
+      "observation": {
+        "snapshot": "docs/evidence/run009/artifact-audit/document-audit/opening-snapshot.json",
+        "changed": []
+      },
+      "evidence": [
+        "docs/evidence/run009/artifact-audit/document-audit/opening-snapshot.json"
+      ]
+    },
+    {
+      "name": "auditedDocumentsRemainUnchanged",
+      "status": "PASS",
+      "observation": {
+        "changed": []
+      },
+      "evidence": [
+        "AGENTS.md",
+        "README.md",
+        "docs/ACCESSIBILITY.md",
+        "docs/ACTION_POLICY.md",
+        "docs/DEVELOPMENT_PLAN.md",
+        "docs/EXECUTION_BUDGET.md",
+        "docs/INSTALL.md",
+        "docs/INSTITUTION_ADAPTER_PLAN.md",
+        "docs/MANUAL_CHECK.md",
+        "docs/PRETEST.md",
+        "docs/PROGRESS.md",
+        "docs/RUN_001_REPORT.md",
+        "docs/RUN_002_REPORT.md",
+        "docs/RUN_003_REPORT.md",
+        "docs/RUN_004_REPORT.md",
+        "docs/RUN_005_REPORT.md",
+        "docs/RUN_006_REPORT.md",
+        "docs/RUN_007_REPORT.md",
+        "docs/RUN_008_REPORT.md",
+        "docs/RUN_009_REPORT.md",
+        "docs/SUPPORT_MATRIX.md",
+        "docs/USER_STUDY.md",
+        "docs/VALIDATION.md",
+        "docs/WORK_SPEC.md",
+        "evaluation/README.md",
+        "evaluation/pretest/result-form.blank.md",
+        "evaluation/study/tasks.md"
+      ]
+    },
+    {
+      "name": "readEvidenceRemainsUnchanged",
+      "status": "PASS",
+      "observation": {
+        "files": 45,
+        "changed": []
+      },
+      "evidence": [
+        "docs/evidence/run009/local-verification.json",
+        "docs/evidence/run009/playwright-local.json",
+        "docs/evidence/run009/a11y-automated.json",
+        "docs/evidence/run009/tasks-live.json",
+        "docs/evidence/run009/closing-development-comparison/summary.json",
+        "docs/evidence/run009/closing-development-comparison/generic/core/evaluation-current-generic-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v2/evaluation-current-generic-blind-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v3/evaluation-current-generic-blind-v3-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/development-v4-corrected/evaluation-current-generic-development-v4-corrected-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v5/evaluation-current-generic-blind-v5-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v6/evaluation-current-generic-blind-v6-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/development-v6-corrected/evaluation-current-generic-development-v6-corrected-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/development-v6-corrected-v2/evaluation-current-generic-development-v6-corrected-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v7-v2/evaluation-current-generic-blind-v7-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/development-v7-corrected/evaluation-current-generic-development-v7-corrected-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/development-v7-corrected-v2/evaluation-current-generic-development-v7-corrected-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v8/evaluation-current-generic-blind-v8-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v9-v2/evaluation-current-generic-blind-v9-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/generic/blind-v10/evaluation-current-generic-blind-v10-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/core/evaluation-current-institution-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v2/evaluation-current-institution-blind-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v3/evaluation-current-institution-blind-v3-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/development-v4-corrected/evaluation-current-institution-development-v4-corrected-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v5/evaluation-current-institution-blind-v5-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v6/evaluation-current-institution-blind-v6-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/development-v6-corrected/evaluation-current-institution-development-v6-corrected-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/development-v6-corrected-v2/evaluation-current-institution-development-v6-corrected-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v7-v2/evaluation-current-institution-blind-v7-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/development-v7-corrected/evaluation-current-institution-development-v7-corrected-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/development-v7-corrected-v2/evaluation-current-institution-development-v7-corrected-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v8/evaluation-current-institution-blind-v8-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v9-v2/evaluation-current-institution-blind-v9-v2-all.json",
+        "docs/evidence/run009/closing-development-comparison/institution/blind-v10/evaluation-current-institution-blind-v10-all.json",
+        "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+        "docs/evidence/run009/performance.json",
+        "docs/evidence/run009/performance-flat.json",
+        "docs/evidence/run009/performance-table.json",
+        "docs/evidence/run009/institution-performance-final/performance.json",
+        "docs/evidence/run009/release-gate.json",
+        "docs/evidence/run009/v0.10-engine-freeze.json",
+        "docs/evidence/run009/verification-command-completion.json",
+        "output/run009/EasyWeb-0.10.0-candidate.json",
+        "docs/evidence/run009/goal-usage-snapshot.json",
+        "docs/evidence/run009/user-stop-boundary.json",
+        "docs/evidence/run009/run-start.json"
+      ]
+    }
+  ],
+  "documentSha256Before": {
+    "AGENTS.md": "c79fc269e3f06152c9caae8ae033ed2c36ad187cf8857bacdb1b30a9da2fe03a",
+    "README.md": "21013296758d3db66ae0141f9a0be2de78661f4736e52f8db130d35150ae18e9",
+    "docs/ACCESSIBILITY.md": "271f505807bde36c0c9ff980ae04b9e810e25029522e43e901024d0e45ce04be",
+    "docs/ACTION_POLICY.md": "f2dfe322e042cd48a95fc644ecf58e23337403d8edfb5c4f6d9c3a6e36dd4cb2",
+    "docs/DEVELOPMENT_PLAN.md": "de4249a2e164db58935398ece49ff3cb0d8d7848b89c069b10f32dd57582d3c8",
+    "docs/EXECUTION_BUDGET.md": "3faa1ed04875d4847c7252c86e9d68798b8b021f616de45150a3a4cb88be24ba",
+    "docs/INSTALL.md": "1d6c6ece998bd34651381e0bca2847f3518e23f1263a6bd45fd7f49571647b2a",
+    "docs/INSTITUTION_ADAPTER_PLAN.md": "dfc2a45e1a4a2338c075ee0aa8273c9008b3b093b29822052ff41030b65dcb66",
+    "docs/MANUAL_CHECK.md": "e854404857dfc348c5f2f9070553506856a723034122584b080bddecbd02fe28",
+    "docs/PRETEST.md": "4e5b198eaeebe9a40541b87cabb65c9cf8f08a7eb484fff20be323d44dd6b671",
+    "docs/PROGRESS.md": "0f09307f4e996f76d9a543972e7114fc134af1aa913a4548728c3fd27aa36c9b",
+    "docs/RUN_001_REPORT.md": "8e86926f3438358b7f0861abb168e5305cdae89871b352dce9368f84d8827011",
+    "docs/RUN_002_REPORT.md": "ccf1b34fd7dea0c27dc80b205dd931607e9efe12cf8606d240122ebabddc8498",
+    "docs/RUN_003_REPORT.md": "3747f35d5c94e0d885d12b56b90605b9a56cfe8ea601592252be340b06518631",
+    "docs/RUN_004_REPORT.md": "7b1e948d8293fd5d5bef5a21ec5ce4004e60dc823ad14332627b01cad167f7bb",
+    "docs/RUN_005_REPORT.md": "88337e9fb9644a18d150b10028dabed10e047da16dc12d2eb396de9bf9ebb087",
+    "docs/RUN_006_REPORT.md": "a98acf4d1eb3490f54d8872af0ca615cc201f766d151e5ffbbe6967f241a60ca",
+    "docs/RUN_007_REPORT.md": "787c4b39f5ee1ded275dd2e95f3a94f4f37991e1de733dd7422bb6c2e00226f4",
+    "docs/RUN_008_REPORT.md": "a82427dbb1aee5b83d50655067b602e5086a442cb37a471800df67f02aedb33b",
+    "docs/RUN_009_REPORT.md": "9921194a1025f2f4f1974cfdf5b691d1ad0dce8f9e50c715be8666cabf9127c0",
+    "docs/SUPPORT_MATRIX.md": "ccbbf95745e66ae41cefa1fcd28cb3eb7178bc60a2d83e7051f01f19032fded0",
+    "docs/USER_STUDY.md": "bdb0bc717b6ad33a24884e9b267e8eca6a043c46500cc469f29a5474bd2232a0",
+    "docs/VALIDATION.md": "659dd52bc1b76847793b0cde77cbeff9714aea91fd49cf364d0706ac82d9de7a",
+    "docs/WORK_SPEC.md": "957b585ea25303300303f88b4c9d81fe7ae84623dfe61622d505645a3f83c8f1",
+    "evaluation/README.md": "e12b4506ab33a5c6a8eaef62225270f11aa914553f1d84e4c26c27968476357e",
+    "evaluation/pretest/result-form.blank.md": "5b94aa1da2538a0827f48ecea39a0f9eeb9d21d7c50f12540972d8d9db8e37b8",
+    "evaluation/study/tasks.md": "71c1730ba6e5d27835162a6a34668918dea2a27c7578887bc4dfe497ad1b9e81"
+  },
+  "documentSha256After": {
+    "AGENTS.md": "c79fc269e3f06152c9caae8ae033ed2c36ad187cf8857bacdb1b30a9da2fe03a",
+    "README.md": "21013296758d3db66ae0141f9a0be2de78661f4736e52f8db130d35150ae18e9",
+    "docs/ACCESSIBILITY.md": "271f505807bde36c0c9ff980ae04b9e810e25029522e43e901024d0e45ce04be",
+    "docs/ACTION_POLICY.md": "f2dfe322e042cd48a95fc644ecf58e23337403d8edfb5c4f6d9c3a6e36dd4cb2",
+    "docs/DEVELOPMENT_PLAN.md": "de4249a2e164db58935398ece49ff3cb0d8d7848b89c069b10f32dd57582d3c8",
+    "docs/EXECUTION_BUDGET.md": "3faa1ed04875d4847c7252c86e9d68798b8b021f616de45150a3a4cb88be24ba",
+    "docs/INSTALL.md": "1d6c6ece998bd34651381e0bca2847f3518e23f1263a6bd45fd7f49571647b2a",
+    "docs/INSTITUTION_ADAPTER_PLAN.md": "dfc2a45e1a4a2338c075ee0aa8273c9008b3b093b29822052ff41030b65dcb66",
+    "docs/MANUAL_CHECK.md": "e854404857dfc348c5f2f9070553506856a723034122584b080bddecbd02fe28",
+    "docs/PRETEST.md": "4e5b198eaeebe9a40541b87cabb65c9cf8f08a7eb484fff20be323d44dd6b671",
+    "docs/PROGRESS.md": "0f09307f4e996f76d9a543972e7114fc134af1aa913a4548728c3fd27aa36c9b",
+    "docs/RUN_001_REPORT.md": "8e86926f3438358b7f0861abb168e5305cdae89871b352dce9368f84d8827011",
+    "docs/RUN_002_REPORT.md": "ccf1b34fd7dea0c27dc80b205dd931607e9efe12cf8606d240122ebabddc8498",
+    "docs/RUN_003_REPORT.md": "3747f35d5c94e0d885d12b56b90605b9a56cfe8ea601592252be340b06518631",
+    "docs/RUN_004_REPORT.md": "7b1e948d8293fd5d5bef5a21ec5ce4004e60dc823ad14332627b01cad167f7bb",
+    "docs/RUN_005_REPORT.md": "88337e9fb9644a18d150b10028dabed10e047da16dc12d2eb396de9bf9ebb087",
+    "docs/RUN_006_REPORT.md": "a98acf4d1eb3490f54d8872af0ca615cc201f766d151e5ffbbe6967f241a60ca",
+    "docs/RUN_007_REPORT.md": "787c4b39f5ee1ded275dd2e95f3a94f4f37991e1de733dd7422bb6c2e00226f4",
+    "docs/RUN_008_REPORT.md": "a82427dbb1aee5b83d50655067b602e5086a442cb37a471800df67f02aedb33b",
+    "docs/RUN_009_REPORT.md": "9921194a1025f2f4f1974cfdf5b691d1ad0dce8f9e50c715be8666cabf9127c0",
+    "docs/SUPPORT_MATRIX.md": "ccbbf95745e66ae41cefa1fcd28cb3eb7178bc60a2d83e7051f01f19032fded0",
+    "docs/USER_STUDY.md": "bdb0bc717b6ad33a24884e9b267e8eca6a043c46500cc469f29a5474bd2232a0",
+    "docs/VALIDATION.md": "659dd52bc1b76847793b0cde77cbeff9714aea91fd49cf364d0706ac82d9de7a",
+    "docs/WORK_SPEC.md": "957b585ea25303300303f88b4c9d81fe7ae84623dfe61622d505645a3f83c8f1",
+    "evaluation/README.md": "e12b4506ab33a5c6a8eaef62225270f11aa914553f1d84e4c26c27968476357e",
+    "evaluation/pretest/result-form.blank.md": "5b94aa1da2538a0827f48ecea39a0f9eeb9d21d7c50f12540972d8d9db8e37b8",
+    "evaluation/study/tasks.md": "71c1730ba6e5d27835162a6a34668918dea2a27c7578887bc4dfe497ad1b9e81"
+  },
+  "evidenceSha256Before": {
+    "docs/evidence/run009/local-verification.json": "eacc9fa497fb913b4705e62c319883d79030bda8e9c4b13a00bf9f3801932105",
+    "docs/evidence/run009/playwright-local.json": "b19b79a84ffff2844a985022f5e915b073e2f5272b2234d64643e5a70e88d508",
+    "docs/evidence/run009/a11y-automated.json": "8dfed771d4eeeab4187dad5127ea87c7b8ff3a7c12622e870510aad738a6395d",
+    "docs/evidence/run009/tasks-live.json": "01f739d29a51722e002c8d7da330da5a54fb3b8c3f0f19e37744d73aeeb917c7",
+    "docs/evidence/run009/closing-development-comparison/summary.json": "a9bdbf9e43f60b1c50c0d5a516c7a0250f22009dbd36ddc951824e99f947f98d",
+    "docs/evidence/run009/closing-development-comparison/generic/core/evaluation-current-generic-all.json": "f2ee4f3408771bbf4df37b9981e250959a320228e60da7c7e990bea3a8e23831",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v2/evaluation-current-generic-blind-v2-all.json": "37b8451db93ed617c1792ceb622d3dc13806acbb1bd044414093680fef28c4f3",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v3/evaluation-current-generic-blind-v3-all.json": "a62ea1da75e6404109cbaf67c812b1d2e35f29f650ee18b591ddbc3f9548fd28",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v4-corrected/evaluation-current-generic-development-v4-corrected-all.json": "ed65d8eecf3906fd54719099e7bfeea8cea8605af1d5ca06c319c857ffb4e74e",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v5/evaluation-current-generic-blind-v5-all.json": "2ba907bbde6df941548d15125ba84db395b8b2d60e30739fd26e8bb365c75b13",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v6/evaluation-current-generic-blind-v6-all.json": "525009f6ffd83b8994b2c53a7c31544f36882e85a600f460a1ff38a68fb09d58",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v6-corrected/evaluation-current-generic-development-v6-corrected-all.json": "9a6f90dc860efaa9be260f17b13a74fef7516c7970b6bdbe624e675ef3e96916",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v6-corrected-v2/evaluation-current-generic-development-v6-corrected-v2-all.json": "5b7614ee350e66a3574c337adf20c67f0df5fd7b2a6d26d08d95b27e1b6d97ce",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v7-v2/evaluation-current-generic-blind-v7-v2-all.json": "d237730f29f3f625ffd0271c6ef4f15beae92ba9f363ea1fa5f768b107ff85a2",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v7-corrected/evaluation-current-generic-development-v7-corrected-all.json": "2802b6baf601919ec131eed784ebf4e04dd24ccbe594313389da8bba676335dd",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v7-corrected-v2/evaluation-current-generic-development-v7-corrected-v2-all.json": "45e34c632f3ba7d941924f22527d9573cf15cc06144b47049e9eff0bdb1bd18c",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v8/evaluation-current-generic-blind-v8-all.json": "f31be0cbc3bbcd71ce65efb1c3b4f5bfca8395d466afcfc76aa36e312d548570",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v9-v2/evaluation-current-generic-blind-v9-v2-all.json": "f8d3803991df60c38469e65b72b3587f2a0380843bda11be1807d31c268b5e81",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v10/evaluation-current-generic-blind-v10-all.json": "516fcaa1eaa6023a09dacbc0a37fca8c85e3557cc4e7d16900106661f3fe6361",
+    "docs/evidence/run009/closing-development-comparison/institution/core/evaluation-current-institution-all.json": "cf1ee4178b639de962b0624e742d1ab8bf27d0c049b47db8e28be8e7631cccee",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v2/evaluation-current-institution-blind-v2-all.json": "ae5a24468e685f9c62e5b8c3aa13cafb60952dcb45a6413c73646ab96c461463",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v3/evaluation-current-institution-blind-v3-all.json": "845ae8509370edcebeb0df6b14273422dd2e8f1949a7c158bb2713dcac8b149a",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v4-corrected/evaluation-current-institution-development-v4-corrected-all.json": "9b5af69c4c74b08bcba6c1d1499afde81fca1d6c58b92f9a22cc829349370065",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v5/evaluation-current-institution-blind-v5-all.json": "d85a2311f40e5ca83219b316659e826ee7abc256749cdad5e51454be61d4ae02",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v6/evaluation-current-institution-blind-v6-all.json": "4242df6be195d3259b8935319d74de7fce3bf789e94209b93538bd63bbdfe52f",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v6-corrected/evaluation-current-institution-development-v6-corrected-all.json": "94c9533dc6be2cd822b44cf398d8c34d505b363e8b564da58faa6554816c8049",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v6-corrected-v2/evaluation-current-institution-development-v6-corrected-v2-all.json": "5b11baf53b23f0c90189297941a9b3284960781fb909e970bac57922434c7459",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v7-v2/evaluation-current-institution-blind-v7-v2-all.json": "860cf6a37811646e1117fabaa75466d0cc8114748b86401c298a02cbc209f3bf",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v7-corrected/evaluation-current-institution-development-v7-corrected-all.json": "39d525d2f8f1e5626fa133618df38a9f53d34e132bf9766183f3c9056f200924",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v7-corrected-v2/evaluation-current-institution-development-v7-corrected-v2-all.json": "3969d59c267b7195ca50aa84b5c2f68058309ab4edc59da5f96d6572f886d95b",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v8/evaluation-current-institution-blind-v8-all.json": "2b3a18f4aecd767ee9d15f2a1552f334fd9249831636295f5e8585d945dfe30e",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v9-v2/evaluation-current-institution-blind-v9-v2-all.json": "110143d037a2634cc9b87a3682422d60f97005abe97c6900697b8ad349e3b45f",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v10/evaluation-current-institution-blind-v10-all.json": "f0fd6b56f240a137796887e7c1361f5211f40c88178be58b2c82bc299226479b",
+    "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+    "docs/evidence/run009/performance.json": "d61bfa9ff76d5a65da2d9bf1d2b9acc2c3eb41b90c0328b30821ec10e6c8b80c",
+    "docs/evidence/run009/performance-flat.json": "8e090f38c9d14c2e65e1a3d9ad136625dddbe8efd9f72c9dcdd3d1dc6e07dfb4",
+    "docs/evidence/run009/performance-table.json": "f6c2bb150a2ddaffd4382177450be5de82aa6c9365ca263f9ed4616255488423",
+    "docs/evidence/run009/institution-performance-final/performance.json": "e70afc7a76c61f20f7c148842cc01b10b622edf9a511a4e0344059fbac4367c9",
+    "docs/evidence/run009/release-gate.json": "b2e5475a032d70800adb52454ada227013e0ba335642c19f48b20d2c5afa90bc",
+    "docs/evidence/run009/v0.10-engine-freeze.json": "4ebebfe1dca0ffa10e6bab2481f83b90640a6b07ff73bfb71f8bff37b59b7b89",
+    "docs/evidence/run009/verification-command-completion.json": "35e603c2c865ed3a051a55bce135a317dddf8f8ac701c0160c529d8be0866f7c",
+    "output/run009/EasyWeb-0.10.0-candidate.json": "0085c7cd4ad7a8152e4f146c3e9bb4b520ac8ef12fed92822a275603b35622f3",
+    "docs/evidence/run009/goal-usage-snapshot.json": "7ba092c685dbc962cd3ac6c70e749aaf49f042ac707147cc3c3f4081a83a790f",
+    "docs/evidence/run009/user-stop-boundary.json": "95882b99ad259671b36852ee3bbbbba03797f75246fcfd0861192e0dda50f356",
+    "docs/evidence/run009/run-start.json": "662123e114b56e60ab741bc6cd6704ed00a04a5a9a8e808ca728a5568904fb5c"
+  },
+  "evidenceSha256After": {
+    "docs/evidence/run009/local-verification.json": "eacc9fa497fb913b4705e62c319883d79030bda8e9c4b13a00bf9f3801932105",
+    "docs/evidence/run009/playwright-local.json": "b19b79a84ffff2844a985022f5e915b073e2f5272b2234d64643e5a70e88d508",
+    "docs/evidence/run009/a11y-automated.json": "8dfed771d4eeeab4187dad5127ea87c7b8ff3a7c12622e870510aad738a6395d",
+    "docs/evidence/run009/tasks-live.json": "01f739d29a51722e002c8d7da330da5a54fb3b8c3f0f19e37744d73aeeb917c7",
+    "docs/evidence/run009/closing-development-comparison/summary.json": "a9bdbf9e43f60b1c50c0d5a516c7a0250f22009dbd36ddc951824e99f947f98d",
+    "docs/evidence/run009/closing-development-comparison/generic/core/evaluation-current-generic-all.json": "f2ee4f3408771bbf4df37b9981e250959a320228e60da7c7e990bea3a8e23831",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v2/evaluation-current-generic-blind-v2-all.json": "37b8451db93ed617c1792ceb622d3dc13806acbb1bd044414093680fef28c4f3",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v3/evaluation-current-generic-blind-v3-all.json": "a62ea1da75e6404109cbaf67c812b1d2e35f29f650ee18b591ddbc3f9548fd28",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v4-corrected/evaluation-current-generic-development-v4-corrected-all.json": "ed65d8eecf3906fd54719099e7bfeea8cea8605af1d5ca06c319c857ffb4e74e",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v5/evaluation-current-generic-blind-v5-all.json": "2ba907bbde6df941548d15125ba84db395b8b2d60e30739fd26e8bb365c75b13",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v6/evaluation-current-generic-blind-v6-all.json": "525009f6ffd83b8994b2c53a7c31544f36882e85a600f460a1ff38a68fb09d58",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v6-corrected/evaluation-current-generic-development-v6-corrected-all.json": "9a6f90dc860efaa9be260f17b13a74fef7516c7970b6bdbe624e675ef3e96916",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v6-corrected-v2/evaluation-current-generic-development-v6-corrected-v2-all.json": "5b7614ee350e66a3574c337adf20c67f0df5fd7b2a6d26d08d95b27e1b6d97ce",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v7-v2/evaluation-current-generic-blind-v7-v2-all.json": "d237730f29f3f625ffd0271c6ef4f15beae92ba9f363ea1fa5f768b107ff85a2",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v7-corrected/evaluation-current-generic-development-v7-corrected-all.json": "2802b6baf601919ec131eed784ebf4e04dd24ccbe594313389da8bba676335dd",
+    "docs/evidence/run009/closing-development-comparison/generic/development-v7-corrected-v2/evaluation-current-generic-development-v7-corrected-v2-all.json": "45e34c632f3ba7d941924f22527d9573cf15cc06144b47049e9eff0bdb1bd18c",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v8/evaluation-current-generic-blind-v8-all.json": "f31be0cbc3bbcd71ce65efb1c3b4f5bfca8395d466afcfc76aa36e312d548570",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v9-v2/evaluation-current-generic-blind-v9-v2-all.json": "f8d3803991df60c38469e65b72b3587f2a0380843bda11be1807d31c268b5e81",
+    "docs/evidence/run009/closing-development-comparison/generic/blind-v10/evaluation-current-generic-blind-v10-all.json": "516fcaa1eaa6023a09dacbc0a37fca8c85e3557cc4e7d16900106661f3fe6361",
+    "docs/evidence/run009/closing-development-comparison/institution/core/evaluation-current-institution-all.json": "cf1ee4178b639de962b0624e742d1ab8bf27d0c049b47db8e28be8e7631cccee",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v2/evaluation-current-institution-blind-v2-all.json": "ae5a24468e685f9c62e5b8c3aa13cafb60952dcb45a6413c73646ab96c461463",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v3/evaluation-current-institution-blind-v3-all.json": "845ae8509370edcebeb0df6b14273422dd2e8f1949a7c158bb2713dcac8b149a",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v4-corrected/evaluation-current-institution-development-v4-corrected-all.json": "9b5af69c4c74b08bcba6c1d1499afde81fca1d6c58b92f9a22cc829349370065",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v5/evaluation-current-institution-blind-v5-all.json": "d85a2311f40e5ca83219b316659e826ee7abc256749cdad5e51454be61d4ae02",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v6/evaluation-current-institution-blind-v6-all.json": "4242df6be195d3259b8935319d74de7fce3bf789e94209b93538bd63bbdfe52f",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v6-corrected/evaluation-current-institution-development-v6-corrected-all.json": "94c9533dc6be2cd822b44cf398d8c34d505b363e8b564da58faa6554816c8049",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v6-corrected-v2/evaluation-current-institution-development-v6-corrected-v2-all.json": "5b11baf53b23f0c90189297941a9b3284960781fb909e970bac57922434c7459",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v7-v2/evaluation-current-institution-blind-v7-v2-all.json": "860cf6a37811646e1117fabaa75466d0cc8114748b86401c298a02cbc209f3bf",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v7-corrected/evaluation-current-institution-development-v7-corrected-all.json": "39d525d2f8f1e5626fa133618df38a9f53d34e132bf9766183f3c9056f200924",
+    "docs/evidence/run009/closing-development-comparison/institution/development-v7-corrected-v2/evaluation-current-institution-development-v7-corrected-v2-all.json": "3969d59c267b7195ca50aa84b5c2f68058309ab4edc59da5f96d6572f886d95b",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v8/evaluation-current-institution-blind-v8-all.json": "2b3a18f4aecd767ee9d15f2a1552f334fd9249831636295f5e8585d945dfe30e",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v9-v2/evaluation-current-institution-blind-v9-v2-all.json": "110143d037a2634cc9b87a3682422d60f97005abe97c6900697b8ad349e3b45f",
+    "docs/evidence/run009/closing-development-comparison/institution/blind-v10/evaluation-current-institution-blind-v10-all.json": "f0fd6b56f240a137796887e7c1361f5211f40c88178be58b2c82bc299226479b",
+    "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+    "docs/evidence/run009/performance.json": "d61bfa9ff76d5a65da2d9bf1d2b9acc2c3eb41b90c0328b30821ec10e6c8b80c",
+    "docs/evidence/run009/performance-flat.json": "8e090f38c9d14c2e65e1a3d9ad136625dddbe8efd9f72c9dcdd3d1dc6e07dfb4",
+    "docs/evidence/run009/performance-table.json": "f6c2bb150a2ddaffd4382177450be5de82aa6c9365ca263f9ed4616255488423",
+    "docs/evidence/run009/institution-performance-final/performance.json": "e70afc7a76c61f20f7c148842cc01b10b622edf9a511a4e0344059fbac4367c9",
+    "docs/evidence/run009/release-gate.json": "b2e5475a032d70800adb52454ada227013e0ba335642c19f48b20d2c5afa90bc",
+    "docs/evidence/run009/v0.10-engine-freeze.json": "4ebebfe1dca0ffa10e6bab2481f83b90640a6b07ff73bfb71f8bff37b59b7b89",
+    "docs/evidence/run009/verification-command-completion.json": "35e603c2c865ed3a051a55bce135a317dddf8f8ac701c0160c529d8be0866f7c",
+    "output/run009/EasyWeb-0.10.0-candidate.json": "0085c7cd4ad7a8152e4f146c3e9bb4b520ac8ef12fed92822a275603b35622f3",
+    "docs/evidence/run009/goal-usage-snapshot.json": "7ba092c685dbc962cd3ac6c70e749aaf49f042ac707147cc3c3f4081a83a790f",
+    "docs/evidence/run009/user-stop-boundary.json": "95882b99ad259671b36852ee3bbbbba03797f75246fcfd0861192e0dda50f356",
+    "docs/evidence/run009/run-start.json": "662123e114b56e60ab741bc6cd6704ed00a04a5a9a8e808ca728a5568904fb5c"
+  },
+  "parserReusedFrom": "docs/evidence/run008/artifact-audit/document-audit/audit-documents.py",
+  "parserReusedSourceSha256": "a8061a16d1a4ee100b27eac0eee3f9210ebbae077a4105503dd1f1ece4d8d86e",
+  "auditScriptSha256": "c970310841a14960f4b80f70bdf6bee6085e9e23ff5733d2236a2b1ac78d1763",
+  "memoryUse": {
+    "file": "/Users/khyun_03/.codex/memories/MEMORY.md",
+    "lines": "36-43",
+    "use": "Prior workspace context only; all current findings use repository bytes."
+  },
+  "limits": [
+    "No test, build, browser, product, benchmark, quality evaluation, network, CUA, native, or server execution occurred.",
+    "Saved execution records were cross-checked; this audit did not reproduce their product behavior.",
+    "Package bytes/source archive correctness and full historical provenance are separate parallel audits; this task validates their declared document numbers only.",
+    "External URL availability and Markdown section anchors are excluded; HTML href/raw code paths are outside link scope.",
+    "Final-review.json existence is checked while its aggregate result is pending; this task does not treat it as a completed signoff.",
+    "Actual goal pause is not established here: active snapshots explicitly precede requested pause after handoff.",
+    "493/local/a11y/live/synthetic passes do not establish independent quality, actual installation, actual speech/zoom, user observations, S07 or full10/10 acceptance."
+  ]
+}

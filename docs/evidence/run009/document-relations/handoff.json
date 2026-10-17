@@ -1,0 +1,138 @@
+{
+  "createdAtUtc": "2026-10-17T19:56:36.076491+00:00",
+  "classification": "POST_EXPOSURE_FOCUSED_MODULE_DEVELOPMENT_NOT_QUALITY_EVALUATION",
+  "status": "READY_FOR_ROOT_INTEGRATION",
+  "ownedFiles": [
+    "src/document-relations.ts",
+    "tests/document-relations.spec.mjs",
+    "docs/evidence/run009/document-relations/"
+  ],
+  "source": {
+    "path": "src/document-relations.ts",
+    "sha256": "0f53a7c9c73d264a458532fed1158bccde66d0744deda74b616826ab60fc6018"
+  },
+  "tests": {
+    "path": "tests/document-relations.spec.mjs",
+    "sha256": "a768f2728af249db5eba7774c9361aed326d33daf6f8fe11cc1610ed5e31b23d",
+    "config": "docs/evidence/run009/document-relations/playwright.config.mjs",
+    "command": "npx playwright test --config=docs/evidence/run009/document-relations/playwright.config.mjs",
+    "expected": 20,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMs": 3839.614,
+    "report": "docs/evidence/run009/document-relations/focused-results.json",
+    "reportSha256": "12a239e7c58e73a50275e3747f8a502b0510d30abe996ab7c911fec59e372892",
+    "log": "docs/evidence/run009/document-relations/focused-final.log"
+  },
+  "typecheck": {
+    "command": "npx tsc --ignoreConfig --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --lib ES2022,DOM,DOM.Iterable --types chrome --skipLibCheck src/document-relations.ts",
+    "exitCode": 0,
+    "log": "docs/evidence/run009/document-relations/typecheck-final.log"
+  },
+  "rules": [
+    {
+      "rule": "listed-fixed-document-kind",
+      "category": "help",
+      "basis": "Own fixed document-kind suffix in unique aligned title/date/department/attachment row. Explicit JS remains locate."
+    },
+    {
+      "rule": "aligned-information-directory",
+      "category": "help",
+      "basis": "Fixed room-use directory caption and unique floor/type/description/contact headers; unique descriptive-row anchor. Only proven nonsemantic floor column permits vertical span; all rows reconstructed, ambiguity/overflow rejected."
+    },
+    {
+      "rule": "academic-support-regulation-file",
+      "category": "academic",
+      "basis": "Academic-support regulation caption, unique aligned row title and PDF-download column, generic own PDF-download name, fixed title attribute corroboration. Primary relatedLabel is actual row title; canonical law-kind corroboration allows implementation/operation bylaws wording while preserving row identity."
+    },
+    {
+      "rule": "selected-academic-support-documents",
+      "category": "academic",
+      "basis": "Bounded academic-support peer document group, unique current-document selection, matching following fixed editorial heading and preceding academic-support page heading. Other-document fragment remains navigate."
+    }
+  ],
+  "api": "documentRelation(candidate, cache?) -> RelationEvidence | undefined; DocumentRelationCache = WeakMap<Element, unknown>",
+  "evidence": {
+    "allRules": {
+      "score": 70,
+      "pageTask": "reading",
+      "contentScope": "content"
+    },
+    "labelActionHrefTargetMutation": false,
+    "relatedLabel": "academic actual fixed row title only",
+    "dependencyReferences": "evidenceNodes actual elements, used parents, fixed heading/caption/column/row-title/control descendants including equal-content node replacement",
+    "cache": "No stored DOM result; optional batch cache currently unused, relationships recomputed even when same WeakMap is passed. No persistent cache.",
+    "bounds": {
+      "fixedNameDescendants": 64,
+      "tableDataRows": 80,
+      "tableColumns": 8,
+      "tableStructureVisits": 2048,
+      "localHeadingVisits": 80,
+      "localHeadingDepth": 3,
+      "academicListChildren": 12,
+      "followingSectionAncestorDepth": 5
+    }
+  },
+  "coverage": {
+    "syntheticVariants": "Unfamiliar fixed names and arbitrary IDs/query values; columns reordered; floor rowspan in multiple column orders; article/form/editable/hidden/ARIA-interactive boundaries; nested private getter traps; ambiguous/missing/merged/nested headers/rows; selected peer ambiguity and operation peers; same-content node replacements; name/table/heading visit bounds; independent identities for duplicate generic PDF labels.",
+    "exposedOriginalRelations": 7,
+    "originalRelationFiles": [
+      "evaluation/blind-v10/fixtures/government.html",
+      "evaluation/blind-v10/fixtures/library.html",
+      "evaluation/blind-v10/fixtures/smu.html"
+    ],
+    "originalRelationMeaning": "Direct module evidence checks using actual analyzer raw candidates on already-exposed fixture DOM. Not classifier/ranker/UI quality results and not new independent evidence.",
+    "oldTraceMeaning": "RUN008 post-first trace establishes raw-but-unclassified misses before this work; it is not rerun or replaced."
+  },
+  "preservedIntermediateFailures": [
+    {
+      "log": "focused-first.log",
+      "report": "focused-first-results.json",
+      "passed": 11,
+      "failed": 8,
+      "cause": "Synthetic intercepted HTML lacked UTF-8 charset, causing mojibake and missing semantic proof; original fixtures had own charset. Negative passes were not used as sufficient proof. Harness corrected. All original files/first failures preserved."
+    },
+    {
+      "log": "focused-second.log",
+      "report": "focused-second-results.json",
+      "passed": 18,
+      "failed": 1,
+      "cause": "Test incorrectly expected locate candidate.target=_blank; existing sourceAction locate target is undefined. Source DOM target is preserved as _blank and checked separately. No sourceAction change."
+    },
+    {
+      "log": "focused-third.log",
+      "passed": 20,
+      "failed": 0,
+      "cause": "Pre-final passing run before replacing broad descendant queries with explicit visit bounds."
+    },
+    {
+      "log": "typecheck-first.log",
+      "exitCode": 1,
+      "cause": "TypeScript TS5112 requires --ignoreConfig with explicit input files. Command corrected; no source type error reported."
+    }
+  ],
+  "safety": {
+    "cuaNativeVisibleBrowserExistingProfileActions": 0,
+    "existing4173And4183ServerMutations": 0,
+    "externalSourceNetworkRequests": 0,
+    "sourceControlActivationsObserved": 0,
+    "actualFileDownloads": 0,
+    "inputValueCheckedReads": 0,
+    "paidApiPublishSendDeployActions": 0
+  },
+  "integrationRequired": [
+    "Root classifier applies common danger URL/script/label checks before new relation evidence; no safety-rejected revival.",
+    "Root owns classification/currentness/ranking/UI copying and full regression/quality/performance validation.",
+    "Root currentness must compare relation fingerprint and actual dependency element identities; module tests compare its own recomputation directly, not unintegrated product currentness."
+  ],
+  "limits": [
+    "No classifier/ranker/UI score or fresh evaluation claims. Existing 60 exposed pages remain development material.",
+    "No native installation, VoiceOver, actual zoom, user-study or real workflow completion performed.",
+    "Only explicit aligned HTML tables with one header row and one tbody; only noninteractive fixed table metadata.",
+    "Academic support vocabulary and selected local document layout are deliberately bounded; no broad financial document or arbitrary PDF inference.",
+    "No standalone danger bypass or action execution API is provided; callers must retain common safety and snapshot policies.",
+    "No overall performance claim or new benchmark run.",
+    "Parent must bind final freeze hash after any later integration changes."
+  ]
+}

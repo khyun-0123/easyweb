@@ -1,0 +1,57 @@
+
+Running 2 tests using 1 worker
+
+(node:30197) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents (101ms)
+(node:30206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/content-query-v10.spec.mjs:21:1 › @positive batch institution summaries avoid rereading a shared fixed heading and fresh checks still detect replacement (101ms)
+
+
+  1) tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "same-content-query-form"
+    Received: undefined
+
+      15 | async function classify(page){return page.evaluate(()=>{window.candidates=V10Query.classify(V10Query.analyzePage());return candidates.map(c=>({id:c.element.id,category:c.category,rule:c.contentEvidence?.rule,group:!!c.contentEvidence?.taskGroup}));});}
+      16 | test('@positive a verified query for the same board keeps one first-screen slot beside its documents',async({page})=>{
+    > 17 |  await setup(page);const all=await classify(page);expect(all.find(c=>c.id==='query')?.rule).toBe('same-content-query-form');expect(all.find(c=>c.id==='global-query')?.rule).toBeUndefined();
+         |                                                                                             ^
+      18 |  const result=await page.evaluate(()=>{const first=V10Query.rank(candidates);const rest=[...V10Query.remainingMenus(candidates,first)];return {first:first.map(c=>c.element.id),all:[...first,...rest].map(c=>c.element.id)};});
+      19 |  expect(result.first).toHaveLength(6);expect(result.first).toContain('query');expect(result.first).not.toContain('submit');expect(result.first.filter(id=>id.startsWith('doc-')).length).toBe(5);expect(new Set(result.all).size).toBe(result.all.length);expect(result.all).toContain('submit');
+      20 | });
+        at /Users/khyun_03/easyweb/tests/content-query-v10.spec.mjs:17:93
+
+    Error Context: test-results/content-query-v10--positiv-20c75-n-slot-beside-its-documents/error-context.md
+
+  2) tests/content-query-v10.spec.mjs:21:1 › @positive batch institution summaries avoid rereading a shared fixed heading and fresh checks still detect replacement 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "additional": 0,
+    +   "additional": 2,
+        "after": false,
+        "before": true,
+      }
+
+      24 |  const cache=new WeakMap();V10Query.institutionEvidence(raw[0],cache);const first=reads;V10Query.institutionEvidence(raw[1],cache);const additional=reads-first;
+      25 |  const full=V10Query.classify(V10Query.analyzePage());const old=full.find(c=>c.element.id==='doc-0');const before=V10Query.areCandidatesCurrent([old]);heading.firstElementChild.replaceWith(heading.firstElementChild.cloneNode(true));return {first,additional,before,after:V10Query.areCandidatesCurrent([old])};
+    > 26 |  })).toMatchObject({additional:0,before:true,after:false});
+         |      ^
+      27 | });
+      28 | test('same-frame changes to form method/action/handler, field owner or heading invalidate the old query proof',async({page})=>{
+      29 |  for(const change of ['method','action','handler','fieldset','heading','form','second-field']){
+        at /Users/khyun_03/easyweb/tests/content-query-v10.spec.mjs:26:6
+
+    Error Context: test-results/content-query-v10--positiv-7009c-ks-still-detect-replacement/error-context.md
+
+  2 failed
+    tests/content-query-v10.spec.mjs:16:1 › @positive a verified query for the same board keeps one first-screen slot beside its documents 
+    tests/content-query-v10.spec.mjs:21:1 › @positive batch institution summaries avoid rereading a shared fixed heading and fresh checks still detect replacement 

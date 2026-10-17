@@ -1,0 +1,1001 @@
+{
+  "config": {
+    "argv": [
+      "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+      "/Users/khyun_03/easyweb/node_modules/.bin/playwright",
+      "test",
+      "--config=docs/evidence/run009/document-relations/playwright.config.mjs"
+    ],
+    "configFile": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/playwright.config.mjs",
+    "rootDir": "/Users/khyun_03/easyweb/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/khyun_03/easyweb/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "document-relations.spec.mjs"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/Users/khyun_03/easyweb/tests",
+        "snapshotDir": "/Users/khyun_03/easyweb/tests",
+        "testIgnore": [],
+        "testMatch": "document-relations.spec.mjs",
+        "timeout": 30000,
+        "use": {
+          "browserName": "chromium",
+          "headless": true,
+          "viewport": {
+            "width": 1440,
+            "height": 1050
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/focused-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "document-relations.spec.mjs",
+      "file": "document-relations.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "고정 문서종류가 실제 제목·날짜·부서·첨부 열의 고유 문서 제어를 설명한다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 86,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:42:20",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 20,
+                      "line": 42
+                    },
+                    "snippet": "  40 |     await setup(page, newsTable({ name, columns }));\n  41 |     const result = await relation(page);\n> 42 |     expect(result).toMatchObject({ rule: 'listed-fixed-document-kind', category: 'help', action: 'locate', label: name, task: 'reading' });\n     |                    ^\n  43 |     await page.unrouteAll();\n  44 |   }\n  45 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 20,
+                        "line": 42
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n\n  40 |     await setup(page, newsTable({ name, columns }));\n  41 |     const result = await relation(page);\n> 42 |     expect(result).toMatchObject({ rule: 'listed-fixed-document-kind', category: 'help', action: 'locate', label: name, task: 'reading' });\n     |                    ^\n  43 |     await page.unrouteAll();\n  44 |   }\n  45 | });\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:42:20"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:16.202Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-고정-문서종류가-실제-제목·날짜·부서·첨부-열의-고유-문서-제어를-설명한다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 20,
+                    "line": 42
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-8dcee566bffbf182de03",
+          "file": "document-relations.spec.mjs",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "뉴스·일반 제목·서식 언급만으로 문서 분류를 만들지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 116,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:16.609Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-daa7b6ab080db1e84fe8",
+          "file": "document-relations.spec.mjs",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "문서표의 중복·누락·병합·중첩·복수제목 관계는 거절한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 119,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:16.816Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-21b4860059c3e67b52da",
+          "file": "document-relations.spec.mjs",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "정보디렉토리는 낯선 이름·열 재배열·층수의 수직병합을 정렬한다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 74,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:69:34",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 34,
+                      "line": 69
+                    },
+                    "snippet": "  67 |   for (const columns of [['층수','구분','자료설명','이용문의'], ['이용문의','자료설명','층수','구분'], ['구분','층수','이용문의','자료설명']]) {\n  68 |     await setup(page, directoryTable({ columns, rowspan: true }));\n> 69 |     expect(await relation(page)).toMatchObject({ rule: 'aligned-information-directory', category: 'help', action: 'locate', label: '음향기록 열람구역' });\n     |                                  ^\n  70 |     expect(await relation(page,'#second')).toMatchObject({ rule: 'aligned-information-directory', label: '시청각 자료실' });\n  71 |     await page.unrouteAll();\n  72 |   }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 34,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n\n  67 |   for (const columns of [['층수','구분','자료설명','이용문의'], ['이용문의','자료설명','층수','구분'], ['구분','층수','이용문의','자료설명']]) {\n  68 |     await setup(page, directoryTable({ columns, rowspan: true }));\n> 69 |     expect(await relation(page)).toMatchObject({ rule: 'aligned-information-directory', category: 'help', action: 'locate', label: '음향기록 열람구역' });\n     |                                  ^\n  70 |     expect(await relation(page,'#second')).toMatchObject({ rule: 'aligned-information-directory', label: '시청각 자료실' });\n  71 |     await page.unrouteAll();\n  72 |   }\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:69:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:16.941Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-정보디렉토리는-낯선-이름·열-재배열·층수의-수직병합을-정렬한다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 34,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-3df9225504f3e385e9a6",
+          "file": "document-relations.spec.mjs",
+          "line": 66,
+          "column": 1
+        },
+        {
+          "title": "디렉토리 예약·신청·업무제어 표나 제어 이름은 읽기근거를 얻지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 105,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:17.245Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-447a161e7879dc9e5e01",
+          "file": "document-relations.spec.mjs",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "디렉토리 의미열 병합·잘못된 층수범위·행누락·중첩·다중제어를 거절한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 141,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:17.443Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-f1bc3e392d20ac956298",
+          "file": "document-relations.spec.mjs",
+          "line": 79,
+          "column": 1
+        },
+        {
+          "title": "학업지원 PDF는 고정행제목을 primary관련이름으로 쓰고 title속성은 규정계열만 교차검증한다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 70,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:99:34",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 34,
+                      "line": 99
+                    },
+                    "snippet": "   97 |   for (const columns of [['구분','파일(PDF) 다운로드'], ['파일(PDF) 다운로드','구분']]) {\n   98 |     await setup(page, academicTable({ columns }));\n>  99 |     expect(await relation(page)).toMatchObject({ rule: 'academic-support-regulation-file', category: 'academic', relatedLabel: '연구장학금 지급에 관한 시행세칙', label: 'pdf 다운로드', action: 'locate', target: '_blank' });\n      |                                  ^\n  100 |     await page.unrouteAll();\n  101 |   }\n  102 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 34,
+                        "line": 99
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n\n   97 |   for (const columns of [['구분','파일(PDF) 다운로드'], ['파일(PDF) 다운로드','구분']]) {\n   98 |     await setup(page, academicTable({ columns }));\n>  99 |     expect(await relation(page)).toMatchObject({ rule: 'academic-support-regulation-file', category: 'academic', relatedLabel: '연구장학금 지급에 관한 시행세칙', label: 'pdf 다운로드', action: 'locate', target: '_blank' });\n      |                                  ^\n  100 |     await page.unrouteAll();\n  101 |   }\n  102 | });\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:99:34"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:17.589Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-학업지원-PD-9b814-으로-쓰고-title속성은-규정계열만-교차검증한다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 34,
+                    "line": 99
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-aa3c8caad95b4ab832b5",
+          "file": "document-relations.spec.mjs",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "일반 파일·다른 제목·결제·서식·모호한 학업표는 새 근거를 얻지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 128,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:17.886Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-809d30758eb9f70f50fd",
+          "file": "document-relations.spec.mjs",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "선택 문서와 본문·학사 heading이 맞는 학업지원 탭은 다른문서 fragment도 navigate를 보존한다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 75,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:110:32",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 32,
+                      "line": 110
+                    },
+                    "snippet": "  108 | test('선택 문서와 본문·학사 heading이 맞는 학업지원 탭은 다른문서 fragment도 navigate를 보존한다', async ({ page }) => {\n  109 |   await setup(page, academicTabs());\n> 110 |   expect(await relation(page)).toMatchObject({ rule: 'selected-academic-support-documents', category: 'academic', action: 'navigate', label: '학자금 융자제도', href: 'https://example.test/finance#topic', target: '_blank' });\n      |                                ^\n  111 | });\n  112 | test('학업 탭은 선택중복·다른문서선택·다른본문·전역메뉴·업무 peer를 거절한다', async ({ page }) => {\n  113 |   for (const change of ['duplicate','not-current','wrong-title','no-owner','operation','foreign','handler','nested-menu']) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 32,
+                        "line": 110
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[1mMatcher error\u001b[22m: \u001b[31mreceived\u001b[39m value must be a non-null object\n\nReceived has value: \u001b[31mnull\u001b[39m\n\n  108 | test('선택 문서와 본문·학사 heading이 맞는 학업지원 탭은 다른문서 fragment도 navigate를 보존한다', async ({ page }) => {\n  109 |   await setup(page, academicTabs());\n> 110 |   expect(await relation(page)).toMatchObject({ rule: 'selected-academic-support-documents', category: 'academic', action: 'navigate', label: '학자금 융자제도', href: 'https://example.test/finance#topic', target: '_blank' });\n      |                                ^\n  111 | });\n  112 | test('학업 탭은 선택중복·다른문서선택·다른본문·전역메뉴·업무 peer를 거절한다', async ({ page }) => {\n  113 |   for (const change of ['duplicate','not-current','wrong-title','no-owner','operation','foreign','handler','nested-menu']) {\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:110:32"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:18.102Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-선택-문서와--a7213-문서-fragment도-navigate를-보존한다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 32,
+                    "line": 110
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-feee515f1c5220a758df",
+          "file": "document-relations.spec.mjs",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "학업 탭은 선택중복·다른문서선택·다른본문·전역메뉴·업무 peer를 거절한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:18.406Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-ce9703ddb7d857142c07",
+          "file": "document-relations.spec.mjs",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "입력·편집·사적값·숨김·기사·form 경계는 모든 관계에서 거절한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:18.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-62bead7d4b77cc010ee3",
+          "file": "document-relations.spec.mjs",
+          "line": 128,
+          "column": 1
+        },
+        {
+          "title": "표 caption·header·행제목의 숨김/편집/ARIA참조는 표근거를 취소한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 132,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:18.879Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-7c5f479b417ce8fb40d2",
+          "file": "document-relations.spec.mjs",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "입력 value/checked와 편집 text getter를 읽거나 로그에 넣지 않는다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 71,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"academic-support-regulation-file\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"academic-support-regulation-file\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:161:23",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 23,
+                      "line": 161
+                    },
+                    "snippet": "  159 |     return {rule:relation?.rule, fingerprint:relation?.fingerprint};\n  160 |   });\n> 161 |   expect(result.rule).toBe('academic-support-regulation-file');expect(result.fingerprint).not.toContain('PRIVATE_');\n      |                       ^\n  162 | });\n  163 | test('같은 batch/newbatch 모두 의미를 재계산하고 source 계약은 불변이다', async ({ page }) => {\n  164 |   await setup(page, academicTable());"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 23,
+                        "line": 161
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"academic-support-regulation-file\"\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m\n\n  159 |     return {rule:relation?.rule, fingerprint:relation?.fingerprint};\n  160 |   });\n> 161 |   expect(result.rule).toBe('academic-support-regulation-file');expect(result.fingerprint).not.toContain('PRIVATE_');\n      |                       ^\n  162 | });\n  163 | test('같은 batch/newbatch 모두 의미를 재계산하고 source 계약은 불변이다', async ({ page }) => {\n  164 |   await setup(page, academicTable());\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:161:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:19.015Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-입력-valu-4c696-text-getter를-읽거나-로그에-넣지-않는다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 23,
+                    "line": 161
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-cbef42aee00c320f0871",
+          "file": "document-relations.spec.mjs",
+          "line": 152,
+          "column": 1
+        },
+        {
+          "title": "같은 batch/newbatch 모두 의미를 재계산하고 source 계약은 불변이다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 84,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"first\": \"academic-support-regulation-file\",\u001b[39m\n\u001b[31m+   \"first\": undefined,\u001b[39m\n\u001b[2m    \"fresh\": false,\u001b[22m\n\u001b[2m    \"same\": true,\u001b[22m\n\u001b[2m    \"sameBatch\": false,\u001b[22m\n\u001b[2m    \"unchanged\": true,\u001b[22m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"first\": \"academic-support-regulation-file\",\u001b[39m\n\u001b[31m+   \"first\": undefined,\u001b[39m\n\u001b[2m    \"fresh\": false,\u001b[22m\n\u001b[2m    \"same\": true,\u001b[22m\n\u001b[2m    \"sameBatch\": false,\u001b[22m\n\u001b[2m    \"unchanged\": true,\u001b[22m\n\u001b[2m  }\u001b[22m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:173:18",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 18,
+                      "line": 173
+                    },
+                    "snippet": "  171 |     return {first:first?.rule,same:first?.fingerprint===again?.fingerprint,sameBatch:!!sameBatch,fresh:!!fresh,unchanged:before===JSON.stringify({label:candidate.label,action:candidate.action,href:candidate.href,target:candidate.target})};\n  172 |   });\n> 173 |   expect(result).toEqual({first:'academic-support-regulation-file',same:true,sameBatch:false,fresh:false,unchanged:true});\n      |                  ^\n  174 | });\n  175 | test('동일문구 노드교체는 제목하위장식·표·행·열·부모의 실제 dependency 교체로 검출된다', async ({ page }) => {\n  176 |   for (const [render,selectors] of [[newsTable,['#caption-text','#column-text-1','#row','#body','#head','#table','#container','#target']], [directoryTable,['#room-name','#name-cell','#floor','#header-row']], [academicTable,['#row-title-text','#file-name','#row-title','#download-cell']], [academicTabs,['#content-heading-text','#page-heading-text','#selected-row','#wrapper','#owner','#tabs','#region','#content']]]) {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 18,
+                        "line": 173
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"first\": \"academic-support-regulation-file\",\u001b[39m\n\u001b[31m+   \"first\": undefined,\u001b[39m\n\u001b[2m    \"fresh\": false,\u001b[22m\n\u001b[2m    \"same\": true,\u001b[22m\n\u001b[2m    \"sameBatch\": false,\u001b[22m\n\u001b[2m    \"unchanged\": true,\u001b[22m\n\u001b[2m  }\u001b[22m\n\n  171 |     return {first:first?.rule,same:first?.fingerprint===again?.fingerprint,sameBatch:!!sameBatch,fresh:!!fresh,unchanged:before===JSON.stringify({label:candidate.label,action:candidate.action,href:candidate.href,target:candidate.target})};\n  172 |   });\n> 173 |   expect(result).toEqual({first:'academic-support-regulation-file',same:true,sameBatch:false,fresh:false,unchanged:true});\n      |                  ^\n  174 | });\n  175 | test('동일문구 노드교체는 제목하위장식·표·행·열·부모의 실제 dependency 교체로 검출된다', async ({ page }) => {\n  176 |   for (const [render,selectors] of [[newsTable,['#caption-text','#column-text-1','#row','#body','#head','#table','#container','#target']], [directoryTable,['#room-name','#name-cell','#floor','#header-row']], [academicTable,['#row-title-text','#file-name','#row-title','#download-cell']], [academicTabs,['#content-heading-text','#page-heading-text','#selected-row','#wrapper','#owner','#tabs','#region','#content']]]) {\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:173:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:19.317Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-같은-batc-64fbf-두-의미를-재계산하고-source-계약은-불변이다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 18,
+                    "line": 173
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-df38e0238ebf7e0b3f90",
+          "file": "document-relations.spec.mjs",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "동일문구 노드교체는 제목하위장식·표·행·열·부모의 실제 dependency 교체로 검출된다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 86,
+                  "error": {
+                    "message": "Error: #caption-text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"changed\": true,\u001b[39m\n\u001b[32m-   \"hadProof\": true,\u001b[39m\n\u001b[31m+   \"hadProof\": false,\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: #caption-text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"changed\": true,\u001b[39m\n\u001b[32m-   \"hadProof\": true,\u001b[39m\n\u001b[31m+   \"hadProof\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:186:32",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 32,
+                      "line": 186
+                    },
+                    "snippet": "  184 |         return {hadProof:true,changed:!after||before.fingerprint!==after.fingerprint||before.dependencies.length!==after.dependencies.length||before.dependencies.some((node,index)=>node!==after.dependencies[index])};\n  185 |       },selector);\n> 186 |       expect(changed,selector).toEqual({hadProof:true,changed:true}); await page.unrouteAll();\n      |                                ^\n  187 |     }\n  188 |   }\n  189 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 32,
+                        "line": 186
+                      },
+                      "message": "Error: #caption-text\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"changed\": true,\u001b[39m\n\u001b[32m-   \"hadProof\": true,\u001b[39m\n\u001b[31m+   \"hadProof\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  184 |         return {hadProof:true,changed:!after||before.fingerprint!==after.fingerprint||before.dependencies.length!==after.dependencies.length||before.dependencies.some((node,index)=>node!==after.dependencies[index])};\n  185 |       },selector);\n> 186 |       expect(changed,selector).toEqual({hadProof:true,changed:true}); await page.unrouteAll();\n      |                                ^\n  187 |     }\n  188 |   }\n  189 | });\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:186:32"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:19.713Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-동일문구-노드-67b48-·부모의-실제-dependency-교체로-검출된다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 32,
+                    "line": 186
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-20af1262b2199e2f8d3d",
+          "file": "document-relations.spec.mjs",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "깊거나 과도한 이름장식·큰 표·80방문초과 지역은 보수적으로 포기한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 102,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:20.113Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-70ccf81b9e43bdfc2eee",
+          "file": "document-relations.spec.mjs",
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "동일 이름의 규정 PDF 두 행은 행별 dependency와 제목을 유지한다",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 74,
+                  "error": {
+                    "message": "TypeError: Cannot read properties of null (reading 'label')",
+                    "stack": "TypeError: Cannot read properties of null (reading 'label')\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:205:16",
+                    "location": {
+                      "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                      "column": 16,
+                      "line": 205
+                    },
+                    "snippet": "  203 |   });\n  204 |   const first=await relation(page),second=await relation(page,'#second-target');\n> 205 |   expect(first.label).toBe(second.label);expect(first.relatedLabel).not.toBe(second.relatedLabel);expect(first.fingerprint).not.toBe(second.fingerprint);\n      |                ^\n  206 | });\n  207 | test('모듈은 원본 이벤트·링크·다운로드·form을 활성화하지 않는다',async({page})=>{\n  208 |   await setup(page,newsTable());"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                        "column": 16,
+                        "line": 205
+                      },
+                      "message": "TypeError: Cannot read properties of null (reading 'label')\n\n  203 |   });\n  204 |   const first=await relation(page),second=await relation(page,'#second-target');\n> 205 |   expect(first.label).toBe(second.label);expect(first.relatedLabel).not.toBe(second.relatedLabel);expect(first.fingerprint).not.toBe(second.fingerprint);\n      |                ^\n  206 | });\n  207 | test('모듈은 원본 이벤트·링크·다운로드·form을 활성화하지 않는다',async({page})=>{\n  208 |   await setup(page,newsTable());\n    at /Users/khyun_03/easyweb/tests/document-relations.spec.mjs:205:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:20.305Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/Users/khyun_03/easyweb/docs/evidence/run009/document-relations/test-artifacts/document-relations-동일-이름의--bc4e9--행은-행별-dependency와-제목을-유지한다/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/Users/khyun_03/easyweb/tests/document-relations.spec.mjs",
+                    "column": 16,
+                    "line": 205
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-4d7c660cf919c4414faa",
+          "file": "document-relations.spec.mjs",
+          "line": 199,
+          "column": 1
+        },
+        {
+          "title": "모듈은 원본 이벤트·링크·다운로드·form을 활성화하지 않는다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 70,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:20.606Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-7a1e5e05f6eb9d15d3ae",
+          "file": "document-relations.spec.mjs",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "이미 노출된 세 원본 fixture의 7 관계를 개발자료로만 확인한다",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1272,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T19:54:20.771Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "59788dceb9e31fddac14-76f4367e8760e5ccb46d",
+          "file": "document-relations.spec.mjs",
+          "line": 212,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T19:54:15.966Z",
+    "duration": 6102.394,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 8,
+    "flaky": 0
+  }
+}

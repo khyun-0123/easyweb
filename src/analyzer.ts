@@ -1,6 +1,6 @@
 import type { Candidate, SourceSnapshot, PagePurpose } from './types';
 import { sourceAction, sourceDownloadEvidence } from './action-policy';
-import { navigationUtility } from './navigation-utility';
+import { createNavigationCache, navigationUtility, type NavigationCache } from './navigation-utility';
 
 const clean = (text: string) => text.replace(/\s+/g, ' ').trim().slice(0, 140);
 const editableRoleSelector = ['textbox', 'searchbox', 'combobox', 'spinbutton', 'slider'].map(role => `[role~="${role}" i]`).join(', ');
@@ -112,20 +112,21 @@ function headingBelongsTo(heading: HTMLElement, element: HTMLElement): boolean {
 }
 
 interface ContextHeading { element: HTMLElement; label: string; visible: boolean }
-export type ContextCache = WeakMap<Element, ContextHeading[]>;
+interface ContextSummary { headings: ContextHeading[]; paragraph?: ContextHeading | null }
+export type ContextCache = WeakMap<Element, ContextSummary>;
 
 export function contextLabels(element: HTMLElement, cache?: ContextCache): string[] {
   const labels: string[] = [];
   const add = (text: string) => { if (text && text.length <= 60 && !labels.includes(text)) labels.push(text); };
   let parent = element.parentElement;
   for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-    let headings = cache?.get(parent);
-    if (!headings) {
-      headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)]
-        .map(heading => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) }));
-      cache?.set(parent, headings);
+    let summary = cache?.get(parent);
+    if (!summary) {
+      summary = { headings: [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)]
+        .map(heading => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) })) };
+      cache?.set(parent, summary);
     }
-    const preceding = headings.filter(({ element: heading, visible }) => {
+    const preceding = summary.headings.filter(({ element: heading, visible }) => {
       let branch = heading;
       while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
       // 같은 내용 상자 안에서 이미 읽은 하위 표제가 상위 표제를 덮지 않게 합니다.
@@ -136,11 +137,15 @@ export function contextLabels(element: HTMLElement, cache?: ContextCache): strin
     const label = preceding.at(-1);
     if (label) add(label.label);
     // 작은 기능 상자는 제목을 p로 표시하기도 합니다. 가까운 상자의 첫 짧은 문구만 문맥으로 씁니다.
-    if (!label && level < 2 && parent.querySelectorAll('a, button, input').length <= 3) {
-      const firstParagraph = parent.querySelector<HTMLElement>(':scope > p');
-      if (firstParagraph && isVisible(firstParagraph) && (firstParagraph.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING)) {
-        const text = clean(staticText(firstParagraph));
-        if (text && text.length <= 40) add(text);
+    if (!label && level < 2) {
+      if (summary.paragraph === undefined) {
+        const paragraph = parent.querySelector<HTMLElement>(':scope > p');
+        const visible = !!paragraph && parent.querySelectorAll('a, button, input').length <= 3 && isVisible(paragraph);
+        summary.paragraph = paragraph && visible ? { element: paragraph, label: clean(staticText(paragraph)), visible } : null;
+      }
+      const paragraph = summary.paragraph;
+      if (paragraph?.visible && (paragraph.element.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING)) {
+        if (paragraph.label && paragraph.label.length <= 40) add(paragraph.label);
       }
     }
     if (labels.length >= 3) break;
@@ -636,13 +641,14 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
   return { filter, title, materialRow, preparationAttachment, preparationAttachmentNodes, relatedLabel, informationPanels, grouped, ...topics };
 }
 
-export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {
+export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache, navigationCache?: NavigationCache): SourceSnapshot {
   return {
     pageUrl: location.href,
     baseUrl: document.baseURI,
     attributes: JSON.stringify([
       ...['href', 'target', 'onclick', 'aria-controls', 'aria-current', 'aria-expanded', 'download', 'type', 'form', 'role', 'title', 'placeholder', 'contenteditable'].map(name => element.getAttribute(name)),
-      element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? [element.type, !!element.form] : null,
+      element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? [element.type, !!element.form,
+        element.form ? ['action','method','onsubmit'].map(name => element.form!.getAttribute(name)) : null] : null,
       document.querySelector('base[target]')?.getAttribute('target'),
       [...element.querySelectorAll<HTMLElement>(':scope > abbr')].map(marker => [marker.getAttribute('title'), isVisible(marker)]),
       !!element.closest('table, [role~="grid"]'),
@@ -662,7 +668,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
       !!element.closest('form, [role~="form" i]'),
       sourceDownloadEvidence(element, safeLabel),
       sourceAction(element, safeLabel),
-      navigationUtility(element, safeLabel) ?? null,
+      navigationUtility(element, safeLabel, navigationCache) ?? null,
     ]),
   };
 }
@@ -670,6 +676,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
 export function analyzePage(): Candidate[] {
   const commonPurpose = documentPurpose();
   const contextCache: ContextCache = new WeakMap();
+  const navigationCache = createNavigationCache();
   const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
   const elements = document.querySelectorAll<HTMLElement>(selector + (commonPurpose === 'academic-calendar' ? ', table a:not([href]), [role~="grid"] a:not([href])' : ''));
   const candidates: Candidate[] = [];
@@ -698,7 +705,7 @@ export function analyzePage(): Candidate[] {
       destinationHost, opensNewWindow,
       context: sourceContext(element),
       score: 0, reasons: [],
-      snapshot: sourceSnapshot(element, label),
+      snapshot: sourceSnapshot(element, label, undefined, false, false, undefined, navigationCache),
       sectionLabel: labels[0], contextLabels: labels, pagePurpose: pagePurpose(element, labels, commonPurpose ?? null),
     });
   }

@@ -7,6 +7,11 @@ import { showOriginalNotice } from './original-notice';
 import { areCandidatesCurrent, isCandidateCurrent, watchCandidates } from './page-session';
 import { CATEGORY_INFO, type Candidate } from './types';
 
+// Keep the rendered control's source identity off the page attributes. This
+// weak association supports diagnostics without guessing from duplicate names.
+const renderedSources = new WeakMap<Element, Candidate>();
+export const cardSource = (card: Element): Candidate | undefined => renderedSources.get(card);
+
 const paths: Record<string, string> = {
   brand: '<path d="M6 5h14M6 12h11M6 19h14M3 5h.01M3 12h.01M3 19h.01"/>',
   user: '<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',
@@ -165,6 +170,7 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
     const info = CATEGORY_INFO[candidate.category!];
     const item = candidate.action === 'navigate' ? el('a', 'card') : el('button', 'card');
     item.dataset.category = candidate.category;
+    renderedSources.set(item, candidate);
     const guard = (event: Event) => {
       if (!stale && isCandidateCurrent(candidate)) return true;
       event.preventDefault();
