@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-17T18:37:18.354169+00:00",
+  "status": "SOURCE_READY_FOR_ROOT_FINAL_VALIDATION",
+  "baseCommit": "6129140d131278f8cf5fb0414de8e5e5a9566596",
+  "changedFiles": [
+    "src/action-policy.ts",
+    "src/analyzer.ts",
+    "tests/download-signals.spec.mjs"
+  ],
+  "hashes": {
+    "src/action-policy.ts": "76129a5cb32e3e2a4cf6f796c6b15aa43c59e37e7efba9be660fcbf0e4b1d282",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "tests/download-signals.spec.mjs": "7aaaffd95284b24792204a938a57e2752b761c9a63d2fa58c106341512d0df31"
+  },
+  "positiveContract": "Complete HTTP(S) FileDown or FileDown.do pathname leaf plus a safe fixed download command label or an exact download/icon-download/ico-download/ir-download operation token inside that source anchor -> locate.",
+  "negativeContract": "Ordinary paths, path/query/class lookalikes, missing signals, guide/instructions/negative/disabled marker names and editable/input descendants do not acquire the new download evidence.",
+  "privacy": "Only safeLabel from the existing input-excluding analyzer and original source-local icon class metadata are used; no value property, global page text, response, handler execution or outside anchor icon is inspected.",
+  "snapshotBound": {
+    "icons": 8,
+    "tokensPerIcon": 4,
+    "maxTokenLength": 64,
+    "otherFields": [
+      "text boolean"
+    ]
+  },
+  "baseline": {
+    "log": "docs/evidence/run006/download-safety/baseline-corrected-harness.log",
+    "revision": "6129140d131278f8cf5fb0414de8e5e5a9566596",
+    "isolatedArchive": true,
+    "tests": 7,
+    "failed": 5,
+    "passed": 2,
+    "scope": "Seven original cases with corrected shadowRoot harness; final tests additionally replace the unsupported download-outline variant with ir-download and add the marker-lookalike regression."
+  },
+  "initialHarnessMistake": {
+    "logs": [
+      "docs/evidence/run006/download-safety/baseline.log",
+      "docs/evidence/run006/download-safety/targeted.log",
+      "docs/evidence/run006/download-safety/final-targeted.log"
+    ],
+    "detail": "One same-frame UI test queried document instead of host.shadowRoot. Corrected test was independently rerun on the frozen baseline and current source. Other 31 existing focused regressions passed in final-targeted.log; that run is not claimed as a clean overall pass."
+  },
+  "markerReview": {
+    "baselineLog": "docs/evidence/run006/download-safety/marker-lookalike-baseline.log",
+    "tests": 1,
+    "failed": 1,
+    "passed": 0,
+    "preservedIntermediateSource": "docs/evidence/run006/download-safety/before-marker-tightening-action-policy.ts",
+    "fix": "Exact terminal operation token with recognized icon/ico/ir prefix or plain download; no suffix, guide/instructions/negative/disabled lookalikes."
+  },
+  "finalFocused": {
+    "log": "docs/evidence/run006/download-safety/final-focused-v2.log",
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "typecheck": "PASS",
+    "diffCheck": "PASS"
+  },
+  "behaviourVerified": [
+    "Original names/hrefs not modified",
+    "Ordinary direct navigation preserved",
+    "Same-frame stale navigation blocked before default action",
+    "Adding/removing/replacing marker invalidates existing candidates",
+    "Changing valid marker evidence while action remains locate invalidates candidates",
+    "Download card focuses original control and produces ready notice without original click or delegated activation",
+    "Private editor/input text absent and value getters not called"
+  ],
+  "rootRemaining": "Full build/verify/accessibility/performance/development/live/package and independent review are owned by root; no full acceptance claim.",
+  "computerUseCount": 0,
+  "newFocusedTestNetwork": "All requests aborted in setContent synthetic pages; no destination requests required.",
+  "oldEvidenceChanged": false
+}

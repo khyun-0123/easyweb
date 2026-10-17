@@ -1,5 +1,13 @@
 # EasyWeb 검증 기록
 
+## RUN-006 · v0.7.0 / 다운로드 안전 반례 해결
+
+**현재5/10 · 전체 NOT_MET.** [보고서](RUN_006_REPORT.md)와 [S05 판정](evidence/run006/s05-resolution-root-review.json)을 따른다. 로컬237/237, 독립6/6·별도title9조건, 원본 두 다운로드 제어의 locate/직접href없음, 자동접근성21조건, 합성성능3종, 기존 공개과제15/15를 확인했다. 원본 클릭·실제 파일 실행·사람 성공을 주장하지 않는다.
+
+core 개발 정확72/74·재현45/45는 통과했으나 v8 개발 재평가11/16·5/15·2/5는 FAIL이다. 최초 독립10/17·4/15·1/5와 모든 원본·동결·이전ZIP은 보존한다. 현재0.7 실제 설치·VoiceOver 발화·브라우저 확대는 NOT_RUN, 사전시험/정식실증 각0건이다. [개발 전체](evidence/run006/development/summary.json) · [자동 검사](evidence/run006/a11y-automated.json) · [공개 과제](evidence/run006/tasks-live-final.json) · [패키지](../output/run006/EasyWeb-0.7.0-candidate.json) · [무결성](evidence/run006/final-review.json)
+
+아래는 각 실행 당시의 과거 기록이며 현재 단계 판정과 구별한다.
+
 ## RUN-005 · v0.6.0 / 독립 최초 품질 FAIL
 
 2026-10-18 (한국 시간). [보고서](RUN_005_REPORT.md) · [진행표](PROGRESS.md)

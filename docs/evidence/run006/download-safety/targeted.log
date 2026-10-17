@@ -1,0 +1,36 @@
+
+Running 7 tests using 1 worker
+
+(node:91716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/download-signals.spec.mjs:23:1 › 완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다 (98ms)
+  ✓  2 tests/download-signals.spec.mjs:29:1 › 일반 경로·유사 endpoint·유사 class·다운로드 언급만 있는 문서는 직접 이동을 유지한다 (83ms)
+  ✓  3 tests/download-signals.spec.mjs:45:1 › 편집 자식의 다운로드 class·입력값·사용자 정의 편집 role을 신호로 수집하지 않는다 (83ms)
+  ✓  4 tests/download-signals.spec.mjs:53:1 › 아이콘 추가·제거·class 교체는 이름·URL이 같은 기존 후보를 무효화한다 (80ms)
+  ✓  5 tests/download-signals.spec.mjs:68:1 › 다운로드 액션이 유지되더라도 실제 다운로드 marker 근거의 교체를 감지한다 (84ms)
+  ✘  6 tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 (107ms)
+(node:91736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/download-signals.spec.mjs:88:1 › 다운로드 카드는 원본 위치만 안내하고 원본 click·위임 동작을 자동 실행하지 않는다 (151ms)
+
+
+  1) tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 ──────────
+
+    Error: page.evaluate: TypeError: Cannot read properties of null (reading 'addEventListener')
+        at eval (eval at evaluate (:370:30), <anonymous>:4:10)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at evaluate (:370:30), <anonymous>:4:10)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /Users/khyun_03/easyweb/tests/download-signals.spec.mjs:78:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-같은-프레임에서--35182-생기면-이전-이동-카드의-기본-이동을-먼저-막는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-같은-프레임에서--35182-생기면-이전-이동-카드의-기본-이동을-먼저-막는다/error-context.md
+
+  1 failed
+    tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 ───────────
+  6 passed (1.4s)

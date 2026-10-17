@@ -1,0 +1,19 @@
+{
+  "reviewedAt": "2026-10-17T18:45:04.485989+00:00",
+  "version": "0.7.0",
+  "decision": "S05_DONE_WITHIN_DEFINED_DIRECT_NAVIGATION_POLICY",
+  "completedStages": 5,
+  "totalStages": 10,
+  "overallAcceptance": "NOT_MET",
+  "previousDecision": "docs/evidence/run005/file-download-root-review.json",
+  "evidence": {
+    "source": "docs/evidence/run006/source-snapshot.json",
+    "genericAndUnchangedIndependentCases": "docs/evidence/run006/local-verification.json",
+    "independentExecutionResolution": "docs/evidence/run006/independent-review/root-resolution.json",
+    "originalTwoControls": "docs/evidence/run006/known-download-controls.json"
+  },
+  "reason": "Both concrete explicit-download counterexamples now have locate action and no direct card href; generic positives, ordinary lookalikes, negation, input exclusion, stale cancellation, original guidance and nonactivation cases pass. Existing defined action/focus/restore regressions also pass within full237.",
+  "scopeLimit": "Defined DOM-metadata action cases under the user ordinary-link direct-navigation policy. No universal download/hidden event recognition, live FileDown response, actual download/execution, native installation or human usability claim. Candidate action metadata does not prove that every control is recommended; omissions remain S07.",
+  "knownQuality": "v8 exposed development first screen11/16 correct,5/15 recall,2/5 task recommendation FAIL; original independent10/17,4/15,1/5 preserved.",
+  "workContinues": "Institution meaning adapters and generic-only comparison next; S06/S07/S08/S09/S10 remain incomplete."
+}

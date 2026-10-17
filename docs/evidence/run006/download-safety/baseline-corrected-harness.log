@@ -1,0 +1,191 @@
+Frozen baseline commit: 6129140d131278f8cf5fb0414de8e5e5a9566596
+Corrected harness: shadow-root card lookup; no product source changes in isolated archive.
+
+Running 7 tests using 1 worker
+
+(node:92112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/download-signals.spec.mjs:23:1 › 완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다 (115ms)
+(node:92118) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/download-signals.spec.mjs:29:1 › 일반 경로·유사 endpoint·유사 class·다운로드 언급만 있는 문서는 직접 이동을 유지한다 (83ms)
+  ✓  3 tests/download-signals.spec.mjs:45:1 › 편집 자식의 다운로드 class·입력값·사용자 정의 편집 role을 신호로 수집하지 않는다 (81ms)
+  ✘  4 tests/download-signals.spec.mjs:53:1 › 아이콘 추가·제거·class 교체는 이름·URL이 같은 기존 후보를 무효화한다 (72ms)
+(node:92142) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/download-signals.spec.mjs:68:1 › 다운로드 액션이 유지되더라도 실제 다운로드 marker 근거의 교체를 감지한다 (93ms)
+(node:92148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  6 tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 (126ms)
+(node:92154) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  7 tests/download-signals.spec.mjs:88:1 › 다운로드 카드는 원본 위치만 안내하고 원본 click·위임 동작을 자동 실행하지 않는다 (5.1s)
+
+
+  1) tests/download-signals.spec.mjs:23:1 › 완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다 ────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 6
+    + Received  + 6
+
+      Array [
+        Array [
+          "icon",
+    -     "locate",
+    -     undefined,
+    +     "navigate",
+    +     "http://127.0.0.1:4173/files/FileDown.do?document=sample-a",
+        ],
+        Array [
+          "svg",
+    -     "locate",
+    -     undefined,
+    +     "navigate",
+    +     "http://127.0.0.1:4173/documents/fIlEdOwN.Do?part=2",
+        ],
+        Array [
+          "text",
+    -     "locate",
+    -     undefined,
+    +     "navigate",
+    +     "http://127.0.0.1:4173/files/FileDown.do?document=sample-b",
+        ],
+      ]
+
+      23 | test('완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다', async ({page})=>{
+      24 |   await setup(page, `<main><a id="icon" href="/files/FileDown.do?document=sample-a"><i class="icon-download" aria-hidden="true"></i>공개 양식</a><a id="svg" href="/documents/fIlEdOwN.Do?part=2"><svg class="download-outline" aria-hidden="true"></svg>공개 안내 자료</a><a id="text" href="/files/FileDown.do?document=sample-b">자료 내려받기</a></main>`);
+    > 25 |   expect((await analyze(page)).map(i=>[i.id,i.action,i.href])).toEqual([['icon','locate',undefined],['svg','locate',undefined],['text','locate',undefined]]);
+         |                                                                ^
+      26 |   expect(await page.evaluate(()=>[...document.querySelectorAll('main a')].map(e=>DownloadSafety.isDocumentDownload(e, e.textContent)))).toEqual([true,true,true]);
+      27 | });
+      28 |
+        at /private/var/folders/65/t04nzk8547q49slgg21pb5400000gn/T/easyweb-download-baseline-xjexlfuj/tests/download-signals.spec.mjs:25:64
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-완전한-FileDown-동작-경로와-고정-다운로드-아이콘·문구를-함께-식별한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-완전한-FileDown-동작-경로와-고정-다운로드-아이콘·문구를-함께-식별한다/error-context.md
+
+  2) tests/download-signals.spec.mjs:53:1 › 아이콘 추가·제거·class 교체는 이름·URL이 같은 기존 후보를 무효화한다 ────────────
+
+    Error: add
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      62 |       if(change==='replace')marker.className='icon-print';
+      63 |       return DownloadSafety.isCandidateCurrent(items[0]);
+    > 64 |     },change),change).toBe(false);
+         |                       ^
+      65 |   }
+      66 | });
+      67 |
+        at /private/var/folders/65/t04nzk8547q49slgg21pb5400000gn/T/easyweb-download-baseline-xjexlfuj/tests/download-signals.spec.mjs:64:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-아이콘-추가·제거·class-교체는-이름·URL이-같은-기존-후보를-무효화한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-아이콘-추가·제거·class-교체는-이름·URL이-같은-기존-후보를-무효화한다/error-context.md
+
+  3) tests/download-signals.spec.mjs:68:1 › 다운로드 액션이 유지되더라도 실제 다운로드 marker 근거의 교체를 감지한다 ────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "action": "locate",
+    -   "current": false,
+    +   "action": "navigate",
+    +   "current": true,
+      }
+
+      69 |   await setup(page, `<main><a id="source" href="/files/FileDown.do?document=sample"><i id="marker" class="icon-download" aria-hidden="true"></i>공개 양식</a></main>`);
+      70 |   await analyze(page);
+    > 71 |   expect(await page.evaluate(()=>{document.querySelector('#marker').className='download-outline';return {current:DownloadSafety.isCandidateCurrent(items[0]),action:DownloadSafety.sourceAction(document.querySelector('#source'),'공개 양식').action};})).toEqual({current:false,action:'locate'});
+         |                                                                                                                                                                                                                                                        ^
+      72 | });
+      73 |
+      74 | test('같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다', async ({page})=>{
+        at /private/var/folders/65/t04nzk8547q49slgg21pb5400000gn/T/easyweb-download-baseline-xjexlfuj/tests/download-signals.spec.mjs:71:248
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-다운로드-액션이-유지되더라도-실제-다운로드-marker-근거의-교체를-감지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-다운로드-액션이-유지되더라도-실제-다운로드-marker-근거의-교체를-감지한다/error-context.md
+
+  4) tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "blocked": true,
+    +   "blocked": false,
+        "originalName": "신청서 이용 안내",
+      }
+
+      82 |     return {blocked,originalName:document.querySelector('#source').textContent};
+      83 |   });
+    > 84 |   expect(result).toEqual({blocked:true,originalName:'신청서 이용 안내'});
+         |                  ^
+      85 |   await expect(page.locator('.change-notice')).toBeVisible();
+      86 | });
+      87 |
+        at /private/var/folders/65/t04nzk8547q49slgg21pb5400000gn/T/easyweb-download-baseline-xjexlfuj/tests/download-signals.spec.mjs:84:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-같은-프레임에서--35182-생기면-이전-이동-카드의-기본-이동을-먼저-막는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-같은-프레임에서--35182-생기면-이전-이동-카드의-기본-이동을-먼저-막는다/error-context.md
+
+  5) tests/download-signals.spec.mjs:88:1 › 다운로드 카드는 원본 위치만 안내하고 원본 click·위임 동작을 자동 실행하지 않는다 ───────
+
+    Error: expect(locator).toHaveJSProperty(expected) failed
+
+    Locator:  locator('.card')
+    Expected: "BUTTON"
+    Received: "A"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveJSProperty" locator('.card') with timeout 5000ms
+      - waiting for locator('.card')
+        14 × locator resolved to <a class="card" target="_self" data-category="help" href="http://127.0.0.1:4173/files/FileDown.do?document=sample">…</a>
+           - unexpected value "A"
+
+
+      90 |   await page.evaluate(()=>{window.originalClicks=0;document.querySelector('#source').addEventListener('click',e=>{e.preventDefault();originalClicks++;});document.addEventListener('click',e=>{if(e.target.closest('#source'))originalClicks++;});});
+      91 |   await open(page);
+    > 92 |   await expect(page.locator('.card')).toHaveJSProperty('tagName','BUTTON');
+         |                                       ^
+      93 |   await page.locator('.card').click();
+      94 |   await expect(page.locator('#source')).toBeFocused();
+      95 |   await expect(page.locator('[data-easyweb-notice]')).toHaveAttribute('data-easyweb-notice-reason','ready');
+        at /private/var/folders/65/t04nzk8547q49slgg21pb5400000gn/T/easyweb-download-baseline-xjexlfuj/tests/download-signals.spec.mjs:92:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-다운로드-카드는--6f1a3-원본-click·위임-동작을-자동-실행하지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-다운로드-카드는--6f1a3-원본-click·위임-동작을-자동-실행하지-않는다/error-context.md
+
+  5 failed
+    tests/download-signals.spec.mjs:23:1 › 완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다 ─────────────
+    tests/download-signals.spec.mjs:53:1 › 아이콘 추가·제거·class 교체는 이름·URL이 같은 기존 후보를 무효화한다 ─────────────
+    tests/download-signals.spec.mjs:68:1 › 다운로드 액션이 유지되더라도 실제 다운로드 marker 근거의 교체를 감지한다 ─────────────
+    tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 ───────────
+    tests/download-signals.spec.mjs:88:1 › 다운로드 카드는 원본 위치만 안내하고 원본 click·위임 동작을 자동 실행하지 않는다 ────────
+  2 passed (7.3s)
+
+Process exit: 1

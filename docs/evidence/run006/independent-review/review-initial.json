@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-17T18:39:48.626346+00:00",
+  "status": "REPRODUCIBLE_DEFECTS_IDENTIFIED",
+  "scope": {
+    "independentReview": true,
+    "productSourceModified": false,
+    "existingWorkerTestsModified": false,
+    "visibleOrNativeUIAutomation": false,
+    "externalNetwork": false,
+    "allPageRequestsAborted": true,
+    "realDownloadPerformed": false,
+    "realUserInputRead": false,
+    "newBlindEvaluation": false
+  },
+  "reviewedBaseCommit": "6129140d131278f8cf5fb0414de8e5e5a9566596",
+  "handoff": "docs/evidence/run006/independent-review/initial-source-handoff.json",
+  "handoffSha256": "5f7d303821d3211eba5c89778af83097cd9a8b7dee533ea1a55d98bca1396832",
+  "reviewedSourceHashesFromStoppedHandoff": {
+    "src/action-policy.ts": "76129a5cb32e3e2a4cf6f796c6b15aa43c59e37e7efba9be660fcbf0e4b1d282",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69"
+  },
+  "command": "node node_modules/@playwright/test/cli.js test --config=docs/evidence/run006/independent-review/playwright.config.mjs",
+  "tests": {
+    "path": "tests/independent-download-review.spec.mjs",
+    "sha256": "a67a13b1f6d382f8c87c572522b8cede1ee5f1f5c6b9695c104618c4f50c0099",
+    "total": 6,
+    "failed": 3,
+    "passed": 3,
+    "unchangedForFixRecheck": true,
+    "log": "docs/evidence/run006/independent-review/first.log",
+    "logSha256": "f481b36f0e58e2e1d008cf66edb2bd99b1110f5dc1caf277b92279e022f954a9",
+    "jsonReport": null
+  },
+  "findings": [
+    {
+      "id": "R006-IR01",
+      "severity": "HIGH",
+      "classification": "DOWNLOAD_IDENTIFICATION_AND_STALE_GUARD_GAP",
+      "source": "src/action-policy.ts sourceDownloadEvidence descendant-only selector; src/analyzer.ts sourceSnapshot evidence binding",
+      "reproduction": "<a class=\"ir-download\" href=\"/api/FileDown.do\">공개 양식</a>",
+      "expected": "locate, using the exact operation marker on the source anchor itself; changing from no marker to this marker invalidates the old navigation candidate.",
+      "actual": "Own ir-download class produced navigate while the same class on a child i produced locate. Synchronously adding the source anchor class returned isCandidateCurrent=true; the product card click handler left defaultPrevented=false.",
+      "tests": [
+        "own exact icon class provides source-local evidence like a descendant icon",
+        "adding the own icon class synchronously invalidates and blocks an old navigation card"
+      ],
+      "activationBoundary": "The independent observer always called event.preventDefault after measuring product cancellation. No destination request, actual download or harm was performed or observed.",
+      "rootDisposition": "Accepted for correction; source worker to add own-anchor evidence and snapshot binding."
+    },
+    {
+      "id": "R006-IR02",
+      "severity": "MEDIUM",
+      "classification": "NEGATED_SAFE_NAME_MISREAD_AS_OPERATION",
+      "source": "src/action-policy.ts sourceDownloadEvidence suffix-only safeLabel expression",
+      "reproduction": "<a href=\"/api/FileDown.do\" aria-label=\"Do not download\">공개 양식</a>",
+      "expected": "A negated/statement-only fixed name does not establish the new download-operation evidence; navigate absent another action marker under the documented policy.",
+      "actual": "Do not download, No download, Never download now and 금지된 다운로드 all returned text:true, icons:[], action:locate.",
+      "test": "fixed safe-label negations do not become a download operation",
+      "activationBoundary": "Over-conservative original-position guidance; this finding is not an automatic-execution incident.",
+      "rootDisposition": "Accepted for correction using bounded complete operation-name grammar rather than a negative-word blacklist."
+    }
+  ],
+  "passedIndependentChecks": [
+    "Pathname leaf boundaries: query/hash-only FileDown and suffix/child-path lookalikes stay navigate.",
+    "download-guide/no-download icon class lookalikes and icons outside the source anchor stay navigate.",
+    "Input value and editable/custom-role text getters are never invoked; synthetic PRIVATE_CANARY absent from candidates and snapshots.",
+    "A download marker mutation during source focus returns changed, with zero original/delegated clicks and zero submits."
+  ],
+  "next": "Preserve initial evidence; wait for resolved source handoff, then rerun these exact six unchanged tests and inspect only the final correction diff. Root full validation remains pending.",
+  "originalHandoffPath": "docs/evidence/run006/download-safety/handoff.json"
+}

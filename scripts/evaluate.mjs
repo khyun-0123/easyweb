@@ -8,7 +8,7 @@ import { buildMenuFlowHarness, observeMenuFlow } from './menu-flow-evaluation.mj
 
 const args = process.argv.slice(2);
 if (args.includes('--help')) {
-  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|blind-v8|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2|development-v7-corrected] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run005] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
+  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|blind-v8|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2|development-v7-corrected] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run006] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
   process.exit(0);
 }
 for (const arg of args) {
@@ -18,7 +18,7 @@ for (const arg of args) {
 const value = (name, fallback) => args.find(arg => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
 const engine = value('engine', 'current');
 const split = value('split', 'calibration');
-const outputDir = value('output-dir', 'docs/evidence/run005');
+const outputDir = value('output-dir', 'docs/evidence/run006');
 const suite = value('suite', 'core');
 const withMenuFlow = args.includes('--with-menu-flow');
 if (withMenuFlow && engine !== 'current') throw new Error('Menu flow is supported for the current engine only');

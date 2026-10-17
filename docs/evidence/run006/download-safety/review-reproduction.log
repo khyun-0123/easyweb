@@ -1,0 +1,163 @@
+
+Running 14 tests using 1 worker
+
+(node:93406) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/download-signals.spec.mjs:23:1 › 완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다 (103ms)
+  ✓   2 tests/download-signals.spec.mjs:29:1 › 일반 경로·유사 endpoint·유사 class·다운로드 언급만 있는 문서는 직접 이동을 유지한다 (83ms)
+  ✓   3 tests/download-signals.spec.mjs:45:1 › 편집 자식의 다운로드 class·입력값·사용자 정의 편집 role을 신호로 수집하지 않는다 (81ms)
+  ✓   4 tests/download-signals.spec.mjs:53:1 › 아이콘 추가·제거·class 교체는 이름·URL이 같은 기존 후보를 무효화한다 (81ms)
+  ✓   5 tests/download-signals.spec.mjs:68:1 › 다운로드 액션이 유지되더라도 실제 다운로드 marker 근거의 교체를 감지한다 (84ms)
+  ✓   6 tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 (104ms)
+  ✓   7 tests/download-signals.spec.mjs:88:1 › 다운로드 카드는 원본 위치만 안내하고 원본 click·위임 동작을 자동 실행하지 않는다 (130ms)
+  ✓   8 tests/download-signals.spec.mjs:99:1 › 안내·설명·부정·비활성 의미의 icon class는 다운로드 동작 표식으로 사용하지 않는다 (64ms)
+  ✘   9 tests/independent-download-review.spec.mjs:24:1 › fixed safe-label negations do not become a download operation (92ms)
+(node:93428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 tests/independent-download-review.spec.mjs:32:1 › own exact icon class provides source-local evidence like a descendant icon (94ms)
+(node:93442) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  11 tests/independent-download-review.spec.mjs:38:1 › adding the own icon class synchronously invalidates and blocks an old navigation card (116ms)
+(node:93448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  12 tests/independent-download-review.spec.mjs:56:1 › query/path/marker lookalikes and outside icons remain ordinary navigation (80ms)
+  ✓  13 tests/independent-download-review.spec.mjs:62:1 › editable descendants and private getters never contribute a download signal (82ms)
+  ✓  14 tests/independent-download-review.spec.mjs:80:1 › focus-time marker mutation rejects original guidance without activation (82ms)
+
+
+  1) tests/independent-download-review.spec.mjs:24:1 › fixed safe-label negations do not become a download operation 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  8
+    + Received  + 20
+
+      Array [
+        Object {
+    -     "action": "navigate",
+    -     "evidence": null,
+    +     "action": "locate",
+    +     "evidence": Object {
+    +       "icons": Array [],
+    +       "text": true,
+    +     },
+          "id": "negative-0",
+          "label": "Do not download",
+        },
+        Object {
+    -     "action": "navigate",
+    -     "evidence": null,
+    +     "action": "locate",
+    +     "evidence": Object {
+    +       "icons": Array [],
+    +       "text": true,
+    +     },
+          "id": "negative-1",
+          "label": "No download",
+        },
+        Object {
+    -     "action": "navigate",
+    -     "evidence": null,
+    +     "action": "locate",
+    +     "evidence": Object {
+    +       "icons": Array [],
+    +       "text": true,
+    +     },
+          "id": "negative-2",
+          "label": "Never download now",
+        },
+        Object {
+    -     "action": "navigate",
+    -     "evidence": null,
+    +     "action": "locate",
+    +     "evidence": Object {
+    +       "icons": Array [],
+    +       "text": true,
+    +     },
+          "id": "negative-3",
+          "label": "금지된 다운로드",
+        },
+      ]
+
+      26 |   await setup(page, `<main>${labels.map((label, i) => `<a id="negative-${i}" href="/api/FileDown.do?part=${i}" aria-label="${label}">공개 양식</a>`).join('')}<a id="positive" href="/api/FileDown.do" aria-label="Download now">공개 양식</a></main>`);
+      27 |   const result = await observations(page);
+    > 28 |   expect(result.filter(row => row.id.startsWith('negative-'))).toEqual(labels.map((label, i) => ({ id: `negative-${i}`, label, action: 'navigate', evidence: null })));
+         |                                                                ^
+      29 |   expect(result.find(row => row.id === 'positive').action).toBe('locate');
+      30 | });
+      31 |
+        at /Users/khyun_03/easyweb/tests/independent-download-review.spec.mjs:28:64
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/independent-download-revie-aeb70-become-a-download-operation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/independent-download-revie-aeb70-become-a-download-operation/error-context.md
+
+  2) tests/independent-download-review.spec.mjs:32:1 › own exact icon class provides source-local evidence like a descendant icon 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+    @@ -1,8 +1,8 @@
+      Array [
+        Object {
+    -     "action": "locate",
+    +     "action": "navigate",
+          "id": "own",
+        },
+        Object {
+          "action": "locate",
+          "id": "child",
+
+      33 |   await setup(page, '<main><a id="own" class="ir-download" href="/api/FileDown.do">공개 양식</a><a id="child" href="/api/FileDown.do"><i class="ir-download" aria-hidden="true"></i>공개 양식</a></main>');
+      34 |   const result = await observations(page);
+    > 35 |   expect(result.map(({ id, action }) => ({ id, action }))).toEqual([{ id: 'own', action: 'locate' }, { id: 'child', action: 'locate' }]);
+         |                                                            ^
+      36 | });
+      37 |
+      38 | test('adding the own icon class synchronously invalidates and blocks an old navigation card', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/independent-download-review.spec.mjs:35:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/independent-download-revie-52bc5-ence-like-a-descendant-icon/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/independent-download-revie-52bc5-ence-like-a-descendant-icon/error-context.md
+
+  3) tests/independent-download-review.spec.mjs:38:1 › adding the own icon class synchronously invalidates and blocks an old navigation card 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+    -   "blocked": true,
+    -   "current": false,
+    +   "blocked": false,
+    +   "current": true,
+      }
+
+      51 |     return { current, blocked };
+      52 |   });
+    > 53 |   expect(result).toEqual({ current: false, blocked: true });
+         |                  ^
+      54 | });
+      55 |
+      56 | test('query/path/marker lookalikes and outside icons remain ordinary navigation', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/independent-download-review.spec.mjs:53:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/independent-download-revie-8dcb2-ocks-an-old-navigation-card/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/independent-download-revie-8dcb2-ocks-an-old-navigation-card/error-context.md
+
+  3 failed
+    tests/independent-download-review.spec.mjs:24:1 › fixed safe-label negations do not become a download operation 
+    tests/independent-download-review.spec.mjs:32:1 › own exact icon class provides source-local evidence like a descendant icon 
+    tests/independent-download-review.spec.mjs:38:1 › adding the own icon class synchronously invalidates and blocks an old navigation card 
+  11 passed (2.6s)

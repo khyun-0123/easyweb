@@ -1,0 +1,289 @@
+{
+  "reviewedAt": "2026-10-17T18:46:36.280026+00:00",
+  "version": "0.7.0",
+  "classification": "DEVELOPMENT_CANDIDATE",
+  "completedStages": 5,
+  "totalStages": 10,
+  "finalAcceptance": "NOT_MET",
+  "stages": {
+    "S01": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality remains S07."
+    },
+    "S02": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality remains S07."
+    },
+    "S03": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality remains S07."
+    },
+    "S04": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md",
+      "scope": "Implementation/development evidence; independent quality remains S07."
+    },
+    "S05": {
+      "status": "DONE_DEFINED_SCOPE",
+      "evidence": "docs/evidence/run006/s05-resolution-root-review.json",
+      "scope": "Defined source action/currentness/original guidance/restore under ordinary-link direct-navigation policy. Not universal hidden event or opaque-download identification."
+    },
+    "S06": {
+      "status": "NEEDS_MANUAL",
+      "remaining": [
+        "Actual VoiceOver name, state and focus speech including related captions/additional menus",
+        "Final-build actual browser 200/400% zoom"
+      ],
+      "evidence": "docs/MANUAL_CHECK.md"
+    },
+    "S07": {
+      "status": "IN_PROGRESS",
+      "remaining": [
+        "Independent quality remains failed; preserved v8 first10/17,4/15,1/5",
+        "Current exposed v8 development11/16,5/15,2/5 remains FAIL; other exposed v5/v6/v7 site quality fails",
+        "Implement institution meaning evidence and generic-only comparison, then fresh independent five-site data"
+      ],
+      "evidence": "docs/RUN_006_REPORT.md"
+    },
+    "S08": {
+      "status": "NOT_RUN_ON_V0.7_NEEDS_MANUAL",
+      "remaining": [
+        "Same-manifest native toolbar/activeTab on five fixed sites",
+        "Assigned shortcut/repeat/reload/navigation/restricted-page recovery"
+      ],
+      "evidence": "docs/INSTALL.md"
+    },
+    "S09": {
+      "status": "NOT_RUN_NEEDS_USER",
+      "actualObservations": 0,
+      "pretestObservations": 0,
+      "evidence": "docs/PRETEST.md"
+    },
+    "S10": {
+      "status": "IN_PROGRESS",
+      "remaining": [
+        "S06/S07/S08/S09 required acceptance evidence"
+      ],
+      "evidence": "output/run006/EasyWeb-0.7.0-candidate.json"
+    }
+  },
+  "validated": {
+    "localTests": {
+      "expected": 237,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "durationMilliseconds": 33635.587,
+      "report": "/Users/khyun_03/easyweb/docs/evidence/run006/playwright-local.json"
+    },
+    "coreQuality": {
+      "status": "PASS",
+      "suite": "core",
+      "evaluationPhase": "post-holdout-development",
+      "summary": {
+        "pages": 15,
+        "correct": 72,
+        "recommended": 74,
+        "matched": 45,
+        "expected": 45,
+        "precision": 0.972972972972973,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 3,
+          "correct": 16,
+          "recommended": 16,
+          "matched": 10,
+          "expected": 10,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3,
+          "status": "PASS"
+        },
+        {
+          "siteId": "government",
+          "pages": 3,
+          "correct": 10,
+          "recommended": 10,
+          "matched": 6,
+          "expected": 6,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3,
+          "status": "PASS"
+        },
+        {
+          "siteId": "library",
+          "pages": 3,
+          "correct": 14,
+          "recommended": 16,
+          "matched": 9,
+          "expected": 9,
+          "precision": 0.875,
+          "recall": 1,
+          "tasksRecommended": 3,
+          "status": "PASS"
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 3,
+          "correct": 14,
+          "recommended": 14,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3,
+          "status": "PASS"
+        },
+        {
+          "siteId": "smu",
+          "pages": 3,
+          "correct": 18,
+          "recommended": 18,
+          "matched": 9,
+          "expected": 9,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3,
+          "status": "PASS"
+        }
+      ],
+      "thresholds": {
+        "overallPrecision": 0.9,
+        "overallRecall": 0.85,
+        "sitePrecision": 0.8,
+        "siteRecall": 0.75,
+        "offlineTasksRecommended": 15
+      },
+      "scope": "Offline fixtures already used during development. Tasks recommended are not live task completion. This is not independent blind validation.",
+      "report": "/Users/khyun_03/easyweb/docs/evidence/run006/core-regression/evaluation-current-all.json"
+    },
+    "automatedAccessibility": {
+      "cases": 21,
+      "errors": 0,
+      "violations": 0,
+      "seriousOrCritical": 0,
+      "incomplete": 0,
+      "horizontalOverflowCases": [],
+      "smallTargets": [],
+      "lowComponentContrast": [],
+      "lowFocusContrast": []
+    },
+    "performance": {
+      "status": "PASS",
+      "runs": 10,
+      "analyzerP95Milliseconds": 28,
+      "overlayReadyP95Milliseconds": 60.400000005960464,
+      "thresholds": {
+        "analyzerP95Milliseconds": 300,
+        "overlayReadyP95Milliseconds": 1000
+      },
+      "scope": "Synthetic mixed 1,000-control page; headless Chromium; excludes real site loading and native toolbar activation.",
+      "report": "/Users/khyun_03/easyweb/docs/evidence/run006/performance.json"
+    },
+    "structuralPerformance": {
+      "status": "PASS",
+      "thresholds": {
+        "analyzerP95Milliseconds": 300,
+        "overlayReadyP95Milliseconds": 1000
+      },
+      "shapes": [
+        {
+          "shape": "flat",
+          "status": "PASS",
+          "runs": 10,
+          "analyzerP95Milliseconds": 42.69999999552965,
+          "overlayReadyP95Milliseconds": 107.89999999850988,
+          "report": "/Users/khyun_03/easyweb/docs/evidence/run006/performance-flat.json"
+        },
+        {
+          "shape": "table",
+          "status": "PASS",
+          "runs": 10,
+          "analyzerP95Milliseconds": 89.69999999552965,
+          "overlayReadyP95Milliseconds": 163.89999999850988,
+          "report": "/Users/khyun_03/easyweb/docs/evidence/run006/performance-table.json"
+        }
+      ],
+      "scope": "Additional 1,000-control structures: one flat information-panel parent and 500 two-control table rows; ten samples per shape. Same thresholds; separate from the original mixed case and real sites."
+    },
+    "livePublicTasks": {
+      "summary": {
+        "observedTasks": 15,
+        "notRecommended": 0,
+        "observationErrors": 0,
+        "controlPresent": 15,
+        "recommended": 15,
+        "firstGuidanceReached": 6,
+        "guidanceRetries": 0,
+        "originalGuidanceReached": 6,
+        "actualCardLinksClicked": 9,
+        "destinationReached": 9,
+        "passed": 15,
+        "allDatasetTasksAttempted": true,
+        "allPassed": true
+      },
+      "scope": "Fresh headless actual public pages, card HTTP destinations9/original guidance6 only. No actual FileDown response, native installation or human usability."
+    },
+    "knownDownloadControls": "docs/evidence/run006/known-download-controls.json",
+    "independentSafetyExecutionResolution": "docs/evidence/run006/independent-review/root-resolution.json",
+    "packageSha256": "97bd0c3fb35d4230c84a4e2e4bed52408293afff1396d312d66b4c9815098371",
+    "artifactReview": {
+      "status": "PASS",
+      "hashComparisons": 166,
+      "hashMismatches": 0,
+      "localMarkdownLinks": 442,
+      "brokenLinks": [],
+      "zipEntriesMatchedDist": 5,
+      "priorCheckpointsUnchanged": true
+    }
+  },
+  "knownDevelopmentQuality": "All previous nine development suite initial metrics unchanged from v0.6; v2/v3/v4corrected pass, v5/v6/v7 variants fail. Current v8 safety changes do not meet product-quality target.",
+  "actualManualChecks": "NOT_RUN_ON_V0.7",
+  "voiceOverSpeech": "UNVERIFIED",
+  "actualUserObservations": 0,
+  "pretestObservations": 0,
+  "uiAutomation": "No native app or visible browser control. CLI, read-only HTTP and isolated headless contexts only.",
+  "billingUsage": "UNKNOWN; goal aggregate counter is not account billing.",
+  "checkpointTag": "run-006-v0.7.0-dev",
+  "publication": "NONE",
+  "usageAndTiming": "docs/evidence/run006/goal-usage-snapshot.json",
+  "workContinues": "Goal active. Implement docs/INSTITUTION_ADAPTER_PLAN.md; no completion or blocked claim. Technical work remains feasible.",
+  "preservedIndependentFirstV8": {
+    "report": "docs/evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json",
+    "sourceVersion": "0.6.0",
+    "summary": {
+      "correct": 10,
+      "recommended": 17,
+      "matched": 4,
+      "expected": 15,
+      "tasksRecommended": 1
+    },
+    "quality": "FAIL",
+    "unchanged": true
+  },
+  "currentExposedDevelopment": {
+    "summary": "docs/evidence/run006/development/summary.json",
+    "v8": {
+      "pages": 5,
+      "correct": 11,
+      "recommended": 16,
+      "matched": 5,
+      "expected": 15,
+      "precision": 0.6875,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 2
+    },
+    "quality": "FAIL",
+    "uniquePagesIncludingCore": 50,
+    "freshIndependentEvaluation": false
+  },
+  "s05Resolution": "docs/evidence/run006/s05-resolution-root-review.json"
+}

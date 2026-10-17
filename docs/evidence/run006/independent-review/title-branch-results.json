@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-10-17T18:42:15.817Z",
+  "status": "PASS",
+  "scope": "Independent synthetic legacy-title branch probe; ordinary opaque routes isolate title behavior. No native UI, actual download, response observation or user data.",
+  "browser": "156.0.8078.4",
+  "sourceHashes": {
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69"
+  },
+  "sourceStable": true,
+  "cases": [
+    {
+      "title": "Do not download",
+      "expected": "navigate",
+      "id": "title-0",
+      "actual": "navigate"
+    },
+    {
+      "title": "No download",
+      "expected": "navigate",
+      "id": "title-1",
+      "actual": "navigate"
+    },
+    {
+      "title": "Never download now",
+      "expected": "navigate",
+      "id": "title-2",
+      "actual": "navigate"
+    },
+    {
+      "title": "금지된 다운로드",
+      "expected": "navigate",
+      "id": "title-3",
+      "actual": "navigate"
+    },
+    {
+      "title": "Do not download now",
+      "expected": "navigate",
+      "id": "title-4",
+      "actual": "navigate"
+    },
+    {
+      "title": "공개 문서 pdf 다운로드",
+      "expected": "locate",
+      "id": "title-5",
+      "actual": "locate"
+    },
+    {
+      "title": "Public document download",
+      "expected": "locate",
+      "id": "title-6",
+      "actual": "locate"
+    },
+    {
+      "title": "DOWNLOAD",
+      "expected": "locate",
+      "id": "title-7",
+      "actual": "locate"
+    },
+    {
+      "title": "No download",
+      "downloadAttribute": true,
+      "expected": "locate",
+      "id": "title-8",
+      "actual": "locate"
+    }
+  ],
+  "total": 9,
+  "passed": 9,
+  "pageRequests": 0
+}

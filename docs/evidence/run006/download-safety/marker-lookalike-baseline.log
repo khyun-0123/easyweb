@@ -1,0 +1,42 @@
+
+Running 1 test using 1 worker
+
+(node:92477) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/download-signals.spec.mjs:99:1 › 안내·설명·부정·비활성 의미의 icon class는 다운로드 동작 표식으로 사용하지 않는다 (91ms)
+
+
+  1) tests/download-signals.spec.mjs:99:1 › 안내·설명·부정·비활성 의미의 icon class는 다운로드 동작 표식으로 사용하지 않는다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+      Array [
+    -   "navigate",
+    -   "navigate",
+    -   "navigate",
+    -   "navigate",
+    +   "locate",
+    +   "locate",
+    +   "locate",
+    +   "locate",
+      ]
+
+      100 |   const markers=['download-guide','icon-download-instructions','no-download','icon-download-disabled'];
+      101 |   await setup(page, `<main>${markers.map((marker,index)=>`<a id="lookalike-${index}" href="/files/FileDown.do?document=sample-${index}"><i class="${marker}" aria-hidden="true"></i>공개 양식</a>`).join('')}</main>`);
+    > 102 |   expect((await analyze(page)).map(i=>i.action)).toEqual(['navigate','navigate','navigate','navigate']);
+          |                                                  ^
+      103 | });
+      104 |
+        at /Users/khyun_03/easyweb/tests/download-signals.spec.mjs:102:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/download-signals-안내·설명·부정·-fcd8e-lass는-다운로드-동작-표식으로-사용하지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/download-signals-안내·설명·부정·-fcd8e-lass는-다운로드-동작-표식으로-사용하지-않는다/error-context.md
+
+  1 failed
+    tests/download-signals.spec.mjs:99:1 › 안내·설명·부정·비활성 의미의 icon class는 다운로드 동작 표식으로 사용하지 않는다 ──────

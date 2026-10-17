@@ -1,0 +1,22 @@
+
+Running 15 tests using 1 worker
+
+(node:94038) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/download-signals.spec.mjs:23:1 › 완전한 FileDown 동작 경로와 고정 다운로드 아이콘·문구를 함께 식별한다 (100ms)
+  ✓   2 tests/download-signals.spec.mjs:29:1 › 일반 경로·유사 endpoint·유사 class·다운로드 언급만 있는 문서는 직접 이동을 유지한다 (82ms)
+  ✓   3 tests/download-signals.spec.mjs:45:1 › 편집 자식의 다운로드 class·입력값·사용자 정의 편집 role을 신호로 수집하지 않는다 (81ms)
+  ✓   4 tests/download-signals.spec.mjs:53:1 › 아이콘 추가·제거·class 교체는 이름·URL이 같은 기존 후보를 무효화한다 (84ms)
+  ✓   5 tests/download-signals.spec.mjs:68:1 › 다운로드 액션이 유지되더라도 실제 다운로드 marker 근거의 교체를 감지한다 (64ms)
+  ✓   6 tests/download-signals.spec.mjs:74:1 › 같은 프레임에서 다운로드 신호가 생기면 이전 이동 카드의 기본 이동을 먼저 막는다 (104ms)
+  ✓   7 tests/download-signals.spec.mjs:88:1 › 다운로드 카드는 원본 위치만 안내하고 원본 click·위임 동작을 자동 실행하지 않는다 (130ms)
+  ✓   8 tests/download-signals.spec.mjs:99:1 › 안내·설명·부정·비활성 의미의 icon class는 다운로드 동작 표식으로 사용하지 않는다 (82ms)
+  ✓   9 tests/download-signals.spec.mjs:105:1 › 기존 title 근거도 명시적 부정은 제외하고 긍정 제목·download 속성은 보존한다 (82ms)
+  ✓  10 tests/independent-download-review.spec.mjs:24:1 › fixed safe-label negations do not become a download operation (71ms)
+  ✓  11 tests/independent-download-review.spec.mjs:32:1 › own exact icon class provides source-local evidence like a descendant icon (62ms)
+  ✓  12 tests/independent-download-review.spec.mjs:38:1 › adding the own icon class synchronously invalidates and blocks an old navigation card (105ms)
+  ✓  13 tests/independent-download-review.spec.mjs:56:1 › query/path/marker lookalikes and outside icons remain ordinary navigation (83ms)
+  ✓  14 tests/independent-download-review.spec.mjs:62:1 › editable descendants and private getters never contribute a download signal (82ms)
+  ✓  15 tests/independent-download-review.spec.mjs:80:1 › focus-time marker mutation rejects original guidance without activation (66ms)
+
+  15 passed (1.7s)

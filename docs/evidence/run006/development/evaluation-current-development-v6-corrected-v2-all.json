@@ -1,0 +1,1807 @@
+{
+  "checkedAt": "2026-10-17T18:43:27.143Z",
+  "engine": "current",
+  "suite": "development-v6-corrected-v2",
+  "split": "all",
+  "evaluationPhase": "post-holdout-development",
+  "adjudication": {
+    "path": "evaluation/development-v6-corrected-v2/VERSION.json",
+    "sha256": "87a70a1067613a95f89baa77c225a02d98fd48c0a88f58e51b7bb7d7275441ce",
+    "checkedFiles": 10,
+    "version": "v6-annotation-corrected.2",
+    "classification": "ADJUDICATED_DEVELOPMENT",
+    "freshHoldout": false,
+    "originals": [
+      {
+        "path": "evaluation/blind-v6/fixtures/city.html",
+        "sha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3"
+      },
+      {
+        "path": "evaluation/blind-v6/fixtures/government.html",
+        "sha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba"
+      },
+      {
+        "path": "evaluation/blind-v6/fixtures/library.html",
+        "sha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457"
+      },
+      {
+        "path": "evaluation/blind-v6/fixtures/public-agency.html",
+        "sha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653"
+      },
+      {
+        "path": "evaluation/blind-v6/fixtures/smu.html",
+        "sha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec"
+      },
+      {
+        "path": "evaluation/blind-v6/sites/city.json",
+        "sha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a"
+      },
+      {
+        "path": "evaluation/blind-v6/sites/government.json",
+        "sha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270"
+      },
+      {
+        "path": "evaluation/blind-v6/sites/library.json",
+        "sha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23"
+      },
+      {
+        "path": "evaluation/blind-v6/sites/public-agency.json",
+        "sha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113"
+      },
+      {
+        "path": "evaluation/blind-v6/sites/smu.json",
+        "sha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2"
+      }
+    ],
+    "parents": [
+      {
+        "path": "evaluation/development-v6-corrected/fixtures/city.html",
+        "sha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/fixtures/government.html",
+        "sha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/fixtures/library.html",
+        "sha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/fixtures/public-agency.html",
+        "sha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/fixtures/smu.html",
+        "sha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/sites/city.json",
+        "sha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/sites/government.json",
+        "sha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/sites/library.json",
+        "sha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/sites/public-agency.json",
+        "sha256": "5119fd89c3bff48be5b8388aa8b393432f04afc5eb3cd1208d3a57f15ad929cf"
+      },
+      {
+        "path": "evaluation/development-v6-corrected/sites/smu.json",
+        "sha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2"
+      }
+    ],
+    "scope": "Versioned correction, original and available parent hashes only; no independent quality claim."
+  },
+  "freezeVerification": null,
+  "toolHashes": {
+    "scripts/evaluate.mjs": "be646a72a7d239c5c98c8a2eedf9c9ccafa348da1ad5517a1858778d255af605",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "e8d02715652e6e5fc5e1d9cd7439cf0cb0387435bfdca52a082f0584ddc189d0"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "734c330c49947b7ce11993b3a57a8e1d206333da10ce7a078902649d3b2c97b8",
+  "datasetHash": "297bf45e3fb5483245a23349cf29f047db16a709f36d17f16d0e9085d4ce9997",
+  "fixtureHashes": {
+    "city-blind-v6": "ae0683b2e771cea10e3ca9b9494886706c326e8b67eb8ce11ce2f2c1af7ee93c",
+    "government-blind-v6": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+    "library-blind-v6": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+    "public-agency-blind-v6": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+    "smu-blind-v6": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 26,
+    "recommended": 26,
+    "matched": 14,
+    "expected": 15,
+    "precision": 1,
+    "recall": 0.9333333333333333,
+    "tasksRecommended": 5
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v6",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/prog/caCffdn/kor/sub01_01_07/list.do",
+      "candidateCount": 16,
+      "classifiedCount": 15,
+      "selected": [
+        {
+          "label": "기타",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "검색 양식의 분야 필터",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "민원사무편람",
+          "contextLabels": [
+            "민원사무편람"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "city-blind-v6-control-9"
+        },
+        {
+          "label": "자동차 저당 설정 서식",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "신청 준비 편람의 원본 서식 자료",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "민원사무편람",
+          "contextLabels": [
+            "민원사무편람"
+          ],
+          "category": "apply",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "relatedLabel": "자동차 저당 설정 서식",
+          "sourceId": "city-blind-v6-control-11"
+        },
+        {
+          "label": "건축/건설",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "검색 양식의 분야 필터",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "민원사무편람",
+          "contextLabels": [
+            "민원사무편람"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "city-blind-v6-control-2"
+        },
+        {
+          "label": "경제/기업",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "검색 양식의 분야 필터",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "민원사무편람",
+          "contextLabels": [
+            "민원사무편람"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "city-blind-v6-control-3"
+        },
+        {
+          "label": "자료받기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "신청 준비 편람의 원본 서식 자료",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "민원사무편람",
+          "contextLabels": [
+            "민원사무편람"
+          ],
+          "category": "apply",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "relatedLabel": "자동차 저당 설정 서식",
+          "sourceId": "city-blind-v6-control-12"
+        },
+        {
+          "label": "산림경영계획(변경)인가",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "신청 준비 편람의 원본 서식 자료",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "민원사무편람",
+          "contextLabels": [
+            "민원사무편람"
+          ],
+          "category": "apply",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "relatedLabel": "산림경영계획(변경)인가",
+          "sourceId": "city-blind-v6-control-13"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "city-blind-v6-feature-1"
+      ],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "b2f8d167fb935b4468b21a9ed19557216893d29d113a94d43b02fa58c1b65b72",
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "기타",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-9",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자동차 저당 설정 서식",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-11",
+                "sourceMatches": 1
+              },
+              {
+                "label": "건축/건설",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "경제/기업",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료받기",
+                "relatedLabel": "자동차 저당 설정 서식",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-12",
+                "sourceMatches": 1
+              },
+              {
+                "label": "산림경영계획(변경)인가",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-13",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "경제/도로",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-7",
+                "sourceMatches": 1
+              },
+              {
+                "label": "농업/축산",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-8",
+                "sourceMatches": 1
+              },
+              {
+                "label": "문화/관광",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-6",
+                "sourceMatches": 1
+              },
+              {
+                "label": "사회/복지",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "환경/위생",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "회계/세무",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-1",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 3,
+            "cards": [
+              {
+                "label": "자료받기",
+                "relatedLabel": "산림경영계획(변경)인가",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-14",
+                "sourceMatches": 1
+              },
+              {
+                "label": "주기장시설보유 확인신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-15",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료받기",
+                "relatedLabel": "주기장시설보유 확인신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-blind-v6-control-16",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 3개의 주요 기능을 찾았어요. 3번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "city-blind-v6-feature-1": 2,
+          "city-blind-v6-feature-2": 1,
+          "city-blind-v6-feature-3": 1
+        },
+        "selected": [
+          {
+            "label": "기타",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-9",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자동차 저당 설정 서식",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-11",
+            "sourceMatches": 1
+          },
+          {
+            "label": "건축/건설",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "경제/기업",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료받기",
+            "relatedLabel": "자동차 저당 설정 서식",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-12",
+            "sourceMatches": 1
+          },
+          {
+            "label": "산림경영계획(변경)인가",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-13",
+            "sourceMatches": 1
+          },
+          {
+            "label": "경제/도로",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-7",
+            "sourceMatches": 1
+          },
+          {
+            "label": "농업/축산",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-8",
+            "sourceMatches": 1
+          },
+          {
+            "label": "문화/관광",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-6",
+            "sourceMatches": 1
+          },
+          {
+            "label": "사회/복지",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "환경/위생",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "회계/세무",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료받기",
+            "relatedLabel": "산림경영계획(변경)인가",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-14",
+            "sourceMatches": 1
+          },
+          {
+            "label": "주기장시설보유 확인신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-15",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료받기",
+            "relatedLabel": "주기장시설보유 확인신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-blind-v6-control-16",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 15,
+        "recommended": 15,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v6",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/dspo/wnds/wwcs/winWaterCitizenSafetyInsurance.do?menuSn=76",
+      "candidateCount": 4,
+      "classifiedCount": 4,
+      "selected": [
+        {
+          "label": "보험금 청구절차",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "공개 정보 패널·안내 주제 읽기",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "풍수해지진재해보험",
+          "contextLabels": [
+            "풍수해지진재해보험"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "government-blind-v6-control-4"
+        },
+        {
+          "label": "보험사 및 가입안내",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "공개 정보 패널·안내 주제 읽기",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "풍수해지진재해보험",
+          "contextLabels": [
+            "풍수해지진재해보험"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "government-blind-v6-control-3"
+        },
+        {
+          "label": "보험료 및 보험금 예시",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "공개 정보 패널·안내 주제 읽기",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "풍수해지진재해보험",
+          "contextLabels": [
+            "풍수해지진재해보험"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "government-blind-v6-control-2"
+        },
+        {
+          "label": "풍수해ㆍ지진재해보험 안내",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "공개 정보 패널·안내 주제 읽기",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "풍수해지진재해보험",
+          "contextLabels": [
+            "풍수해지진재해보험"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "government-blind-v6-control-1"
+        }
+      ],
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "b2f8d167fb935b4468b21a9ed19557216893d29d113a94d43b02fa58c1b65b72",
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "보험금 청구절차",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v6-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "보험사 및 가입안내",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v6-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "보험료 및 보험금 예시",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v6-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "풍수해ㆍ지진재해보험 안내",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v6-control-1",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "government-blind-v6-feature-1": 1,
+          "government-blind-v6-feature-2": 1,
+          "government-blind-v6-feature-3": 1
+        },
+        "selected": [
+          {
+            "label": "보험금 청구절차",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v6-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "보험사 및 가입안내",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v6-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "보험료 및 보험금 예시",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v6-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "풍수해ㆍ지진재해보험 안내",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v6-control-1",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v6",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N30101000000.do",
+      "candidateCount": 5,
+      "classifiedCount": 5,
+      "selected": [
+        {
+          "label": "보존용 자료열람",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "library-blind-v6-control-2"
+        },
+        {
+          "label": "청소년 자료이용",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "library-blind-v6-control-3"
+        },
+        {
+          "label": "자료당일 열람 선택됨",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "library-blind-v6-control-1"
+        },
+        {
+          "label": "자료검색하기",
+          "href": "https://www.nl.go.kr/NL/contents/search.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "본문 영역"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "search",
+          "sourceId": "library-blind-v6-control-4"
+        },
+        {
+          "label": "신청확인 바로가기",
+          "href": "https://www.nl.go.kr/NL/contents/N60501010000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "apply",
+          "sourceId": "library-blind-v6-control-5"
+        }
+      ],
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "b2f8d167fb935b4468b21a9ed19557216893d29d113a94d43b02fa58c1b65b72",
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "보존용 자료열람",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-blind-v6-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "청소년 자료이용",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-blind-v6-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료당일 열람 선택됨",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-blind-v6-control-1",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료검색하기",
+                "category": "search",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/search.do",
+                "target": "_self",
+                "sourceId": "library-blind-v6-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "신청확인 바로가기",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N60501010000.do",
+                "target": "_self",
+                "sourceId": "library-blind-v6-control-5",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "library-blind-v6-feature-1": 1,
+          "library-blind-v6-feature-2": 1,
+          "library-blind-v6-feature-3": 1
+        },
+        "selected": [
+          {
+            "label": "보존용 자료열람",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-blind-v6-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "청소년 자료이용",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-blind-v6-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료당일 열람 선택됨",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-blind-v6-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료검색하기",
+            "category": "search",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/search.do",
+            "target": "_self",
+            "sourceId": "library-blind-v6-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "신청확인 바로가기",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N60501010000.do",
+            "target": "_self",
+            "sourceId": "library-blind-v6-control-5",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v6",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/comm/quick/getOHAH0011M0.do",
+      "candidateCount": 10,
+      "classifiedCount": 5,
+      "selected": [
+        {
+          "label": "연금급여청구 연금을 받을 수 있는 경우 연금을 신청합니다.",
+          "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0040M0.do?menuId=MN24001074",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "명시적 신청·청구 카드 제목",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "인증하고 내연금 알아보기 (공동인증 필요)",
+          "contextLabels": [
+            "인증하고 내연금 알아보기 (공동인증 필요)",
+            "국민연금 알아보기"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "public-agency-blind-v6-control-7"
+        },
+        {
+          "label": "가입·납부내역 조회 국민연금 가입납부내역을 알아볼 수 있습니다.",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "개인 내역·기록 확인 카드",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "인증하고 내연금 알아보기 (공동인증 필요)",
+          "contextLabels": [
+            "인증하고 내연금 알아보기 (공동인증 필요)",
+            "국민연금 알아보기"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "public-agency-blind-v6-control-5"
+        },
+        {
+          "label": "연금급여 상담 예약신청 상담예약신청 연금급여에 대하여 상담해 드립니다.",
+          "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0042M0.do?menuId=MN24001076",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "명시적 신청·청구 카드 제목",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "인증하고 내연금 알아보기 (공동인증 필요)",
+          "contextLabels": [
+            "인증하고 내연금 알아보기 (공동인증 필요)",
+            "국민연금 알아보기"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "public-agency-blind-v6-control-8"
+        },
+        {
+          "label": "예상연금 모의계산 소득 및 가입기간을 원하는대로 입력하여 예상연금액을 확인할 수 있습니다.",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "명시적 모의·간단 계산 카드",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "로그인 없이 간단하게 예상연금 알아보기",
+          "contextLabels": [
+            "로그인 없이 간단하게 예상연금 알아보기",
+            "국민연금 알아보기"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "public-agency-blind-v6-control-1"
+        },
+        {
+          "label": "예상연금 간단계산 월 납입보험료를 입력하시면 조회하는 해의 1월 1일부터 가입하여 10년 이상 납입 후 예상연금액을 알아볼 수 있습니다.",
+          "action": "locate",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "명시적 모의·간단 계산 카드",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "로그인 없이 간단하게 예상연금 알아보기",
+          "contextLabels": [
+            "로그인 없이 간단하게 예상연금 알아보기",
+            "국민연금 알아보기"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "public-agency-blind-v6-control-2"
+        }
+      ],
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "b2f8d167fb935b4468b21a9ed19557216893d29d113a94d43b02fa58c1b65b72",
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "연금급여청구 연금을 받을 수 있는 경우 연금을 신청합니다.",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0040M0.do?menuId=MN24001074",
+                "target": "_blank",
+                "sourceId": "public-agency-blind-v6-control-7",
+                "sourceMatches": 1
+              },
+              {
+                "label": "가입·납부내역 조회 국민연금 가입납부내역을 알아볼 수 있습니다.",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v6-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "연금급여 상담 예약신청 상담예약신청 연금급여에 대하여 상담해 드립니다.",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0042M0.do?menuId=MN24001076",
+                "target": "_blank",
+                "sourceId": "public-agency-blind-v6-control-8",
+                "sourceMatches": 1
+              },
+              {
+                "label": "예상연금 모의계산 소득 및 가입기간을 원하는대로 입력하여 예상연금액을 확인할 수 있습니다.",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v6-control-1",
+                "sourceMatches": 1
+              },
+              {
+                "label": "예상연금 간단계산 월 납입보험료를 입력하시면 조회하는 해의 1월 1일부터 가입하여 10년 이상 납입 후 예상연금액을 알아볼 수 있습니다.",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v6-control-2",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "public-agency-blind-v6-feature-1": 1,
+          "public-agency-blind-v6-feature-2": 1,
+          "public-agency-blind-v6-feature-3": 1
+        },
+        "selected": [
+          {
+            "label": "연금급여청구 연금을 받을 수 있는 경우 연금을 신청합니다.",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0040M0.do?menuId=MN24001074",
+            "target": "_blank",
+            "sourceId": "public-agency-blind-v6-control-7",
+            "sourceMatches": 1
+          },
+          {
+            "label": "가입·납부내역 조회 국민연금 가입납부내역을 알아볼 수 있습니다.",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v6-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "연금급여 상담 예약신청 상담예약신청 연금급여에 대하여 상담해 드립니다.",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0042M0.do?menuId=MN24001076",
+            "target": "_blank",
+            "sourceId": "public-agency-blind-v6-control-8",
+            "sourceMatches": 1
+          },
+          {
+            "label": "예상연금 모의계산 소득 및 가입기간을 원하는대로 입력하여 예상연금액을 확인할 수 있습니다.",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v6-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "예상연금 간단계산 월 납입보험료를 입력하시면 조회하는 해의 1월 1일부터 가입하여 10년 이상 납입 후 예상연금액을 알아볼 수 있습니다.",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v6-control-2",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v6",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/faq.do",
+      "candidateCount": 12,
+      "classifiedCount": 12,
+      "selected": [
+        {
+          "label": "졸업생 학생메일 잠금 관련 안내",
+          "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=754915&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "도움말 안내 문서 읽기",
+            "도움말 목적과 목록의 명시적 읽기 문서"
+          ],
+          "sectionLabel": "자주하는 질문 게시판",
+          "contextLabels": [
+            "자주하는 질문 게시판",
+            "상명 Q&A 대학생활"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v6-control-3"
+        },
+        {
+          "label": "학사) 연계전공과 융합전공의 교육과정은 어디서 볼 수 있나요?",
+          "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=746604&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "도움말 안내 문서 읽기",
+            "도움말 목적과 목록의 명시적 읽기 문서"
+          ],
+          "sectionLabel": "자주하는 질문 게시판",
+          "contextLabels": [
+            "자주하는 질문 게시판",
+            "상명 Q&A 대학생활"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v6-control-4"
+        },
+        {
+          "label": "교직)교원자격증 재교부 안내",
+          "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=745218&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "도움말 안내 문서 읽기",
+            "도움말 목적과 목록의 명시적 읽기 문서"
+          ],
+          "sectionLabel": "자주하는 질문 게시판",
+          "contextLabels": [
+            "자주하는 질문 게시판",
+            "상명 Q&A 대학생활"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v6-control-5"
+        },
+        {
+          "label": "학사)이번 학기 장학금을 받았는데, 휴학을 하고 싶어요. 장학금 이월 가능한가요?",
+          "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736085&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "도움말 안내 문서 읽기",
+            "도움말 목적과 목록의 명시적 읽기 문서"
+          ],
+          "sectionLabel": "자주하는 질문 게시판",
+          "contextLabels": [
+            "자주하는 질문 게시판",
+            "상명 Q&A 대학생활"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v6-control-6"
+        },
+        {
+          "label": "검색어",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주하는 질문 게시판",
+          "contextLabels": [
+            "자주하는 질문 게시판",
+            "상명 Q&A 대학생활"
+          ],
+          "pagePurpose": "help",
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "smu-blind-v6-control-1"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주하는 질문 게시판",
+          "contextLabels": [
+            "자주하는 질문 게시판",
+            "상명 Q&A 대학생활"
+          ],
+          "pagePurpose": "help",
+          "category": "search",
+          "sourceId": "smu-blind-v6-control-2"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "b2f8d167fb935b4468b21a9ed19557216893d29d113a94d43b02fa58c1b65b72",
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "졸업생 학생메일 잠금 관련 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=754915&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사) 연계전공과 융합전공의 교육과정은 어디서 볼 수 있나요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=746604&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "교직)교원자격증 재교부 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=745218&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사)이번 학기 장학금을 받았는데, 휴학을 하고 싶어요. 장학금 이월 가능한가요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736085&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-6",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색어",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-blind-v6-control-1",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-blind-v6-control-2",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "학사)등록금을 납부했는데, 휴학을 하고 싶어요. 등록금 환불 가능한가요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736084&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-7",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사)휴학 기간이 끝나면 자동으로 복학이 되나요? 별도의 복학 신청을 해야 하나요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736083&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-8",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사)학기 도중 군휴학을 신청하려고 하는데 성적을 인정받을 수 있나요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736082&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-9",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사)현재 군 휴학을 하려고 하는데 어떻게 신청가능한가요? 이전에 일반휴학신청한 건 사라지나요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736081&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-10",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사)현재 군 휴학 중인데, 군 복무기간이 끝났습니다. 군 휴학을 이어서 계속 할 수 있나요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736080&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-11",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사)성적 우수로 다음 학기에 3학점을 추가로 들을 수 있게 되었습니다. 그러나 휴학을 하려고 하는데, 추후 복학이후 추가 3학점을 이수할 수 있나요?",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736079&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-blind-v6-control-12",
+                "sourceMatches": 1
+              }
+            ],
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "smu-blind-v6-feature-1": 1,
+          "smu-blind-v6-feature-2": 1,
+          "smu-blind-v6-feature-3": 1
+        },
+        "selected": [
+          {
+            "label": "졸업생 학생메일 잠금 관련 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=754915&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사) 연계전공과 융합전공의 교육과정은 어디서 볼 수 있나요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=746604&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "교직)교원자격증 재교부 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=745218&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)이번 학기 장학금을 받았는데, 휴학을 하고 싶어요. 장학금 이월 가능한가요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736085&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-6",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색어",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-blind-v6-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-blind-v6-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)등록금을 납부했는데, 휴학을 하고 싶어요. 등록금 환불 가능한가요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736084&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-7",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)휴학 기간이 끝나면 자동으로 복학이 되나요? 별도의 복학 신청을 해야 하나요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736083&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-8",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)학기 도중 군휴학을 신청하려고 하는데 성적을 인정받을 수 있나요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736082&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-9",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)현재 군 휴학을 하려고 하는데 어떻게 신청가능한가요? 이전에 일반휴학신청한 건 사라지나요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736081&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-10",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)현재 군 휴학 중인데, 군 복무기간이 끝났습니다. 군 휴학을 이어서 계속 할 수 있나요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736080&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-11",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사)성적 우수로 다음 학기에 3학점을 추가로 들을 수 있게 되었습니다. 그러나 휴학을 하려고 하는데, 추후 복학이후 추가 3학점을 이수할 수 있나요?",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=736079&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-blind-v6-control-12",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 12,
+        "recommended": 12,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 1,
+      "recall": 0.9333333333333333
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 1,
+        "recall": 0.6666666666666666,
+        "passed": false
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "library",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 41,
+      "recommended": 41,
+      "matched": 15,
+      "expected": 15,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 5
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 15,
+        "recommended": 15,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 12,
+        "recommended": 12,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      }
+    ],
+    "unresolvedMappings": 0,
+    "repeatedCards": 0
+  }
+}

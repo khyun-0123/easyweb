@@ -2,11 +2,54 @@ import type { ActionType } from './types';
 
 export interface SourceAction { action: ActionType; href?: string; target?: string }
 
+const editableSignalSelector = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+// Exact operation tokens only. Names such as download-guide, no-download or
+// icon-download-disabled describe other states and are not download evidence.
+const downloadMarkerToken = /^(?:(?:icon|ico|ir)[-_])?download$/i;
+// Match a complete operation name, optionally naming a generic document.
+// Arbitrary sentence prefixes must not turn a final "download" into operation
+// evidence (for example, an instruction not to download).
+const downloadOperationLabel = /^(?:(?:자료|파일|문서|서식|신청서|안내서|설명서|매뉴얼|가이드)\s*)?(?:다운로드|내려\s*받기)(?:\s*하기)?$|^(?:download(?:\s+(?:the\s+)?(?:file|document|form|guide|manual))?(?:\s+now)?|(?:the\s+)?(?:file|document|form|guide|manual)\s+download(?:\s+now)?)$/i;
+const negatedDownloadTitle = /^(?:(?:do\s+not|don['’]t|no|never)\s+download(?:\s+now)?|(?:금지된|허용되지\s*않은)\s*(?:다운로드|내려\s*받기)|(?:다운로드|내려\s*받기)\s*(?:금지|불가))$/i;
+
+// A FileDown operation is accepted only together with the source control's
+// own explicit download signal. No page text, response or inferred handler is
+// inspected. This bounded metadata also lets snapshots notice marker changes
+// even when the resulting locate action stays the same.
+export function sourceDownloadEvidence(element: HTMLElement, safeLabel = ''): { text: boolean; icons: string[] } | undefined {
+  if (!(element instanceof HTMLAnchorElement) || !element.hasAttribute('href') || element.closest(editableSignalSelector)) return;
+  const raw = element.getAttribute('href')?.trim() ?? '';
+  // Avoid resolving unrelated source URLs or inspecting their descendants.
+  if (!/filedown/i.test(raw)) return;
+  try {
+    const url = new URL(raw, document.baseURI);
+    if (!/^https?:$/.test(url.protocol) || !/(?:^|\/)filedown(?:\.do)?$/i.test(url.pathname)) return;
+  } catch { return; }
+  const text = downloadOperationLabel.test(safeLabel.normalize('NFKC').replace(/\s+/g, ' ').trim());
+  const icons: string[] = [];
+  const addIcon = (icon: Element) => {
+    if (icon.closest(`${editableSignalSelector},[data-easyweb-host]`)) return;
+    const tokens = (icon.getAttribute('class') ?? '').split(/\s+/)
+      .filter(token => token.length <= 64 && downloadMarkerToken.test(token)).sort().slice(0, 4);
+    if (tokens.length) icons.push(`${icon.tagName.toLowerCase()}:${tokens.join(' ')}`);
+  };
+  addIcon(element);
+  for (const icon of element.querySelectorAll('i[class*="download" i],svg[class*="download" i],img[class*="download" i],span[class*="download" i]')) {
+    addIcon(icon);
+    if (icons.length === 8) break;
+  }
+  return text || icons.length ? { text, icons } : undefined;
+}
+
 // safeLabel은 분석기의 입력 제외 경로로 만든 고정 이름만 전달합니다.
 export function isDocumentDownload(element: HTMLElement, safeLabel = ''): boolean {
   if (!(element instanceof HTMLAnchorElement) || !element.hasAttribute('href')) return false;
-  return element.hasAttribute('download') || /(?:^|\s)(?:다운로드|download)$/i.test((element.getAttribute('title') ?? '').trim())
-    || /\.(?:pdf|hwp|hwpx|docx?|xlsx?|pptx?|odt|rtf)$/i.test(safeLabel.trim());
+  const title = (element.getAttribute('title') ?? '').trim();
+  const titleDownload = /(?:^|\s)(?:다운로드|download)$/i.test(title)
+    && !negatedDownloadTitle.test(title.normalize('NFKC').replace(/\s+/g, ' '));
+  return element.hasAttribute('download') || titleDownload
+    || /\.(?:pdf|hwp|hwpx|docx?|xlsx?|pptx?|odt|rtf)$/i.test(safeLabel.trim())
+    || !!sourceDownloadEvidence(element, safeLabel);
 }
 
 // 관찰한 링크의 의미를 기술합니다. navigate는 원본 JavaScript가 없다는 증거나

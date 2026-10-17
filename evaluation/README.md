@@ -1,6 +1,6 @@
 # 공개 사이트 평가 자료
 
-현재 상태: **v0.6.0 개발 후보 / 완료 4/10 단계**입니다. 원래 core 15페이지와 blind-v2/v3/v4/v5/v6/v7/v8 각 5페이지는 첫 평가 후 모두 개발에 노출되었습니다. 총 **50페이지**를 다시 통과해도 독립 품질 인수로 세지 않습니다. v7 원본과 같은 페이지의 구조 복원판 v7-v2는 한 번만 셉니다. 최초 실패와 당시 자료·엔진을 보존하며, 최신 판정·최종 검사·ZIP 해시는 [RUN-005 보고서](../docs/RUN_005_REPORT.md)를 따릅니다. v0.3.0의 결과는 [RUN-002 과거 기록](../docs/RUN_002_REPORT.md)으로 구별합니다.
+현재 상태: **v0.7.0 개발 후보 / 완료 5/10 단계**입니다. 원래 core 15페이지와 blind-v2/v3/v4/v5/v6/v7/v8 각 5페이지는 첫 평가 후 모두 개발에 노출되었습니다. 총 **50페이지**를 다시 통과해도 독립 품질 인수로 세지 않습니다. v7 원본과 같은 페이지의 구조 복원판 v7-v2는 한 번만 셉니다. 최초 실패와 당시 자료·엔진을 보존하며, 최신 판정·최종 검사·ZIP 해시는 [RUN-006 보고서](../docs/RUN_006_REPORT.md)를 따릅니다. v0.3.0의 결과는 [RUN-002 과거 기록](../docs/RUN_002_REPORT.md)으로 구별합니다.
 
 ## 원래 core v1.1
 
@@ -62,7 +62,7 @@ RUN-001에서는 기준선 전체와 개발용 전후 비교를 기록하고 보
 | blind-v7-v2 | 5 / 15 | 6/12 | 4/15 | 1/5 | FAIL / 같은 v7 페이지의 최초 제품 평가, 원본·복원판·첫 결과 보존 |
 | blind-v8 | 5 / 15 | 10/17 | 4/15 | 1/5 | FAIL / 원본·첫 결과 보존, 현재 노출된 개발 자료 |
 
-v5·v6의 최초 과제 제어 추천 수는 [RUN-003](../docs/RUN_003_REPORT.md)의 실행 범위와 함께 읽습니다. 추천 수는 실제 링크 실행이나 원본 제어 도달 수가 아닙니다. 별도로 기록한 실제 공개 과제 도달도 현재 v0.6.0 네이티브 설치 경로나 실제 사용자 과제 성공으로 합산하지 않습니다.
+v5·v6의 최초 과제 제어 추천 수는 [RUN-003](../docs/RUN_003_REPORT.md)의 실행 범위와 함께 읽습니다. 추천 수는 실제 링크 실행이나 원본 제어 도달 수가 아닙니다. 별도로 기록한 실제 공개 과제 도달도 현재 v0.7.0 네이티브 설치 경로나 실제 사용자 과제 성공으로 합산하지 않습니다.
 
 v7은 제품·결과를 보지 않은 새 관찰자가 작성했습니다. 관찰자 교체 경계 사건과 원본의 조상 구조 평탄화 한계를 보존한 뒤, 제품 첫 실행 전에 같은 5페이지·15 expected·32 accepted를 유지하는 `blind-v7-v2`를 별도로 복원했습니다. 제품 소스는 root가 자료와 감사 본문을 읽기 전에 동결했으며 첫 평가 때까지 바꾸지 않았습니다. 원본 v7에는 제품을 실행하지 않았습니다. [v2 동결](../docs/evidence/run004/blind-v7-v2-freeze.json)과 [첫 결과](../docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json)를 보존합니다. 복원판은 원본 전체 조상·선택 제어 순서를 유지하지만 전체 페이지·CSS·이벤트 재생은 아닙니다. 계산 접근성 이름은 29/32 정확 일치, 공백 제외 32/32라는 제한도 기록했습니다.
 
@@ -72,7 +72,7 @@ RUN-005의 [development-v7-corrected](development-v7-corrected/VERSION.json)는 
 
 v8은 앞선 45개 URL을 제외하고 제품 소스·이전 fixture·결과를 보지 않은 관찰자가 새 5페이지·15 expected·50 accepted/39 rejected 제어를 작성했습니다. 원본 조상·순서·속성·제목·ARIA 관계를 유지하며 정적 QA 320/320을 통과했습니다. [자료 동결](../docs/evidence/run005/blind-v8-freeze.json)과 엔진 중간 동결 뒤, v8 본문·URL을 읽지 않은 상태에서 기존 v3/live 회귀를 수정하고 [최종 엔진 v2](../docs/evidence/run005/v0.6-engine-freeze-v2.json)를 다시 동결했습니다. 그 최종 엔진으로만 [첫 제품 평가](../docs/evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json)를 실행했습니다. 추가 메뉴도 정확11/19·재현5/15·과제 추천1/5로 품질 실패를 대체하지 않습니다. 이제 이 5페이지도 노출된 개발 자료입니다.
 
-v8의 FileDown 경로와 다운로드 아이콘이 함께 있는 2개 제어를 navigate로 읽는 결함 때문에 [root 계약 검토](../docs/evidence/run005/file-download-root-review.json)에 따라 S05를 재개했고 현재 완료 수는 4/10입니다. 파일 응답·본문·실제 실행은 미관찰입니다. 별도 v0.7의 보수적 식별 수정 후 기관별 adapter와 범용 규칙을 분리 평가합니다. 원본 정답·최초 결과·v0.6 동결은 보존합니다.
+v8의 FileDown 경로+다운로드 아이콘 2건으로 RUN-005에서 S05를 재개해 당시4/10으로 판정했다. v0.7은 다운로드 근거·부정문·현재성 반례를 수정했고 [root 판정](../docs/evidence/run006/s05-resolution-root-review.json)에 따라 현재5/10이다. 파일 응답·본문·실제 실행은 미관찰이다. 같은 v8의 개발 재평가는11/16정확·5/15재현·2/5추천 FAIL이며 추가 메뉴12/18·6/15·2/5도 첫 화면을 대체하지 않는다. 원본 최초10/17·4/15·1/5와 동결·자료는 유지한다. 다음은 [기관별 보정과 범용 모드 비교](../docs/INSTITUTION_ADAPTER_PLAN.md)다.
 
 v4의 신청 결과 조회 1건에서 category를 search→apply로 정정한 별도 [development-v4-corrected](development-v4-corrected/VERSION.json) 버전은 **ADJUDICATED_DEVELOPMENT**입니다. expected와 accepted의 category 필드 각 1개만 수정했으며 원본 fixture·정답·첫 결과를 덮어쓰지 않았습니다. [독립 정답 검토](../docs/evidence/run002/blind-v4-annotation-audit.json)에 근거를 남겼고, 정정 버전을 새 독립 평가로 세지 않습니다.
 
@@ -96,7 +96,7 @@ npm run evaluate -- --suite=development-v6-corrected-v2 --engine=current --split
 npm run evaluate -- --suite=blind-v7-v2 --engine=current --split=holdout --output-dir=/tmp/easyweb-v7-development --with-menu-flow
 ```
 
-v0.3.0에서 확인한 회귀는 [final55-summary.json](../docs/evidence/run002/final55-development/final55-summary.json)의 과거 기록으로 보존합니다. 현재 v0.6.0의 최종 회귀·수치·소스 해시는 [RUN-005](../docs/RUN_005_REPORT.md)을 따릅니다. 위 명령을 반복할 필요 없이 같은 소스 해시인지 먼저 확인합니다. 새 독립 평가를 하려면 기존 50페이지와 다른 자료를 엔진·결과에 접근하지 않은 관찰자가 작성하고 먼저 동결해야 합니다. `--phase=fresh-blind-validation`이라는 이름만 지정하는 것은 독립성의 증거가 아닙니다.
+v0.3.0에서 확인한 회귀는 [final55-summary.json](../docs/evidence/run002/final55-development/final55-summary.json)의 과거 기록으로 보존합니다. 현재 v0.7.0의 최종 회귀·수치·소스 해시는 [RUN-006](../docs/RUN_006_REPORT.md)을 따릅니다. 위 명령을 반복할 필요 없이 같은 소스 해시인지 먼저 확인합니다. 새 독립 평가를 하려면 기존 50페이지와 다른 자료를 엔진·결과에 접근하지 않은 관찰자가 작성하고 먼저 동결해야 합니다. `--phase=fresh-blind-validation`이라는 이름만 지정하는 것은 독립성의 증거가 아닙니다.
 
 새 독립 실행은 `--engine=current --split=holdout --phase=fresh-blind-validation`에 `--engine-freeze=…`, `--dataset-freeze=…`, 새 `--output-dir=…`를 함께 지정합니다. 도구는 제품 소스와 모든 주석·fixture가 동결 해시와 같은지 실행 전후 확인하고, 기존 첫 결과를 덮어쓰지 않습니다. 해시 검사는 관찰자가 엔진·결과를 보지 않았다는 사실 자체를 증명하지 않으므로 별도 관찰 기록이 필요합니다.
 

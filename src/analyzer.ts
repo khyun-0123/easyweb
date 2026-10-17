@@ -1,5 +1,5 @@
 import type { Candidate, SourceSnapshot, PagePurpose } from './types';
-import { sourceAction } from './action-policy';
+import { sourceAction, sourceDownloadEvidence } from './action-policy';
 
 const clean = (text: string) => text.replace(/\s+/g, ' ').trim().slice(0, 140);
 const editableRoleSelector = ['textbox', 'searchbox', 'combobox', 'spinbutton', 'slider'].map(role => `[role~="${role}" i]`).join(', ');
@@ -523,6 +523,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
       includeCollection ? collectionEvidence(element, collectionCache) : null,
       includeSupplemental ? supplementalEvidence(element, supplementalCache) : null,
       !!element.closest('form, [role~="form" i]'),
+      sourceDownloadEvidence(element, safeLabel),
       sourceAction(element, safeLabel),
     ]),
   };

@@ -6,7 +6,7 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const reportFile = 'docs/evidence/run005/a11y-automated.json';
+const reportFile = 'docs/evidence/run006/a11y-automated.json';
 const modalHost = '[data-easyweb-host]';
 const noticeHost = '[data-easyweb-notice]';
 
