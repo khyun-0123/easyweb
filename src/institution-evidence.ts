@@ -1,9 +1,10 @@
 import { candidateLabel, getSafeLabel, isVisible } from './analyzer';
 import type { Candidate, Category, InstitutionEvidence } from './types';
+import { evidenceNodes } from './evidence-nodes';
 
 export type { InstitutionEvidence } from './types';
 export type ClassificationMode = 'generic' | 'institution';
-export const ADAPTER_VERSION = 2;
+export const ADAPTER_VERSION = 3;
 export type InstitutionEvidenceCache = WeakMap<Element, unknown>;
 
 const editable = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
@@ -11,6 +12,11 @@ const excluded = 'header,footer,article,aside,form,[role~="banner" i],[role~="co
 const headingSelector = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
 const normalize = (value: string) => value.normalize('NFKC').replace(/\s+/g, ' ').trim();
 const serviceEntry = /신청|예약|접수|발급|조회|로그인|인증|제출|청구/;
+
+function fixedName(element: HTMLElement): string {
+  if (element.closest(`${editable},${excluded}`)) return '';
+  return normalize(candidateLabel(element));
+}
 
 // Only editorial heading names are read, including an inactive tab's heading.
 // getSafeLabel skips editable descendants; no body text or live values are read.
@@ -36,17 +42,31 @@ function sourceURL(element: HTMLElement): URL | undefined {
   } catch { /* Unresolved metadata is not an institutional relationship. */ }
 }
 
+function linkStructure(element: HTMLElement): readonly string[] | null {
+  if (!element.matches('a[href]')) return null;
+  try {
+    const url = new URL(element.getAttribute('href') ?? '', document.baseURI);
+    // Opaque query values are neither semantic rules nor diagnostic payload.
+    return /^https?:$/.test(url.protocol) ? [url.origin, url.pathname, url.hash] : [url.protocol];
+  } catch { return ['unresolved']; }
+}
+
 function evidence(candidate: Candidate, adapter: string, rule: string, category: Category,
-  dependencies: HTMLElement[], score: 65 | 70 = 70): InstitutionEvidence {
-  const unique = [...new Set([candidate.element, ...dependencies])];
+  dependencies: HTMLElement[], score: 65 | 70 = 70,
+  facts: { pageTask?: 'reading' | 'control'; readonlyPanel?: true; contentScope?: 'content' | 'navigation'; tokens?: readonly string[] } = {}): InstitutionEvidence | undefined {
+  const unique = evidenceNodes([candidate.element, ...dependencies], dependencies.filter(node => node.matches('.s_tit,p')));
+  if (!unique) return;
   return {
-    adapter, version: ADAPTER_VERSION, rule, category, score, pageTask: 'reading', dependencies: unique,
+    adapter, version: ADAPTER_VERSION, rule, category, score, pageTask: facts.pageTask ?? 'reading', dependencies: unique,
+    ...(facts.readonlyPanel ? { readonlyPanel: true as const } : {}),
+    ...(facts.contentScope ? { contentScope: facts.contentScope } : {}),
     // Raw URL queries, original scripts, input values and whole-region text are
     // deliberately absent. The generic source snapshot owns action/href checks.
     fingerprint: JSON.stringify([ADAPTER_VERSION, adapter, rule, location.origin, location.pathname,
-      candidate.label, candidate.action, unique.map(node => [node.tagName,
+      candidate.label, candidate.action, category, facts.pageTask ?? 'reading', !!facts.readonlyPanel, facts.contentScope ?? '', facts.tokens ?? [], unique.map(node => [node.tagName,
         ...['id', 'class', 'role', 'aria-controls', 'aria-expanded', 'aria-hidden', 'hidden'].map(name => node.getAttribute(name)),
-        node.matches(headingSelector) ? headingName(node, true) : node.matches('a[href],button') ? candidateLabel(node) : '',
+        node instanceof HTMLElement ? linkStructure(node) : null,
+        node instanceof HTMLElement && node.matches(headingSelector) ? headingName(node, true) : node instanceof HTMLElement && node.matches('a[href],button,.s_tit') ? fixedName(node) : '',
       ])]),
   };
 }
@@ -65,7 +85,7 @@ function education(candidate: Candidate, name: string): InstitutionEvidence | un
     && /(?:교육|훈련)/.test(name) && /(?:개요|계획|자료|안내|소개)$/.test(name)) {
     const destination = sourceURL(element);
     if (destination && /^(?:\/safekorea-kor\/edtr\/|\/safekorea-kor\/cmmn\/bbs\/)/.test(destination.pathname)) {
-      return evidence(candidate, 'safekorea-education', 'local-reading-menu', 'help', [root, menu, ...titles], 65);
+      return evidence(candidate, 'safekorea-education', 'local-reading-menu', 'help', [root, menu, ...titles], 65, { contentScope: 'navigation' });
     }
   }
   const tabs = element.closest<HTMLElement>('.tab-area');
@@ -83,12 +103,13 @@ function education(candidate: Candidate, name: string): InstitutionEvidence | un
   const panelHeadings = headings(panel, true);
   if (!panelHeadings.length) return;
   return evidence(candidate, 'safekorea-education', 'local-overview-panels', 'help',
-    [root, tabs, ...titles, ...peers, ...panels as HTMLElement[], ...panelHeadings]);
+    [root, tabs, ...titles, ...peers, ...panels as HTMLElement[], ...panelHeadings], 70, { contentScope: 'content' });
 }
 
 function pension(candidate: Candidate, name: string): InstitutionEvidence | undefined {
   const element = candidate.element;
-  if (!element.matches('a[href]') || serviceEntry.test(name) || !/(?:국민\s*연금|사회\s*보장|노후)/.test(name)) return;
+  if (!element.matches('a[href]') || serviceEntry.test(name)
+    || /(?:납부|결제|지급|환급|삭제|탈퇴)(?:\s*하기)?$/.test(name)) return;
   const wrap = element.closest<HTMLElement>('.tabWrap.con-tab');
   const nav = element.closest<HTMLElement>('ul.tabNav');
   if (!wrap || !nav || nav.parentElement !== wrap || !element.closest('li')) return;
@@ -106,8 +127,17 @@ function pension(candidate: Candidate, name: string): InstitutionEvidence | unde
   if (peers.length < 2 || peers.length > 12 || !peers.includes(element)) return;
   const titles = headings(panel, true).filter(node => headingName(node, true) === name);
   if (!titles.length) return;
+  const interactiveRoles = ['button', 'link', 'checkbox', 'radio', 'switch', 'menuitem', 'menuitemcheckbox', 'menuitemradio', 'option', 'treeitem', 'tab', 'dialog']
+    .map(role => `[role~="${role}" i]`).join(',');
+  const interactivePanel = `${editable},${excluded},a,button,label[for],${interactiveRoles},[tabindex],[onclick],iframe,object,embed,details,summary,audio[controls],video[controls]`;
+  const readonlyPanel = !panel.matches(interactivePanel) && !panel.querySelector(interactivePanel);
+  // Keep the previously supported subject-backed guidance path, but never
+  // claim its panel is readonly when an editor/control is present. New topic
+  // names require the stronger actual noninteractive panel relationship.
+  if (!readonlyPanel && !/(?:국민\s*연금|사회\s*보장|노후)/.test(name)) return;
   return evidence(candidate, 'nps-explanation', 'named-local-explanation-panel', 'help',
-    [wrap, nav, panel.parentElement, panel, ...titles]);
+    [wrap, nav, panel.parentElement, panel, ...titles, ...peers], 70,
+    readonlyPanel ? { readonlyPanel: true, contentScope: 'content' } : {});
 }
 
 function university(candidate: Candidate, name: string): InstitutionEvidence | undefined {
@@ -130,7 +160,7 @@ function university(candidate: Candidate, name: string): InstitutionEvidence | u
   const instruction = /(?:설치|설정|사용|이용|활용|추가|해결|복구|대처|대응).{0,24}(?:방법|절차|매뉴얼|설명서|가이드|안내)/.test(label);
   if (incident === instruction) return;
   return evidence(candidate, 'smu-it-documents', incident ? 'incident-document' : 'instruction-document',
-    incident ? 'notice' : 'help', [board, list, title, ...boardTitles]);
+    incident ? 'notice' : 'help', [board, list, title, ...boardTitles], 70, { contentScope: 'content' });
 }
 
 const academicTopic = /학사|학적|학위|학점|전공|교양|휴학|복학|재입학|자퇴|제적|전과|증명서/;
@@ -169,7 +199,7 @@ function academicTabs(candidate: Candidate, name: string): InstitutionEvidence |
   // The following content heading identifies the selected academic topic.
   // No record number, fragment value, page-specific title or URL table is used.
   return evidence(candidate, 'smu-academic-documents', 'selected-topic-following-content', 'academic',
-    [outer.parentElement, outer, list, section, content, ...titles, ...selected, ...educational]);
+    [outer.parentElement, outer, list, section, content, ...titles, ...selected, ...educational], 70, { contentScope: 'navigation' });
 }
 
 const guideDownloadName = /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)(?:\s*하기)?$/i;
@@ -191,13 +221,62 @@ function semanticTabName(element: HTMLElement): string {
   return state ? name.replace(/\s*(?:선택됨|selected)$/i, '').trim() : name;
 }
 
+const copyTopic = /복사|복제|출력|인쇄|스캔/;
+
+function copyingTabs(candidate: Candidate, region: HTMLElement, info: HTMLElement,
+  slider: HTMLElement, wrapper: HTMLElement, peers: HTMLElement[]): InstitutionEvidence | undefined {
+  const titles = [...info.querySelectorAll<HTMLElement>(':scope > h3')].filter(node => copyTopic.test(headingName(node)));
+  if (!titles.length || peers.some(peer => !copyTopic.test(semanticTabName(peer)))) return;
+  const selected = peers.filter(peer => peer.parentElement?.matches('.on,.swiper-slide-active')
+    || /^(?:page|true)$/i.test(peer.getAttribute('aria-current') ?? ''));
+  if (selected.length !== 1) return;
+  const bodies = [...region.querySelectorAll<HTMLElement>(':scope > .content_wrap > .sub_content > .copy_data_wrap')];
+  if (bodies.length !== 1 || bodies[0].closest(excluded)) return;
+  const body = bodies[0];
+  const labels = [...body.querySelectorAll<HTMLElement>(':scope > .txt > .s_tit')];
+  if (labels.length > 12) return;
+  const instruction = labels.filter(node => /^(?:이용|사용)\s*(?:안내|방법)$|(?:복사|복제|인쇄|출력|스캔).{0,20}(?:방법|안내|절차)$/.test(fixedName(node))
+    && !node.parentElement?.querySelector(`${editable},form,a[href],button,[role~="button" i]`));
+  if (!instruction.length) return;
+  return evidence(candidate, 'nl-reading-guides', 'local-copying-instruction-tabs', 'help',
+    [region, info, slider, wrapper, body, ...titles, ...instruction, ...peers,
+      ...selected.map(peer => peer.parentElement!)], 70, { contentScope: 'content' });
+}
+
+function refundEntry(candidate: Candidate, name: string, region: HTMLElement): InstitutionEvidence | undefined {
+  const element = candidate.element;
+  if (candidate.action !== 'navigate' || !element.matches('a[href]') || !/(?:환급|환불|반환)/.test(name)) return;
+  const destination = sourceURL(element);
+  if (!destination || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination.pathname)
+    || destination.pathname === location.pathname) return;
+  const paragraph = element.parentElement;
+  const block = paragraph?.parentElement;
+  const body = element.closest<HTMLElement>('.copy_data_wrap');
+  const title = block?.previousElementSibling;
+  if (!paragraph?.matches('p') || !block?.matches('.txt') || !body || body.closest('#sub_content') !== region
+    || block.parentElement !== body || !(title instanceof HTMLElement) || !title.matches('h4.tit')
+    || !/(?:환급|환불|반환).{0,20}(?:안내|방법|절차)/.test(headingName(title))
+    || paragraph.closest(`${editable},${excluded}`) || paragraph.querySelector(editable)
+    || paragraph.querySelectorAll('a[href]').length !== 1) return;
+  // Read one bounded fixed instruction name through the analyzer's safe getter.
+  // Only derived relationship tokens enter the fingerprint; prose is not logged.
+  const method = normalize(getSafeLabel(paragraph));
+  if (!/(?:신청|접수)\s*(?:방법|절차)/.test(method)
+    || !/(?:메뉴|항목).{0,18}(?:직접\s*)?(?:신청|접수)/.test(method)) return;
+  return evidence(candidate, 'nl-service-entry', 'explicit-refund-application-method', 'apply',
+    [region, body, title, block, paragraph], 70,
+    { pageTask: 'control', contentScope: 'content', tokens: ['application-method', 'named-menu-entry'] });
+}
+
 function library(candidate: Candidate, name: string): InstitutionEvidence | undefined {
   const element = candidate.element;
   const region = element.closest<HTMLElement>('#sub_content');
   if (!region) return;
   const ownGuide = libraryGuideButton(element);
   if (ownGuide) return evidence(candidate, 'nl-reading-guides', 'editorial-guide-download', 'help',
-    [region, ownGuide.branch, ownGuide.heading]);
+    [region, ownGuide.branch, ownGuide.heading], 70, { contentScope: 'content' });
+  const refund = refundEntry(candidate, name, region);
+  if (refund) return refund;
   if (!element.matches('a[href]') || serviceEntry.test(name)) return;
   const group = element.parentElement;
   const wrapper = group?.parentElement;
@@ -206,10 +285,17 @@ function library(candidate: Candidate, name: string): InstitutionEvidence | unde
   if (!group?.matches('[role~="group"]') || !wrapper?.matches('.swiper-wrapper')
     || !slider?.matches('.depth4-menu__slider') || !info?.matches('.content_info')
     || info.closest('#sub_content') !== region) return;
-  const titles = [...info.querySelectorAll<HTMLElement>(':scope > h3')].filter(node => /검색/.test(headingName(node)));
-  if (!titles.length) return;
   const peers = [...wrapper.querySelectorAll<HTMLElement>(':scope > [role~="group"] > a[href]')];
   if (peers.length < 2 || peers.length > 8 || !peers.includes(element)) return;
+  if (peers.some(peer => {
+    const destination = sourceURL(peer);
+    return !destination || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination.pathname)
+      || !candidateLabel(peer) || serviceEntry.test(semanticTabName(peer));
+  })) return;
+  const copying = copyingTabs(candidate, region, info, slider, wrapper, peers);
+  if (copying) return copying;
+  const titles = [...info.querySelectorAll<HTMLElement>(':scope > h3')].filter(node => /검색/.test(headingName(node)));
+  if (!titles.length) return;
   const semanticName = semanticTabName(element);
   if (!/(?:검색|결과|정보|기능|정렬|색인|서지)/.test(semanticName)
     || peers.some(peer => {
@@ -221,7 +307,33 @@ function library(candidate: Candidate, name: string): InstitutionEvidence | unde
   if (guides.length !== 1 || !libraryGuideButton(guides[0]) || !isVisible(guides[0])) return;
   const guide = libraryGuideButton(guides[0])!;
   return evidence(candidate, 'nl-reading-guides', 'local-explanatory-guide-tabs', 'help',
-    [region, info, slider, wrapper, group, ...titles, ...peers, guides[0], guide.branch, guide.heading]);
+    [region, info, slider, wrapper, group, ...titles, ...peers, guides[0], guide.branch, guide.heading], 70, { contentScope: 'content' });
+}
+
+function safetyGuidance(candidate: Candidate, name: string): InstitutionEvidence | undefined {
+  const element = candidate.element;
+  if (!(element instanceof HTMLButtonElement) || element.type !== 'button' || element.form) return;
+  const region = element.closest<HTMLElement>('.cont-area');
+  const content = region?.closest<HTMLElement>('.content-right');
+  if (!region || !content || !content.closest('#contents')) return;
+  const titles = headings(content).filter(node => node.closest('.cont-area') === region
+    && /안전.*점검|점검.*(?:안내|가이드)|체크.*가이드|check\s*guide/i.test(headingName(node)));
+  if (!titles.length) return;
+  if (element.matches('.btn-down') && /(?:점검표|체크리스트|checklist)\s*(?:다운로드|내려\s*받기)$/i.test(name)) {
+    return evidence(candidate, 'safekorea-safety-guidance', 'checklist-preparation-document', 'help',
+      [content, region, ...titles], 70, { contentScope: 'content' });
+  }
+  const area = element.parentElement;
+  const list = area?.previousElementSibling;
+  const guide = list?.previousElementSibling;
+  if (!element.matches('.btn-golist') || !area?.matches('.button-rightarea') || area.parentElement !== region
+    || !/(?:점검|체크).*(?:리스트|목록|안내).*(?:시작|보기|확인)$/.test(name)
+    || !(list instanceof HTMLElement) || !list.matches('ul.comm-list') || list.children.length > 12
+    || list.querySelector(`${editable},form,button`)
+    || !(guide instanceof HTMLElement) || !guide.matches('h3')
+    || !/(?:체크|점검)\s*(?:가이드|안내)|check\s*guide/i.test(headingName(guide))) return;
+  return evidence(candidate, 'safekorea-safety-guidance', 'guided-safety-instruction', 'help',
+    [content, region, area, list, guide, ...titles], 70, { pageTask: 'control', contentScope: 'content' });
 }
 
 // The caller applies the shared danger/URL/label policy before this function.
@@ -231,6 +343,7 @@ function library(candidate: Candidate, name: string): InstitutionEvidence | unde
 export function institutionEvidence(candidate: Candidate, _cache?: InstitutionEvidenceCache): InstitutionEvidence | undefined {
   // Reject unsupported surfaces before performing any source-relationship scan.
   const handler = location.hostname === 'www.safekorea.go.kr' && /^\/safekorea-kor\/edtr\//.test(location.pathname) ? education
+    : location.hostname === 'www.safekorea.go.kr' && /^\/safekorea-kor\/acts\/asck\//.test(location.pathname) ? safetyGuidance
     : location.hostname === 'www.nps.or.kr' && /^\/pnsinfo\/ntpsklg\//.test(location.pathname) ? pension
     : location.hostname === 'www.smu.ac.kr' && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(location.pathname) ? university
     : location.hostname === 'www.nl.go.kr' && /^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(location.pathname) ? library : undefined;

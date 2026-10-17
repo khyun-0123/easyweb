@@ -1,0 +1,217 @@
+
+Running 12 tests using 1 worker
+
+(node:17893) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/navigation-utility.spec.mjs:15:1 › 명시된 breadcrumb navigation과 정확한 구조 표식은 위치 경로다 (94ms)
+(node:17906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/navigation-utility.spec.mjs:20:1 › breadcrumb 유사 class·일반 navigation 목록·본문 설명 링크는 보존한다 (85ms)
+  ✘   3 tests/navigation-utility.spec.mjs:25:1 › rel의 정확한 home token만 위치 이동 표식으로 취급한다 (95ms)
+(node:17915) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 tests/navigation-utility.spec.mjs:30:1 › 명확한 skip 이름과 유일한 실제 main·navigation target을 연결한다 (97ms)
+(node:17921) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 tests/navigation-utility.spec.mjs:35:1 › 없는·중복·상호작용·편집 target과 모호한 skip 이름은 위치 기능으로 단정하지 않는다 (82ms)
+  ✓   6 tests/navigation-utility.spec.mjs:40:1 › 실제 readonly fragment 설명과 일반 링크는 breadcrumb나 skip으로 바꾸지 않는다 (83ms)
+  ✘   7 tests/navigation-utility.spec.mjs:45:1 › 의미 있는 자식 메뉴가 있는 순수 JS·fragment 부모만 branch로 표시한다 (76ms)
+(node:17936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 tests/navigation-utility.spec.mjs:50:1 › 명시적인 disclosure는 같은 지역의 실제 menu/list만 가리켜야 한다 (95ms)
+(node:17942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 tests/navigation-utility.spec.mjs:55:1 › 독립 문서 목적지·leaf JS·내용 없는 submenu는 branch로 만들지 않는다 (81ms)
+  ✓  10 tests/navigation-utility.spec.mjs:60:1 › FAQ 답변과 readonly 패널은 aria-expanded나 목록이 있어도 보존한다 (82ms)
+  ✓  11 tests/navigation-utility.spec.mjs:65:1 › form·editor·외부 form 소유 제어와 숨은 제어는 관계에서 제외한다 (82ms)
+  ✘  12 tests/navigation-utility.spec.mjs:70:1 › 입력·checked·편집 내용의 getter를 호출하거나 결과로 내보내지 않는다 (74ms)
+
+
+  1) tests/navigation-utility.spec.mjs:15:1 › 명시된 breadcrumb navigation과 정확한 구조 표식은 위치 경로다 ─────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 3
+
+      Array [
+    -   "position",
+    -   "position",
+    -   "position",
+    +   null,
+    +   null,
+    +   null,
+      ]
+
+      15 | test('명시된 breadcrumb navigation과 정확한 구조 표식은 위치 경로다',async({page})=>{
+      16 |   await setup(page,`<nav aria-label="Breadcrumb"><ol><li><a id="semantic" href="/public/start">문서 입구</a></li><li><a href="/public/handbook" aria-current="page">장비 안내</a></li></ol></nav><div role="navigation" class="breadcrumbs"><ol><li><a id="structured" href="/public/lobby">첫 화면</a></li><li><a href="/public/instructions">사용 지침</a></li></ol></div><nav aria-label="현재 위치"><ol><li><a id="korean" href="/public/archives">공개 문서함</a></li></ol></nav>`);
+    > 17 |   expect(await inspect(page,[['semantic','문서 입구'],['structured','첫 화면'],['korean','공개 문서함']])).toEqual(['position','position','position']);
+         |                                                                                                ^
+      18 | });
+      19 |
+      20 | test('breadcrumb 유사 class·일반 navigation 목록·본문 설명 링크는 보존한다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:17:96
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-명시된-bre-f8e3c-vigation과-정확한-구조-표식은-위치-경로다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-명시된-bre-f8e3c-vigation과-정확한-구조-표식은-위치-경로다/error-context.md
+
+  2) tests/navigation-utility.spec.mjs:25:1 › rel의 정확한 home token만 위치 이동 표식으로 취급한다 ─────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+    -   "position",
+    +   null,
+        null,
+        null,
+      ]
+
+      25 | test('rel의 정확한 home token만 위치 이동 표식으로 취급한다',async({page})=>{
+      26 |   await setup(page,'<a id="home" href="/public/entry" rel="nofollow home">우리 안내 입구</a><a id="lookalike" href="/public/manual" rel="homecoming">사용 안내</a><button id="button" rel="home" type="button">문서 창구</button>');
+    > 27 |   expect(await inspect(page,[['home','우리 안내 입구'],['lookalike','사용 안내'],['button','문서 창구']])).toEqual(['position',null,null]);
+         |                                                                                              ^
+      28 | });
+      29 |
+      30 | test('명확한 skip 이름과 유일한 실제 main·navigation target을 연결한다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:27:94
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-rel의-정확한-home-token만-위치-이동-표식으로-취급한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-rel의-정확한-home-token만-위치-이동-표식으로-취급한다/error-context.md
+
+  3) tests/navigation-utility.spec.mjs:30:1 › 명확한 skip 이름과 유일한 실제 main·navigation target을 연결한다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+      Array [
+    -   "position",
+    -   "position",
+    -   "position",
+    -   "position",
+    +   null,
+    +   null,
+    +   null,
+    +   null,
+      ]
+
+      30 | test('명확한 skip 이름과 유일한 실제 main·navigation target을 연결한다',async({page})=>{
+      31 |   await setup(page,`<a id="english" href="#reading-zone">Jump to main content</a><a id="korean" href="#topics-zone">메뉴로 이동</a><a id="contents" href="#article-zone">주요 내용으로 바로가기</a><a id="menu" href="#services-zone">Skip to navigation</a><main id="reading-zone"><h2>공개 문서</h2></main><nav id="topics-zone"><ul>${children}</ul></nav><div id="article-zone"><div><h3>장비 이용 지침</h3></div><p>고정 설명</p></div><div id="services-zone"><ul>${children}</ul></div>`);
+    > 32 |   expect(await inspect(page,[['english','Jump to main content'],['korean','메뉴로 이동'],['contents','주요 내용으로 바로가기'],['menu','Skip to navigation']])).toEqual(['position','position','position','position']);
+         |                                                                                                                                                  ^
+      33 | });
+      34 |
+      35 | test('없는·중복·상호작용·편집 target과 모호한 skip 이름은 위치 기능으로 단정하지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:32:146
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-명확한-ski-e7553-ain·navigation-target을-연결한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-명확한-ski-e7553-ain·navigation-target을-연결한다/error-context.md
+
+  4) tests/navigation-utility.spec.mjs:45:1 › 의미 있는 자식 메뉴가 있는 순수 JS·fragment 부모만 branch로 표시한다 ──────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Array [
+    -   "branch",
+    -   "branch",
+    +   null,
+    +   null,
+      ]
+
+      45 | test('의미 있는 자식 메뉴가 있는 순수 JS·fragment 부모만 branch로 표시한다',async({page})=>{
+      46 |   await setup(page,`<ul><li><a id="noop" href="javascript:void(0);">현장 정보</a><span aria-hidden="true"></span><ul>${children}</ul></li><li><a id="empty-hash" href="#">자료 구분</a><ol>${children}</ol></li></ul>`);
+    > 47 |   expect(await inspect(page,[['noop','현장 정보'],['empty-hash','자료 구분']])).toEqual(['branch','branch']);
+         |                                                                         ^
+      48 | });
+      49 |
+      50 | test('명시적인 disclosure는 같은 지역의 실제 menu/list만 가리켜야 한다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:47:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-의미-있는-자-60bfd-S·fragment-부모만-branch로-표시한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-의미-있는-자-60bfd-S·fragment-부모만-branch로-표시한다/error-context.md
+
+  5) tests/navigation-utility.spec.mjs:50:1 › 명시적인 disclosure는 같은 지역의 실제 menu/list만 가리켜야 한다 ────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 3
+
+      Array [
+    -   "branch",
+    -   "branch",
+    -   "branch",
+    +   null,
+    +   null,
+    +   null,
+      ]
+
+      50 | test('명시적인 disclosure는 같은 지역의 실제 menu/list만 가리켜야 한다',async({page})=>{
+      51 |   await setup(page,`<nav><button id="sibling" type="button" aria-expanded="false">기관 목록</button><ul>${children}</ul></nav><div><button id="controlled" type="button" aria-expanded="false" aria-controls="local-menu">문서 구분</button><ul id="local-menu">${children}</ul></div><div><div id="role-button" role="button" aria-expanded="true" aria-controls="role-menu" aria-haspopup="menu">지원 문서</div><div id="role-menu" role="menu"><a role="menuitem" href="/public/contact">연락처</a></div></div>`);
+    > 52 |   expect(await inspect(page,[['sibling','기관 목록'],['controlled','문서 구분'],['role-button','지원 문서']])).toEqual(['branch','branch','branch']);
+         |                                                                                                    ^
+      53 | });
+      54 |
+      55 | test('독립 문서 목적지·leaf JS·내용 없는 submenu는 branch로 만들지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:52:100
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-명시적인-di-1149b-은-지역의-실제-menu-list만-가리켜야-한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-명시적인-di-1149b-은-지역의-실제-menu-list만-가리켜야-한다/error-context.md
+
+  6) tests/navigation-utility.spec.mjs:70:1 › 입력·checked·편집 내용의 getter를 호출하거나 결과로 내보내지 않는다 ─────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "kind": "branch",
+    +   "kind": undefined,
+        "privateKind": null,
+      }
+
+      75 |     return {kind:NavigationUtility.navigationUtility(document.querySelector('#menu'),'문서 분류'),privateKind:NavigationUtility.navigationUtility(document.querySelector('#draft'),'고정 편집 이름')??null};
+      76 |   });
+    > 77 |   expect(result).toEqual({kind:'branch',privateKind:null});expect(JSON.stringify(result)).not.toContain('PRIVATE_');
+         |                  ^
+      78 | });
+      79 |
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:77:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-입력·chec-77ab3--getter를-호출하거나-결과로-내보내지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-입력·chec-77ab3--getter를-호출하거나-결과로-내보내지-않는다/error-context.md
+
+  6 failed
+    tests/navigation-utility.spec.mjs:15:1 › 명시된 breadcrumb navigation과 정확한 구조 표식은 위치 경로다 ──────────
+    tests/navigation-utility.spec.mjs:25:1 › rel의 정확한 home token만 위치 이동 표식으로 취급한다 ──────────────────
+    tests/navigation-utility.spec.mjs:30:1 › 명확한 skip 이름과 유일한 실제 main·navigation target을 연결한다 ──────
+    tests/navigation-utility.spec.mjs:45:1 › 의미 있는 자식 메뉴가 있는 순수 JS·fragment 부모만 branch로 표시한다 ───────
+    tests/navigation-utility.spec.mjs:50:1 › 명시적인 disclosure는 같은 지역의 실제 menu/list만 가리켜야 한다 ─────────
+    tests/navigation-utility.spec.mjs:70:1 › 입력·checked·편집 내용의 getter를 호출하거나 결과로 내보내지 않는다 ──────────
+  6 passed (3.0s)

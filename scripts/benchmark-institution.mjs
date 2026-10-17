@@ -6,11 +6,11 @@ import os from 'node:os';
 import path from 'node:path';
 
 if (process.argv.includes('--help')) {
-  console.log('node scripts/benchmark-institution.mjs [--output-dir=docs/evidence/run007/institution-performance]\nSynthetic supported-origin SMU board, 1,000 controls; one excluded warmup and ten runs per mode. Active institution evidence must cover at least 900 controls. No real HTTP responses or native/user-profile interaction.');
+  console.log('node scripts/benchmark-institution.mjs [--output-dir=docs/evidence/run008/institution-performance]\nSynthetic supported-origin SMU board, 1,000 controls; one excluded warmup and ten runs per mode. Active institution evidence must cover at least 900 controls. No real HTTP responses or native/user-profile interaction.');
   process.exit(0);
 }
 for (const arg of process.argv.slice(2)) if (!/^--output-dir=.+$/.test(arg)) throw new Error(`Unknown or incomplete option: ${arg}`);
-const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run007/institution-performance';
+const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run008/institution-performance';
 const fixtureURL = 'https://www.smu.ac.kr/kor/life/technical.do';
 const sha256 = data => createHash('sha256').update(data).digest('hex');
 async function sourceHashes(dir = 'src') {

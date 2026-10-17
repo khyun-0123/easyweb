@@ -1,0 +1,3370 @@
+@charset "utf-8";
+#breakingNewsMapSpecial svg{width: 150%;height: 111%;margin: 0px -160px;}
+
+.radiation-map{margin-top: 90px;margin-left: 143px}
+.travel-list strong{font-weight:bold;color:#333;margin-right:10px}
+.travel-cont{text-align:left !important}
+.travel-cont p{display:inline-block}
+
+/*미세먼지*/
+#dust_area li{list-style:none;float:left;padding:10px 33px;margin-top:10px}
+#dust_area .dust_good{background: url('../images/map/mapIcon/map-icon64.png') no-repeat 0 8px;background-size:20%}
+#dust_area .dust_nomal{background: url('../images/map/mapIcon/map-icon63.png') no-repeat 0 8px;background-size:20%}
+#dust_area .dust_bad{background: url('../images/map/mapIcon/map-icon62.png') no-repeat 0 8px;background-size:20%}
+#dust_area .dust_verybad{background: url('../images/map/mapIcon/map-icon61.png') no-repeat 0 8px;background-size:15.5%}
+#dust_area .dust_nodata{background: url('../images/map/mapIcon/map-icon60.png') no-repeat 0 8px;background-size:14%}
+/* 재난정보 - 강풍 */
+.disaster-situationarea {
+    width: 1400px;
+    margin:0px auto;
+    padding-bottom:30px;
+    display: flex;
+    justify-content: space-between;
+}
+.disaster-situationleft {width: 59%}
+.disaster-situationleft1 {width: 59%}
+.content-boxarea {
+    border:1px #d0d0d0 solid;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding:20px 25px;
+    height: 300px;
+}
+.disaster-situationleft1 .content-boxarea {
+    border:1px #d0d0d0 solid;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding:30px;
+    height: 337px;
+}
+.disaster-situationleft .content-boxarea2 .content-guidebox{width: 100%;}
+.disaster-situationleft1 .content-guidebox {
+    margin-top:30px;
+    width: 100%;
+    height: 380px;
+}
+.disaster-situationleft1 .content-guidebox .disaster-guidelinelist {
+    display: flex;
+    padding-top:10px;
+    height: 260px;
+}
+
+.disaster-situationleft1 .content-guidebox .dis-textlist ul {
+    height: 240px;
+    padding-right:10px;
+    overflow-y: scroll;
+}
+
+.disaster-situationleft1 .content-bannerbox {
+    width: 100%;
+    margin-top:30px;
+}
+.content-titlearea {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom:1px #ddd solid;
+    padding-bottom:15px;
+    margin-bottom:15px;
+}
+.content-titlearea h3 {
+    font-size: 24px;
+    color:#222;
+    font-weight: 600;
+}
+.content-titlearea a {
+    font-size: 16px;
+    color:#666;
+    font-weight: 500;
+    padding-top:10px
+}
+
+/* 이시각 재난현황 */
+.datetime-list {
+    width: 100%;
+    padding-bottom:20px
+}
+.datetime-list ul {
+    display: flex;
+}
+.datetime-list li {
+    font-size: 15px;
+    color:#555;
+    background: url('../images/sub/setting-bar.png') no-repeat 100% 50%;
+    padding-right:10px;
+    margin-left:10px
+}
+.datetime-list li span {
+    color:#888;
+    padding-right:5px
+}
+.datetime-list li:first-child {
+    /*margin-left: 0;*/ /*재난정보 간격 수정*/
+}
+
+.datetime-list li:last-child {
+    /*padding-right:0;*//*재난정보 간격 수정*/
+    background: none;
+}
+
+.thistime-newslist {
+    width: 100%;
+    overflow-y: scroll;
+    height: 59%;
+    padding-right:10px
+}
+
+.scroll-y::-webkit-scrollbar {
+    width: 7px; 
+  }
+.scroll-y::-webkit-scrollbar-thumb {
+    background-color: #dedede;
+    border-radius: 50px;
+}
+.scroll-y::-webkit-scrollbar-track {
+    background-color: #f6f6f6;
+    border:1px #dedede solid;
+    border-radius: 50px;
+}
+
+
+.thistime-newslist li span {
+    display: inline-block;
+    line-height: 19px;
+    height: 19px;
+    padding:0px 7px ;
+    font-size: 13px;
+    color:#fff;
+    font-weight: 500;
+    border-radius: 3px;
+    min-width: 45px;
+    text-align: center;
+    margin-right:8px
+}
+.state-step1 {
+    background-color: #d93131;
+}
+.state-step2 {
+    background-color: #ea6901;
+}
+.state-step3 {
+    background-color: #1764C4;
+}
+.state-step4 {
+    background-color: #666;
+}
+.thistime-newslist-main2 li .state-step5 {
+		color:#666
+}
+.state-step5 {
+    background-color: #fff;
+    border:1px #ddd solid;
+    color:#5555
+}
+.thistime-newslist li {
+    font-size: 16px;
+    color:#222;
+    line-height: 1.3;
+    font-weight: 500;
+    padding-bottom:15px
+}
+
+
+/* 재난문자 */
+.disaster-textmessagelist {
+     width: 100%;
+}
+
+.disaster-textmessagelist li {
+    border-bottom:1px #dcdcdc dotted;
+    padding-bottom:10px;
+    margin-bottom:10px;
+    display: flex;
+}
+.disaster-textmessagelist li:last-child {
+    border-bottom:0px;
+    margin-bottom:0;
+    padding-bottom:0
+}
+.disaster-textmessagelist li span {
+    display: inline-block;
+    line-height: 20px;
+    height: 20px;
+    padding:0px 7px ;
+    font-size: 13px;
+    color:#fff;
+    font-weight: 500;
+    border-radius: 3px;
+    text-align: center;
+    margin-right:5px;
+    min-width:85px;
+
+}
+
+.state-type1 {
+    background-color:#1764C4
+}
+.textmessage-list {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+    color:#222;
+    font-weight: 500;
+}
+.disaster-textmessagelist li .textmessage-time {
+    font-size: 16px;
+    color:#888;
+    padding-top:5px
+}
+
+
+
+.disaster-situationright {
+    width: 39%;
+}
+/* 낙뢰관측 지도 영역 */
+.disaster-situationright {
+    width: 39%;
+}
+
+
+/* 재난현황 지도 */
+.content-maparea1 {
+    border:1px #ddd solid;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 15px 15px;
+    box-sizing: border-box;
+    padding:30px;
+    height: 630px;
+    position: relative;
+    overflow: hidden;
+    font-size:14px;
+    white-space:nowrap
+}
+.content-maparea1 > div > div > div > div img{top:-1px !important;right:-1px !important} 
+.content-maparea2 {
+    /* border:1px #d0d0d0 solid; */
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding:30px;
+    height: 660px;
+    position: relative;
+    overflow: hidden;
+}
+.content-maptitle {
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    font-size: 16px;
+    color:#fff;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding:18px;
+    text-align: right;
+}
+.content-maptitle span {
+    font-size: 16px;
+}
+.content-mapcomm {
+    width: 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    font-size: 14px;
+    color:#fff;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding:15px;
+}
+.map-btnarea {
+    position: absolute;
+    bottom:20px;
+    right:20px;
+}
+
+.map-btnarea button {
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 12px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	gap: 6px;
+	background-color:#1764C4;
+	color: #fff;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: backgroud 0.2s;
+	justify-content: space-between;
+}
+.map-btnarea button::after {
+	content: "";
+	width: 14px;
+	height: 14px;
+	background: url('../images/sub/btn-search.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+.map-btnarea button:hover {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* 홍수 지도 하단 버튼 */
+.map-btnarea .river-flooding {
+	background-color:#36435e;
+}
+
+/* 하단 - 재난 발생시 이렇게 행동하세요! */
+.disaster-guidelinearea {
+    width: 1400px;
+    margin:0px auto;
+    display: flex;
+    height: 100%;
+    padding-bottom:30px;
+    justify-content: space-between;
+}
+.content-guidebox {
+    width: 59%;
+    height: 100%;
+    border-radius: 15px;
+    padding:20px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f6f6f6;
+}
+.content-guidebox.w100p {
+    width: 100%;
+    margin-bottom:30px
+}
+.disaster-guidelinelist {
+    display: flex;
+    padding-top:10px
+}
+.dis-imgarea {
+    width: 160px;
+    height: 135px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.dis-textlist {
+     /*padding-right:20px;*/ /*재난정보 li 간격 수정*/
+    width: calc(100% - 180px);       
+}
+.dis-textlist ul {
+    height: 135px;
+    padding-right:10px;
+    overflow-y: scroll; /*20260309 추가*/
+}
+.dis-textlist li {
+    font-size: 15px;
+    color:#222;
+    background: url('../images/sub/comm-dot.png') no-repeat 0 7px;
+    padding-left:10px;
+    padding-bottom:10px;
+}
+.content-bannerbox {
+    width: 20%;
+    border-radius: 20px;
+    padding:0px;
+    text-align: center;
+
+}
+.content-bannerbox h3 {
+    font-size: 20px;
+    padding-bottom:5px;
+}
+.content-bannerbox p {
+    font-size: 13px;
+}
+.content-bannerbox img {
+    padding:10px 0;
+}
+.btn-mapgo {
+    background: #1764C4 url('../images/sub/btn-pop-arrow.png') no-repeat 90% 50%;
+    color:#fff;
+    padding:5px 40px 5px 20px;
+    border-radius: 5px;
+}
+/*
+.content-bannerbox img.mount-img {
+    padding:15px 0;
+    max-width: 138px;
+    width:100%;
+}*/
+.btn-mountgo {
+    background: #1f3640 url('../images/sub/btn-pop-arrow.png') no-repeat 90% 50%;
+    color:#fff;
+    padding:5px 40px 5px 20px;
+    border-radius: 5px;
+    
+}
+
+/* 미세먼지 - 우측 하단 배너 */
+.content-boxarea1 .content-bannerbox {
+    width: 20%;
+    border-radius: 20px;
+    padding:0px 20px;
+    text-align: left;
+    height: 210px;
+    background: url('../images/sub/banner-icon01.png') no-repeat 90% 50%;
+}
+.content-boxarea1 .content-bannerbox h3 {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom:10px;
+}
+.content-boxarea1 .content-bannerbox p {
+    font-size: 16px;
+    padding-bottom:10px;
+}
+.content-boxarea1 .content-bannerbox img {
+    display:none;
+    padding:10px 0;
+    max-width: 138px;
+    width:100%
+}
+.content-boxarea1 .btn-mapgo {
+    background: #1764C4 url('../images/sub/btn-pop-arrow.png') no-repeat 95% 48%;
+    color:#fff;
+    min-width: 270px;
+    text-align: left;
+    padding:10px 40px 10px 20px;
+    border-radius: 5px;
+    margin-top:50px
+}
+/* 공통 - 우측 하단 배너2 */
+.content-bannerbox2 {
+    width: 39%;
+    margin-top:30px;
+    border-radius: 20px;
+    padding:35px 20px 0;
+    text-align: left;
+	/*height: 210px;*/
+    height: 216px; 
+    background: url('../images/sub/banner-icon01.png') no-repeat 90% 50%;
+}
+.content-bannerbox2 h3 {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom:10px;
+}
+.content-bannerbox2 p {
+    font-size: 16px;
+    padding-bottom:10px;
+}
+.content-bannerbox2 img {
+    display:none;
+    padding:10px 0;
+	/*max-width: 138px;*/
+    max-width: 147px;
+    width: 100%;
+}
+.content-bannerbox2 .btn-mapgo {
+    background: #1764C4 url('../images/sub/btn-pop-arrow.png') no-repeat 95% 48%;
+    color:#fff;
+    min-width: 200px;
+    text-align: left;
+    padding:10px 40px 10px 20px;
+    border-radius: 5px;
+    margin-top:5px
+}
+
+/* 가뭄예경보 - 1단 화면 */
+.content-situation-type1 {
+    width: 1400px;
+    margin:0px auto;
+    padding-bottom:30px;
+}
+.situaboard-toparea {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding:10px 20px 9px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.situaboard-toplist {
+    width:80%;
+}
+
+.situaboard-toplist li {
+    display: flex;
+    width: 100%;
+}
+.situaboard-toplist li{
+    display: flex;
+    padding-bottom:10px;
+    position: relative;
+    line-height:2;
+}
+.situaboard-toplist li .tit {
+    font-size: 16px;
+    color:#222;
+    font-weight: 600;
+    flex-basis: 150px;
+    padding-right:0px;
+}
+.btn-rightlist {
+   margin-bottom:5px;
+}
+
+.situaboardform-field {
+    display: flex;
+    vertical-align: top;
+    width:100%
+}
+.situaboard-toplist li input, .situaboard-toplist li select {
+    margin:0 2px;    
+}
+
+.situaboardform-field select, .form-field input {
+    display: inline-block;
+    border:1px #acacac solid;
+    border-radius: 5px;
+    height:40px;
+    line-height:40px;
+    padding: 0 10px;
+    font-size:15px;
+    color:#666;
+}
+.situaboardform-field .dropdown-section {
+    flex-basis: 180px;
+	flex-shrink: 1;
+}
+.situaboardform-field input {
+    height:32px;
+    line-height:32px;
+    flex-grow: 1;
+}
+.situaboard-topbtn {
+    width:100%;
+    border-top:1px #e4e4e4 dashed;
+    display: flex;
+    justify-content: space-between;
+    padding-top:10px;
+    margin-top:10px
+}
+   
+.situaboard-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top:20px;
+    margin-bottom:10px;
+}
+.situaboard-count {
+    font-size: 16px;
+    color:#666;
+    padding-bottom:0px;
+    padding-top:12px;
+    height: 32px;
+}
+.situaboard-count span {
+    color:#1764c4;
+    font-weight: 600;
+}
+.situaboard-searcharea {
+    text-align: right;
+}
+
+.situaboard-search {
+    border-radius: 0 5px 5px 0;
+    height:32px;
+    width:32px;
+    font-size: 0;
+    background: #222 url('../images/sub/board-reset.png') no-repeat 50% 50%;
+}
+.situaboard-searcharea {font-size: 0; display: flex;}
+.situaboard-searcharea input[type=text] {
+    border-radius: 5px 0 0 5px;
+    border-right:0px
+}
+
+
+.situaboard-searcharea input[type=text] {
+    height:32px;
+    line-height:32px;
+    font-size: 15px;
+    color:#666;
+    border:1px #acacac solid;
+    border-right:0px;
+    margin-left:3px;
+    padding-left : 10px;
+}
+.situaboard-searcharea input[type=text]::placeholder {
+    color:#666
+}
+
+/* 재난현황 table toparea drop-down select */
+.situaboard-list {
+    width:100%;
+}
+.situaboard-list table {
+    width:100%;
+    border-top:2px #222 solid;
+    
+}
+.situaboard-list table thead th{
+    font-size:16px;
+    color:#222;
+    text-align: center;
+    font-weight: 600;
+    padding:13px 0;
+    border-bottom:1px #ddd solid;
+    background-color: #f9f9f9;    
+}
+.situaboard-list table tbody td {
+    border-bottom: 1px solid #EAEEEF; 
+    color: #666;
+    background-color: #fff;
+    text-align: center;
+    padding:13px 10px;
+    font-size: 14px;
+    cursor:pointer
+}
+.situaboard-list table tbody td[colspan]{cursor:unset !important}
+.fire-table table tbody td {text-align:left}
+.situaboard-list table tbody td span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding-top:4px;
+    border-radius: 50%;    
+    background-color: #e8eaef;
+}
+.situaboard-list table tbody td.tit {
+    text-align:left;
+    color:#000;
+    font-weight: 600;
+}
+.situaboard-list table tbody td.tit a{
+    text-align:left;
+    color:#000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.situaboard-list table tbody td.tit:hover {
+    text-decoration: underline;
+}
+.situaboard-list table tbody td.tal {
+    text-align: left;
+}
+.situaboard-list table tbody td label {
+    font-size: 0;
+}
+
+
+
+/* paging */
+
+/* pagination
+/* –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.paging {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 20px; 
+    color:#666;
+    font-size: 16px;
+}
+.paging a,
+.paging button {
+    width: 34px; 
+    height: 34px; 
+    border:1px #ddd solid;
+    text-align:center; 
+    line-height: 1; 
+    text-decoration: none; 
+    cursor: pointer;
+    border-radius: 3px; 
+    letter-spacing:normal; 
+    transition:all 0.1s ease-in;
+}
+.paging > a:hover, .paging > button:hover {
+    border-color: #1764c4; 
+    background-color: #1764c4; 
+    color: #fff;
+}
+.paging a + a,
+.paging button + button {
+    margin-left: 7px;
+}
+.paging .btn-page-start {
+    background: no-repeat center center / 16px 15px; 
+    background-image: url("../images/sub/first.png");
+    border:0px
+}
+.paging .btn-page-prev {
+    background: no-repeat center center / 10px 15px; 
+    background-image: url("../images/sub/pre.png");
+    border:0px
+}
+.paging .btn-page-next {
+    background: no-repeat center center / 10px 15px; 
+    background-image: url("../images/sub/next.png");
+    border:0px
+}
+.paging .btn-page-end {
+    background: no-repeat center center / 16px 15px; 
+    background-image: url("../images/sub/end.png");
+    border:0px
+}
+.paging .btn-page-start:hover {
+    background: no-repeat center center / 16px 15px; 
+    background-image: url("../images/sub/first.png");
+    
+}
+.paging .btn-page-prev:hover {
+    background: no-repeat center center / 10px 15px; 
+    background-image: url("../images/sub/pre.png");
+}
+.paging .btn-page-next:hover {
+    background: no-repeat center center / 10px 15px; 
+    background-image: url("../images/sub/next.png");
+}
+.paging .btn-page-end:hover {
+    background: no-repeat center center / 16px 15px; 
+    background-image: url("../images/sub/end.png");
+}
+
+.paging a.disabled,
+.paging button:disabled {cursor:default; opacity: 0.5;}
+.paging a.disabled:hover, .paging > button:disabled:hover {
+    border-color: transparent; 
+    background-color: transparent; 
+    color: transparent;
+}
+
+.nf-btn:disabled,.nf-btn.disabled {
+    cursor:default; 
+    border-color: #fff !important; 
+    background-color: #fff !important; 
+    color: #fff !important;
+}
+
+.paging .nav {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: auto 7px
+}
+
+.paging .nav > a:hover, .paging .nav > button:hover {
+    border-color: #1764c4; 
+    background-color: #1764c4; 
+    color: #fff;
+}
+.paging .nav > a.active, .paging .nav > button.active {
+    border-color: #1764c4; 
+    background-color: #1764c4; 
+    color: #fff; 
+    font-weight: bold
+}
+.paging .nav > a.active:hover, .paging .nav > button.active:hover {
+    border-color: #1764c4; 
+    background-color: #1764c4; 
+    color: #fff;
+}
+
+
+
+
+
+/* 가뭄예경보 - 범례 */
+.situation-content-type2 {
+    width: 1400px;
+    margin:0 auto;
+}
+.siaua-title {
+    color:#222;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* 가뭄예경보-농업용수 정보 */
+.situa-legendlist {
+    margin-top:10px;
+    width: 100%;
+    display: flex;
+    gap:30px;
+    padding:0px 0 10px 0;
+    border-top:2px #222 solid;
+    border-bottom:1px #d0d0d0 solid;
+}
+.situa-legendlist li {
+    padding:20px 0 10px 0 ;
+    width: 100%;
+    text-align: center;
+}
+
+.situa-legendlist li h4 {
+    font-size: 16px;
+    font-weight: 600;
+    padding:5px 20px 3px 20px;
+    border-radius: 50px;
+    color:#fff;
+    display: inline-block;
+    min-width: 60px;
+}
+.situa-legendlist li:nth-child(1) h4 {
+    background-color: #f3c00f;
+}
+.situa-legendlist li:nth-child(2) h4 {
+    background-color: #d86000;
+}
+.situa-legendlist li:nth-child(3) h4 {
+    background-color: #cb3030;
+}
+.legend-commentarea {
+    padding:15px 20px 0 20px;
+    font-size: 15px;
+    color:#222;
+    font-weight: 500;
+    min-height:55px;
+}
+.situa-legendlist li:first-child {
+    border-top:0px
+}
+
+.legend-textlist {
+    margin-top:10px;
+    border-top:1px #d0d0d0 dashed;
+    background-color: #f6f6f6;
+    padding:20px;
+    border-radius: 0 0 10px 10px;
+    min-height:190px
+}
+.situa-legendlist li .legend-textlist li {
+    border-top:0px;
+    font-size: 15px;
+    color:#555;
+    padding:2px 0 2px 10px;
+    text-align: left;
+    background: url(../images/sub/comm-dot.png)no-repeat 0 10px;
+}
+
+
+
+/* 낙뢰관측 - 지도 위 검색영역 */
+.disaster-situationright .situaboard-toparea {
+    margin-bottom:13px;
+    border-radius: 20px;
+    position: relative;
+}
+.thunder-toplist {
+    width:80%;
+    display: flex;
+}
+.thunder-toplist li{
+   display: inline-block;
+    line-height: 40px;
+}
+.thunder-toplist li.title {
+    font-size: 16px;
+    color:#222;
+    font-weight: 600;
+    margin-right:5px;
+}
+.thunder-toplist li.form-field {
+    margin-right:15px;
+}
+
+.thunder-toplist li.form-field .input-group input {
+    width: 110px;
+    padding-left:5px;
+}
+.thunder-toplist li.form-field .dropdown-section {
+    width: 120px;
+    background-color: #fff;
+}
+.dropdown-list li {
+    display: block;
+}
+.btn-rightlist {
+   margin-bottom:5px;
+}
+
+.situaboardform-field {
+    display: flex;
+    vertical-align: top;
+    width:100%
+}
+.thunder-toplist li input, .thunder-toplist li select {
+    margin:0 2px;    
+}
+
+/* 미세먼지 두번째 탭 */
+.disaster-situationright .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap:2px;
+    width: 100%;
+}
+.disaster-situationleft .content-bannerbox {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 미세먼지 탭 스타일 */
+.tab_item {
+    width: 49%;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px #ccc solid;
+    color: #555;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 0;
+    cursor: pointer;
+    z-index: 1;
+    margin-left: -1px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .tab_item:hover {
+
+    color: #fff;
+} */
+
+/* 라디오 버튼 UI삭제*/
+input[name="tab_item"] {
+    display: none;
+}
+
+/* 탭 컨텐츠 스타일 */
+.tab_content {
+    width: 100%;
+    display: none;
+    clear: both;
+    overflow: hidden;
+}
+
+
+/* 선택 된 탭 콘텐츠를 표시 */
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/* 선택된 탭 스타일 */
+.tabs input:checked + .tab_item {
+    background: #1764c4;
+    border: 1px #1764c4 solid;
+    color: #fff;
+}
+.btn-today {
+    background-color:#36435e;
+    padding:5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-left:5px;
+    color:#fff;
+    border-radius: 5px;
+}
+.btn-tomorrow {
+    border:1px #d0d0d0 solid;
+    background-color: #fff;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+    padding:5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-left:5px;
+    color:#222;
+    border-radius: 5px;
+}
+
+.tab-toparea {
+    text-align: right;
+    padding:13px 0;
+}
+
+/* 미세먼지예보 table */
+.dustTable {
+    width: 100%;
+}
+.dustTable table {
+    width: 100%;
+}
+.dustTable table thead tr th {
+   border-top:1px #ddd solid;
+   border-bottom:1px #ddd solid;
+   border-right:0px #ddd solid;
+   background-color:#f9f9f9;
+   font-size: 18px;
+   font-weight: 600;
+   color:#222;
+   text-align: center;
+   padding:15px 0;
+}
+.dustTable table thead tr th:last-child {
+    border-right:0px
+}
+
+
+.dustTable table tbody tr th {
+    border-right:1px #ddd solid;
+}
+.dustTable table tbody th:first-child {
+    background-color: #fff;
+    position: -webkit-sticky; 
+    position: sticky; 
+    left: 0; 
+}
+.dustTable table tbody tr th,
+.dustTable table tbody tr td {
+    font-size: 16px;
+    padding:13px 10px;
+    text-align: center;
+    border-bottom:1px #ddd solid;
+    background-color: #fff;
+}
+
+.dustTable table tbody tr td.tb-bd {
+    border-right:1px #ddd solid;
+}
+.table-comment {
+    font-size: 15px;
+    padding-top:15px;
+    color:#666;
+    text-align: right;
+}
+/* 테이블 하단 우측정렬 */
+
+
+.legend-comment {
+    font-size: 13px;
+    padding-top:15px;
+    color:#666;
+    text-align: left;
+     border-top:1px #ddd dotted;
+     padding-top:10px;
+     margin-top:10px
+}
+/* 범례 하단 좌측정렬 */
+
+
+
+
+/* 방사선 범례 */
+.radiation-legend {
+    margin-top:10px;
+    border:1px #ddd solid;
+    padding:10px;
+    border-radius: 20px;
+}
+.radiation-legend ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.radiation-legend li {
+    padding:10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color:#555;
+    line-height: 1.3;
+}
+.radiation-legend li:first-child {
+    padding-left:0;
+}
+.radiation-legend li:last-child {
+    padding-right:0;
+}
+.radiation-legend li span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right:3px;
+}
+.radiation-legend li p {
+    font-size: 13px;
+    font-weight: 500;
+    color:#888
+}
+.redia-state1 {
+    background-color: #1f8f51;
+}
+.redia-state2 {
+    background-color: #f5ad01;
+}
+.redia-state3 {
+    background-color: #e57d0e;
+}
+.redia-state4 {
+    background-color: #d61313;
+}
+
+
+.dustTable .radiation-state-text1 {
+    color:#1f8f51;
+    font-weight: 600;
+}
+.dustTable .radiation-state-text2 {
+    color:#f5ad01;
+    font-weight: 600;
+}
+.dustTable .radiation-state-text3 {
+    color:#e57d0e;
+    font-weight: 600;
+}
+.dustTable .radiation-state-text4 {
+    color:#d61313;
+    font-weight: 600;
+}
+
+
+/* 산사태 table title */
+
+.tbl-title {
+    font-size: 24px;
+    color:#222;
+    font-weight: 600;
+    margin-bottom:20px;
+}
+.situaboard-list p {
+    padding:2px 5px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.situaboard-list .landslide-state1 {
+    color:#1764C4;
+    background-color: #f0f4f8;
+}
+.situaboard-list .landslide-state2 {
+    color:#d61313;
+    background-color: #f7ebeb;
+}
+.situaboard-list .appoint {
+    background-color: #f7ebeb;
+    color:#d61313;
+
+}
+.situaboard-list .clear {
+    background-color: #fafafa;
+    color:#888;
+    border:1px #ddd solid
+}
+
+
+.content-bannerbox.gap-left {
+    margin-left:30px;
+}
+
+
+/* 산불 - datepicker input width */
+.thunder-toplist li.form-field .input-group.inp-date input {
+    width: 150px;
+    padding-left:5px;
+}
+
+
+/* 적조 상단 검색 */
+.redtide-toplist {
+    width:100%;
+    display: flex;
+}
+.redtide-toplist li{
+   display: flex;
+   gap:5px;
+   line-height: 40px;
+}
+.redtide-toplist li.title {
+    font-size: 16px;
+    color:#222;
+    font-weight: 600;
+    margin-right:10px;
+}
+.redtide-toplist li.form-field {
+    margin-right:25px;
+
+}
+.redtide-toplist .form-field .form-input {
+    width: 50%;
+}
+.redtide-toplist li.form-field .input-group input {
+    width: 150px;
+    padding-left:5px;
+}
+
+.redtide-toplist li.form-field .dropdown-section {
+    width: 120px;
+    background-color: #fff;
+}
+.btn-rightsearch {
+   /*margin-bottom:5px; */  
+   /*position: absolute;*/
+   bottom:10px;
+   right:20px;
+   line-height:40px
+}
+
+.situaboardform-field {
+    display: flex;
+    vertical-align: top;
+    width:100%
+}
+.redtide-toplist li input, .redtide-toplist li select {
+    margin:0 2px;    
+}
+
+/* 테이블 상단 검색영역 설명글 */
+.search-comment {
+    font-size: 14px;
+    color:#666;
+    padding-top:5px;
+    padding-left:10px;
+    text-align: right;
+}
+.board-comment {
+    font-size: 14px;
+    color:#666;
+    padding-top:10px
+}
+
+/* 발생시 이렇게 행동하세요! 하단  100%일 경우  */
+.disaster-situationarea .disaster-situationright.w100p {
+    width: 100%;
+}
+
+
+
+
+/* 홍수 탭 3개 */
+.tabs-river {
+    display: block;
+    width: 100%;
+}
+.disaster-situationleft .content-bannerbox {
+    width: 100%;
+    box-sizing: border-box;
+}
+.tab_item {
+    display: inline-block;
+    width: 200px;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px #ccc solid;
+    color: #555;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 0;
+    cursor: pointer;
+    z-index: 1;
+    margin-left: -1px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.tab-toparea.fl-r {
+    padding:0 0 5px 0
+}
+
+/* .tab_item:hover {
+
+    color: #fff;
+} */
+
+/* 라디오 버튼 UI삭제*/
+input[name="tab_item"] {
+    display: none;
+}
+
+/* 탭 컨텐츠 스타일 */
+.tab_content {
+    width: 100%;
+    display: none;
+    clear: both;
+    overflow: hidden;
+}
+
+
+/* 선택 된 탭 콘텐츠를 표시 */
+#all:checked ~ #all_content,
+#tab01:checked ~ #tab01_content,
+#tab02:checked ~ #tab02_content {
+  display: block;
+}
+
+/* 선택된 탭 스타일 */
+.tabs-river input:checked + .tab_item {
+  background: #1764c4;
+    border: 1px #1764c4 solid;
+    color: #fff;
+}
+
+
+/* 감염병 */
+.infectious-box {
+     background: #fef8e7 url('../images/sub/Infectious-img.png') no-repeat 100% 100%;
+     border: 1px #e6dab8 solid;
+     box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.05);
+     padding:30px;
+     border-radius: 20px;
+}
+.infectious-box h3 {
+    font-size: 28px;
+    color:#222;
+    padding-bottom:5px;
+    font-weight: 600;
+}
+
+.infectious-box p {
+    font-size: 18px;
+    color:#666;
+    padding-bottom:10px;
+}
+.infect-btnarea {
+    margin-top:10px
+}
+.infect-btnarea button {
+    font-size: 18px;
+    font-weight: 500;
+    color:#fff;
+    padding:10px 45px 10px 20px;
+    border-radius: 5px;
+}
+.infect-potal {
+    background: #3871bd url('../images/sub/btn-link.png') no-repeat 93% 50%;
+}
+.infect-dash {
+    background: #46a06e url('../images/sub/btn-link.png') no-repeat 93% 50%;
+}
+
+ /* 전력 */
+.e-energybox {
+    text-align: center;
+    margin-bottom:20px;
+    height: 180px;
+    display: flex;
+    justify-content: space-between;
+}
+.energy-imgBox {
+    background: url('../images/sub/bg_level.png') no-repeat 50% 50%;
+    width: 178px;
+    height: 129px;
+    position: relative
+}
+
+.energy-arrow {
+    content: '';
+    position: absolute;
+    bottom: 30px;
+    left: 79px;
+    width: 23px;
+    height: 61px;
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transform-origin: 11px 49px;
+    transform-origin: 11px 49px;
+    -webkit-animation: graph 1s ease;
+    animation: graph 1s ease;
+}
+.energy-arrow.ready {
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}
+.energy-arrow.interest {
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+}
+.energy-arrow.caution {
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+.energy-arrow.guard {
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(50deg);
+    transform: rotate(50deg);
+}
+.energy-arrow.caution {
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+.energy-arrow.serious {
+    background: url('../images/sub/bg_level_arrow.png') 0 0;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.energy-stateText {
+    font-size: 26px;
+    font-weight: 700;
+    color:#222;   
+    margin-top:10px;
+}
+
+.energy-stateText span {
+    display: inline-block;
+     background: url('../images/sub/main_icon_graph.png') no-repeat 0 50%; 
+     padding-left:20px;   
+}
+
+.energy-graphBox {
+    width: calc(100% - 210px);
+}
+
+.energy-graphBox ul li {
+    width: 100%;
+}
+.e-graphtit {
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    background: url('../images/sub/dot.png') no-repeat 0 7px;
+    padding-left:7px
+}
+.energy-bararea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:8px;
+    height: 18px;
+}
+.e-graphBar {
+    width: 80%;
+    background-color: #d7d7d7;
+    border-radius: 20px;
+    height: 7px;
+}
+.mw-text {
+    font-size: 14px;
+    color:#666;
+    padding-left:10px;
+    text-align: left;
+    width: 20%;
+}
+.graph-bar {
+    display: block;
+    height: 7px;
+    border-radius: 20px;
+}
+.graph-bar.orange {
+    background-color: #f99c38;
+}
+.graph-bar.green {
+    background-color: #16b775;
+}
+.graph-bar.violet {
+    background-color: #bd5df9;
+}
+.graph-bar.skyblue {
+    background-color: #50a3f1;
+}
+/* width */
+.w5p {width:15%}
+.w10p {width:10%}
+.w15p {width:15%}
+.w20p {width:20%}
+.w25p {width:25%}
+.w30p {width:30%}
+.w35p {width:35%}
+.w40p {width:40%}
+.w45p {width:45%}
+.w50p {width:50%}
+.w55p {width:55%}
+.w60p {width:60%}
+.w65p {width:65%}
+.w70p {width:70%}
+.w75p {width:75%}
+.w80p {width:80%}
+.w85p {width:85%}
+.w90p {width:90%}
+.w95p {width:95%}
+.w100p {width:100%}
+
+.e-energybox img {
+    width: 100%;
+    max-width:452px
+}
+
+/* 지진 테이블 상단 타이틀 */
+.table-titlearea {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:5px;
+}
+.table-titlearea h3 {
+    font-size: 22px;
+    color:#222;
+    font-weight: 600;
+}
+.btn-stepcomment {
+    background: #1764C4;
+    color:#fff;
+    font-weight: 500;
+    text-align: left;
+    padding:5px 15px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.btn-stepcomment:hover {
+    background: #15529c;
+    color:#fff;
+    text-align: left;
+    padding:5px 15px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.pop-table.tal tbody td {
+    text-align: left;
+}
+.pop-table.tal tbody th {
+    text-align: center;
+}
+@media all and (max-width:1500px) {
+    /* 재난정보 - 강풍 */
+    .disaster-situationarea {
+        width: 100%;
+        padding:0 2%;
+        box-sizing: border-box;
+        margin:30px auto;
+        display: flex;
+        justify-content: space-between;
+    }  
+    .disaster-guidelinearea {
+        width: 100%;
+        padding:0 2%;
+        margin:0% auto 30px auto;
+        display: flex;
+        justify-content: space-between;
+    }   
+    
+    /* 가뭄예경보 - 1단 화면 */
+    .content-situation-type1 {
+        width: 100%;
+        padding:0 2%;
+        margin:40px auto;
+    } 
+    .situation-content-type2 {
+        width: 100%;
+        padding:0 2%;
+    }  
+
+    /* 전력 */
+    .e-energybox {
+        text-align: center;
+        margin-bottom:20px;
+        height: 180px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .e-graphBar {
+        width: 75%;
+        background-color: #d7d7d7;
+        border-radius: 20px;
+        height: 7px;
+    }
+    .mw-text {
+        font-size: 14px;
+        color:#666;
+        padding-left:10px;
+        text-align: left;
+        width: 25%;
+    }
+    
+}
+@media all and (max-width:1350px) { 
+    .radiation-legend {
+        margin-top:5px;
+        border:1px #ddd solid;
+        padding:10px;
+        border-radius: 20px;
+    }
+    .radiation-legend li {
+        padding:0 10px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 600;
+        color:#555;
+        line-height: 1.3;
+    }
+
+    .radiation-legend li span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right:3px;
+    }
+    .radiation-legend li p {
+        font-size: 12px;
+        font-weight: 500;
+        color:#888
+    }
+
+    /* 전력 */
+    .e-energybox {
+        text-align: center;
+        margin-bottom:20px;
+        height: 180px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .e-graphBar {
+        width: 72%;
+        background-color: #d7d7d7;
+        border-radius: 20px;
+        height: 7px;
+    }
+    .mw-text {
+        font-size: 14px;
+        color:#666;
+        padding-left:10px;
+        text-align: left;
+        width: 28%;
+    }
+
+}
+@media all and (max-width:1300px) { 
+    /* 상단 카테고리 하단 여백 조정 */
+    .situation-catearea.mb60 {
+        margin-bottom:3%;
+    }
+    
+    .disaster-situationright {
+	    /*width: 48%;*/
+        width: 39%;
+    }
+    .thistime-newslist {
+        height: 58%;
+    }
+    .datetime-list {
+        width: 100%;
+        padding-bottom:15px
+    }
+    .datetime-list ul {
+        display: flex;
+    }
+    .datetime-list li {
+        font-size: 14px;
+        color:#555;
+        background: url('../images/sub/setting-bar.png') no-repeat 100% 50%;
+        padding-right:10px;
+        margin-left:10px
+    }
+
+    /* 방사선 범례 */
+    .radiation-legend {
+        margin-top:5px;
+        border:1px #ddd solid;
+        padding:10px 15px;
+        border-radius: 20px;
+    }
+    .radiation-legend li {
+        padding:0px;
+        width: 25%;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        color:#555;
+        line-height: 1.3;
+    }
+
+    .radiation-legend li span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right:3px;
+    }
+    .radiation-legend li p {
+        font-size: 13px;
+        font-weight: 500;
+        color:#888
+    }    
+
+}
+/* pad area */
+
+@media all and (max-width:1280px) { 
+
+
+}
+@media all and (max-width:1250px) {
+    .content-bannerbox img.mount-img {
+        padding:8px 0 8px 0;
+        max-width: 138px;
+        width:100%;
+    }
+}
+@media all and (max-width:1150px) { 
+    .thistime-newslist {
+        height: 54%;        
+    }
+    .thistime-newslist li {
+        font-size: 15px;
+    }
+    .datetime-list {
+        width: 100%;
+        padding-bottom:15px
+    }
+    .datetime-list ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .datetime-list li {
+        font-size: 14px;
+        color:#555;
+        background: none;
+        padding-right:10px;
+        /*margin-left:0px*/
+    }
+    .textmessage-list {
+        font-size: 15px;
+    }
+
+
+
+    /* 가뭄예경보 - 범례 */
+    .situa-legendlist {
+        margin-top:10px;
+        width: 100%;
+        display: flex;
+        gap:20px;
+        border-top:2px #222 solid;
+    }
+    .situa-legendlist li {
+        text-align: center;
+    }
+    .situa-legendlist li h4 {
+        font-size: 16px;
+        font-weight: 600;
+        padding:5px 20px 3px 20px;
+        border-radius: 50px;
+        color:#fff;
+        display: inline-block;
+        min-width: 100px;
+    }
+    .situa-legendlist li:nth-child(1) h4 {
+        background-color: #d89109;
+    }
+    .situa-legendlist li:nth-child(2) h4 {
+        background-color: #d86000;
+    }
+    .situa-legendlist li:nth-child(3) h4 {
+        background-color: #cb3030;
+    }
+    .legend-commentarea {
+        padding:20px 0 0 0;
+        font-size: 15px;
+        color:#222;
+        font-weight: 500;
+        min-height:70px
+    }
+    .situa-legendlist li:first-child {
+        border-top:0px
+    }
+    .situa-legendlist li {
+        padding:30px 0 10px 0 
+    }
+    .legend-textlist {
+        margin-top:10px;
+        border-top:1px #d0d0d0 dashed;
+        background-color: #f6f6f6;
+        padding:20px;
+        border-radius: 5px;
+        min-height:230px
+    }
+    .situa-legendlist li .legend-textlist li {
+        border-top:0px;
+        font-size: 15px;
+        color:#555;
+        padding:3px 0 3px 10px;
+        text-align: left;
+        background: url(../images/sub/comm-dot.png)no-repeat 0 10px;
+    }
+    .content-boxarea1 .content-bannerbox {
+        width: 100%;
+        border-radius: 20px;
+        padding:0px 20px;
+        text-align: left;
+        height: 210px;
+        background: url('../images/sub/banner-icon.png') no-repeat 90% 50%;
+    }
+    .content-boxarea1 .btn-mapgo {
+        background: #1764C4 url('../images/sub/btn-pop-arrow.png') no-repeat 90% 48%;
+        color:#fff;
+        min-width: 200px;
+        text-align: left;
+        padding:10px 40px 10px 20px;
+        border-radius: 5px;
+        margin-top:20px
+    }
+
+    /* 전력 */
+    .e-energybox {
+        text-align: center;
+        margin-bottom:20px;
+        height: 180px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .e-graphBar {
+        width: 68%;
+        background-color: #d7d7d7;
+        border-radius: 20px;
+        height: 7px;
+    }
+    .mw-text {
+        font-size: 14px;
+        color:#666;
+        padding-left:10px;
+        text-align: left;
+        width: 32%;
+    }
+} 
+@media all and (max-width:1080px) {
+    .content-bannerbox button {
+        font-size: 14px;
+        padding:5px 20px 5px 10px;
+        background-size: 5px;
+        background-position: 95% 50%;
+    }
+    .content-bannerbox.gap-left img {
+        width: 122px;
+        padding:10px 0;
+    }
+    
+}
+@media all and (max-width:1024px) { 
+    .disaster-situationleft1 .content-guidebox .dis-textlist ul {
+        height: 240px;
+        padding-right:10px;
+        overflow-y: scroll;
+    }
+    .situaboard-toparea {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center; /*20260309 추가*/
+    }
+    .thunder-toplist {
+        width:100%;
+        display: flex;
+        justify-content: center;
+    }
+    .btn-rightlist {
+        width: 100%;
+        margin-top:5px;  
+    }
+    .btn-rightlist button {
+        width: 95%;
+    }
+    .thunder-toplist li{
+        display: inline-block;
+        line-height: 40px;
+        padding-right:0
+    }
+    .thunder-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        margin-right:5px;
+        width: 20%;
+    }
+    #forestCntList li.title{ width: 100% !important;}
+    .thunder-toplist li.form-field {
+        margin-right:0px;
+        width: 75%;
+    }
+    .thunder-toplist li.form-field .input-group input,
+    .thunder-toplist li.form-field .dropdown-section {
+        width: 88%;
+        box-sizing: border-box;
+    }
+    
+    .disaster-situationleft1 .content-guidebox {
+        height: 430px;
+    }
+    .disaster-situationleft1 .content-guidebox .disaster-guidelinelist {
+        display: flex;
+        padding-top:10px;
+        height: 280px;
+    }
+
+    .disaster-situationleft1 .content-guidebox .dis-textlist ul {
+        height: 265px;
+        padding-right:10px;
+        overflow-y: scroll;
+    }
+    
+    
+    /* 가뭄예경보 */
+    .situaboard-toparea {
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        padding:20px 20px 10px 20px;
+    }
+    .situaboard-toplist li{
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom:5px;
+        position: relative;
+        line-height:2;
+    }
+    .situaboard-toplist li .tit {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        flex-basis: 150px;
+        padding-right:0px;
+    }
+    .situaboardform-field .dropdown-section {
+        flex-basis: 100%;
+        flex-shrink: 1;
+    }
+    .situaboardform-field {
+        display: flex;
+        vertical-align: top;
+        width:100%;
+        padding-bottom:15px;
+    }
+    .search-input {
+        width: 100%;
+    }
+
+    /* 가뭄예경보 - 범례 */
+    .situa-legendlist {
+        margin-top:10px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap:0px;
+        border-top:2px #222 solid;
+        border-bottom:1px #d0d0d0 solid;
+    }
+    .situa-legendlist li {
+        text-align: left;
+        width: 100%;
+    }
+    .situa-legendlist li h4 {
+        font-size: 16px;
+        font-weight: 600;
+        padding:5px 20px 3px 20px;
+        border-radius: 50px;
+        color:#fff;
+        display: inline-block;
+        min-width: 80px;
+        text-align: center;
+    }
+    .situa-legendlist li:nth-child(1) h4 {
+        background-color: #f3c00f;
+    }
+    .situa-legendlist li:nth-child(2) h4 {
+        background-color: #d86000;
+    }
+    .situa-legendlist li:nth-child(3) h4 {
+        background-color: #cb3030;
+    }
+    .legend-commentarea {
+        padding:10px 0 0 0;
+        font-size: 15px;
+        color:#222;
+        font-weight: 500;
+        min-height:30px
+    }
+    .situa-legendlist li:first-child {
+        border-top:0px
+    }
+    .situa-legendlist li {
+        padding:20px 0 10px 0 
+    }
+    .legend-textlist {
+        margin-top:10px;
+        border-top:1px #d0d0d0 dashed;
+        background-color: #f6f6f6;
+        padding:20px;
+        border-radius: 5px;
+        min-height:80px
+    }
+    .situa-legendlist li .legend-textlist li {
+        border-top:0px;
+        font-size: 15px;
+        color:#555;
+        padding:3px 0 3px 10px;
+        text-align: left;
+        background: url(../images/sub/comm-dot.png)no-repeat 0 10px;
+    }
+    .content-maparea2 {
+        /* border:1px #d0d0d0 solid; */
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding:30px;
+        height: 660px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 적조 상단 검색 */
+    .redtide-toplist {
+		/* width:91%;*/
+        width: 100%; 
+        display: flex;
+
+    }
+    .redtide-toplist li{
+        display: flex;
+        gap:5px;
+        /* line-height: 40px; */
+    }
+    .redtide-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        margin-right:10px;
+    }
+    .redtide-toplist li.form-field {
+        margin-right:15px;
+
+    }
+    .redtide-toplist .form-field .form-input {
+        width: 90%;
+    }
+    .redtide-toplist li.form-field .input-group input {
+        width: 130px;
+        padding-left:5px;
+    }
+
+    .redtide-toplist li.form-field .dropdown-section {
+        width: 80px;
+    }
+
+    .situaboardform-field {
+        display: flex;
+        vertical-align: top;
+        width:100%
+    }
+    .redtide-toplist li input, .redtide-toplist li select {
+        margin:0 2px;    
+    }   
+    
+    /* 감염병 */
+    .infectious-box {
+        background: #fef8e7 url('../images/sub/Infectious-img1.png') no-repeat 100% 100%;
+        border: 1px #e6dab8 solid;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.05);
+        padding:30px;
+        border-radius: 20px;
+    }
+    .infectious-box h3 {
+        font-size: 24px;
+    }
+
+    .infectious-box p {
+        font-size: 16px;
+    }
+    .infect-btnarea {
+        margin-top:5px
+    }
+    .infect-btnarea button {
+        font-size: 16px;
+        font-weight: 500;
+        color:#fff;
+        padding:10px 35px 10px 15px;
+        border-radius: 5px;
+    }
+    .infect-potal {
+        background: #3871bd url('../images/sub/btn-link.png') no-repeat 93% 50%;
+    }
+    .infect-dash {
+        background: #46a06e url('../images/sub/btn-link.png') no-repeat 94% 50%;
+    }
+    .content-bannerbox .map-img {
+        width: 100px;
+        padding-bottom:15px;
+    }
+    .content-bannerbox button {
+        font-size: 13px;
+        padding:5px 20px 5px 5px
+    }
+
+    /* 전력 */
+    .e-energybox {
+        text-align: center;
+        margin-bottom:20px;
+        height: 180px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .energy-bararea {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom:8px;
+        height: 18px;
+    }
+    .e-graphtit {
+        font-size: 15px;
+    }
+    .e-graphBar {
+        width: 100%;
+        background-color: #d7d7d7;
+        border-radius: 20px;
+        height: 7px;
+    }
+    .mw-text {
+        font-size: 13px;
+        color:#666;
+        padding-left:10px;
+        text-align: left;
+        width: 100%;
+        text-align: right;
+    }
+
+}
+
+@media all and (max-width:870px) {
+    .disaster-situationarea {
+        flex-wrap: wrap;
+        margin:0%;
+        padding-top:0;
+        padding-bottom:2%;
+    }
+    .disaster-situationarea.pd-none {
+        padding-bottom:0;
+    }
+    .disaster-situationleft {
+        width: 100%;
+    }
+    /* box간 여백 조정 */
+    .content-boxarea.mt30 {
+        margin-top:2%;
+    }
+    .content-boxarea {
+        border:1px #d0d0d0 solid;
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 15px;
+        box-sizing: border-box;
+        padding:30px;
+        height: auto;
+    }
+    .disaster-textmessagelist li span{min-width:auto;padding:0 15px}
+    .disaster-situationleft .content-guidebox {
+        margin:2% 0
+    }
+    .disaster-situationleft .content-bannerbox {
+        margin-left:0;
+    }
+    .disaster-situationleft1 .content-boxarea {
+        border:1px #d0d0d0 solid;
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding:30px;
+        height: 300px;
+    }
+    .content-boxarea.mt30 {
+        margin-top:2%
+    }
+    .disaster-situationright {
+        width: 100%;
+        margin-top:2%;
+
+    }
+    .content-maparea1 {
+        /* border:1px #d0d0d0 solid; */
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 0 0 15px 15px;
+        box-sizing: border-box;
+        padding:30px;
+        height: 100%;
+        min-height: 630px;
+    }
+    .content-boxarea.gap2p {
+        margin-top:2%
+    }
+ 
+    .content-maparea2 {
+        border:1px #d0d0d0 solid; 
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding:30px;
+        height: 630px;
+        position: relative;
+        overflow: hidden;
+    }
+    .content-guidebox {
+        width: 100%;
+        height:100%;
+        min-height: 200px;
+        border-radius: 20px;
+        padding:30px;
+        display: flex;
+        background-color: #f6f6f6;
+    }
+    .dis-imgarea {
+       display:none
+    }
+    .dis-textlist ul {
+        height: auto !important;
+        padding-right:10px;
+        overflow-y: auto !important;
+    }
+     .dis-textlist li {
+        font-size: 14px;
+        font-weight: 500;
+     }
+    .content-bannerbox {
+        width: 200px;
+        margin-top:0px;
+        margin-left:2%
+    }
+
+    /* 낙뢰관측 - 지도 위 검색영역 */
+    .disaster-situationright .situaboard-toparea {
+        margin-bottom:5px;
+        border-radius: 20px;
+    }
+    .thunder-toplist {
+        width:75%;
+        display: flex;
+    }
+    .thunder-toplist li{
+        display: inline-block;
+        line-height: 40px;
+    }
+    .btn-rightlist {
+        width: 15%;
+        margin-top:5px;  
+    }
+    .btn-rightlist button {
+        width: 95%;
+    }
+    .thunder-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        margin-right:5px;
+    }
+    .thunder-toplist li.form-field {
+        margin-right:20px;
+    }
+
+    .thunder-toplist li.form-field .input-group input {
+        width: 100%;
+        padding-left:5px;
+    }
+    .thunder-toplist li.form-field .dropdown-section {
+        width: 100%;
+    }
+    .btn-rightlist {
+    margin-bottom:5px;
+    }
+
+    .situaboardform-field {
+        display: flex;
+        vertical-align: top;
+        width:100%
+    }
+    .thunder-toplist li input, .thunder-toplist li select {
+        margin:0 2px;    
+    }
+    .disaster-situationright .content-maparea1 {
+        height: 470px;
+        margin-bottom:0px
+    }
+    .disaster-situationleft1 {
+        width: 100%;
+    }
+   
+    .disaster-situationleft1 .content-guidebox {
+        margin-top:2%;
+        width: 100%;
+        height: 100% !important;
+    }
+    .disaster-situationleft1 .content-guidebox .disaster-guidelinelist {
+        display: flex;
+        padding-top:10px;
+        height: 100%;
+    }
+
+    .disaster-situationleft1 .content-guidebox .dis-textlist ul {
+        height: 110px;
+        padding-right:10px;
+        overflow-y: scroll;
+    } 
+    .disaster-guidelinearea {
+        margin-bottom:2%
+    }
+    .content-guidebox {
+        width: 78%;
+    }
+
+    /* 적조 상단 검색 */
+    .redtide-toplist {
+		/*width:90%;*/
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .redtide-toplist li{
+        display: flex;
+        gap:5px;
+        line-height: 1.3;
+    }
+    .redtide-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        padding-bottom:0;
+        margin-right:0px;
+    }
+    .redtide-toplist li.form-field {
+        margin-right:0px;
+        padding-bottom:10px;
+
+    }
+    .redtide-toplist .form-field .form-input {
+        width: 90%;
+    }
+    .redtide-toplist li.form-field .input-group input {
+        width: 130px;
+        padding-left:0px;
+    }
+
+    .redtide-toplist li.form-field .dropdown-section {
+		/*width: 80px;*/
+        width: 90%;
+    }
+
+
+    .situaboardform-field {
+        display: flex;
+        vertical-align: top;
+        width:100%
+    }
+    .redtide-toplist li input, .redtide-toplist li select {
+        margin:0 2px;    
+    }
+
+    /* 감염병 */
+    .infectious-box {
+        background: #fef8e7 url('../images/sub/Infectious-img2.png') no-repeat 100% 100%;
+        border: 1px #e6dab8 solid;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.05);
+        padding:30px;
+        border-radius: 20px;
+    }
+    .infectious-box h3 {
+        font-size: 24px;
+    }
+
+    .infectious-box p {
+        font-size: 15px;
+    }
+    .infect-btnarea {
+        margin-top:5px;
+    }
+    .infect-btnarea button {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        color:#fff;
+        padding:10px 35px 10px 15px;
+        border-radius: 5px;
+        min-width: 250px;
+        text-align: left;
+        margin-bottom:5px
+    }
+    .infect-potal {
+        background: #3871bd url('../images/sub/btn-link.png') no-repeat 93% 50%;
+    }
+    .infect-dash {
+        background: #46a06e url('../images/sub/btn-link.png') no-repeat 94% 50%;
+    }
+
+    .content-bannerbox img {
+        padding:5px 0;
+        max-width: 138px;
+        width:100%
+    }
+
+    .content-boxarea1 .content-bannerbox {
+        width: 100%;
+        border-radius: 20px;
+        padding:0px 20px;
+        text-align: left;
+        height: 210px;
+        background: url('../images/sub/banner-icon01.png') no-repeat 90% 50%;
+    }   
+    .tab-toparea.fl-r {
+        padding:10px 0 5px 0;
+        text-align: left;
+        font-size: 14px;
+    } 
+    .tab_item {
+        display: inline-block;
+        width: 150px;
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px #ccc solid;
+        color: #555;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: -1px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+}
+
+@media all and (max-width:780px) {
+	.content-bannerbox2{width:100%;background: url('../images/sub/banner-icon01.png') no-repeat 100% 49%;}
+	.content-bannerbox2 h3 {font-size: 20px;padding-bottom:0}
+	.content-bannerbox2 p {font-size: 14px}
+	.content-bannerbox2 .btn-mapgo {
+    min-width: 145px;
+    padding: 7px 25px 7px 20px;
+    margin-top: 0;
+}
+   .disaster-guidelinearea {
+    flex-wrap: wrap;
+   }
+    .content-guidebox {
+        width:100%;
+        height:100%;
+        min-height: 200px;
+        border-radius: 20px;
+        padding:30px;
+        display: flex;
+        background-color: #f6f6f6;
+    }
+    .dis-imgarea {
+        width: 150px;
+        height: 120px;
+    }
+    .dis-textlist ul {
+        height: 125px;
+        padding-right:10px;
+        overflow-y: scroll;
+    }
+     .dis-textlist li {
+        font-size: 15px;
+        font-weight: 500;
+     }
+    .content-bannerbox {
+        width: 100%;
+        margin-left:0;
+        margin-top:2%;
+        background: url('../images/sub/banner-icon.png') no-repeat 90% 50%;
+        background-size: 110px;
+        height: 150px;
+        text-align: left;
+        padding:20px;
+    }
+    .content-bannerbox h3 {
+        font-size: 20px;
+        padding-bottom:5px;
+    }
+    .content-bannerbox p {
+        font-size: 14px;
+    }
+    .content-bannerbox img {
+        display: none;
+    }
+    .btn-mapgo {
+        margin-top:15px;
+        background: #1764C4 url('../images/sub/btn-pop-arrow.png') no-repeat 90% 50%;
+        color:#fff;
+        padding:5px 40px 5px 20px;
+        border-radius: 5px;
+
+    }
+    .disaster-guidelinearea .content-bannerbox.gap-left.mountarea {
+        margin-left:0;
+        margin-top:2%;
+        background: url('../images/sub/banner-icon02.png') no-repeat 90% 50%;
+        background-size: 110px;
+        height: 150px;
+        text-align: left;
+    }
+       .disaster-guidelinearea .content-bannerbox.gap-left.mountarea p {
+        padding-bottom:15px
+       }
+    .content-situation .disaster-guidelinearea .gap-left {
+        width: 48%;
+        padding:0;
+        display: inline-block;
+        margin-left:0;
+        margin-right:0;
+        border-radius: 0;
+    }
+
+}
+@media all and (max-width:640px) {
+	.content-maparea1 {border-radius: 15px;}
+    .thistime-newslist {
+        height: 65%;   
+    }
+    .disaster-textmessagelist ul {
+        padding-top:10px;
+    }
+    .disaster-guidelinearea {
+        flex-wrap: wrap;
+    }
+    .content-guidebox {
+        border-radius: 15px;
+        padding:20px;
+    }
+    .content-boxarea {
+        padding:20px;
+    }
+    .content-titlearea {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        border-bottom:1px #ddd solid;
+        padding-bottom:10px;
+        margin-bottom:10px;
+    }
+    .content-titlearea h3 {
+        font-size: 22px;
+        color:#222;
+        font-weight: 600;
+    }
+    .content-titlearea a {
+        font-size: 15px;
+        color:#666;
+        font-weight: 500;
+        padding-top:10px
+    }
+    .disaster-guidelinelist {
+        flex-wrap: wrap;
+    }
+    
+    .content-bannerbox {
+        margin-left:0;
+        margin-top:2%;
+    }
+    .content-situation .disaster-guidelinearea .gap-left {
+        width: 100%;
+        padding:0;
+        display: inline-block;
+        margin-left:0;
+        margin-right:0;
+        border-radius: 0;
+    }
+}
+
+@media all and (max-width:580px) {
+    .thunder-toplist {
+        width:85%;
+        display: flex;
+    }
+    .thunder-toplist li{
+        display: inline-block;
+        line-height: 40px;
+    }
+    .btn-rightlist {
+        width: 13%;
+        margin-top:5px;  
+        margin-bottom:5px;
+        text-align: right;
+    }
+    .btn-rightlist button {
+        width: 100%;
+    }
+    .thunder-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        margin-right:5px;
+        width: 20%;
+    }
+    .thunder-toplist li.form-field {
+        margin-right:20px;
+        width: 75%;
+    }
+
+    .thunder-toplist li.form-field .input-group input {
+        width: 100%;
+        padding-left:5px;
+    }
+    .thunder-toplist li.form-field .dropdown-section {
+        width: 100%;
+    }
+
+    /* 감염병 */
+    .infectious-box {
+        background: #fef8e7 url('../images/sub/Infectious-img2.png') no-repeat 50% 100%;
+        border: 1px #e6dab8 solid;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.05);
+        padding:20px 20px 120px 20px;
+        border-radius: 20px;
+    }
+    .infectious-box h3 {
+        font-size: 24px;
+    }
+
+    .infectious-box p {
+        font-size: 15px;
+    }
+    .infect-btnarea {
+        margin-top:5px;
+    }
+    .infect-btnarea button {
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 500;
+        color:#fff;
+        padding:10px 35px 10px 15px;
+        border-radius: 5px;
+        min-width: 40%;
+        text-align: left;
+        margin-bottom:5px
+    }
+    .infect-potal {
+        background: #3871bd url('../images/sub/btn-link.png') no-repeat 93% 50%;
+    }
+    .infect-dash {
+        background: #46a06e url('../images/sub/btn-link.png') no-repeat 94% 50%;
+    }
+
+
+    /* 전력 */
+    .content-boxarea.energy-boxarea {
+        height: 100%;
+    }
+    .e-energybox {
+        text-align: center;
+        margin-bottom:0px;
+        padding:0;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .energy-imgBox {
+        background: url('../images/sub/bg_level.png') no-repeat 50% 50%;
+        width: 178px;
+        height: 129px;
+        position: relative
+    }
+    .energy-stateText {
+        font-size: 26px;
+        font-weight: 700;
+        color:#222;   
+        margin-top:10px;
+    }
+
+    .energy-stateText span {
+        display: inline-block;
+        background: url('../images/sub/main_icon_graph.png') no-repeat 0 50%; 
+        padding-left:20px;   
+    }
+
+    .energy-graphBox {
+        width: 100%;
+        height: 100%;
+        min-height:150px;
+    }
+
+    .energy-graphBox ul li {
+        width: 100%;
+    }
+    .e-graphtit {
+        text-align: left;
+        font-weight: 600;
+        font-size: 15px;
+        background: url('../images/sub/dot.png') no-repeat 0 7px;
+        padding-left:7px
+    }
+    .energy-bararea {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom:8px;
+        height: 18px;
+    }
+    .e-graphBar {
+        width: 80%;
+    }
+    .mw-text {
+        font-size: 13px;
+        width: 20%;
+    }
+    .e-energybox img {
+        width: 100%;
+        max-width:452px
+    }
+
+}
+@media all and (max-width:540px) {
+	.dis-none{display:none !important}
+    .thistime-newslist {
+        height: 58%;      
+    }
+    .dis-imgarea {
+        width: 100%;
+        text-align: center;
+        height: 120px;
+    }
+    .dis-imgarea img {
+        width: 130px;
+        border-radius: 10px;
+    }
+    .dis-textlist {
+        width: 100%;
+        margin-left:0;
+    }
+    .dis-textlist ul {
+        height: 125px;
+        padding-right:10px;
+        overflow-y: scroll;
+    }
+     .dis-textlist li {
+        font-size: 15px;
+        font-weight: 500;
+     }
+
+
+     .thunder-toplist {
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .thunder-toplist li{
+        display: block;
+        line-height: 1.3;
+    }
+    .btn-rightlist {
+        width: 100%;
+        margin-top:5px;  
+        margin-bottom:5px;
+        text-align: center;
+    }
+    .btn-rightlist button {
+        width: 100%;
+    }
+    .thunder-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        margin-right:0px;
+        margin-bottom:5px;
+        width: 100%;
+    }
+    .thunder-toplist li.form-field {
+        margin-right:0px;
+        margin-bottom:20px;
+        width: 100%;
+    }
+
+    .thunder-toplist li.form-field .input-group input {
+        width: 100%;
+        padding-left:5px;
+    }
+    .thunder-toplist li.form-field .dropdown-section {
+        width: 100%;
+    }
+
+    .content-boxarea1 .content-bannerbox {
+        width: 100%;
+        border-radius: 20px;
+        padding:20px 20px 0 0;
+        text-align: left;
+        height: 150px;
+        background: url('../images/sub/banner-icon.png') no-repeat 100% 50%;
+        background-size: 100px;
+    }
+    .content-boxarea1 .content-bannerbox h3 {
+        font-size: 20px;
+    }
+     .content-boxarea1 .content-bannerbox p {
+        font-size: 14px;
+        padding-bottom:10px
+     }
+    .content-boxarea1 .btn-mapgo {
+        background: #1764C4 url('../images/sub/btn-pop-arrow.png') no-repeat 90% 48%;
+        color:#fff;
+        min-width: 130px;
+        text-align: left;
+        padding:10px 40px 10px 20px;
+        border-radius: 5px;
+        margin-top:0px
+    }
+
+    .tab_item {
+        display: inline-block;
+        width: 100%;
+        margin-bottom:3px;
+        box-sizing: border-box;
+        background: #fff;
+        border: 1px #ccc solid;
+        color: #555;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: -1px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    
+}
+
+@media all and (max-width:480px) {   
+    /* 감염병 */
+    .infectious-box {
+        background: #fef8e7 url('../images/sub/Infectious-img2.png') no-repeat 50% 100%;
+        border: 1px #e6dab8 solid;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.05);
+        padding:20px 20px 120px 20px;
+        border-radius: 20px;
+    }
+    .infectious-box h3 {
+        font-size: 24px;
+    }
+
+    .infectious-box p {
+        font-size: 15px;
+    }
+    .infect-btnarea {
+        margin-top:5px;
+    }
+    .infect-btnarea button {
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 500;
+        color:#fff;
+        padding:10px 35px 10px 15px;
+        border-radius: 5px;
+        min-width: 75%;
+        text-align: left;
+        margin-bottom:5px
+    }
+    .infect-potal {
+        background: #3871bd url('../images/sub/btn-link.png') no-repeat 93% 50%;
+    }
+    .infect-dash {
+        background: #46a06e url('../images/sub/btn-link.png') no-repeat 94% 50%;
+    }
+
+    /* 전력 */
+
+    .e-energybox {
+        text-align: center;
+        margin-bottom:0px;
+        padding:0;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .energy-imgBox {
+        background: url('../images/sub/bg_level.png') no-repeat 50% 50%;
+        width: 178px;
+        height: 129px;
+        position: relative
+    }
+    .energy-stateText {
+        font-size: 24px;
+        font-weight: 700;
+        color:#222;   
+        margin-top:10px;
+    }
+
+    .energy-stateText span {
+        display: inline-block;
+        background: url('../images/sub/main_icon_graph.png') no-repeat 0 50%; 
+        padding-left:20px;   
+    }
+
+    .energy-graphBox {
+        width: 100%;
+        height: 100%;
+        min-height:150px;
+    }
+
+    .energy-graphBox ul li {
+        width: 100%;
+    }
+    .e-graphtit {
+        text-align: left;
+        font-weight: 600;
+        font-size: 15px;
+        background: url('../images/sub/dot.png') no-repeat 0 7px;
+        padding-left:7px
+    }
+    .energy-bararea {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom:8px;
+        height: 18px;
+    }
+    .e-graphBar {
+        width: 100%;
+    }
+    .mw-text {
+        font-size: 13px;
+        width: 100%;
+        text-align: right;
+    }
+    .e-energybox img {
+        width: 100%;
+        max-width:452px
+    }
+}
+
+@media all and (max-width:440px) {
+    .content-situation-type1 .redtide-toplist {
+        position: relative;
+    }
+    /* 적조 상단 검색 */
+    .redtide-toplist {
+        width:100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .redtide-toplist li{
+        display: flex;
+        gap:0px;
+        line-height: 1.3;
+        flex-wrap: nowrap; /*20260309 추가*/
+    }
+    .redtide-toplist li.title {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        padding-bottom:0;
+        margin-right:0px;
+    }
+    .redtide-toplist li.form-field {
+        margin-right:0px;
+        padding-bottom:0px;
+
+    }
+    .redtide-toplist .form-field .form-input {
+        width: 100%;
+        margin-right:0;
+    }
+    .redtide-toplist li.form-field .input-group input {
+        width: 99%;
+        padding-left:0px;
+    }
+
+    .redtide-toplist li.form-field .dropdown-section {
+        width: 100%;
+        margin-left:0;
+    }
+
+     .btn-rightsearch button {
+        width: 100%;
+     }
+
+    .situaboardform-field {
+        display: flex;
+        vertical-align: top;
+        width:100%
+    }
+    .redtide-toplist li input, .redtide-toplist li select {
+        margin:0 2px;    
+    }
+
+}
+
+@media all and (max-width:380px) {
+    /* 가뭄예경보 */
+    .situaboard-toparea {
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        padding:10px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    .situaboard-toplist {
+        width:100%;
+    }
+    .btn-rightlist {
+        width: 100%;
+        margin:20px 0 10px 0;
+    }
+    .btn-rightlist button {
+        width: 100%;
+    }
+    .btn-rightsearch {    
+        /*position: absolute;*/
+        width: 89%;
+    }
+    .infect-btnarea button {
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 500;
+        color:#fff;
+        padding:10px 35px 10px 15px;
+        border-radius: 5px;
+        min-width: 100%;
+        text-align: left;
+        margin-bottom:5px
+    }
+    .content-bannerbox {
+        width: 100%;
+        margin-left:0;
+        margin-top:2%;
+        background: url('../images/sub/banner-icon.png') no-repeat 100% 50%;
+        background-size: 100px;
+        height: 150px;
+        text-align: left;
+        padding:20px 0;
+    }
+}
+@media all and (max-width:430px) {
+	/*#forestCntList li span{display:inline-block;width: 38%;margin: 1px;font-size: 10px;}*/
+	/*#forestCntList li span{display:inline-block;width:38%; margin:3px 10px;font-size:13px}*/
+	#forestCntList li span{display:inline-block;width:30%; margin:2px;font-size:11px; padding: 5px;}
+	.content-titlearea h3 span{display:block}
+	.redtide-toplist li span{display:inline-block;line-height:35px;font-size:13px;padding-left:5px}
+	.btn-rightsearch{width:100%}
+	.content-maptitle{text-align:center;font-size:14px}
+	.content-bannerbox h3{margin-top:15px}
+	.tbl-title{margin:20px 0 10px}
+	.special-map svg{width:200% !important;height:100% !important;margin: 48px -210px !important;}
+	.radiation-map{margin-top: 60px;margin-left: 30px}
+	#radiation-map .align_left{margin: -60px -138px;}
+	#radiation-map .align_right{margin: -60px -138px;}
+	.disaster-situationright .content-maparea1{min-height:440px;height:440px;padding:0px}
+	.kakao-map{min-height:460px;height:460px;padding:0px}
+	.land-map svg{width: 460px;height: 460px;margin: -15px 0 0 -45px;}
+	.btn-rightlist{margin:0px 0 10px}
+	.thunder-toplist li.form-field{margin-bottom:10px}
+	.content-bannerbox{padding:0 10px !important}
+	.disaster-situationleft{margin-top:10px}
+	.content-situation-type1{margin:5px auto}
+	.disaster-situationright{margin-bottom:15px}
+	.dis-none{display:none !important}
+	.redtide-toplist li.title{padding-bottom:10px}
+	.m-hipun{line-height:40px}
+	.light-box{width:100% !important}
+	.content-maparea2{height:400px}
+	}
+@media all and (max-width:344px) {
+    .thistime-newslist {
+        height: 52%;      
+    }
+    .btn-rightsearch {
+		position: absolute;  
+        width: 85%;
+    }
+    .situaboard-toparea-section .btn-rightsearch {position: static;}
+}
+@media all and (max-width:360px) {
+	.content-titlearea h3 span{display:block}
+.content-maptitle{text-align:center;font-size:14px}
+.content-bannerbox h3{margin-top:15px}
+.tbl-title{margin:20px 0 10px}
+.special-map svg{width:200% !important;height:100% !important;margin: 40px -160px !important;}
+.radiation-map{margin-top: 60px;margin-left: -13px}
+#radiation-map .align_left{margin: -60px -183px;}
+#radiation-map .align_right{margin: -60px -183px;}
+.disaster-situationright .content-maparea1{min-height:400px;height:400px;padding:0px}
+.kakao-map{min-height:460px;height:460px;padding:0px}
+.land-map svg{width: 460px;height: 460px;margin: -15px 0 0 -45px;}
+.btn-rightlist{margin:0px 0 10px}
+.thunder-toplist li.form-field{margin-bottom:10px}
+.content-bannerbox{padding:0 10px !important}
+.disaster-situationleft{margin-top:10px}
+.content-boxarea{padding:30px}
+.content-situation-type1{margin:5px auto}
+.disaster-situationright{margin-bottom:15px}
+.dis-none{display:none !important}
+.redtide-toplist li.title{padding-bottom:10px}
+.m-hipun{line-height:40px}
+.light-box{width:100% !important}
+.content-maparea2{height:339px}
+	}
+
+/*
+   오류번호 006/007
+   일자: 2026-02-11
+   작업자: 최연진
+   변경이력: 재난상황정보 - 컨텐츠 간격 없음 + 겹침/텍스트 영역 벗어남 해결
+             (max-width: 1300~870px)
+*/
+@media all and (max-width:1300px) {
+    .disaster-situationarea {
+        gap: 20px;
+    }
+    .disaster-situationleft .thistime-newslist {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+}
+@media all and (max-width:870px) {
+    .disaster-situationarea {
+        flex-wrap: wrap;
+    }
+    .disaster-situationarea > div {
+        width: 100% !important;
+    }
+}
+/***** 변경 내용 끝 *****/
+
+
+/*
+   오류번호 008
+   일자: 2026-02-11
+   작업자: 최연진
+   변경이력: 재난상황정보 > 산불 - 금일 산불 현황 아이콘(진화중/진화완료/산불외종료) 한 줄 유지
+             아이콘 크기 축소 + white-space:nowrap으로 줄바꿈 방지
+             (max-width: 1270px, 480px)
+*/
+@media all and (max-width:1270px) {
+    .situaboard-toparea .thunder-toplist li.title {
+        align-items: center;
+        gap: 3px;
+        white-space: nowrap;
+    }
+    .situaboard-toparea .thunder-toplist li.title img {
+        width: 20px;
+        height: auto;
+    }
+    .situaboard-toparea .thunder-toplist li.title span {
+        font-size: 13px;
+        padding: 3px 8px;
+    }
+}
+@media all and (max-width:480px) {
+    .situaboard-toparea .thunder-toplist li.title img {
+        width: 14px;
+    }
+    .situaboard-toparea .thunder-toplist li.title span {
+        font-size: 10px;
+        padding: 2px 3px;
+    }
+}
+
+@media all and (max-width:380px) {
+ .situaboard-toparea .thunder-toplist li.title img {
+     display: none;
+ }
+}
+
+/***** 변경 내용 끝 *****/
+
+
+/*
+   오류번호 009
+   일자: 2026-02-11
+   작업자: 최연진
+   변경이력: 재난정보 > 미세먼지 - 기간검색 UI 틀어짐 해결
+             검색 폼필드 flex-wrap 적용, select/input 100% 너비로 변경
+             재난정보 > 작저 감섹 필트 틀어짐 해결
+             재난정보 > 해파리 감섹 필트 틀어짐 해결
+             재난정보 > 패류독소
+             재난정보 > 낙뢰관측
+             (max-width: 1024~540px)
+*/
+
+@media all and (max-width:1200px) {
+    .disaster-guidelinearea {
+        gap: 15px;
+    }
+    .content-bannerbox2 {
+        background-size: 120px auto !important;
+    }
+    .content-guidebox {
+        overflow-y: auto !important;
+        max-height: 300px;
+    }
+}
+
+@media all and (max-width:1070px) {
+    .thunder-toplist {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .thunder-toplist li {
+flex: 0 0 50%;
+        box-sizing: border-box;
+    }
+} 
+@media all and (max-width:1024px) {
+    .disaster-situationleft1 .form-field {
+        flex-wrap: wrap;
+    }
+    .disaster-situationleft1 .form-field select,
+    .disaster-situationleft1 .form-field input {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .tab-toparea {
+        flex-wrap: wrap;
+    }
+    .tab-toparea .form-field {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .situaboard-toparea-section .redtide-toplist{width: 80%;} /*가축질병 검색section 사이즈조절*/
+}
+
+@media all and (max-width:1130px) {
+    .map-btnarea {
+        display: flex;
+        flex-direction: column;
+        gap: 10px
+}
+}
+@media (max-width: 580px) {
+    .redtide-toplist li {flex-direction: column;align-items: flex-start !important;}
+    .form-field .dropdown-section {flex-basis:auto;}
+}
+@media all and (max-width:540px) {
+    .disaster-situationleft1 .form-field {
+        flex-direction: column;
+    }
+    .disaster-situationleft1 .form-field select,
+    .disaster-situationleft1 .form-field input {
+        width: 100%;
+    }
+    .tab-toparea .form-field {
+        flex-direction: column;
+    }
+    .form-field .datepicker-area .input-group {
+        width:40%;
+    }
+}
+
+@media all and (max-width:885px) {
+    .redtide-toplist {
+        width: 100%;
+    }
+    .redtide-toplist li {
+        align-items: center;
+    }
+    .redtide-toplist li .m-hipun {
+        line-height: 40px;
+    }
+    .redtide-toplist li.form-field .datepicker-area + span {
+        font-size:10px;
+    }
+
+}
+
+@media all and (max-width:870px) {
+    .disaster-guidelinearea {
+        flex-wrap: wrap !important;
+    }
+    .disaster-guidelinearea > .content-bannerbox2,
+    .disaster-guidelinearea > .content-guidebox {
+        width: 100% !important;
+        flex: none !important;
+    }
+    .content-bannerbox2 {
+        background-size: 190px auto !important;
+    }
+    .map-btnarea {
+        display: flex;
+        flex-direction: row;
+        gap: 10px
+    }
+    .situaboard-toparea-section .redtide-toplist li.form-field {width: 80%;}
+    .situaboard-toparea-section .redtide-toplist li.form-field {padding-bottom: 0px;}
+    .situaboard-toparea-section .redtide-toplist li.title {margin-right: 15px;}
+    .situaboard-toparea-section .redtide-toplist{flex-direction: row;}
+    .situaboard-toparea-section .redtide-toplist li.form-field .dropdown-section {width: 100%;} 
+}
+
+
+@media all and (max-width:703px) {
+    .btn-rightsearch {
+        width: 100%;
+        margin-top: 5px;
+    }
+    .situaboard-toparea-section .redtide-toplist {width: 100%;}
+    .situaboard-toparea-section .redtide-toplist li.form-field {width: 100%; padding-bottom: 0px;}
+    .situaboard-toparea-section .redtide-toplist li.title {margin-right: 15px;   padding-bottom: 10px;}
+    .situaboard-toparea-section .redtide-toplist{flex-direction: column;}
+    .situaboard-toparea-section .redtide-toplist li.form-field .dropdown-section {flex: 1;} 
+    
+}
+@media all and (max-width:460px) {
+    .btn-rightsearch {
+        width: 100%;
+    }
+    .map-btnarea button {
+    	padding: 4px 8px;
+    	font-size: 0.8rem;
+    }
+    .map-btnarea button::after {
+    	width: 12px;
+    	height: 12px;
+    }
+}
+
+@media all and (max-width:445px) {
+    .map-btnarea {
+        display: flex;
+        flex-direction: column;
+        gap: 10px
+    }
+}
+
+@media all and (max-width:440px) {
+    .btn-rightsearch {
+        width: 100%;
+        margin: auto
+    }
+}
+
+
+
+
+
+
+
+/***** 변경 내용 끝 *****/

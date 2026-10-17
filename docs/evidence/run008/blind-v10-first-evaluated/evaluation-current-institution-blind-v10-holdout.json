@@ -1,0 +1,1959 @@
+{
+  "checkedAt": "2026-10-17T19:41:04.139Z",
+  "engine": "current",
+  "suite": "blind-v10",
+  "split": "holdout",
+  "classificationMode": "institution",
+  "adapterVersion": 3,
+  "evaluationPhase": "fresh-blind-validation",
+  "adjudication": null,
+  "freezeVerification": {
+    "engine": {
+      "path": "docs/evidence/run008/v0.9-engine-freeze.json",
+      "sha256": "755cfc26c9240f5e963181a9e1c2dbd11f579a7cda92b4469793892147935560",
+      "checkedFiles": 18
+    },
+    "dataset": {
+      "path": "docs/evidence/run008/blind-v10-freeze-protocol.json",
+      "sha256": "c7313d1ee6887f27a162c4ec927c21ad7738a1d40609f191d0c2d562e5d29910",
+      "checkedFiles": 388
+    },
+    "scope": "Frozen bytes verified before product execution. Independent annotation/blinding is a separate process claim, not established by hashes alone.",
+    "stableThroughEvaluation": true
+  },
+  "toolHashes": {
+    "scripts/evaluate.mjs": "fabec6f673dc1cd54748d238b3d1425c7b77dffa8b60781dc34e90be99df5fc1",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "e75d4763ff234dbe63259242ad132430fb226aaa49659d80c77f1a9ec58f0ba1",
+  "datasetHash": "2f26ebbc2a2e25095bfa04210c8ced997dfd039d29d1f4fd6171d2ade10ff35e",
+  "fixtureHashes": {
+    "v10-city-01": "91768407ea877eaf3d0a5c7b6cb308a16fc8fb9fb72c122fab65b7ff15240337",
+    "v10-government-02": "ecab15864e8fb1488ecdd2c4a648dd15a8b72d10aae310486face329a1059a55",
+    "v10-library-01": "9d7d3bc60c495ce225fd1ea52efaaa534ddc57afa34deea74b356df28f84b4d7",
+    "v10-public-agency-01": "52741e587c6ae25e90937aa50a660507787d0b0f4e30b5a691db22c83a3e289f",
+    "v10-smu-01": "25b99ae5165abf82877cfcb91520d6e143e8d298cb63ddebe1526ed9c274d287"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 26,
+    "recommended": 28,
+    "matched": 2,
+    "expected": 15,
+    "precision": 0.9285714285714286,
+    "recall": 0.13333333333333333,
+    "tasksRecommended": 0
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 4,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 6,
+      "matched": 0,
+      "expected": 3,
+      "precision": 0.6666666666666666,
+      "recall": 0,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "tasksRecommended": 0
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "v10-city-01",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 61,
+      "classifiedCount": 12,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "민원신청",
+          "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "민원신청",
+          "contextLabels": [
+            "민원신청"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "sourceId": "city-c0821"
+        },
+        {
+          "label": "공고/고시 바로가기",
+          "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "notice",
+          "sourceId": "city-c0808"
+        },
+        {
+          "label": "민원안내",
+          "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "contextLabels": [],
+          "category": "help",
+          "sourceId": "city-c0810"
+        },
+        {
+          "label": "민원신청",
+          "action": "locate",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "apply",
+          "sourceId": "city-c0785"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "city-c0019"
+        },
+        {
+          "label": "통합검색",
+          "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "search.cheonan.go.kr",
+          "opensNewWindow": true,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "city-c0010"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "missed": [
+        "petition-entry",
+        "petition-status",
+        "public-petitions"
+      ],
+      "incorrect": [],
+      "taskRecommended": false,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "민원신청",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+                "target": "_self",
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "공고/고시 바로가기",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+                "target": "_self",
+                "sourceId": "city-c0808",
+                "sourceMatches": 1
+              },
+              {
+                "label": "민원안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+                "target": "_self",
+                "sourceId": "city-c0810",
+                "sourceMatches": 1
+              },
+              {
+                "label": "민원신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-c0785",
+                "sourceMatches": 1
+              },
+              {
+                "label": "로그인",
+                "category": "login",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+                "target": "_self",
+                "sourceId": "city-c0019",
+                "sourceMatches": 1
+              },
+              {
+                "label": "통합검색",
+                "category": "search",
+                "action": "navigate",
+                "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+                "target": "_blank",
+                "sourceId": "city-c0010",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "소식알림",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-c0054",
+                "sourceMatches": 1
+              },
+              {
+                "label": "통합예약시스템",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/yeyak/index.do",
+                "target": "_blank",
+                "sourceId": "city-c0007",
+                "sourceMatches": 1
+              },
+              {
+                "label": "민원신청(국민신문고) 바로가기",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.epeople.go.kr/frm/pttn/pttnRqstInfo.npaid?frmMenuMngNo=WBF-2107-000002",
+                "target": "_blank",
+                "sourceId": "city-c0824",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 3개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [
+          {
+            "page": 1,
+            "label": "민원신청",
+            "sourceMatches": 2
+          }
+        ],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "petition-entry": 2,
+          "petition-status": null,
+          "public-petitions": null
+        },
+        "selected": [
+          {
+            "label": "민원신청",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+            "target": "_self",
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "공고/고시 바로가기",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+            "target": "_self",
+            "sourceId": "city-c0808",
+            "sourceMatches": 1
+          },
+          {
+            "label": "민원안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+            "target": "_self",
+            "sourceId": "city-c0810",
+            "sourceMatches": 1
+          },
+          {
+            "label": "민원신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-c0785",
+            "sourceMatches": 1
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+            "target": "_self",
+            "sourceId": "city-c0019",
+            "sourceMatches": 1
+          },
+          {
+            "label": "통합검색",
+            "category": "search",
+            "action": "navigate",
+            "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+            "target": "_blank",
+            "sourceId": "city-c0010",
+            "sourceMatches": 1
+          },
+          {
+            "label": "소식알림",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-c0054",
+            "sourceMatches": 1
+          },
+          {
+            "label": "통합예약시스템",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/yeyak/index.do",
+            "target": "_blank",
+            "sourceId": "city-c0007",
+            "sourceMatches": 1
+          },
+          {
+            "label": "민원신청(국민신문고) 바로가기",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.epeople.go.kr/frm/pttn/pttnRqstInfo.npaid?frmMenuMngNo=WBF-2107-000002",
+            "target": "_blank",
+            "sourceId": "city-c0824",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 8,
+        "recommended": 9,
+        "matched": 1,
+        "expected": 3,
+        "precision": 0.8888888888888888,
+        "recall": 0.3333333333333333,
+        "missed": [
+          "petition-status",
+          "public-petitions"
+        ],
+        "incorrect": [
+          {
+            "label": "민원신청",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+            "target": "_self",
+            "sourceId": null,
+            "sourceMatches": 2
+          }
+        ],
+        "taskRecommended": false
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "v10-government-02",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=82&bbsSn=18",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 48,
+      "classifiedCount": 4,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "검색어",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "government-c0211"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "검색 양식의 분야 필터",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "government-c0212"
+        },
+        {
+          "label": "검색",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "government-c0066"
+        },
+        {
+          "label": "Q&A",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "footer",
+          "score": 55,
+          "reasons": [
+            "고정 문구 일치",
+            "하단의 명확한 도움말 링크",
+            "하단 영역 감점"
+          ],
+          "contextLabels": [],
+          "category": "help",
+          "sourceId": "government-c0243"
+        }
+      ],
+      "correct": 4,
+      "recommended": 4,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "center-guide",
+        "center-photo-view"
+      ],
+      "incorrect": [],
+      "taskRecommended": false,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색어",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0211",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0212",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+                "target": "_self",
+                "sourceId": "government-c0066",
+                "sourceMatches": 1
+              },
+              {
+                "label": "Q&A",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+                "target": "_self",
+                "sourceId": "government-c0243",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "board-search": 1,
+          "center-guide": null,
+          "center-photo-view": null
+        },
+        "selected": [
+          {
+            "label": "검색어",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0211",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0212",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+            "target": "_self",
+            "sourceId": "government-c0066",
+            "sourceMatches": 1
+          },
+          {
+            "label": "Q&A",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+            "target": "_self",
+            "sourceId": "government-c0243",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 1,
+        "expected": 3,
+        "precision": 1,
+        "recall": 0.3333333333333333,
+        "missed": [
+          "center-guide",
+          "center-photo-view"
+        ],
+        "incorrect": [],
+        "taskRecommended": false
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "v10-library-01",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N40404000000.do",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 64,
+      "classifiedCount": 13,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "도서관 일정",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "도서관 이용",
+          "contextLabels": [
+            "도서관 이용"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "library-c1476"
+        },
+        {
+          "label": "오류신고",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "도서관 이용",
+          "contextLabels": [
+            "도서관 이용"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "library-c1492"
+        },
+        {
+          "label": "분실물찾기",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "도서관 이용",
+          "contextLabels": [
+            "도서관 이용"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "library-c1493"
+        },
+        {
+          "label": "이용증 발급",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "도서관 이용",
+          "contextLabels": [
+            "도서관 이용"
+          ],
+          "category": "apply",
+          "sourceId": "library-c1466"
+        },
+        {
+          "label": "자료검색 열기",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "library-c1125"
+        },
+        {
+          "label": "로그인",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "국립중앙도서관",
+          "contextLabels": [
+            "국립중앙도서관"
+          ],
+          "category": "login",
+          "sourceId": "library-c1121"
+        }
+      ],
+      "correct": 4,
+      "recommended": 6,
+      "matched": 0,
+      "expected": 3,
+      "precision": 0.6666666666666666,
+      "recall": 0,
+      "missed": [
+        "old-books-room",
+        "book-reading-room",
+        "literature-room"
+      ],
+      "incorrect": [
+        {
+          "label": "도서관 일정",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "도서관 이용",
+          "contextLabels": [
+            "도서관 이용"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "library-c1476"
+        },
+        {
+          "label": "이용증 발급",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "도서관 이용",
+          "contextLabels": [
+            "도서관 이용"
+          ],
+          "category": "apply",
+          "sourceId": "library-c1466"
+        }
+      ],
+      "taskRecommended": false,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "도서관 일정",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1476",
+                "sourceMatches": 1
+              },
+              {
+                "label": "오류신고",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1492",
+                "sourceMatches": 1
+              },
+              {
+                "label": "분실물찾기",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1493",
+                "sourceMatches": 1
+              },
+              {
+                "label": "이용증 발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1466",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료검색 열기",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1125",
+                "sourceMatches": 1
+              },
+              {
+                "label": "로그인",
+                "category": "login",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1121",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "이용시간",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1465",
+                "sourceMatches": 1
+              },
+              {
+                "label": "이용안내",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1464",
+                "sourceMatches": 1
+              },
+              {
+                "label": "신청·참여",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1483",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료상담·신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1471",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자주하는 질문",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1489",
+                "sourceMatches": 1
+              },
+              {
+                "label": "통합검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1120",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 3,
+            "cards": [
+              {
+                "label": "뷰어프로그램 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+                "target": "_self",
+                "sourceId": "library-c9314",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 1개의 주요 기능을 찾았어요. 3번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "old-books-room": null,
+          "book-reading-room": null,
+          "literature-room": null
+        },
+        "selected": [
+          {
+            "label": "도서관 일정",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1476",
+            "sourceMatches": 1
+          },
+          {
+            "label": "오류신고",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1492",
+            "sourceMatches": 1
+          },
+          {
+            "label": "분실물찾기",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1493",
+            "sourceMatches": 1
+          },
+          {
+            "label": "이용증 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1466",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료검색 열기",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1125",
+            "sourceMatches": 1
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1121",
+            "sourceMatches": 1
+          },
+          {
+            "label": "이용시간",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1465",
+            "sourceMatches": 1
+          },
+          {
+            "label": "이용안내",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1464",
+            "sourceMatches": 1
+          },
+          {
+            "label": "신청·참여",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1483",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료상담·신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1471",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자주하는 질문",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1489",
+            "sourceMatches": 1
+          },
+          {
+            "label": "통합검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1120",
+            "sourceMatches": 1
+          },
+          {
+            "label": "뷰어프로그램 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+            "target": "_self",
+            "sourceId": "library-c9314",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 10,
+        "recommended": 13,
+        "matched": 0,
+        "expected": 3,
+        "precision": 0.7692307692307693,
+        "recall": 0,
+        "missed": [
+          "old-books-room",
+          "book-reading-room",
+          "literature-room"
+        ],
+        "incorrect": [
+          {
+            "label": "도서관 일정",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1476",
+            "sourceMatches": 1
+          },
+          {
+            "label": "이용증 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1466",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료상담·신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1471",
+            "sourceMatches": 1
+          }
+        ],
+        "taskRecommended": false
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "v10-public-agency-01",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000937",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 102,
+      "classifiedCount": 12,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "증명서 발급",
+          "contextLabels": [
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "public-agency-c0541"
+        },
+        {
+          "label": "신고 · 신청",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "증명서 발급",
+          "contextLabels": [
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "sourceId": "public-agency-c0532"
+        },
+        {
+          "label": "조회",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "전자민원",
+          "contextLabels": [
+            "전자민원"
+          ],
+          "category": "apply",
+          "sourceId": "public-agency-c0518"
+        },
+        {
+          "label": "증명서 발급",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "전자민원",
+          "contextLabels": [
+            "전자민원"
+          ],
+          "category": "apply",
+          "sourceId": "public-agency-c0519"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "public-agency-c0035"
+        },
+        {
+          "label": "지사찾기",
+          "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "help",
+          "sourceId": "public-agency-c0006"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "certificate-details",
+        "certificate-issue-entry"
+      ],
+      "incorrect": [],
+      "taskRecommended": false,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색어 입력",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0541",
+                "sourceMatches": 1
+              },
+              {
+                "label": "신고 · 신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "조회",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "증명서 발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "로그인",
+                "category": "login",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/lgn/loginForm.do",
+                "target": "_self",
+                "sourceId": "public-agency-c0035",
+                "sourceMatches": 1
+              },
+              {
+                "label": "지사찾기",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+                "target": "_self",
+                "sourceId": "public-agency-c0006",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "신고 · 신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "조회",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              },
+              {
+                "label": "이용안내",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0528",
+                "sourceMatches": 1
+              },
+              {
+                "label": "증명서 발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 2
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [
+          {
+            "page": 1,
+            "label": "신고 · 신청",
+            "sourceMatches": 2
+          },
+          {
+            "page": 1,
+            "label": "조회",
+            "sourceMatches": 2
+          },
+          {
+            "page": 1,
+            "label": "증명서 발급",
+            "sourceMatches": 2
+          },
+          {
+            "page": 2,
+            "label": "신고 · 신청",
+            "sourceMatches": 2
+          },
+          {
+            "page": 2,
+            "label": "검색",
+            "sourceMatches": 2
+          },
+          {
+            "page": 2,
+            "label": "검색",
+            "sourceMatches": 2
+          },
+          {
+            "page": 2,
+            "label": "조회",
+            "sourceMatches": 2
+          },
+          {
+            "page": 2,
+            "label": "증명서 발급",
+            "sourceMatches": 2
+          }
+        ],
+        "repeatedCards": [
+          {
+            "page": 2,
+            "key": "source:신고 · 신청"
+          },
+          {
+            "page": 2,
+            "key": "source:검색"
+          },
+          {
+            "page": 2,
+            "key": "source:조회"
+          },
+          {
+            "page": 2,
+            "key": "source:증명서 발급"
+          }
+        ],
+        "firstReachedPage": {
+          "service-search": 1,
+          "certificate-details": null,
+          "certificate-issue-entry": null
+        },
+        "selected": [
+          {
+            "label": "검색어 입력",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0541",
+            "sourceMatches": 1
+          },
+          {
+            "label": "신고 · 신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "조회",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "증명서 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/lgn/loginForm.do",
+            "target": "_self",
+            "sourceId": "public-agency-c0035",
+            "sourceMatches": 1
+          },
+          {
+            "label": "지사찾기",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+            "target": "_self",
+            "sourceId": "public-agency-c0006",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "이용안내",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0528",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 8,
+        "matched": 1,
+        "expected": 3,
+        "precision": 0.5,
+        "recall": 0.3333333333333333,
+        "missed": [
+          "certificate-details",
+          "certificate-issue-entry"
+        ],
+        "incorrect": [
+          {
+            "label": "신고 · 신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "조회",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "증명서 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 2
+          }
+        ],
+        "taskRecommended": false
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "v10-smu-01",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/payment.do",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 38,
+      "classifiedCount": 6,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "smu-c0276"
+        },
+        {
+          "label": "수강신청",
+          "action": "locate",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": true,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "apply",
+          "sourceId": "smu-c0258"
+        },
+        {
+          "label": "학사안내",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "academic",
+          "sourceId": "smu-c0200"
+        },
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "smu-c0260"
+        },
+        {
+          "label": "대학생활",
+          "href": "https://www.smu.ac.kr/kor/life/notice.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 70,
+          "reasons": [
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "notice",
+          "sourceId": "smu-c0219"
+        },
+        {
+          "label": "입학안내",
+          "href": "https://www.smu.ac.kr/kor/intro/whySangmyung.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "contextLabels": [],
+          "category": "help",
+          "sourceId": "smu-c0172"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "missed": [
+        "scholarship-rule",
+        "scholarship-detail-rule",
+        "loan-information"
+      ],
+      "incorrect": [],
+      "taskRecommended": false,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0276",
+                "sourceMatches": 1
+              },
+              {
+                "label": "수강신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0258",
+                "sourceMatches": 1
+              },
+              {
+                "label": "학사안내",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+                "target": "_self",
+                "sourceId": "smu-c0200",
+                "sourceMatches": 1
+              },
+              {
+                "label": "Login",
+                "category": "login",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0260",
+                "sourceMatches": 1
+              },
+              {
+                "label": "대학생활",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/notice.do",
+                "target": "_self",
+                "sourceId": "smu-c0219",
+                "sourceMatches": 1
+              },
+              {
+                "label": "입학안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/intro/whySangmyung.do",
+                "target": "_self",
+                "sourceId": "smu-c0172",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "scholarship-rule": null,
+          "scholarship-detail-rule": null,
+          "loan-information": null
+        },
+        "selected": [
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0276",
+            "sourceMatches": 1
+          },
+          {
+            "label": "수강신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0258",
+            "sourceMatches": 1
+          },
+          {
+            "label": "학사안내",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+            "target": "_self",
+            "sourceId": "smu-c0200",
+            "sourceMatches": 1
+          },
+          {
+            "label": "Login",
+            "category": "login",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0260",
+            "sourceMatches": 1
+          },
+          {
+            "label": "대학생활",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/notice.do",
+            "target": "_self",
+            "sourceId": "smu-c0219",
+            "sourceMatches": 1
+          },
+          {
+            "label": "입학안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/intro/whySangmyung.do",
+            "target": "_self",
+            "sourceId": "smu-c0172",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 6,
+        "recommended": 6,
+        "matched": 0,
+        "expected": 3,
+        "precision": 1,
+        "recall": 0,
+        "missed": [
+          "scholarship-rule",
+          "scholarship-detail-rule",
+          "loan-information"
+        ],
+        "incorrect": [],
+        "taskRecommended": false
+      }
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 0.9285714285714286,
+      "recall": 0.13333333333333333
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 1,
+        "recall": 0,
+        "passed": false
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 0.3333333333333333,
+        "passed": false
+      },
+      {
+        "siteId": "library",
+        "precision": 0.6666666666666666,
+        "recall": 0,
+        "passed": false
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 1,
+        "recall": 0.3333333333333333,
+        "passed": false
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 0,
+        "passed": false
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 32,
+      "recommended": 40,
+      "matched": 3,
+      "expected": 15,
+      "precision": 0.8,
+      "recall": 0.2,
+      "tasksRecommended": 0
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 8,
+        "recommended": 9,
+        "matched": 1,
+        "expected": 3,
+        "precision": 0.8888888888888888,
+        "recall": 0.3333333333333333,
+        "tasksRecommended": 0
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 1,
+        "expected": 3,
+        "precision": 1,
+        "recall": 0.3333333333333333,
+        "tasksRecommended": 0
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 10,
+        "recommended": 13,
+        "matched": 0,
+        "expected": 3,
+        "precision": 0.7692307692307693,
+        "recall": 0,
+        "tasksRecommended": 0
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 8,
+        "matched": 1,
+        "expected": 3,
+        "precision": 0.5,
+        "recall": 0.3333333333333333,
+        "tasksRecommended": 0
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 6,
+        "recommended": 6,
+        "matched": 0,
+        "expected": 3,
+        "precision": 1,
+        "recall": 0,
+        "tasksRecommended": 0
+      }
+    ],
+    "unresolvedMappings": 9,
+    "repeatedCards": 4
+  }
+}

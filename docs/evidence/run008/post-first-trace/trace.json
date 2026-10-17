@@ -1,0 +1,643 @@
+{
+  "startedAtUtc": "2026-10-17T19:45:57.303Z",
+  "completedAtUtc": "2026-10-17T19:45:59.075Z",
+  "classification": "POST_FIRST_EXPOSED_DEVELOPMENT_TRACE",
+  "scope": "New diagnostic only: frozen v0.9 source, five already-exposed offline v10 pages, actual raw/classified/selected source membership for required controls. Does not rerun or alter first quality report, infer live/native/user success, or activate a source/form/card.",
+  "firstReport": "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+  "firstReportSha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+  "firstReportUnchanged": true,
+  "sourceStable": true,
+  "sourceHashes": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "fdf4ed47f0e4cd5d4aa8b3de503dc6c1bd84998830860ceca2849fdb71faf3a6",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "53670fb11c1d7908a401a864a4d2cb9379eac7eb540580b664d50f53043919c8",
+    "src/content-evidence.ts": "b6b7dda68f0bffaa045ce4b5a5674ec17096d9fe86e2822dca96ff455891f105",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+    "src/institution-evidence.ts": "c577aedbe6d54df2efc1d93c68fabc494a16befb07f761114d209d6d43d630ff",
+    "src/navigation-utility.ts": "d4ad0d0e26540e9eb949dc783ea23c763452c2c798e2a502828f7381a5e225aa",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "75b5cfbb60b7580f3617fbcc66f5abb93405a171978f13463ff30b758baa7314",
+    "src/ranker.ts": "1d4d0e122de9cc744f9beacd563ba09902fbdbfdf9bdc9b0ee1e98a99fcfc29a",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "0471b5b8687eadf2a73efafe03f436e2f852fec9f41d67d78aea07b5473c9849",
+    "extension/manifest.json": "80ae41bed3ffcc5c442f254a3661c5bcea0f3ff2df33970706ccd31b9563f91f",
+    "scripts/evaluate.mjs": "fabec6f673dc1cd54748d238b3d1425c7b77dffa8b60781dc34e90be99df5fc1",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4",
+    "scripts/compare-development.mjs": "f9efa761c53384727da90d2c2d8fcf3e824aa31942c5c4b50004ce0b9301f29a",
+    "scripts/benchmark-institution.mjs": "d9e584d2c2f44ac5a1ddc1b2bbbecd63a0ee766f1507fd9011a8777a49ad3403",
+    "scripts/verify.mjs": "2b362b509841f8be9e48c497812cd639f2637e45b32279550757a60c74bdfe83",
+    "scripts/build.mjs": "a6dc21032ff7dcbcedfd7405993746ad5a0b1bad695981d138343a87bcebeb76",
+    "scripts/package.mjs": "8e623c9487dcd5e0495f9229eb12de79d19bb6edd79998d4e41843e2803def50",
+    "package.json": "0ac01e9af59dd901313c15320c380bf21cba8ee366e774d5a7afa583ba23e000",
+    "package-lock.json": "7067db4de9f036a419aaa58acadcb7bec48923202759b1dccd4ef9329f73f0c7",
+    "tsconfig.json": "7bda7820be6fd2a8acf5f0b897f8846e40dcb09347f9ca69554f4f140b088817",
+    "evaluation/protocol-tests.mjs": "dbdf551fa705bed2cbc1b209c66cf45184465f18ea85cf8bce38f13c7d64620c"
+  },
+  "bundleSha256": "f22e481726450033d9a7b6b8ff7a3c4602014c803d8066021ed5bdbfebb7d328",
+  "environment": {
+    "node": "v26.0.0",
+    "headless": true,
+    "isolatedWorld": true
+  },
+  "network": {
+    "fixtureNavigations": 5,
+    "subrequestsAborted": 0,
+    "externalRequests": 0
+  },
+  "missingStageCounts": {
+    "CLASSIFIED_NOT_FIRST": 1,
+    "RAW_BUT_UNCLASSIFIED": 12
+  },
+  "results": [
+    {
+      "pageId": "v10-city-01",
+      "fixture": "evaluation/blind-v10/fixtures/city.html",
+      "fixtureSha256": "91768407ea877eaf3d0a5c7b6cb308a16fc8fb9fb72c122fab65b7ff15240337",
+      "groups": [
+        {
+          "id": "petition-entry",
+          "expectedCategory": "apply",
+          "expectedAction": "navigate",
+          "firstMissed": true,
+          "stage": "CLASSIFIED_NOT_FIRST",
+          "raw": [
+            {
+              "sourceId": "city-c0824",
+              "label": "민원신청(국민신문고) 바로가기",
+              "action": "navigate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "민원신청",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [
+            {
+              "sourceId": "city-c0824",
+              "label": "민원신청(국민신문고) 바로가기",
+              "action": "navigate",
+              "category": "apply",
+              "pageTask": null,
+              "score": 60,
+              "context": "body",
+              "sectionLabel": "민원신청",
+              "relatedLabel": null,
+              "reasons": [
+                "고정 문구 일치",
+                "본문 영역"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "selected": []
+        },
+        {
+          "id": "petition-status",
+          "expectedCategory": "apply",
+          "expectedAction": "navigate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "city-c0822",
+              "label": "나의민원보기",
+              "action": "navigate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "민원신청",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "public-petitions",
+          "expectedCategory": "help",
+          "expectedAction": "navigate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "city-c0823",
+              "label": "민원공개",
+              "action": "navigate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "민원신청",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        }
+      ]
+    },
+    {
+      "pageId": "v10-government-02",
+      "fixture": "evaluation/blind-v10/fixtures/government.html",
+      "fixtureSha256": "ecab15864e8fb1488ecdd2c4a648dd15a8b72d10aae310486face329a1059a55",
+      "groups": [
+        {
+          "id": "board-search",
+          "expectedCategory": "search",
+          "expectedAction": "locate",
+          "firstMissed": false,
+          "stage": "FIRST_SCREEN",
+          "raw": [
+            {
+              "sourceId": "government-c0211",
+              "label": "검색어",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            },
+            {
+              "sourceId": "government-c0212",
+              "label": "검색",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [
+            {
+              "sourceId": "government-c0211",
+              "label": "검색어",
+              "action": "locate",
+              "category": "search",
+              "pageTask": "control",
+              "score": 82,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [
+                "고정 문구 일치",
+                "명시적 검색 제어",
+                "본문 영역"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            },
+            {
+              "sourceId": "government-c0212",
+              "label": "검색",
+              "action": "locate",
+              "category": "search",
+              "pageTask": "control",
+              "score": 70,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [
+                "검색 양식의 분야 필터",
+                "고정 원본 제어 구조"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "selected": [
+            {
+              "sourceId": "government-c0211",
+              "label": "검색어",
+              "action": "locate",
+              "category": "search",
+              "pageTask": "control",
+              "score": 82,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [
+                "고정 문구 일치",
+                "명시적 검색 제어",
+                "본문 영역"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            },
+            {
+              "sourceId": "government-c0212",
+              "label": "검색",
+              "action": "locate",
+              "category": "search",
+              "pageTask": "control",
+              "score": 70,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [
+                "검색 양식의 분야 필터",
+                "고정 원본 제어 구조"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ]
+        },
+        {
+          "id": "center-guide",
+          "expectedCategory": "help",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "government-c0223",
+              "label": "재난심리회복지원단 활성화를 위한 실무자 업무 가이드북",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "center-photo-view",
+          "expectedCategory": "help",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "government-c0202",
+              "label": "사진자료",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "심리회복지원센터",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        }
+      ]
+    },
+    {
+      "pageId": "v10-library-01",
+      "fixture": "evaluation/blind-v10/fixtures/library.html",
+      "fixtureSha256": "9d7d3bc60c495ce225fd1ea52efaaa534ddc57afa34deea74b356df28f84b4d7",
+      "groups": [
+        {
+          "id": "old-books-room",
+          "expectedCategory": "help",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "library-c1514",
+              "label": "고문헌실",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "본관 자료실",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "book-reading-room",
+          "expectedCategory": "help",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "library-c1516",
+              "label": "도서자료실 (인문·사회·자연과학)",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "본관 자료실",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "literature-room",
+          "expectedCategory": "help",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "library-c1519",
+              "label": "문학실",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "본관 자료실",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        }
+      ]
+    },
+    {
+      "pageId": "v10-public-agency-01",
+      "fixture": "evaluation/blind-v10/fixtures/public-agency.html",
+      "fixtureSha256": "52741e587c6ae25e90937aa50a660507787d0b0f4e30b5a691db22c83a3e289f",
+      "groups": [
+        {
+          "id": "service-search",
+          "expectedCategory": "search",
+          "expectedAction": "locate",
+          "firstMissed": false,
+          "stage": "FIRST_SCREEN",
+          "raw": [
+            {
+              "sourceId": "public-agency-c0541",
+              "label": "검색어 입력",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            },
+            {
+              "sourceId": "public-agency-c0542",
+              "label": "검색",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [
+            {
+              "sourceId": "public-agency-c0541",
+              "label": "검색어 입력",
+              "action": "locate",
+              "category": "search",
+              "pageTask": "control",
+              "score": 82,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [
+                "고정 문구 일치",
+                "명시적 검색 제어",
+                "본문 영역"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            },
+            {
+              "sourceId": "public-agency-c0542",
+              "label": "검색",
+              "action": "locate",
+              "category": "search",
+              "pageTask": null,
+              "score": 70,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [
+                "고정 문구 일치",
+                "본문 영역"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "selected": [
+            {
+              "sourceId": "public-agency-c0541",
+              "label": "검색어 입력",
+              "action": "locate",
+              "category": "search",
+              "pageTask": "control",
+              "score": 82,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [
+                "고정 문구 일치",
+                "명시적 검색 제어",
+                "본문 영역"
+              ],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ]
+        },
+        {
+          "id": "certificate-details",
+          "expectedCategory": "help",
+          "expectedAction": "navigate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "public-agency-c0545",
+              "label": "상세보기",
+              "action": "navigate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "certificate-issue-entry",
+          "expectedCategory": "apply",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "public-agency-c0546",
+              "label": "발급하기",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "증명서 발급",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        }
+      ]
+    },
+    {
+      "pageId": "v10-smu-01",
+      "fixture": "evaluation/blind-v10/fixtures/smu.html",
+      "fixtureSha256": "25b99ae5165abf82877cfcb91520d6e143e8d298cb63ddebe1526ed9c274d287",
+      "groups": [
+        {
+          "id": "scholarship-rule",
+          "expectedCategory": "academic",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "smu-c0390",
+              "label": "pdf 다운로드",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "장학금 지급규정(서울캠퍼스)",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "scholarship-detail-rule",
+          "expectedCategory": "academic",
+          "expectedAction": "locate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "smu-c0391",
+              "label": "pdf 다운로드",
+              "action": "locate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "장학금 지급규정(서울캠퍼스)",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        },
+        {
+          "id": "loan-information",
+          "expectedCategory": "academic",
+          "expectedAction": "navigate",
+          "firstMissed": true,
+          "stage": "RAW_BUT_UNCLASSIFIED",
+          "raw": [
+            {
+              "sourceId": "smu-c0314",
+              "label": "학자금 융자제도",
+              "action": "navigate",
+              "category": null,
+              "pageTask": null,
+              "score": 0,
+              "context": "body",
+              "sectionLabel": "장학 학사안내",
+              "relatedLabel": null,
+              "reasons": [],
+              "institutionRule": null,
+              "contentRule": null
+            }
+          ],
+          "classified": [],
+          "selected": []
+        }
+      ]
+    }
+  ]
+}

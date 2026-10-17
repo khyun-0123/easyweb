@@ -1,0 +1,77 @@
+
+Running 6 tests using 1 worker
+
+(node:15109) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/reading-policy-integration.spec.mjs:10:1 › 실제 읽기 전용 fragment 설명의 납부기한만 help/locate로 제공한다 (88ms)
+(node:15115) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/reading-policy-integration.spec.mjs:18:1 › 설명 표제가 같아도 결제·삭제 handler나 HTTP 명령은 복구하지 않는다 (126ms)
+  ✓  3 tests/reading-policy-integration.spec.mjs:27:1 › 위험 낱말을 섞거나 실제 결제 제어가 있는 패널에는 기한 예외를 적용하지 않는다 (127ms)
+  ✘  4 tests/reading-policy-integration.spec.mjs:33:1 › 설명 제목의 동일 문구 교체도 낡은 후보를 차단한다 (78ms)
+(node:15125) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/reading-policy-integration.spec.mjs:38:1 › 같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다 (87ms)
+(node:15131) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/reading-policy-integration.spec.mjs:45:1 › 비활성 설명의 입력·편집 속성 getter는 예외 판단에서도 읽지 않는다 (81ms)
+
+
+  1) tests/reading-policy-integration.spec.mjs:10:1 › 실제 읽기 전용 fragment 설명의 납부기한만 help/locate로 제공한다 
+
+    Error: expect(received).toMatchObject(expected)
+
+    Matcher error: received value must be a non-null object
+
+    Received has value: undefined
+
+      10 | test('실제 읽기 전용 fragment 설명의 납부기한만 help/locate로 제공한다',async({page})=>{
+      11 |   await setup(page,panels());const rows=await inspect(page);
+    > 12 |   expect(rows.find(r=>r.id==='deadline')).toMatchObject({category:'help',action:'locate',task:'reading',readonlyPanel:true,scope:'content'});
+         |                                           ^
+      13 |   expect(rows.find(r=>r.id==='deadline').href).toBeUndefined();
+      14 |   expect(rows.find(r=>r.id==='rate')).toMatchObject({category:'help',action:'locate',task:'reading'});
+      15 |   expect(await page.evaluate(()=>reviewCandidates.every(c=>{const raw=reviewSources.find(r=>r.element===c.element);return raw.action===c.action&&raw.href===c.href&&raw.snapshot===c.snapshot;}))).toBe(true);
+        at /Users/khyun_03/easyweb/tests/reading-policy-integration.spec.mjs:12:43
+
+    Error Context: test-results/reading-policy-integration-4dd49-설명의-납부기한만-help-locate로-제공한다/error-context.md
+
+  2) tests/reading-policy-integration.spec.mjs:33:1 › 설명 제목의 동일 문구 교체도 낡은 후보를 차단한다 ─────────────────
+
+    Error: expect(received).toBeTruthy()
+
+    Received: undefined
+
+      32 |
+      33 | test('설명 제목의 동일 문구 교체도 낡은 후보를 차단한다',async({page})=>{
+    > 34 |   await setup(page,panels());expect((await inspect(page)).find(r=>r.id==='deadline')).toBeTruthy();
+         |                                                                                       ^
+      35 |   expect(await page.evaluate(()=>{const c=reviewCandidates.find(c=>c.element.id==='deadline');const h=document.querySelector('#deadline-title');h.replaceWith(h.cloneNode(true));return ReadingPolicyReview.isCandidateCurrent(c);})).toBe(false);
+      36 | });
+      37 |
+        at /Users/khyun_03/easyweb/tests/reading-policy-integration.spec.mjs:34:87
+
+    Error Context: test-results/reading-policy-integration-설명-제목의-동일-문구-교체도-낡은-후보를-차단한다/error-context.md
+
+  3) tests/reading-policy-integration.spec.mjs:38:1 › 같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다 ─────────
+
+    Error: expect(received).toBeTruthy()
+
+    Received: undefined
+
+      37 |
+      38 | test('같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다',async({page})=>{
+    > 39 |   await setup(page,panels());expect((await inspect(page)).find(r=>r.id==='deadline')).toBeTruthy();
+         |                                                                                       ^
+      40 |   await page.evaluate(()=>{window.sourceActivations=0;document.querySelector('#deadline').addEventListener('click',e=>{sourceActivations++;e.preventDefault();});const host=document.createElement('div');host.dataset.easywebHost='true';document.body.append(host);ReadingPolicyReview.openEasyMode(host);const h=document.querySelector('#deadline-title');h.replaceWith(h.cloneNode(true));const card=[...host.shadowRoot.querySelectorAll('.card')].find(c=>c.querySelector('.card-source')?.textContent.includes('시설 보험료 납부기한'));card.click();});
+      41 |   expect(await page.evaluate(()=>sourceActivations)).toBe(0);
+      42 |   await expect(page.locator('[data-easyweb-notice]')).toHaveAttribute('data-easyweb-notice-reason','changed');
+        at /Users/khyun_03/easyweb/tests/reading-policy-integration.spec.mjs:39:87
+
+    Error Context: test-results/reading-policy-integration-457e9-명-교체-후-카드-클릭은-원본을-활성화하지-않는다/error-context.md
+
+  3 failed
+    tests/reading-policy-integration.spec.mjs:10:1 › 실제 읽기 전용 fragment 설명의 납부기한만 help/locate로 제공한다 ─
+    tests/reading-policy-integration.spec.mjs:33:1 › 설명 제목의 동일 문구 교체도 낡은 후보를 차단한다 ──────────────────
+    tests/reading-policy-integration.spec.mjs:38:1 › 같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다 ──────────
+  3 passed (1.9s)

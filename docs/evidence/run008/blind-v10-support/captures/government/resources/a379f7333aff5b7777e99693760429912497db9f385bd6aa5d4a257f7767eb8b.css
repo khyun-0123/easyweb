@@ -1,0 +1,2889 @@
+@charset "utf-8";
+
+/* 국민행동요령 상단 이미지 슬라이드 영역 */
+/* Swiper css */
+.swiper {
+    width: 100%;
+    height: 100%;
+    padding-top:50px;
+}
+/* 전체 이미지 영역 */
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+.section {position: relative;}
+.btn-slideimg {
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 1;
+}
+
+
+/* 슬라이드 이미지 코멘트 영역 */
+/* .slide-comment {
+    position: absolute;width: 100%;font-size: 16px;
+    bottom:0;
+    left:0;
+    color:#fff;
+    text-align: left;
+    padding:20px;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 0 0 10px 10px;
+}
+.slide-comment h3{
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom:10px
+}
+.slide-comment p {
+    padding-top:10px;
+    font-size: 15px;
+    font-weight: 400;
+} */
+/* 슬라이드 이미지 코멘트 영역 */
+
+
+/* 각각 이미지 영역 */
+.swiper-slide img {
+    display: block;
+    width: 100%;height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px #bbb solid;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* 좌,우 슬라이드 이동 버튼 */
+.swiper-button-prev, .swiper-button-next{
+    width: calc(var(--swiper-navigation-size) / 44 * 36);
+    top: 18px;
+    left: var(--swiper-navigation-sides-offset, 0px);
+    right: auto;
+}
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+    display: inline-block;
+    left: 0px;
+    background: #fff url(../images/sub/slide-prev.png) center center / 10px no-repeat;
+    width: 36px;
+    height: 36px;
+    border: 1px #bbb solid;
+    border-radius: 10px;
+    cursor: pointer;
+    content:"";
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+    display: inline-block;
+    left: 0px;
+    background: #fff url(../images/sub/slide-next.png) center center / 10px no-repeat;
+    width: 36px;
+    height: 36px;
+    border: 1px #bbb solid;
+    border-radius: 10px;
+    cursor: pointer;
+    content:"";
+}
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: var(--swiper-navigation-sides-offset, 0px);
+    right: auto;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    left: 40px;
+    right:0;
+}
+/* 좌,우 슬라이드 이동 버튼 */
+
+/* 슬라이드 페이징 영역 */
+.swiper-pagination-fraction {
+    top: 8px;
+    bottom: 0;
+    left: 90px;
+    width: auto;
+}
+.swiper-button-prev:hover:after{
+    background: #1764c4 url(../images/sub/slide-prev1.png) center center / 10px no-repeat;
+    box-shadow: 3px 0px 3px rgb(0 0 0 / 0.1);
+    border: 1px #1764c4 solid;
+}
+.swiper-button-next:hover:after{
+    background: #1764c4 url(../images/sub/slide-next1.png) center center / 10px no-repeat;
+    box-shadow: 3px 0px 3px rgb(0 0 0 / 0.1);
+    border: 1px #1764c4 solid;
+}
+
+/* 행동요령 우측 버튼 */
+.detail-more {
+    background: #222 url('../images/sub/btn-more.png') no-repeat 92% 48%;
+    height: 36px;
+    line-height: 36px;
+    color:#fff;
+    font-weight: 500;
+    padding:0px 40px 0px 20px;
+    border-radius: 10px;
+    margin-right:3px;
+}
+.detail-more:hover {
+    background: #000 url('../images/sub/btn-more.png') no-repeat 92% 48%;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.07);
+}
+.pdf-down {
+    background: #fff url('../images/sub/btn-down.png') no-repeat 92% 48%;
+    height: 36px;
+    line-height: 36px;
+    color:#222;
+    font-weight: 500;
+    padding:0px 40px 0px 20px;
+    border-radius: 10px;
+    border:1px #d4d4d4 solid
+}
+.pdf-down:hover {
+    background: #f6f6f6 url('../images/sub/btn-down.png') no-repeat 92% 48%;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.07);
+}
+/* 행동요령 우측 버튼 */
+
+
+/* 국민행동요령 내주변 대피소 정보 */
+.guide-listarea {
+    width: 100%;
+    margin-top:20px
+}
+.guide-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.guide-list li {
+    width: 49.5%;
+    padding:15px 25px;
+    border-radius:10px;
+    margin-right:1%;
+    margin-bottom:1%;
+    box-sizing: border-box;
+}
+.guide-list li:nth-child(1) {
+    background:#f5f5f5 url('../images/sub/g-icon01.png') no-repeat 95% 50%
+}
+.guide-list li:nth-child(2) {
+    background:#f5f5f5 url('../images/sub/g-icon02.png') no-repeat 95% 50%;
+    margin-right:0
+}
+.guide-list li:nth-child(3) {
+    background:#f5f5f5 url('../images/sub/g-icon03.png') no-repeat 95% 50%
+}
+.guide-list li:nth-child(4) {
+    background:#f5f5f5 url('../images/sub/g-icon04.png') no-repeat 95% 50%;
+    margin-right:0
+}
+.guide-list li h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color:#222;
+    padding-bottom:5px;
+}
+.guide-list a {
+    background: url('../images/sub/guide-info.png') no-repeat 100% 50%;
+    padding-right:23px;
+    margin-right:20px;
+    font-size: 18px;
+    color:#666;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.guide-list a:hover, .guide-list a:active, .guide-list a:focus {
+    background: url('../images/sub/guide-info1.png') no-repeat 100% 50%;
+    color:#222;
+}
+
+/* 국민행동요령 내주변 대피소 정보 */
+
+/* 행동요령 관련 동영상 */
+.movie-titarea a{display:none}
+.movie-area {
+    display: flex;
+    width:100%;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    margin-bottom:45px;
+}
+.movie-leftarea {
+    border:1px #bbb solid;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 300px;
+    width: 550px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.07);
+    margin-right:30px;
+}
+.movie-leftarea img {
+    width: 100%;
+}
+.movie-listarea ul li img{
+    transition: 0.3s;
+    width: 240px;
+    cursor: pointer;
+}
+.movie-listarea ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.movie-listarea ul li{
+    margin-right:10px;
+    height: 130px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.movie-listarea ul li:last-child{
+    margin-right:0px
+}
+.movie-listarea ul li:hover img{
+    transform: scale(1.2);
+}
+
+.movie-titarea {
+    display: flex;
+    justify-content: space-between;
+}
+.movie-titarea h4{margin-bottom:0px}
+.movie-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+input[name=mtabmenu] {
+  display: none;
+}
+.movcontent {
+    display: none;
+    width: 100%;
+    height: 310px;
+    transition: 0.3s;
+    background-color: #f3f5f9;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* a 태그 플레이 이미지 */
+.movcontent a {
+    display: inline-block;
+    position: relative;
+}
+.btnmov {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 0;
+    width: 85px;
+    height: 88px;
+    background: url('../images/temp/btn-play.png') no-repeat 50% 50%;
+    transition: 0.3s;
+}
+.movcontent a:hover .btnmov,
+.movcontent a:active .btnmov,
+.movcontent a:focus .btnmov {
+    background: url('../images/temp/btn-playon.png') no-repeat 50% 50%;
+}
+.movcontent img{
+    display: inline-block;
+    border-radius: 10px 0 0 10PX;
+    overflow: hidden;
+    width: 550px;    
+}
+.movcontent .movie-rightarea {
+    display: inline-block;
+    transition: 0.3s;
+    width:calc(100% - 580px);
+    height: 100%;
+    vertical-align: top;
+    padding-left:30px;
+}
+.movie-rightarea h3 {
+    font-size: 22px;
+    color:#222;
+    font-weight: 700;
+    padding:30px 0 12px 0;
+}
+.movie-rightarea .movie-dateinfo {
+    font-size: 16px;
+    color:#a0a0a0;
+    font-weight: 600;
+    padding-bottom:40px;
+}
+.movie-rightarea .movie-detailinfo {
+    font-size: 14px;
+    color:#666;
+    font-weight: 500;
+}
+.movbtn {
+  width: 100%;
+  margin-top:10px;
+  padding:0px 0px 10px 0px;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  
+}
+.movbtn label {
+  width:23.4%;
+  display: inline-block;
+  margin-bottom:20px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border:#eee 1px solid
+  
+}
+.movbtn label img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;    
+    overflow: hidden;
+}
+input[id=movtab1]:checked ~ .movslide1,
+input[id=movtab2]:checked ~ .movslide2,
+input[id=movtab3]:checked ~ .movslide3,
+input[id=movtab4]:checked ~ .movslide4,
+input[id=movtab5]:checked ~ .movslide5,
+input[id=movtab6]:checked ~ .movslide6,
+input[id=movtab7]:checked ~ .movslide7,
+input[id=movtab8]:checked ~ .movslide8,
+input[id=movtab9]:checked ~ .movslide9 {
+    display: block;
+} 
+
+input:checked ~ .movbtn label:hover img {
+  transform: scale(1.2);
+  transition: 0.3s;
+}
+/* 행동요령 관련 동영상 */
+
+
+/* 국민행동요령 - 주요기관 연락처 */
+.instit-numarea {
+    width: 100%;
+    margin-top:20px;
+}
+.instit-list {
+    display: flex;
+    gap:15px;
+    width:100%;
+}
+.instit-list li {
+    width:33%
+}
+.instit-list li:last-child {
+    margin-right:0px
+}
+.instit-titarea {
+    border-radius: 20px;
+    padding:20px 30px;    
+    font-size: 20px;
+    font-weight: 600;
+    color:#fff;
+    white-space: pre;
+}
+
+.instit-list li:nth-child(1) .instit-titarea{
+    background: #1764c4 url('../images/sub/office-icon1.png') no-repeat 90% 50%;
+}
+
+.instit-list li:nth-child(2) .instit-titarea{
+    background: #1764c4 url('../images/sub/office-icon2.png') no-repeat 90% 50%;
+}
+
+.instit-list li:nth-child(3) .instit-titarea{
+    background: #1764c4 url('../images/sub/office-icon3.png') no-repeat 90% 50%;
+}
+
+.instit-text {
+    width: 100%;
+}
+.instit-text span {
+    display: block;
+    border:1px  #ebebeb solid;
+    border-radius: 10px;
+    padding:15px 30px 15px 38px; 
+    font-size: 16px;
+    font-weight: 600;
+    color:#666;
+    background:#f5f5f5 url('../images/sub/instit-bullet.png') no-repeat 30px 25px;
+    margin-top:3px
+}
+
+.link {
+    background: url('../images/sub/instit-link.png') no-repeat 100% 50%;
+    padding-right:20px;
+    margin-right:10px
+}
+
+
+
+
+/* QnA */
+.gnalist {
+    width: 100%;
+}
+.ques {
+    font-size: 18px;
+    color:#1764c4;
+    /* background: url('../images/sub/q-icon.png') no-repeat 0 0; */
+    padding:5px 0 5px 20px;
+    font-weight: 700;
+}
+
+.answ {
+    display: flex;
+    font-size: 16px;
+    color:#555;
+    background-color: #f3f5f9;
+    padding:20px;
+    border-radius:10px;
+    line-height: 1.4;
+    background: url('../images/sub/ans-icon.png') no-repeat 20px 20px;
+    padding:5px 0 5px 35px;
+}
+.answ-list {
+    margin:5px 0 0 35px
+}
+.answ-list li {
+    padding-bottom:10px;
+}
+
+/* page Q&A */
+.qna-listarea {
+    margin-top:20px
+}
+.qna-listarea li {
+    font-size: 18px;
+}
+.ques {
+    color:#1764c4;
+    margin-bottom:10px;
+    font-weight: 500;
+}
+.qna-listarea li span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color:#fff;
+    margin-right:5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.icon-quest {
+    background-color: #1764c4;
+    
+}
+.qna-listarea li .icon-answ {
+    background-color: #707070;  
+    margin-right:5px  
+}
+.qna-listarea li.ans {
+    background-color: #f3f5f9;
+    border-radius: 10px;
+    padding:17px 20px 20px 20px;
+    display: flex;
+}
+.text-ans {
+    display: inline-block;
+    font-size: 16px;
+    padding-top:3px
+}
+
+
+/* 행동요령 main */
+.guidelines-catearea{
+    width: 100%;
+    padding:65px 0 0px 0;
+    background: #eaf3fb url('../images/sub/situation-bg.png') no-repeat right bottom;
+}
+.guidelines-cateinner {
+    width: 1400px;
+    margin:0 auto;
+    display: block;
+    text-align: center;   
+}
+.guidelines-cateinner h2 {
+    font-size: 36px;
+    padding-bottom:20px;
+    color:#222;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+.guidelines-cateinner h2 span {
+   display: inline-block;
+    font-weight: 700;
+}
+
+
+/* 행동요령 메인 tab */
+.guideline-tabarea {
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    background-color: #fff;
+    
+}
+.guideline-tabarea .gtab-list {
+    background: #fff;     
+    border:1px #ccc solid;
+    color:#555;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 0;
+    cursor: pointer;
+    z-index: 1;
+    margin-left: -1px;
+    width: 250px;
+    margin:0 1.5px;
+    text-align: center;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;    
+}
+.gtab-content {
+    width: 100%;
+    height: 100%;
+    margin-top: -1px;
+    padding: 25px 0 0px 0;
+    -webkit-order: 1;
+    order: 1;
+}
+.guideline-tabarea input[type=radio], .gtab-content {
+    display: none;
+}
+.guideline-tabarea input[type=radio]:checked + label {
+    background: #1764c4;
+    border:1px #1764c4 solid;
+    color:#fff;
+}
+.guideline-tabarea input[type=radio]:checked + label + .gtab-content {
+    display: block;
+}
+    
+/* sub tab */
+.gtab {
+    display: flex;
+    align-items: center;
+    padding: 30px 0 30px 0;
+    justify-content: center;
+  }
+  .gtab__item {
+    padding: 0px 15px 15px 015px;
+    color:#666;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    border-bottom: 3px solid #dadada;
+  }
+  .gtab__item.active {
+    display: inline-block;
+    border-bottom: 3px solid #1764c4;
+    color: #1764c4;
+  }
+  .gtab__content-wrapper {
+    padding: 1rem
+  }
+  .gtab__content {
+    display: none;
+  }
+  .gtab__content.active {
+    display: block;
+  }
+
+
+
+.guidelines-listarea {
+    height: 140px;
+    position: relative;
+    margin:80px 0 0px 0;
+    border-radius: 50px 50px 0 0;
+    background-color: #fff;
+}
+.guidelines-list {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top:-50px;
+    left:0;
+}
+.guidelines-list li {
+    display: inline-block;
+    margin:0 10px;   
+    vertical-align: top;
+}
+.guidelines-list li.guide-active .guidelines-imgarea {
+    background-color: #9cc9f5;
+    border-radius: 12px;    
+    border:1px #8bb9e7 solid;
+}
+.guidelines-list li.guide-active span {
+    color:#3c6994
+}
+.guidelines-imgarea {
+    background-color: #fff;
+    border-radius: 12px;    
+    border:1px #d5d5d5 solid;
+    width: 120px;
+    height: 120px;
+    margin-bottom:10px;
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
+}
+.guidelines-imgarea img{
+    width: 100px;
+    height: 100px;
+    margin-top:10px;
+}
+.guidelines-list li:hover .guidelines-imgarea {
+    background-color: #9cc9f5;
+    border-radius: 12px;    
+    border:1px #8bb9e7 solid;
+    transform: translateY(-15px);
+}
+.guidelines-list li span {
+    display: block;
+    width: 120px;
+    font-size: 20px;
+    color:#666;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.guidelines-list li:hover span {
+    color:#3c6994
+}
+
+
+/* 분류별 > 전체 행동요령 목록 */
+.guide-categorylist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin:0 auto;
+}
+.guide-categorylist li {
+    text-align: center;
+    width: 10%;
+    margin-bottom:20px;   
+}
+
+.guide-categorylist li span {
+    font-weight: 500;
+    font-size: 18px;
+    color:#666
+}
+.guide-categorylist li img {
+    opacity: 0.6;    
+}
+.guide-categorylist li .gimg-area {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border:1px #dbdbdb solid;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+    margin:0 auto 5px auto;
+    overflow: hidden;
+    transition: 0.3s;
+   
+}
+.guide-categorylist li:hover .gimg-area {
+    transform: translateY(-5px);   
+}
+.guide-categorylist li:hover img {
+    opacity: 1;
+}
+.guide-categorylist li:hover span {
+    color:#222;
+    text-align: center;
+}
+
+
+/* 색인별 행동요령 */
+.index-searcharea {
+    background-color: #f9f9f9;
+    border:1px #eaeaea solid;
+    border-radius:20px;
+    padding:3%;
+    font-size: 0;
+    margin-top:40px;
+    box-sizing: border-box;
+}
+.index-searchlist li {
+    display: inline-block;
+    border:1px #d7d7d7 solid;
+    border-radius: 10px;
+    text-align: center;
+    height: 46px;
+    line-height: 46px;
+    background-color: #fff;
+    font-size: 20px;
+    color:#555;
+    font-weight: 500;
+    padding:0 15px;
+    transition: 0.3s;
+    
+    margin:0 0.5% 0.5% 0
+}
+
+.index-searchlist li a {
+    color:#555;
+}
+.index-searchlist li:hover a {
+    color:#fff;
+}
+.index-searchlist li:hover {
+    border:1px #0e6ac4 solid;
+    background-color: #0770d7;
+    box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.15);
+}
+.index-searchlist li.sel-item {
+    border:1px #0e6ac4 solid;
+    background-color: #0770d7;
+    box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.15);
+    color:#fff;
+}
+.index-searchlist li.sel-item a {
+    color:#fff
+}
+.index-resultarea {
+    width: 100%;
+    border-radius: 20px;
+    padding:3%;
+    border:1px #eaeaea solid;
+    border-top:0px;
+    box-sizing: border-box;
+}
+.index-resultlist {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap:0.3%;
+    box-sizing: border-box;
+}
+.index-resultlist li {
+  width:24.7%;
+  box-sizing: border-box;
+  padding:10px 30px 10px 20px;
+  background: #f8f8f8 url('../images/sub/search-catearr.png') no-repeat 95% 15px;
+  border-radius: 10px;
+  border:1px #e0e0e0 solid;
+  margin-bottom:0.3%;
+  line-height: 1.2;
+  transition: 0.3s;
+}
+.index-resultlist li a {
+    font-size: 18px;
+    color:#666;
+    font-weight: 500;
+}
+.index-resultlist li.index-active {
+    width:24.7%;
+    padding:10px 30px 10px 20px;
+    background: #222 url('../images/sub/search-catearron.png') no-repeat 95% 15px;
+    border-radius: 10px;
+    border:1px #222 solid;
+    box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.2);
+  }
+.index-resultlist li.index-active a {
+    font-size: 18px;
+    color:#fff;
+    font-weight: 500;
+}
+.index-resultlist li:hover {
+    width:24.7%;
+    padding:10px 30px 10px 20px;
+    background: #222 url('../images/sub/search-catearron.png') no-repeat 95% 15px;
+    border-radius: 10px;
+    border:1px #222 solid;
+    box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.2);
+  }
+  .index-resultlist li:hover a {
+    font-size: 18px;
+    color:#fff;
+    font-weight: 500;
+}
+
+
+/* 키워드 검색 */
+.keyword-searcharea {
+    margin-top:40px;
+    display: flex;
+    justify-content: center;
+}
+.keyword-search {
+    background-color: #222;
+    border:3px #222 solid;
+    height: 60px;
+    line-height: 60px;
+    border-radius:10px;
+    overflow: hidden;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.22);
+    width: 50%;
+    padding:0;
+    font-size: 0;
+    vertical-align: top;
+}
+.keyword-search input[type="text"]{
+    height: 100%;
+    border:0px;
+    font-size: 20px;
+    color:#666;
+    padding:0 10px;
+    width: calc(100% - 60px);
+}
+
+.keyword-search input::placeholder {
+    color:#9a9a9a;
+}
+.keyword-search .keyword-search {
+    background: #222 url('../images/sub/cate-searchicon.png') no-repeat 50% 50%;
+    height: 60px;
+    width: 60px;
+    border-radius: 0;
+}
+
+.keyword-resultarea {
+    width: 100%;
+}
+.keyword-resultarea h3 {
+    font-size: 26px;
+    color:#000;
+    font-weight: 700;
+}
+.keyword-resultarea h3 span {
+    color:#0770d7
+}
+.keyword-resultlist {
+    border-top:2px #000 solid;
+    margin-top:15px;
+}
+
+.keyword-resultlist li {
+    padding:30px 0;
+    border-bottom:1px #bfbfbf solid;
+}
+.keyword-resultlist li:last-child {
+    padding-bottom:0;
+    border-bottom:0px
+}
+.keyword-cate {
+    font-size: 22px;
+    color:#222;
+    font-weight: 600;
+    padding-bottom:25px;
+}
+.keyword-cate1 {
+    font-size: 17px;
+    font-weight: 500;
+    color:#222;
+    padding-bottom:15px;
+}
+.keyword-cate1 span {
+    display: inline-block;
+    color:#b8b8b8;
+    font-weight: 300;
+    padding:0 5px
+}
+.keyword-detail {
+    padding-top:15px;
+    border-top:1px #e2e2e2 dashed;
+    font-size: 14px;
+    color:#666;
+    line-height: 1.4;
+}
+
+.keyword-detail1 {
+    padding-top:15px;
+    border-top:1px #e2e2e2 dashed;
+    font-size: 14px;
+    color:#666;
+    line-height: 1.4;
+}
+.keyword-detail1 span {
+    display: block;
+    font-size: 17px;
+    color: #222;
+    font-weight: 500;
+    padding-bottom:5px;
+}
+.keyword-detail1 p {
+    font-size: 14px;
+    color:#666;
+    line-height: 1.4;
+    padding-bottom:15px;
+}
+.keyword-detail span {
+    color:#0770d7
+
+}
+
+.keyword-resultarea h4 {
+    font-size: 22px;
+    color:#222;
+    font-weight: 600;
+}
+.keyword-more {
+    margin-left:10px;
+    background-color: #222;
+    border-radius: 10px;
+    color:#fff;
+    font-size: 14px;
+    font-weight: 500;
+    height: 24px;
+    line-height: 24px;
+    padding:3px 8px;
+    
+}
+
+@media all and (max-width:1500px) {  
+    .guidelines-listarea {
+        width: 100%;
+        height: 140px;
+        position: relative;
+        margin:80px 0 0px 0;
+        border-radius: 50px 50px 0 0;
+        background-color: #fff;
+    }
+    .guidelines-cateinner {
+        width: 100%;
+        margin:0 auto;
+        display: block;
+        text-align: center;   
+    }
+}
+
+@media all and (max-width:1300px) { 
+    
+}
+/* pad area */
+
+@media all and (max-width:1280px) { 
+
+    /* 행동요령 관련 동영상 */
+    .movie-titarea {
+        display: flex;
+        justify-content: space-between;
+    }
+    .movie-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    input[name=mtabmenu] {
+        display: none;
+    }
+    .movcontent {
+        display: none;
+        width: 100%;
+        height: 310px;
+        transition: 0.3s;
+        background-color: #f3f5f9;
+        border-radius: 10px;
+    }
+    .movcontent img{
+        display: inline-block;
+        border-radius: 10px 0 0 10PX;
+        overflow: hidden;
+        width: 550px;
+        height: 310px;
+    }
+    .movcontent .movie-rightarea {
+        display: inline-block;
+        transition: 0.3s;
+        width:calc(100% - 580px);
+        height: 100%;
+        vertical-align: top;
+        padding-left:30px;
+        
+    }
+    .movie-rightarea h3 {
+        font-size: 22px;
+        color:#222;
+        font-weight: 700;
+        padding:30px 0 12px 0;
+    }
+    .movie-rightarea .movie-dateinfo {
+        font-size: 16px;
+        color:#a0a0a0;
+        font-weight: 600;
+        padding-bottom:40px;
+    }
+    .movie-rightarea .movie-detailinfo {
+        font-size: 14px;
+        color:#666;
+        font-weight: 500;
+    }
+    .movbtn {
+        width: 100%;
+        margin-top:10px;
+        bottom: 0px;
+        padding:20px 0px 10px 0px;
+        border-radius: 0 0 10px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;    
+    }
+    .movbtn label {
+        width:23.5%;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .movbtn label img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s;
+        
+        overflow: hidden;
+    }
+    input[id=movtab1]:checked ~ .movslide1,
+    input[id=movtab2]:checked ~ .movslide2,
+    input[id=movtab3]:checked ~ .movslide3,
+    input[id=movtab4]:checked ~ .movslide4,
+    input[id=movtab5]:checked ~ .movslide5,
+    input[id=movtab6]:checked ~ .movslide6,
+    input[id=movtab7]:checked ~ .movslide7,
+    input[id=movtab8]:checked ~ .movslide8,
+    input[id=movtab9]:checked ~ .movslide9 {
+        display: block;
+    } 
+
+    input[id=movtab1]:checked ~ .movbtn label:hover img {
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+    .movie-listarea ul li img{
+        transition: 0.3s;
+        width: 100%;
+        max-width: 100%;
+    }
+    .movie-listarea ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .movie-listarea ul li{
+        margin-right:10px;
+        margin-bottom:10px;
+        height: 130px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .movie-listarea ul li:last-child{
+        margin-right:0px
+    }
+    .movie-listarea ul li:hover img{
+        transform: scale(1.2);
+    }
+
+    /* 주요기관 연락처 */
+    .instit-numarea {
+        width: 100%;
+    }
+    .instit-list {
+        display: flex;
+        gap:5px;
+    }
+    .instit-list li {
+        margin-right:2%;
+        width:33%;
+    }
+    .instit-list li:last-child {
+        margin-right:0px
+    }
+    .instit-titarea {
+        border-radius: 20px;
+        padding:20px 30px;    
+        font-size: 17px;
+        font-weight: 600;
+        color:#fff;
+        white-space: pre;
+    }
+}
+
+@media all and (max-width:1150px) { 
+
+
+    /* 행동요령 관련 동영상 */
+    .movcontent img{
+        display: inline-block;
+        border-radius: 10px 0 0 10PX;
+        overflow: hidden;
+        width: 450px;
+        height: 310px;
+    }
+    .movcontent .movie-rightarea {
+        display: inline-block;
+        transition: 0.3s;
+        width:calc(100% - 480px);
+        height: 100%;
+        vertical-align: top;
+        padding-left:30px;
+        
+    }
+    /* 행동요령 관련 동영상 */
+      .instit-titarea {
+        font-size: 16px;
+       }
+
+
+}
+@media all and (max-width:1024px) { 
+    .data-link{display:none}
+    .guide-listarea {
+        width: 100%;
+        margin-top:40px
+    }
+    .guide-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guide-list li {
+        width: 49.5%;
+        padding:30px;
+        border-radius:10px;
+        margin-right:1%;
+        margin-bottom:1%;
+        box-sizing: border-box;
+    }
+    .guide-list li h4 {
+        font-size: 22px;
+        font-weight: 600;
+        color:#222;
+        padding-bottom:5px;
+    }
+    .guide-list a {
+        background: url('../images/sub/guide-info.png') no-repeat 100% 3px;
+        padding:0 23px 10px 0px;
+        margin-right:20px;
+        font-size: 18px;
+        color:#666;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+    .guide-list a:hover, .guide-list a:active, .guide-list a:focus {
+        background: url('../images/sub/guide-info1.png') no-repeat 100% 3px;
+        color:#222
+    }
+    .g-list {
+        white-space: pre;
+        line-height: 1.8;
+    }
+
+    /* 행동요령 관련 동영상 */
+    /* 2025.05.22 행동요령 동영상 css주석 */
+    /* .movie-area {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+        margin-bottom:45px;
+    }
+    .movie-leftarea {
+        border:1px #bbb solid;
+        border-radius: 20px;
+        overflow: hidden;
+        height: auto;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.07);
+        margin-right:30px;
+        flex:1 1 auto;
+    }
+    .movie-leftarea img {
+        width: 100%;
+        max-width: 100%;
+        height:100%
+    }
+    .movie-rightarea {
+        margin-top:20px;
+        width:100%
+    } */
+    /* 2025.05.22 행동요령 동영상 css주석 */
+    .movie-listarea ul li{
+        margin-right:10px;
+        margin-bottom:10px;
+        height: auto;
+        border-radius: 10px;
+        flex-basis: 49%;
+        overflow: hidden;
+    }
+    .movie-listarea ul li img {
+        height: 100%;
+    }
+    .movie-listarea ul li:nth-child(2), .movie-listarea ul li:last-child{
+        margin-right:0px
+    }
+
+
+    /* 국민행동요령 - 주요기관 연락처 */
+    .instit-titarea {
+        font-size:18px;
+    }
+    .instit-text span {
+        font-size: 15px;
+
+    }
+
+    /* QnA */
+    .gnalist {
+        width: 100%;
+    }
+    .ques {
+        font-size: 16px;
+        color:#1764c4;
+    }
+    .ques span{
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: #1764c4;
+        font-size: 15px;
+        font-weight: 700;
+        color:#fff;
+        text-align: center;
+        line-height: 26px;
+        margin-right:5px;
+    }
+
+    .answ {
+        display: block;
+        font-size: 15px;
+        color:#555;
+        background-color: #f3f5f9;
+        padding:20px;
+        border-radius:10px;
+        line-height: 1.3;
+    }
+    .answ span{
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: #707070;
+        font-size: 15px;
+        font-weight: 700;
+        color:#fff;
+        text-align: center;
+        line-height: 26px;
+        margin-bottom:10px;
+    }
+
+    .answ-list li {
+        padding-bottom:10px;
+    }
+
+    /* 행동요령 메인 */
+    .guide-categorylist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin:0 auto;
+    }
+    .guide-categorylist li {
+        text-align: center;
+        width: 12.5%;
+        margin-bottom:20px;   
+    }
+    
+    .guide-categorylist li span {
+        font-weight: 500;
+        font-size: 16px;
+        color:#666
+    }
+    .guide-categorylist li img {
+        opacity: 0.6;    
+    }
+    .guide-categorylist li .gimg-area {
+        width: 90%;
+        height: 90px;
+        line-height: 90px;
+        border:1px #dbdbdb solid;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+        margin:0 auto 10px auto;
+        overflow: hidden;
+        transition: 0.3s;
+       
+    }
+    .guide-categorylist li:hover .gimg-area {
+        transform: translateY(-5px)
+       
+    }
+    .guide-categorylist li:hover img {
+        opacity: 1;
+    }
+    .guide-categorylist li:hover span {
+        color:#222;
+        text-align: center;
+    }
+}
+
+@media all and (max-width:969px) {
+    /* 국민행동요령 - 주요기관 연락처 */
+
+    .instit-numarea {
+        width: 100%;
+        margin-top:20px;
+    }
+    .instit-list {
+        display: flex;
+        gap:0;
+        width:100%;        
+        flex-wrap: wrap;
+    }
+    .instit-list li {
+        width:100%;
+        padding:0;
+        margin:0 0 20px 0;
+    }
+    .instit-list li:last-child {
+        margin-right:0px;
+        margin-bottom:0
+    }
+    .instit-titarea {
+        border-radius: 20px;
+        padding:20px 30px 20px 80px;    
+        font-size:18px;
+        font-weight: 600;
+        color:#fff;
+        white-space:normal;
+    }
+
+    .instit-list li:nth-child(1) .instit-titarea{
+        background: #1764c4 url('../images/sub/office-icon1.png') no-repeat 25px 50%;
+        background-size: 36px;
+    }
+
+    .instit-list li:nth-child(2) .instit-titarea{
+        background: #1764c4 url('../images/sub/office-icon2.png') no-repeat 25px 50%;
+        background-size: 36px;
+    }
+
+    .instit-list li:nth-child(3) .instit-titarea{
+        background: #1764c4 url('../images/sub/office-icon3.png') no-repeat 25px 50%;
+        background-size: 36px;
+    }
+
+    .instit-text {
+        width: 100%;
+    }
+    .instit-text span {
+        display: block;
+        border:1px  #ebebeb solid;
+        border-radius: 10px;
+        padding:10px 15px; 
+        font-size: 14px;
+        font-weight: 600;
+        color:#666;
+        background:#f5f5f5 url('../images/sub/instit-bullet.png') no-repeat 30px 25px;
+        margin-top:3px
+    }
+
+    /* 행동요령 메인 */
+    .guidelines-catearea{
+        width: 100%;
+        box-sizing: border-box;
+        padding:60px 3% 0px 3%;
+        background: #eaf3fb url('../images/sub/situation-bg.png') no-repeat right bottom;
+        background-image: none;
+    }
+    .guidelines-cateinner {
+        width: 100%;
+        margin:0 auto;
+        display: block;
+        text-align: center;   
+    }
+    .guidelines-cateinner h2 {
+        font-size: 32px;
+        padding-bottom:0px;
+        color:#222;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 행동요령 메인 tab */
+    .guideline-tabarea {
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+    }
+    .guidelines-listarea {
+        height: 80px;
+        position: relative;
+        margin:80px 0 30px 0;
+        border-radius: 20px 20px 0 0;
+        background-color: #fff;
+
+    }
+    .guidelines-list li {
+        display: inline-block;
+        margin:0 5px;   
+        vertical-align: top;
+    }
+    .guideline-tabarea .gtab-list {
+        background: #fff;     
+        border:1px #ccc solid;
+        color:#555;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 12px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: -1px;
+        width:190px;
+        margin:0 1.5px;
+        text-align: center;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;    
+    }
+    .guidelines-list li span {
+        display: block;
+        width: 90px;
+        font-size: 17px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 12px;    
+        border:1px #d5d5d5 solid;
+        width: 90px;
+        height: 90px;
+        margin-bottom:5px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+    
+     /* 2025.05.21 행동요령 메인 css 추가*/
+    .guidelines-imgarea img{
+        width: 100px;
+        max-width: 100%;
+        height: 90px;
+        margin-top:0px;
+    }
+
+    /* 키워드 검색 */
+    /* .keyword-searcharea {
+        display: flex;
+        justify-content: center;
+        font-size: 0;
+        margin-top:30px;
+    }
+    .keyword-searcharea input[type="text"]{
+        height: 50px;
+        line-height: 50px;
+        border:3px #222 solid;
+        border-radius: 10px 0 0 10px;
+        font-size: 18px;
+        color:#666;
+        padding:0 10px;
+        min-width: 400px;
+    }
+
+    .keyword-searcharea input::placeholder {
+        color:#9a9a9a;
+    }
+    .keyword-searcharea .keyword-search {
+        background: #222 url('../images/sub/cate-searchicon.png') no-repeat 50% 50%;
+        background-size: 22px;
+        border-radius: 0 10px 10px 0;
+        height: 50px;
+        width: 50px;
+    } */
+
+    /* 키워드 검색 */
+    .keyword-searcharea {
+        margin-top:30px;
+        display: flex;
+        justify-content: center;
+    }
+    .keyword-search {
+        background-color: #222;
+        border:3px #222 solid;
+        height: 50px;
+        line-height: 50px;
+        border-radius:10px;
+        overflow: hidden;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.22);
+        width: 60%;
+        padding:0;
+        font-size: 0;
+        vertical-align: top;
+    }
+    .keyword-search input[type="text"]{
+        height: 100%;
+        border:0px;
+        font-size: 18px;
+        color:#666;
+        padding:0 10px;
+        width: calc(100% - 50px);
+    }
+
+    .keyword-search input::placeholder {
+        color:#9a9a9a;
+    }
+    .keyword-search .keyword-search {
+        background: #222 url('../images/sub/cate-searchicon.png') no-repeat 50% 50%;
+        height: 50px;
+        width: 50px;
+        border-radius: 0;
+    }
+
+    .keyword-resultarea {
+        width: 100%;
+    }
+    .keyword-resultarea h3 {
+        font-size: 22px;
+        color:#000;
+        font-weight: 700;
+        margin-top:20px;
+    }
+    .keyword-resultarea h3 span {
+        color:#0770d7
+    }
+    .keyword-resultlist {
+        border-top:2px #000 solid;
+        margin-top:10px;
+    }
+
+    .keyword-resultlist li {
+        padding:20px 0;
+        border-bottom:1px #bfbfbf solid;
+    }
+    .keyword-resultlist li:last-child {
+        padding-bottom:0;
+        border-bottom:0px
+    }
+    .keyword-cate {
+        font-size: 20px;
+        color:#222;
+        font-weight: 600;
+        padding-bottom:20px;
+    }
+    .keyword-cate1 {
+        font-size: 16px;
+        font-weight: 500;
+        color:#222;
+        padding-bottom:10px;
+    }
+    .keyword-cate1 span {
+        display: inline-block;
+        color:#b8b8b8;
+        font-weight: 300;
+        padding:0 5px
+    }
+    .keyword-detail {
+        padding-top:10px;
+        border-top:1px #e2e2e2 dashed;
+        font-size: 14px;
+        color:#666;
+        line-height: 1.4;
+    }
+
+    .keyword-detail1 {
+        padding-top:10px;
+        border-top:1px #e2e2e2 dashed;
+        font-size: 14px;
+        color:#666;
+        line-height: 1.4;
+    }
+    .keyword-detail1 span {
+        display: block;
+        font-size: 15px;
+        color: #222;
+        font-weight: 500;
+        padding-bottom:5px;
+    }
+    .keyword-detail1 p {
+        font-size: 14px;
+        color:#666;
+        line-height: 1.4;
+        padding-bottom:15px;
+    }
+    .keyword-detail span {
+        color:#0770d7
+
+    }
+
+    .keyword-resultarea h4 {
+        font-size: 20px;
+        color:#222;
+        font-weight: 600;
+    }
+    .keyword-more {
+        margin-left:10px;
+        background-color: #222;
+        border-radius: 10px;
+        color:#fff;
+        font-size: 14px;
+        font-weight: 500;
+        height: 24px;
+        line-height: 24px;
+        padding:3px 8px;
+        
+    }
+  
+}
+
+@media all and (max-width:870px) {
+/* 행동요령 관련동영상 */
+    .movie-titarea {
+        display: flex;
+        justify-content: space-between;
+    }
+    .movie-titarea.mt40 {
+        margin-top:20px;
+    }
+    .movie-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    input[name=mtabmenu] {
+        display: none;
+    }
+    .movcontent {
+        display: none;
+        width: 100%;
+        height: 100%;
+        transition: 0.3s;
+        background-color: transparent;
+        border-radius: 10px;
+
+    }
+    .movcontent a {width: 100%;}
+    .movcontent img{
+        display: block;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+    }
+    .movcontent .movie-rightarea {
+        display: block;
+        transition: 0.3s;
+        width:100%;
+        height: 100%;
+        background-color: #f3f5f9;        
+        padding:15px 20px;
+        border-radius: 10px;
+        margin-top:10px;
+        
+    }
+    .movie-rightarea h3 {
+        font-size: 18px;
+        color:#222;
+        font-weight: 700;
+        padding:0px 0 12px 0;
+    }
+    .movie-rightarea .movie-dateinfo {
+        font-size: 14px;
+        color:#a0a0a0;
+        font-weight: 600;
+        padding-bottom:10px;
+    }
+    .movie-rightarea .movie-detailinfo {
+        font-size: 13px;
+        color:#666;
+        font-weight: 500;
+    }
+    .movbtn {
+        width: 100%;
+        margin-top:0px;
+        bottom: 0px;
+        padding:10px 0px 10px 0px;
+        border-radius: 0 ;
+    }
+    /* 행동요령 관련동영상 */
+    
+  	.guidelines-catearea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 40px 5% 0px 5%;
+        background: #eaf3fb url(../images/sub/situation-bg.png) no-repeat right bottom;
+        background-image: none;
+    }
+    .guideline-tabarea {
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+    }
+    .guidelines-listarea {
+        height: 210px;
+        position: relative;
+        margin:80px 0 30px 0;
+        border-radius: 20px 20px 0 0;
+        background-color: #fff;
+    }
+    .guidelines-list li {
+        display: inline-block;
+        margin:0 5px;   
+        vertical-align: top;
+        margin:0 10px 20px 10px;
+    }
+    .guideline-tabarea .gtab-list {
+        background: #fff;     
+        border:1px #ccc solid;
+        color:#555;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 12px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: -1px;
+        width:190px;
+        margin:0 1.5px;
+        text-align: center;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;    
+    }
+    .guidelines-list li span {
+        display: block;
+        width: 90px;
+        font-size: 17px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 12px;    
+        border:1px #d5d5d5 solid;
+        width: 90px;
+        height: 90px;
+        margin-bottom:5px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+    
+     /* 2025.05.21 행동요령 메인 css 추가*/
+    .guidelines-imgarea img{
+        width: 100px;
+        max-width: 100%;
+        height: 90px;
+        margin-top:0px;
+    }
+}
+/* mobile area */
+@media all and (max-width:780px) {
+    
+    
+    /* 국민행동요령 */
+    .section {position: relative;margin-top:30px}
+
+    .guide-listarea {margin-top:20px}
+    .guideline-listarea {
+        padding:0px;
+        background-color:transparent;
+        border-radius: 0px;
+    }
+    .guideline-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guideline-list li {
+        padding:15px 15px 10px 15px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        width: 100%;
+        margin-bottom:1%;
+        box-sizing: border-box;
+
+    }
+    .guideline-list li:nth-child(4) {
+        margin-bottom:0
+    }
+    .guideline-tit {
+        font-size: 18px;
+        color:#222;
+        font-weight: 600;
+        margin-bottom:5px;
+        padding-right:20px;
+        padding-left:25px;
+    }
+    .g-icon1 {
+        background: url('../images/sub/g-icon1.png') no-repeat 0% 50% / 20px;
+    }
+    .g-icon2 {
+        background: url('../images/sub/g-icon2.png') no-repeat 0% 50% / 20px;
+    }
+    .g-icon3 {
+        background: url('../images/sub/g-icon3.png') no-repeat 0% 50% / 20px;
+    }
+    .g-icon4 {
+        background: url('../images/sub/g-icon4.png') no-repeat 0% 50% / 20px;
+    }
+
+    .guideline-info a {   
+        padding:5px 20px 5px 10px;
+        font-size: 16px;
+        color:#666;
+        font-weight: 500;
+        background: url('../images/sub/guide-info.png') no-repeat 100% 50%;
+    }
+
+    .guideline-info {
+        margin-left:15px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .guide-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guide-list li {
+        width: 100%;
+        padding:10px 20px;
+        margin-right:0%;
+
+    }
+    .guide-list li h4 {
+        font-size: 20px;
+        font-weight: 600;
+        color:#222;
+        padding-bottom:5px;
+    }
+    .guide-list a {
+        background: url('../images/sub/guide-info.png') no-repeat 100% 3px;
+        padding:0 23px 10px 0px;
+        margin-right:20px;
+        font-size: 16px;
+        color:#666;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+    .guide-list a:hover, .guide-list a:active, .guide-list a:focus {
+        background: url('../images/sub/guide-info1.png') no-repeat 100% 3px;
+        color:#222
+    }
+    .g-list {
+        white-space: normal;
+    }
+
+    /* 행동요령 메인 */
+    .guidelines-catearea{
+        width: 100%;
+        box-sizing: border-box;
+        padding:30px 0% 0px 0%;
+        background: #eaf3fb url('../images/sub/situation-bg.png') no-repeat right bottom;
+        background-image: none;
+    }
+    .guidelines-cateinner {
+        width: 100%;
+        margin:0 auto;
+        display: block;
+        text-align: center;   
+    }
+    .guidelines-list {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top:-30px;
+        left:0;
+        width: 100%;
+    }
+    .guidelines-cateinner h2 {
+        font-size: 30px;
+        padding-bottom:0px;
+        color:#222;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+    }
+       .guidelines-imgarea img{
+        width: 100px;
+        max-width: 100%;
+        height: 70px;
+        margin-top:0px;
+    }
+    
+
+    /* 행동요령 메인 tab */
+    .guideline-tabarea {
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+    }
+    .guideline-tabarea .gtab-list {
+        background: #fff;     
+        border:1px #ccc solid;
+        color:#555;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: -1px;
+        width: 130px;
+        margin:0 1.5px;
+        text-align: center;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px
+        
+    }
+
+    /* sub tab */
+    .gtab {
+        display: flex;
+        align-items: center;
+        padding: 0px 0 30px 0;
+        justify-content: center;
+    }
+    .gtab__item {
+        padding: 15px 20px;
+        color:#666;
+        font-size: 17px;
+        font-weight: 500;
+        border-bottom: 3px solid #dadada;
+    }
+    .gtab__item.active {
+        display: inline-block;
+        border-bottom: 3px solid #1764c4;
+        color: #1764c4;
+    }
+    .gtab__content-wrapper {
+        padding: 1rem;
+    }
+    .gtab__content {
+        display: none;
+    }
+    .gtab__content.active {
+        display: block;
+    }
+
+    .guidelines-listarea {
+        height: 90px;
+        position: relative;
+        margin:80px 0 30px 0;
+        border-radius: 20px 20px 0 0;
+        background-color: #fff;
+    }
+    .guidelines-list li {
+        display: inline-block;
+        margin:0 3px;  
+    }
+    .guidelines-list li span {
+        width: 75px;
+        font-size: 15px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 12px;    
+        border:1px #d5d5d5 solid;
+        width: 75px;
+        height: 75px;
+        margin-bottom:5px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+
+    .guide-categorylist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin:0 auto;
+    }
+    .guide-categorylist li {
+        text-align: center;
+        width: 16.6%;
+        margin-bottom:20px;   
+    }
+    
+    .guide-categorylist li span {
+        font-weight: 500;
+        font-size: 15px;
+        color:#666
+    }
+    .guide-categorylist li img {
+        opacity: 0.6;    
+    }
+    .guide-categorylist li .gimg-area {
+        width: 90%;
+        height: 95px;
+        line-height: 95px;
+        border:1px #dbdbdb solid;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+        margin:0 auto 10px auto;
+        overflow: hidden;
+        transition: 0.3s;
+       
+    }
+    .guide-categorylist li:hover .gimg-area {
+        transform: translateY(-5px)
+       
+    }
+    .guide-categorylist li:hover img {
+        opacity: 1;
+    }
+    .guide-categorylist li:hover span {
+        color:#222;
+        text-align: center;
+    }
+
+    
+    /* 색인별 행동요령 */
+    .index-searcharea {
+        background-color: #f9f9f9;
+        border:1px #eaeaea solid;
+        border-radius:20px;
+        padding:3%;
+        font-size: 0;
+        box-sizing: border-box;
+    }
+    .index-searchlist li {
+        display: inline-block;
+        border:1px #d7d7d7 solid;
+        border-radius: 10px;
+        text-align: center;
+        height: 36px;
+        line-height: 36px;
+        background-color: #fff;
+        font-size: 18px;
+        color:#555;
+        font-weight: 500;
+        padding:0 10px;
+        transition: 0.3s;
+        
+        margin:0 0.5% 0.5% 0
+    }
+    .index-searchlist li a {
+        color:#555;
+    }
+    .index-searchlist li:hover a {
+        color:#fff;
+    }
+    .index-searchlist li:hover {
+        border:1px #0e6ac4 solid;
+        background-color: #0770d7;
+        box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.15);
+    }
+    .index-searchlist li.sel-item {
+        border:1px #0e6ac4 solid;
+        background-color: #0770d7;
+        box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.15);
+        color:#fff;
+    }
+    .index-searchlist li.sel-item a {
+        color:#fff
+    }
+    .index-resultlist {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap:0.5%;
+        box-sizing: border-box;
+    }
+    .index-resultlist li {
+        width:49.7%;
+        box-sizing: border-box;
+        padding:10px 30px 10px 20px;
+        background: #f8f8f8 url('../images/sub/search-catearr.png') no-repeat 95% 15px;
+        border-radius: 10px;
+        border:1px #e0e0e0 solid;
+        margin-bottom:0.2%;
+        line-height: 1.2;
+    }
+    .index-resultlist li a {
+        font-size: 16px;
+        color:#666;
+        font-weight: 500;
+    }
+    .index-resultlist li:hover {
+        width:49.7%;
+        padding:10px 30px 10px 20px;
+        background: #222 url('../images/sub/search-catearron.png') no-repeat 95% 15px;
+        border-radius: 10px;
+        border:1px #222 solid;
+        box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.2);
+    }
+    .index-resultlist li:hover a {
+        font-size: 16px;
+        color:#fff;
+        font-weight: 500;
+    }
+    .index-resultlist li.index-active {
+        width:49.7%;
+        padding:10px 30px 10px 20px;
+        background: #222 url('../images/sub/search-catearron.png') no-repeat 95% 15px;
+        border-radius: 10px;
+        border:1px #222 solid;
+        box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.2);
+      }
+    .index-resultlist li.index-active a {
+        font-size: 16px;
+        color:#fff;
+        font-weight: 500;
+    }
+
+}
+@media all and (max-width:640px) {
+    
+    /* 행동요령 관련 동영상 */
+    .movbtn {
+        width: 100%;
+        margin-top:0px;
+        bottom: 0px;
+        padding:10px 0px 10px 0px;
+        border-radius: 0 ;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .movbtn label {
+        width:47.2%;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom:0px;
+    }
+    .movbtn label img {
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s;
+        overflow: hidden;
+    }
+    input[id=movtab1]:checked ~ .movbtn label:hover img {
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+    
+    /* 행동요령 메인 */
+    .guidelines-catearea{
+        width: 100%;
+        box-sizing: border-box;
+        padding:30px 0% 0px 0%;
+        background: #eaf3fb url('../images/sub/situation-bg.png') no-repeat right bottom;
+        background-image: none;
+    }
+    .guidelines-cateinner {
+        width: 100%;
+        margin:0 auto;
+        display: block;
+        text-align: center;   
+    }
+    .guidelines-cateinner h2 {
+        font-size: 28px;
+        padding-bottom:0px;
+        color:#222;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 행동요령 메인 tab */
+    .guideline-tabarea {
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+    }
+    .guidelines-listarea {
+        height: 200px;
+        position: relative;
+        margin:70px 0 20px 0;
+        padding:0 0%;
+        box-sizing:border-box;
+        border-radius: 20px 20px 0 0;
+        background-color: #fff;
+        text-align:center
+    }
+    .guidelines-list {
+    	width:100%;
+    	padding:0 10%;
+    	margin:0 auto;
+    	box-sizing:border-box;
+    }
+    .guidelines-list li {
+        display: inline-block;
+        margin:0 10px;  
+    }
+    .guidelines-list li span {
+        width: 75px;
+        font-size: 14px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 10px;    
+        border:1px #d5d5d5 solid;
+        width: 80px;
+        height: 80px;
+        margin-bottom:5px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+
+    .guide-categorylist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin:0 auto;
+    }
+    .guide-categorylist li {
+        text-align: center;
+        width: 20%;
+        margin-bottom:20px;   
+    }
+    
+    .guide-categorylist li span {
+        font-weight: 500;
+        font-size: 15px;
+        color:#666
+    }
+    .guide-categorylist li img {
+        opacity: 0.6;    
+    }
+    .guide-categorylist li .gimg-area {
+        width: 90%;
+        height: 95px;
+        line-height: 95px;
+        border:1px #dbdbdb solid;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+        margin:0 auto 10px auto;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+    
+
+}
+
+
+@media all and (max-width:540px) {
+    .section {position: relative;margin-top:20px}    
+    .detail-more {
+        background: #222 url('../images/sub/btn-more.png') no-repeat 92% 48%;
+        height: 28px;
+        line-height: 28px;
+        color:#fff;
+        font-weight: 500;
+        font-size: 14px;
+        padding:0px 30px 0px 15px;
+        border-radius: 8px;
+        margin-right:3px;
+    }
+    .detail-more:hover {
+        background: #000 url('../images/sub/btn-more.png') no-repeat 92% 48%;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.07);
+    }
+    
+    .pdf-down {
+        background: #fff url('../images/sub/btn-down.png') no-repeat 92% 48%;
+        height: 28px;
+        line-height: 28px;
+        color:#222;
+        font-weight: 500;
+        font-size: 14px;
+        padding:0px 30px 0px 10px;
+        border-radius: 8px;
+        border:1px #d4d4d4 solid
+    }
+    .pdf-down:hover {
+        background: #f6f6f6 url('../images/sub/btn-down.png') no-repeat 92% 48%;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.07);
+    }
+
+    /* 이미지 슬라이드 - 2단 */
+    .section {position: relative;}
+    
+
+    .guide-list li:nth-child(1) {
+        background:#f5f5f5 url('../images/sub/g-icon01.png') no-repeat 93% 50%;
+        background-size: 35px;
+    }
+    .guide-list li:nth-child(2) {
+        background:#f5f5f5 url('../images/sub/g-icon02.png') no-repeat 93% 50%;
+        margin-right:0;
+        background-size: 35px;
+    }
+    .guide-list li:nth-child(3) {
+        background:#f5f5f5 url('../images/sub/g-icon03.png') no-repeat 93% 50%;
+        background-size: 35px;
+    }
+    .guide-list li:nth-child(4) {
+        background:#f5f5f5 url('../images/sub/g-icon04.png') no-repeat 93% 50%;
+        background-size: 35px;
+        margin-right:0
+    }
+    .guide-list li h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color:#222;
+        padding-bottom:5px;
+    }
+    .guide-list a {
+        background: url('../images/sub/guide-info.png') no-repeat 100% 3px;
+        padding:0 23px 0px 0px;
+        margin-right:20px;
+        font-size: 14px;
+        color:#666;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+    .guide-list a:hover, .guide-list a:active, .guide-list a:focus {
+        background: url('../images/sub/guide-info1.png') no-repeat 100% 3px;
+        color:#222
+    }
+    .g-list {
+        white-space: pre;
+    }   
+    
+
+    /* 행동요령 메인 */
+    .guidelines-catearea{
+        width: 100%;
+        box-sizing: border-box;
+        padding:30px 0% 0px 0%;
+        background: #eaf3fb url('../images/sub/situation-bg.png') no-repeat right bottom;
+        background-image: none;
+    }
+    .guidelines-cateinner {
+        width: 100%;
+        margin:0 auto;
+        display: block;
+        text-align: center;   
+    }
+    .guidelines-cateinner h2 {
+        font-size: 28px;
+        padding-bottom:0px;
+        color:#222;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 행동요령 메인 tab */
+    .guideline-tabarea {
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+    }
+    /* sub tab */
+    .gtab {
+        display: flex;
+        align-items: center;
+        padding: 20px 0 20px 0;
+        justify-content: center;
+    }
+    .gtab__item {
+        padding: 10px 10px;
+        color:#666;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 2px solid #dadada;
+    }
+    .gtab__item.active {
+        display: inline-block;
+        border-bottom: 2px solid #1764c4;
+        color: #1764c4;
+    }
+ 
+    
+    .guidelines-listarea {
+        height: 170px;
+        position: relative;
+        margin:80px 0 20px 0;
+        border-radius: 20px 20px 0 0;
+        background-color: #fff;
+
+    }
+    .guidelines-list li {
+        display: inline-block;
+        margin:0 0px 10px 0;  
+    }
+    .guidelines-list li span {
+        width: 85px;
+        font-size: 14px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 10px;    
+        border:1px #d5d5d5 solid;
+        width: 70px;
+        height: 70px;
+        margin-bottom:5px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+
+
+    /* 색인별 행동요령 */
+    .index-resultlist {
+        gap:0
+    }
+    .index-resultlist li {
+        width:100%;
+        box-sizing: border-box;
+        padding:10px 30px 10px 20px;
+        background: #f8f8f8 url('../images/sub/search-catearr.png') no-repeat 95% 15px;
+        border-radius: 10px;
+        border:1px #e0e0e0 solid;
+        margin-bottom:3px;
+        line-height: 1.2;
+    }
+    .index-resultlist li a {
+        font-size: 16px;
+        color:#666;
+        font-weight: 500;
+    }
+    .index-resultlist li:hover {
+        width:100%;
+        padding:10px 30px 10px 20px;
+        background: #222 url('../images/sub/search-catearron.png') no-repeat 95% 15px;
+        border-radius: 10px;
+        border:1px #222 solid;
+        box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.2);
+    }
+    .index-resultlist li:hover a {
+        font-size: 16px;
+        color:#fff;
+        font-weight: 500;
+    }
+    .index-resultlist li.index-active {
+        width:100%;
+        padding:10px 30px 10px 20px;
+        background: #222 url('../images/sub/search-catearron.png') no-repeat 95% 15px;
+        border-radius: 10px;
+        border:1px #222 solid;
+        box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.2);
+      }
+    .index-resultlist li.index-active a {
+        font-size: 16px;
+        color:#fff;
+        font-weight: 500;
+    }
+
+    /* 키워드 검색 */
+    .keyword-searcharea {
+        margin-top:20px;
+        display: flex;
+        justify-content: center;
+    }
+    .keyword-search {
+        background-color: #222;
+        border:3px #222 solid;
+        height: 46px;
+        line-height: 46px;
+        border-radius:10px;
+        overflow: hidden;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.22);
+        width: 70%;
+        padding:0;
+        font-size: 0;
+        vertical-align: top;
+    }
+    .keyword-search input[type="text"]{
+        height: 100%;
+        border:0px;
+        font-size: 16px;
+        color:#666;
+        padding:0 10px;
+        width: calc(100% - 50px);
+    }
+    .keyword-search .keyword-search {
+        background: #222 url('../images/sub/cate-searchicon.png') no-repeat 50% 50%;
+        background-size: 18px;
+        height: 46px;
+        width: 46px;
+        border-radius: 0;
+    }
+    /* .keyword-searcharea input[type="text"]{
+        height: 46px;
+        line-height: 46px;
+        border:3px #222 solid;
+        border-radius: 10px 0 0 10px;
+        font-size: 16px;
+        color:#666;
+        padding:0 10px;
+        min-width: 70%;
+    }
+
+    .keyword-searcharea input::placeholder {
+        color:#9a9a9a;
+    }
+    .keyword-searcharea .keyword-search {
+        background: #222 url('../images/sub/cate-searchicon.png') no-repeat 50% 50%;
+        background-size: 18px;
+        border-radius: 0 10px 10px 0;
+        height: 46px;
+        width: 46px;
+    } */
+    
+    /* 주요기관 연락처 */
+    .instit-titarea {
+        border-radius: 10px;
+        padding:15px;    
+        font-size:14px;
+        text-align:center;
+        font-weight: 600;
+        color:#fff;
+        white-space:normal;
+    }
+
+    .instit-list li:nth-child(1) .instit-titarea{
+        background: #1764c4
+    }
+
+    .instit-list li:nth-child(2) .instit-titarea{
+        background: #1764c4 
+    }
+
+    .instit-list li:nth-child(3) .instit-titarea{
+        background: #1764c4
+    }
+ 
+}
+
+@media all and (max-width:480px) {
+
+    /* 행동요령 메인 */
+    .guideline-tabarea .gtab-list {
+        background: #fff;     
+        border:1px #ccc solid;
+        color:#555;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 7px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: 0px;
+        width: 100%;
+        margin:1.5px 0;
+        text-align: center;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px
+    }
+    .guide-categorylist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin:0 auto;
+
+    }
+    .guide-categorylist li {
+        text-align: center;
+        width: 25%;
+        margin-bottom:20px;   
+    }
+    
+    .guide-categorylist li span {
+        font-weight: 500;
+        font-size: 15px;
+        color:#666
+    }
+    .guide-categorylist li img {
+        opacity: 0.6;   
+        vertical-align: middle;
+    }
+    .guide-categorylist li .gimg-area {
+        width: 90%;
+        height: 95px;
+        line-height: 95px;
+        max-height: 100%;
+        border:1px #dbdbdb solid;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+        margin:0 auto 10px auto;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+
+    .keyword-search {
+        background-color: #222;
+        border:3px #222 solid;
+        height: 46px;
+        line-height: 46px;
+        border-radius:10px;
+        overflow: hidden;
+        box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.22);
+        width: 100%;
+        padding:0;
+        font-size: 0;
+        vertical-align: top;
+    }
+
+    /* 행동요령 이미지 슬라이드 좌,우 버튼 */
+    .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+        width: 30px;
+        height: 30px;
+    }
+    .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+        width: 30px;
+        height: 30px;
+    }
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+        left: var(--swiper-navigation-sides-offset, 0px);
+        right: auto;
+    }
+    .swiper-button-next, .swiper-rtl .swiper-button-prev {
+        left: 34px;
+        right:0;
+    }
+    .swiper-pagination-fraction {
+        top: 8px;
+        bottom: 0;
+        left: 75px;
+        width: auto;
+    }
+}
+
+@media all and (max-width:440px) {
+    .btn-slideimg {
+        position: absolute;
+        top:0;
+        right:0;
+        z-index: 1;
+    }
+    /* 행동요령 메인 tab */
+    .guideline-tabarea {
+        display: flex;
+        flex-wrap: wrap;
+        width:100%;
+        height: 100%;
+        justify-content: center;
+        background-color: #fff;
+    }
+    .guidelines-listarea {
+        height:170px;
+        position: relative;
+        margin:70px 0 20px 0;
+        padding:0 0%;
+        box-sizing:border-box;
+        border-radius: 20px 20px 0 0;
+        background-color: #fff;
+        text-align:center
+    }
+    .guidelines-list {
+    	width:100%;
+    	padding:0 2%;
+    	margin:0 auto;
+    	box-sizing:border-box;
+    }
+    .guidelines-list li {
+        display: inline-block;
+        margin:0 3px 10px 3px;  
+    }
+    .guidelines-list li span {
+        width: 70px;
+        font-size: 14px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 10px;    
+        border:1px #d5d5d5 solid;
+        width: 65px;
+        height: 65px;
+        margin-bottom:4px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea img {
+        width: 65px;
+        max-width: 100%;
+        height: 70px;
+        margin-top: 0px;
+    }
+}
+
+@media all and (max-width:415px) {
+
+    /* sub tab */
+    .gtab {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        align-items: center;
+        padding: 0px 0 2% 0;
+        justify-content: center;
+    }
+    .gtab__item {
+        padding: 10px 3%;
+        box-sizing:border-box;
+        color:#666;
+        font-size: 14px;
+        font-weight:600;
+        border-bottom: 2px solid #dadada;
+    }
+    .gtab__item.active {
+        display: inline-block;
+        border-bottom: 2px solid #1764c4;
+        color: #1764c4;
+    }
+
+    /* 행동요령 메인 */
+    .guideline-tabarea .gtab-list {
+        background: #fff;     
+        border:1px #ccc solid;
+        color:#555;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 7px 0;
+        cursor: pointer;
+        z-index: 1;
+        margin-left: 0px;
+        width: 100%;
+        margin:1.5px 0;
+        text-align: center;
+        box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px
+    }
+    .guide-categorylist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin:0 auto;
+    }
+    .guide-categorylist li {
+        text-align: center;
+        width: 33%;
+        margin-bottom:20px;   
+    }
+    
+    .guide-categorylist li span {
+        font-weight: 500;
+        font-size: 14px;
+        color:#666
+    }
+    .guide-categorylist li .gimg-area {
+        width: 90%;
+        height: 95px;
+        line-height: 95px;
+        max-height: 100%;       
+    }
+
+    /* 행동요령 동영상 */
+     .movbtn {
+        gap: 10px;    
+    }
+    .movbtn label {
+        width:48%;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    /* 행동요령 동영상 */
+}
+@media all and (max-width:370px) {
+    .btn-slideimg {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        margin-top:5px;
+    }
+    .pdf-down {
+        width: 100%;
+        text-align: left;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        padding:0px 25px 0 15px
+    }
+
+    /* 슬라이드 페이징 영역 */
+    .swiper-pagination-fraction {
+        top: 8px;
+        bottom: 0;
+        left: 90px;
+        width: auto;
+    }
+}
+@media all and (max-width:344px) {
+    
+    .guide-categorylist {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        margin:0 auto;
+    }
+    .guide-categorylist li {
+        text-align: center;
+        width: 50%;
+        margin-bottom:20px;   
+    }
+    .guide-categorylist li span {
+        font-weight: 500;
+        font-size: 14px;
+        color:#666
+    }
+    .guide-categorylist li .gimg-area {
+        width: 90%;
+        height: 100px;
+        line-height: 95px;
+        max-height: 100%;       
+    }
+    
+    .guidelines-list li span {
+        width: 65px;
+        font-size: 14px;
+        color:#666;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea {
+        background-color: #fff;
+        border-radius: 10px;    
+        border:1px #d5d5d5 solid;
+        width: 60px;
+        height: 60px;
+        margin-bottom:4px;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s;
+    }
+    .guidelines-imgarea img {
+        width: 60px;
+        max-width: 100%;
+        height: 70px;
+        margin-top: 0px;
+    }
+}

@@ -9,6 +9,7 @@ const MAX_PAGE_TASKS = 3;
 const contextOrder = { primary: 0, body: 1, footer: 2 };
 const compareText = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 const normalizedLabel = (candidate: Candidate) => candidate.label.normalize('NFKC').replace(/\s+/g, ' ').trim().toLowerCase();
+const contentPriority = (candidate: Candidate) => candidate.contentEvidence?.level ?? 0;
 
 function destination(candidate: Candidate): string {
   if (candidate.action !== 'navigate' || !candidate.href) return '';
@@ -57,7 +58,7 @@ function sourceOrder(a: Candidate, b: Candidate): number {
 }
 
 function compare(a: Candidate, b: Candidate): number {
-  return pagePriority(b) - pagePriority(a) || navigationPriority(b) - navigationPriority(a) || b.score - a.score
+  return contentPriority(b) - contentPriority(a) || pagePriority(b) - pagePriority(a) || navigationPriority(b) - navigationPriority(a) || b.score - a.score
     || contextOrder[a.context] - contextOrder[b.context]
     || a.label.length - b.label.length || compareText(normalizedLabel(a), normalizedLabel(b))
     || compareText(destination(a), destination(b)) || compareText(a.category ?? '', b.category ?? '')
@@ -75,7 +76,7 @@ function ordered(candidates: Candidate[]): Candidate[] {
     if (candidate.pageTask === 'reading') {
       const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
       if (!container) return;
-      const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
+      const key = `${candidate.category}:${contentPriority(candidate)}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.score}:${candidate.context}:${candidate.pagePurpose ?? ''}`;
       const peers = groups.get(container) ?? new Map<string, number[]>();
       peers.set(key, [...(peers.get(key) ?? []), index]);
       groups.set(container, peers);
@@ -88,7 +89,7 @@ function ordered(candidates: Candidate[]): Candidate[] {
       // Equally supported filters inherit their author's list order rather than
       // favouring a short name. Keep every preceding rank policy tied, and never
       // borrow positions from another form, list, page purpose or score.
-      const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.context}:${candidate.pagePurpose ?? ''}`;
+      const key = `${candidate.category}:${contentPriority(candidate)}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.score}:${candidate.context}:${candidate.pagePurpose ?? ''}`;
       const lists = filterGroups.get(form) ?? new Map<Element, Map<string, number[]>>();
       const peers = lists.get(container) ?? new Map<string, number[]>();
       const positions = peers.get(key) ?? [];
@@ -130,10 +131,33 @@ export function rank(candidates: Candidate[]): Candidate[] {
   });
   const counts = new Map<Category, number>();
   const selected: Candidate[] = [];
+  // Proven content on this page has priority over unrelated global categories.
+  // Preserve category diversity among equally supported content, then retain
+  // the existing task/diversity/fill policy for whatever space remains.
+  for (const level of [2, 1]) {
+    const content = unique.filter(candidate => contentPriority(candidate) === level);
+    const categories = new Set<Category>();
+    const add = (candidate: Candidate) => {
+      selected.push(candidate);
+      counts.set(candidate.category!, (counts.get(candidate.category!) ?? 0) + 1);
+    };
+    for (const candidate of content) {
+      if (categories.has(candidate.category!)) continue;
+      categories.add(candidate.category!);
+      add(candidate);
+      if (selected.length === MAX_CARDS) return ordered(selected);
+    }
+    for (const candidate of content) {
+      if (selected.includes(candidate)) continue;
+      add(candidate);
+      if (selected.length === MAX_CARDS) return ordered(selected);
+    }
+  }
   // Reserve bounded space for source-backed tasks on the current page. A mere
   // body keyword does not acquire this evidence. Then retain category diversity.
   for (const candidate of unique) {
-    if (!candidate.category || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
+    if (selected.length >= MAX_PAGE_TASKS) break;
+    if (!candidate.category || selected.includes(candidate) || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
     counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
     selected.push(candidate);
     if (selected.length === MAX_PAGE_TASKS) break;

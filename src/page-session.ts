@@ -1,8 +1,9 @@
 import { candidateLabel, contextLabels, documentPurpose, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache, type SupplementalCache, type ContextCache } from './analyzer';
 import type { Candidate, PagePurpose } from './types';
 import { institutionEvidence } from './institution-evidence';
+import { contentEvidence, type ContentEvidenceCache } from './content-evidence';
 
-export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache, supplementalCache?: SupplementalCache, contextCache?: ContextCache, commonPurpose?: PagePurpose | null): boolean {
+export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache, supplementalCache?: SupplementalCache, contextCache?: ContextCache, commonPurpose?: PagePurpose | null, contentCache?: ContentEvidenceCache): boolean {
   const label = candidateLabel(candidate.element);
   if (label !== candidate.label) return false;
   if (sourceContext(candidate.element) !== candidate.context) return false;
@@ -14,6 +15,14 @@ export function isCandidateCurrent(candidate: Candidate, collectionCache?: Colle
     const evidence = institutionEvidence(candidate);
     if (!evidence || evidence.adapter !== previous.adapter || evidence.version !== previous.version
       || evidence.rule !== previous.rule || evidence.category !== previous.category || evidence.score !== previous.score
+      || evidence.pageTask !== previous.pageTask || evidence.readonlyPanel !== previous.readonlyPanel || evidence.contentScope !== previous.contentScope
+      || evidence.fingerprint !== previous.fingerprint || evidence.dependencies.length !== previous.dependencies.length
+      || evidence.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+  }
+  if (candidate.contentEvidence) {
+    const previous = candidate.contentEvidence;
+    const evidence = contentEvidence(candidate, contentCache, supplementalCache);
+    if (!evidence || evidence.level !== previous.level || evidence.rule !== previous.rule
       || evidence.fingerprint !== previous.fingerprint || evidence.dependencies.length !== previous.dependencies.length
       || evidence.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
   }
@@ -26,8 +35,9 @@ export function areCandidatesCurrent(candidates: readonly Candidate[]): boolean 
   const collectionCache: CollectionCache = new WeakMap();
   const supplementalCache: SupplementalCache = new WeakMap();
   const contextCache: ContextCache = new WeakMap();
+  const contentCache: ContentEvidenceCache = new WeakMap();
   const commonPurpose = documentPurpose() ?? null;
-  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose));
+  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache));
 }
 
 export function watchCandidates(getCandidates: () => Candidate[], onStale: () => void): () => void {
@@ -42,7 +52,7 @@ export function watchCandidates(getCandidates: () => Candidate[], onStale: () =>
   });
   observer.observe(document.documentElement, {
     subtree: true, childList: true, characterData: true, attributes: true,
-    attributeFilter: ['href', 'target', 'onclick', 'aria-controls', 'aria-current', 'aria-expanded', 'download', 'type', 'form', 'id', 'role', 'disabled', 'aria-disabled', 'aria-hidden', 'hidden', 'class', 'style', 'aria-label', 'aria-labelledby', 'title', 'placeholder', 'contenteditable'],
+    attributeFilter: ['href', 'rel', 'target', 'onclick', 'aria-controls', 'aria-current', 'aria-selected', 'aria-expanded', 'aria-haspopup', 'download', 'type', 'form', 'id', 'role', 'tabindex', 'disabled', 'aria-disabled', 'aria-hidden', 'hidden', 'class', 'style', 'aria-label', 'aria-labelledby', 'title', 'placeholder', 'contenteditable'],
   });
   // 원본 history를 교체하지 않고 쉬운 화면이 열린 동안만 URL을 감시합니다.
   const interval = window.setInterval(check, 300);

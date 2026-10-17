@@ -1,0 +1,34 @@
+
+Running 1 test using 1 worker
+
+(node:18145) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/independent-reading-safety.spec.mjs:60:1 › @generic-identity a replaced generic editorial heading child invalidates its document-group proof (100ms)
+
+
+  1) tests/independent-reading-safety.spec.mjs:60:1 › @generic-identity a replaced generic editorial heading child invalidates its document-group proof 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "after": false,
+    +   "after": true,
+        "before": true,
+      }
+
+      66 |     const node = document.querySelector('#content-topic-piece'); node.replaceWith(node.cloneNode(true));
+      67 |     return { before, after: IndependentReading.isCandidateCurrent(candidate) };
+    > 68 |   })).toEqual({ before: true, after: false });
+         |       ^
+      69 | });
+      70 |
+      71 | test('readonly metadata retains the collected source action and never runs an original handler', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/independent-reading-safety.spec.mjs:68:7
+
+    Error Context: docs/evidence/run008/independent-reading-safety/test-results/independent-reading-safety-33106-es-its-document-group-proof/error-context.md
+
+  1 failed
+    tests/independent-reading-safety.spec.mjs:60:1 › @generic-identity a replaced generic editorial heading child invalidates its document-group proof 

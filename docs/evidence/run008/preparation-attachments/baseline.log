@@ -1,0 +1,179 @@
+
+Running 10 tests using 1 worker
+
+(node:14209) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/preparation-attachments.spec.mjs:28:1 › POST wrapper의 고정 서식 제목은 첨부 앵커만 설명하고 기본 submit 제목은 승격하지 않는다 (112ms)
+(node:14215) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 tests/preparation-attachments.spec.mjs:41:1 › 열 순서·고정 문서 형식이 달라도 유일한 같은 행 제목을 보존한다 (108ms)
+(node:14238) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 tests/preparation-attachments.spec.mjs:48:1 › 일반 소프트웨어·보고서·뉴스·형식 없는 파일은 서식 준비 근거를 얻지 않는다 (115ms)
+  ✓   4 tests/preparation-attachments.spec.mjs:53:1 › 제목·첨부 열의 중복·합친 셀·중첩 표·여러 제목 제어를 거절한다 (117ms)
+  ✓   5 tests/preparation-attachments.spec.mjs:67:1 › 숨김·기사·편집 경계의 제목이나 첨부에서 관계를 만들지 않는다 (118ms)
+  ✘   6 tests/preparation-attachments.spec.mjs:84:1 › 입력값·checked·사용자 정의 편집 내용은 읽거나 직렬화하지 않는다 (108ms)
+(node:14247) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 tests/preparation-attachments.spec.mjs:97:1 › 제목·형식 marker 변경은 액션이 locate 그대로여도 낡은 후보를 무효화한다 (113ms)
+(node:14253) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 tests/preparation-attachments.spec.mjs:104:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 (110ms)
+(node:14259) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 tests/preparation-attachments.spec.mjs:115:1 › 같은 batch는 근거를 공유하되 새 batch는 제목과 heading 변경을 다시 검사한다 (111ms)
+(node:14265) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 tests/preparation-attachments.spec.mjs:128:1 › 일반 이동 앵커와 자료 버튼은 새 첨부 전용 근거를 얻지 않는다 (115ms)
+
+
+  1) tests/preparation-attachments.spec.mjs:28:1 › POST wrapper의 고정 서식 제목은 첨부 앵커만 설명하고 기본 submit 제목은 승격하지 않는다 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: undefined
+
+      33 |     return {attachment:Preparation.supplementalEvidence(attachment),subject:Preparation.supplementalEvidence(subject),action:Preparation.sourceAction(attachment,'ZIP 파일다운로드'),type:subject.type,activations};
+      34 |   });
+    > 35 |   expect(result.attachment.preparationAttachment).toBe(true);
+         |                                                   ^
+      36 |   expect(result.attachment.relatedLabel).toBe('실험장치 반입신고서 (임시 보관(연장))');
+      37 |   expect(result.subject.preparationAttachment).toBe(false);
+      38 |   expect(result.type).toBe('submit');expect(result.action).toEqual({action:'locate'});expect(result.activations).toBe(0);
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:35:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-PO-8305c-설명하고-기본-submit-제목은-승격하지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-PO-8305c-설명하고-기본-submit-제목은-승격하지-않는다/error-context.md
+
+  2) tests/preparation-attachments.spec.mjs:41:1 › 열 순서·고정 문서 형식이 달라도 유일한 같은 행 제목을 보존한다 ────────────
+
+    Error: 보관자료.hwp
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: undefined
+
+      42 |   for(const [label,columns] of [['보관자료.hwp',['첨부파일','번호','제목']],['공용양식.docx',['제목','첨부파일','번호']],['공용양식.pdf',['번호','첨부파일','제목']],['ZIP 파일다운로드',['제목','번호','첨부파일']]]){
+      43 |     await setup(page,table({label,columns,title:'통행 동의서 및 장비 반환청구서'}));
+    > 44 |     const result=await evidence(page);expect(result.preparationAttachment,label).toBe(true);expect(result.relatedLabel).toBe('통행 동의서 및 장비 반환청구서');
+         |                                                                                  ^
+      45 |   }
+      46 | });
+      47 |
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:44:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-열-순서·고정-문서-형식이-달라도-유일한-같은-행-제목을-보존한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-열-순서·고정-문서-형식이-달라도-유일한-같은-행-제목을-보존한다/error-context.md
+
+  3) tests/preparation-attachments.spec.mjs:84:1 › 입력값·checked·사용자 정의 편집 내용은 읽거나 직렬화하지 않는다 ─────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: undefined
+
+      92 |     return {positive:e.preparationAttachment,encoded,contaminated:!!contaminated.preparationAttachment};
+      93 |   });
+    > 94 |   expect(result.positive).toBe(true);expect(result.contaminated).toBe(false);expect(result.encoded).not.toContain('PRIVATE_');
+         |                           ^
+      95 | });
+      96 |
+      97 | test('제목·형식 marker 변경은 액션이 locate 그대로여도 낡은 후보를 무효화한다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:94:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-입력-5b946-사용자-정의-편집-내용은-읽거나-직렬화하지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-입력-5b946-사용자-정의-편집-내용은-읽거나-직렬화하지-않는다/error-context.md
+
+  4) tests/preparation-attachments.spec.mjs:97:1 › 제목·형식 marker 변경은 액션이 locate 그대로여도 낡은 후보를 무효화한다 ──
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "action": "locate",
+    -   "current": false,
+    +   "current": true,
+      }
+
+       98 |   for(const change of ['title','marker']){
+       99 |     await setup(page,table());expect(await snapshot(page)).toBe(true);
+    > 100 |     expect(await page.evaluate(change=>{document.querySelector(change==='title'?'#subject-text':'#attachment').textContent=change==='title'?'시설 보관동의서':'일반 파일';return {current:Preparation.isCandidateCurrent(candidate),action:Preparation.sourceAction(candidate.element,candidate.label).action};},change)).toEqual({current:false,action:'locate'});
+          |                                                                                                                                                                                                                                                                                                                ^
+      101 |   }
+      102 | });
+      103 |
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:100:304
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-제목-10040-이-locate-그대로여도-낡은-후보를-무효화한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-제목-10040-이-locate-그대로여도-낡은-후보를-무효화한다/error-context.md
+
+  5) tests/preparation-attachments.spec.mjs:104:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 ──
+
+    Error: #subject
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      109 |       old.replaceWith(replacement);replacement.append(...old.childNodes);
+      110 |       return Preparation.isCandidateCurrent(candidate);
+    > 111 |     },selector),selector).toBe(false);
+          |                           ^
+      112 |   }
+      113 | });
+      114 |
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:111:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-동일-fd7d2-container-교체도-노드-의존성으로-감지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-동일-fd7d2-container-교체도-노드-의존성으로-감지한다/error-context.md
+
+  6) tests/preparation-attachments.spec.mjs:115:1 › 같은 batch는 근거를 공유하되 새 batch는 제목과 heading 변경을 다시 검사한다 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: undefined
+
+      123 |     return {first:first.preparationAttachment,same:first.preparationAttachmentNodes===same.preparationAttachmentNodes,next:!!next.preparationAttachment,nodes:first.preparationAttachmentNodes};
+      124 |   });
+    > 125 |   expect(result.first).toBe(true);expect(result.same).toBe(true);expect(result.next).toBe(false);expect(result.nodes.length).toBeLessThanOrEqual(48);expect(result.nodes.every(Number.isSafeInteger)).toBe(true);
+          |                        ^
+      126 | });
+      127 |
+      128 | test('일반 이동 앵커와 자료 버튼은 새 첨부 전용 근거를 얻지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:125:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-같은-7a57b-ch는-제목과-heading-변경을-다시-검사한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-같은-7a57b-ch는-제목과-heading-변경을-다시-검사한다/error-context.md
+
+  6 failed
+    tests/preparation-attachments.spec.mjs:28:1 › POST wrapper의 고정 서식 제목은 첨부 앵커만 설명하고 기본 submit 제목은 승격하지 않는다 
+    tests/preparation-attachments.spec.mjs:41:1 › 열 순서·고정 문서 형식이 달라도 유일한 같은 행 제목을 보존한다 ─────────────
+    tests/preparation-attachments.spec.mjs:84:1 › 입력값·checked·사용자 정의 편집 내용은 읽거나 직렬화하지 않는다 ──────────
+    tests/preparation-attachments.spec.mjs:97:1 › 제목·형식 marker 변경은 액션이 locate 그대로여도 낡은 후보를 무효화한다 ───
+    tests/preparation-attachments.spec.mjs:104:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 ───
+    tests/preparation-attachments.spec.mjs:115:1 › 같은 batch는 근거를 공유하되 새 batch는 제목과 heading 변경을 다시 검사한다 
+  4 passed (3.4s)

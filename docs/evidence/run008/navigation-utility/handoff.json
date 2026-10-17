@@ -1,0 +1,119 @@
+{
+  "status": "SOURCE_READY_FOCUSED_PASS",
+  "recordedAt": "2026-10-17T19:32:51.216Z",
+  "ownedFiles": [
+    "src/navigation-utility.ts",
+    "tests/navigation-utility.spec.mjs",
+    "docs/evidence/run008/navigation-utility"
+  ],
+  "writesStopped": true,
+  "api": {
+    "function": "navigationUtility(element: HTMLElement, label: string): NavigationUtility | undefined",
+    "type": "NavigationUtility = 'position' | 'branch'",
+    "position": "Document-position control: exact rel home token, explicit breadcrumb navigation semantics/structure, or complete skip-operation name pointing to a unique local structural content/navigation target.",
+    "branch": "Existing pure no-op anchor with a direct meaningful nested semantic menu/list, or explicit local disclosure targeting a semantic menu/list. Suppresses broad reading inference only; does not itself reject explicit own help/apply/document meaning.",
+    "undefined": "No confirmed utility evidence, or protected/ambiguous input, form, editor, ordinary destination, leaf JS, readonly-panel or FAQ case."
+  },
+  "contractBaseline": {
+    "kind": "MISSING_COMPONENT_CONTRACT_STUB_ONLY",
+    "source": "docs/evidence/run008/navigation-utility/contract-baseline.ts",
+    "sourceSha256": "a33a2d39a12ffac717fa4e57176cb359c25747f4b48314d7e1d8a41c0af62d67",
+    "log": "docs/evidence/run008/navigation-utility/contract-baseline.log",
+    "tests": 12,
+    "failed": 6,
+    "passed": 6,
+    "note": "No navigation-utility component existed before this work. The initial undefined-return contract stub exposes unsupported positive requirements. These are not an old-product classifier regression score, independent evaluation or quality baseline; root owns integrated old-engine behavior comparison."
+  },
+  "validation": {
+    "initial": {
+      "log": "docs/evidence/run008/navigation-utility/targeted-initial.log",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "scopeFinding": {
+      "log": "docs/evidence/run008/navigation-utility/direct-scope-baseline.log",
+      "tests": 1,
+      "failed": 1,
+      "note": "New synthetic counterexample reproduced unscoped comma-selector alternatives admitting a deeper unrelated ol/heading. Corrected selectors with :is wrappers."
+    },
+    "final": {
+      "log": "docs/evidence/run008/navigation-utility/targeted-final.log",
+      "tests": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "log": "docs/evidence/run008/navigation-utility/typecheck.log",
+      "exitCode": 0
+    },
+    "diffCheck": {
+      "command": "git diff --check -- src/navigation-utility.ts tests/navigation-utility.spec.mjs",
+      "exitCode": 0
+    }
+  },
+  "coverage": [
+    "Unknown-named semantic breadcrumb trail and exact breadcrumb class + real list structure",
+    "Class/rel lookalikes and ordinary guide navigation stay eligible",
+    "Strong skip names with main/nav or structurally identified generic wrapper; unique explicit fragment target",
+    "Missing/duplicate/interactive/editor/empty or ambiguous skip targets",
+    "Ordinary content-fragment explanations remain separate",
+    "Actual noop parent with sibling submenu versus an ordinary HTTP document parent, leaf JS or empty content list",
+    "Explicit local aria-expanded/controls semantic menu/list and role menu structures",
+    "FAQ answer wrappers, citation lists and readonly tab panels do not become branch",
+    "Default/external form ownership, editors, hidden sources and private value/checked/editor getter canaries",
+    "Deep unrelated list/heading cannot substitute for a direct relation"
+  ],
+  "currentnessIntegration": {
+    "required": "Root should serialize navigationUtility(element,safeLabel) ?? null into sourceSnapshot attributes. The module has no analyzer imports, so this introduces no analyzer dependency cycle.",
+    "reason": "An accepted source can later acquire a breadcrumb ancestor semantic marker, rel home, skip-target meaning or real submenu relationship while its own name/action remain equal. The enum comparison rejects that previous source classification at same-frame activation. No title/panel positive evidence for accepted leaves is introduced.",
+    "watchAttributes": [
+      "rel",
+      "aria-haspopup",
+      "aria-label",
+      "aria-controls",
+      "aria-expanded",
+      "class",
+      "role",
+      "id",
+      "hidden",
+      "style"
+    ],
+    "unusedAttribute": "itemtype is not read; no itemtype watcher needed."
+  },
+  "implementationBoundary": {
+    "imports": 0,
+    "cache": "No retained DOM or metadata cache; every call reads current local fixed attributes/structure.",
+    "labels": "Uses only the caller-provided already-safe fixed source label and fixed aria-label metadata identifying breadcrumb navigation. Does not read other controls' names or source body prose.",
+    "queryStates": "No source host/path or opaque query values identify utilities. Fragment IDs are explicit relationships, not hardcoded values.",
+    "structuralBounds": "Target ID <=128 chars; breadcrumb traversal <=4 ancestors and <=12 direct items; menu/list <=24 direct items; generic skip-content heading depth <=2. Structural descendant selectors detect protected form/editor boundaries; they do not read values or text.",
+    "limits": [
+      "Only explicit #fragment spellings are treated as skip/disclosure target relationships; ordinary links preserve their destination.",
+      "Pure noop JS grammar is conservative; arbitrary JS is not assumed to be a menu without explicit local disclosure metadata.",
+      "Nested list source reclassification is semantic only; shared dangerous URL/script guards and activation policy remain root responsibilities."
+    ]
+  },
+  "hashes": {
+    "source": "d4ad0d0e26540e9eb949dc783ea23c763452c2c798e2a502828f7381a5e225aa",
+    "test": "1ce74cccd12dc52c90dbc83501e4430d419223c7524f7af2818a6fcdb2f484f6",
+    "contractBaselineLog": "4f165e26bca6081a4dd942e31e137ee082dddf3fc11d179f5e115cdddf215ac0",
+    "scopeBaselineLog": "22cce5ceb9677a236a23040ccd7bc2cf6cf6dc347de2622d1b7cbd30e96962a2",
+    "finalLog": "411523f7e937ba2fcc88f4373431a2a6dc447ef8637634937cc3525daad8e399",
+    "typecheck": "26f1115eaaca337a5f56612476468686c7047245f4f9076dd4795680c0e8693b"
+  },
+  "boundaries": {
+    "classifierAnalyzerRankerEdits": 0,
+    "productIntegrationRun": false,
+    "qualityEvaluationRun": false,
+    "wholeProductTestsRun": false,
+    "performanceRun": false,
+    "newBlindV10Read": false,
+    "network": false,
+    "CUA": false,
+    "nativeUI": false,
+    "userProfileOrServersChanged": false,
+    "firstResultsOrDatasetEdited": false,
+    "acceptanceClaim": false
+  }
+}

@@ -1,0 +1,34 @@
+
+Running 1 test using 1 worker
+
+(node:15819) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/preparation-attachments.spec.mjs:105:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 (152ms)
+
+
+  1) tests/preparation-attachments.spec.mjs:105:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 ──
+
+    Error: #column-text
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      112 |       old.replaceWith(replacement);replacement.append(...old.childNodes);
+      113 |       return Preparation.isCandidateCurrent(candidate);
+    > 114 |     },selector),selector).toBe(false);
+          |                           ^
+      115 |   }
+      116 | });
+      117 |
+        at /Users/khyun_03/easyweb/tests/preparation-attachments.spec.mjs:114:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-attachments-동일-fd7d2-container-교체도-노드-의존성으로-감지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-attachments-동일-fd7d2-container-교체도-노드-의존성으로-감지한다/error-context.md
+
+  1 failed
+    tests/preparation-attachments.spec.mjs:105:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 ───

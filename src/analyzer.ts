@@ -1,5 +1,6 @@
 import type { Candidate, SourceSnapshot, PagePurpose } from './types';
 import { sourceAction, sourceDownloadEvidence } from './action-policy';
+import { navigationUtility } from './navigation-utility';
 
 const clean = (text: string) => text.replace(/\s+/g, ' ').trim().slice(0, 140);
 const editableRoleSelector = ['textbox', 'searchbox', 'combobox', 'spinbutton', 'slider'].map(role => `[role~="${role}" i]`).join(', ');
@@ -256,6 +257,8 @@ interface SupplementalSummary {
   cardControls?: HTMLElement[];
   followingHeadings?: string[];
   wrapperControls?: HTMLElement[];
+  preparationTable?: PreparationTable | false;
+  preparationAttachments?: Map<HTMLElement, PreparationAttachment>;
 }
 export type SupplementalCache = WeakMap<Element, SupplementalSummary>;
 const contentBoundarySelector = 'section,article,aside,nav,form,header,footer,[role~="region" i],[role~="article" i],[role~="complementary" i],[role~="navigation" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i]';
@@ -398,6 +401,136 @@ function topicEvidence(element: HTMLElement, cache?: SupplementalCache) {
   return { topicPeers: Math.min(controls.length, 2), controlledTopic, linkedTopic, associatedHeadings, collectionPeers };
 }
 
+interface PreparationTable {
+  headers: HTMLTableCellElement[];
+  titleIndex: number;
+  attachmentIndex: number;
+  purpose: HTMLElement;
+}
+interface PreparationAttachment { label: string; nodes: number[] }
+// These weak identities retain no DOM node or interpreted metadata. Semantic
+// summaries below are cached only inside the caller's current batch.
+const preparationNodeIds = new WeakMap<Element, number>();
+let nextPreparationNodeId = 1;
+function preparationNodeId(element: Element): number {
+  let id = preparationNodeIds.get(element);
+  if (!id) { id = nextPreparationNodeId++; preparationNodeIds.set(element, id); }
+  return id;
+}
+
+function fixedPreparationName(element: HTMLElement, limit: number): string {
+  if (!isVisible(element) || element.closest(editableSelector) || element.querySelector(editableSelector)
+    || element.hasAttribute('aria-labelledby')) return '';
+  const children = [...element.querySelectorAll<HTMLElement>('*')];
+  if (children.length > 16 || children.some(child => child.matches('script,style,iframe')
+    || !!clean(staticText(child)) && !isVisible(child))) return '';
+  const text = clean(getSafeLabel(element));
+  return text.length <= limit ? text : '';
+}
+
+function preparationDocumentTitle(text: string): boolean {
+  if (text.length < 2 || text.length > 90) return false;
+  // Parenthetical qualifications may contain a second pair of parentheses.
+  // They describe the fixed form title; they are never treated as input text.
+  const start = text.search(/[([（]/);
+  let core = text;
+  if (start >= 0) {
+    core = text.slice(0, start).trim();
+    const pairs: Record<string, string> = { '(': ')', '[': ']', '（': '）' };
+    const expected: string[] = [];
+    for (const char of text.slice(start)) {
+      if (pairs[char]) { expected.push(pairs[char]); if (expected.length > 2) return false; }
+      else if (/[)\]）]/.test(char)) { if (expected.pop() !== char) return false; }
+      else if (!expected.length && char.trim()) return false;
+    }
+    if (expected.length) return false;
+  }
+  return !/[.!?。？]/.test(core)
+    && /(?:신청서|신고서|청구서|위임장|동의서|\b(?:application|declaration|claim|authorization|consent)\s+form)$/i.test(core);
+}
+
+function preparationPurposeName(text: string): boolean {
+  return !!text && text.length <= 120
+    && /서식|신청서|신고서|청구서|\b(?:application|declaration|claim|authorization|consent)\s+forms?\b/i.test(text)
+    && !/뉴스|보도|소프트웨어|설치\s*프로그램|보고서|\b(?:news|software|installers?|reports?|archives?)\b/i.test(text);
+}
+
+function preparationPurpose(table: HTMLTableElement): HTMLElement | undefined {
+  if (table.caption) return preparationPurposeName(fixedPreparationName(table.caption, 120)) ? table.caption : undefined;
+  let parent = table.parentElement;
+  for (let level = 0; parent && parent !== document.body && level < 6; level++, parent = parent.parentElement) {
+    if (parent.matches('article,aside,nav,header,footer,[role~="article" i],[role~="navigation" i],[role~="banner" i],[role~="contentinfo" i]')) break;
+    const headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > div > ${headingSelector}`)];
+    const heading = headings.filter(node => headingBelongsTo(node, table)
+      && !!(node.compareDocumentPosition(table) & Node.DOCUMENT_POSITION_FOLLOWING)).at(-1);
+    if (heading) return preparationPurposeName(fixedPreparationName(heading, 120)) ? heading : undefined;
+    if (parent.matches('main,section,[role~="main" i],[role~="region" i]')) break;
+  }
+}
+
+function preparationDownloadMarker(element: HTMLAnchorElement, name: string): boolean {
+  const file = /\.(?:pdf|hwp|hwpx|docx?|zip)$/i;
+  const operation = /^(?:pdf|hwp|hwpx|docx?|zip)\s*(?:파일\s*|file\s*)?(?:다운로드|내려\s*받기|download)$/i;
+  if (file.test(name) || operation.test(name) || operation.test(element.getAttribute('title') ?? '')
+    || file.test(element.getAttribute('download') ?? '')) return true;
+  try { return file.test(new URL(element.getAttribute('href') ?? '', document.baseURI).pathname); }
+  catch { return false; }
+}
+
+function preparationAttachmentEvidence(element: HTMLElement, cache?: SupplementalCache): PreparationAttachment | undefined {
+  if (!(element instanceof HTMLAnchorElement) || !element.hasAttribute('href')
+    || element.closest('article,aside,nav,header,footer,[role~="article" i],[role~="complementary" i],[role~="navigation" i],[role~="banner" i],[role~="contentinfo" i]')) return;
+  const row = element.closest('tr');
+  const table = row?.closest('table');
+  if (!(row instanceof HTMLTableRowElement) || !(table instanceof HTMLTableElement)
+    || row.querySelector(`table,[role~="grid" i],${editableSelector}`)) return;
+  const name = fixedPreparationName(element, 100);
+  if (!name || sourceAction(element, name).action !== 'locate' || !preparationDownloadMarker(element, name)) return;
+  let rowSummary = cache?.get(row);
+  if (!rowSummary?.preparationAttachments) {
+    const attachments = new Map<HTMLElement, PreparationAttachment>();
+    let tableSummary = cache?.get(table);
+    if (tableSummary?.preparationTable === undefined) {
+      const head = table.tHead;
+      const headers = head?.rows.length === 1 ? [...head.rows[0].cells] : [];
+      const names = headers.map(header => fixedPreparationName(header, 40));
+      const titles = names.flatMap((label, index) => /^(?:제목|민원명|사무명|서식명|title|form\s+name)$/i.test(label) ? [index] : []);
+      const files = names.flatMap((label, index) => /^(?:첨부|첨부파일|서식|attachments?|files?|downloads?)$/i.test(label) ? [index] : []);
+      const purpose = preparationPurpose(table);
+      const valid = purpose && headers.length >= 2 && headers.length <= 12 && titles.length === 1 && files.length === 1
+        && headers.every((header, index) => header.matches('th') && !!names[index] && header.colSpan === 1 && header.rowSpan === 1);
+      tableSummary = { ...tableSummary, preparationTable: valid ? { headers, titleIndex: titles[0], attachmentIndex: files[0], purpose } : false };
+      cache?.set(table, tableSummary);
+    }
+    const layout = tableSummary.preparationTable;
+    const cells = [...row.cells];
+    if (layout && cells.length === layout.headers.length && cells.every(cell => cell.colSpan === 1 && cell.rowSpan === 1 && isVisible(cell))) {
+      const titleCell = cells[layout.titleIndex], attachmentCell = cells[layout.attachmentIndex];
+      const titleControls = [...titleCell.querySelectorAll<HTMLElement>('a[href],button,[role~="button" i]')];
+      const title = titleControls[0] ?? titleCell;
+      const label = titleControls.length <= 1 ? fixedPreparationName(title, 90) : '';
+      const sources = [...attachmentCell.querySelectorAll<HTMLAnchorElement>('a[href]')];
+      if (preparationDocumentTitle(label) && fixedPreparationName(titleCell, 90) === label && sources.length <= 8) {
+        const dependencies: Element[] = [table, table.tHead!, table.tHead!.rows[0], ...layout.headers,
+          ...layout.headers.flatMap(header => [...header.querySelectorAll('*')]), layout.purpose, ...layout.purpose.querySelectorAll('*'),
+          row, ...cells, title, ...title.querySelectorAll('*')];
+        for (const source of sources) {
+          const fixedName = fixedPreparationName(source, 100);
+          if (!fixedName || sourceAction(source, fixedName).action !== 'locate' || !preparationDownloadMarker(source, fixedName)) continue;
+          const lineage: Element[] = [];
+          for (const node of [source, title, layout.purpose]) {
+            for (let parent: HTMLElement | null = node, level = 0; parent && parent !== document.body && level < 10; parent = parent.parentElement, level++) lineage.push(parent);
+          }
+          const nodes = [...new Set([...dependencies, ...lineage])];
+          if (nodes.length <= 48) attachments.set(source, { label, nodes: nodes.map(preparationNodeId) });
+        }
+      }
+    }
+    rowSummary = { ...rowSummary, preparationAttachments: attachments }; cache?.set(row, rowSummary);
+  }
+  return rowSummary.preparationAttachments!.get(element);
+}
+
 export function supplementalEvidence(element: HTMLElement, cache?: SupplementalCache) {
   const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
   const form = element.closest('form, [role~="form" i]')
@@ -463,10 +596,14 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
     materialRow = rowSummary.materials!.has(element);
     relatedLabel = rowSummary.materials!.get(element);
   }
+  const preparation = preparationAttachmentEvidence(element, cache);
+  const preparationAttachment = !!preparation;
+  const preparationAttachmentNodes = preparation?.nodes ?? [];
+  if (preparation) relatedLabel = preparation.label;
   let informationPanels = false;
   if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '')) {
     const parent = element.parentElement;
-    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false,
+    if (!parent) return { filter, title, materialRow, preparationAttachment, preparationAttachmentNodes, relatedLabel, informationPanels: false, grouped: false,
       topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[], collectionPeers: [] };
     let summary = cache?.get(parent);
     if (!summary?.panels) {
@@ -496,7 +633,7 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
   }
   const topics = bodyControl && !form ? topicEvidence(element, cache)
     : { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[], collectionPeers: [] };
-  return { filter, title, materialRow, relatedLabel, informationPanels, grouped, ...topics };
+  return { filter, title, materialRow, preparationAttachment, preparationAttachmentNodes, relatedLabel, informationPanels, grouped, ...topics };
 }
 
 export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {
@@ -525,6 +662,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
       !!element.closest('form, [role~="form" i]'),
       sourceDownloadEvidence(element, safeLabel),
       sourceAction(element, safeLabel),
+      navigationUtility(element, safeLabel) ?? null,
     ]),
   };
 }

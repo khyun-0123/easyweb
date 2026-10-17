@@ -1,0 +1,124 @@
+{
+  "status": "SOURCE_READY_TARGETED_PASS",
+  "recordedAt": "2026-10-17T19:26:32.808Z",
+  "scope": {
+    "edited": [
+      "src/analyzer.ts",
+      "tests/preparation-attachments.spec.mjs",
+      "docs/evidence/run008/preparation-attachments"
+    ],
+    "sourceEditsStopped": true,
+    "rootOwns": [
+      "classifier/types/page-session integration",
+      "content evidence/ranker integration",
+      "full verify/performance/development comparison/freeze/report"
+    ]
+  },
+  "api": {
+    "preparationAttachment": "boolean always present, true only for a visible existing locate attachment anchor in a verified preparation table row",
+    "relatedLabel": "safe unique fixed same-row form document title for true preparationAttachment; source label/action remain unchanged",
+    "preparationAttachmentNodes": "number[] always present, empty when false; at most48 weak node identities serialized by existing includeSupplemental sourceSnapshot",
+    "earlyReturns": "The existing detached/parentless supplemental return includes both fields."
+  },
+  "implementation": {
+    "evidence": [
+      "HTML table with one visible unmerged header row and matching unmerged body cells; unique standard title and attachment columns in any order",
+      "Visible bounded fixed preparation caption, or nearest preceding semantic heading within the same local region; an explicit incompatible caption does not borrow an outer heading",
+      "Unique fixed same-row claim/application/declaration/consent/authorization form title; bounded balanced parenthetical modifiers and compound fixed title allowed",
+      "Attachment is a sourceAction locate anchor with a fixed HWP/HWPX/DOC/DOCX/PDF/ZIP filename/operation marker; no query values interpreted",
+      "Form-wrapper allowance is exclusive to this new anchor relationship; title default-submit button is read only as fixed label dependency and is never flagged or activated"
+    ],
+    "exclusions": [
+      "Input/textarea/select/editable/custom-editor content in row/title/header/attachment",
+      "Hidden title/heading/header and hidden nested title text",
+      "Article/aside/navigation/header/footer boundaries",
+      "Nested tables, duplicate title/attachment columns, merged cells, multiple header rows",
+      "Multiple title controls or distinct extra title-cell subject",
+      "Software/report/news/archive subject rows without actual form-document title/preparation purpose",
+      "Ordinary navigate anchor and download button are not new preparationAttachment sources"
+    ],
+    "cache": "One caller-supplied SupplementalCache caches table parsing and row attachments inside a synchronous analysis/currentness batch. No interpreted metadata is retained between batches. A separate WeakMap<Element,number> retains identity only and does not strongly retain DOM nodes.",
+    "currentness": "Bounded identities include source anchor, title and nested title elements, title/attachment cells and row, table header and nested label elements, caption/heading and nested label elements, tbody/thead/table/form/local ancestor containers. Same-text replacement changes tokens while relatedLabel and locate action may stay equal.",
+    "privacy": "Uses fixed safe names, attributes, semantic structure and node identities. Does not read input.value, checked, selected option state, textContent/innerText of private editors, hidden body prose, document title, evaluation IDs or opaque query values.",
+    "limits": [
+      "New preparation relation supports HTML tables only, not arbitrary role=grid tables. Existing materialRow behavior remains unchanged.",
+      "Bounds:2-12 columns, at most8 attachment anchors, fixed-name descendant count<=16, ancestor paths<=10, identity tokens<=48. Ineligible or excessive structures stay unresolved.",
+      "Semantic helper is not the shared danger-policy gate; root classifier must continue dangerous URL/script/label/relatedLabel checks before consuming the flag."
+    ]
+  },
+  "validation": {
+    "baseline": {
+      "log": "docs/evidence/run008/preparation-attachments/baseline.log",
+      "tests": 10,
+      "failed": 6,
+      "passed": 4,
+      "sourceBefore": "docs/evidence/run008/preparation-attachments/analyzer-before.ts",
+      "note": "Positive relationship and unchanged-action/currentness gaps failed before any analyzer implementation."
+    },
+    "intermediate": {
+      "log": "docs/evidence/run008/preparation-attachments/targeted-initial.log",
+      "tests": 10,
+      "failed": 4,
+      "passed": 6,
+      "note": "Initial implementation had a balanced-parenthesis closing-branch defect; corrected without broadening the grammar."
+    },
+    "relatedFocused": {
+      "log": "docs/evidence/run008/preparation-attachments/focused.log",
+      "tests": 53,
+      "passed": 53,
+      "failed": 0,
+      "suites": [
+        "preparation-attachments",
+        "generic-controls",
+        "structural-context",
+        "context-relationships"
+      ],
+      "scope": "Passed before the final nested fixed-label dependency extension; not asserted to be a final-source full-suite run."
+    },
+    "nestedIdentityBaseline": {
+      "log": "docs/evidence/run008/preparation-attachments/nested-name-baseline.log",
+      "tests": 1,
+      "failed": 1,
+      "note": "Same-text nested column-label span replacement remained current=true; added nested header/caption dependencies."
+    },
+    "finalFocused": {
+      "log": "docs/evidence/run008/preparation-attachments/targeted-final.log",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "replacementCases": 14,
+      "scope": "Final source, includes fixed-name nested node replacement, same-batch reuse/new-batch invalidation, readonly title button and private getter canaries."
+    },
+    "finalTypecheck": {
+      "log": "docs/evidence/run008/preparation-attachments/typecheck-final.log",
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    "diffCheck": {
+      "command": "git diff --check -- src/analyzer.ts",
+      "exitCode": 0
+    }
+  },
+  "hashes": {
+    "analyzer": "1501a0f5f689df1296fe1db9aeeee9d9558a3d4f73e67e1103f3c14443ccd774",
+    "test": "fa4660e692ba5d5d21835761dba7c5dbee7f00fb0ea0016270cd3fc381bb73eb",
+    "beforeAnalyzer": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "patch": "de47a80ceb85987ce943c22df29b3db3165277e6ab16900ab973aa5c4b6f7628",
+    "baseline": "29ba17e36a8fc890fb3ec2a08415ffb167f83cc8a0808abb6e82ede4ffe5d36a",
+    "finalFocused": "3b906b444263f856b4658327ac358f4e8ab6742a948ce823d86f68664213805c",
+    "typecheck": "26f1115eaaca337a5f56612476468686c7047245f4f9076dd4795680c0e8693b"
+  },
+  "boundaries": {
+    "fullSuiteRun": false,
+    "performanceRun": false,
+    "developmentEvaluationRun": false,
+    "newBlindRead": false,
+    "network": false,
+    "CUA": false,
+    "nativeUI": false,
+    "userProfileOrServersChanged": false,
+    "automaticActivation": false,
+    "acceptanceClaim": false,
+    "frozenPriorResultsEdited": false
+  }
+}

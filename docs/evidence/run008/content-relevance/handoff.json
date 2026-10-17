@@ -1,0 +1,105 @@
+{
+  "status": "IMPLEMENTED_FOCUSED_TESTED_WRITES_STOPPED",
+  "recordedAtUtc": "2026-10-17T19:26:39.485330+00:00",
+  "owner": "v8_final_source_review",
+  "scope": "RUN008 content relevance evidence and ranking integration only; root owns final classifier/currentness integration and release judgment.",
+  "sourceFiles": {
+    "src/content-evidence.ts": "9352ab6962162613962b1d07837056be7ff43aebad2489b669fac86e3cd69947",
+    "src/ranker.ts": "1d4d0e122de9cc744f9beacd563ba09902fbdbfdf9bdc9b0ee1e98a99fcfc29a",
+    "tests/content-relevance.spec.mjs": "412478ac0982131b254a3160b17dd0b4c12c0b5f23590274ca2d061de462a1df"
+  },
+  "integrationFilesObservedAfterFocusedRun": {
+    "src/analyzer.ts": "1501a0f5f689df1296fe1db9aeeee9d9558a3d4f73e67e1103f3c14443ccd774",
+    "src/classifier.ts": "8cfe20ac6fb40957d9d892580ee30715b82f48e5586912dda1803af3d26a8fa4",
+    "src/page-session.ts": "6965f4f79d16fd6a3846e518e5e1e6d945dd03a979e499bad15f94d75662c9cc",
+    "src/institution-evidence.ts": "a28d14da5d91e492f5d93c7d73708daff245b57ac5cebca5c6004d3fe39ecb29",
+    "src/types.ts": "0471b5b8687eadf2a73efafe03f436e2f852fec9f41d67d78aea07b5473c9849"
+  },
+  "integrationSnapshotLimit": "Other workers own integration files and may still change them. This is a recorded snapshot, not a final source freeze or proof of stability during concurrent work.",
+  "exportedAPI": {
+    "function": "contentEvidence(candidate: Candidate, cache?: ContentEvidenceCache, supplementalCache?: SupplementalCache): ContentEvidence | undefined",
+    "cache": "export type ContentEvidenceCache = WeakMap<Element, unknown>; reserved argument; module retains no computed results across calls.",
+    "result": "level1|2, rule, safe fingerprint, ordered actual Element dependencies"
+  },
+  "proofRules": [
+    {
+      "level": 2,
+      "rule": "current-topic-document-group",
+      "requires": "Already-classified reading anchor; bounded2..12-row list, unique current-document selected peer, >=2 generic document-kind peers, and either same-topic editorial main heading or selected parent topic plus actual immediately following content section.",
+      "bounds": "At most4 ancestor containers; sibling collection scan capped at80 elements; list subtrees skipped. No hostname/route/class/ID lookup table."
+    },
+    {
+      "level": 2,
+      "rule": "explicit-preparation-attachment",
+      "requires": "Already-classified locate anchor with supplementalDependent and analyzer preparationAttachment proof. Uses relatedLabel and preparationAttachmentNodes identity tokens.",
+      "dependencies": "Actual source,row,owner/table nodes plus analyzer safe identity tokens; no second preparation parser or input reads."
+    },
+    {
+      "level": 1,
+      "rule": "institution-current-content",
+      "requires": "Already-classified candidate carrying institution contentScope=content. Reuses actual module dependencies and module fingerprint; no rule-string lookup table."
+    }
+  ],
+  "rankPolicy": {
+    "comparator": "Content evidence level precedes existing page priority, navigation priority, score and remaining deterministic keys.",
+    "selection": "Reserve proven level2 then level1 content before unrelated global categories. Within an equally supported relevance tier reserve category diversity before same-category additions. All content is still source-backed and bounded at6. Remaining slots use the prior task/category/fill policy.",
+    "noEvidence": "With no ContentEvidence, ordinary task/diversity/fill selection is unchanged. Reading source-order tie groups now retain every earlier relevance/page/navigation/score/context/purpose policy.",
+    "overflow": "Same original classified candidate objects; distinct destination/control deduplication; no gold-position/reverseDOM/lastlist/max6-increase shortcut.",
+    "thresholdsAndActions": "No classification score/threshold/category or action/href/target mutation in this helper or ranker."
+  },
+  "safetyAndCurrentness": [
+    "Reject header/footer/nav/aside/article, breadcrumbs, skip navigation, editable/custom-role/nested input regions, default/form-owned buttons and branch expanders. Only analyzer-proven safe preparation anchors may receive relevance in a form.",
+    "Document peer proof rejects explicit dangerous command metadata; new category safety still belongs to the shared classifier before contentEvidence.",
+    "All relationships rerun on every call. Identity dependencies distinguish equal-content title/list/container replacement; fingerprints omit raw queries, scripts, input values and whole region text.",
+    "Root page-session now reruns contentEvidence; focused tests directly verify equal-content heading and preparation-title replacements invalidate original candidates."
+  ],
+  "verification": {
+    "baseline": {
+      "command": "EASYWEB_CONTENT_BASELINE=1 npx playwright test --config=docs/evidence/run008/content-relevance/playwright.config.mjs tests/content-relevance.spec.mjs --grep @positive",
+      "result": "2FAIL/1PASS",
+      "scope": "Only preserved v0.8 ranker substituted into otherwise current synthetic harness, not a replay of the complete frozen v0.8 release. Both selection-policy examples failed as expected; relationship-only example passed.",
+      "log": "docs/evidence/run008/content-relevance/baseline.log"
+    },
+    "initialFocused": {
+      "result": "27PASS/1FAIL",
+      "finding": "Over-specific test required all3 global categories, but current generic classification adds a distinct help peer. Documents/curriculum were already correctly selected. Test now asserts content/diversity/overflow without prescribing fixed global slots. No source exception added.",
+      "log": "docs/evidence/run008/content-relevance/focused-initial.log"
+    },
+    "finalFocused": {
+      "result": "124/124 PASS",
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "suites": [
+        "content-relevance",
+        "filter-ordering",
+        "ranker-capacity",
+        "classifier-ranking",
+        "information-topics",
+        "structural-context"
+      ],
+      "log": "docs/evidence/run008/content-relevance/focused-final.log"
+    },
+    "typecheck": {
+      "result": "PASS",
+      "log": "docs/evidence/run008/content-relevance/typecheck-final.log"
+    },
+    "executionBoundary": "Dedicated headless Playwright configuration has no webServer; all synthetic navigation requests fulfilled locally and other requests aborted. No CUA/native/existing profile or4173/4183 server operations. No full quality/performance/live or fresh blind runs."
+  },
+  "evidenceSHA256": {
+    "docs/evidence/run008/content-relevance/baseline.log": "5037e418ea2f47390f01d23520324a44f67f16a1b02732b40db381c6c520b44c",
+    "docs/evidence/run008/content-relevance/focused-initial.log": "c739d117e3cf1aac7c72e35101d73648c5ff1ecaaafb446c1d755c17ed1d9ad0",
+    "docs/evidence/run008/content-relevance/focused-final.log": "2a36d10af96646d4ff40bb67bfd202c1beee975fcb3d8f3a44d5d8597ee4e92b",
+    "docs/evidence/run008/content-relevance/typecheck-initial.log": "26f1115eaaca337a5f56612476468686c7047245f4f9076dd4795680c0e8693b",
+    "docs/evidence/run008/content-relevance/typecheck-final.log": "26f1115eaaca337a5f56612476468686c7047245f4f9076dd4795680c0e8693b",
+    "docs/evidence/run008/content-relevance/before-ranker.ts": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+    "docs/evidence/run008/content-relevance/playwright.config.mjs": "1d08a1d1ae513e4adad6c814b59c791b6489496fea1e2442b1c8c7d031612a1b"
+  },
+  "preservedFirstV9ResultSHA256": "dbfe766cba9b28737b7ab84db571e4c4d5d36d226483604c4775c128f4279be8",
+  "limits": [
+    "Focused synthetic verification is not fresh independent quality, final full regression, performance acceptance, native installation or human success.",
+    "Institution relation cache optimization is not claimed; root should measure the final integrated pipeline.",
+    "Broader content families without these positive relationships remain unboosted rather than inheriting body/location preference.",
+    "Only owned source/test/evidence paths were modified; no data, classifier, page-session, types, institution module or analyzer edits by this worker."
+  ]
+}

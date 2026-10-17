@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+/* 레이아웃 */
+#wrap {width:100%;min-width:320px}
+.layout {position:relative;max-width:1200px;height:100%;margin:0 auto;}
+
+/* 컨텐츠 영역 */
+#container > .layout {min-height:65rem;}
+#contentWrap {flex:1;min-width:0;padding-bottom:6.4rem;}
+#contentWrap.full {width:100%;}
+#contentWrap #subTit {padding:4rem 0;}
+#contentWrap #subTit h3 {font-weight:700;font-size:4rem;}
+#contentWrap h3 .htit_sub {font-size:1.6rem;display:inline-block;margin-left:10px;color:#777;font-weight:400}
+
+@media all and (max-width:1023px){
+    #contentWrap {margin-left:0}
+}
+@media all and (max-width:767px){
+    #contentWrap #subTit {padding:1.6rem 0}
+    #contentWrap #subTit h3 {font-size:2.8rem}
+    #contentWrap h3 .htit_sub {display:block;margin-left:0;font-size:1.5rem}
+}
+
+/* 사이드 메뉴 */
+#lnb{width:26.9rem;flex:0 0 auto;padding:4rem 4rem 8rem 0;border-right:1px solid var(--gray20);}
+#lnb .lnb_title{padding:0 0 20px 8px; border-bottom:1px solid var(--gray40);}
+#lnb .lnb_title h2{font-size:2.4rem;font-weight:700}
+#lnb .lnbMenu>li {border-bottom:1px solid var(--gray20);}
+#lnb .lnbMenu>li>a{display:flex; position:relative; padding:16px 8px; font-size:1.7rem; font-weight:700; align-items:center; justify-content:flex-start; flex-direction:row; transition:0.4s ease-in-out;}
+#lnb .lnbMenu>li>a::before{content:''; display:inline-flex; position:absolute; bottom:-0.1rem; left:0; width:0; height:0.3rem; background-color:var(--secondary70); transition:0.4s ease-in-out;}
+#lnb .lnbMenu>li>a:hover,
+#lnb .lnbMenu>li>a.on:hover,
+#lnb .lnbMenu>li>a.on.sub:hover{background-color:var(--secondary5);}
+#lnb .lnbMenu>li>a:hover::before{width:100%;}
+#lnb .lnbMenu>li>a.on:not(.sub){color:var(--secondary80);}
+#lnb .lnbMenu>li>a.on:not(.sub)::before {content:''; display:inline-flex; position:absolute; bottom:-0.1rem; left:0; width:100%; height:0.3rem; background-color:var(--secondary70); transition:0.4s ease-in-out;}
+#lnb .lnbMenu>li>a[target="_blank"]::after { content:''; display:inline-flex; width:2rem; height:2rem; margin-left:auto; background-repeat:no-repeat; background-position:center center; background-size:contain; background-image:url(/resource/images/paid/nep/layout/component/ico_go.svg); }
+#lnb .lnbMenu>li>a.on{background-color:var(--secondary5);}
+#lnb .lnbMenu>li>a.sub.on{background-color:#fff;}
+#lnb .lnbMenu>li>a.sub::after{content:""; display:inline-flex; width:2rem; height:2rem; margin-left:auto; background-image:url(/resource/images/paid/nep/layout/component/ico_angle.svg); background-repeat:no-repeat; background-position:center; background-size:contain; transition:var(--transition-base); transform:rotate(0deg);}
+#lnb .lnbMenu>li>a.on.sub::after{content:""; transform:rotate(180deg);}
+#lnb .lnbMenu>li>ul{display:none; padding:10px 0;}
+#lnb .lnbMenu>li>ul>li>a{position:relative;display:block;padding:8px 12px 8px 28px;border-radius:var(--radius-md);}
+#lnb .lnbMenu>li>ul>li:first-child>a{border-top:0}
+#lnb .lnbMenu>li>ul>li>a:hover{background-color:var(--secondary5);}
+#lnb .lnbMenu>li>ul>li>a.on{background-color:var(--secondary5);color:var(--secondary80);font-weight:700;}
+#lnb .lnbMenu>li>ul>li>a::before{content:"";display:block;width:4px;height:4px;position:absolute;left:12px;top:50%;background:var(--gray80);margin-top:-2px;border-radius:var(--radius-max);}
+#lnb .lnbMenu>li>ul>li>a.on::before{background-color:var(--secondary80);width:5px;height:5px;}
+
+@media all and (max-width:1023px){
+    #lnb{display:none}
+}
+
+/* 사이드메뉴 - 신문고 점수 (숨김처리) */
+.point_box{overflow:hidden; display:none;}
+.point_box .point_tit{padding:20px 20px 20px 80px;position:relative;border-bottom:1px solid #d6d6d6}
+.point_box .point_tit:before{content:"";display:block;width:50px;height:50px;position:absolute;top:50%;margin-top:-25px;left:20px;background:url(/resource/images/paid/nep/pot/layout/point_icon.png) no-repeat}
+.point_box .point_details{padding:15px 0;text-align:center;background:#f0f1f5}
+.point_box .point_details a{color:#303030;position:relative;padding-right:20px}
+.point_box .point_details a:before{width:7px;height:11px;display:block;content:"";position:absolute;top:50%;margin-top:-5.5px;right:0;background:url(/resource/images/paid/nep/pot/layout/point_more.png) no-repeat}
+.point_box .point_details a:hover{text-decoration:underline}
+
+/* SNS 공유 */
+.share{position:relative}
+.share .shareList{position:absolute;top:calc(50% - 19px);right:0;display:flex;gap:1.2rem;}
+.shareList li a.sns{display:block;position:relative;width:38px;height:38px;text-indent:-9999px;transition:all .3s;border:1px solid var(--secondary10);border-radius:var(--radius-sm);}
+.shareList li a.sns:hover{background-color:var(--secondary5);border-color:var(--secondary20);}
+.shareList li a.sns:after{content:"";display:block;position:absolute;left:calc(50% - 10px);top:calc(50% - 9px);width:20px;height:18px;background-image:url(/resource/images/paid/nep/pot/layout/icon_sns.png)}
+.shareList li a.sns.fb:after{background-position:0 0}
+.shareList li a.sns.twt:after{background-position:-20px 0}
+.shareList li a.sns.gg:after{background-position:-40px 0}
+.shareList li a.sns.kakao:after{background-position:-60px 0}
+.shareList li a.sns.print:after{background-position:-80px 0}
+.shareList li a.sns.urlcopy:after{background-position:-100px 0}
+
+@media all and (max-width:767px){
+    .share .shareList{top:calc(50% - 14px);}
+    .shareList li a.sns{width:28px;height:28px}
+    .shareList li:last-child,
+    .shareList li a.sns.print{display:none}
+}
+
+/* 페이지 상단 이동 버튼 */
+.page_topBtn{display:none;position:fixed;bottom:6.4rem;right:4rem;z-index:97}
+.page_topBtn a,.page_topBtn button{position:relative;display:flex;justify-content:center;align-items:center;width:5.6rem;height:5.6rem;border:1px solid #c6c6c6;border-radius:var(--radius-md);background:#fff;transition:all .3s;box-shadow:0 0 2px 0 var(--alpha-shadow1), 0 4px 8px 0 var(--alpha-shadow2);}
+.page_topBtn a i,.page_topBtn button i{width:2.4rem;height:2.4rem;background-color:var(--gray80);}
+.page_topBtn a:hover,.page_topBtn button:hover{background-color:var(--secondary5);}
+.page_topBtn img{position:absolute;left:50%;top:50%;margin-left:-10px;margin-top:-6px}
+
+@media (max-width:1023px){
+    .page_topBtn {opacity:0.8;right:1.6rem;bottom:1.6rem;left:inherit;margin-left:0}
+    .page_topBtn a,.page_topBtn button{width:4.8rem;height:4.8rem;}
+}
+

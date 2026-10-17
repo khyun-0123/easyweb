@@ -1,0 +1,2827 @@
+@charset "utf-8";
+.mbanner{width:100%;height:261px;overflow:hidden;border-radius:10px;text-align:center}
+.mbanner a{display:unset}
+.mbanner a img{width:auto !important}
+.mbanner a:focus-visible {
+    outline: 130px solid #ec1c24 !important; 
+    outline-offset: -10px;                  
+    border-radius: 10px;                   
+    width: 100%;
+    height: 100%;
+}																		
+
+.main-content {
+    display: flex;
+    max-width: 100%; 
+    min-height:500px;
+    margin: auto; 
+    transition: margin-left 0.3s;}
+.content-main{
+    flex-grow: 1;
+    padding:30px 0 40px 0;
+    width:100%;
+}
+.quick-list li{width:16.5% !important}
+.safebox-infoarea{float:left; margin-bottom: 40px; min-height: 365px;height:470px}
+.new-secondcon{display:block !important;overflow:hidden}
+.new-main{position:relative;overflow-y:auto !important;height:360px}
+.main-more{position:absolute;top:-60px;right:18px;}
+.main-more button{border: #ddd 1px solid;padding: 5px 12px;border-radius: 5px}
+.tab_bt{padding-bottom:10px;margin-bottom:10px;border-bottom:#ddd 1px solid;}
+.tab_bt button{padding:0 20px;color:#737373; transition: font-size 0.2s ease;font-size: 1.5em;font-weight: bold;}
+.tab_bt button.active{color:#000 ; font-size: 1.9em; }
+.first-bt{background: url('../images/main/main-tab-bar.jpg') no-repeat right 12px;}
+.new-main-con{overflow:hidden;padding:10px 10px 0 10px;}
+.new-main-con h4{font-size: 1.7rem;padding:5px 0 10px 30px;font-weight: 600}
+.wsn-stw{background: url('../images/main/situation-icon1-m.jpg') no-repeat left 12px}
+.wsn-st{background: url('../images/main/situation-icon2-m.jpg') no-repeat left 15px}
+.wsn-dp{background: url('../images/main/situation-icon3-m.jpg') no-repeat left 12px}
+.wsn-cw{background: url('../images/main/situation-icon4-m.jpg') no-repeat left 11px}
+.wsn-hs{background: url('../images/main/situation-icon5-m.jpg') no-repeat left 10px}
+.wsn-dy{background: url('../images/main/situation-icon6-m.jpg') no-repeat left 15px}
+.wsn-ss{background: url('../images/main/situation-icon7-m.jpg') no-repeat left 12px}
+.wsn-th{background: url('../images/main/situation-icon8-m.jpg') no-repeat left 12px}
+.wsn-yd{background: url('../images/main/situation-icon9-m.jpg') no-repeat left 12px}
+.wsn-hw{background: url('../images/main/situation-icon10-m.jpg') no-repeat left 12px}
+.wsn-eq{background: url('../images/main/situation-icon11-m.jpg') no-repeat left 12px}
+.wsn-ff{background: url('../images/main/situation-icon12-m.jpg') no-repeat left 8px}
+.new-main-con span.fire_red{background:red}
+.new-main-con span.fire_gray{background:#555}
+.new-main-con span.fire_green{background:green;}
+.new-main-con{overflow:auto;height:auto;}
+.new-main-con dl{margin-bottom:21px}
+.new-main-con dl dt{position:relative}
+.new-main-con dl dt button{position:absolute;top:3px;left:270px;border: #ddd 1px solid;padding: 5px 15px;border-radius: 5px}
+.new-main-con dl dt button.ptn-l{left:135px}
+.new-main-con dl dd{font-size:1.2rem;line-height:30px}
+.new-main-con dl dd a{height:30px;width: calc(95% - 95px);}
+.new-main-con dl dd span{width:106px;height:30px;line-height:30px;padding:0 10px;font-size:1.1rem}
+.new-main-con ul{margin-top:5px}
+.new-main-con ul li{position:relative;margin-bottom:10px}
+.new-main-con ul li button{position:absolute;top:3px;right:0;border: #ddd 1px solid;padding: 5px 15px;border-radius: 5px}
+.new-main-con ul li button.ptn-l{right:120px}
+.new-main-con ul li{font-size:1.2rem;line-height:30px}
+.new-main-con ul li div{display:inline-block;width:85%}
+.new-main-con ul li div a{height:25px;width: calc(100% - 0px);}
+.new-main-con ul li div p{height:25px;margin-top:-5px;font-size:16px;color:#666}
+.new-main-con ul li span{width:12%;height:30px;line-height:30px;padding:0 10px;font-size:1.1rem}
+.message-area{float:right;height:343px;margin-bottom:35px}
+.main-thirdcon-new{display:inline-block;width:65% !important;padding: 20px;}
+.news-list{margin-top:15px}
+.no-data{width:100%;padding:80px 0;background: url('../images/common/no-data.jpg')no-repeat center 0;margin-top:30px;text-align:center;color:#999;font-size:1.1rem}
+.main-firstcon {
+    width: 1400px;
+    margin:0 auto 10px auto;
+    justify-content: space-between;
+    display: flex;
+    align-items:first;
+}
+.total-searcharea {
+    padding-bottom:0px;
+    display: inline-block;
+    width: 65%;
+}
+.weather-information {
+    display: inline-block;
+    margin-left:10px;
+    padding-top:5px;
+    width:100%;
+}
+.weather-information img {
+	display:inline-block;
+	vertical-align:top;
+	width:40px
+}
+.weather-information .weather-maininform {
+	display:inline-block;
+	padding:10px 0 0 10px;
+	vertical-align:top;
+}
+.weather-maininform {width:62.5%}
+.weather-maininform p{width:100px;float:right;text-align:center}
+.weather-information h3 {
+    display: inline-block;
+    font-size: 16px;
+}
+.weather-information h3 span {
+    color:#0074e5
+}
+.weather-informlist {
+	display:inline-block;
+	padding-left:10px;
+	
+}
+.w-inform li {
+    display: inline-block;
+    margin-right:10px
+}
+
+/*메인 기상정보 수정*/
+.weather-information2 {
+	position:relative;
+	float:right;
+    display: inline-block;
+    margin-bottom:20px;
+    padding:20px 35px;
+    width:32%;
+    border:#ddd 1px solid;
+    border-radius:15px
+}
+.weather-information2 img {
+	display:inline-block;
+	vertical-align:top;
+	width:40px
+}
+.weather-information2 .weather-maininform2 {
+	display:inline-block;
+	padding:10px 0 0 10px;
+	vertical-align:top;
+}
+.weather-maininform2 {width:80.5%}
+.weather-maininform2 p{width:100px;float:right;text-align:center}
+.weather-information2 h3 {
+    display: inline-block;
+    font-size: 16px;
+    /*background-image: url('../images/main/myloca-icon.gif');
+    background-position:right, 0;
+    background-repeat:no-repeat;
+    background-size:20px;
+    padding-right:25px*/
+    
+}
+.weather-information2 h3 span {
+    color:#0074e5
+}
+.weather-informlist2 {
+	display:inline-block;
+	padding:5px 0 0 10px;
+	
+}
+.w-inform2 li {
+    display: inline-block;
+    margin-right:5px;
+}
+/* 통합검색 */
+.total-searchform {
+    border:2px #222 solid;
+    height: 54px;
+    line-height: 54px;
+    width: 100%;
+    margin:0 auto;
+    border-radius:80px;
+    display: flex;
+}
+.total-searchform h3{
+    font-size: 22px;
+    color:#222;
+    font-weight: 600;
+    width: 18%;
+    height: 54px;
+    line-height: 50px;
+    padding-left:5%;
+    display: inline-block;
+    text-align:left;
+}
+.total-searchform input {
+    width: 88%;
+    height:50px;
+    margin:0 0 0 30px;
+    padding:2px 0 0 0;
+    border:0;
+    display: inline-block;
+}
+.total-searchform input::placeholder {
+    color:#9c9c9c;
+    font-size: 20px;
+    font-weight: 400;
+}
+.btn-totalsearch {
+    width: 6%;
+    display: inline-block;
+    font-size: 0;
+    background:url('../images/main/tatal-search.png') no-repeat 100% 50%;
+}
+.total-searchtxt {
+    text-align: center;
+    padding-top:15px;
+}
+.total-searchtxt h4 {
+    display: inline-block;
+    color:#878686;
+    font-size: 16px;
+    padding-right:10px;
+    font-weight: 500;
+}
+.total-searchtxt .search-textlist {
+    display: inline-block;
+}
+.search-textlist li{
+    display: inline-block;
+    padding:5px 10px;
+    border-radius: 80px;
+    color:#878686;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #ededed;
+}
+
+/* 날씨정보 */
+.weather-area {
+    display: inline-block;
+}
+.main-secondcon {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top:75px;
+    width:1400px;
+    margin:0 auto;
+}
+.weather-infoarea {
+    width: 31%;
+    margin-right:3%;
+    background-color: #f0f3ff;
+    border:1px #d3d5ed solid;
+    padding:20px;
+    border-radius: 20px;
+    /* height: 310px; */
+}
+
+.weather-inform1 {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom:2px #d3d5ed dashed;
+    padding-bottom:25px;
+    margin-bottom:25px
+}
+.weather-inform1 h3 {
+    font-size: 30px;
+    color:#222; 
+    font-weight: 600;  
+}
+.weather-inform1 h3 span {
+    display: block;
+    color:#333eb3
+}
+.temp-info {
+    color:#222;
+   font-size: 50px;
+   padding-top:20px;
+    font-weight: 700;
+
+}
+.weather-inform2 {
+    width:100%;
+    background: url('../images/main/weather-img1.png') no-repeat 0 0;
+    height: 114px;
+    padding-left:150px
+}
+.weater-other li {
+    font-size: 22px;
+    color:#666;
+    padding-bottom:10px
+}
+.weater-other li:last-child {
+    padding-bottom:0;
+}
+.weater-other li span{
+    color:#222;
+    font-weight: 600;    
+}
+.weater-other li .temp-down {
+    color:#4f58b5
+}
+.weater-other li .temp-up {
+    color:#c73d2a
+}
+
+/* 내지역재난상황 */
+.safe-inform {
+    width: 31%;
+    margin-right:3%;
+    background-color: #f4f4f4;
+    border:1px #d6d6d6 solid;
+    padding:35px;
+    border-radius: 20px;
+}
+.safe-inform h3{
+    font-size: 30px;
+    color:#222;
+    padding-bottom:18px;
+}
+.calam-listarea {
+    width: 100%;
+    display: flex;   
+    margin-bottom:20px
+}
+.calam-listarea li {
+    margin-right:5px;
+    background-color: #fff;
+    border:1px #dde7f0 solid;
+    width: 32%;
+    text-align: center;
+    height: 75px;
+    border-radius: 10px;
+    font-size: 18px;
+    color:#222;
+    font-weight: 500;
+    padding-top:10px;
+    box-sizing: border-box;
+}
+.calam-listarea li div{
+    display: block;
+    padding-bottom:5px;
+}
+.calam-listarea li div span {
+    display: inline-block;
+    width: 22px;
+    background-color:#222;
+    border-radius: 50%;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right:5px
+}
+.calam-guidelist {
+    width: 100%;
+    text-align: center;
+}
+.calam-guidelist a {
+    display: inline-block;
+    font-size: 16px;
+    color:#222;
+    font-weight: 500;   
+    margin:0 10px 
+}
+.calam-guidelist a span{
+    display: block;
+    font-size: 0;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom:10px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.02);
+    transition: 0.3s;
+}
+
+.calam-guidelist a:nth-child(1) span{
+    background: #fff url('../images/main/weat-icon1.png') no-repeat 50% 50%;  
+}
+.calam-guidelist a:nth-child(2) span{
+    background: #fff url('../images/main/weat-icon2.png') no-repeat 50% 50%;  
+}
+.calam-guidelist a:nth-child(3) span{
+    background: #fff url('../images/main/weat-icon3.png') no-repeat 50% 50%;  
+}
+.calam-guidelist a:nth-child(4) span{
+    background: #fff url('../images/main/weat-icon4.png') no-repeat 50% 50%;  
+}
+
+.calam-guidelist a:nth-child(1):hover span{
+    background: #222 url('../images/main/weat-icon1-on.png') no-repeat 50% 50%;  
+}
+.calam-guidelist a:nth-child(2):hover span{
+    background: #222 url('../images/main/weat-icon2-on.png') no-repeat 50% 50%;  
+}
+.calam-guidelist a:nth-child(3):hover span{
+    background: #222 url('../images/main/weat-icon3-on.png') no-repeat 50% 50%;  
+}
+.calam-guidelist a:nth-child(4):hover span{
+    background: #222 url('../images/main/weat-icon4-on.png') no-repeat 50% 50%;  
+}
+
+
+
+
+
+.message-area {
+    width: 32%;
+    background-color: #ebf5ff;
+    border:1px #c1d8ee solid;
+    padding:25px 35px;
+    border-radius: 15px;
+    position:relative;
+    margin-left:3%
+}
+.message-titlearea {
+    display: flex;
+    justify-content: space-between;
+    border-bottom:1px #c1d8ee solid;
+    padding-bottom:23px;
+    height: 50px;
+    font-size: 36px;
+}
+.guide-title span {
+    color:#0074e5;
+}
+.message-btnarea {
+	position:absolute;
+	top:30px;
+	right:35px
+}
+/* 재난문자 */
+.message-list {
+    width: 100%;
+}
+.message-list li {
+    margin:15px 0;    
+}
+.message-list li a {
+    font-size: 18px;
+    color:#222;
+    padding-bottom:5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    max-height: 70px;
+    -webkit-box-orient: vertical;     	  
+}
+.dateinfom {
+    margin-top:7px;
+    font-size: 16px;
+    color:#666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    max-height: 25px;
+    -webkit-box-orient: vertical; 
+}
+.dateinfom span{
+    display: inline-block;
+    padding-left:15px;
+    font-size: 16px;
+    color:#888;
+}
+.message-list li:last-child {
+    padding-top:10px;
+    margin-bottom:0;
+}
+.main-thirdcon {
+    /*padding:50px 0 60px 0;*/
+    padding:0px;
+    /*width: 1400px;*/
+    margin:10px 0 55px 0;
+    position:relative;
+}
+
+.main-thirdcon h3 {
+    font-size:1.937rem;
+    color:#222;
+    font-weight: 600;
+    padding-bottom:30px;
+    display: inline-block;    
+}
+
+.main-thirdcon .icon-setting a {
+    background:#222 url('../images/main/setting-icon.png') no-repeat 85% 50%;
+    padding:5px 30px 5px 10px;
+    border-radius: 50px;
+    color:#fff;
+    float:right;
+    cursor: pointer;
+    position:absolute;
+    top:10px;
+    right:10px;
+}
+/* 빠른메뉴서비스 */
+.quick-list {
+    display: flex;
+    /*justify-content: center;*/
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.quick-list li {
+    width: 12.5%;
+    text-align: center;
+}
+.quick-list li a {
+    font-size: 19px;
+    color:#222;
+    font-weight: 600;
+    white-space: pre;
+}
+
+.quick-list li span {
+    display:block;
+    font-size: 0;
+    width: 120px;
+    height: 120px;
+    padding-top:30px;
+    border-radius: 50%;
+    margin:0 auto 10px auto;
+    transition: 0.3s;
+    background:#ebf5ff;
+    border:1px #ebf5ff solid
+}
+.quick-list li:hover span {
+	background:#fff;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+.quick-list li.active span {
+    background:#fff;
+    border:2px #1764c4 dashed;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+.quick-list li.active:hover span {
+    background:#fff;
+    border:2px #1764c4 dashed;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+/*.quick-list li:nth-child(1) span {
+    background:#ebf5ff url('../images/main/quick-menu1.png') no-repeat 50% 50%;
+    border:1px #ebf5ff solid
+}
+.quick-list li:nth-child(2) span {
+    background:#ebf5ff url('../images/main/quick-menu2.png') no-repeat 50% 50%;
+    border:1px #ebf5ff solid
+}
+.quick-list li:nth-child(3) span {
+    background:#ebf5ff url('../images/main/quick-menu3.png') no-repeat 50% 50%;
+    border:1px #ebf5ff solid
+}
+.quick-list li:nth-child(4) span {
+    background:#ebf5ff url('../images/main/quick-menu4.png') no-repeat 50% 50%;
+    border:1px #ebf5ff solid
+}
+.quick-list li:nth-child(5) span {
+    background:#ebf5ff url('../images/main/quick-menu5.png') no-repeat 50% 50%;
+    border:1px #ebf5ff solid
+}
+.quick-list li:nth-child(6) span {
+    background:#ebf5ff url('../images/main/quick-menu6.png') no-repeat 50% 50%;
+    border:1px #ebf5ff solid
+}
+.quick-list li:nth-child(1):hover span {
+    background:#fff url('../images/main/quick-menu1.png') no-repeat 50% 50%;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+
+}
+.quick-list li:nth-child(2):hover span {
+    background:#fff url('../images/main/quick-menu2.png') no-repeat 50% 50%;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+.quick-list li:nth-child(3):hover span {
+    background:#fff url('../images/main/quick-menu3.png') no-repeat 50% 50%;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+.quick-list li:nth-child(4):hover span {
+    background:#fff url('../images/main/quick-menu4.png') no-repeat 50% 50%;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+.quick-list li:nth-child(5):hover span {
+    background:#fff url('../images/main/quick-menu5.png') no-repeat 50% 50%;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+.quick-list li:nth-child(6):hover span {
+    background:#fff url('../images/main/quick-menu6.png') no-repeat 50% 50%;
+    border:1px #b8b8b8 solid;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.15);
+}*/
+
+.main-fourthcon {
+    width:63%;
+    float:left;
+   /* background-color: #f4f9ff;*/
+}
+.fourth-inner {
+    width:100%;
+    /*margin:0px auto 50px auto;*/
+    /*display: flex;*/
+    padding-bottom:35px;
+}
+/* 국민행동요령 */
+/*.guideline-area {
+	 width: calc(100% - 540px);
+	 margin-right:85px;
+}*/
+.guide-title {
+    font-size:1.937rem;
+    color:#222;
+    font-weight: 600;
+    margin-bottom:15px
+}
+.popzone-titlearea h3.guide-title{display:none}
+.guideline-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.guideline-list li {
+    width: 23%;
+    margin:0 2% 2% 0;
+    height: 140px;
+    text-align: center;
+    border:1px #dfdfdf solid;
+    background-color: #fff;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+.guideline-list li:nth-child(4),
+.guideline-list li:nth-child(8) {
+    margin-right:0
+}
+.guideline-list li:nth-child(5),
+.guideline-list li:nth-child(6),
+.guideline-list li:nth-child(7),
+.guideline-list li:nth-child(8) {
+    margin-bottom:0
+}
+.guideline-list li a {
+    display: block;
+    font-size: 24px;
+    color:#222;
+    font-weight: 600;
+}
+.guideline-list li span {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    margin:20px auto 5px auto;
+    transition: 0.3s;
+}/*재업로드*/
+.guideline-list li:hover {
+    border:1px #0074e5 solid;
+    box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.15);
+}
+.guideline-list li:hover span {
+    background-color: #a9ccff;
+
+}
+.popzone-area {
+    width: 450px;
+    height:300px;
+    position: relative;
+    float:right
+}
+   
+.pop-inner {
+    /*border: 1px solid red;*/
+    width: 450px;
+    height: 350px;
+    position: relative;
+  }
+  input[name=tabmenu] {
+    display: none;
+  }
+  .pcontent {
+    display: none;
+  }
+  .pcontent img {
+    border-radius: 20px;
+    overflow: hidden;      
+  }
+  .pbtn {
+    position: absolute;
+    right:20px;
+    top: 15px;
+  }
+  .pbtn label {
+    background-color: #fff;
+    border:1px #ccc solid;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .pbtn button {
+    background-color: #fff;
+    border:1px #ccc solid;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    margin:0 3px
+  }
+  
+  input[id=tab1]:checked ~ .slide1,
+  input[id=tab2]:checked ~ .slide2,
+  input[id=tab3]:checked ~ .slide3,
+  input[id=tab4]:checked ~ .slide4 {
+    display: block;
+  } 
+  
+  input[id=tab1]:checked ~ .pbtn label[for=tab1],
+  input[id=tab2]:checked ~ .pbtn label[for=tab2],
+  input[id=tab3]:checked ~ .pbtn label[for=tab3],
+  input[id=tab4]:checked ~ .pbtn label[for=tab4] {
+    background-color: #0074e5;
+    border: 2px #000 solid;
+  }
+
+  input[id=tab1]:checked ~ .pbtn button[id=tab1_pop],
+  input[id=tab2]:checked ~ .pbtn button[id=tab2_pop],
+  input[id=tab3]:checked ~ .pbtn button[id=tab3_pop],
+  input[id=tab4]:checked ~ .pbtn button[id=tab4_pop] {
+    background-color: #3b9eff;
+    border: 1px #0074e5 solid;
+  }
+  
+  
+.main-fifthcon {
+    display: flex;
+    width: 1400px;
+    margin:15px auto;
+}
+.onstop-servicearea {
+    width:100%;
+    position:relative
+    /*width: calc(100% - 535px);
+    margin-right:85px;*/
+}
+.onestop-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.onestop-list li {
+    width: 33%;
+    /*width: 49.6%;*/
+    height: 70px;
+    line-height: 70px;
+    padding-left:20px;
+    margin-right:5px;
+    box-sizing: border-box;
+    background-color: #ebf5ff;
+    border:1px #a9ccff solid;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.07);
+    border-radius: 15px;
+    margin-bottom:7px;
+    font-size: 24px;
+    color:#222;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.onestop-list li:hover {
+    background-color: #0074e5;
+    border:1px #0074e5 solid;
+    color:#fff
+}
+.onestop-list a{display:block}
+.onestop-list li:hover a {
+    color:#fff
+}
+/*.onestop-list li:nth-child(even) {
+    margin-right:0
+}*/
+.onestop-list li:nth-child(3n) {
+    margin-right:0
+}
+.onestop-list li:nth-child(1) span {
+    background: #fff url('../images/main/onestop-icon1.png') no-repeat 50% 50%;
+    background-size:46px;
+}
+.onestop-list li:nth-child(2) span {
+    background: #fff url('../images/main/onestop-icon2.png') no-repeat 50% 50%;
+    background-size:46px;
+}
+.onestop-list li:nth-child(3) span {
+    background: #fff url('../images/main/onestop-icon3.png') no-repeat 50% 50%;
+    background-size:46px;
+}
+.onestop-list li:nth-child(4) span {
+    background: #fff url('../images/main/onestop-icon4.png') no-repeat 50% 50%;
+    background-size:46px;
+}
+.onestop-list li:nth-child(5) span {
+    background: #fff url('../images/main/onestop-icon5.png') no-repeat 50% 50%;
+    background-size:46px;
+}
+.onestop-list li:nth-child(6) span {
+    background: #fff url('../images/main/onestop-icon6.png') no-repeat 50% 50%;
+    background-size:46px;
+}
+.onestop-list li span {
+    float:right;
+    font-size: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    margin:11px 20px 0 0
+}
+.safenews-area {
+    width: 450px;
+    position:relative
+}
+.news-titlearea {
+    display: flex;
+    justify-content: space-between;
+}
+.r-btnarea {
+    padding-top:5px;
+    position:absolute;
+    top:0;
+    right:0
+}
+
+.news-list li {
+    font-size: 18px;
+    color:#222;
+    /*font-weight: 500;*/
+    padding:15px 0;
+    border-bottom:1px #d9d9d9 dashed;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+.news-list li a{display:contents}
+.news-list li:first-child {
+    padding-top:0
+}
+.news-list li:last-child {
+    border-bottom:0px
+}
+
+@media all and (max-width:1386px) { 
+    .main-firstcon {
+        width: 100%;
+        margin:0;
+        padding:0 3%;
+        
+    }
+    .main-secondcon {
+        width: 100%;
+        margin:0;
+        padding:10px 3% 0 3%;   
+    }
+    .calam-guidelist a {
+        display: inline-block;
+        font-size: 16px;
+        color:#222;
+        font-weight: 500;   
+        margin:0 5px ;
+    }
+    .main-thirdcon {
+        /*padding:60px 3% 80px 3%;*/
+        padding:0;
+        /*text-align: center;*/
+        width: 100%;
+        margin:0;
+    }
+    .main-thirdcon .icon-setting a {
+	    background:#222 url('../images/main/setting-icon.png') no-repeat 85% 50%;
+	    padding:5px 30px 5px 10px;
+	    border-radius: 50px;
+	    color:#fff;
+	    float:right;
+	    cursor: pointer;
+	    position:absolute;
+	    top:10px;
+	    right:1%;
+	}
+    .fourth-inner {
+        width: 100%;
+        margin:0px 0 60px 0;
+        display: flex;
+        padding:60px 3%;
+    }
+    .main-fifthcon {
+        display: flex;
+        width: 100%;
+        margin:0;
+        padding:0 3%
+    }
+    .onestop-list {
+	    display: flex;
+	    flex-wrap: wrap;
+	}
+	.onestop-list li {
+	    width: 49.6%;
+	    height: 80px;
+	    line-height: 80px;
+	    padding-left:20px;
+	    margin-right:5px;
+	    box-sizing: border-box;
+	    background-color: #ebf5ff;
+	    border:1px #a9ccff solid;
+	    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.07);
+	    border-radius: 20px;
+	    margin-bottom:5px;
+	    font-size: 18px;
+	    color:#222;
+	    font-weight: 600;
+	    transition: 0.3s;
+	}
+	.onestop-list li:hover {
+	    background-color: #0074e5;
+	    border:1px #0074e5 solid;
+	    color:#fff
+	}
+	.onestop-list li:hover a {
+	    color:#fff
+	}
+	.onestop-list li:nth-child(even) {
+	    margin-right:0
+	}
+	.onestop-list li:nth-child(1) span {
+	    background: #fff url('../images/main/onestop-icon1.png') no-repeat 50% 50%;
+	    background-size:46px;
+	}
+	.onestop-list li:nth-child(2) span {
+	    background: #fff url('../images/main/onestop-icon2.png') no-repeat 50% 50%;
+	    background-size:46px;
+	}
+	.onestop-list li:nth-child(3) span {
+	    background: #fff url('../images/main/onestop-icon3.png') no-repeat 50% 50%;
+	    background-size:46px;
+	}
+	.onestop-list li:nth-child(4) span {
+	    background: #fff url('../images/main/onestop-icon4.png') no-repeat 50% 50%;
+	    background-size:46px;
+	}
+	.onestop-list li:nth-child(5) span {
+	    background: #fff url('../images/main/onestop-icon5.png') no-repeat 50% 50%;
+	    background-size:46px;
+	}
+	.onestop-list li:nth-child(6) span {
+	    background: #fff url('../images/main/onestop-icon6.png') no-repeat 50% 50%;
+	    background-size:46px;
+	}
+	.onestop-list li span {
+	    float:right;
+	    font-size: 0;
+	    width: 42px;
+	    height: 42px;
+	    border-radius: 50%;
+	    margin:16px 20px 0 0
+	}
+	
+    .quick-list { justify-content: space-around;}
+
+}
+/* pad area */
+@media all and (max-width:1280px) { 
+    .main-content {
+        max-width: 100%;
+        width:100%;
+        padding:0;
+    }
+    .main-firstcon {
+        width: 100%;
+        margin:0;
+        padding:0 2%; 
+        
+    }
+    .total-searcharea {
+        padding-bottom:15px;
+        display: inline-block;
+        padding:0;
+    }
+    .total-searcharea.mb60 {
+    	margin-bottom:0;
+    }
+    .total-searchform h3{
+        width: 22%;
+
+    }
+    .total-searchform input {
+        width: 84%;
+        margin:0 0 0 5%;
+        display: inline-block;
+    }
+
+    .btn-totalsearch {
+        width: 8%;
+        text-align:center;
+    }
+    .btn-totalsearch {
+	    background: url(../images/main/tatal-search.png) no-repeat 80% 50%;
+    }
+    .total-searchtxt {
+        text-align: center;
+        padding-top:15px;
+    }
+    .weather-information {
+	    display: inline-block;
+	    margin-left:10px;
+	    padding-top:5px;
+	}
+    .main-secondcon {
+        width: 100%;
+        margin:0;
+        padding:10px 2% 0 2%;   
+    }
+    .calam-guidelist a {
+        display: inline-block;
+        font-size: 16px;
+        color:#222;
+        font-weight: 500;   
+        margin:0 5px ;
+    }
+    .main-thirdcon {
+        /*padding:60px 2% 80px 2%;*/
+       /* text-align: center;*/
+        width: 100%;
+        margin:0;
+    }
+    .fourth-inner {
+        width: 100%;
+        margin:0px 0 60px 0;
+        display: flex;
+        padding:60px 2%;
+    }
+    .main-fifthcon {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin:0;
+        padding:0 3%
+    }
+
+    
+    .weather-inform1 h3 {
+        font-size: 22px;
+        color:#222; 
+        font-weight: 600;  
+    }
+    .safe-inform h3{
+        font-size: 22px;
+        color:#222;
+        padding-bottom:18px;
+    }
+    .temp-info {
+        color:#222;
+       font-size: 35px;
+       padding-top:0px;
+        font-weight: 700;
+    }
+    .calam-guidelist {
+        display: flex;
+        justify-content: center;
+    }
+    .calam-guidelist a {
+        display: inline-block;
+        font-size: 16px;
+        color:#222;
+        font-weight: 500;   
+        margin:0 15px 0 0;
+    }
+    .calam-guidelist a:last-child {
+        margin-right:0
+    }
+    .calam-guidelist a span{
+        display: block;
+        font-size: 0;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom:10px;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.02);
+        transition: 0.3s;
+    }
+    .weather-inform2 {
+        width:100%;
+        background: url('../images/main/weather-img1.png') no-repeat 0 0;
+        background-size: 82px;
+        height: 114px;
+        padding-left:90px
+    }
+    .weater-other li {
+        font-size: 18px;
+        color:#666;
+        padding-bottom:10px
+    }
+    .message-titlearea h3 {
+        font-size: 36px;
+    }
+    .message-list li a {
+        font-size: 16px;
+        color:#222;
+        padding-bottom:5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        max-height: 42px;
+        -webkit-box-orient: vertical;
+    }
+    .onestop-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .onestop-list li {
+        width: 49.5%;
+        height: 80px;        
+        line-height: 1.4;
+        padding:0 20px;
+        margin-right:5px;
+        font-size: 17px;
+        white-space: pre;
+    }
+    .onestop-list li a{
+    	height:100%;
+    	display:flex;
+        justify-content: space-between;
+        align-items:center;
+        font-size: 18px;
+    }
+    .onestop-list li span {
+        display:inline-block;
+        clear:both;
+        font-size: 0;
+        width:40px;
+        height:40px;
+        border-radius: 50%;
+        margin:0;
+    }
+    
+}
+@media all and (max-width:1170px) {
+    .main-content {
+        max-width: 100%;
+        padding:0 0%;
+        margin: auto; transition: margin-left 0.3s;
+    }
+    .guideline-area {
+        width: calc(100% - 485px);
+        margin-right:30px;
+       }
+    .guideline-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guideline-list li {
+        width: 22%;
+        margin:0 3% 3.52% 0;
+        height: 138px;
+        text-align: center;
+        border:1px #dfdfdf solid;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+    .guideline-list li:nth-child(4),
+    .guideline-list li:nth-child(8) {
+        margin-right:0
+    }
+    .guideline-list li:nth-child(5),
+    .guideline-list li:nth-child(6),
+    .guideline-list li:nth-child(7),
+    .guideline-list li:nth-child(8) {
+        margin-bottom:0
+    }
+    .guideline-list li a {
+        font-size: 20px;
+    }
+    .guideline-list li span {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: #f1f1f1;
+        border-radius: 50%;
+        margin:30px auto 5px auto;
+        transition: 0.3s;
+    }
+    
+    .onestop-list li {
+        width: 49.3%;
+    }
+    /*.onestop-list li {
+        width: 49.3%;
+        height: 84px;
+        line-height: 84px;
+        padding-left:20px;
+        margin-right:5px;
+        font-size: 20px;
+    }
+    .onestop-list li span {
+        float:right;
+        font-size: 0;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        margin:15px 20px 0 0;
+    }*/
+    .onestop-list li:nth-child(1) span {
+        background: #fff url('../images/main/onestop-icon1.png') no-repeat 50% 50%;
+        background-size:36px
+    }
+    .onestop-list li:nth-child(2) span {
+        background: #fff url('../images/main/onestop-icon2.png') no-repeat 50% 50%;
+        background-size:36px
+    }
+    .onestop-list li:nth-child(3) span {
+        background: #fff url('../images/main/onestop-icon3.png') no-repeat 50% 50%;
+        background-size:36px
+    }
+    .onestop-list li:nth-child(4) span {
+        background: #fff url('../images/main/onestop-icon4.png') no-repeat 50% 50%;
+        background-size:36px
+    }
+    .onestop-list li:nth-child(5) span {
+        background: #fff url('../images/main/onestop-icon5.png') no-repeat 50% 50%;
+        background-size:36px
+    }
+}
+
+@media all and (max-width:1070px) {
+	.weather-information {
+	    display: inline-block;
+	    margin-left:10px;
+	    padding-top:5px;
+	    width:100%;
+	}
+	.weather-information img {
+		display:inline-block;
+		vertical-align:top;
+	}
+	.weather-information .weather-maininform {
+		display:inline-block;
+		padding:10px 0 0 0px;
+		vertical-align:top;
+	}
+	.quick-list {justify-content: space-between;}
+	.quick-list li a {font-size: 18px;}
+	.quick-list li span {width: 100px; height: 100px;}
+}
+
+@media all and (max-width:1024px) { 
+    .weather-information2{width:100%}
+    .tooltip{display:none !important}
+    .main-secondcon {
+        flex-wrap: wrap;
+        padding-top:10px
+    }
+    .quick-list li a{font-size: 20px;}
+    .quick-list li span {width: 110px; height: 110px;}
+    .weather-infoarea {
+        width: 100%;
+        padding:30px;
+        margin-right:0;
+        margin-bottom:20px;
+        height:230px
+    }
+    .weather-inform1 {
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom:2px #d3d5ed dashed;
+        padding-bottom:15px;
+        margin-bottom:15px;
+        height:70px;
+    }
+    .weather-inform1 h3 {
+        font-size: 30px;
+        vertical-align: bottom;
+    }
+    .weather-inform1 h3 span{
+        display: inline-block;
+    }
+    .temp-info {
+        color:#222;
+       font-size: 50px;
+       padding-top:0px;
+        font-weight: 700;
+    }
+    .weather-inform2 {
+        width:100%;
+        background: url('../images/main/weather-img1.png') no-repeat 0 0;
+        background-size: 90px;
+        height: 70px;
+        padding-left:120px
+    }
+    .weater-other {
+        padding-top:20px
+    }
+    .weater-other li {
+        font-size: 22px;
+        display: inline-block;
+        color:#666;
+        padding-bottom:0px;
+        padding-right:15px;
+    }
+    .weater-other li:last-child {
+        padding-bottom:0;
+    }
+    .weater-other li span{
+        color:#222;
+        font-weight: 600;    
+    }
+    .weater-other li .temp-down {
+        color:#4f58b5
+    }
+    .weater-other li .temp-up {
+        color:#c73d2a
+    }
+	.message-titlearea h3 {
+        font-size: 30px;
+    }
+    .message-btnarea {
+		position:absolute;
+		top:20px;
+		right:20px
+	}
+    .calam-guidelist {
+        width: 100%;
+        text-align: center;
+    }
+    .calam-guidelist a {
+        display: inline-block;
+        font-size: 16px;
+        color:#222;
+        font-weight: 500;   
+        margin:0 5px ;
+        width:20%;
+        text-align: center;
+    }
+    .calam-guidelist a span{
+        display: block;
+        font-size: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin:0 auto 10px auto;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.02);
+        transition: 0.3s;
+    }
+    .calam-guidelist a:nth-child(1) span{
+        background-size: 42px; 
+    }
+    .calam-guidelist a:nth-child(2) span{
+        background-size: 42px;  
+    }
+    .calam-guidelist a:nth-child(3) span{
+        background-size: 42px; 
+    }
+    .calam-guidelist a:nth-child(4) span{
+        background-size: 42px; 
+    }
+    
+    .calam-guidelist a:nth-child(1):hover span{
+        background-size: 42px; 
+    }
+    .calam-guidelist a:nth-child(2):hover span{
+        background-size: 42px;  
+    }
+    .calam-guidelist a:nth-child(3):hover span{
+        background-size: 42px;  
+    }
+    .calam-guidelist a:nth-child(4):hover span{
+        background-size: 42px;  
+    }
+    .safe-inform {
+        width: 100%;
+        padding:20px;
+        margin-right:0;
+        margin-bottom:20px
+    }
+    .safe-inform h3 {
+        font-size: 30px;
+    }
+    .message-area {
+        width: 100%;
+        padding:20px;
+    }
+    .message-area{height:auto}
+    .guide-title {font-size: 30px;}
+
+    .main-thirdcon {
+        padding: 20px 2% 40px!important;
+        /*text-align: center;*/
+        width: 100% !important;
+    }
+   
+    .main-thirdcon h3 {
+        font-size: 30px;
+        color:#222;
+        font-weight: 600;
+        padding-bottom:30px
+    }
+    
+    .quick-list {
+        display: flex;
+        justify-content: center;
+    }
+    .quick-list li {
+        width: 15%;
+        text-align: center;
+    }
+    .quick-list li a {
+        font-size: 18px;
+        color:#222;
+        font-weight: 600;
+        white-space: pre;
+    }
+.popzone-area{float:left}
+    .main-fourthcon {
+        width: 100%;
+        display: flex;
+        padding:0 2%;
+    }
+    .fourth-inner {
+        /*margin-bottom:0;*/
+        padding:0px 0 
+    }
+    .guide-title {
+        font-size: 30px;
+        color:#222;
+        font-weight: 600;
+        margin-bottom:15px
+    }
+
+    .guideline-area {
+        width: calc(100% - 0px);
+        margin-right:30px;
+       }
+    .guideline-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guideline-list li {
+        width: 47%;
+        margin:0 2% 2% 0;
+        height: 68px;
+        line-height: 68px;
+        text-align: left;
+        border:1px #dfdfdf solid;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+    .guideline-list li a span {
+        display: none;
+    }
+    .guideline-list li:nth-child(1) {
+        background:#fff url('../images/main/guide-icon01.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(2) {
+        background:#fff url('../images/main/guide-icon02.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(3) {
+        background:#fff url('../images/main/guide-icon03.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(4) {
+        background:#fff url('../images/main/guide-icon04.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(5) {
+        background:#fff url('../images/main/guide-icon05.png') no-repeat 90% 50%;
+        background-size: 40px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(6) {
+        background:#fff url('../images/main/guide-icon06.png') no-repeat 90% 50%;
+        background-size: 40px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(7) {
+        background: #fff url('../images/main/guide-icon07.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(8) {
+        background: #fff url('../images/main/guide-icon08.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(1):hover {
+        background: url('../images/main/guide-icon01-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(2):hover {
+        background: url('../images/main/guide-icon02-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(3):hover {
+        background: url('../images/main/guide-icon03-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(4):hover {
+        background: url('../images/main/guide-icon04-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(5):hover {
+        background: url('../images/main/guide-icon05-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(6):hover {
+        background: url('../images/main/guide-icon06-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(7):hover {
+        background: url('../images/main/guide-icon07-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li:nth-child(8):hover {
+        background: url('../images/main/guide-icon08-on.png') no-repeat 90% 50%;
+        background-size: 40px;
+    }
+    .guideline-list li a {
+        font-size: 18px;
+        color:#222;
+        font-weight: 600;
+        padding-left:15px;
+    }
+    .guideline-list li:hover {
+        border:1px #0074e5 solid;
+        box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.15);
+    }
+    .guideline-list li:hover span {
+        background-color: #a9ccff;
+    
+    }
+
+    .main-fifthcon {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .onstop-servicearea {
+        width: 100%;
+        margin-right:0px;
+        margin-bottom:40px;
+    }
+    .onestop-list li {
+    	white-space:normal;
+    	font-size:20px;
+    }
+    .onestop-list li span {
+        float:right;
+        font-size: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin:0;
+    }
+    .onestop-list li:nth-child(1) span {
+        background: #fff url('../images/main/onestop-icon1.png') no-repeat 50% 50%;
+        background-size:46px
+    }
+    .onestop-list li:nth-child(2) span {
+        background: #fff url('../images/main/onestop-icon2.png') no-repeat 50% 50%;
+        background-size:46px
+    }
+    .onestop-list li:nth-child(3) span {
+        background: #fff url('../images/main/onestop-icon3.png') no-repeat 50% 50%;
+        background-size:46px
+    }
+    .onestop-list li:nth-child(4) span {
+        background: #fff url('../images/main/onestop-icon4.png') no-repeat 50% 50%;
+        background-size:46px
+    }
+    .onestop-list li:nth-child(5) span {
+        background: #fff url('../images/main/onestop-icon5.png') no-repeat 50% 50%;
+        background-size:46px
+    }
+    .onestop-list li:nth-child(6) span {
+        background: #fff url('../images/main/onestop-icon6.png') no-repeat 50% 50%;
+        background-size:46px
+    }
+    .safenews-area {
+        width: 100%;
+    }
+    .news-list li {
+        font-size: 18px;
+        color:#222;
+        font-weight: 500;
+        padding:15px 0;
+        border-bottom:1px #d9d9d9 dashed;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+    }
+    .news-list li:last-child {
+        border-bottom:0px
+    }
+    
+}
+
+@media all and (max-width:960px) {
+    .quick-list {
+    	flex-wrap:wrap
+    }
+    .quick-list li {
+        width: 24%;
+        margin-bottom:3%;
+        text-align: center;
+    }
+    .guideline-list li:nth-child(1) {
+        background: #fff url('../images/main/guide-icon01.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(2) {
+        background: #fff url('../images/main/guide-icon02.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(3) {
+        background: #fff url('../images/main/guide-icon03.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(4) {
+        background: #fff url('../images/main/guide-icon04.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(5) {
+        background: #fff url('../images/main/guide-icon05.png') no-repeat 90% 50%;
+        background-size: 34px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(6) {
+        background: #fff url('../images/main/guide-icon06.png') no-repeat 90% 50%;
+        background-size: 34px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(7) {
+        background: #fff url('../images/main/guide-icon07.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(8) {
+        background: #fff url('../images/main/guide-icon08.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(1):hover {
+        background: url('../images/main/guide-icon01-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(2):hover {
+        background: url('../images/main/guide-icon02-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(3):hover {
+        background: url('../images/main/guide-icon03-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(4):hover {
+        background: url('../images/main/guide-icon04-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(5):hover {
+        background: url('../images/main/guide-icon05-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(6):hover {
+        background: url('../images/main/guide-icon06-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+        margin-bottom:2%
+    }
+    .guideline-list li:nth-child(7):hover {
+        background: url('../images/main/guide-icon07-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li:nth-child(8):hover {
+        background: url('../images/main/guide-icon08-on.png') no-repeat 90% 50%;
+        background-size: 34px;
+    }
+    .guideline-list li a {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        padding-left:15px
+    }
+   
+}
+
+@media all and (max-width:870px) {
+	.main-firstcon {
+		flex-wrap:wrap
+	}
+	.total-searcharea {
+		width:70%;
+		margin:0 auto;
+	}
+	.weather-information {
+        display:block;
+        margin-left:0px;
+        padding-top:10px;
+        text-align: center;
+        width:100%;
+    }
+    .weather-information h3 {
+        display: inline-block;
+        font-size: 20px;
+    }
+    .weather-information h3 span {
+        color:#0074e5
+    }
+    .w-inform li {
+        display: inline-block;
+        margin-right:10px
+    }
+}
+
+/* mobile area */
+@media all and (max-width:780px) {
+    
+    .main-firstcon {
+        flex-wrap: wrap;
+    }
+    .total-searcharea {
+        padding-bottom:15px;
+        display: inline-block;
+        width: 70%;
+        margin:0 auto;
+    }
+    .total-searchform h3{
+        width: 23%;
+        font-size: 20px;
+
+    }
+    .total-searchform input {
+        width: 80%;
+        margin:0 0 0 5%;
+        font-size: 20px;
+        display: inline-block;
+    }
+    .total-searchform input::placeholder {
+        font-size: 18px;
+    }
+    .btn-totalsearch {
+        width: 10%;
+    }
+    .total-searchtxt {
+        text-align: center;
+        padding-top:15px;
+    }
+    .weather-information {
+        display: inline-block;
+        margin-left:0px;
+        padding-top:5px;
+        text-align: center;
+        width:100%;
+    }
+    .weather-information h3 {
+        display: inline-block;
+        font-size: 20px;
+    }
+    .weather-information h3 span {
+        color:#0074e5
+    }
+    .w-inform li {
+        display: inline-block;
+        margin-right:10px
+    }
+    
+    .weather-infoarea {
+        padding:20px;
+        border-radius: 20px;
+        height: 190px;
+    }
+    .weather-area {
+        width:100%;
+        text-align: center;
+    }
+    .weather-inform1 h3 {
+        font-size: 22px;
+        vertical-align: bottom;
+    }
+    .weather-inform1 h3 span{
+        display: block;
+    }
+    .temp-info {
+        color:#222;
+       font-size: 38px;
+       padding-top:0px;
+        font-weight: 700;
+    }
+    .weather-inform2 {
+        width:100%;
+        background: url('../images/main/weather-img1.png') no-repeat 0 0;
+        background-size: 65px;
+        height: 90px;
+        padding-left:80px
+    }
+    .weater-other {
+        padding:0
+    }
+    .weater-other li {
+        font-size: 16px;
+        color:#666;
+        padding-bottom:10px
+    }
+    .weater-other li:last-child {
+        padding-bottom:0;
+    }
+
+    .safe-inform h3 {
+        font-size: 26px;
+    }
+
+    .calam-guidelist {
+        width: 100%;
+        text-align: center;
+        
+    }
+    .main-thirdcon {
+        padding:40px 0 40px 0;
+        /*text-align: center;*/
+        width: 100%;
+    }
+    
+    .main-thirdcon h3 {
+        font-size: 26px;
+        color:#222;
+        font-weight: 600;
+        padding-bottom:20px
+    }
+    .main-thirdcon .icon-setting a {
+	    top:20px;
+	    right:3%;
+	}
+    .guide-title {
+        font-size: 22px;
+        color:#222;
+        font-weight: 600;
+        margin-bottom:30px;
+    }
+    .quick-titarea {
+    	padding-right:2%;
+    }
+    .quick-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .quick-list li {
+        width: 30%;
+        margin-bottom:3%;
+        text-align: center;
+    }
+    .quick-list li a {
+        font-size: 14px;
+        letter-spacing:-1px;
+        color:#222;
+        font-weight: 600;
+        white-space: pre;
+    } 
+    
+    .main-fourthcon {
+        width: 100%;     
+    }
+    .fourth-inner {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guideline-area {
+        width: 100%;
+        margin-right:0px;
+        margin-bottom:40px;
+    }
+    .guideline-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .guideline-list li {
+        width: 49%;
+        margin:0 2% 2% 0;
+        height: 138px;
+        line-height: 1.4;
+        text-align: center;
+        border:1px #dfdfdf solid;
+        border-radius: 20px;
+        transition: 0.3s;
+        box-sizing: border-box;
+    }
+    .guideline-list li:nth-child(2),
+    .guideline-list li:nth-child(4),
+    .guideline-list li:nth-child(6),
+    .guideline-list li:nth-child(8) {
+        margin-right:0
+    }
+
+    .guideline-list li:nth-child(7)
+    .guideline-list li:nth-child(8) {
+        margin-bottom:0
+    }
+    .guideline-list li a {
+        font-size: 20px;
+        color:#222;
+        font-weight: 600;
+        padding-left:0;
+    }
+    .guideline-list li a span {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: #f1f1f1;
+        border-radius: 50%;
+        margin:10px auto 5px auto;
+        transition: 0.3s;
+        background-image: none;
+    }
+    .guideline-list li:hover {
+        border:1px #0074e5 solid;
+        box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.15);
+    }
+    .guideline-list li:hover span {
+        background-color: #a9ccff;
+    }
+    .guideline-list li:nth-child(1) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(2) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(3) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(4) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(5) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(6) {
+        background-image: none;
+        margin-bottom:0
+    }
+    .guideline-list li:nth-child(7) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(8) {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(1):hover {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(2):hover {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(3):hover {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(4):hover {
+        background-image: none;
+    }
+    .guideline-list li:nth-child(5):hover {
+        background-image: none;
+
+    }
+    .guideline-list li:nth-child(6):hover {
+        background-image: none;
+        margin-bottom:0
+    }
+    .guideline-list li:nth-child(7):hover {
+        background-image: none;
+        
+    }
+    .guideline-list li:nth-child(8):hover {
+        background-image: none;
+    }
+    .popzone-area {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .popzone-area a {display:unset}
+    .pop-inner {
+    /*border: 1px solid red;*/
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    input[name=tabmenu] {
+        display: none;
+    }
+    .pcontent {
+        display: none;
+    }
+    .pcontent img {
+        border-radius: 20px;
+        width: 100%;
+        max-width: 100%;
+        height:100%;
+        object-fit: contain;
+        overflow: hidden;    
+    }
+    .pbtn {
+        position: absolute;
+        right:20px;
+        top: 15px;
+    }
+    .pbtn label {
+        background-color: #fff;
+        border:1px #dfdfdf solid;
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .pbtn button {
+        background-color: #fff;
+        border:1px #dfdfdf solid;
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    input[id=tab1]:checked ~ .slide1,
+    input[id=tab2]:checked ~ .slide2,
+    input[id=tab3]:checked ~ .slide3,
+    input[id=tab4]:checked ~ .slide4 {
+        display: block;
+    } 
+    
+    input[id=tab1]:checked ~ .pbtn label[for=tab1],
+    input[id=tab2]:checked ~ .pbtn label[for=tab2],
+    input[id=tab3]:checked ~ .pbtn label[for=tab3],
+    input[id=tab4]:checked ~ .pbtn label[for=tab4] {
+        background-color: #0074e5;
+        border:1px #0074e5 solid;
+    }
+
+    .main-fifthcon {
+        flex-wrap: wrap;
+    }
+    .onstop-servicearea {
+        z-index: 999;
+    }
+    .onestop-list li {
+    	white-space:pre;
+    	font-size:18px;
+    }
+    .guide-title {
+        font-size: 26px;
+        color:#222;
+        font-weight: 600;
+        margin-bottom:10px
+    }
+    .quick-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 0;
+    }
+    .quick-list li {
+        width: 20.5% !important;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .quick-list li span {
+        margin: 0 auto 8px auto;
+    }
+}
+@media all and (max-width:700px) {
+	 .onestop-list { flex-direction: column; gap: 5px;}
+	 .onestop-list li { width: 100%; }
+}
+
+@media all and (max-width:640px) {
+    .total-searcharea {
+        padding-bottom:15px;
+        display: inline-block;
+        width: 80%;
+        margin:0 auto;
+    }
+    .total-searchform h3{
+        width: 30%;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .total-searchform input {
+        margin:0 0 0 6%;
+        font-size: 20px;
+        width:82%;
+        display: inline-block;
+    }
+    .total-searchform input::placeholder {
+        font-size: 17px;
+    }
+
+    .onestop-list li:hover {
+        background-color: #0074e5;
+        border:1px #0074e5 solid;
+        color:#fff
+    }
+    
+    .quick-list li {width: 24% !important;}
+    .tab_bt button h3, .message-titlearea h3{font-size: 22px;}
+    .main-more {top: -56px;}
+}
+
+
+@media all and (max-width:540px) {
+	.tab_bt {padding-bottom: 20px;}
+	/*.new-main-con dl dt button {font-size: 12px;}*/
+	.main-more1.main-more2 {display: flex;flex-direction: column; gap: 3px; top: -76px;}
+	/*.new-main-con dl dt button.ptn-l {right: 92px;}*/
+	.main-more2 button {font-size: 12px;}   
+	.main-more button {font-size: 12px;}
+	.new-main-con dl dd{font-size:1.2rem;line-height:35px}
+	.new-main-con dl dd a{height:35px;width: calc(100% - 0px);}
+	/*.new-main-con dl dt button{right:190px}*/
+	.new-main-con ul li span{min-width:90px !important}
+	.weather-information2{width:100%;}
+	.total-searchform{
+		border:3px solid #222;
+		box-shadow:2px 3px 5px rgba(0, 0, 0, 0.12)
+	}
+	.total-searchform input {
+		height:48px;
+		line-height:48px;
+		width:80%;
+		margin-left:7%;
+	}
+    .btn-totalsearch {
+        width: 12%;
+
+    }
+    .total-searchtxt {
+        text-align: center;
+        padding-top:15px;
+    }
+    .search-textlist {
+        padding-top:5px
+    }
+    .search-textlist li{
+        display: inline-block;
+        padding:5px 10px;
+        border-radius: 80px;
+        color:#878686;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: #ededed;
+    }
+    .swiper-wrapper {
+		height:100%;
+	}
+	.safebox-infoarea {
+	    background-color: #fff;
+	    border: 1px #ddd solid;
+	    padding: 30px 20px 0;
+	    border-radius: 20px;
+	    position: relative;
+	    width: 100%;
+	    height:100%;
+		min-height:200px;
+		margin-bottom: 40px;
+	}
+	.safebox-inform1 {
+	    width:100%;
+	    padding-bottom:20px;
+	    margin-bottom:5px;
+	    min-height:450px;
+	    overflow-y:auto;
+	}
+	.safebox-inform1 h3 {
+	    font-size: 22px;
+	    color:#222; 
+	    font-weight: 600;
+	    text-align: left;
+	}
+	.weather-inform-main {
+	    width:100%;
+	    margin-top: 20px;
+	    display:flex;
+	    flex-wrap:wrap;
+	}
+	.guide-title {
+		font-size: 26px;
+	}
+	.dis-imgarea-main {
+	    width: 100%;
+	    height: 100px;
+	    border-radius: 10px;
+	    overflow: hidden;
+	    background:#9fe4ff;
+	    text-align:center;
+
+	}
+	.dis-textlist-main {
+	    margin-left:0%;
+	    display:inline-block;
+	    height: 80px;
+	    width:100%;
+	    
+	}
+	.dis-textlist-main p{
+	    font-size:17px;
+	    color:#222;
+	    font-weight:600; 
+	    padding-top:15px;  
+	    display:inline-block;
+	}
+	.dis-textlist-main a {
+	    padding:4px  30px 4px 15px;
+	    font-size:14px;
+	    margin-left:3%;
+
+	}
+	.content-bannerbox-main {
+	    height: 100px;
+	    width:100%;
+	    margin-top:0px;
+	    display:flex;
+	    flex-wrap:wrap;
+	}
+	.content-bannerbox-main .banner-imginner {
+		display:block;
+		width: 100%;
+	    height: 100px;
+	    text-align:center;
+	    background-color:#ededed;
+	    border-radius:10px;
+	}
+	.bannerbox-textlist-main {
+		width:100%;
+		padding:15px 0 0 0;
+		margin-left:0
+		
+	}
+	.content-bannerbox-main p {
+	    display:inline-block;
+	    font-size:17px;
+	    color:#222;
+	    font-weight:600;  
+	    vertical-align:top;
+	    margin-top:0px; 
+	    
+	}
+	.content-bannerbox-main a {
+		display:inline-block;
+		padding:4px  30px 4px 15px;
+	    font-size:14px;
+	    margin-top:0;
+	    margin-left:5%;
+	}
+    .message-titlearea h3 {
+        font-size: 22px;
+    }
+    .main-thirdcon h3 {
+        font-size: 22px;
+        color:#222;
+        font-weight: 600;
+        padding-bottom:30px;
+       
+    }
+    .main-thirdcon-new button.tooltip{display:none}
+    .onstop-servicearea button.tooltip{display:none}
+    .quick-titarea .icon-setting {
+        background:#222 url('../images/main/setting-icon.png') no-repeat 85% 50%;
+        background-size: 15px;
+        padding:3px 25px 3px 10px;
+        border-radius: 50px;
+        font-size: 14px;
+        color:#fff;
+        float:right;
+        cursor: pointer;
+    }
+    .quick-titarea{text-align:left}
+    .guide-title {
+        font-size: 22px;
+        color:#222;
+        font-weight: 600;
+        margin-bottom:15px
+    }
+    .guideline-list li {
+        width: 49%;
+        margin:0 2% 2% 0;
+        height: 105px;
+        line-height: 1.4;
+        text-align: center;
+        border:1px #dfdfdf solid;
+        border-radius: 20px;
+        transition: 0.3s;
+        box-sizing: border-box;
+    }
+    .guideline-list li:nth-child(2),
+    .guideline-list li:nth-child(4),
+    .guideline-list li:nth-child(6),
+    .guideline-list li:nth-child(8) {
+        margin-right:0
+    }
+
+    .guideline-list li:nth-child(7)
+    .guideline-list li:nth-child(8) {
+        margin-bottom:0
+    }
+    .guideline-list li a {
+        font-size: 18px;
+        color:#222;
+        font-weight: 600;
+        padding-left:0;
+    }
+    .guideline-list li a span {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: #f1f1f1;
+        border-radius: 50%;
+        margin:5px auto 2px auto;
+        transition: 0.3s;
+    }
+    .guideline-list li:hover {
+        border:1px #0074e5 solid;
+        box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .onestop-list li {
+    	white-space:pre;
+    	font-size:16px;
+    }
+    .onestop-list li span {
+	    width:40px;
+	    height:40px;
+    }
+    .message-list li a {
+        font-size: 16px;
+        color:#222;
+        padding-bottom:5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        max-height: 40px;
+        -webkit-box-orient: vertical;
+    }
+    .news-list li {
+        font-size: 16px;
+        color:#222;
+        font-weight: 500;
+        padding:15px 0;
+        border-bottom:1px #d9d9d9 dashed;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+    
+    }
+    
+    .main-secondcon .mainSwiper {
+        overflow: visible;
+        height: auto;
+    }
+    .main-secondcon .swiper-wrapper {
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .main-secondcon .swiper-slide {
+        height: auto;
+    }
+    
+    .main-thirdcon {
+        position: relative;
+    }
+    .main-thirdcon .icon-setting a {
+        position: absolute;
+        top: 20px;
+        right: 3%;
+        z-index: 10;
+    }
+    
+    .thistime-newslist-main {
+        overflow: visible;
+        display: block;
+        -webkit-line-clamp: unset;
+        max-height: none;
+    }
+    .thistime-newslist-main span {
+        font-size: 13px;
+        min-width: 40px;
+        padding: 0 6px;
+    }
+    .thistime-newslist-main a {
+        font-size: 1rem;
+        word-break: keep-all;
+    }
+    .safebox-infoarea {
+        height: auto;
+        min-height: 200px;
+    }
+    .content-bannerbox-main {
+        height: auto;
+        margin-top: 20px;
+    }
+    .weather-inform-main {
+        margin-bottom: 10px;
+    }
+    .new-main-con h4 {font-size: 22px; padding: 8px 0 10px 30px;}
+}
+@media all and (max-width:500px){
+	.main-more.main-more2 {display: flex; flex-direction: column; gap: 3px;top: -76px;}
+}
+
+@media all and (max-width:480px) {
+	.safebox-infoarea {padding: 20px;}
+	.quick-list li {width: 33% !important;}
+	.main-more button {font-size: 12px;}
+	.main-more.main-more2 {top: -73px;}
+	.mBtn1, .mBtn2 { font-size: 12px;}
+	.new-main-con dl dt button {top: 8px;left:212px;padding:5px 10px}
+	.new-main-con dl dt button.ptn-l {left: 120px;}
+	.main-more { top: -60px;}
+    .calam-guidelist a {
+        display: inline-block;
+        font-size: 14px;
+        color:#222;
+        font-weight: 500;   
+        margin:0 5px ;
+        width:25%;
+        text-align: center;
+    }
+    .calam-guidelist a span{
+        display: block;
+        font-size: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin:0 auto 10px auto;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.02);
+        transition: 0.3s;
+    }
+    .calam-guidelist a:nth-child(1) span{
+        background-size: 36px; 
+    }
+    .calam-guidelist a:nth-child(2) span{
+        background-size: 36px;  
+    }
+    .calam-guidelist a:nth-child(3) span{
+        background-size: 36px; 
+    }
+    .calam-guidelist a:nth-child(4) span{
+        background-size: 36px; 
+    }
+    
+    .calam-guidelist a:nth-child(1):hover span{
+        background-size: 36px; 
+    }
+    .calam-guidelist a:nth-child(2):hover span{
+        background-size: 36px;  
+    }
+    .calam-guidelist a:nth-child(3):hover span{
+        background-size: 36px;  
+    }
+    .calam-guidelist a:nth-child(4):hover span{
+        background-size: 36px;  
+    }
+    .weather-inform-main {
+    	text-align:center
+    }
+    .dis-textlist-main p {
+    	display:flex;
+    	justify-content:center;
+    }
+    .banner-imginner {
+    	margin-top:20px;
+    }
+    .bannerbox-textlist-main {
+    	display:flex;
+    	flex-wrap:wrap;
+    	justify-content:center;
+    }
+    .bannerbox-textlist-main p {
+    	width:100%;
+    	text-align:center;
+    	display:flex;
+    	justify-content:center;
+    }
+    .content-bannerbox-main {
+	    text-align:center;
+	    height:100%;
+	    margin-top:0px;
+	    display:block;	    
+	}
+	.bannerbox-textlist-main {
+		width:100%;
+		padding:20px 0 0 0;
+		margin-left:0;
+		text-align:center
+		
+	}
+	.content-bannerbox-main p {
+	    clear:both;
+	    font-size:17px;
+	    color:#222;
+	    font-weight:600;  
+	    vertical-align:top;
+	    margin-top:0px;
+	    margin-bottom:10px; 
+	}
+	.content-bannerbox-main a {
+		clear:both;
+		padding:4px  30px 4px 15px;
+	    font-size:14px;
+	    margin-left:0%;
+	    
+	}
+	.onestop-list li {
+    	width:100%;
+    	margin-right:0;
+    	white-space:normal;
+    	font-size:18px;
+    	height:70px;
+    }
+    
+    
+}
+
+@media all and (max-width:440px) {
+	.main-more1.main-more2 {top: -73px;}
+	.swiper-wrapper {
+		height:100%;
+	}
+	.safebox-infoarea {
+	    background-color: #fff;
+	    border: 1px #ddd solid;
+	    padding: 20px;
+	    border-radius: 20px;
+	    position: relative;
+	}
+	.thistime-newslist-main {
+	    width: 100%;
+	    margin-top:10px;
+	    padding-right:10px;
+	    display:-webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp:6;
+	    overflow:hidden;
+	    min-height: 70px;       
+	}
+	.thistime-newslist-main a {
+		padding:3px 0;
+		width:100%;
+	}
+	.thistime-newslist-main span {
+	    display: inline-block;
+	    line-height: 20px;
+	    height: 20px;
+	    padding:0 10px ;
+	    font-size: 13px;
+	    color:#fff;
+	    font-weight: 500;
+	    border-radius: 80px;
+	    min-width: 45px;
+	    text-align: center;
+	    margin-right:5px;
+	}
+	
+    .quick-list li span {
+        display:block;
+        font-size: 0;
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        margin:0 auto 10px auto;
+        transition: 0.3s;
+        padding-top: 16px;
+    }
+    .quick-list li a {
+        font-size: 16px;
+        color:#222;
+        font-weight: 600;
+        white-space: pre;
+    }
+    .quick-list li:nth-child(1) span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(2) span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(3) span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(4) span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(5) span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(6) span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(1):hover span {
+        background-size:50px
+    
+    }
+    .quick-list li:nth-child(2):hover span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(3):hover span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(4):hover span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(5):hover span {
+        background-size:50px
+    }
+    .quick-list li:nth-child(6):hover span {
+        background-size:50px
+    }
+    
+    .main-more {top: -64px;}
+    .main-more button { padding: 5px 0;width: 90px;}
+    .tab_bt button h3 {padding: 0px 10px;}
+}
+
+@media all and (max-width:375px) {
+    .total-searcharea {
+        padding-bottom:15px;
+        display: inline-block;
+        width: 100%;
+        margin:0 auto;
+    }
+    .total-searchform {
+        height: 48px;
+        line-height: 48px;
+        width: 100%;
+        margin:0 auto;
+        border-radius:80px;
+        display: flex;
+    }
+    .total-searchform input {
+        width: 78%;
+        margin:0 0 0 7%;
+        font-size: 16px;
+        line-height: 42px;
+        height: 42px;
+        display: inline-block;
+    }
+    
+    .total-searchtxt {
+        text-align: center;
+        padding-top:15px;
+    }
+    .search-textlist {
+        padding-top:5px
+    }
+    .search-textlist li{
+        display: inline-block;
+        padding:5px 10px;
+        border-radius: 80px;
+        color:#878686;
+        font-size: 14px;
+        font-weight: 500; 
+        margin-bottom:3px;     
+        background-color: #ededed;
+    }
+    .search-textlist li a{
+    	margin-top:3px;
+    }
+    .quick-list {
+    	justify-content:start
+    }
+    .quick-list li {
+    	width:49%;
+    	margin-bottom:15px
+    }
+
+    .content-bannerbox-main a {
+		clear:both;
+        padding: 4px 30px 4px 15px;
+        font-size: 14px;
+        margin-left: 0;
+    }
+    .onestop-list li {
+    	width:100%;
+    	white-space:normal;
+    	font-size:16px;
+    	height:70px;
+    }
+}
+
+@media all and (max-width:360px) {
+	.weather-information img {display:block;margin:0 auto;} 
+	.message-area {padding: 20px 15px;}
+	.safebox-inform1 h3 {font-size: 20px;}
+	.new-main-con h4 {font-size: 20px;}
+	.main-more {right: 0px;}
+	.new-main-con dl dt button { right: -10px;}
+	.new-main-con dl dt button.ptn-l { right: 80px;}
+}
+.tooltip {
+  position:absolute;
+  display: block;
+  top:9px;
+  width:20px;
+  height:20px;
+  color:#0074e5;
+  text-align:center;
+  font-weight:bold;
+  font-size:13px;
+  background:url('../images/main/main-helf.jpg') no-repeat 0 0;
+  
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #f9f9f9;
+  color: #666;
+  text-align: center;
+  border-radius: 6px;
+  border:#ddd 1px solid;
+  padding: 5px 0;
+font-weight:400;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+.tooltip:focus .tooltiptext {
+  visibility: visible;
+}
+
+/* 툴팁 기본 스타일 설정 끝 */
+
+/* -------------------------- */
+
+/* 툴팁 화살표 기본 스타일 설정 시작 */
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  border-style: solid;
+  border-width: 5px;
+}
+
+/* 툴팁 화살표 기본 스타일 설정 끝 */
+
+/* -------------------------- */
+
+/* 툴팁 방향 설정 시작 */
+
+/* 왼쪽 툴팁 시작 */
+
+.tooltip .tooltip-left {
+  top: -5px;
+  /*right: 105%;*/
+}
+
+.tooltip .tooltip-left::after {
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-color: transparent transparent transparent black;
+}
+
+/* 왼쪽 툴팁 끝 */
+
+/* 오른쪽 툴팁 시작 */
+
+.tooltip .tooltip-right {
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip .tooltip-right::after {
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-color: transparent black transparent transparent;
+}
+
+/* 오른쪽 툴팁 끝 */
+
+/* 위쪽 툴팁 시작 */
+
+.tooltip .tooltip-top {
+  width: 120px;
+  bottom: 160%;
+  left: 50%;
+  margin-left: -10px;
+}
+
+.tooltip .tooltip-top::after {
+  top: 100%;
+  left: 10px;
+  margin-left: 0;
+  border-color: #ddd transparent transparent transparent;
+}
+
+/* 아래쪽 툴팁 시작 */
+
+.tooltip .tooltip-bottom {
+  width: 120px;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+
+.tooltip .tooltip-bottom::after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-color: transparent transparent black transparent;
+}
+
+/* 아래쪽 툴팁 시작 */
+
+/* 툴팁 방향 설정 끝 */

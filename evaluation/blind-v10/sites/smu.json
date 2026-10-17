@@ -1,0 +1,2015 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "pages": [
+    {
+      "id": "v10-smu-01",
+      "url": "https://www.smu.ac.kr/kor/life/payment.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/payment.do",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v10/fixtures/smu.html",
+      "observation": {
+        "sourceCapture": "docs/evidence/run008/blind-v10-support/captures/smu",
+        "capturedAt": "2026-10-17T19:29:40.885Z",
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        },
+        "fullOriginalBodyPreserved": true,
+        "originalScriptExecutionInReplay": "blocked by CSP; no handler stubs; all network requests blocked in self-QA",
+        "allOriginalMeaningfulControlsAnnotated": true,
+        "visibleControlCount": 38,
+        "controlCount": 404,
+        "privateValues": "removed; fixed public names retained",
+        "expectedGroupsSelectedBeforeProduct": true,
+        "preproductAmbiguities": [
+          "다운로드 두 개는 모두 장학 학사 규정 문서 academic/locate이다. 문서가 다운로드라는 이유만으로 신청 기능으로 분류하지 않았다.",
+          "학자금 융자제도와 교내/교외 장학금은 다른 문서 fragment을 가진 일반 링크라 navigate이다. 현재 문서의 장학금지급규정 탭 fragment은 locate이다."
+        ],
+        "productExecutions": 0
+      },
+      "accepted": [
+        {
+          "sourceId": "smu-c0172",
+          "category": "help",
+          "action": "navigate",
+          "label": "입학안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "입학안내",
+            "originalAttributes": {
+              "href": "/kor/intro/whySangmyung.do",
+              "title": "입학안내"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0181",
+          "category": "academic",
+          "action": "navigate",
+          "label": "대학 · 대학원",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "대학 · 대학원",
+            "originalAttributes": {
+              "href": "/kor/edu/seoul01.do",
+              "title": "대학 · 대학원"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0190",
+          "category": "academic",
+          "action": "navigate",
+          "label": "연구 · 산학",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "연구 · 산학",
+            "originalAttributes": {
+              "href": "/kor/research/status.do",
+              "title": "연구 · 산학"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0200",
+          "category": "academic",
+          "action": "navigate",
+          "label": "학사안내",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "학사안내",
+            "originalAttributes": {
+              "href": "/kor/life/academicCalendar.do",
+              "title": "학사안내"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0219",
+          "category": "notice",
+          "action": "navigate",
+          "label": "대학생활",
+          "reason": "공식 소식·공고 또는 현재 게시 목록 관련 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "대학생활",
+            "originalAttributes": {
+              "href": "/kor/life/notice.do",
+              "title": "대학생활"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0258",
+          "category": "apply",
+          "action": "locate",
+          "label": "수강신청",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "수강신청",
+            "originalAttributes": {
+              "href": "https://www.smu.ac.kr/_custom/smu/_common/login/sso_sugang.jsp",
+              "title": "수강신청 새창열림",
+              "target": "_blank"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0260",
+          "category": "login",
+          "action": "locate",
+          "label": "Login",
+          "reason": "로그인·계정 또는 인증 관련 명시 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "Login",
+            "originalAttributes": {
+              "href": "javascript:loginPopupOpen();",
+              "title": "로그인 새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0276",
+          "category": "search",
+          "action": "locate",
+          "label": "검색",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "검색",
+            "originalAttributes": {
+              "href": "#a",
+              "title": "검색 열기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0296",
+          "category": "academic",
+          "action": "locate",
+          "label": "Calendar",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "Calendar",
+            "originalAttributes": {
+              "href": "#a",
+              "title": "캘린더 열기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0311",
+          "category": "academic",
+          "action": "locate",
+          "label": "장학금지급규정",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "장학금지급규정",
+            "originalAttributes": {
+              "href": "/kor/life/payment.do#tab18342_",
+              "title": "장학금지급규정 선택됨",
+              "target": ""
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0312",
+          "category": "academic",
+          "action": "navigate",
+          "label": "교내 장학금",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "교내 장학금",
+            "originalAttributes": {
+              "href": "/kor/life/scholarships.do#tab18343_",
+              "title": "교내 장학금",
+              "target": ""
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0313",
+          "category": "academic",
+          "action": "navigate",
+          "label": "교외 장학금",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "교외 장학금",
+            "originalAttributes": {
+              "href": "/kor/life/suburbs.do#tab18344_",
+              "title": "교외 장학금",
+              "target": ""
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0314",
+          "category": "academic",
+          "action": "navigate",
+          "label": "학자금 융자제도",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "학자금 융자제도",
+            "originalAttributes": {
+              "href": "/kor/life/loan.do#tab18345_",
+              "title": "학자금 융자제도",
+              "target": ""
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0379",
+          "category": "academic",
+          "action": "navigate",
+          "label": "서울캠퍼스",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "서울캠퍼스",
+            "originalAttributes": {
+              "href": "/kor/life/payment.do",
+              "title": "서울캠퍼스 선택됨"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0380",
+          "category": "academic",
+          "action": "navigate",
+          "label": "천안캠퍼스",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "천안캠퍼스",
+            "originalAttributes": {
+              "href": "/kor/life/payment2.do",
+              "title": "천안캠퍼스 바로가기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0390",
+          "category": "academic",
+          "action": "locate",
+          "label": "장학금 지급규정 다운로드",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "pdf 다운로드",
+            "originalAttributes": {
+              "href": "/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F4-2-5_%EC%9E%A5%ED%95%99%EA%B8%88_%EC%A7%80%EA%B8%89_%EA%B7%9C%EC%A0%95_20240228.pdf",
+              "target": "_blank",
+              "title": "장학금 지급규정 다운로드"
+            },
+            "rowText": "장학금 지급규정 pdf 다운로드",
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0391",
+          "category": "academic",
+          "action": "locate",
+          "label": "장학금 지급에 관한 운영세칙 다운로드",
+          "reason": "학사·장학 안내 또는 관련 규정 문서 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "pdf 다운로드",
+            "originalAttributes": {
+              "href": "/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F4-2-38_%EC%9E%A5%ED%95%99%EA%B8%88_%EC%A7%80%EA%B8%89%EC%97%90_%EA%B4%80%ED%95%9C_%EC%8B%9C%ED%96%89%EC%84%B8%EC%B9%99_%ED%83%91%EC%9E%AC%EC%9A%A9_20250627.pdf",
+              "target": "_blank",
+              "title": "장학금 지급에 관한 운영세칙 다운로드"
+            },
+            "rowText": "장학금 지급에 관한 시행세칙 pdf 다운로드",
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0393",
+          "category": "help",
+          "action": "navigate",
+          "label": "영상정보처리기기 운영관리방침",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "영상정보처리기기 운영관리방침",
+            "originalAttributes": {
+              "href": "/board/policy/cctv.do",
+              "target": "_blank",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0394",
+          "category": "help",
+          "action": "navigate",
+          "label": "이메일주소무단수집거부",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "이메일주소무단수집거부",
+            "originalAttributes": {
+              "href": "/board/policy/email.do",
+              "target": "_blank",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0395",
+          "category": "help",
+          "action": "navigate",
+          "label": "개인정보처리방침",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "개인정보처리방침",
+            "originalAttributes": {
+              "href": "/kor/intro/privacyPolicy.do",
+              "title": "바로가기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0396",
+          "category": "help",
+          "action": "navigate",
+          "label": "취업규칙",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "취업규칙",
+            "originalAttributes": {
+              "href": "/board/policy/rule.do",
+              "target": "_blank",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0397",
+          "category": "help",
+          "action": "navigate",
+          "label": "정보공개",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "정보공개",
+            "originalAttributes": {
+              "href": "/kor/intro/Information1.do",
+              "title": "바로가기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0398",
+          "category": "help",
+          "action": "navigate",
+          "label": "예결산공고",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "예결산공고",
+            "originalAttributes": {
+              "href": "/kor/intro/settlement.do",
+              "title": "바로가기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "smu-c0399",
+          "category": "help",
+          "action": "navigate",
+          "label": "대학정보공시",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "대학정보공시",
+            "originalAttributes": {
+              "href": "http://www.academyinfo.go.kr/popup/pubinfo1690/list.do?schlId=0000117",
+              "target": "_blank",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/smu/original-controls.json"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "smu-c0001",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "smu-c0002",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0003",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0004",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0005",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0006",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0007",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0008",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0009",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0010",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0011",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0012",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0013",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0014",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0015",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0016",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0017",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0018",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0019",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0020",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0021",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0022",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0023",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0024",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0025",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0026",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0027",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0028",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0029",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0030",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0031",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0032",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0033",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0034",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0035",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0036",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0037",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0038",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0039",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0040",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0041",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0042",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0043",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0044",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0045",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0046",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0047",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0048",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0049",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0050",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0051",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0052",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0053",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0054",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0055",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0056",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0057",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0058",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0059",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0060",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0061",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0062",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0063",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0064",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0065",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0066",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0067",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0068",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0069",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0070",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0071",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0072",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0073",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0074",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0075",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0076",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0077",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0078",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0079",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0080",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0081",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0082",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0083",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0084",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0085",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0086",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0087",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0088",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0089",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0090",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0091",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0092",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0093",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0094",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0095",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0096",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0097",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0098",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0099",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0100",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0101",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0102",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0103",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0104",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0105",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0106",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0107",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0108",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0109",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0110",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0111",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0112",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0113",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0114",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0115",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0116",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0117",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0118",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0119",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0120",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0121",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0122",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0123",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0124",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0125",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0126",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0127",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0128",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0129",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0130",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0131",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0132",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0133",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0134",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0135",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0136",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0137",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0138",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0139",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0140",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0141",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0142",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0143",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0144",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0145",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0146",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0147",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0148",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0149",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0150",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0151",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0152",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0153",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0154",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0155",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0156",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0157",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0158",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0159",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0160",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0161",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0162",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0163",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0164",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0165",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0166",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0167",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0168",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0169",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0170",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0171",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0173",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0174",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0175",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0176",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0177",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0178",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0179",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0180",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0182",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0183",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0184",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0185",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0186",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0187",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0188",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0189",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0191",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0192",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0193",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0194",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0195",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0196",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0197",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0198",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0199",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0201",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0202",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0203",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0204",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0205",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0206",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0207",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0208",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0209",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0210",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0211",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0212",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0213",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0214",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0215",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0216",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0217",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0218",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0220",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0221",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0222",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0223",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0224",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0225",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0226",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0227",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0228",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0229",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0230",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0231",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0232",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0233",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0234",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0235",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0236",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0237",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0238",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0239",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0240",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0241",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0242",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0243",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0244",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0245",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0246",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0247",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0248",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0249",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0250",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0251",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0252",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0253",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0254",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0255",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0256",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0257",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0259",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "smu-c0261",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "smu-c0262",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0263",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0264",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0265",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0266",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0267",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0268",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0269",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0270",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0271",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0272",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0273",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0274",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0275",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0277",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0278",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0279",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0280",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0281",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0282",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0283",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0284",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0285",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0286",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0287",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0288",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0289",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0290",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0291",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0292",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0293",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0294",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0295",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0297",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0298",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0299",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0300",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0301",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0302",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0303",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0304",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0305",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0306",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0307",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0308",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0309",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0310",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0315",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0316",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0317",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0318",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0319",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0320",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0321",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0322",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0323",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0324",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0325",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0326",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0327",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0328",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0329",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0330",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0331",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0332",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0333",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0334",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0335",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0336",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0337",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0338",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0339",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0340",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0341",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0342",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0343",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0344",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0345",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0346",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0347",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0348",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0349",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0350",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0351",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0352",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0353",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0354",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0355",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0356",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0357",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0358",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0359",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0360",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0361",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0362",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0363",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0364",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0365",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0366",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0367",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0368",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0369",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0370",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0371",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0372",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0373",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0374",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0375",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0376",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0377",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0378",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0381",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0382",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0383",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0384",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0385",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0386",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0387",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0388",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0389",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "smu-c0392",
+          "reason": "전화 연결 기능이며 허용된 웹 이동·원본 위치 안내의 여섯 기능 범위 밖이다."
+        },
+        {
+          "sourceId": "smu-c0400",
+          "reason": "전화 연결 기능이며 허용된 웹 이동·원본 위치 안내의 여섯 기능 범위 밖이다."
+        },
+        {
+          "sourceId": "smu-c0401",
+          "reason": "전화 연결 기능이며 허용된 웹 이동·원본 위치 안내의 여섯 기능 범위 밖이다."
+        },
+        {
+          "sourceId": "smu-c0402",
+          "reason": "전화 연결 기능이며 허용된 웹 이동·원본 위치 안내의 여섯 기능 범위 밖이다."
+        },
+        {
+          "sourceId": "smu-c0403",
+          "reason": "전화 연결 기능이며 허용된 웹 이동·원본 위치 안내의 여섯 기능 범위 밖이다."
+        },
+        {
+          "sourceId": "smu-c0404",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        }
+      ],
+      "expected": [
+        {
+          "id": "scholarship-rule",
+          "category": "academic",
+          "label": "장학금 지급규정 다운로드",
+          "action": "locate",
+          "sourceIds": [
+            "smu-c0390"
+          ],
+          "reason": "현재 장학금 지급규정 표의 학사 규정 PDF 다운로드이다."
+        },
+        {
+          "id": "scholarship-detail-rule",
+          "category": "academic",
+          "label": "장학금 지급에 관한 시행세칙 다운로드",
+          "action": "locate",
+          "sourceIds": [
+            "smu-c0391"
+          ],
+          "reason": "현재 같은 표에서 별도 운영 세칙 문서를 제공하는 다운로드이다. 표 셀의 문서 종류를 보존했다."
+        },
+        {
+          "id": "loan-information",
+          "category": "academic",
+          "label": "학자금 융자제도",
+          "action": "navigate",
+          "sourceIds": [
+            "smu-c0314"
+          ],
+          "reason": "현재 장학 메뉴에서 학자금 융자제도 안내라는 다른 문서로 이동한다. 다른 문서 fragment이므로 일반 이동이다."
+        }
+      ],
+      "task": {
+        "instruction": "학자금 융자제도 안내를 읽으려고 합니다. 현재 장학 페이지에서 해당 안내로 이동해 주세요.",
+        "action": "navigate",
+        "expectedSourceIds": [
+          "smu-c0314"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "version": "blind-v10-independent-static-qa-v1",
+  "createdAt": "2026-10-17T19:39:17.122060+00:00",
+  "verdict": "PASS_STATIC_WITH_RECORDED_NONBLOCKING_UNCERTAINTY",
+  "confirmedIssueCount": 0,
+  "requiredCorrectionCount": 0,
+  "productExecutions": 0,
+  "frozenInputsMutated": false,
+  "scope": {
+    "siteCount": 5,
+    "pageCount": 5,
+    "expectedGroupCount": 15,
+    "taskCount": 5,
+    "sourceControls": 11653,
+    "originalVisibleControls": 333,
+    "accepted": 222,
+    "rejected": 11431
+  },
+  "blinding": {
+    "productSourceRead": false,
+    "productHelpersRead": false,
+    "priorFixturesLabelsResultsRead": false,
+    "collectorScriptsOrQaConclusionsRead": false,
+    "implementationOrRootMessagesRead": false,
+    "notes": "Only allowed frozen inputs and original/support proof were semantically read. Frozen manifest entries including scripts were hashed as opaque bytes only; collector selfQa field appeared incidentally in the explicitly allowed freeze manifest and was not used as evidence. No CUA, native app, visible browser, existing profile, server control, external messages or source-site browsing occurred."
+  },
+  "environment": {
+    "browser": "Own isolated headless Chromium contexts, closed after QA",
+    "network": "offline:true; serviceWorkers:block; all routes aborted; no page/site navigation",
+    "interceptedRequestCount": 0,
+    "activation": "No login, input entry, form submit, business activation or download activation"
+  },
+  "checks": {
+    "frozenManifest": {
+      "status": "PASS",
+      "manifestSha256": "611ad5bd36a99baf8d413fc4aeb093d1304055fc1d0d80dc277b375fada8bc44",
+      "entryCount": 388,
+      "hashOrByteMismatches": 0,
+      "entriesSha256": "9441fe27081bb04bab2d283bb688b8a53c6755c36d04b07634ee34ce599f82fb",
+      "entriesDigestVerified": true
+    },
+    "contractSchema": "PASS: five canonical root siteIds, holdout splits, exact fixture paths; all accepted/rejected IDs cover source inventories once; expected and task IDs exist and match accepted categories/actions",
+    "controlFidelity": "PASS: all 11653 controls retain original tags and every original attribute, including href, target, handlers, ARIA and input/control type; no injected control handlers or semantic wrappers",
+    "bodyFidelity": "PASS: original-to-annotated body differs only by data-eval-id; annotated-to-fixture body has exact node/order/attribute/text equality after removing metadata and documented passive stylesheet/image substitutions; headings, ancestors, forms, tables, table cells, ARIA and original scripts retained",
+    "visibilityAndLayout": "PASS: 0 original-visible/hidden changes across all inventories; all 333 originally visible control rectangles reproduce exactly at 1365x900",
+    "controlCoverage": "PASS: 0 unannotated meaningful controls including actual search inputs. Expanded raw scan additionally sees noncontrol form submit ancestors/resource handlers and four noninteractive href-less calendar anchors under an aria-hidden view; these do not add visible actionable controls.",
+    "privacy": "PASS: no nonempty private editable values in fixture DOM or all ten sanitized original DOM/HTTP files; only fixed names/metadata used for search input annotations",
+    "replaySafety": "PASS: leading CSP forbids scripts, handler attributes, connections, frames, objects, media and form action; source scripts retained as inert proof, no pageErrors, no intercepted request attempts",
+    "styles": "PASS: all 46 nonempty captured external stylesheets inlined with source provenance. One additional source stylesheet is captured as HTTP200 zero bytes and remains original link; visible layout and hiding remain exact.",
+    "semantics": "PASS: accepted/rejected visible controls manually reviewed by function and document purpose; explanation/detail/room-info documents separated from issuance/petition service entry; 222 accepted action annotations each have source-level evidence or ordinary HTTP(S) proof; target=_blank alone is not treated as popup",
+    "expectedAndTasks": "PASS: each page has three substantive contextual functions and one public read-only task. Search input+button pairs share one group; task targets are actual source IDs; no global-utility-only three-function sample",
+    "urlExclusions": "PASS for normalized requested/final URLs: 0 matches against 55 prior exposed URLs; chosen captures retain requested/final URL without observed redirect. Same-content/canonical alias limits separately recorded below."
+  },
+  "methodNotes": [
+    "Original control elementIndex uses a consistent index base one lower than DOMParser querySelectorAll(*); correspondence was independently matched through original-to-annotated full-body identity and actual evalId element location, not through that index alone.",
+    "Raw browser-body comparison in offline inspection records false for city and smu before normalization. City includes the permitted body stylesheet link-to-style conversion; smu includes scripting-flag noscript parsing. The separate inert DOMParser comparison normalizes documented passive transformations and passes all five pages; the raw intermediate booleans are not fidelity failures.",
+    "Accessible names were independently retrieved through Chromium Accessibility tree. Descriptive annotation labels for generic card/table links use unchanged source title/row/ancestor context; no accessible-name attributes were injected."
+  ],
+  "uncertainties": [
+    {
+      "id": "canonical-metadata-content-novelty",
+      "status": "NONBLOCKING_UNCERTAINTY_RECORDED_BEFORE_PRODUCT",
+      "siteId": "government",
+      "evidence": {
+        "source": "docs/evidence/run008/blind-v10-support/captures/government/original-dom.sanitized.html",
+        "relCanonical": "https://www.safekorea.go.kr/",
+        "requestedAndFinalUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=82&bbsSn=18",
+        "documentTitle": "국민안전24 | 재난지원 | 심리회복지원센터 | 센터소식",
+        "bodyPurpose": "Support-center board with its own search, guide/manual entries and media tabs",
+        "priorHomepagePaths": [
+          "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+          "https://www.safekorea.go.kr/idsiSFK/neo/main/main.html"
+        ]
+      },
+      "interpretation": "A homepage canonical value alone does not establish the same public content or a redirect. The exact root canonical URL is not a direct string in prior exclusions; any alias relation to the excluded homepage paths was not independently checked. The static allowed inputs support a distinct current board body but cannot prove arbitrary onward/same-content aliases against forbidden prior content.",
+      "disposition": "No replacement or correction justified. Collector acknowledged this before first product execution; keep separate from confirmed URL and body evidence."
+    }
+  ],
+  "limitations": [
+    "No product behavior or recommendation metrics evaluated.",
+    "No onward documents or live source sites opened; uncertain destination behavior was not invented.",
+    "No claim about native installation, VoiceOver, zoom or human success is made."
+  ],
+  "artifacts": [
+    "docs/evidence/run008/blind-v10-independent-static-qa/action-proof-review.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/city-offline-inspection.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/compare-source-dom.cjs",
+    "docs/evidence/run008/blind-v10-independent-static-qa/expanded-static-control-coverage.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/government-offline-inspection.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/hash-verification.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/inspect-offline.cjs",
+    "docs/evidence/run008/blind-v10-independent-static-qa/library-offline-inspection.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/offline-summary.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/public-agency-offline-inspection.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/sanitized-source-privacy.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/schema-url-evidence-and-layout.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/smu-offline-inspection.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/source-dom-comparison.json",
+    "docs/evidence/run008/blind-v10-independent-static-qa/stylesheet-correspondence.json"
+  ]
+}

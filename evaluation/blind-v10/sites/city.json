@@ -1,0 +1,4441 @@
+{
+  "siteId": "city",
+  "name": "천안시",
+  "pages": [
+    {
+      "id": "v10-city-01",
+      "url": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v10/fixtures/city.html",
+      "observation": {
+        "sourceCapture": "docs/evidence/run008/blind-v10-support/captures/city",
+        "capturedAt": "2026-10-17T19:29:32.857Z",
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        },
+        "fullOriginalBodyPreserved": true,
+        "originalScriptExecutionInReplay": "blocked by CSP; no handler stubs; all network requests blocked in self-QA",
+        "allOriginalMeaningfulControlsAnnotated": true,
+        "visibleControlCount": 67,
+        "controlCount": 992,
+        "privateValues": "removed; fixed public names retained",
+        "expectedGroupsSelectedBeforeProduct": true,
+        "preproductAmbiguities": [
+          "민원공개는 민원 신청 버튼이 아니라 공개 민원을 읽는 화면으로 표시되어 help로 구분했다. 나의민원보기는 신청 업무의 상태 확인으로 apply로 주석했다.",
+          "일반 HTTP(S)의 target=_blank/새창 표시는 그 자체로 JS popup 실행 근거가 아니므로 navigate로 두었다."
+        ],
+        "productExecutions": 0
+      },
+      "accepted": [
+        {
+          "sourceId": "city-c0007",
+          "category": "apply",
+          "action": "navigate",
+          "label": "통합예약시스템",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "통합예약시스템",
+            "originalAttributes": {
+              "href": "/yeyak/index.do",
+              "target": "_blank",
+              "title": "새창"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0010",
+          "category": "search",
+          "action": "navigate",
+          "label": "통합검색",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "통합검색",
+            "originalAttributes": {
+              "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+              "target": "_blank",
+              "title": "새창"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0019",
+          "category": "login",
+          "action": "navigate",
+          "label": "로그인",
+          "reason": "로그인·계정 또는 인증 관련 명시 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "로그인",
+            "originalAttributes": {
+              "href": "/kor/login.do?returnUrl=/kor.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0022",
+          "category": "help",
+          "action": "locate",
+          "label": "민원안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원안내",
+            "originalAttributes": {
+              "href": "/kor/sub01_01_01.do",
+              "role": "button",
+              "aria-controls": "gnb-depth1-co9moyn"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0054",
+          "category": "notice",
+          "action": "locate",
+          "label": "소식알림",
+          "reason": "공식 소식·공고 또는 현재 게시 목록 관련 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "소식알림",
+            "originalAttributes": {
+              "href": "/bbs/BBSMSTR_000000000450/list.do",
+              "role": "button",
+              "aria-controls": "gnb-depth1-q6yfp5d"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0777",
+          "category": "help",
+          "action": "locate",
+          "label": "민원안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원안내",
+            "originalAttributes": {
+              "href": "/kor/sub01_01_01.do",
+              "role": "button",
+              "aria-controls": "lnb-depth2-dz8u4it"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0785",
+          "category": "apply",
+          "action": "locate",
+          "label": "민원신청",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원신청",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_01.do",
+              "role": "button",
+              "aria-controls": "lnb-depth2-gcpha1p"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0786",
+          "category": "apply",
+          "action": "navigate",
+          "label": "민원신청(국민신문고)",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원신청(국민신문고)",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0787",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원처리공개(새올전자민원창구)",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원처리공개(새올전자민원창구)",
+            "originalAttributes": {
+              "href": "https://eminwon.cheonan.go.kr/emwp/gov/mogaha/ntis/web/caf/mwwd/action/CafMwWdOpenAction.do?method=selectListMwOpn&menu_id=CAFOPNWebMwOpenL&jndinm=CafMwWdOpenEJB&methodnm=selectListMwOpn&context=NTIS",
+              "target": "_blank",
+              "title": "민원처리공개(새올전자민원창구) 은(는) 새창으로 열립니다."
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0788",
+          "category": "help",
+          "action": "navigate",
+          "label": "행정처분공개(새올전자민원창구)",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "행정처분공개(새올전자민원창구)",
+            "originalAttributes": {
+              "href": "https://eminwon.cheonan.go.kr/emwp/gov/mogaha/ntis/web/caf/mwwd/action/CafMwWdOpenAction.do?method=selectListAdmm&menu_id=CAFOPNWebAdmmOpenL&jndinm=CafMwWdOpenEJB&methodnm=selectListAdmm&context=NTIS",
+              "target": "_blank",
+              "title": "행정처분공개(새올전자민원창구) 은(는) 새창으로 열립니다."
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0789",
+          "category": "apply",
+          "action": "navigate",
+          "label": "공익신고",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "공익신고",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_04.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0790",
+          "category": "apply",
+          "action": "navigate",
+          "label": "예산낭비신고센터",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "예산낭비신고센터",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_05_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0791",
+          "category": "help",
+          "action": "navigate",
+          "label": "천안시 시민고충처리위원회",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "천안시 시민고충처리위원회",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_06_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0792",
+          "category": "apply",
+          "action": "navigate",
+          "label": "공직 비리·갑질 익명신고",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "공직 비리·갑질 익명신고",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_07.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0793",
+          "category": "apply",
+          "action": "navigate",
+          "label": "부패공직자신고(실명)",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "부패공직자신고(실명)",
+            "originalAttributes": {
+              "href": "https://ncp.clean.go.kr/cmn/secCtfcKMC.do?menuCode=acs&mapAcs=Y&insttCd=4490000",
+              "target": "_blank",
+              "title": "부패공직자신고(실명) 은(는) 새창으로 열립니다."
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0794",
+          "category": "help",
+          "action": "locate",
+          "label": "민원시책",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원시책",
+            "originalAttributes": {
+              "href": "/kor/sub01_02_02.do",
+              "role": "button",
+              "aria-controls": "lnb-depth2-nyyypjk"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0800",
+          "category": "help",
+          "action": "locate",
+          "label": "기타 민원서비스",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "기타 민원서비스",
+            "originalAttributes": {
+              "href": "/kor/sub01_03_02.do",
+              "role": "button",
+              "aria-controls": "lnb-depth2-gdv26jo"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0808",
+          "category": "notice",
+          "action": "navigate",
+          "label": "공고/고시 바로가기",
+          "reason": "공식 소식·공고 또는 현재 게시 목록 관련 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "공고/고시 바로가기",
+            "originalAttributes": {
+              "href": "/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0810",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원안내",
+            "originalAttributes": {
+              "href": "/kor/sub01_01_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0811",
+          "category": "apply",
+          "action": "navigate",
+          "label": "민원신청",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원신청",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0812",
+          "category": "apply",
+          "action": "navigate",
+          "label": "민원신청(국민신문고)",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원신청(국민신문고)",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0821",
+          "category": "apply",
+          "action": "navigate",
+          "label": "민원신청",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원신청",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_01.do",
+              "title": "선택됨"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0822",
+          "category": "apply",
+          "action": "navigate",
+          "label": "나의민원보기",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "나의민원보기",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_02.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0823",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원공개",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원공개",
+            "originalAttributes": {
+              "href": "/kor/sub01_05_01_03.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0824",
+          "category": "apply",
+          "action": "navigate",
+          "label": "민원신청(국민신문고) 바로가기",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "민원신청(국민신문고) 바로가기",
+            "originalAttributes": {
+              "href": "https://www.epeople.go.kr/frm/pttn/pttnRqstInfo.npaid?frmMenuMngNo=WBF-2107-000002",
+              "target": "_blank",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0986",
+          "category": "help",
+          "action": "navigate",
+          "label": "개인정보처리방침",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "개인정보처리방침",
+            "originalAttributes": {
+              "href": "/kor/sitemap02_01.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0987",
+          "category": "help",
+          "action": "navigate",
+          "label": "저작권정책",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "저작권정책",
+            "originalAttributes": {
+              "href": "/kor/sitemap03.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0988",
+          "category": "help",
+          "action": "navigate",
+          "label": "이메일무단수집거부",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "이메일무단수집거부",
+            "originalAttributes": {
+              "href": "/kor/sitemap04.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0989",
+          "category": "help",
+          "action": "navigate",
+          "label": "전화번호안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "전화번호안내",
+            "originalAttributes": {
+              "href": "/prog/caDept/kor/sub04_03_01/list.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0990",
+          "category": "help",
+          "action": "navigate",
+          "label": "팩스번호안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "팩스번호안내",
+            "originalAttributes": {
+              "href": "/kor/sub04_03_02.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "city-c0991",
+          "category": "help",
+          "action": "navigate",
+          "label": "찾아오시는길",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "찾아오시는길",
+            "originalAttributes": {
+              "href": "/kor/sub04_03_04.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/city/original-controls.json"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "city-c0001",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0002",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0003",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0004",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0005",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0006",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0008",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0009",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0011",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0012",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0013",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0014",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0015",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0016",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0017",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0018",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0020",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0021",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0023",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0024",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0025",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0026",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0027",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0028",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0029",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0030",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0031",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0032",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0033",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0034",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0035",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0036",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0037",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0038",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0039",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0040",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0041",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0042",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0043",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0044",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0045",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0046",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0047",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0048",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0049",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0050",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0051",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0052",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0053",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0055",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0056",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0057",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0058",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0059",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0060",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0061",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0062",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0063",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0064",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0065",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0066",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0067",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0068",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0069",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0070",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0071",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0072",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0073",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0074",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0075",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0076",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0077",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0078",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0079",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0080",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0081",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0082",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0083",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0084",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0085",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0086",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0087",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0088",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0089",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0090",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0091",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0092",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0093",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0094",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0095",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0096",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0097",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0098",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0099",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0100",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0101",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0102",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0103",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0104",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0105",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0106",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0107",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0108",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0109",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0110",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0111",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0112",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0113",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0114",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0115",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0116",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0117",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0118",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0119",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0120",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0121",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0122",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0123",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0124",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0125",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0126",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0127",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0128",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0129",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0130",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0131",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0132",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0133",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0134",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0135",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0136",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0137",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0138",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0139",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0140",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0141",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0142",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0143",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0144",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0145",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0146",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0147",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0148",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0149",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0150",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0151",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0152",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0153",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0154",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0155",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0156",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0157",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0158",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0159",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0160",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0161",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0162",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0163",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0164",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0165",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0166",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0167",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0168",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0169",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0170",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0171",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0172",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0173",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0174",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0175",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0176",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0177",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0178",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0179",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0180",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0181",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0182",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0183",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0184",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0185",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0186",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0187",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0188",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0189",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0190",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0191",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0192",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0193",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0194",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0195",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0196",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0197",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0198",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0199",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0200",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0201",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0202",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0203",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0204",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0205",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0206",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0207",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0208",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0209",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0210",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0211",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0212",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0213",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0214",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0215",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0216",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0217",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0218",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0219",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0220",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0221",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0222",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0223",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0224",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0225",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0226",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0227",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0228",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0229",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0230",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0231",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0232",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0233",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0234",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0235",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0236",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0237",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0238",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0239",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0240",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0241",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0242",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0243",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0244",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0245",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0246",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0247",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0248",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0249",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0250",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0251",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0252",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0253",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0254",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0255",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0256",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0257",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0258",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0259",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0260",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0261",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0262",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0263",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0264",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0265",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0266",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0267",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0268",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0269",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0270",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0271",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0272",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0273",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0274",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0275",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0276",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0277",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0278",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0279",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0280",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0281",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0282",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0283",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0284",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0285",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0286",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0287",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0288",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0289",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0290",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0291",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0292",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0293",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0294",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0295",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0296",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0297",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0298",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0299",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0300",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0301",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0302",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0303",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0304",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0305",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0306",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0307",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0308",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0309",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0310",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0311",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0312",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0313",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0314",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0315",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0316",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0317",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0318",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0319",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0320",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0321",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0322",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0323",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0324",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0325",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0326",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0327",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0328",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0329",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0330",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0331",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0332",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0333",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0334",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0335",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0336",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0337",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0338",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0339",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0340",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0341",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0342",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0343",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0344",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0345",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0346",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0347",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0348",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0349",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0350",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0351",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0352",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0353",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0354",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0355",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0356",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0357",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0358",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0359",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0360",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0361",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0362",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0363",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0364",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0365",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0366",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0367",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0368",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0369",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0370",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0371",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0372",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0373",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0374",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0375",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0376",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0377",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0378",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0379",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0380",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0381",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0382",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0383",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0384",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0385",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0386",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0387",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0388",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0389",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0390",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0391",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0392",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0393",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0394",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0395",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0396",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0397",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0398",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0399",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0400",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0401",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0402",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0403",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0404",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0405",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0406",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0407",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0408",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0409",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0410",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0411",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0412",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0413",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0414",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0415",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0416",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0417",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0418",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0419",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0420",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0421",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0422",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0423",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0424",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0425",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0426",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0427",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0428",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0429",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0430",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0431",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0432",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0433",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0434",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0435",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0436",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0437",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0438",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0439",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0440",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0441",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0442",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0443",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0444",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0445",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0446",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0447",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0448",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0449",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0450",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0451",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0452",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0453",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0454",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0455",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0456",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0457",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0458",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0459",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0460",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0461",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0462",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0463",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0464",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0465",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0466",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0467",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0468",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0469",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0470",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0471",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0472",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0473",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0474",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0475",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0476",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0477",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0478",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0479",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0480",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0481",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0482",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0483",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0484",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0485",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0486",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0487",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0488",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0489",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0490",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0491",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0492",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0493",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0494",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0495",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0496",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0497",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0498",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0499",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0500",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0501",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0502",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0503",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0504",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0505",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0506",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0507",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0508",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0509",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0510",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0511",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0512",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0513",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0514",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0515",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0516",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0517",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0518",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0519",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0520",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0521",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0522",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0523",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0524",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0525",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0526",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0527",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0528",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0529",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0530",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0531",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0532",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0533",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0534",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0535",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0536",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0537",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0538",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0539",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0540",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0541",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0542",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0543",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0544",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0545",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0546",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0547",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0548",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0549",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0550",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0551",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0552",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0553",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0554",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0555",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0556",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0557",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0558",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0559",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0560",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0561",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0562",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0563",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0564",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0565",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0566",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0567",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0568",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0569",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0570",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0571",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0572",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0573",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0574",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0575",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0576",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0577",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0578",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0579",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0580",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0581",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0582",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0583",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0584",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0585",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0586",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0587",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0588",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0589",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0590",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0591",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0592",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0593",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0594",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0595",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0596",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0597",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0598",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0599",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0600",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0601",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0602",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0603",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0604",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0605",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0606",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0607",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0608",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0609",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0610",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0611",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0612",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0613",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0614",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0615",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0616",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0617",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0618",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0619",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0620",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0621",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0622",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0623",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0624",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0625",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0626",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0627",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0628",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0629",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0630",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0631",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0632",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0633",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0634",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0635",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0636",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0637",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0638",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0639",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0640",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0641",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0642",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0643",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0644",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0645",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0646",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0647",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0648",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0649",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0650",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0651",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0652",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0653",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0654",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0655",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0656",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0657",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0658",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0659",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0660",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0661",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0662",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0663",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0664",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0665",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0666",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0667",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0668",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0669",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0670",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0671",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0672",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0673",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0674",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0675",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0676",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0677",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0678",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0679",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0680",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0681",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0682",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0683",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0684",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0685",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0686",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0687",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0688",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0689",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0690",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0691",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0692",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0693",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0694",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0695",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0696",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0697",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0698",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0699",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0700",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0701",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0702",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0703",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0704",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0705",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0706",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0707",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0708",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0709",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0710",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0711",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0712",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0713",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0714",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0715",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0716",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0717",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0718",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0719",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0720",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0721",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0722",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0723",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0724",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0725",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0726",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0727",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0728",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0729",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0730",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0731",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0732",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0733",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0734",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0735",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0736",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0737",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0738",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0739",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0740",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0741",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0742",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0743",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0744",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0745",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0746",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0747",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0748",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0749",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0750",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0751",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0752",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0753",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0754",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0755",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0756",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0757",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0758",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0759",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0760",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0761",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0762",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0763",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0764",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0765",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0766",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0767",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0768",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0769",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0770",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0771",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0772",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0773",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0774",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0775",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0776",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0778",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0779",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0780",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0781",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0782",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0783",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0784",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0795",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0796",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0797",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0798",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0799",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0801",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0802",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0803",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0804",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0805",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0806",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0807",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0809",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0813",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0814",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0815",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0816",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0817",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0818",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0819",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0820",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0825",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0826",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0827",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0828",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0829",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "city-c0830",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "city-c0831",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "city-c0832",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "city-c0833",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "city-c0834",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "city-c0835",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0836",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0837",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0838",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0839",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0840",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0841",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0842",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0843",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0844",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0845",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0846",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0847",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0848",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0849",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0850",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0851",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0852",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0853",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0854",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0855",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0856",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0857",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0858",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0859",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0860",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0861",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0862",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0863",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0864",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0865",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0866",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0867",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0868",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0869",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0870",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0871",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0872",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0873",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0874",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0875",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0876",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0877",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0878",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0879",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0880",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0881",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0882",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0883",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0884",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0885",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0886",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0887",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0888",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0889",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0890",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0891",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0892",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0893",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0894",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0895",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0896",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0897",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0898",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0899",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0900",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0901",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0902",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0903",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0904",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0905",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0906",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0907",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0908",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0909",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0910",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0911",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0912",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0913",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0914",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0915",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0916",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0917",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0918",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0919",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0920",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0921",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0922",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0923",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0924",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0925",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0926",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0927",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0928",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0929",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0930",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0931",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0932",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0933",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0934",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0935",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0936",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0937",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0938",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0939",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0940",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0941",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0942",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0943",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0944",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0945",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0946",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0947",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0948",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0949",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0950",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0951",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0952",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0953",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0954",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0955",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0956",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "city-c0957",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0958",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0959",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0960",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0961",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0962",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0963",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0964",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0965",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0966",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0967",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0968",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0969",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0970",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0971",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0972",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0973",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0974",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0975",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0976",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0977",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0978",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0979",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0980",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "city-c0981",
+          "reason": "전화 연결 기능이며 허용된 웹 이동·원본 위치 안내의 여섯 기능 범위 밖이다."
+        },
+        {
+          "sourceId": "city-c0982",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0983",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0984",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0985",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "city-c0992",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        }
+      ],
+      "expected": [
+        {
+          "id": "petition-entry",
+          "category": "apply",
+          "label": "민원신청(국민신문고) 바로가기",
+          "action": "navigate",
+          "sourceIds": [
+            "city-c0824"
+          ],
+          "reason": "현재 본문 문의처 아래의 실제 민원신청 외부 진입 링크이다."
+        },
+        {
+          "id": "petition-status",
+          "category": "apply",
+          "label": "나의민원보기",
+          "action": "navigate",
+          "sourceIds": [
+            "city-c0822"
+          ],
+          "reason": "현재 민원 기능 탭에서 신청한 민원 확인 화면으로 이동하는 링크이다."
+        },
+        {
+          "id": "public-petitions",
+          "category": "help",
+          "label": "민원공개",
+          "action": "navigate",
+          "sourceIds": [
+            "city-c0823"
+          ],
+          "reason": "현재 민원 기능 탭에서 공개 민원을 읽는 정보 화면으로 이동하는 링크이다."
+        }
+      ],
+      "task": {
+        "instruction": "공개된 민원을 읽기 위해 현재 민원신청 페이지의 민원공개 메뉴를 찾아 주세요.",
+        "action": "navigate",
+        "expectedSourceIds": [
+          "city-c0823"
+        ]
+      }
+    }
+  ]
+}

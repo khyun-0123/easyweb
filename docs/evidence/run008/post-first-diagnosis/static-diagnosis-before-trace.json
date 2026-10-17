@@ -1,0 +1,513 @@
+{
+  "createdAtUtc": "2026-10-17T19:45:20.661705+00:00",
+  "classification": "POST_FIRST_DEVELOPMENT_DIAGNOSIS_NOT_INDEPENDENT_EVALUATION",
+  "status": "READ_ONLY_DIAGNOSIS_COMPLETE",
+  "firstReport": {
+    "path": "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+    "sha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+    "firstScreen": {
+      "pages": 5,
+      "correct": 26,
+      "recommended": 28,
+      "matched": 2,
+      "expected": 15,
+      "precision": 0.9285714285714286,
+      "recall": 0.13333333333333333,
+      "tasksRecommended": 0
+    },
+    "quality": "FAIL",
+    "allInstitutionsFail": true
+  },
+  "exposedUniqueDevelopmentPages": 60,
+  "missedInitialGroups": 13,
+  "partition": {
+    "classifiedButOverflowObserved": 1,
+    "unobservedAcrossAllMenusObserved": 12,
+    "semanticUnsupportedStaticHypotheses": 12,
+    "collectionVsClassificationUnresolvedWithoutTrace": 12,
+    "expectedSourceWrongActionObserved": 0
+  },
+  "partitionLimits": "The saved report logs selected cards, not each analyzer collection outcome or each classify rejection. Twelve controls are definitively absent from every recorded menu, while their semantic relations look unsupported in static code. Whether a particular control was never collected, filtered by visibility/safe-name extraction, or collected then rejected by classification remains unconfirmed until a separate post-exposure development trace. No new engine/browser execution was performed; no collection-versus-classification counts are asserted. First-screen failure and original menu-flow metrics are unchanged.",
+  "missingGroups": [
+    {
+      "siteId": "city",
+      "pageId": "v10-city-01",
+      "expectedId": "petition-entry",
+      "expectedLabel": "민원신청(국민신문고) 바로가기",
+      "category": "apply",
+      "expectedAction": "navigate",
+      "diagnosticOnlySourceIds": [
+        "city-c0824"
+      ],
+      "classification": "OVERFLOW_PAGE_2",
+      "improvementFamily": "local-task-priority",
+      "firstReachedPage": 2,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "The ordinary external task link is classified and appears on menu page2. The first screen instead reserves global/category and other task links; no action mismatch is observed."
+    },
+    {
+      "siteId": "city",
+      "pageId": "v10-city-01",
+      "expectedId": "petition-status",
+      "expectedLabel": "나의민원보기",
+      "category": "apply",
+      "expectedAction": "navigate",
+      "diagnosticOnlySourceIds": [
+        "city-c0822"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "local-task-tabs",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Fixed own-record label is in the same three-item local task list as the current application tab. Existing lexical apply/read-only record patterns and institution adapter do not cover this purpose; opaque route spelling supplies no independent semantics.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "city",
+      "pageId": "v10-city-01",
+      "expectedId": "public-petitions",
+      "expectedLabel": "민원공개",
+      "category": "help",
+      "expectedAction": "navigate",
+      "diagnosticOnlySourceIds": [
+        "city-c0823"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "local-task-tabs",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Fixed public-reading tab label shares the current local task list, but no explicit help/document kind or supported local relation is recognized. Do not infer application merely from the neighboring application tab.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "government",
+      "pageId": "v10-government-02",
+      "expectedId": "center-guide",
+      "expectedLabel": "재난심리회복지원단 활성화를 위한 실무자 업무 가이드북",
+      "category": "help",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "government-c0223"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "listed-document-kind",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "The safe fixed guidebook title is a JS locate link in a title/date/department/attachment table. Current help/notice-document branches and supported institution path shapes do not recognize this generic reading document. It is not an actual application or submit control.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "government",
+      "pageId": "v10-government-02",
+      "expectedId": "center-photo-view",
+      "expectedLabel": "사진자료",
+      "category": "help",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "government-c0202"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "local-reading-view-tabs",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Three neighboring fixed buttons are news/photo/video views under one support-center content heading. This list is not the education overview panel pattern and lacks its required panel/expanded relationship. JS remains locate.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "library",
+      "pageId": "v10-library-01",
+      "expectedId": "old-books-room",
+      "expectedLabel": "고문헌실 안내",
+      "category": "help",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "library-c1514"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "information-directory-table",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Short fixed room name belongs to an information table captioned building room-use guidance with floor/type/material-description/contact columns. Current forms/material-row and help-label rules do not express this room-information relation.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "library",
+      "pageId": "v10-library-01",
+      "expectedId": "book-reading-room",
+      "expectedLabel": "도서자료실 안내",
+      "category": "help",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "library-c1516"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "information-directory-table",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Same room-information table; the fixed row control names the room and discipline rather than saying help. Handler/local-fragment action is already locate and must stay locate.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "library",
+      "pageId": "v10-library-01",
+      "expectedId": "literature-room",
+      "expectedLabel": "문학실 안내",
+      "category": "help",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "library-c1519"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "information-directory-table",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Same caption/column/row relationship. A table-specific descriptive relation is missing; generic help from arbitrary table text would be unsafe.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "v10-public-agency-01",
+      "expectedId": "certificate-details",
+      "expectedLabel": "가입자 가입증명(국/영문) 상세보기",
+      "category": "help",
+      "expectedAction": "navigate",
+      "diagnosticOnlySourceIds": [
+        "public-agency-c0545"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "multi-action-service-card",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "A bounded service li has one strong fixed title and three own controls: details ordinary HTTP, issue explicit JS and preview PDF. cardTitle currently stops when the ancestor has more than one control, so details cannot borrow this verified local title. Distinguish roles rather than broadcast one task to every control.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "v10-public-agency-01",
+      "expectedId": "certificate-issue-entry",
+      "expectedLabel": "가입자 가입증명(국/영문) 발급하기",
+      "category": "apply",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "public-agency-c0546"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "multi-action-service-card",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Fixed label issuance-do and explicit JS correctly imply locate, but the current issuance/application lexical shape and single-control title fallback do not supply its application semantics. This is an entry only; authentication and issuance must never be activated by EasyWeb.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "smu",
+      "pageId": "v10-smu-01",
+      "expectedId": "scholarship-rule",
+      "expectedLabel": "장학금 지급규정 다운로드",
+      "category": "academic",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "smu-c0390"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "academic-document-table",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Accessible fixed text is generic PDF download; the fixed title attribute and same row identify a scholarship rule, with an academic heading, caption and PDF-download column. Existing preparation-form/academic concepts do not bind this legal document relationship. URL query values are not needed.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "smu",
+      "pageId": "v10-smu-01",
+      "expectedId": "scholarship-detail-rule",
+      "expectedLabel": "장학금 지급에 관한 시행세칙 다운로드",
+      "category": "academic",
+      "expectedAction": "locate",
+      "diagnosticOnlySourceIds": [
+        "smu-c0391"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "academic-document-table",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "Second distinct rule document has the same generic PDF-download name but a distinct row/document title. Preserve both row identities and locate action; do not merge by visible name.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    },
+    {
+      "siteId": "smu",
+      "pageId": "v10-smu-01",
+      "expectedId": "loan-information",
+      "expectedLabel": "학자금 융자제도",
+      "category": "academic",
+      "expectedAction": "navigate",
+      "diagnosticOnlySourceIds": [
+        "smu-c0314"
+      ],
+      "classification": "UNOBSERVED_ALL_MENUS_STATIC_SEMANTIC_HYPOTHESIS",
+      "improvementFamily": "academic-support-document-tabs",
+      "firstReachedPage": null,
+      "wrongActionOrCategoryObservedForExpectedSource": false,
+      "basis": "A selected scholarship-rule document and four local academic support document tabs identify the topic group. Current academic concept/topic vocabulary omits scholarship/student-finance concepts, so the structural topic group fails. It points to another document with fragment, so normal navigation is already correct.",
+      "stage": "COLLECTION_VS_CLASSIFICATION_NOT_TRACED"
+    }
+  ],
+  "menuFlow": {
+    "preservedSummary": {
+      "pages": 5,
+      "correct": 32,
+      "recommended": 40,
+      "matched": 3,
+      "expected": 15,
+      "precision": 0.8,
+      "recall": 0.2,
+      "tasksRecommended": 0
+    },
+    "unresolvedMappings": 9,
+    "repeatedCards": 4,
+    "rawDisplayedCardOccurrences": 44,
+    "aggregateRecommendedAfterFallbackRepeatDedup": 40,
+    "unresolvedBySite": {
+      "city": 1,
+      "government": 0,
+      "library": 0,
+      "public-agency": 8,
+      "smu": 0
+    },
+    "repeatedBySite": {
+      "city": 0,
+      "government": 0,
+      "library": 0,
+      "public-agency": 4,
+      "smu": 0
+    },
+    "staticCause": "inspectEasyWebMenuFlow reclassifies sources separately and matches UI cards by label/category/action/navigate-href/relatedLabel. Distinct locate sources with the same label therefore have sourceMatches=2 and sourceId=null. observeMenuFlow then uses source:<label> as a fallback repeat key, conflating distinct original controls. Public-agency has two original accepted controls each for lookup, certificate issuance, report/application and search; city has two matching ordinary application links.",
+    "sameOriginalSourceRepetition": "NOT_ESTABLISHED_FROM_RECORDED_IDENTITY",
+    "evidenceAgainstPrematureProductConclusion": "rank deduplicates locate controls by HTMLElement and remainingMenus keeps a Set of already shown HTMLElement identities. Static code supports distinct same-named source controls being labeled repeats, but recorded UI cards do not preserve enough identity to prove which source each represented. No S05/action safety defect is inferred.",
+    "nextDiagnostic": "Preserve this first report. In a separate versioned evaluation-tool diagnostic, capture actual card-to-source HTMLElement provenance with ephemeral test-only identities rather than re-identifying by text. Bind instrumentation hash and do not place evaluation IDs/order/query mappings into product decisions."
+  },
+  "otherFirstScreenErrors": [
+    {
+      "siteId": "library",
+      "sourceId": "library-c1476",
+      "label": "도서관 일정",
+      "actualCategory": "help",
+      "action": "locate"
+    },
+    {
+      "siteId": "library",
+      "sourceId": "library-c1466",
+      "label": "이용증 발급",
+      "actualCategory": "apply",
+      "action": "locate"
+    }
+  ],
+  "errorClarification": "The two library incorrect first cards are category mismatches (schedule notice versus help, card-use guidance help versus apply), not wrong actions. They are separate from thirteen missing expectations. Do not fix by deleting legitimate navigation controls or applying broad all-guidance overrides.",
+  "improvementFamilies": [
+    {
+      "family": "local-task-tabs",
+      "coverage": "City own-status/public-reading tabs; analogous same-topic local task/view lists",
+      "implementationDirection": "Use bounded local list ownership, unique current selection/current-page heading and each control own fixed role to separate entry, own-record/status and public-reading functions. Provide reading-view relationship for peer photo/video buttons only with a corroborated current content container. Never infer all peers are apply.",
+      "counterexamples": [
+        "Unselected global menu list without current content relationship",
+        "Duplicate or conflicting active items",
+        "Search filters inside form",
+        "Payment/authentication/submit/delete source commands",
+        "Equal-content list/heading/node replacement invalidates proof"
+      ]
+    },
+    {
+      "family": "listed-document-kind",
+      "coverage": "Government guidebook reading control",
+      "implementationDirection": "Bind an own fixed document-kind label to a bounded title column/list item and current editorial purpose. JS and handlers supply locate only, never executable document IDs or category semantics. Distinguish a help manual from a general article or notice.",
+      "counterexamples": [
+        "News title merely mentions application/payment",
+        "Generic more link without document-kind or local row proof",
+        "Row with nested editor/private values",
+        "Dangerous URL/script even when the title says guide",
+        "Different heading/row replaced with same text"
+      ]
+    },
+    {
+      "family": "information-directory-table",
+      "coverage": "Three library room-information controls",
+      "implementationDirection": "Recognize a small informative directory table by caption, explicit aligned column headers and a unique control in each descriptive row cell. Derive help-reading purpose from the room-use guidance structure and fixed room title or a uniquely associated explanation target; retain locate for explicit handlers/fragments.",
+      "counterexamples": [
+        "Facility booking/payment/application table",
+        "No caption/header alignment or merged/ambiguous row labels",
+        "Arbitrary table prose or multiple conflicting controls",
+        "Interactive explanation treated as readonly",
+        "Automatic source activation or script-argument parsing"
+      ]
+    },
+    {
+      "family": "multi-action-service-card",
+      "coverage": "Two certificate service controls",
+      "implementationDirection": "Replace only the single-control restriction with a bounded typed relation for multiple independently named controls around one fixed title. Details + safe HTTP stays help/navigate; issue entry stays apply/locate; file preview remains original download/locate. Local title is related metadata and must not overwrite the authored accessible name.",
+      "counterexamples": [
+        "Multiple service titles in one container",
+        "Generic controls whose own roles conflict or are ambiguous",
+        "Default-submit title in a POST wrapper",
+        "Actual payment/final-submit/authentication controls",
+        "Card title/parent replaced with identical text",
+        "Opaque menuId/query/script argument used as a task lookup"
+      ]
+    },
+    {
+      "family": "academic-document-table",
+      "coverage": "Two university rule downloads and academic-support tab family",
+      "implementationDirection": "Use bounded academic support page/selected-topic structure plus caption, aligned row title, known document marker and safe fixed title attribute to classify the actual row document. Keep legal rule/separate implementation rule identities and preserve another-document-fragment navigation. Add an academic-support concept family only when the local academic relationship corroborates it.",
+      "counterexamples": [
+        "Actual tuition payment/purchase commands",
+        "Generic PDF under unrelated financial/news context",
+        "Duplicate/missing row titles or ambiguous table columns",
+        "Generic file name alone",
+        "Using document number, encoded query path value or fixture order as category evidence"
+      ]
+    },
+    {
+      "family": "local-task-priority",
+      "coverage": "One fresh overflow task and known-v8 local-search regression",
+      "implementationDirection": "Represent verified same-content task controls alongside reading documents, with a bounded reservation for distinct local task purposes among the maximum six. A local board search should compete with documents from that same board using form/board ownership and fixed search metadata; global search is not automatically entitled to a slot. Keep category diversity and overflow separate.",
+      "counterexamples": [
+        "Search input plus submit consumes two slots without proving two tasks",
+        "Global header search displaces all local documents",
+        "Repeated same-category documents starve every local control",
+        "Evaluation answer order or ID priority",
+        "Increasing six or counting overflow as initial recall"
+      ]
+    },
+    {
+      "family": "per-batch-structural-work",
+      "coverage": "Strict whole-pipeline 300ms FAIL and repeated currentness scans",
+      "implementationDirection": "Profile analyzer/classifier/proof re-establishment separately, then reuse only immutable structural summaries inside one analysis/classification/currentness batch. Every later card/menu/after-focus recheck must create fresh summaries, re-establish rule validity and compare dependency identities/fingerprints. Existing source action/snapshot checks stay in every execution path.",
+      "counterexamples": [
+        "Cross-batch/persistent DOM semantic cache",
+        "Same-frame equal-markup node replacement accepted from a cache",
+        "Changed URL/script/heading/selected state skipped",
+        "Private value or whole-region text cached",
+        "Optimization judged only by analyzer time while pipeline diagnostic remains failing"
+      ]
+    }
+  ],
+  "requiredNextTechnicalWork": {
+    "knownV8Regression": {
+      "evidence": "docs/evidence/run008/first-development-comparison/institution/blind-v8/evaluation-current-institution-blind-v8-all.json",
+      "previousRecall": "15/15",
+      "currentRecall": "14/15",
+      "summary": {
+        "pages": 5,
+        "correct": 25,
+        "recommended": 25,
+        "matched": 14,
+        "expected": 15,
+        "precision": 1,
+        "recall": 0.9333333333333333,
+        "tasksRecommended": 5
+      },
+      "smuMissed": [
+        "it-search"
+      ],
+      "initialSources": [
+        {
+          "sourceId": "smu-v8-c020",
+          "category": "help",
+          "label": "[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내",
+          "contentLevel": 1
+        },
+        {
+          "sourceId": "smu-v8-c017",
+          "category": "notice",
+          "label": "[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내",
+          "contentLevel": 1
+        },
+        {
+          "sourceId": "smu-v8-c018",
+          "category": "notice",
+          "label": "[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내",
+          "contentLevel": 1
+        },
+        {
+          "sourceId": "smu-v8-c019",
+          "category": "notice",
+          "label": "[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내",
+          "contentLevel": 1
+        },
+        {
+          "sourceId": "smu-v8-c021",
+          "category": "notice",
+          "label": "[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내",
+          "contentLevel": 1
+        },
+        {
+          "sourceId": "smu-v8-c024",
+          "category": "notice",
+          "label": "[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내",
+          "contentLevel": 1
+        }
+      ],
+      "sourceOfPageTwoObservation": "Root recorded and RUN_008_REPORT states it-search remains on menu screen2; this reviewer independently checked six document first selections and the missed search in the saved report, without executing UI.",
+      "next": "Balance explicit local board search with documents of the same content owner; preserve max6 and both initial and additional-menu metrics."
+    },
+    "strictPipelineDiagnostic": {
+      "evidence": "docs/evidence/run008/institution-performance-first/performance.json",
+      "existingCriteria": "PASS",
+      "pipeline300ms": "FAIL",
+      "p95Milliseconds": {
+        "generic": {
+          "analyzerP95Milliseconds": 264.1,
+          "classifierP95Milliseconds": 173.5,
+          "analysisPipelineP95Milliseconds": 437.9,
+          "currentnessBatchP95Milliseconds": 238.4,
+          "overlayReadyP95Milliseconds": 455.3
+        },
+        "institution": {
+          "analyzerP95Milliseconds": 264.3,
+          "classifierP95Milliseconds": 308.8,
+          "analysisPipelineP95Milliseconds": 575.9,
+          "currentnessBatchP95Milliseconds": 485.9,
+          "overlayReadyP95Milliseconds": 604.7
+        }
+      },
+      "next": "Reduce repeated bounded DOM relation/fingerprint work only within a fresh batch, then retest both unchanged existing thresholds and the separate pipeline diagnostic with source-stable measurements."
+    }
+  },
+  "sourceMatchesFirstFreeze": true,
+  "toolMatchesFirstFreeze": true,
+  "readArtifactsSHA256": {
+    "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "src/analyzer.ts": "fdf4ed47f0e4cd5d4aa8b3de503dc6c1bd84998830860ceca2849fdb71faf3a6",
+    "src/classifier.ts": "53670fb11c1d7908a401a864a4d2cb9379eac7eb540580b664d50f53043919c8",
+    "src/institution-evidence.ts": "c577aedbe6d54df2efc1d93c68fabc494a16befb07f761114d209d6d43d630ff",
+    "src/ranker.ts": "1d4d0e122de9cc744f9beacd563ba09902fbdbfdf9bdc9b0ee1e98a99fcfc29a",
+    "src/content-evidence.ts": "b6b7dda68f0bffaa045ce4b5a5674ec17096d9fe86e2822dca96ff455891f105",
+    "docs/evidence/run008/institution-performance-first/performance.json": "6977fc2d20232d6a4c353734d002472a82bd52a1c328d76d3d7958751751709f",
+    "docs/evidence/run008/first-development-comparison/institution/blind-v8/evaluation-current-institution-blind-v8-all.json": "23f69adc632c41e16fd5ee59bae0775e22f4c37e76bfa3affd7fc2d1053e8c56",
+    "evaluation/blind-v10/sites/city.json": "f3378eea96357e6c56ca1127502edfee107ded19f1aeac4be923efbbc81edbfd",
+    "evaluation/blind-v10/sites/government.json": "4599e28ef0cff858fd80a2df52173da982801a235f2db8cc81a98efbc7f6c83f",
+    "evaluation/blind-v10/sites/library.json": "e58fd0cd27ff5523ec5df2e21ff222f57147933b686f811d6680374d40ba311d",
+    "evaluation/blind-v10/sites/public-agency.json": "91f44fc342dc1c07fc583a1d3de2e5535e109dfd9ec2c2710337e55116a5149d",
+    "evaluation/blind-v10/sites/smu.json": "8593658166370aa79e9b2267ce7b0d42a239c3ef3ae860e5a49d1ba7b6df9496",
+    "evaluation/blind-v10/fixtures/city.html": "91768407ea877eaf3d0a5c7b6cb308a16fc8fb9fb72c122fab65b7ff15240337",
+    "evaluation/blind-v10/fixtures/government.html": "ecab15864e8fb1488ecdd2c4a648dd15a8b72d10aae310486face329a1059a55",
+    "evaluation/blind-v10/fixtures/library.html": "9d7d3bc60c495ce225fd1ea52efaaa534ddc57afa34deea74b356df28f84b4d7",
+    "evaluation/blind-v10/fixtures/public-agency.html": "52741e587c6ae25e90937aa50a660507787d0b0f4e30b5a691db22c83a3e289f",
+    "evaluation/blind-v10/fixtures/smu.html": "25b99ae5165abf82877cfcb91520d6e143e8d298cb63ddebe1526ed9c274d287"
+  },
+  "preservationCheckAtClose": {
+    "firstReportSHA256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+    "firstReportUnchanged": true
+  },
+  "execution": {
+    "browserProductOrOriginalActivationRuns": 0,
+    "networkCUANativeExistingProfileServerOperations": 0,
+    "productAnnotationFixtureOrFirstResultChanges": 0,
+    "writeScope": "docs/evidence/run008/post-first-diagnosis"
+  },
+  "limits": [
+    "Source and fixture relationships were statically inspected; no new behavior or quality improvement is claimed.",
+    "Diagnostic source IDs are trace references only, not implementation keys. No recommendation uses body-token bags, opaque query values, record numbers or answer order.",
+    "This is development exposure of the same first sample; first FAIL remains independent and immutable.",
+    "No inference of authentication/application/payment/download execution or human success is made."
+  ]
+}

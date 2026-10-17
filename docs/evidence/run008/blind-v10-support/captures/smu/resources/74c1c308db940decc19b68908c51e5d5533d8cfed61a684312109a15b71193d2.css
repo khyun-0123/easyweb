@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* 대표 신규 사이트(kor)에만 적용할 board 사이트 게시판 수정사항 관련 소스 */
+
+/* 전체 게시판 View 페이지 기본 폰트 사이즈 설정 */
+.board-wrap{font-size:1.5rem;}
+.board-view-title-wrap h4{background-color:transparent;}
+.board-view-txt{font-size:1.5rem;}
+
+/* 학사일정 상단 옵션 영역 */
+.ko .ko-cal.board-name-calendar-view .board-calendar-main-wrap .fc-toolbar.fc-header-toolbar{margin-bottom:95px !important;}
+.ko .board-calendar-top-box2 > ul > li:before{background-color:transparent;}
+
+/*  연구산학 > 산학협력 > 우수연구자 */
+.exel-research .board-notice-img-wrap{height:237px;}
+.exel-research .common-board.research .board-notice-img-wrap > img{height:100% !important;}
+.exel-research .board-notice-title-box{max-height:46px;height:46px;}
+
+@media screen and (max-width: 1200px) {
+	/* 학사일정 상단 옵션 영역 */
+	.board-calendar-top-box2{top:165px;}
+}
+
+@media screen and (max-width: 768px) {
+	/* 학사일정 상단 옵션 영역 */
+	.ko .ko-cal.board-name-calendar-view .board-calendar-main-wrap .fc-toolbar.fc-header-toolbar{margin-bottom:50px !important;}
+	.board-calendar-top-box2{top:110px;}
+}
+@media screen and (max-width: 480px) {
+	/*  연구산학 > 산학협력 > 우수연구자 */
+	.exel-research .board-notice-img-wrap{height:207px;}
+}

@@ -1,0 +1,58 @@
+
+Running 28 tests using 1 worker
+
+(node:15413) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/content-relevance.spec.mjs:41:1 › @positive current-topic documents displace broad peers while curriculum and category diversity remain (94ms)
+(node:15419) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/content-relevance.spec.mjs:49:1 › @positive parent-topic and following content section support unfamiliar layout divs without site-specific classes (81ms)
+  ✓   3 tests/content-relevance.spec.mjs:55:1 › array shuffles and unfamiliar labels retain source-backed selection and distinct overflow (76ms)
+  ✓   4 tests/content-relevance.spec.mjs:79:4 › unproven plain body sidebar cannot acquire content relevance (67ms)
+  ✓   5 tests/content-relevance.spec.mjs:79:4 › unproven unrelated main heading cannot acquire content relevance (71ms)
+  ✓   6 tests/content-relevance.spec.mjs:79:4 › unproven neighbouring heading cannot acquire content relevance (66ms)
+  ✓   7 tests/content-relevance.spec.mjs:79:4 › unproven article cannot acquire content relevance (68ms)
+  ✓   8 tests/content-relevance.spec.mjs:79:4 › unproven navigation cannot acquire content relevance (72ms)
+  ✓   9 tests/content-relevance.spec.mjs:79:4 › unproven form cannot acquire content relevance (67ms)
+  ✓  10 tests/content-relevance.spec.mjs:79:4 › unproven breadcrumb cannot acquire content relevance (70ms)
+  ✓  11 tests/content-relevance.spec.mjs:79:4 › unproven skip navigation cannot acquire content relevance (68ms)
+  ✓  12 tests/content-relevance.spec.mjs:84:1 › a heading or current selected row replacement changes dependency identity (90ms)
+  ✓  13 tests/content-relevance.spec.mjs:101:1 › source currentness rejects an equal-content replacement of the relevance heading (72ms)
+  ✓  14 tests/content-relevance.spec.mjs:112:1 › changing selection, topic heading, or dependency danger removes the positive relation (109ms)
+  ✓  15 tests/content-relevance.spec.mjs:125:1 › nested editable values and private getters are excluded from all proof fingerprints (72ms)
+  ✓  16 tests/content-relevance.spec.mjs:137:1 › dangerous original controls, branch expanders, default submits and below-threshold candidates get no evidence (98ms)
+  ✓  17 tests/content-relevance.spec.mjs:153:1 › @positive six equally supported local topics remain author ordered while overflow and globals survive (76ms)
+  ✓  18 tests/content-relevance.spec.mjs:169:1 › equally supported content reserves diversity before more same-category content (72ms)
+  ✓  19 tests/content-relevance.spec.mjs:180:1 › explicit preparatory attachment stays locate and uses row/title identity tokens (79ms)
+  ✓  20 tests/content-relevance.spec.mjs:192:1 › reading tie groups cannot borrow a higher relevance position (66ms)
+  ✓  21 tests/filter-ordering.spec.mjs:18:1 › 명시적 검색 필터의 동률은 짧은 문구·철자보다 원본 목록 순서를 보존한다 (59ms)
+  ✓  22 tests/filter-ordering.spec.mjs:24:1 › 점수나 페이지 목적이 다른 필터를 새 동률 그룹으로 합치지 않는다 (61ms)
+  ✓  23 tests/filter-ordering.spec.mjs:36:1 › 같은 form의 서로 다른 목록은 각자 기존 정렬 위치 안에서만 source 순서를 적용한다 (55ms)
+  ✓  24 tests/filter-ordering.spec.mjs:41:1 › 서로 다른 form의 필터와 전역 검색 입력의 선택 정책을 섞지 않는다 (55ms)
+  ✓  25 tests/filter-ordering.spec.mjs:48:1 › 입력 배열을 반복 섞어도 동률 필터와 독립 그룹의 결과가 결정적이다 (61ms)
+  ✓  26 tests/filter-ordering.spec.mjs:62:1 › 첫 여섯 필터와 추가 메뉴는 원본 순서를 유지하고 중복 원본을 한 번만 제공한다 (55ms)
+  ✓  27 tests/filter-ordering.spec.mjs:72:1 › 명시적 필터 근거 없는 검색 메뉴는 기존 문구 정렬을 유지한다 (54ms)
+  ✓  28 tests/filter-ordering.spec.mjs:77:1 › 별도 정렬 호출은 바뀐 form 메타데이터를 읽고 이전 필터 근거를 재사용하지 않는다 (54ms)
+
+
+  1) tests/content-relevance.spec.mjs:41:1 › @positive current-topic documents displace broad peers while curriculum and category diversity remain 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    Expected: ArrayContaining ["curriculum", "global-search", "global-apply", "global-login"]
+    Received: ["document-a", "document-b", "curriculum", "broad-major", "global-search", "global-apply"]
+
+      44 |   expect(first).toHaveLength(6);
+      45 |   expect(first.slice(0, 2)).toEqual(['document-a', 'document-b']);
+    > 46 |   expect(first).toEqual(expect.arrayContaining(['curriculum', 'global-search', 'global-apply', 'global-login']));
+         |                 ^
+      47 | });
+      48 |
+      49 | test('@positive parent-topic and following content section support unfamiliar layout divs without site-specific classes', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/content-relevance.spec.mjs:46:17
+
+    Error Context: docs/evidence/run008/content-relevance/test-output/content-relevance--positiv-9f7a1-d-category-diversity-remain/error-context.md
+
+  1 failed
+    tests/content-relevance.spec.mjs:41:1 › @positive current-topic documents displace broad peers while curriculum and category diversity remain 
+  27 passed (2.8s)

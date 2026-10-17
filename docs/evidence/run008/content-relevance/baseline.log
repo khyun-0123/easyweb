@@ -1,0 +1,89 @@
+
+Running 3 tests using 1 worker
+
+(node:15016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/content-relevance.spec.mjs:42:1 › @positive current-topic documents displace broad peers while curriculum and category diversity remain (94ms)
+(node:15022) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/content-relevance.spec.mjs:50:1 › @positive parent-topic and following content section support unfamiliar layout divs without site-specific classes (81ms)
+  ✘  3 tests/content-relevance.spec.mjs:143:1 › @positive six equally supported local topics remain author ordered while overflow and globals survive (91ms)
+
+
+  1) tests/content-relevance.spec.mjs:42:1 › @positive current-topic documents displace broad peers while curriculum and category diversity remain 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Array [
+    -   "document-a",
+    -   "document-b",
+    +   "broad-major",
+    +   "curriculum",
+      ]
+
+      44 |   const first = await selected(page);
+      45 |   expect(first).toHaveLength(6);
+    > 46 |   expect(first.slice(0, 2)).toEqual(['document-a', 'document-b']);
+         |                             ^
+      47 |   expect(first).toEqual(expect.arrayContaining(['curriculum', 'global-search', 'global-apply', 'global-login']));
+      48 | });
+      49 |
+        at /Users/khyun_03/easyweb/tests/content-relevance.spec.mjs:46:29
+
+    Error Context: docs/evidence/run008/content-relevance/test-output/content-relevance--positiv-9f7a1-d-category-diversity-remain/error-context.md
+
+  2) tests/content-relevance.spec.mjs:143:1 › @positive six equally supported local topics remain author ordered while overflow and globals survive 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 6
+    + Received  + 6
+
+      Object {
+        "all": Array [
+          "local-0",
+          "local-1",
+          "local-2",
+    +     "global-search",
+    +     "global-apply",
+    +     "global-login",
+          "local-3",
+          "local-4",
+          "local-5",
+          "local-6",
+          "local-7",
+    -     "global-apply",
+    -     "global-login",
+    -     "global-search",
+        ],
+        "first": Array [
+          "local-0",
+          "local-1",
+          "local-2",
+    -     "local-3",
+    -     "local-4",
+    -     "local-5",
+    +     "global-search",
+    +     "global-apply",
+    +     "global-login",
+        ],
+      }
+
+      153 |     const rest = [...ContentRelevance.remainingMenus(candidates, first)];
+      154 |     return { first: first.map(candidate => candidate.element.id), all: [...first,...rest].map(candidate => candidate.element.id) };
+    > 155 |   })).toEqual({ first: Array.from({ length: 6 }, (_,index) => `local-${index}`),
+          |       ^
+      156 |     all: [...Array.from({ length: 8 }, (_,index) => `local-${index}`), 'global-apply','global-login','global-search'] });
+      157 | });
+      158 |
+        at /Users/khyun_03/easyweb/tests/content-relevance.spec.mjs:155:7
+
+    Error Context: docs/evidence/run008/content-relevance/test-output/content-relevance--positiv-b824d-verflow-and-globals-survive/error-context.md
+
+  2 failed
+    tests/content-relevance.spec.mjs:42:1 › @positive current-topic documents displace broad peers while curriculum and category diversity remain 
+    tests/content-relevance.spec.mjs:143:1 › @positive six equally supported local topics remain author ordered while overflow and globals survive 
+  1 passed (936ms)

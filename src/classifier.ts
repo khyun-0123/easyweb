@@ -2,6 +2,8 @@ import type { Candidate, Category } from './types';
 import { collectionEvidence, supplementalEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache, type SupplementalCache } from './analyzer';
 import { isDocumentDownload } from './action-policy';
 import { institutionEvidence, type ClassificationMode } from './institution-evidence';
+import { contentEvidence, type ContentEvidenceCache } from './content-evidence';
+import { navigationUtility } from './navigation-utility';
 
 export interface ClassificationOptions { mode?: ClassificationMode }
 
@@ -200,6 +202,7 @@ function applicationPageControl(candidate: Candidate, label: string, target: str
 
 function structuredContext(candidate: Candidate, label: string, collection: ReturnType<typeof collectionEvidence>, url?: URL): Candidate | undefined {
   const element = candidate.element;
+  if (navigationUtility(element, label)) return;
   if (!collection.kind || candidate.context === 'footer' || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label)
     || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]')
     || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
@@ -265,6 +268,7 @@ function contextualReading(candidate: Candidate, label: string): { category: Cat
 
 function supplementalClassification(candidate: Candidate, label: string, target: string, supplementalCache: SupplementalCache, url?: URL): Candidate | undefined {
   const element = candidate.element;
+  if (navigationUtility(element, label)) return;
   if (candidate.context !== 'body' || !element.matches('a[href], button, [role~="button" i]')
     || element.closest('article, [role~="article" i]')) return;
   // Inspect only the source's fixed structural metadata; original actions are
@@ -287,6 +291,11 @@ function supplementalClassification(candidate: Candidate, label: string, target:
   });
   if (!dangerous.test(label) && evidence.filter && isInformationTopicLabel(label)
     && !rules.some(rule => rule.category !== 'search' && rule.endpoints.has(target))) return result('search', 70, '검색 양식의 분야 필터', 'control');
+  if (evidence.preparationAttachment && candidate.action === 'locate' && element.matches('a[href]')
+    && !!evidence.relatedLabel && !dangerous.test(label) && !dangerous.test(evidence.relatedLabel)
+    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) {
+    return result('apply', 70, '같은 서식 행의 고정 제목과 첨부 자료', 'reading');
+  }
   const contexts = contextsFor(candidate, label);
   if (!dangerous.test(label) && evidence.materialRow && label.length >= 2 && label.length <= 60
     && !rules.some(rule => !['apply', 'academic'].includes(rule.category) && rule.label.test(label))
@@ -379,7 +388,8 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
   const mode = options.mode ?? 'institution';
   const collectionCache: CollectionCache = new WeakMap();
   const supplementalCache: SupplementalCache = new WeakMap();
-  return candidates.flatMap(candidate => {
+  const contentCache: ContentEvidenceCache = new WeakMap();
+  const classified = candidates.flatMap<Candidate>(candidate => {
     // Machine-authored accessible names can separate words with _ or -. This
     // lexical view does not alter source labels, URL paths or action metadata.
     const sourceLabel = normalize(candidate.label).replace(/[_-]+/g, ' ');
@@ -387,6 +397,8 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
     // File names remain unchanged in Candidate/UI. Strip a known document
     // suffix only from this lexical view of an explicit download control.
     const label = documentDownload ? sourceLabel.replace(documentExtension, '').trim() : sourceLabel;
+    const utility = navigationUtility(candidate.element, candidate.label);
+    if (utility === 'position') return [];
     if (orderingLabel.test(label)) return [];
     // Reject an explicit dangerous command before any lexical fallback can
     // revive a source that a structural reading branch has already rejected.
@@ -424,7 +436,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
     // form submission or an unrelated article. It supplies semantics only;
     // source action/href/target and the ordinary-link policy remain untouched.
     const element = candidate.element;
-    if (mode === 'institution' && candidate.context !== 'footer' && !dangerous.test(label) && isVisible(element)
+    if (mode === 'institution' && candidate.context !== 'footer' && isVisible(element)
       && element.matches('a[href], button, [role~="button" i], [role~="tab" i]')
       && !element.closest('form, [role~="form" i], input, textarea, select, [contenteditable]:not([contenteditable="false" i]), [role~="textbox" i], [role~="searchbox" i], [role~="combobox" i], [role~="spinbutton" i], [role~="slider" i]')
       && !(element instanceof HTMLButtonElement && element.form)) {
@@ -437,7 +449,16 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
       if (supportedAnchor && notice !== 'conflict' && (!article || !!notice || corroboratedArticleService(candidate, label, inspectionTarget, inspectionParts, inspectionURL))) {
         const evidence = institutionEvidence(candidate);
         const conflict = evidence && rules.some(rule => rule.category !== evidence.category && rule.endpoints.has(inspectionTarget));
-        if (evidence && !conflict) return [{ ...candidate, category: evidence.category, score: evidence.score,
+        // A payment deadline is information only when the source actually
+        // controls a unique noninteractive local explanation panel. This never
+        // waives the URL/script guards or permits payment/submit controls.
+        const readonlyDeadline = evidence?.readonlyPanel === true && evidence.contentScope === 'content'
+          && evidence.category === 'help' && evidence.pageTask === 'reading'
+          && candidate.action === 'locate' && element instanceof HTMLAnchorElement
+          && /^#[^\s]+$/.test(element.getAttribute('href')?.trim() ?? '')
+          && /^(?=.{2,60}$).*(?:납부\s*(?:기한|기간|일정)|\bpayment\s+(?:deadline|period|schedule))$/i.test(label)
+          && !dangerous.test(label.replace(/납부|\bpayment\b/gi, ''));
+        if (evidence && !conflict && (!dangerous.test(label) || readonlyDeadline)) return [{ ...candidate, category: evidence.category, score: evidence.score,
           pageTask: evidence.pageTask, institutionEvidence: evidence,
           reasons: ['원본 메뉴와 안내 내용의 관계', '기관 페이지의 명시적 읽기 목적'] }];
       }
@@ -541,7 +562,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
     }
     const guideContext = contextsFor(candidate, label).some(value => value.length <= 60 && /안내$/.test(value));
     const formSubmit = candidate.element instanceof HTMLButtonElement && !!candidate.element.form && candidate.element.type === 'submit';
-    if (!best && guideContext && isInformationTopicLabel(label) && candidate.context !== 'footer' && candidate.action === 'locate' && !formSubmit
+    if (!best && !utility && guideContext && isInformationTopicLabel(label) && candidate.context !== 'footer' && candidate.action === 'locate' && !formSubmit
       && candidate.element.matches('button, [role~="button"]') && /^(?:true|false)$/i.test(candidate.element.getAttribute('aria-expanded') ?? '')
       && !candidate.element.closest('article, [role~="article"]')) {
       return [{ ...candidate, category: 'help' as const, score: 60, reasons: ['안내 정보 패널 읽기', '안내 제목과 명시적 펼침 제어'], pageTask: 'control' as const }];
@@ -554,5 +575,9 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
       return [{ ...candidate, category: 'help' as const, score: 60, reasons: ['공개 안내 문서 읽기', '짧은 안내 목적의 일반 링크'], pageTask: undefined }];
     }
     return best && best.score >= 55 ? [best] : [];
+  });
+  return classified.map(candidate => {
+    const evidence = contentEvidence(candidate, contentCache, supplementalCache);
+    return evidence ? { ...candidate, contentEvidence: evidence } : candidate;
   });
 }

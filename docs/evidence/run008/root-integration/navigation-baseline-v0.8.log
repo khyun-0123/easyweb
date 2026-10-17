@@ -1,0 +1,93 @@
+
+Running 4 tests using 1 worker
+
+(node:19949) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/navigation-policy-integration.spec.mjs:8:1 › 위치 경로의 Home·안내 이름은 기능 카드로 승격하지 않고 실제 안내 링크는 유지한다 (110ms)
+(node:19965) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/navigation-policy-integration.spec.mjs:12:1 › 실제 landmark로 건너뛰는 링크와 같은 이름의 정보 패널을 구분한다 (101ms)
+(node:19977) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/navigation-policy-integration.spec.mjs:16:1 › 하위 메뉴 펼침에는 넓은 읽기 목적을 전파하지 않고 leaf와 명시 도움말 의미는 유지한다 (100ms)
+(node:19989) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/navigation-policy-integration.spec.mjs:20:1 › 같은 이름의 기능 링크가 위치 링크로 바뀌면 이전 후보는 stale이다 (107ms)
+
+
+  1) tests/navigation-policy-integration.spec.mjs:8:1 › 위치 경로의 Home·안내 이름은 기능 카드로 승격하지 않고 실제 안내 링크는 유지한다 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+       8 | test('위치 경로의 Home·안내 이름은 기능 카드로 승격하지 않고 실제 안내 링크는 유지한다',async({page})=>{
+       9 |   await setup(page,`<nav aria-label="현재 위치"><ol><li><a id="home" href="/">Home</a></li><li><a id="breadcrumb-guide" href="/public/guide">이용 안내</a></li></ol></nav>${guide}`);const rows=await inspect(page);
+    > 10 |   expect(rows.some(c=>['home','breadcrumb-guide'].includes(c.id))).toBe(false);expect(rows.find(c=>c.id==='valid-guide')).toMatchObject({category:'help',action:'navigate'});
+         |                                                                    ^
+      11 | });
+      12 | test('실제 landmark로 건너뛰는 링크와 같은 이름의 정보 패널을 구분한다',async({page})=>{
+      13 |   await setup(page,`<ul><li><a id="skip-main" href="#workspace">주요 내용으로 바로가기</a></li><li><a href="/public/guide">이용 안내</a></li></ul>${guide}<section><h2>시설 이용 안내</h2><ul><li><a id="reading-topic" href="#topic">대피 순서</a></li><li><a href="#another-topic">복구 방법</a></li></ul><div id="topic"><h3>대피 순서</h3></div><div id="another-topic"><h3>복구 방법</h3></div></section>`);const rows=await inspect(page);
+        at /Users/khyun_03/easyweb/tests/navigation-policy-integration.spec.mjs:10:68
+
+    Error Context: test-results/navigation-policy-integrat-5d73d--카드로-승격하지-않고-실제-안내-링크는-유지한다/error-context.md
+
+  2) tests/navigation-policy-integration.spec.mjs:12:1 › 실제 landmark로 건너뛰는 링크와 같은 이름의 정보 패널을 구분한다 ──
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      12 | test('실제 landmark로 건너뛰는 링크와 같은 이름의 정보 패널을 구분한다',async({page})=>{
+      13 |   await setup(page,`<ul><li><a id="skip-main" href="#workspace">주요 내용으로 바로가기</a></li><li><a href="/public/guide">이용 안내</a></li></ul>${guide}<section><h2>시설 이용 안내</h2><ul><li><a id="reading-topic" href="#topic">대피 순서</a></li><li><a href="#another-topic">복구 방법</a></li></ul><div id="topic"><h3>대피 순서</h3></div><div id="another-topic"><h3>복구 방법</h3></div></section>`);const rows=await inspect(page);
+    > 14 |   expect(rows.some(c=>c.id==='skip-main')).toBe(false);expect(rows.find(c=>c.id==='reading-topic')).toMatchObject({category:'help',action:'locate'});
+         |                                            ^
+      15 | });
+      16 | test('하위 메뉴 펼침에는 넓은 읽기 목적을 전파하지 않고 leaf와 명시 도움말 의미는 유지한다',async({page})=>{
+      17 |   await setup(page,`${guide}<nav><ul><li><a id="branch" href="javascript:void(0)">분야별 자료</a><ul><li><a id="leaf" href="/public/forest">정원 이용 안내</a></li></ul></li><li><a id="explicit-guide" href="javascript:void(0)">이용 안내</a><ul><li><a href="/public/lab">연구실 안내</a></li></ul></li></ul></nav>`);const rows=await inspect(page);
+        at /Users/khyun_03/easyweb/tests/navigation-policy-integration.spec.mjs:14:44
+
+    Error Context: test-results/navigation-policy-integrat-6faf2-건너뛰는-링크와-같은-이름의-정보-패널을-구분한다/error-context.md
+
+  3) tests/navigation-policy-integration.spec.mjs:16:1 › 하위 메뉴 펼침에는 넓은 읽기 목적을 전파하지 않고 leaf와 명시 도움말 의미는 유지한다 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      16 | test('하위 메뉴 펼침에는 넓은 읽기 목적을 전파하지 않고 leaf와 명시 도움말 의미는 유지한다',async({page})=>{
+      17 |   await setup(page,`${guide}<nav><ul><li><a id="branch" href="javascript:void(0)">분야별 자료</a><ul><li><a id="leaf" href="/public/forest">정원 이용 안내</a></li></ul></li><li><a id="explicit-guide" href="javascript:void(0)">이용 안내</a><ul><li><a href="/public/lab">연구실 안내</a></li></ul></li></ul></nav>`);const rows=await inspect(page);
+    > 18 |   expect(rows.some(c=>c.id==='branch')).toBe(false);expect(rows.find(c=>c.id==='leaf')).toMatchObject({category:'help',action:'navigate'});expect(rows.find(c=>c.id==='explicit-guide')).toMatchObject({category:'help',action:'locate'});
+         |                                         ^
+      19 | });
+      20 | test('같은 이름의 기능 링크가 위치 링크로 바뀌면 이전 후보는 stale이다',async({page})=>{
+      21 |   await setup(page,guide);expect((await inspect(page)).find(c=>c.id==='valid-guide')).toBeTruthy();
+        at /Users/khyun_03/easyweb/tests/navigation-policy-integration.spec.mjs:18:41
+
+    Error Context: test-results/navigation-policy-integrat-18408-하지-않고-leaf와-명시-도움말-의미는-유지한다/error-context.md
+
+  4) tests/navigation-policy-integration.spec.mjs:20:1 › 같은 이름의 기능 링크가 위치 링크로 바뀌면 이전 후보는 stale이다 ───
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      20 | test('같은 이름의 기능 링크가 위치 링크로 바뀌면 이전 후보는 stale이다',async({page})=>{
+      21 |   await setup(page,guide);expect((await inspect(page)).find(c=>c.id==='valid-guide')).toBeTruthy();
+    > 22 |   expect(await page.evaluate(()=>{const c=navigationCandidates.find(c=>c.element.id==='valid-guide');if(!NavigationPolicyReview.isCandidateCurrent(c))throw Error('baseline should be current');c.element.setAttribute('rel','home');return NavigationPolicyReview.isCandidateCurrent(c);})).toBe(false);
+         |                                                                                                                                                                                                                                                                                              ^
+      23 | });
+      24 |
+        at /Users/khyun_03/easyweb/tests/navigation-policy-integration.spec.mjs:22:286
+
+    Error Context: test-results/navigation-policy-integrat-fa577-가-위치-링크로-바뀌면-이전-후보는-stale이다/error-context.md
+
+  4 failed
+    tests/navigation-policy-integration.spec.mjs:8:1 › 위치 경로의 Home·안내 이름은 기능 카드로 승격하지 않고 실제 안내 링크는 유지한다 
+    tests/navigation-policy-integration.spec.mjs:12:1 › 실제 landmark로 건너뛰는 링크와 같은 이름의 정보 패널을 구분한다 ───
+    tests/navigation-policy-integration.spec.mjs:16:1 › 하위 메뉴 펼침에는 넓은 읽기 목적을 전파하지 않고 leaf와 명시 도움말 의미는 유지한다 
+    tests/navigation-policy-integration.spec.mjs:20:1 › 같은 이름의 기능 링크가 위치 링크로 바뀌면 이전 후보는 stale이다 ────

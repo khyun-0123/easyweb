@@ -1,0 +1,139 @@
+{
+  "checkedAtUtc": "2026-10-17T19:42:26.299385+00:00",
+  "version": "0.9.0",
+  "classification": "DEVELOPMENT_CANDIDATE",
+  "completedStages": 5,
+  "totalStages": 10,
+  "overallAcceptance": "NOT_MET",
+  "states": {
+    "S01": "DONE",
+    "S02": "DONE",
+    "S03": "DONE",
+    "S04": "DONE",
+    "S05": "DONE_DEFINED_SCOPE",
+    "S06": "NEEDS_MANUAL",
+    "S07": "IN_PROGRESS_NOT_MET",
+    "S08": "NEEDS_MANUAL",
+    "S09": "NEEDS_USER",
+    "S10": "IN_PROGRESS"
+  },
+  "coreAndLocal": "PASS",
+  "known55UniqueDevelopmentAggregate": "PASS_WITH_INDIVIDUAL_SUITE_FAILURES_PRESERVED",
+  "uniqueExposedPagesAfterFirst": 60,
+  "freshIndependent": {
+    "suite": "blind-v10",
+    "status": "FAIL",
+    "firstScreen": {
+      "pages": 5,
+      "correct": 26,
+      "recommended": 28,
+      "matched": 2,
+      "expected": 15,
+      "precision": 0.9285714285714286,
+      "recall": 0.13333333333333333,
+      "tasksRecommended": 0
+    },
+    "allFiveSitesPass": false,
+    "menuFlowSeparate": {
+      "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+      "summary": {
+        "pages": 5,
+        "correct": 32,
+        "recommended": 40,
+        "matched": 3,
+        "expected": 15,
+        "precision": 0.8,
+        "recall": 0.2,
+        "tasksRecommended": 0
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 8,
+          "recommended": 9,
+          "matched": 1,
+          "expected": 3,
+          "precision": 0.8888888888888888,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 1,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 10,
+          "recommended": 13,
+          "matched": 0,
+          "expected": 3,
+          "precision": 0.7692307692307693,
+          "recall": 0,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 8,
+          "matched": 1,
+          "expected": 3,
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 0,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0,
+          "tasksRecommended": 0
+        }
+      ],
+      "unresolvedMappings": 9,
+      "repeatedCards": 4
+    },
+    "firstResult": "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json"
+  },
+  "knownV8Regression": {
+    "previousRecall": "15/15",
+    "currentRecall": "14/15",
+    "missing": "smu-it-search",
+    "location": "second menu screen",
+    "reason": "Six institution-content documents occupy first screen before same-board search controls; retained development regression, not waived."
+  },
+  "syntheticPerformance": {
+    "existingCriteria": "PASS",
+    "additionalPipeline300msDiagnostic": "FAIL"
+  },
+  "livePublicTaskArrival": {
+    "passed": 15,
+    "expected": 15,
+    "actualUserOrBusinessSuccess": false
+  },
+  "sourceSafety": "S05_DONE_DEFINED_SCOPE_MAINTAINED; no new source activation or dangerous action execution observed. Menu source matching ambiguity reviewed separately.",
+  "currentNativeInstall": "NOT_RUN",
+  "actualVoiceOverSpeech": "NOT_RUN",
+  "actualBrowserZoom": "NOT_RUN",
+  "pretestActualObservations": 0,
+  "formalStudyActualObservations": 0,
+  "CUAOrNativeAutomationCount": 0,
+  "sourceFreeze": "docs/evidence/run008/v0.9-engine-freeze.json",
+  "package": "output/run008/EasyWeb-0.9.0-candidate.json",
+  "goalStatus": "active",
+  "goalTurnClassification": "PROGRESS",
+  "remaining": "Fix content search regression and new13first-screen missing functions, resolve menu mapping ambiguity and stricter pipeline performance; collect actual accessibility/native/human evidence without fabrication. Preserve full10/10 objective."
+}

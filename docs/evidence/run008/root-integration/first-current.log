@@ -1,0 +1,43 @@
+
+Running 6 tests using 1 worker
+
+(node:16097) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/reading-policy-integration.spec.mjs:10:1 › 실제 읽기 전용 fragment 설명의 납부기한만 help/locate로 제공한다 (80ms)
+  ✓  2 tests/reading-policy-integration.spec.mjs:18:1 › 설명 표제가 같아도 결제·삭제 handler나 HTTP 명령은 복구하지 않는다 (119ms)
+  ✓  3 tests/reading-policy-integration.spec.mjs:27:1 › 위험 낱말을 섞거나 실제 결제 제어가 있는 패널에는 기한 예외를 적용하지 않는다 (130ms)
+  ✓  4 tests/reading-policy-integration.spec.mjs:33:1 › 설명 제목의 동일 문구 교체도 낡은 후보를 차단한다 (71ms)
+  ✘  5 tests/reading-policy-integration.spec.mjs:38:1 › 같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다 (5.1s)
+(node:16150) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  6 tests/reading-policy-integration.spec.mjs:45:1 › 비활성 설명의 입력·편집 속성 getter는 예외 판단에서도 읽지 않는다 (82ms)
+
+
+  1) tests/reading-policy-integration.spec.mjs:38:1 › 같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다 ─────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: locator('[data-easyweb-notice]')
+    Expected: "changed"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" locator('[data-easyweb-notice]') with timeout 5000ms
+      - waiting for locator('[data-easyweb-notice]')
+
+
+      40 |   await page.evaluate(()=>{window.sourceActivations=0;document.querySelector('#deadline').addEventListener('click',e=>{sourceActivations++;e.preventDefault();});const host=document.createElement('div');host.dataset.easywebHost='true';document.body.append(host);ReadingPolicyReview.openEasyMode(host);const h=document.querySelector('#deadline-title');h.replaceWith(h.cloneNode(true));const card=[...host.shadowRoot.querySelectorAll('.card')].find(c=>c.querySelector('.card-source')?.textContent.includes('시설 보험료 납부기한'));card.click();});
+      41 |   expect(await page.evaluate(()=>sourceActivations)).toBe(0);
+    > 42 |   await expect(page.locator('[data-easyweb-notice]')).toHaveAttribute('data-easyweb-notice-reason','changed');
+         |                                                       ^
+      43 | });
+      44 |
+      45 | test('비활성 설명의 입력·편집 속성 getter는 예외 판단에서도 읽지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/reading-policy-integration.spec.mjs:42:55
+
+    Error Context: test-results/reading-policy-integration-457e9-명-교체-후-카드-클릭은-원본을-활성화하지-않는다/error-context.md
+
+  1 failed
+    tests/reading-policy-integration.spec.mjs:38:1 › 같은 프레임의 설명 교체 후 카드 클릭은 원본을 활성화하지 않는다 ──────────
+  5 passed (6.3s)

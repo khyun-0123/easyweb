@@ -1,0 +1,18 @@
+
+Running 11 tests using 1 worker
+
+(node:15527) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/preparation-attachments.spec.mjs:28:1 › POST wrapper의 고정 서식 제목은 첨부 앵커만 설명하고 기본 submit 제목은 승격하지 않는다 (98ms)
+  ✓   2 tests/preparation-attachments.spec.mjs:41:1 › 열 순서·고정 문서 형식이 달라도 유일한 같은 행 제목을 보존한다 (117ms)
+  ✓   3 tests/preparation-attachments.spec.mjs:48:1 › 일반 소프트웨어·보고서·뉴스·형식 없는 파일은 서식 준비 근거를 얻지 않는다 (116ms)
+  ✓   4 tests/preparation-attachments.spec.mjs:53:1 › 제목·첨부 열의 중복·합친 셀·중첩 표·여러 제목 제어를 거절한다 (132ms)
+  ✓   5 tests/preparation-attachments.spec.mjs:68:1 › 숨김·기사·편집 경계의 제목이나 첨부에서 관계를 만들지 않는다 (133ms)
+  ✓   6 tests/preparation-attachments.spec.mjs:85:1 › 입력값·checked·사용자 정의 편집 내용은 읽거나 직렬화하지 않는다 (100ms)
+  ✓   7 tests/preparation-attachments.spec.mjs:98:1 › 제목·형식 marker 변경은 액션이 locate 그대로여도 낡은 후보를 무효화한다 (99ms)
+  ✓   8 tests/preparation-attachments.spec.mjs:105:1 › 동일 문구 제목·열·행·표·부모 container 교체도 노드 의존성으로 감지한다 (163ms)
+  ✓   9 tests/preparation-attachments.spec.mjs:116:1 › 같은 batch는 근거를 공유하되 새 batch는 제목과 heading 변경을 다시 검사한다 (98ms)
+  ✓  10 tests/preparation-attachments.spec.mjs:129:1 › 일반 이동 앵커와 자료 버튼은 새 첨부 전용 근거를 얻지 않는다 (98ms)
+  ✓  11 tests/preparation-attachments.spec.mjs:141:1 › caption이 없으면 같은 지역의 가까운 고정 서식 heading만 사용한다 (96ms)
+
+  11 passed (1.6s)

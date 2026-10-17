@@ -1,0 +1,316 @@
+
+Running 58 tests using 1 worker
+
+(node:13706) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/institution-evidence.spec.mjs:34:1 › 교육 메뉴는 낯선 이름·경로·query에서도 로컬 읽기 근거만 분류한다 (102ms)
+  ✓   2 tests/institution-evidence.spec.mjs:43:1 › 교육 펼침 버튼과 인접 내용 패널의 읽기 관계를 보존한다 (95ms)
+  ✓   3 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 이웃 지역 제목에서 확장되지 않는다 (77ms)
+  ✓   4 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 펼침 상태 없는 버튼에서 확장되지 않는다 (91ms)
+  ✓   5 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 다른 패널 구조에서 확장되지 않는다 (74ms)
+  ✓   6 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 실제 폼에서 확장되지 않는다 (72ms)
+  ✓   7 tests/institution-evidence.spec.mjs:59:1 › 연금 fragment는 낯선 ID·역순 패널에서도 같은 지역의 고정 제목으로 연결된다 (76ms)
+  ✓   8 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 중복 target ID에서 중단된다 (80ms)
+  ✓   9 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 다른 지역 패널에서 중단된다 (74ms)
+  ✓  10 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 잘못된 fragment에서 중단된다 (75ms)
+  ✓  11 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 본문 제목 불일치에서 중단된다 (75ms)
+  ✓  12 tests/institution-evidence.spec.mjs:76:1 › SMU 게시판은 공유 배지 대신 문서의 구체적인 목적을 분류한다 (78ms)
+  ✓  13 tests/institution-evidence.spec.mjs:84:1 › SMU 문서 번호·순서·배지 변경은 문서 목적을 바꾸지 않는다 (73ms)
+  ✓  14 tests/institution-evidence.spec.mjs:91:1 › 장문 사건 공지를 임의 길이 감점 없이 근거로 다룬다 (78ms)
+  ✓  15 tests/institution-evidence.spec.mjs:99:1 › 모호한 게시글·목적 충돌·실제 포털 링크는 강제 보정하지 않는다 (73ms)
+  ✓  16 tests/institution-evidence.spec.mjs:106:1 › SMU 문서 구조·고정 게시판 문맥이 없는 제목은 분류하지 않는다 (94ms)
+  ✓  17 tests/institution-evidence.spec.mjs:111:1 › 사건을 설명하는 해결·대처 지침은 사건 공지로 단정하지 않는다 (74ms)
+  ✓  18 tests/institution-evidence.spec.mjs:117:1 › 같은 지역 제목을 가진 실제 신청·예약 탭은 설명으로 보정하지 않는다 (71ms)
+  ✓  19 tests/institution-evidence.spec.mjs:123:1 › 교육 신청 메뉴도 안내 읽기와 충돌하면 보정하지 않는다 (75ms)
+  ✓  20 tests/institution-evidence.spec.mjs:129:1 › 게시판 고정 제목 노드의 동일 문구 교체도 의존 참조를 바꾼다 (74ms)
+  ✓  21 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 위장 접미 호스트 (74ms)
+  ✓  22 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 미지원 하위 도메인 (73ms)
+  ✓  23 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: SMU 다른 경로 (72ms)
+  ✓  24 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 정부 다른 기능 (79ms)
+  ✓  25 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 연금 다른 기능 (73ms)
+  ✓  26 tests/institution-evidence.spec.mjs:154:1 › 편집 제어·입력 값 getter·사적 문맥을 읽지 않는다 (75ms)
+  ✓  27 tests/institution-evidence.spec.mjs:163:1 › 사적 편집 제목은 설명 근거가 아니며 외부 aria-labelledby 제목도 빌리지 않는다 (72ms)
+  ✓  28 tests/institution-evidence.spec.mjs:170:1 › 같은 cache 인자에도 제목 변경·target 교체가 새 근거에 반영된다 (75ms)
+  ✓  29 tests/institution-evidence.spec.mjs:187:1 › 원본 액션·href·안전 snapshot을 모듈이 변경하지 않는다 (72ms)
+  ✓  30 tests/institution-evidence.spec.mjs:200:1 › 학사 탭의 선택 주제와 뒤의 실제 표제가 낯선 문서 링크의 목적을 설명한다 (74ms)
+  ✓  31 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 표제 불일치에서는 보정하지 않는다 (75ms)
+  ✓  32 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 선택 주제 없음에서는 보정하지 않는다 (74ms)
+  ✓  33 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 여러 선택 주제에서는 보정하지 않는다 (73ms)
+  ✓  34 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 다른 지역 표제에서는 보정하지 않는다 (74ms)
+  ✓  35 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 편집 표제에서는 보정하지 않는다 (74ms)
+  ✓  36 tests/institution-evidence.spec.mjs:220:1 › 실제 신청·포털·외부 SSO 링크를 학사 문서로 바꾸지 않는다 (76ms)
+  ✓  37 tests/institution-evidence.spec.mjs:227:1 › 학사 표제를 같은 문구의 새 노드로 바꾸면 근거 참조가 바뀐다 (73ms)
+  ✓  38 tests/institution-evidence.spec.mjs:240:1 › 도서관 자체 표제의 명시적 매뉴얼 버튼과 실제 읽기 탭을 help로 연결한다 (95ms)
+  ✓  39 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 가이드 아닌 파일는 읽기 의미를 만들지 않는다 (94ms)
+  ✓  40 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 폼 안의 제출 제어는 읽기 의미를 만들지 않는다 (91ms)
+  ✓  41 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 편집 중인 표제는 읽기 의미를 만들지 않는다 (76ms)
+  ✓  42 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 타 영역의 다운로드는 읽기 의미를 만들지 않는다 (92ms)
+  ✓  43 tests/institution-evidence.spec.mjs:259:1 › 도서관 전역 검색 입력·submit·예약 탭에는 문서 가이드 의미를 주지 않는다 (92ms)
+  ✓  44 tests/institution-evidence.spec.mjs:266:1 › 도서관 다운로드 표제 교체·가이드 의미 변경은 읽기 탭 근거도 변경한다 (93ms)
+  ✓  45 tests/institution-evidence.spec.mjs:283:1 › 새 학사·도서관 관계도 사적 값 getter와 편집 내용을 읽지 않는다 (90ms)
+  ✘  46 tests/institution-evidence.spec.mjs:296:1 › v3 pension unfamiliar topic names prove unique readonly local explanations (82ms)
+(node:13786) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  47 tests/institution-evidence.spec.mjs:302:1 › v3 readonly flag is withheld for editable or interactive panel descendants (112ms)
+(node:13793) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  48 tests/institution-evidence.spec.mjs:308:1 › v3 legacy safe labels can remain guidance but never assert readonly over editors (95ms)
+(node:13806) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  49 tests/institution-evidence.spec.mjs:316:1 › v3 service/payment commands and duplicate targets never prove readonly panels (101ms)
+  ✘  50 tests/institution-evidence.spec.mjs:321:1 › v3 copying instruction tabs work without a search heading or manual download (87ms)
+(node:13813) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  51 tests/institution-evidence.spec.mjs:327:1 › v3 refund entry is a bounded apply control and preserves ordinary navigation (112ms)
+(node:13820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  52 tests/institution-evidence.spec.mjs:332:1 › v3 refund and copy relationships require actual local instruction evidence (86ms)
+  ✓  53 tests/institution-evidence.spec.mjs:337:1 › v3 copy guide does not borrow editorial titles from an input or another section (76ms)
+  ✘  54 tests/institution-evidence.spec.mjs:342:1 › v3 public safety guidance distinguishes a checklist document and guided start (103ms)
+(node:13837) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  55 tests/institution-evidence.spec.mjs:349:1 › v3 safety guide never reads input state or turns arbitrary start/download into guidance (112ms)
+(node:13843) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  56 tests/institution-evidence.spec.mjs:355:1 › v3 safety buttons in a form or unrelated source family abstain (110ms)
+  ✘  57 tests/institution-evidence.spec.mjs:360:1 › v3 explanation peer and heading replacement changes dependency identity (86ms)
+(node:13850) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  58 tests/institution-evidence.spec.mjs:373:1 › v3 instruction headings and refund-method changes invalidate their evidence (98ms)
+
+
+  1) tests/institution-evidence.spec.mjs:296:1 › v3 pension unfamiliar topic names prove unique readonly local explanations 
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 2
+    Received length: 0
+    Received array:  []
+
+      296 | test('v3 pension unfamiliar topic names prove unique readonly local explanations', async ({ page }) => {
+      297 |   const items = await inspect(page, pensionUrl, unfamiliarPension);
+    > 298 |   expect(items).toHaveLength(2);
+          |                 ^
+      299 |   expect(items.every(item => item.category === 'help' && item.pageTask === 'reading' && item.readonlyPanel === true)).toBe(true);
+      300 | });
+      301 |
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:298:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-pe-fbd88-readonly-local-explanations/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-pe-fbd88-readonly-local-explanations/error-context.md
+
+  2) tests/institution-evidence.spec.mjs:302:1 › v3 readonly flag is withheld for editable or interactive panel descendants 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 3
+    + Received  + 1
+
+    - Array [
+    -   "lifecycle",
+    - ]
+    + Array []
+
+      302 | test('v3 readonly flag is withheld for editable or interactive panel descendants', async ({ page }) => {
+      303 |   const items = await inspect(page, pensionUrl, unfamiliarPension.replace('<h4>보험료 납부기한</h4>', '<h4>보험료 납부기한</h4><form><input type="text"><button>실행</button></form>'));
+    > 304 |   expect(items.map(item => item.id)).toEqual(['lifecycle']);
+          |                                      ^
+      305 |   expect(items[0].readonlyPanel).toBe(true);
+      306 | });
+      307 |
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:304:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-re-21dc5-teractive-panel-descendants/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-re-21dc5-teractive-panel-descendants/error-context.md
+
+  3) tests/institution-evidence.spec.mjs:308:1 › v3 legacy safe labels can remain guidance but never assert readonly over editors 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: undefined
+
+      310 |   expect(items).toHaveLength(2);
+      311 |   expect(items.find(item => item.id === 'pension')?.readonlyPanel).toBeUndefined();
+    > 312 |   expect(items.find(item => item.id === 'lifecycle')?.readonlyPanel).toBe(true);
+          |                                                                      ^
+      313 |   expect(JSON.stringify(items)).not.toContain('PRIVATE_');
+      314 | });
+      315 |
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:312:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-le-887ec-ssert-readonly-over-editors/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-le-887ec-ssert-readonly-over-editors/error-context.md
+
+  4) tests/institution-evidence.spec.mjs:321:1 › v3 copying instruction tabs work without a search heading or manual download 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 5
+    + Received  + 1
+
+    - Array [
+    -   "copy-topic",
+    -   "print-topic",
+    -   "postal-topic",
+    - ]
+    + Array []
+
+      321 | test('v3 copying instruction tabs work without a search heading or manual download', async ({ page }) => {
+      322 |   const items = await inspect(page, libraryUrl, copyInstructions);
+    > 323 |   expect(items.filter(item => item.category === 'help').map(item => item.id)).toEqual(['copy-topic', 'print-topic', 'postal-topic']);
+          |                                                                               ^
+      324 |   expect(items.find(item => item.id === 'copy-topic')?.label).toBe('관내복제 선택됨');
+      325 | });
+      326 |
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:323:79
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-co-5d8fd--heading-or-manual-download/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-co-5d8fd--heading-or-manual-download/error-context.md
+
+  5) tests/institution-evidence.spec.mjs:327:1 › v3 refund entry is a bounded apply control and preserves ordinary navigation 
+
+    Error: expect(received).toMatchObject(expected)
+
+    Matcher error: received value must be a non-null object
+
+    Received has value: undefined
+
+      327 | test('v3 refund entry is a bounded apply control and preserves ordinary navigation', async ({ page }) => {
+      328 |   const items = await inspect(page, libraryUrl, copyInstructions);
+    > 329 |   expect(items.find(item => item.id === 'refund-entry')).toMatchObject({ category: 'apply', pageTask: 'control', action: 'navigate' });
+          |                                                          ^
+      330 | });
+      331 |
+      332 | test('v3 refund and copy relationships require actual local instruction evidence', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:329:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-re-135fd-eserves-ordinary-navigation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-re-135fd-eserves-ordinary-navigation/error-context.md
+
+  6) tests/institution-evidence.spec.mjs:342:1 › v3 public safety guidance distinguishes a checklist document and guided start 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 14
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "checklist-file",
+    -     "help",
+    -     "reading",
+    -     "locate",
+    -   ],
+    -   Array [
+    -     "guided-start",
+    -     "help",
+    -     "control",
+    -     "locate",
+    -   ],
+    - ]
+    + Array []
+
+      342 | test('v3 public safety guidance distinguishes a checklist document and guided start', async ({ page }) => {
+      343 |   const items = await inspect(page, safetyUrl, safetyGuide);
+    > 344 |   expect(items.map(item => [item.id, item.category, item.pageTask, item.action])).toEqual([
+          |                                                                                   ^
+      345 |     ['checklist-file', 'help', 'reading', 'locate'], ['guided-start', 'help', 'control', 'locate'],
+      346 |   ]);
+      347 | });
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:344:83
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-pu-b0f9d-t-document-and-guided-start/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-pu-b0f9d-t-document-and-guided-start/error-context.md
+
+  7) tests/institution-evidence.spec.mjs:349:1 › v3 safety guide never reads input state or turns arbitrary start/download into guidance 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 1
+
+    - Array [
+    -   "checklist-file",
+    -   "guided-start",
+    - ]
+    + Array []
+
+      350 |   const html = safetyGuide + `<button id="random" type="button">시작</button><button id="file-random" type="button">다운로드</button><script>document.querySelectorAll('input').forEach(node=>{for(const key of ['value','checked','innerText','textContent'])Object.defineProperty(node,key,{get(){throw Error('private state read')}})});</script>`;
+      351 |   const items = await inspect(page, safetyUrl, html);
+    > 352 |   expect(items.map(item => item.id)).toEqual(['checklist-file', 'guided-start']);
+          |                                      ^
+      353 | });
+      354 |
+      355 | test('v3 safety buttons in a form or unrelated source family abstain', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:352:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-sa-f6e1e-tart-download-into-guidance/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-sa-f6e1e-tart-download-into-guidance/error-context.md
+
+  8) tests/institution-evidence.spec.mjs:360:1 › v3 explanation peer and heading replacement changes dependency identity 
+
+    Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'dependencies')
+        at eval (eval at evaluate (:370:30), <anonymous>:7:19)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at evaluate (:370:30), <anonymous>:7:19)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:362:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-ex-4b188-changes-dependency-identity/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-ex-4b188-changes-dependency-identity/error-context.md
+
+  9) tests/institution-evidence.spec.mjs:373:1 › v3 instruction headings and refund-method changes invalidate their evidence 
+
+    Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'dependencies')
+        at eval (eval at evaluate (:370:30), <anonymous>:9:19)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at evaluate (:370:30), <anonymous>:9:19)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:375:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-v3-in-35792-s-invalidate-their-evidence/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-v3-in-35792-s-invalidate-their-evidence/error-context.md
+
+  9 failed
+    tests/institution-evidence.spec.mjs:296:1 › v3 pension unfamiliar topic names prove unique readonly local explanations 
+    tests/institution-evidence.spec.mjs:302:1 › v3 readonly flag is withheld for editable or interactive panel descendants 
+    tests/institution-evidence.spec.mjs:308:1 › v3 legacy safe labels can remain guidance but never assert readonly over editors 
+    tests/institution-evidence.spec.mjs:321:1 › v3 copying instruction tabs work without a search heading or manual download 
+    tests/institution-evidence.spec.mjs:327:1 › v3 refund entry is a bounded apply control and preserves ordinary navigation 
+    tests/institution-evidence.spec.mjs:342:1 › v3 public safety guidance distinguishes a checklist document and guided start 
+    tests/institution-evidence.spec.mjs:349:1 › v3 safety guide never reads input state or turns arbitrary start/download into guidance 
+    tests/institution-evidence.spec.mjs:360:1 › v3 explanation peer and heading replacement changes dependency identity 
+    tests/institution-evidence.spec.mjs:373:1 › v3 instruction headings and refund-method changes invalidate their evidence 
+  49 passed (7.9s)

@@ -1,0 +1,107 @@
+{
+  "version": "blind-v10-collection-plan-v1",
+  "createdAt": "2026-10-17T19:26:13.310420+00:00",
+  "status": "FROZEN_BEFORE_NETWORK_DISCOVERY",
+  "productExecutions": 0,
+  "institutions": [
+    {
+      "siteId": "city",
+      "domain": "www.cheonan.go.kr"
+    },
+    {
+      "siteId": "government",
+      "domain": "www.safekorea.go.kr"
+    },
+    {
+      "siteId": "library",
+      "domain": "www.nl.go.kr"
+    },
+    {
+      "siteId": "public-agency",
+      "domain": "www.nps.or.kr"
+    },
+    {
+      "siteId": "smu",
+      "domain": "www.smu.ac.kr"
+    }
+  ],
+  "samplePlan": {
+    "pagesPerInstitution": 1,
+    "expectedGroupsPerPage": 3,
+    "expectedTotal": 15,
+    "minimumExpectedTotal": 10,
+    "publicReadOnlyTasksPerPage": 1,
+    "split": "holdout"
+  },
+  "selectionCriteria": [
+    "Discover each fixed institution through public HTTP and independently inspect public navigation and actual current-page content.",
+    "Choose a new useful page that presents at least three substantive salient current-page functions in the pilot categories.",
+    "Prefer user-facing page-level service entry, actionable information, notices, academic help, or public reference tasks over a page selected solely for global utilities.",
+    "Determine expected functions and task before any product execution or feedback.",
+    "Use only publicly reachable, unauthenticated content. Do not submit forms, enter input, log in, activate downloads, or invoke business controls."
+  ],
+  "exclusions": {
+    "source": "docs/evidence/run008/prior-exposed-url-exclusions.json",
+    "rules": [
+      "Exclude all prior URL aliases after URL normalization.",
+      "Exclude same-content redirects and pages whose canonical public content is the same as an excluded page.",
+      "Preserve all rejected or replaced discovery candidates with reason and original evidence.",
+      "Do not replace a page because it performs poorly under product evaluation."
+    ]
+  },
+  "captureProtocol": {
+    "browser": "Isolated headless Playwright context only; no existing profile or visible browser. CLI HTTP discovery permitted.",
+    "capture": "Save original HTTP response, full live DOM, full original body and ancestor structure, document URL/base, style resources and visibility/accessibility/control inventories.",
+    "offline": "Keep attributes including href, target, onclick, ARIA, form and control types unchanged; add metadata data-eval-id only. Apply CSP that disables original scripts/handlers and requests in replay; do not invent behavior stubs.",
+    "privacy": "Sanitize input text/textarea values and private editable content before retained HTML/proof; public static labels retained.",
+    "fidelity": "Preserve original DOM order, headings, forms, tables, ancestors, CSS, visibility and names; save hashes and preprocessing provenance."
+  },
+  "annotationContract": {
+    "categories": [
+      "login",
+      "search",
+      "notice",
+      "academic",
+      "apply",
+      "help"
+    ],
+    "actions": {
+      "navigate": "Ordinary HTTP(S) URLs, plain login form links, and cross-document fragments.",
+      "locate": "Explicit JS/handler, SSO, popup, download, role button, ARIA control, or same-document fragment; never execute."
+    },
+    "semantics": [
+      "Function and document purpose determine category.",
+      "Distinguish service entry from explanation or information documents.",
+      "Do not infer hidden effects from words alone.",
+      "Record ambiguity before product execution.",
+      "Annotate all retained visible meaningful controls as accepted or rejected, including actual search inputs.",
+      "Expected groups use actual annotation IDs and substantive current-page functions; maximum three expected groups per page."
+    ]
+  },
+  "freezeProtocol": [
+    "Run source-fidelity and annotation correspondence self-QA before freeze.",
+    "Freeze dataset, observation and proof files in a manifest with path, SHA-256 and bytes.",
+    "Retain immutable plan, source captures and preprocessing hashes.",
+    "Set frozen files read-only.",
+    "Report only counts, paths, hashes and status until engine freeze and first execution; never send semantic findings or fresh page identities."
+  ],
+  "independence": {
+    "allowedPriorInput": [
+      "docs/evidence/run008/prior-exposed-url-exclusions.json"
+    ],
+    "forbidden": [
+      "product source",
+      "dist",
+      "README",
+      "AGENTS",
+      "plans",
+      "tests",
+      "old fixtures",
+      "old labels",
+      "old results",
+      "product feedback",
+      "implementation messages"
+    ],
+    "discoveryCandidateLog": "docs/evidence/run008/blind-v10-support/discovery-candidates.json"
+  }
+}

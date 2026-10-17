@@ -1,0 +1,1439 @@
+{
+  "checkedAtUtc": "2026-10-17T19:49:04.917505+00:00",
+  "version": "0.9.0",
+  "reviewerTask": "v09_integration_safety/final_artifact_audit",
+  "artifactStatus": "PASS",
+  "overallAcceptance": "NOT_MET",
+  "completedStages": 5,
+  "totalStages": 10,
+  "automaticSignoff": false,
+  "integrationOwner": "root",
+  "sourceStable": true,
+  "scope": "Independent read-only artifact/document consistency audit after the preserved first independent evaluation. Earlier focused behavior tests are a separate artifact; artifact auditors ran no product/build/test/benchmark/browser/network actions.",
+  "checks": [
+    {
+      "name": "freeze_18_product_13_tool_files",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "freeze_covers_exact_current_product_surface",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "current_product_matches_final_freeze",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "current_tools_match_final_freeze",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "frozen_archive_matches_all_31_declared_entries",
+      "passed": true,
+      "count": 31,
+      "reviewArea": "core"
+    },
+    {
+      "name": "original_and_protocol_same_388_path_hash_pairs",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "protocol_binds_unchanged_original_freeze",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "all_388_original_dataset_bytes_match",
+      "passed": true,
+      "count": 388,
+      "reviewArea": "core"
+    },
+    {
+      "name": "all_388_dataset_entries_have_no_write_bits",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "dataset_original_declares_preproduct_five_pages_fifteen_groups",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "qa_manifest_has_17_total_files",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "qa_16_declared_payloads_preserved",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "qa_manifest_expected_sha256",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "qa_preproduct_execution_zero",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_preexecution_error_retained_without_quality_report",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_actual_report_expected_hash",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_actual_phase_and_stability",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_actual_start_unexposed_zero_prior_product_one_preproduct_error",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-error-start_engine_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-error-start_dataset_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-error-end_engine_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-error-end_dataset_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-actual-start_engine_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-actual-start_dataset_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-actual-end_engine_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first-actual-end_dataset_freeze_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_actual_static_qa_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_actual_source_before_equal_freeze",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_report_tool_hashes_bound",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_error_and_first_actual_files_readonly",
+      "passed": true,
+      "files": 7,
+      "reviewArea": "core"
+    },
+    {
+      "name": "first_screen_26_28_2_15_0_all_sites_fail",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "menu_32_40_3_15_0_unresolved9_repeat4_separate",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "zip_bytes_sha_and_package_metadata",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "package_source_metadata_current",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "package_dist_metadata_current",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "package_source_and_dist_digest_recomputed",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "saved_reproducibility_checks_true",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "zip_testzip_integrity",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "zip_names_unique_sorted",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "zip_exact_five_dist_entries_and_deterministic_metadata",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "manifest_source_dist_zip_same",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "manifest_version_minimal_permissions",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "sha256sums_zip_and_report_entries_exact",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "local_409_expected_no_fail_flaky_skip",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "recorded_verify_stages_pass",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "core_saved_72_74_45_45_15_development",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "a11y_21_zero_errors_violations_incomplete",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "a11y_source_hashes_current",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "live_record_15_9_http_6_guidance_not_business",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "live_source_hashes_current",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "performance.json_ten_valid_existing_thresholds",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "performance-flat.json_ten_valid_existing_thresholds",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "performance-table.json_ten_valid_existing_thresholds",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "institution_perf_existing_PASS_additional_FAIL_preserved",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "institution_performance_source_stable_current",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "development_26_rows_55_unique_same_18_sources",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "known55_aggregate_arithmetic",
+      "passed": true,
+      "aggregates": [
+        {
+          "mode": "generic",
+          "canonicalRows": 9,
+          "totals": {
+            "pages": 55,
+            "correct": 234,
+            "recommended": 242,
+            "matched": 133,
+            "expected": 155,
+            "tasksRecommended": 48
+          },
+          "matches": true
+        },
+        {
+          "mode": "institution",
+          "canonicalRows": 9,
+          "totals": {
+            "pages": 55,
+            "correct": 257,
+            "recommended": 260,
+            "matched": 153,
+            "expected": 155,
+            "tasksRecommended": 55
+          },
+          "matches": true
+        }
+      ],
+      "reviewArea": "core"
+    },
+    {
+      "name": "known55_expected_generic_and_institution_totals",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "known_v8_recall_14_of_15_FAIL_retained",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "release_remains_5_of_10_NOT_MET",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "gate_fresh_counts_and_failure_equal_first",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "manual_native_human_not_inferred",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "usage_partial_boundary_elapsed_and_unknown_billing",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "closing_source_and_tools_byte_stable",
+      "passed": true,
+      "reviewArea": "core"
+    },
+    {
+      "name": "baseline-38f37d4_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 1759,
+      "mismatches": [],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run-004-v0.5.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 190,
+      "mismatches": [],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run-005-v0.6.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 313,
+      "mismatches": [],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run-006-v0.7.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 122,
+      "mismatches": [],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run-007-v0.8.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 586,
+      "mismatches": [],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run003/blind-v6-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 11,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 11,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-v2-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 11,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run007/blind-v9-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 113,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run007/blind-v9-v2-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 130,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v6-corrected/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 23,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v6-corrected/VERSION.json_remains_adjudicated_development",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v6-corrected-v2/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 35,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v6-corrected-v2/VERSION.json_remains_adjudicated_development",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v7-corrected/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 35,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v7-corrected/VERSION.json_remains_adjudicated_development",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v7-corrected-v2/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 34,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "evaluation/development-v7-corrected-v2/VERSION.json_remains_adjudicated_development",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v7_v2_separate_artifact_manifest_hashes",
+      "passed": true,
+      "comparisons": 17,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v7_original_parent_21_before_after_unchanged",
+      "passed": true,
+      "count": 21,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run004/v0.5-engine-freeze.json_archived_source_hashes",
+      "passed": true,
+      "count": 14,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run005/v0.6-engine-freeze-v2.json_archived_source_hashes",
+      "passed": true,
+      "count": 14,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run007/v0.8-engine-freeze.json_archived_source_hashes",
+      "passed": true,
+      "count": 15,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run007/v0.8-engine-freeze-v2.json_archived_source_hashes",
+      "passed": true,
+      "count": 15,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v0_8_original_and_v2_15_sources_identical",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v0_8_original_freeze_identity_preserved",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v0_8_only_evaluator_tool_changed_in_v2",
+      "passed": true,
+      "changedTools": [
+        "scripts/evaluate.mjs"
+      ],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v0_8_original_evaluator_archive",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v0_8_corrected_evaluator_archive",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v0_7_source_snapshot_matches_historical_tag",
+      "passed": true,
+      "count": 16,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run004_original_zip_matches_saved_metadata",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run004_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 18,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run004_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run005_original_zip_matches_saved_metadata",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run005_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 18,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run005_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run006_original_zip_matches_saved_metadata",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run006_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 18,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run006_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run007_original_zip_matches_saved_metadata",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run007_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 19,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "run007_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_error_retains_no_report",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_error_original_engine_and_dataset_identities",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_error_log_retains_ENOENT",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_actual_report_hash",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_actual_engine_and_dataset_identities",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_FAIL_26_30_2_15_0",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_v2_first_additional_60_73_5_15_2_still_separate",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json_first_FAIL_still_present",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json_first_FAIL_still_present",
+      "passed": true,
+      "reviewArea": "historical"
+    },
+    {
+      "name": "v9_original_v2_inputs_and_first_attempt_results_readonly",
+      "passed": true,
+      "entries": 250,
+      "failures": [],
+      "reviewArea": "historical"
+    },
+    {
+      "name": "local409",
+      "status": "PASS",
+      "observation": {
+        "expected": 409,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "durationMilliseconds": 52617.852,
+        "report": "/Users/khyun_03/easyweb/docs/evidence/run008/playwright-local.json"
+      },
+      "evidence": [
+        "local-verification.json",
+        "playwright-local.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "recordedTypeBuildStages",
+      "status": "PASS",
+      "observation": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "build",
+          "exitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "playwright",
+          "exitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "core-evaluation",
+          "exitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "performance",
+          "exitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "performance-flat",
+          "exitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "performance-table",
+          "exitCode": 0,
+          "status": "PASS"
+        }
+      ],
+      "evidence": [
+        "local-verification.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "coreFirstScreen",
+      "status": "PASS",
+      "observation": {
+        "pages": 15,
+        "correct": 72,
+        "recommended": 74,
+        "matched": 45,
+        "expected": 45,
+        "precision": 0.972972972972973,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "evidence": [
+        "local-verification.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "a11y21SeparateFromActualSpeechZoom",
+      "status": "PASS",
+      "observation": {
+        "cases": 21,
+        "errors": 0,
+        "violations": 0,
+        "seriousOrCritical": 0,
+        "incomplete": 0,
+        "horizontalOverflowCases": [],
+        "smallTargets": [],
+        "lowComponentContrast": [],
+        "lowFocusContrast": []
+      },
+      "evidence": [
+        "a11y-automated.json",
+        "docs/ACCESSIBILITY.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "existingPublicTasks15SeparateFromBusinessHumanNative",
+      "status": "PASS",
+      "observation": {
+        "observedTasks": 15,
+        "notRecommended": 0,
+        "observationErrors": 0,
+        "controlPresent": 15,
+        "recommended": 15,
+        "firstGuidanceReached": 6,
+        "guidanceRetries": 0,
+        "originalGuidanceReached": 6,
+        "actualCardLinksClicked": 9,
+        "destinationReached": 9,
+        "passed": 15,
+        "allDatasetTasksAttempted": true,
+        "allPassed": true
+      },
+      "evidence": [
+        "tasks-live.json",
+        "docs/RUN_008_REPORT.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "known55SameSource26Runs",
+      "status": "PASS",
+      "observation": {
+        "rows": 26,
+        "modes": {
+          "generic": 13,
+          "institution": 13
+        },
+        "uniquePages": 55,
+        "stableBeforeAndAfter": true
+      },
+      "evidence": [
+        "first-development-comparison/summary.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "known55UniqueAggregates",
+      "status": "PASS",
+      "observation": {
+        "generic": {
+          "pages": 55,
+          "correct": 234,
+          "recommended": 242,
+          "matched": 133,
+          "expected": 155,
+          "tasksRecommended": 48,
+          "precision": 0.9669421487603306,
+          "recall": 0.8580645161290322
+        },
+        "institution": {
+          "pages": 55,
+          "correct": 257,
+          "recommended": 260,
+          "matched": 153,
+          "expected": 155,
+          "tasksRecommended": 55,
+          "precision": 0.9884615384615385,
+          "recall": 0.9870967741935484
+        }
+      },
+      "evidence": [
+        "first-development-comparison/summary.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "reportAll13SuiteTableRows",
+      "status": "PASS",
+      "observation": [
+        {
+          "suite": "core",
+          "matches": true
+        },
+        {
+          "suite": "blind-v2",
+          "matches": true
+        },
+        {
+          "suite": "blind-v3",
+          "matches": true
+        },
+        {
+          "suite": "development-v4-corrected",
+          "matches": true
+        },
+        {
+          "suite": "blind-v5",
+          "matches": true
+        },
+        {
+          "suite": "blind-v6",
+          "matches": true
+        },
+        {
+          "suite": "development-v6-corrected",
+          "matches": true
+        },
+        {
+          "suite": "development-v6-corrected-v2",
+          "matches": true
+        },
+        {
+          "suite": "blind-v7-v2",
+          "matches": true
+        },
+        {
+          "suite": "development-v7-corrected",
+          "matches": true
+        },
+        {
+          "suite": "development-v7-corrected-v2",
+          "matches": true
+        },
+        {
+          "suite": "blind-v8",
+          "matches": true
+        },
+        {
+          "suite": "blind-v9-v2",
+          "matches": true
+        }
+      ],
+      "evidence": [
+        "docs/RUN_008_REPORT.md",
+        "first-development-comparison/summary.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "knownV8RegressionPreserved",
+      "status": "PASS",
+      "observation": {
+        "summary": {
+          "pages": 5,
+          "correct": 25,
+          "recommended": 25,
+          "matched": 14,
+          "expected": 15,
+          "precision": 1,
+          "recall": 0.9333333333333333,
+          "tasksRecommended": 5
+        },
+        "quality": "FAIL",
+        "gate": {
+          "previousRecall": "15/15",
+          "currentRecall": "14/15",
+          "missing": "smu-it-search",
+          "location": "second menu screen",
+          "reason": "Six institution-content documents occupy first screen before same-board search controls; retained development regression, not waived."
+        }
+      },
+      "evidence": [
+        "first-development-comparison/summary.json",
+        "release-gate.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "freshFirst26of28_2of15_0of5_AllSitesFail",
+      "status": "PASS",
+      "observation": {
+        "summary": {
+          "pages": 5,
+          "correct": 26,
+          "recommended": 28,
+          "matched": 2,
+          "expected": 15,
+          "precision": 0.9285714285714286,
+          "recall": 0.13333333333333333,
+          "tasksRecommended": 0
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 0,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "passed": false
+          },
+          {
+            "siteId": "library",
+            "precision": 0.6666666666666666,
+            "recall": 0,
+            "passed": false
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 0,
+            "passed": false
+          }
+        ]
+      },
+      "evidence": [
+        "blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+        "blind-v10-first-evaluated/command-completion.json",
+        "release-gate.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "separateMenuFlow32of40_3of15_0of5_Ambiguous9Repeated4",
+      "status": "PASS",
+      "observation": {
+        "summary": {
+          "pages": 5,
+          "correct": 32,
+          "recommended": 40,
+          "matched": 3,
+          "expected": 15,
+          "precision": 0.8,
+          "recall": 0.2,
+          "tasksRecommended": 0
+        },
+        "unresolvedMappings": 9,
+        "repeatedCards": 4,
+        "interpretation": "Ambiguous evaluator-to-source mapping is not proof of repeating the same original node or an S05 defect."
+      },
+      "evidence": [
+        "blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+        "release-gate.json",
+        "docs/RUN_008_REPORT.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "firstResultDeclaredHash",
+      "status": "PASS",
+      "observation": {
+        "actualSha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+        "declaredSha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+        "exitCode": 1
+      },
+      "evidence": [
+        "blind-v10-first-evaluated/command-completion.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "postExposureStageTrace12Unclassified1OutsideFirst",
+      "status": "PASS",
+      "observation": {
+        "countedMissedGroups": {
+          "CLASSIFIED_NOT_FIRST": 1,
+          "RAW_BUT_UNCLASSIFIED": 12
+        },
+        "declared": {
+          "CLASSIFIED_NOT_FIRST": 1,
+          "RAW_BUT_UNCLASSIFIED": 12
+        },
+        "sourceStable": true,
+        "firstReportUnchanged": true,
+        "externalRequests": 0,
+        "scope": "New diagnostic only: frozen v0.9 source, five already-exposed offline v10 pages, actual raw/classified/selected source membership for required controls. Does not rerun or alter first quality report, infer live/native/user success, or activate a source/form/card.",
+        "diagnosisTraceHashBound": "99090ed5699a56a49f61a66b765014005f14f28fed8455b8e98467ab49442632"
+      },
+      "evidence": [
+        "post-first-trace/trace.json",
+        "post-first-diagnosis/diagnosis.json",
+        "docs/RUN_008_REPORT.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "existingSyntheticThreeShapesPASS",
+      "status": "PASS",
+      "observation": [
+        {
+          "shape": "mixed",
+          "analyzerP95": 29.1,
+          "readyP95": 71.9,
+          "samples": 10,
+          "status": "PASS"
+        },
+        {
+          "shape": "flat",
+          "analyzerP95": 44.4,
+          "readyP95": 139.2,
+          "samples": 10,
+          "status": "PASS"
+        },
+        {
+          "shape": "table",
+          "analyzerP95": 94.4,
+          "readyP95": 225.5,
+          "samples": 10,
+          "status": "PASS"
+        }
+      ],
+      "evidence": [
+        "performance.json",
+        "performance-flat.json",
+        "performance-table.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "wholePipeline300msFAILPreservedSeparateExistingPASS",
+      "status": "PASS",
+      "observation": {
+        "generic": {
+          "status": "FAIL",
+          "existingBenchmarkStatus": "PASS",
+          "additionalPipelineDiagnosticStatus": "FAIL",
+          "analyzerP95Milliseconds": 264.1,
+          "analysisPipelineP95Milliseconds": 437.9,
+          "currentnessBatchP95Milliseconds": 238.4,
+          "overlayReadyP95Milliseconds": 455.3
+        },
+        "institution": {
+          "status": "FAIL",
+          "existingBenchmarkStatus": "PASS",
+          "additionalPipelineDiagnosticStatus": "FAIL",
+          "analyzerP95Milliseconds": 264.3,
+          "analysisPipelineP95Milliseconds": 575.9,
+          "currentnessBatchP95Milliseconds": 485.9,
+          "overlayReadyP95Milliseconds": 604.7
+        }
+      },
+      "evidence": [
+        "institution-performance-first/performance.json"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "acceptance5of10NOT_METAnd60Exposed",
+      "status": "PASS",
+      "observation": {
+        "version": "0.9.0",
+        "completedStages": 5,
+        "totalStages": 10,
+        "overallAcceptance": "NOT_MET",
+        "uniqueExposedPagesAfterFirst": 60,
+        "states": {
+          "S01": "DONE",
+          "S02": "DONE",
+          "S03": "DONE",
+          "S04": "DONE",
+          "S05": "DONE_DEFINED_SCOPE",
+          "S06": "NEEDS_MANUAL",
+          "S07": "IN_PROGRESS_NOT_MET",
+          "S08": "NEEDS_MANUAL",
+          "S09": "NEEDS_USER",
+          "S10": "IN_PROGRESS"
+        }
+      },
+      "evidence": [
+        "release-gate.json",
+        "docs/PROGRESS.md",
+        "docs/WORK_SPEC.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "actualManualNativeHumanNOT_RUNorZero",
+      "status": "PASS",
+      "observation": {
+        "currentNativeInstall": "NOT_RUN",
+        "actualVoiceOverSpeech": "NOT_RUN",
+        "actualBrowserZoom": "NOT_RUN",
+        "pretestActualObservations": 0,
+        "formalStudyActualObservations": 0,
+        "CUAOrNativeAutomationCount": 0
+      },
+      "evidence": [
+        "release-gate.json",
+        "docs/ACCESSIBILITY.md",
+        "docs/INSTALL.md",
+        "docs/PRETEST.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "usageUnknownBillingHonestBoundary",
+      "status": "PASS",
+      "observation": {
+        "scope": "Recorded boundary begins after initial revalidation/architecture/delegation; end excludes later post-first diagnostic trace, final audit/docs fixes/commit. Not whole RUN008 or active-goal elapsed time.",
+        "wholeRunElapsed": "UNKNOWN",
+        "billing": {
+          "inputTokens": "UNKNOWN",
+          "outputTokens": "UNKNOWN",
+          "cachedTokens": "UNKNOWN",
+          "reasoningTokens": "UNKNOWN",
+          "accountBilledTokens": "UNKNOWN",
+          "cost": "UNKNOWN"
+        }
+      },
+      "evidence": [
+        "goal-usage-snapshot.json",
+        "docs/RUN_008_REPORT.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    },
+    {
+      "name": "localPreviewHTTPDoesNotProveActualManual",
+      "status": "PASS",
+      "observation": {
+        "scope": "Read-only HTTP byte correspondence only; no browser/native action or server restart; not actual install/assistive-tech verification.",
+        "rows": 3
+      },
+      "evidence": [
+        "local-preview-http-final.json",
+        "docs/RUN_008_REPORT.md"
+      ],
+      "passed": true,
+      "reviewArea": "documents"
+    }
+  ],
+  "checkSummary": {
+    "core": 64,
+    "historical": 52,
+    "documents": 19,
+    "total": 135,
+    "failed": 0
+  },
+  "findings": [],
+  "subAudits": {
+    "docs/evidence/run008/artifact-audit/core-audit.json": {
+      "sha256": "071ad0662a5b0e014655f875a6472213f80fe8d6d16cd9c348e9ade6b7f42853",
+      "result": "PASS"
+    },
+    "docs/evidence/run008/artifact-audit/historical-audit/report.json": {
+      "sha256": "39a56cc06870ad3c65cb7cccdd8d030452309f9df36eceb9768712e611146cb4",
+      "result": "PASS"
+    },
+    "docs/evidence/run008/artifact-audit/document-audit/report.json": {
+      "sha256": "0a9bb8a0541a5927a7b18fb9ee04e4b87b3f1e37174b777b15c4faebce309f0e",
+      "result": "PASS"
+    }
+  },
+  "hashComparisons": {
+    "coreSHA256": 575,
+    "historicalSHA256": 511,
+    "totalSHA256Comparisons": 1086,
+    "mismatches": 0,
+    "note": "Repeated references are included; this is not a unique-file count.",
+    "coreDetail": "docs/evidence/run008/artifact-audit/hash-checks.json",
+    "historicalDetail": "docs/evidence/run008/artifact-audit/historical-audit/hash-checks.json"
+  },
+  "historicalGitPreservation": {
+    "gitBlobComparisons": 2970,
+    "uniqueHistoricalPaths": 1759,
+    "refs": [
+      "38f37d4",
+      "run-004-v0.5.0-dev",
+      "run-005-v0.6.0-dev",
+      "run-006-v0.7.0-dev",
+      "run-007-v0.8.0-dev"
+    ],
+    "mismatches": 0,
+    "report": "docs/evidence/run008/artifact-audit/historical-audit/report.json"
+  },
+  "finalFrozenInputs": {
+    "engineFreeze": "docs/evidence/run008/v0.9-engine-freeze.json",
+    "engineFreezeSHA256": "755cfc26c9240f5e963181a9e1c2dbd11f579a7cda92b4469793892147935560",
+    "productFiles": 18,
+    "toolFiles": 13,
+    "frozenArchive": "docs/evidence/run008/v0.9-before-blind-v10-engine",
+    "originalDatasetFreeze": "docs/evidence/run008/blind-v10-freeze.json",
+    "originalDatasetFreezeSHA256": "611ad5bd36a99baf8d413fc4aeb093d1304055fc1d0d80dc277b375fada8bc44",
+    "protocolDatasetFreeze": "docs/evidence/run008/blind-v10-freeze-protocol.json",
+    "protocolDatasetFreezeSHA256": "c7313d1ee6887f27a162c4ec927c21ad7738a1d40609f191d0c2d562e5d29910",
+    "identicalDatasetPathHashPairs": 388,
+    "staticQAArtifacts": 17,
+    "earlierPreExecutionErrorRetained": true,
+    "firstActualReport": "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+    "firstActualReportSHA256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131"
+  },
+  "candidateArchive": {
+    "path": "output/run008/EasyWeb-0.9.0-candidate.zip",
+    "bytes": 478876,
+    "sha256": "23e6f3e03d3aee061a2cd1912bed6612dce18853579ba8f85e41b1a39ed68c08",
+    "exactDistEntries": 5,
+    "zipContentEqualsCurrentDist": true,
+    "manifestSourceDistZipIdentical": true,
+    "deterministicMetadataVerified": true,
+    "savedDoubleBuildDoubleArchiveRecordVerified": true,
+    "reviewerRebuilt": false,
+    "entryDetail": "docs/evidence/run008/artifact-audit/zip-entries.json"
+  },
+  "currentEvidence": {
+    "localTests": "409/409;unexpected/flaky/skipped0",
+    "automaticAccessibility": "21 conditions;error/violation/incomplete0",
+    "coreDevelopment": "72/74 precision counts;45/45 recall counts;15 task recommendations",
+    "known55Development": "institution257/260;153/155;55/55 recommendations;individual failures preserved",
+    "knownV8Regression": "15/15 previous to14/15 current;local IT board search outside first six",
+    "freshFirst": "26/28;2/15;0/5 recommendations;all five institutionsFAIL",
+    "freshAdditionalMenusSeparate": "32/40;3/15;0/5;unresolved mappings9/fallback repeated keys4;same-source duplication not established",
+    "publicLiveArrival": "15/15;HTTP9/original guidance6;not business completion or human success",
+    "syntheticPerformance": "existing analyzer/overlay thresholdsPASS;separate full pipeline300ms diagnosticFAIL(institution575.9ms,generic437.9ms)",
+    "nativeInstallVoiceOverActualZoom": "NOT_RUN",
+    "pretestAndFormalObservations": "0 and0",
+    "exposedSourcePagesAfterFirst": 60
+  },
+  "postFirstDiagnosis": {
+    "path": "docs/evidence/run008/post-first-diagnosis/diagnosis.json",
+    "sha256": "9b3e2b2dea99c5622e09b6c3abe2eb058104679d89c405593a0eebb144671b5c",
+    "staticBeforeTrace": "docs/evidence/run008/post-first-diagnosis/static-diagnosis-before-trace.json",
+    "developmentTrace": "docs/evidence/run008/post-first-trace/trace.json",
+    "traceSHA256": "99090ed5699a56a49f61a66b765014005f14f28fed8455b8e98467ab49442632",
+    "confirmedPartition": {
+      "classifiedButOverflowObserved": 1,
+      "rawCollectedButUnclassifiedConfirmedBySeparateTrace": 12,
+      "notExtractedConfirmedBySeparateTrace": 0,
+      "expectedSourceWrongContractObserved": 0,
+      "unobservedAcrossAllMenusObserved": 12
+    },
+    "scope": "Separate post-exposure development diagnosis only;the first quality result is not overwritten or rescored."
+  },
+  "markdownLinks": {
+    "filesScanned": 26,
+    "localReferencesChecked": 539,
+    "brokenCount": 0,
+    "detail": "docs/evidence/run008/artifact-audit/document-audit/markdown-links.json",
+    "externalURLsAndAnchorsNotChecked": true,
+    "finalReviewSelfHashExcludedToAvoidCircularity": true
+  },
+  "auditedDocumentSHA256": {
+    "AGENTS.md": "8dff1d4595eeaf416d238f9d0012a1dac4123009c523a82b348a5adcff464ec7",
+    "README.md": "a3d08ed4962164ce79efce3a10f2b728dd996954bc6ae5b89260a90ab81b0d68",
+    "docs/ACCESSIBILITY.md": "283cd2da9556ea77ef5ca43ce5a29df29c355c13546f6ed58456cb085a789470",
+    "docs/ACTION_POLICY.md": "f2dfe322e042cd48a95fc644ecf58e23337403d8edfb5c4f6d9c3a6e36dd4cb2",
+    "docs/DEVELOPMENT_PLAN.md": "de4249a2e164db58935398ece49ff3cb0d8d7848b89c069b10f32dd57582d3c8",
+    "docs/EXECUTION_BUDGET.md": "3faa1ed04875d4847c7252c86e9d68798b8b021f616de45150a3a4cb88be24ba",
+    "docs/INSTALL.md": "289e921bea267eda8eba71f9effbbe8190488475d74bd57022576e0f01cc6152",
+    "docs/INSTITUTION_ADAPTER_PLAN.md": "dfc2a45e1a4a2338c075ee0aa8273c9008b3b093b29822052ff41030b65dcb66",
+    "docs/MANUAL_CHECK.md": "e854404857dfc348c5f2f9070553506856a723034122584b080bddecbd02fe28",
+    "docs/PRETEST.md": "12318308426fdbd824f24d0f970d050371fa333ba435d934af923dfc6cd759ec",
+    "docs/PROGRESS.md": "f7865960940bf80038b0460b2ed1b60fc5163a1ee4ee059bc66f4dd943ac10de",
+    "docs/RUN_001_REPORT.md": "8e86926f3438358b7f0861abb168e5305cdae89871b352dce9368f84d8827011",
+    "docs/RUN_002_REPORT.md": "ccf1b34fd7dea0c27dc80b205dd931607e9efe12cf8606d240122ebabddc8498",
+    "docs/RUN_003_REPORT.md": "3747f35d5c94e0d885d12b56b90605b9a56cfe8ea601592252be340b06518631",
+    "docs/RUN_004_REPORT.md": "7b1e948d8293fd5d5bef5a21ec5ce4004e60dc823ad14332627b01cad167f7bb",
+    "docs/RUN_005_REPORT.md": "88337e9fb9644a18d150b10028dabed10e047da16dc12d2eb396de9bf9ebb087",
+    "docs/RUN_006_REPORT.md": "a98acf4d1eb3490f54d8872af0ca615cc201f766d151e5ffbbe6967f241a60ca",
+    "docs/RUN_007_REPORT.md": "787c4b39f5ee1ded275dd2e95f3a94f4f37991e1de733dd7422bb6c2e00226f4",
+    "docs/RUN_008_REPORT.md": "a82427dbb1aee5b83d50655067b602e5086a442cb37a471800df67f02aedb33b",
+    "docs/SUPPORT_MATRIX.md": "94fa0bbd926ddfe353760023d59d10d18d05f4fd87388f5157518c82061fc6c5",
+    "docs/USER_STUDY.md": "bdb0bc717b6ad33a24884e9b267e8eca6a043c46500cc469f29a5474bd2232a0",
+    "docs/VALIDATION.md": "af2a435ba475ebcd1ec697aeff54f8b6ee7e785ee36c0ab08f5fefd504765bf1",
+    "docs/WORK_SPEC.md": "8af28b477e8801ee30fbfcbc3ab5341596bff68441961b08bfe965506d5a93a5",
+    "evaluation/README.md": "d9ffef7a2cf46cc7b8518dc9a6087256c78a52831a5198c10d117443477e21e8",
+    "evaluation/pretest/result-form.blank.md": "5b94aa1da2538a0827f48ecea39a0f9eeb9d21d7c50f12540972d8d9db8e37b8",
+    "evaluation/study/tasks.md": "71c1730ba6e5d27835162a6a34668918dea2a27c7578887bc4dfe497ad1b9e81"
+  },
+  "resolvedDuringAudit": [
+    {
+      "file": "docs/PRETEST.md",
+      "issue": "Product acceptance NOT_EVALUATED conflicted with current NOT_MET",
+      "resolution": "Separate pretest NOT_EVALUATED from global5/10 NOT_MET."
+    },
+    {
+      "file": "docs/SUPPORT_MATRIX.md",
+      "issue": "Category-first summary omitted current content relevance tiers",
+      "resolution": "State content tier precedence and diversity within a tier."
+    },
+    {
+      "file": "docs/INSTALL.md",
+      "issue": "Category-first summary omitted current content relevance tiers",
+      "resolution": "State content tier precedence and diversity within a tier."
+    },
+    {
+      "file": "docs/SUPPORT_MATRIX.md",
+      "issue": "Fragment guidance did not distinguish another-document fragment",
+      "resolution": "Same-document fragment locate;different-document fragment normal navigation."
+    }
+  ],
+  "auditHarnessCorrections": {
+    "scope": "Auditor procedure assumptions only,not artifact/product mismatches",
+    "historicalReport": "docs/evidence/run008/artifact-audit/historical-audit/report.json",
+    "historicalPreservedAttempts": [
+      {
+        "attempt": 1,
+        "result": "AUDIT_HARNESS_PATH_ERROR",
+        "preservedAt": "docs/evidence/run008/artifact-audit/historical-audit/attempt-001-package-path-assumption",
+        "reason": "Historical archive.file is a basename; resolved relative to package metadata directory for the completed audit.",
+        "artifactMismatchConfirmed": false
+      },
+      {
+        "attempt": 2,
+        "result": "AUDIT_HARNESS_RECORD_SHAPE_ERROR",
+        "preservedAt": "docs/evidence/run008/artifact-audit/historical-audit/attempt-002-version-map-assumption",
+        "reason": "21 hash records were compared as objects instead of extracting sha256 and bytes; recorded actual hashes equal every declared hash field.",
+        "artifactMismatchConfirmed": false
+      },
+      {
+        "attempt": 3,
+        "result": "COMPLETED"
+      }
+    ],
+    "finalAssembly": {
+      "firstAttempt": "The merger expected every child check to use passed;the document audit uses status=PASS. It stopped before overwriting the pending final report.",
+      "resolution": "Normalize child check status to an explicit passed boolean;original child reports are unchanged."
+    }
+  },
+  "closingSourceToolSHA256": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "fdf4ed47f0e4cd5d4aa8b3de503dc6c1bd84998830860ceca2849fdb71faf3a6",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "53670fb11c1d7908a401a864a4d2cb9379eac7eb540580b664d50f53043919c8",
+    "src/content-evidence.ts": "b6b7dda68f0bffaa045ce4b5a5674ec17096d9fe86e2822dca96ff455891f105",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+    "src/institution-evidence.ts": "c577aedbe6d54df2efc1d93c68fabc494a16befb07f761114d209d6d43d630ff",
+    "src/navigation-utility.ts": "d4ad0d0e26540e9eb949dc783ea23c763452c2c798e2a502828f7381a5e225aa",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "75b5cfbb60b7580f3617fbcc66f5abb93405a171978f13463ff30b758baa7314",
+    "src/ranker.ts": "1d4d0e122de9cc744f9beacd563ba09902fbdbfdf9bdc9b0ee1e98a99fcfc29a",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "0471b5b8687eadf2a73efafe03f436e2f852fec9f41d67d78aea07b5473c9849",
+    "extension/manifest.json": "80ae41bed3ffcc5c442f254a3661c5bcea0f3ff2df33970706ccd31b9563f91f",
+    "scripts/evaluate.mjs": "fabec6f673dc1cd54748d238b3d1425c7b77dffa8b60781dc34e90be99df5fc1",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4",
+    "scripts/compare-development.mjs": "f9efa761c53384727da90d2c2d8fcf3e824aa31942c5c4b50004ce0b9301f29a",
+    "scripts/benchmark-institution.mjs": "d9e584d2c2f44ac5a1ddc1b2bbbecd63a0ee766f1507fd9011a8777a49ad3403",
+    "scripts/verify.mjs": "2b362b509841f8be9e48c497812cd639f2637e45b32279550757a60c74bdfe83",
+    "scripts/build.mjs": "a6dc21032ff7dcbcedfd7405993746ad5a0b1bad695981d138343a87bcebeb76",
+    "scripts/package.mjs": "8e623c9487dcd5e0495f9229eb12de79d19bb6edd79998d4e41843e2803def50",
+    "package.json": "0ac01e9af59dd901313c15320c380bf21cba8ee366e774d5a7afa583ba23e000",
+    "package-lock.json": "7067db4de9f036a419aaa58acadcb7bec48923202759b1dccd4ef9329f73f0c7",
+    "tsconfig.json": "7bda7820be6fd2a8acf5f0b897f8846e40dcb09347f9ca69554f4f140b088817",
+    "evaluation/protocol-tests.mjs": "dbdf551fa705bed2cbc1b209c66cf45184465f18ea85cf8bce38f13c7d64620c"
+  },
+  "limits": [
+    "Artifact consistency is separate from original quality/performance/accessibility/native/human acceptance;overall result remains5/10 NOT_MET.",
+    "This audit did not rebuild or rerun product/test/benchmark/live/native/browser actions.Saved source-bound validation records and exact artifact bytes were checked.",
+    "The first preproduct schema error is retained as execution setup failure,separate from the first actual quality FAIL.Protocol conversion retains identical388path/hash pairs.",
+    "Fresh evaluation results are development-exposed now.Diagnosis and the root stage trace are not new independent quality samples.",
+    "Menu-flow unresolved9/repeated4 retain text-based source ambiguity;they do not establish unsafe execution or repeated same-source activation.",
+    "Read-only bits are filesystem permission observations,not proof against privileged future modification.",
+    "Git checks cover explicit baseline/tag historical paths.Current product sources are checked against their own final freeze,not historical versions.",
+    "Markdown local-file existence is checked;external URLs,section anchors and browser outcomes are not.",
+    "Usage snapshot is a partial1449.073-second boundary;whole-run elapsed and account billing/input/output/cache/cost remainUNKNOWN.",
+    "No inference of authentication/application/payment/download execution,installed-extension behavior or human success is added."
+  ]
+}

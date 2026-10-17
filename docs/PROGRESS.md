@@ -1,36 +1,40 @@
 # EasyWeb 단계별 진행표
 
-최종 갱신: 2026-10-18 · RUN-007 / v0.8.0
+최종 갱신: 2026-10-18 · RUN-008 / v0.9.0
 
-기준: [명세](WORK_SPEC.md) · [현재 보고서](RUN_007_REPORT.md) · [직전 안전 수정](RUN_006_REPORT.md) · [예산](EXECUTION_BUDGET.md)
+기준: [명세](WORK_SPEC.md) · [현재 보고서](RUN_008_REPORT.md) · [예산](EXECUTION_BUDGET.md)
 
-**완료5/10 · 전체 인수NOT_MET.** 기관 의미 보정·필터 순서를 구현했다. 로컬311/311·자동접근성21조건·합성성능3종·실제 공개과제15/15는PASS다. 알려진50페이지227/231정확·139/140재현과 새 독립v9-v2 첫26/30·2/15·0/5 FAIL을 구분한다. 단계 수는 공수 비율이 아니다.
+**완료5/10 · 전체 인수NOT_MET.** 본문관계·준비첨부·경로/펼침메뉴 구분과 노드교체 방어를 구현했다. 로컬409/409·자동접근성21조건·기존합성성능·실제공개과제15/15 PASS다. 알려진55페이지257/260정확·153/155재현과 새독립v10 첫26/28·2/15·0/5 FAIL을 구분한다. 단계수는 공수비율이 아니다.
 
 | ID | 상태 | 증거와 남은 항목 |
 | --- | --- | --- |
 | S01 | DONE | 명세·예산·기준선 보존 |
-| S02 | DONE | 원본core15·45기대·15과제와 모든 최초분리 보존. 이제 고유55페이지 개발노출, 정정판 중복0 |
-| S03 | DONE | 입력 제외·DOM·관계 현재성·교체·stale 회귀 |
-| S04 | DONE | 분류·순위·중복·최대6+다른메뉴. 새 품질은S07 |
-| S05 | DONE / 정의 범위 | RUN-006 다운로드 안전 수정 유지. 새15expected의 원본 action 일치; 실제 업무/파일 실행 보증 아님 |
-| S06 | NEEDS_MANUAL | 현재0.8 자동21조건 미달0. 실제VoiceOver·브라우저확대NOT_RUN |
-| S07 | IN_PROGRESS / NOT_MET | core72/74·45/45·15추천, 실제공개15/15. 새v9-v2 최초26/30·2/15·0/5로 모든사이트FAIL, 추가5/15와 별도 |
-| S08 | NEEDS_MANUAL | 현재0.8 원래Manifest 설치·toolbar·단축키·복구NOT_RUN |
-| S09 | NEEDS_USER | 1인 시험·정식6~8명 모두 실제0건. 준비는 실증이 아님 |
-| S10 | IN_PROGRESS | v0.8 ZIP·해시·동결·보고서 제공. S06~S09 필수 인수 미달 |
+| S02 | DONE | core15·이후최초분리·원본/정정판 보존, 이제고유60페이지개발노출 |
+| S03 | DONE | 입력제외·원본/본문관계의 실제노드현재성·교체회귀 |
+| S04 | DONE | 분류·순위·중복·최대6+다른메뉴. 새품질과검색회귀는S07 |
+| S05 | DONE / 정의범위 | 위험/입력/원본액션 정책 유지, 실제업무·파일실행 보증아님 |
+| S06 | NEEDS_MANUAL | 현재0.9 자동21조건미달0, 실제VoiceOver·확대NOT_RUN |
+| S07 | IN_PROGRESS / NOT_MET | core45/45·기존공개15/15. 새v10 첫2/15·0/5 모든기관FAIL, knownv8검색회귀14/15 |
+| S08 | NEEDS_MANUAL | 현재0.9 원래Manifest설치·toolbar·복구NOT_RUN |
+| S09 | NEEDS_USER | 1인시험·정식6~8명 모두 실제0건, 준비는실증아님 |
+| S10 | IN_PROGRESS | v0.9 ZIP·해시·동결·보고서제공, 필수인수미달 |
 
 ## 다음 실행
 
-1. v9-v2 첫FAIL을 그대로 두고 다음 버전에서10개 미분류와3개 첫화면밖 기능을 구분해 고친다. 원본 제어는 모두 수집됐고 기관adapter는 새5페이지에0회 적용됐다. 단순히 max6을 늘려도10개 미분류는 해결되지 않는다.
-2. 설명 패널의 실제 제목·fragment 관계, 인쇄/복사 안내, 행동요령 안내 자료를 지원하되 실제 납부/환급 업무 제어와 설명 읽기를 분리한다. 고정 ID·query값·정답순서 특례를 만들지 않는다. 위험/입력/액션 정책은 유지한다.
-3. 종전55페이지는 개발 자료다. 다음 미노출 평가를 만들 경우 코드와 자료를 먼저 고정하고 첫 결과를 보존한다. 알려진 실패를 새 독립 통과로 바꾸지 않는다.
-4. 컴퓨터유즈 없이 계속한다. [수동확인](MANUAL_CHECK.md)·[1인시험](PRETEST.md)의 실제 관찰만 따로 받는다. 현재 설치·발화·확대NOT_RUN, 사전/정식실증0이다.
+1. 새v10 첫FAIL을 보존하고12개미분류와1개첫화면밖을 고친다. [개발실행추적](evidence/run008/post-first-trace/trace.json)에서수집누락0·관찰된액션계약차이0을확인했고, [정적진단](evidence/run008/post-first-diagnosis/diagnosis.json)은원본대응모호성도분리했다. 현재60페이지는 개발자료이며 같은자료 개선을 독립통과로 부르지 않는다.
+2. v8의 대학게시판검색이 문서6개때문에 추가메뉴로 밀리는15/15→14/15 회귀를 수정한다. 본문관련성을 삭제하거나 정답순서특례를 쓰지 않고 같은본문의실제제어를 함께 다룬다.
+3. 전체분석+분류+순위300ms 추가진단은 기관575.9ms·범용437.9ms로FAIL이다. 현재성/입력보호를 유지하며 중복DOM순회를 줄인다. 기존분석300/준비1000ms PASS와 분리한다.
+4. 컴퓨터유즈없이 계속한다. 현재설치·발화·확대NOT_RUN, 사전/정식실증0이다. [수동확인](MANUAL_CHECK.md)·[1인시험](PRETEST.md)은 실제관찰만 따로 기록한다.
 
-## RUN-007 증거
+## RUN-008 증거
 
-[보고서](RUN_007_REPORT.md) · [동결v2](evidence/run007/v0.8-engine-freeze-v2.json) · [로컬311](evidence/run007/local-verification.json) · [24개 개발비교](evidence/run007/final-development/summary.json) · [새 첫FAIL](evidence/run007/blind-v9-v2-first-evaluated/command-completion.json) · [독립 정적소스 검토](evidence/run007/final-source-review/review.json) · [패키지](../output/run007/EasyWeb-0.8.0-candidate.json) · [인수](evidence/run007/release-gate.json) · [무결성](evidence/run007/final-review.json)
+[보고서](RUN_008_REPORT.md) · [18제품파일동결](evidence/run008/v0.9-engine-freeze.json) · [409검사](evidence/run008/local-verification.json) · [26개개발비교](evidence/run008/first-development-comparison/summary.json) · [새첫FAIL](evidence/run008/blind-v10-first-evaluated/command-completion.json) · [독립24검사](evidence/run008/independent-reading-safety/review.json) · [패키지](../output/run008/EasyWeb-0.9.0-candidate.json) · [인수](evidence/run008/release-gate.json) · [산출물감사](evidence/run008/final-review.json) · [계측경계](evidence/run008/goal-usage-snapshot.json)
 
-새 데이터의 staticQA 이름3/범위1 보정은 제품 실행 전에 별도v2로 고정했다. 첫 command의 flat경로 오류는 제품실행 전이며 점수FAIL과 구별한다. 경로도구만 고치고 동일15소스로 첫 실제 평가를 했다. 넓은 안내분류 시험313통과/3실패는 폐기·보존했고 최종311을 다시 통과했다. [시간/토큰 경계](evidence/run007/goal-usage-snapshot.json)의 누적counter를 계정 소비량으로 쓰지 않는다.
+자료388파일과QA는정정0으로고정했다. 첫113ms명령은동결필드형식차이로브라우저/제품실행전에종료했다. 별도동일388항목호환기록으로제품/도구/자료변경없이첫실제평가했다. 오류시도·원래동결·첫결과는읽기전용보존한다. 최대6/최초품질기준과원래10단계목표를유지한다.
+
+## RUN-007 과거 증거
+
+[보고서](RUN_007_REPORT.md) · [311검사](evidence/run007/local-verification.json) · [당시50페이지비교](evidence/run007/final-development/summary.json) · [v9-v2첫26/30·2/15·0/5 FAIL](evidence/run007/blind-v9-v2-first-evaluated/command-completion.json) · [당시인수](evidence/run007/release-gate.json). 현재같은v9개발30/30·15/15·5/5는최초결과를대체하지않는다.
 
 ## RUN-006 과거 증거
 
@@ -119,4 +123,4 @@ v0.7 다운로드 연결 수정으로 S05를 정의 범위에서 재완료했고
 
 ## 재개용 지시문
 
-> WORK_SPEC·PROGRESS·RUN_007_REPORT· post-first 두 진단을 읽고 v0.8의 다음 버전 개발을 계속해줘. 원본55페이지와 모든 동결·첫FAIL·ZIP을 보존해. v9-v2는 첫26/30·2/15·0/5 FAIL,10개 미분류+3개 첫화면밖이며 이제 개발노출 자료야. max6+다른메뉴·일반링크 직접이동·입력/위험/현재성 보호를 유지하고 기관명·정답위치 특례 없이 설명관계와 문서제어를 개선해. 현재5/10·NOT_MET이며 실제설치·발화·확대·사람실증은0건/NOT_RUN이야. 컴퓨터유즈 없이 계속하고 본래10/10 목표나 인수 조건을 축소하지 마.
+> WORK_SPEC·PROGRESS·RUN_008_REPORT와run008 post-first 진단을 읽고 개발을 계속해줘. 현재v0.9·5/10·NOT_MET, 고유60페이지개발노출이야. 모든원본/동결/첫FAIL/ZIP을보존해. v10첫26/28·2/15·0/5, 추가32/40·3/15·0/5(대응모호9/반복표시4)와분리해. 같은본문검색회귀(v8 15→14/15)와 전체pipeline300ms초과를 고쳐. max6+다른메뉴·일반링크직접이동·입력/위험/현재성보호를유지하고 정답위치/불투명query특례를만들지마. 현재설치/발화/확대NOT_RUN·사람실증0건이며 컴퓨터유즈없이 원래10/10목표와인수조건을유지해.

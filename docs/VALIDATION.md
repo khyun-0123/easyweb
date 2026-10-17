@@ -1,8 +1,17 @@
-# 현재 검증: RUN-007 · v0.8.0
+# 현재 검증: RUN-008 · v0.9.0
+
+**완료5/10 · 인수NOT_MET.** [현재 보고서](RUN_008_REPORT.md): 로컬409/409·자동접근성21조건미달0·기존합성성능3종·실제공개과제15/15 PASS. 기관1000제어기존기준PASS, 전체pipeline300ms추가진단은기관575.9/범용437.9ms FAIL이다.
+
+알려진55페이지257/260정확·153/155재현은개발결과다. v8검색이15/15→14/15로첫화면밖에밀리는회귀를남긴다. [새v10첫결과](evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json)는26/28·2/15·0/5 FAIL, 추가메뉴32/40·3/15·0/5와분리한다. 대응모호9/반복표시4는별도진단대상이다. 이제60고유페이지개발노출이며 원본/정정판/첫FAIL을모두보존한다. 실제설치·발화·확대NOT_RUN, 1인/정식실증각0건. [패키지](../output/run008/EasyWeb-0.9.0-candidate.json) · [인수](evidence/run008/release-gate.json)
+
+## RUN-007 과거 기록
+
+# RUN-007 · v0.8.0 당시 검증
 
 **완료5/10 · 인수NOT_MET.** [현재 보고서](RUN_007_REPORT.md): 로컬311/311, 자동접근성21조건 미달0, 합성성능3종과 실제 공개과제15/15 PASS. 기관1000제어의 기존 분석/준비 기준도PASS지만 전체pipeline300ms 추가진단은413.8ms로FAIL이다.
 
 알려진50페이지 기관모드227/231정확·139/140재현은 개발 결과다. [새v9-v2 첫 평가](evidence/run007/blind-v9-v2-first-evaluated/evaluation-current-institution-blind-v9-v2-holdout.json)는26/30·2/15·0/5 FAIL, 추가60/73·5/15·2/5와 분리한다. 고유55페이지가 노출됐고 원본·정정판·첫FAIL을 모두 보존한다. 현재0.8 실제 설치·발화·확대NOT_RUN, 1인/정식실증 각0건. [패키지](../output/run007/EasyWeb-0.8.0-candidate.json) · [최종검토](evidence/run007/final-review.json)
+
 
 ---
 

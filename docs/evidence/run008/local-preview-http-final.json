@@ -1,0 +1,33 @@
+{
+  "checkedAtUtc": "2026-10-17T19:40:02.551890+00:00",
+  "rows": [
+    {
+      "url": "http://127.0.0.1:4173/",
+      "status": 200,
+      "bytes": 4138,
+      "file": "demo/index.html",
+      "matchesDisk": true,
+      "sha256": "abb16fa9c1a94911828155e7b6fea818bea6840eb194e5618767fc0e5dcb0563"
+    },
+    {
+      "url": "http://127.0.0.1:4183/manual-check.html",
+      "status": 200,
+      "bytes": 12499,
+      "file": "demo/manual-check.html",
+      "matchesDisk": true,
+      "sha256": "5fede1b0e9e64f6707467ed94b31b4c6cb0ae9850616808e430bf4d35b6550a3"
+    },
+    {
+      "url": "http://127.0.0.1:4183/content.js",
+      "status": 200,
+      "bytes": 172245,
+      "file": "dist/content.js",
+      "matchesDisk": true,
+      "sha256": "25788c88423f7ec3c510648a0acf20da91811ceb4d716612ca4f87aad92cb2be"
+    }
+  ],
+  "status": "PASS",
+  "previousAttempt": "docs/evidence/run008/local-preview-http.json",
+  "correction": "First request incorrectly assumed /dist/content.js; actual serve-demo route is /content.js. Original404 preserved; server configuration unchanged.",
+  "scope": "Read-only HTTP byte correspondence only; no browser/native action or server restart; not actual install/assistive-tech verification."
+}

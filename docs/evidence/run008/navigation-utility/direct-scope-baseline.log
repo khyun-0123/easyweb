@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+(node:18657) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/navigation-utility.spec.mjs:80:1 › 아래쪽 무관한 list·article heading은 직접 제어 관계를 대신하지 않는다 (93ms)
+
+
+  1) tests/navigation-utility.spec.mjs:80:1 › 아래쪽 무관한 list·article heading은 직접 제어 관계를 대신하지 않는다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Array [
+    -   null,
+    -   null,
+    +   "branch",
+    +   "position",
+      ]
+
+      80 | test('아래쪽 무관한 list·article heading은 직접 제어 관계를 대신하지 않는다',async({page})=>{
+      81 |   await setup(page,`<ul><li><a id="unrelated-list" href="javascript:;">문서 구분</a><div><ol>${children}</ol></div></li></ul><a id="deep-heading" href="#ambiguous-target">Jump to content</a><div id="ambiguous-target"><section><article><h3>별도 자료 설명</h3></article></section></div>`);
+    > 82 |   expect(await inspect(page,[['unrelated-list','문서 구분'],['deep-heading','Jump to content']])).toEqual([null,null]);
+         |                                                                                               ^
+      83 | });
+      84 |
+        at /Users/khyun_03/easyweb/tests/navigation-utility.spec.mjs:82:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-utility-아래쪽-무관한-d3c5d-heading은-직접-제어-관계를-대신하지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-utility-아래쪽-무관한-d3c5d-heading은-직접-제어-관계를-대신하지-않는다/error-context.md
+
+  1 failed
+    tests/navigation-utility.spec.mjs:80:1 › 아래쪽 무관한 list·article heading은 직접 제어 관계를 대신하지 않는다 ──────

@@ -60,11 +60,112 @@
     }
   }
 
+  // src/navigation-utility.ts
+  var editable = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var form = 'form,[role~="form" i]';
+  var listSelector = 'ul,ol,[role~="list" i],[role~="menu" i]';
+  var itemSelector = 'li,[role~="listitem" i],[role~="menuitem" i]';
+  var regionSelector = 'main,section,article,aside,header,footer,nav,[role~="main" i],[role~="region" i],[role~="navigation" i]';
+  var headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
+  var breadcrumbName = /^(?:breadcrumbs?(?:\s+(?:trail|navigation))?|현재\s*위치(?:\s*안내)?|사이트\s*경로)$/i;
+  var breadcrumbClass = /^(?:breadcrumbs?|breadcrumb[-_]nav(?:igation)?|breadcrumb[-_]trail)$/i;
+  var noOpScript = /^javascript:\s*(?:;|void\s*\(\s*0\s*\)\s*;?)?$/i;
+  function visibleSource(element) {
+    return element.isConnected && !element.closest('[hidden],[inert],[aria-hidden="true" i],[aria-disabled="true" i]') && !!element.getClientRects().length && getComputedStyle(element).visibility !== "hidden";
+  }
+  function uniqueTarget(id) {
+    if (!id || id.length > 128) return;
+    const nodes = document.querySelectorAll(`#${CSS.escape(id)}`);
+    return nodes.length === 1 && nodes[0] instanceof HTMLElement ? nodes[0] : void 0;
+  }
+  function fragmentTarget(element) {
+    const raw = element.getAttribute("href")?.trim() ?? "";
+    if (!raw.startsWith("#") || raw.length < 2) return;
+    try {
+      return uniqueTarget(decodeURIComponent(raw.slice(1)));
+    } catch {
+      return;
+    }
+  }
+  function directItems(list) {
+    if (!list.matches(listSelector) || list.matches('[role~="tabpanel" i],[role~="listbox" i]')) return [];
+    const children = [...list.children];
+    return children.length > 0 && children.length <= 24 && children.every((child) => child instanceof HTMLElement && child.matches(itemSelector)) ? children : [];
+  }
+  function menuList(list) {
+    if (list.closest(`${editable},${form},article,[role~="article" i]`) || list.querySelector(`${editable},${form}`)) return false;
+    const items = directItems(list);
+    return items.length > 0 && items.every((item) => item.matches('a[href],button,[role~="button" i]') || !!item.querySelector(':scope > a[href],:scope > button,:scope > [role~="button" i],:scope > div > a[href]'));
+  }
+  function breadcrumb(element) {
+    const list = element.closest('ol,ul,[role~="list" i]');
+    if (!list) return false;
+    const items = directItems(list);
+    if (!items.length || items.length > 12 || element.closest(itemSelector)?.parentElement !== list) return false;
+    for (let container = list, level = 0; container && level < 4; container = container.parentElement, level++) {
+      if (container.matches("main,section,article,body")) break;
+      const navigation = container.matches('nav,[role~="navigation" i]');
+      if (breadcrumbName.test(container.getAttribute("aria-label") ?? "") && (navigation || container === list)) return true;
+      if (navigation && items.length >= 2 && (container.getAttribute("class") ?? "").split(/\s+/).some((token) => breadcrumbClass.test(token))) return true;
+    }
+    return false;
+  }
+  function skipKind(label) {
+    if (/^(?:본문(?:\s*내용)?|주요\s*(?:내용|콘텐츠)|콘텐츠)(?:\s*(?:으로|로))?\s*(?:바로\s*가기|이동|건너\s*뛰기)$/.test(label) || /^(?:(?:skip|jump|go)(?:\s+directly)?\s+to\s+(?:the\s+)?(?:main\s+)?content|skip\s+(?:the\s+)?navigation)$/i.test(label)) return "content";
+    if (/^(?:메뉴|주\s*메뉴|대\s*메뉴|주요\s*메뉴|메인\s*메뉴|내비게이션|네비게이션)(?:\s*(?:으로|로))?\s*(?:바로\s*가기|이동|건너\s*뛰기)$/.test(label) || /^(?:skip|jump|go)(?:\s+directly)?\s+to\s+(?:the\s+)?(?:main\s+)?(?:navigation|menu)$/i.test(label)) return "navigation";
+  }
+  function skipTarget(target, kind) {
+    if (!visibleSource(target) || target.closest(`${editable},${form}`) || target.matches('a,button,[role~="button" i],[role~="tab" i],[role~="tabpanel" i]')) return false;
+    if (kind === "content" && target.matches('main,[role~="main" i]') || kind === "navigation" && target.matches('nav,[role~="navigation" i]')) return true;
+    if (!target.matches("div,section,ul,ol")) return false;
+    if (kind === "content") return !!target.querySelector(`:scope > ${headingSelector},:scope > div > ${headingSelector}`);
+    return menuList(target) || [...target.querySelectorAll(":scope > ul,:scope > ol,:scope > div > ul,:scope > div > ol")].some(menuList);
+  }
+  function locallyControlled(element) {
+    const ids = (element.getAttribute("aria-controls") ?? "").split(/\s+/).filter(Boolean);
+    if (ids.length !== 1) return;
+    const target = uniqueTarget(ids[0]);
+    if (!target || target === element || element.contains(target) || element.closest(regionSelector) !== target.closest(regionSelector)) return;
+    const parent = element.parentElement;
+    return parent && parent !== document.body && (target.parentElement === parent || !!element.closest(itemSelector)?.contains(target)) ? target : void 0;
+  }
+  function navigationUtility(element, label) {
+    if (!element.matches('a[href],button,[role~="button" i]') || !visibleSource(element) || element.closest(`${editable},${form}`) || element.querySelector(editable) || element instanceof HTMLButtonElement && !!element.form) return;
+    const name = label.normalize("NFKC").replace(/\s+/g, " ").trim();
+    if (!name || name.length > 100) return;
+    const anchor = element instanceof HTMLAnchorElement;
+    if (anchor) {
+      if ((element.getAttribute("rel") ?? "").split(/\s+/).some((token) => token.toLowerCase() === "home") || breadcrumb(element)) return "position";
+      const kind = skipKind(name), target = kind ? fragmentTarget(element) : void 0;
+      if (kind && target && skipTarget(target, kind)) return "position";
+    }
+    if (element.matches('[role~="tab" i]') || element.closest('dl,[role~="tabpanel" i]') || /[?？]$/.test(name)) return;
+    const raw = element.getAttribute("href")?.trim() ?? "";
+    if (anchor && raw && !raw.startsWith("#") && !/^javascript:/i.test(raw)) return;
+    const expanded = /^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "");
+    const popup = element.getAttribute("aria-haspopup")?.toLowerCase();
+    if (popup && popup !== "menu" && popup !== "true") return;
+    const controls = element.hasAttribute("aria-controls");
+    if (controls) {
+      const target = locallyControlled(element);
+      return expanded && target && menuList(target) ? "branch" : void 0;
+    }
+    if (expanded && raw.startsWith("#") && raw.length > 1) {
+      const target = fragmentTarget(element);
+      return target && target.parentElement === element.parentElement && menuList(target) ? "branch" : void 0;
+    }
+    const item = element.closest(itemSelector);
+    const direct = item && (element.parentElement === item || element.parentElement?.parentElement === item) ? item.querySelector(`:scope > :is(${listSelector})`) : null;
+    if (direct && menuList(direct) && anchor && (raw === "#" || noOpScript.test(raw))) return "branch";
+    const sibling = element.nextElementSibling;
+    if (expanded && sibling instanceof HTMLElement && menuList(sibling) && (popup === "menu" || popup === "true" || !!element.closest('nav,[role~="navigation" i]'))) return "branch";
+  }
+
   // src/analyzer.ts
   var clean = (text) => text.replace(/\s+/g, " ").trim().slice(0, 140);
   var editableRoleSelector = ["textbox", "searchbox", "combobox", "spinbutton", "slider"].map((role) => `[role~="${role}" i]`).join(", ");
   var editableSelector = `input, textarea, select, [contenteditable]:not([contenteditable="false" i]), ${editableRoleSelector}`;
-  var headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
+  var headingSelector2 = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
   var localRegionSelector = 'section, article, aside, [role~="region" i], [role~="article" i], [role~="complementary" i]';
   var informationConcept = /(?:행동\s*요령|안전\s*수칙|대처\s*(?:방법|요령)|이용\s*(?:안내|방법)|사용\s*설명서|instructions?|(?:action|safety)\s+tips?)(?:\s*(?:안내|모음))?$/i;
   var helpHeading = /^(?:자주\s*(?:찾는|묻는)\s*질문(?:\s*\(FAQ\))?|FAQ|Q\s*&\s*A|도움말|Help)$/i;
@@ -138,15 +239,15 @@
     const textual = element instanceof HTMLInputElement && ["text", "search"].includes(element.type) || element instanceof HTMLTextAreaElement || element.isContentEditable || element.matches('[role~="textbox" i], [role~="searchbox" i]');
     return textual && (element.matches('input[type="search"], [role~="searchbox" i]') || !!element.closest('[role~="search"], search') || searchCue(label) || searchCue(element.getAttribute("placeholder") ?? ""));
   }
-  function headingBelongsTo(heading, element) {
-    const region = heading.closest(localRegionSelector);
+  function headingBelongsTo(heading2, element) {
+    const region = heading2.closest(localRegionSelector);
     if (!region || region.contains(element)) return true;
     if (element.closest(localRegionSelector) || !region.matches("section")) return false;
     const onlyHeading = (node) => {
-      if (node === heading) return true;
+      if (node === heading2) return true;
       if (node.nodeType === Node.TEXT_NODE) return !(node.nodeValue ?? "").trim();
       if (!(node instanceof Element)) return true;
-      return node.contains(heading) && [...node.childNodes].every(onlyHeading);
+      return node.contains(heading2) && [...node.childNodes].every(onlyHeading);
     };
     return onlyHeading(region);
   }
@@ -157,16 +258,16 @@
     };
     let parent = element.parentElement;
     for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-      let headings2 = cache?.get(parent);
-      if (!headings2) {
-        headings2 = [...parent.querySelectorAll(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)].map((heading) => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) }));
-        cache?.set(parent, headings2);
+      let headings3 = cache?.get(parent);
+      if (!headings3) {
+        headings3 = [...parent.querySelectorAll(`:scope > ${headingSelector2}, :scope > :is(div,section) > ${headingSelector2}, :scope > :is(div,section) > :is(div,section) > ${headingSelector2}`)].map((heading2) => ({ element: heading2, label: clean(getSafeLabel(heading2)), visible: isVisible(heading2) }));
+        cache?.set(parent, headings3);
       }
-      const preceding = headings2.filter(({ element: heading, visible }) => {
-        let branch = heading;
+      const preceding = headings3.filter(({ element: heading2, visible }) => {
+        let branch = heading2;
         while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
-        if (branch !== heading && branch.contains(element)) return false;
-        return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && visible && headingBelongsTo(heading, element) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+        if (branch !== heading2 && branch.contains(element)) return false;
+        return !heading2.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && visible && headingBelongsTo(heading2, element) && !!(heading2.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
       });
       const label = preceding.at(-1);
       if (label) add(label.label);
@@ -186,10 +287,10 @@
     if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return "help";
     const words = (location.pathname.split("/").at(-1) ?? "").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2").replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase().split(/[^a-z]+/).filter(Boolean);
     if (words.some((word) => /^(?:instruction|instructions)$/.test(word)) || words.some((word, index) => word === "action" && /^tips?$/.test(words[index + 1] ?? ""))) return "help";
-    const headings2 = document.querySelectorAll(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
-    for (const heading of headings2) {
-      if (!isVisible(heading)) continue;
-      const text = clean(getSafeLabel(heading));
+    const headings3 = document.querySelectorAll(`main > ${headingSelector2}, [role~="main"] > ${headingSelector2}, .page-title > ${headingSelector2}`);
+    for (const heading2 of headings3) {
+      if (!isVisible(heading2)) continue;
+      const text = clean(getSafeLabel(heading2));
       if (text.length > 60) continue;
       if (/학사\s*일정|academic\s+calendar/i.test(text)) return "academic-calendar";
       if (helpHeading.test(text) || informationConcept.test(text)) return "help";
@@ -210,14 +311,14 @@
     return element.closest('footer, [role~="contentinfo"]') ? "footer" : element.closest('header, nav, [role~="navigation"], [role~="banner"]') ? "primary" : "body";
   }
   function isQuestionCollection(element) {
-    const marked = (control) => !![...control.querySelectorAll(":scope > abbr[title]")].find((marker) => /^(?:질문|question)$/i.test((marker.getAttribute("title") ?? "").trim()) && isVisible(marker));
+    const marked = (control2) => !![...control2.querySelectorAll(":scope > abbr[title]")].find((marker) => /^(?:질문|question)$/i.test((marker.getAttribute("title") ?? "").trim()) && isVisible(marker));
     if (!marked(element) || !element.matches('a, button, [role~="button"]') || candidateLabel(element).length < 4) return false;
     const list = element.closest('ul, ol, [role~="list"]');
     if (!list) return false;
     let count = 0;
     for (const row of list.querySelectorAll(':scope > li, :scope > [role~="listitem"]')) {
-      const control = row.querySelector(':scope > a, :scope > button, :scope > [role~="button"]');
-      if (control && marked(control) && candidateLabel(control).length >= 4 && ++count >= 2) return true;
+      const control2 = row.querySelector(':scope > a, :scope > button, :scope > [role~="button"]');
+      if (control2 && marked(control2) && candidateLabel(control2).length >= 4 && ++count >= 2) return true;
     }
     return false;
   }
@@ -233,8 +334,8 @@
     if (!summary) {
       const eligible = (peer) => !peer.closest(collectionExcludedSelector) && !((peer instanceof HTMLButtonElement || peer instanceof HTMLInputElement) && peer.form) && isInformationTopicLabel(candidateLabel(peer));
       const controls = tabs ? [...container.querySelectorAll('[role~="tab" i]')].filter((peer) => peer.closest(collectionSelector) === container && eligible(peer)) : [...container.querySelectorAll(':scope > li, :scope > [role~="listitem" i]')].flatMap((item) => {
-        const control = [...item.querySelectorAll(collectionControlSelector)].find((peer) => peer.closest(collectionSelector) === container && eligible(peer));
-        return control ? [control] : [];
+        const control2 = [...item.querySelectorAll(collectionControlSelector)].find((peer) => peer.closest(collectionSelector) === container && eligible(peer));
+        return control2 ? [control2] : [];
       });
       let peers = 0;
       let informationPeer = false;
@@ -263,9 +364,9 @@
   }
   function fixedHeadingLabels(container) {
     return [
-      ...container instanceof HTMLElement && container.matches(headingSelector) ? [container] : [],
-      ...container.querySelectorAll(headingSelector)
-    ].filter((heading) => !heading.closest(`${editableSelector},a,button,[role~="button" i],[role~="tab" i]`) && withinContentBranch(heading, container) && isVisible(heading)).map(getSafeLabel).filter((text) => text.length >= 2 && text.length <= 60);
+      ...container instanceof HTMLElement && container.matches(headingSelector2) ? [container] : [],
+      ...container.querySelectorAll(headingSelector2)
+    ].filter((heading2) => !heading2.closest(`${editableSelector},a,button,[role~="button" i],[role~="tab" i]`) && withinContentBranch(heading2, container) && isVisible(heading2)).map(getSafeLabel).filter((text) => text.length >= 2 && text.length <= 60);
   }
   function followingContentHeadings(container, cache) {
     let branch = container;
@@ -283,14 +384,14 @@
         summary = { ...summary, wrapperControls: [...parent.querySelectorAll(collectionControlSelector)] };
         cache?.set(parent, summary);
       }
-      if (summary.wrapperControls.some((control) => !branch.contains(control))) break;
+      if (summary.wrapperControls.some((control2) => !branch.contains(control2))) break;
       branch = parent;
     }
     return [];
   }
   function cardTitle(element, cache) {
     if (element.hasAttribute("aria-label") || element.hasAttribute("aria-labelledby")) return {};
-    const fixedTitles = (container) => [...container.querySelectorAll(`${headingSelector},strong,b`)].filter((node) => !node.closest(editableSelector) && withinContentBranch(node, container) && isVisible(node)).filter((node) => !node.parentElement?.closest(`${headingSelector},strong,b`)).map((node) => ({ node, label: clean(staticText(node)) })).filter(({ label }) => isInformationTopicLabel(label));
+    const fixedTitles = (container) => [...container.querySelectorAll(`${headingSelector2},strong,b`)].filter((node) => !node.closest(editableSelector) && withinContentBranch(node, container) && isVisible(node)).filter((node) => !node.parentElement?.closest(`${headingSelector2},strong,b`)).map((node) => ({ node, label: clean(staticText(node)) })).filter(({ label }) => isInformationTopicLabel(label));
     const titles = fixedTitles(element);
     if (titles.length === 1 && !element.querySelector(collectionControlSelector)) {
       const { node, label } = titles[0];
@@ -302,7 +403,7 @@
       if (parent.matches(`html,body,main,[role~="main" i],${contentBoundarySelector}`) || parent.childElementCount > 12) break;
       let summary = cache?.get(parent);
       if (!summary?.cardControls) {
-        summary = { ...summary, cardControls: [...parent.querySelectorAll(collectionControlSelector)].filter((control) => !!candidateLabel(control)) };
+        summary = { ...summary, cardControls: [...parent.querySelectorAll(collectionControlSelector)].filter((control2) => !!candidateLabel(control2)) };
         cache?.set(parent, summary);
       }
       if (summary.cardControls.length !== 1 || summary.cardControls[0] !== element) break;
@@ -320,17 +421,17 @@
       collectionPeers: []
     };
     if (!isInformationTopicLabel(candidateLabel(element))) return empty;
-    const references = (control) => (control.getAttribute("aria-controls") ?? "").split(/\s+/).filter(Boolean);
-    const contentTarget = (control, id) => {
+    const references = (control2) => (control2.getAttribute("aria-controls") ?? "").split(/\s+/).filter(Boolean);
+    const contentTarget = (control2, id) => {
       const target = document.getElementById(id);
-      if (!target || target === control || target.closest(editableSelector) || target.matches('html,body,main,[role~="main" i],a,button,[role~="button" i],[role~="tab" i]') || target.closest('article,aside,form,header,footer,nav,[role~="article" i],[role~="complementary" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i]') || target.closest('main,[role~="main" i]') !== control.closest('main,[role~="main" i]')) return;
+      if (!target || target === control2 || target.closest(editableSelector) || target.matches('html,body,main,[role~="main" i],a,button,[role~="button" i],[role~="tab" i]') || target.closest('article,aside,form,header,footer,nav,[role~="article" i],[role~="complementary" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i]') || target.closest('main,[role~="main" i]') !== control2.closest('main,[role~="main" i]')) return;
       return target;
     };
-    const controlsTarget = (control) => {
-      const ids = references(control);
-      return ids.length > 0 && ids.every((id) => !!contentTarget(control, id));
+    const controlsTarget = (control2) => {
+      const ids = references(control2);
+      return ids.length > 0 && ids.every((id) => !!contentTarget(control2, id));
     };
-    const expanded = (control) => /^(?:true|false)$/i.test(control.getAttribute("aria-expanded") ?? "");
+    const expanded = (control2) => /^(?:true|false)$/i.test(control2.getAttribute("aria-expanded") ?? "");
     const semanticCollection = element.closest(collectionSelector);
     let container = semanticCollection;
     if (!container) {
@@ -340,15 +441,15 @@
     if (!container || container.matches("body,main,section,article,form,header,footer") || container.childElementCount > 24) return empty;
     let summary = cache?.get(container);
     if (!summary?.topicControls) {
-      const controls2 = [...container.querySelectorAll(collectionControlSelector)].filter((control) => !control.closest(collectionExcludedSelector) && !(control instanceof HTMLButtonElement && control.form) && isInformationTopicLabel(candidateLabel(control)) && (semanticCollection ? control.closest(collectionSelector) === container : control.parentElement === container || control.parentElement?.parentElement === container));
+      const controls2 = [...container.querySelectorAll(collectionControlSelector)].filter((control2) => !control2.closest(collectionExcludedSelector) && !(control2 instanceof HTMLButtonElement && control2.form) && isInformationTopicLabel(candidateLabel(control2)) && (semanticCollection ? control2.closest(collectionSelector) === container : control2.parentElement === container || control2.parentElement?.parentElement === container));
       summary = { ...summary, topicControls: controls2 };
       cache?.set(container, summary);
     }
     const controls = summary.topicControls;
     if (controls.length < 2 || controls.length > 12 || !controls.includes(element)) return empty;
     if (!summary.followingHeadings) {
-      const headings2 = followingContentHeadings(container, cache);
-      summary = { ...summary, followingHeadings: headings2 };
+      const headings3 = followingContentHeadings(container, cache);
+      summary = { ...summary, followingHeadings: headings3 };
       cache?.set(container, summary);
     }
     const associatedHeadings = [...summary.followingHeadings];
@@ -358,23 +459,145 @@
         for (const label of fixedHeadingLabels(target)) if (!associatedHeadings.includes(label)) associatedHeadings.push(label);
       }
     }
-    const controlledTopic = controlsTarget(element) && controls.filter(controlsTarget).length >= 2 || expanded(element) && controls.filter(expanded).length >= 2 || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]') || !!element.closest('[role~="group" i]') && controls.every((control) => !!control.closest('[role~="group" i]'));
+    const controlledTopic = controlsTarget(element) && controls.filter(controlsTarget).length >= 2 || expanded(element) && controls.filter(expanded).length >= 2 || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]') || !!element.closest('[role~="group" i]') && controls.every((control2) => !!control2.closest('[role~="group" i]'));
     const linkedTopic = controlsTarget(element) || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]');
     const localParent = container.parentElement;
     const outsideCollection = localParent?.matches("div") ? [...localParent.children].filter((child) => child !== container) : [];
     const isolatedCollection = !outsideCollection.some((child) => child.matches(`${contentBoundarySelector},${editableSelector},${collectionControlSelector}`) || child.querySelector(`${contentBoundarySelector},${editableSelector},${collectionControlSelector}`));
-    const collectionPeers = semanticCollection && isolatedCollection && !container.querySelector(`form,[role~="form" i],${editableSelector}`) ? controls.map((control) => ({ label: candidateLabel(control), ...sourceAction(control, candidateLabel(control)), isLink: control.matches("a[href]") })) : [];
+    const collectionPeers = semanticCollection && isolatedCollection && !container.querySelector(`form,[role~="form" i],${editableSelector}`) ? controls.map((control2) => ({ label: candidateLabel(control2), ...sourceAction(control2, candidateLabel(control2)), isLink: control2.matches("a[href]") })) : [];
     return { topicPeers: Math.min(controls.length, 2), controlledTopic, linkedTopic, associatedHeadings, collectionPeers };
+  }
+  var preparationNodeIds = /* @__PURE__ */ new WeakMap();
+  var nextPreparationNodeId = 1;
+  function preparationNodeId(element) {
+    let id = preparationNodeIds.get(element);
+    if (!id) {
+      id = nextPreparationNodeId++;
+      preparationNodeIds.set(element, id);
+    }
+    return id;
+  }
+  function fixedPreparationName(element, limit) {
+    if (!isVisible(element) || element.closest(editableSelector) || element.querySelector(editableSelector) || element.hasAttribute("aria-labelledby")) return "";
+    const children = [...element.querySelectorAll("*")];
+    if (children.length > 16 || children.some((child) => child.matches("script,style,iframe") || !!clean(staticText(child)) && !isVisible(child))) return "";
+    const text = clean(getSafeLabel(element));
+    return text.length <= limit ? text : "";
+  }
+  function preparationDocumentTitle(text) {
+    if (text.length < 2 || text.length > 90) return false;
+    const start = text.search(/[([（]/);
+    let core = text;
+    if (start >= 0) {
+      core = text.slice(0, start).trim();
+      const pairs = { "(": ")", "[": "]", "\uFF08": "\uFF09" };
+      const expected = [];
+      for (const char of text.slice(start)) {
+        if (pairs[char]) {
+          expected.push(pairs[char]);
+          if (expected.length > 2) return false;
+        } else if (/[)\]）]/.test(char)) {
+          if (expected.pop() !== char) return false;
+        } else if (!expected.length && char.trim()) return false;
+      }
+      if (expected.length) return false;
+    }
+    return !/[.!?。？]/.test(core) && /(?:신청서|신고서|청구서|위임장|동의서|\b(?:application|declaration|claim|authorization|consent)\s+form)$/i.test(core);
+  }
+  function preparationPurposeName(text) {
+    return !!text && text.length <= 120 && /서식|신청서|신고서|청구서|\b(?:application|declaration|claim|authorization|consent)\s+forms?\b/i.test(text) && !/뉴스|보도|소프트웨어|설치\s*프로그램|보고서|\b(?:news|software|installers?|reports?|archives?)\b/i.test(text);
+  }
+  function preparationPurpose(table) {
+    if (table.caption) return preparationPurposeName(fixedPreparationName(table.caption, 120)) ? table.caption : void 0;
+    let parent = table.parentElement;
+    for (let level = 0; parent && parent !== document.body && level < 6; level++, parent = parent.parentElement) {
+      if (parent.matches('article,aside,nav,header,footer,[role~="article" i],[role~="navigation" i],[role~="banner" i],[role~="contentinfo" i]')) break;
+      const headings3 = [...parent.querySelectorAll(`:scope > ${headingSelector2}, :scope > div > ${headingSelector2}`)];
+      const heading2 = headings3.filter((node) => headingBelongsTo(node, table) && !!(node.compareDocumentPosition(table) & Node.DOCUMENT_POSITION_FOLLOWING)).at(-1);
+      if (heading2) return preparationPurposeName(fixedPreparationName(heading2, 120)) ? heading2 : void 0;
+      if (parent.matches('main,section,[role~="main" i],[role~="region" i]')) break;
+    }
+  }
+  function preparationDownloadMarker(element, name) {
+    const file = /\.(?:pdf|hwp|hwpx|docx?|zip)$/i;
+    const operation = /^(?:pdf|hwp|hwpx|docx?|zip)\s*(?:파일\s*|file\s*)?(?:다운로드|내려\s*받기|download)$/i;
+    if (file.test(name) || operation.test(name) || operation.test(element.getAttribute("title") ?? "") || file.test(element.getAttribute("download") ?? "")) return true;
+    try {
+      return file.test(new URL(element.getAttribute("href") ?? "", document.baseURI).pathname);
+    } catch {
+      return false;
+    }
+  }
+  function preparationAttachmentEvidence(element, cache) {
+    if (!(element instanceof HTMLAnchorElement) || !element.hasAttribute("href") || element.closest('article,aside,nav,header,footer,[role~="article" i],[role~="complementary" i],[role~="navigation" i],[role~="banner" i],[role~="contentinfo" i]')) return;
+    const row = element.closest("tr");
+    const table = row?.closest("table");
+    if (!(row instanceof HTMLTableRowElement) || !(table instanceof HTMLTableElement) || row.querySelector(`table,[role~="grid" i],${editableSelector}`)) return;
+    const name = fixedPreparationName(element, 100);
+    if (!name || sourceAction(element, name).action !== "locate" || !preparationDownloadMarker(element, name)) return;
+    let rowSummary = cache?.get(row);
+    if (!rowSummary?.preparationAttachments) {
+      const attachments = /* @__PURE__ */ new Map();
+      let tableSummary = cache?.get(table);
+      if (tableSummary?.preparationTable === void 0) {
+        const head = table.tHead;
+        const headers = head?.rows.length === 1 ? [...head.rows[0].cells] : [];
+        const names = headers.map((header) => fixedPreparationName(header, 40));
+        const titles = names.flatMap((label, index) => /^(?:제목|민원명|사무명|서식명|title|form\s+name)$/i.test(label) ? [index] : []);
+        const files = names.flatMap((label, index) => /^(?:첨부|첨부파일|서식|attachments?|files?|downloads?)$/i.test(label) ? [index] : []);
+        const purpose = preparationPurpose(table);
+        const valid = purpose && headers.length >= 2 && headers.length <= 12 && titles.length === 1 && files.length === 1 && headers.every((header, index) => header.matches("th") && !!names[index] && header.colSpan === 1 && header.rowSpan === 1);
+        tableSummary = { ...tableSummary, preparationTable: valid ? { headers, titleIndex: titles[0], attachmentIndex: files[0], purpose } : false };
+        cache?.set(table, tableSummary);
+      }
+      const layout = tableSummary.preparationTable;
+      const cells = [...row.cells];
+      if (layout && cells.length === layout.headers.length && cells.every((cell) => cell.colSpan === 1 && cell.rowSpan === 1 && isVisible(cell))) {
+        const titleCell = cells[layout.titleIndex], attachmentCell = cells[layout.attachmentIndex];
+        const titleControls = [...titleCell.querySelectorAll('a[href],button,[role~="button" i]')];
+        const title = titleControls[0] ?? titleCell;
+        const label = titleControls.length <= 1 ? fixedPreparationName(title, 90) : "";
+        const sources = [...attachmentCell.querySelectorAll("a[href]")];
+        if (preparationDocumentTitle(label) && fixedPreparationName(titleCell, 90) === label && sources.length <= 8) {
+          const dependencies = [
+            table,
+            table.tHead,
+            table.tHead.rows[0],
+            ...layout.headers,
+            ...layout.headers.flatMap((header) => [...header.querySelectorAll("*")]),
+            layout.purpose,
+            ...layout.purpose.querySelectorAll("*"),
+            row,
+            ...cells,
+            title,
+            ...title.querySelectorAll("*")
+          ];
+          for (const source of sources) {
+            const fixedName2 = fixedPreparationName(source, 100);
+            if (!fixedName2 || sourceAction(source, fixedName2).action !== "locate" || !preparationDownloadMarker(source, fixedName2)) continue;
+            const lineage = [];
+            for (const node of [source, title, layout.purpose]) {
+              for (let parent = node, level = 0; parent && parent !== document.body && level < 10; parent = parent.parentElement, level++) lineage.push(parent);
+            }
+            const nodes = [.../* @__PURE__ */ new Set([...dependencies, ...lineage])];
+            if (nodes.length <= 48) attachments.set(source, { label, nodes: nodes.map(preparationNodeId) });
+          }
+        }
+      }
+      rowSummary = { ...rowSummary, preparationAttachments: attachments };
+      cache?.set(row, rowSummary);
+    }
+    return rowSummary.preparationAttachments.get(element);
   }
   function supplementalEvidence(element, cache) {
     const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
-    const form = element.closest('form, [role~="form" i]') ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
+    const form3 = element.closest('form, [role~="form" i]') ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
     const metadataWords = (text) => text.replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase().split(/[^a-z]+/).filter(Boolean);
     const searchMetadata = (target) => ["id", "class"].some((name) => metadataWords(target.getAttribute(name) ?? "").includes("search")) || /검색|\bsearch\b/i.test(target.getAttribute("aria-label") ?? "");
-    const filter = bodyControl && !!form && searchMetadata(form) && searchMetadata(element) && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
+    const filter = bodyControl && !!form3 && searchMetadata(form3) && searchMetadata(element) && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
     let title;
     let cardRelatedLabel;
-    if (bodyControl && !form && !element.hasAttribute("aria-label") && !element.hasAttribute("aria-labelledby") && element.matches('a, button, [role~="button" i]')) {
+    if (bodyControl && !form3 && !element.hasAttribute("aria-label") && !element.hasAttribute("aria-labelledby") && element.matches('a, button, [role~="button" i]')) {
       const children = [...element.children];
       const paragraph = children.findIndex((child) => child.matches("p"));
       if (paragraph === 1 && children[0] instanceof HTMLElement && children[0].matches("span, strong, b, em, h2, h3, h4, h5, h6") && isVisible(children[0]) && isVisible(children[1])) {
@@ -385,7 +608,7 @@
     }
     let materialRow = false;
     let relatedLabel = cardRelatedLabel;
-    const row = bodyControl && !form ? element.closest('tr, [role~="row" i]') : null;
+    const row = bodyControl && !form3 ? element.closest('tr, [role~="row" i]') : null;
     const table = row?.closest('table, [role~="grid" i]');
     if (row && table) {
       let rowSummary = cache?.get(row);
@@ -398,19 +621,19 @@
         }
         const titleColumn = (text) => /^(?:제목|민원명|사무명|서식명|title|form\s+name)$/i.test(text);
         const attachmentColumn = (text) => /^(?:첨부|서식|첨부파일|attachment|forms?)$/i.test(text);
-        const download = (control) => /^(?:자료\s*받기|다운로드|서식\s*받기|download)$/i.test(candidateLabel(control));
+        const download = (control2) => /^(?:자료\s*받기|다운로드|서식\s*받기|download)$/i.test(candidateLabel(control2));
         const cells = [...row.querySelectorAll(':scope > td, :scope > th, :scope > [role~="cell" i], :scope > [role~="gridcell" i]')];
-        const controls = [...row.querySelectorAll('a[href], button, [role~="button" i]')].filter((control) => control.closest('tr, [role~="row" i]') === row && !!candidateLabel(control));
+        const controls = [...row.querySelectorAll('a[href], button, [role~="button" i]')].filter((control2) => control2.closest('tr, [role~="row" i]') === row && !!candidateLabel(control2));
         const columns = tableSummary.columns;
         const materials = /* @__PURE__ */ new Map();
         if (columns.some(titleColumn) && columns.some(attachmentColumn)) {
           if (cells.length === columns.length) {
-            const titles = cells.flatMap((cell, index) => titleColumn(columns[index]) ? controls.filter((control) => control.matches("a[href]") && cell.contains(control)).slice(0, 1) : []);
-            const attachments = controls.filter((control) => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control)) && download(control));
+            const titles = cells.flatMap((cell, index) => titleColumn(columns[index]) ? controls.filter((control2) => control2.matches("a[href]") && cell.contains(control2)).slice(0, 1) : []);
+            const attachments = controls.filter((control2) => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control2)) && download(control2));
             if (titles.length && attachments.length) {
               const labels = [...new Set(titles.map(candidateLabel))];
-              titles.forEach((control) => materials.set(control, candidateLabel(control)));
-              attachments.forEach((control) => materials.set(control, labels.length === 1 ? labels[0] : void 0));
+              titles.forEach((control2) => materials.set(control2, candidateLabel(control2)));
+              attachments.forEach((control2) => materials.set(control2, labels.length === 1 ? labels[0] : void 0));
             }
           }
         }
@@ -420,13 +643,19 @@
       materialRow = rowSummary.materials.has(element);
       relatedLabel = rowSummary.materials.get(element);
     }
+    const preparation = preparationAttachmentEvidence(element, cache);
+    const preparationAttachment = !!preparation;
+    const preparationAttachmentNodes = preparation?.nodes ?? [];
+    if (preparation) relatedLabel = preparation.label;
     let informationPanels = false;
-    if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "")) {
+    if (bodyControl && !form3 && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "")) {
       const parent2 = element.parentElement;
       if (!parent2) return {
         filter,
         title,
         materialRow,
+        preparationAttachment,
+        preparationAttachmentNodes,
         relatedLabel,
         informationPanels: false,
         grouped: false,
@@ -439,20 +668,20 @@
       let summary = cache?.get(parent2);
       if (!summary?.panels) {
         const controls = [...parent2.children].filter((child) => child instanceof HTMLElement && child.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(child.getAttribute("aria-expanded") ?? "") && !(child instanceof HTMLButtonElement && child.form) && isInformationTopicLabel(candidateLabel(child)));
-        const panels = controls.length >= 2 && controls.filter((control) => /(?:안내|절차|방법|예시|기준|종류)$/.test(candidateLabel(control))).length >= 2 ? new Set(controls) : /* @__PURE__ */ new Set();
+        const panels = controls.length >= 2 && controls.filter((control2) => /(?:안내|절차|방법|예시|기준|종류)$/.test(candidateLabel(control2))).length >= 2 ? new Set(controls) : /* @__PURE__ */ new Set();
         summary = { ...summary, panels };
         cache?.set(parent2, summary);
       }
       informationPanels = summary.panels.has(element);
     }
     let grouped = false;
-    const group = bodyControl && !form ? element.closest('[role~="group" i]') : null;
+    const group = bodyControl && !form3 ? element.closest('[role~="group" i]') : null;
     const parent = group?.parentElement;
     if (parent) {
       let summary = cache?.get(parent);
       if (!summary?.groups) {
         const controls = [...parent.children].filter((child) => child.matches('[role~="group" i]')).flatMap((child) => {
-          const groupControls = [...child.querySelectorAll('a[href], button, [role~="button" i]')].filter((control) => !control.closest('form, [role~="form" i]') && !(control instanceof HTMLButtonElement && control.form) && !!candidateLabel(control));
+          const groupControls = [...child.querySelectorAll('a[href], button, [role~="button" i]')].filter((control2) => !control2.closest('form, [role~="form" i]') && !(control2 instanceof HTMLButtonElement && control2.form) && !!candidateLabel(control2));
           return groupControls.length === 1 ? groupControls : [];
         });
         summary = { ...summary, groups: controls.length >= 2 ? new Set(controls) : /* @__PURE__ */ new Set() };
@@ -460,8 +689,8 @@
       }
       grouped = summary.groups.has(element);
     }
-    const topics = bodyControl && !form ? topicEvidence(element, cache) : { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [], collectionPeers: [] };
-    return { filter, title, materialRow, relatedLabel, informationPanels, grouped, ...topics };
+    const topics = bodyControl && !form3 ? topicEvidence(element, cache) : { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [], collectionPeers: [] };
+    return { filter, title, materialRow, preparationAttachment, preparationAttachmentNodes, relatedLabel, informationPanels, grouped, ...topics };
   }
   function sourceSnapshot(element, safeLabel = candidateLabel(element), collectionCache, includeCollection = false, includeSupplemental = false, supplementalCache) {
     return {
@@ -488,7 +717,8 @@
         includeSupplemental ? supplementalEvidence(element, supplementalCache) : null,
         !!element.closest('form, [role~="form" i]'),
         sourceDownloadEvidence(element, safeLabel),
-        sourceAction(element, safeLabel)
+        sourceAction(element, safeLabel),
+        navigationUtility(element, safeLabel) ?? null
       ])
     };
   }
@@ -539,20 +769,52 @@
     return candidates;
   }
 
+  // src/evidence-nodes.ts
+  var editable2 = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var heading = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
+  var control = 'a[href],button,[role~="button" i],[role~="tab" i]';
+  function evidenceNodes(dependencies, fixedNames = []) {
+    const decorations = [];
+    const parents = [];
+    const named = new Set(fixedNames);
+    for (const node of dependencies) {
+      if (node.matches(control)) {
+        if (node.parentElement) parents.push(node.parentElement);
+        const item = node.closest("li");
+        if (item) parents.push(item);
+      }
+      if (!node.matches(heading) && !named.has(node)) continue;
+      const pending = [...node.children];
+      let visited = 0;
+      while (pending.length) {
+        const child = pending.pop();
+        if (++visited > 64 || decorations.length >= 256) return;
+        if (child.closest(editable2)) continue;
+        decorations.push(child);
+        pending.push(...child.children);
+      }
+    }
+    return [.../* @__PURE__ */ new Set([...dependencies, ...parents, ...decorations])];
+  }
+
   // src/institution-evidence.ts
-  var ADAPTER_VERSION = 2;
-  var editable = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var ADAPTER_VERSION = 3;
+  var editable3 = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
   var excluded = 'header,footer,article,aside,form,[role~="banner" i],[role~="contentinfo" i],[role~="article" i],[role~="complementary" i],[role~="form" i]';
-  var headingSelector2 = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
+  var headingSelector3 = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
   var normalize = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
   var serviceEntry = /신청|예약|접수|발급|조회|로그인|인증|제출|청구/;
+  function fixedName(element) {
+    if (element.closest(`${editable3},${excluded}`)) return "";
+    return normalize(candidateLabel(element));
+  }
   function headingName(element, hidden = false) {
-    if (!element.matches(headingSelector2) || element.closest(editable) || element.hasAttribute("aria-labelledby")) return "";
+    if (!element.matches(headingSelector3) || element.closest(editable3) || element.hasAttribute("aria-labelledby")) return "";
     const name = normalize(hidden ? getSafeLabel(element) : candidateLabel(element));
     return name.length >= 2 && name.length <= 100 ? name : "";
   }
   function headings(container, hidden = false) {
-    const nodes = [...container.querySelectorAll(headingSelector2)];
+    const nodes = [...container.querySelectorAll(headingSelector3)];
     if (nodes.length > 40) return [];
     return nodes.filter((node) => !node.closest(excluded) && !!headingName(node, hidden));
   }
@@ -565,16 +827,28 @@
     } catch {
     }
   }
-  function evidence(candidate, adapter, rule, category, dependencies, score = 70) {
-    const unique = [.../* @__PURE__ */ new Set([candidate.element, ...dependencies])];
+  function linkStructure(element) {
+    if (!element.matches("a[href]")) return null;
+    try {
+      const url = new URL(element.getAttribute("href") ?? "", document.baseURI);
+      return /^https?:$/.test(url.protocol) ? [url.origin, url.pathname, url.hash] : [url.protocol];
+    } catch {
+      return ["unresolved"];
+    }
+  }
+  function evidence(candidate, adapter, rule, category, dependencies, score = 70, facts = {}) {
+    const unique = evidenceNodes([candidate.element, ...dependencies], dependencies.filter((node) => node.matches(".s_tit,p")));
+    if (!unique) return;
     return {
       adapter,
       version: ADAPTER_VERSION,
       rule,
       category,
       score,
-      pageTask: "reading",
+      pageTask: facts.pageTask ?? "reading",
       dependencies: unique,
+      ...facts.readonlyPanel ? { readonlyPanel: true } : {},
+      ...facts.contentScope ? { contentScope: facts.contentScope } : {},
       // Raw URL queries, original scripts, input values and whole-region text are
       // deliberately absent. The generic source snapshot owns action/href checks.
       fingerprint: JSON.stringify([
@@ -585,10 +859,16 @@
         location.pathname,
         candidate.label,
         candidate.action,
+        category,
+        facts.pageTask ?? "reading",
+        !!facts.readonlyPanel,
+        facts.contentScope ?? "",
+        facts.tokens ?? [],
         unique.map((node) => [
           node.tagName,
           ...["id", "class", "role", "aria-controls", "aria-expanded", "aria-hidden", "hidden"].map((name) => node.getAttribute(name)),
-          node.matches(headingSelector2) ? headingName(node, true) : node.matches("a[href],button") ? candidateLabel(node) : ""
+          node instanceof HTMLElement ? linkStructure(node) : null,
+          node instanceof HTMLElement && node.matches(headingSelector3) ? headingName(node, true) : node instanceof HTMLElement && node.matches("a[href],button,.s_tit") ? fixedName(node) : ""
         ])
       ])
     };
@@ -604,7 +884,7 @@
     if (menu && element.matches("a[href]") && element.closest("li") && /(?:교육|훈련)/.test(name) && /(?:개요|계획|자료|안내|소개)$/.test(name)) {
       const destination2 = sourceURL(element);
       if (destination2 && /^(?:\/safekorea-kor\/edtr\/|\/safekorea-kor\/cmmn\/bbs\/)/.test(destination2.pathname)) {
-        return evidence(candidate, "safekorea-education", "local-reading-menu", "help", [root, menu, ...titles], 65);
+        return evidence(candidate, "safekorea-education", "local-reading-menu", "help", [root, menu, ...titles], 65, { contentScope: "navigation" });
       }
     }
     const tabs = element.closest(".tab-area");
@@ -612,7 +892,7 @@
     const peers = [...tabs.children].filter((node) => node instanceof HTMLElement && node.matches("button.tab-list[aria-expanded]") && !!candidateLabel(node));
     if (peers.length < 2 || peers.length > 8 || !peers.includes(element) || peers.some((peer) => !/^(?:true|false)$/i.test(peer.getAttribute("aria-expanded") ?? ""))) return;
     const panels = peers.map((peer) => peer.nextElementSibling);
-    if (panels.some((panel2) => !(panel2 instanceof HTMLElement) || !panel2.matches("div.tab-content") || !!panel2.closest(editable))) return;
+    if (panels.some((panel2) => !(panel2 instanceof HTMLElement) || !panel2.matches("div.tab-content") || !!panel2.closest(editable3))) return;
     const panel = element.nextElementSibling;
     const panelHeadings = headings(panel, true);
     if (!panelHeadings.length) return;
@@ -621,12 +901,14 @@
       "safekorea-education",
       "local-overview-panels",
       "help",
-      [root, tabs, ...titles, ...peers, ...panels, ...panelHeadings]
+      [root, tabs, ...titles, ...peers, ...panels, ...panelHeadings],
+      70,
+      { contentScope: "content" }
     );
   }
   function pension(candidate, name) {
     const element = candidate.element;
-    if (!element.matches("a[href]") || serviceEntry.test(name) || !/(?:국민\s*연금|사회\s*보장|노후)/.test(name)) return;
+    if (!element.matches("a[href]") || serviceEntry.test(name) || /(?:납부|결제|지급|환급|삭제|탈퇴)(?:\s*하기)?$/.test(name)) return;
     const wrap = element.closest(".tabWrap.con-tab");
     const nav = element.closest("ul.tabNav");
     if (!wrap || !nav || nav.parentElement !== wrap || !element.closest("li")) return;
@@ -641,17 +923,23 @@
     const targets = document.querySelectorAll(`#${CSS.escape(id)}`);
     if (targets.length !== 1) return;
     const panel = targets[0];
-    if (!panel.matches("div.tabPage") || panel.closest(".tabWrap.con-tab") !== wrap || !panel.parentElement?.matches("div.tabContents") || panel.parentElement.parentElement !== wrap || panel.closest(editable)) return;
+    if (!panel.matches("div.tabPage") || panel.closest(".tabWrap.con-tab") !== wrap || !panel.parentElement?.matches("div.tabContents") || panel.parentElement.parentElement !== wrap || panel.closest(editable3)) return;
     const peers = [...nav.querySelectorAll(":scope > li > a[href]")];
     if (peers.length < 2 || peers.length > 12 || !peers.includes(element)) return;
     const titles = headings(panel, true).filter((node) => headingName(node, true) === name);
     if (!titles.length) return;
+    const interactiveRoles = ["button", "link", "checkbox", "radio", "switch", "menuitem", "menuitemcheckbox", "menuitemradio", "option", "treeitem", "tab", "dialog"].map((role) => `[role~="${role}" i]`).join(",");
+    const interactivePanel = `${editable3},${excluded},a,button,label[for],${interactiveRoles},[tabindex],[onclick],iframe,object,embed,details,summary,audio[controls],video[controls]`;
+    const readonlyPanel = !panel.matches(interactivePanel) && !panel.querySelector(interactivePanel);
+    if (!readonlyPanel && !/(?:국민\s*연금|사회\s*보장|노후)/.test(name)) return;
     return evidence(
       candidate,
       "nps-explanation",
       "named-local-explanation-panel",
       "help",
-      [wrap, nav, panel.parentElement, panel, ...titles]
+      [wrap, nav, panel.parentElement, panel, ...titles, ...peers],
+      70,
+      readonlyPanel ? { readonlyPanel: true, contentScope: "content" } : {}
     );
   }
   function university(candidate, name) {
@@ -676,7 +964,9 @@
       "smu-it-documents",
       incident ? "incident-document" : "instruction-document",
       incident ? "notice" : "help",
-      [board, list, title, ...boardTitles]
+      [board, list, title, ...boardTitles],
+      70,
+      { contentScope: "content" }
     );
   }
   var academicTopic = /학사|학적|학위|학점|전공|교양|휴학|복학|재입학|자퇴|제적|전과|증명서/;
@@ -699,8 +989,8 @@
     if (titles.length !== 1) return;
     const peers = [...list.querySelectorAll(":scope > li > a[href]")];
     if (peers.length < 2 || peers.length > 12 || !peers.includes(element) || !academicDocument(element)) return;
-    const selected = peers.filter((peer) => peer.parentElement?.matches(".active,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
-    if (selected.length !== 1 || normalize(candidateLabel(selected[0])) !== headingName(titles[0]) || !academicTopic.test(headingName(titles[0]))) return;
+    const selected2 = peers.filter((peer) => peer.parentElement?.matches(".active,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
+    if (selected2.length !== 1 || normalize(candidateLabel(selected2[0])) !== headingName(titles[0]) || !academicTopic.test(headingName(titles[0]))) return;
     const educational = peers.filter((peer) => {
       const label = normalize(candidateLabel(peer));
       return !!label && academicTopic.test(label) && !academicOperation.test(label) && academicDocument(peer);
@@ -711,22 +1001,79 @@
       "smu-academic-documents",
       "selected-topic-following-content",
       "academic",
-      [outer.parentElement, outer, list, section, content, ...titles, ...selected, ...educational]
+      [outer.parentElement, outer, list, section, content, ...titles, ...selected2, ...educational],
+      70,
+      { contentScope: "navigation" }
     );
   }
   var guideDownloadName = /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)(?:\s*하기)?$/i;
   function libraryGuideButton(element) {
-    if (!element.matches("button.download_btn") || element.closest(`${editable},${excluded}`) || !candidateLabel(element)) return;
-    const heading = element.parentElement;
+    if (!element.matches("button.download_btn") || element.closest(`${editable3},${excluded}`) || !candidateLabel(element)) return;
+    const heading2 = element.parentElement;
     const branch = element.closest(".link_api_cont");
     const name = normalize(candidateLabel(element));
-    if (!heading?.matches("h4.tit") || !branch || heading.parentElement !== branch || !guideDownloadName.test(name) || headingName(heading) !== name) return;
-    return { heading, branch };
+    if (!heading2?.matches("h4.tit") || !branch || heading2.parentElement !== branch || !guideDownloadName.test(name) || headingName(heading2) !== name) return;
+    return { heading: heading2, branch };
   }
   function semanticTabName(element) {
     const name = normalize(candidateLabel(element));
     const state = [...element.querySelectorAll(":scope > .sr-only")].some((node) => /^(?:선택됨|selected)$/i.test(normalize(candidateLabel(node))));
     return state ? name.replace(/\s*(?:선택됨|selected)$/i, "").trim() : name;
+  }
+  var copyTopic = /복사|복제|출력|인쇄|스캔/;
+  function copyingTabs(candidate, region, info, slider, wrapper, peers) {
+    const titles = [...info.querySelectorAll(":scope > h3")].filter((node) => copyTopic.test(headingName(node)));
+    if (!titles.length || peers.some((peer) => !copyTopic.test(semanticTabName(peer)))) return;
+    const selected2 = peers.filter((peer) => peer.parentElement?.matches(".on,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
+    if (selected2.length !== 1) return;
+    const bodies = [...region.querySelectorAll(":scope > .content_wrap > .sub_content > .copy_data_wrap")];
+    if (bodies.length !== 1 || bodies[0].closest(excluded)) return;
+    const body = bodies[0];
+    const labels = [...body.querySelectorAll(":scope > .txt > .s_tit")];
+    if (labels.length > 12) return;
+    const instruction = labels.filter((node) => /^(?:이용|사용)\s*(?:안내|방법)$|(?:복사|복제|인쇄|출력|스캔).{0,20}(?:방법|안내|절차)$/.test(fixedName(node)) && !node.parentElement?.querySelector(`${editable3},form,a[href],button,[role~="button" i]`));
+    if (!instruction.length) return;
+    return evidence(
+      candidate,
+      "nl-reading-guides",
+      "local-copying-instruction-tabs",
+      "help",
+      [
+        region,
+        info,
+        slider,
+        wrapper,
+        body,
+        ...titles,
+        ...instruction,
+        ...peers,
+        ...selected2.map((peer) => peer.parentElement)
+      ],
+      70,
+      { contentScope: "content" }
+    );
+  }
+  function refundEntry(candidate, name, region) {
+    const element = candidate.element;
+    if (candidate.action !== "navigate" || !element.matches("a[href]") || !/(?:환급|환불|반환)/.test(name)) return;
+    const destination2 = sourceURL(element);
+    if (!destination2 || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination2.pathname) || destination2.pathname === location.pathname) return;
+    const paragraph = element.parentElement;
+    const block = paragraph?.parentElement;
+    const body = element.closest(".copy_data_wrap");
+    const title = block?.previousElementSibling;
+    if (!paragraph?.matches("p") || !block?.matches(".txt") || !body || body.closest("#sub_content") !== region || block.parentElement !== body || !(title instanceof HTMLElement) || !title.matches("h4.tit") || !/(?:환급|환불|반환).{0,20}(?:안내|방법|절차)/.test(headingName(title)) || paragraph.closest(`${editable3},${excluded}`) || paragraph.querySelector(editable3) || paragraph.querySelectorAll("a[href]").length !== 1) return;
+    const method = normalize(getSafeLabel(paragraph));
+    if (!/(?:신청|접수)\s*(?:방법|절차)/.test(method) || !/(?:메뉴|항목).{0,18}(?:직접\s*)?(?:신청|접수)/.test(method)) return;
+    return evidence(
+      candidate,
+      "nl-service-entry",
+      "explicit-refund-application-method",
+      "apply",
+      [region, body, title, block, paragraph],
+      70,
+      { pageTask: "control", contentScope: "content", tokens: ["application-method", "named-menu-entry"] }
+    );
   }
   function library(candidate, name) {
     const element = candidate.element;
@@ -738,18 +1085,28 @@
       "nl-reading-guides",
       "editorial-guide-download",
       "help",
-      [region, ownGuide.branch, ownGuide.heading]
+      [region, ownGuide.branch, ownGuide.heading],
+      70,
+      { contentScope: "content" }
     );
+    const refund = refundEntry(candidate, name, region);
+    if (refund) return refund;
     if (!element.matches("a[href]") || serviceEntry.test(name)) return;
     const group = element.parentElement;
     const wrapper = group?.parentElement;
     const slider = wrapper?.parentElement;
     const info = slider?.parentElement;
     if (!group?.matches('[role~="group"]') || !wrapper?.matches(".swiper-wrapper") || !slider?.matches(".depth4-menu__slider") || !info?.matches(".content_info") || info.closest("#sub_content") !== region) return;
-    const titles = [...info.querySelectorAll(":scope > h3")].filter((node) => /검색/.test(headingName(node)));
-    if (!titles.length) return;
     const peers = [...wrapper.querySelectorAll(':scope > [role~="group"] > a[href]')];
     if (peers.length < 2 || peers.length > 8 || !peers.includes(element)) return;
+    if (peers.some((peer) => {
+      const destination2 = sourceURL(peer);
+      return !destination2 || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination2.pathname) || !candidateLabel(peer) || serviceEntry.test(semanticTabName(peer));
+    })) return;
+    const copying = copyingTabs(candidate, region, info, slider, wrapper, peers);
+    if (copying) return copying;
+    const titles = [...info.querySelectorAll(":scope > h3")].filter((node) => /검색/.test(headingName(node)));
+    if (!titles.length) return;
     const semanticName = semanticTabName(element);
     if (!/(?:검색|결과|정보|기능|정렬|색인|서지)/.test(semanticName) || peers.some((peer) => {
       const destination2 = sourceURL(peer);
@@ -763,17 +1120,216 @@
       "nl-reading-guides",
       "local-explanatory-guide-tabs",
       "help",
-      [region, info, slider, wrapper, group, ...titles, ...peers, guides[0], guide.branch, guide.heading]
+      [region, info, slider, wrapper, group, ...titles, ...peers, guides[0], guide.branch, guide.heading],
+      70,
+      { contentScope: "content" }
+    );
+  }
+  function safetyGuidance(candidate, name) {
+    const element = candidate.element;
+    if (!(element instanceof HTMLButtonElement) || element.type !== "button" || element.form) return;
+    const region = element.closest(".cont-area");
+    const content = region?.closest(".content-right");
+    if (!region || !content || !content.closest("#contents")) return;
+    const titles = headings(content).filter((node) => node.closest(".cont-area") === region && /안전.*점검|점검.*(?:안내|가이드)|체크.*가이드|check\s*guide/i.test(headingName(node)));
+    if (!titles.length) return;
+    if (element.matches(".btn-down") && /(?:점검표|체크리스트|checklist)\s*(?:다운로드|내려\s*받기)$/i.test(name)) {
+      return evidence(
+        candidate,
+        "safekorea-safety-guidance",
+        "checklist-preparation-document",
+        "help",
+        [content, region, ...titles],
+        70,
+        { contentScope: "content" }
+      );
+    }
+    const area = element.parentElement;
+    const list = area?.previousElementSibling;
+    const guide = list?.previousElementSibling;
+    if (!element.matches(".btn-golist") || !area?.matches(".button-rightarea") || area.parentElement !== region || !/(?:점검|체크).*(?:리스트|목록|안내).*(?:시작|보기|확인)$/.test(name) || !(list instanceof HTMLElement) || !list.matches("ul.comm-list") || list.children.length > 12 || list.querySelector(`${editable3},form,button`) || !(guide instanceof HTMLElement) || !guide.matches("h3") || !/(?:체크|점검)\s*(?:가이드|안내)|check\s*guide/i.test(headingName(guide))) return;
+    return evidence(
+      candidate,
+      "safekorea-safety-guidance",
+      "guided-safety-instruction",
+      "help",
+      [content, region, area, list, guide, ...titles],
+      70,
+      { pageTask: "control", contentScope: "content" }
     );
   }
   function institutionEvidence(candidate, _cache) {
-    const handler = location.hostname === "www.safekorea.go.kr" && /^\/safekorea-kor\/edtr\//.test(location.pathname) ? education : location.hostname === "www.nps.or.kr" && /^\/pnsinfo\/ntpsklg\//.test(location.pathname) ? pension : location.hostname === "www.smu.ac.kr" && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(location.pathname) ? university : location.hostname === "www.nl.go.kr" && /^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(location.pathname) ? library : void 0;
+    const handler = location.hostname === "www.safekorea.go.kr" && /^\/safekorea-kor\/edtr\//.test(location.pathname) ? education : location.hostname === "www.safekorea.go.kr" && /^\/safekorea-kor\/acts\/asck\//.test(location.pathname) ? safetyGuidance : location.hostname === "www.nps.or.kr" && /^\/pnsinfo\/ntpsklg\//.test(location.pathname) ? pension : location.hostname === "www.smu.ac.kr" && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(location.pathname) ? university : location.hostname === "www.nl.go.kr" && /^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(location.pathname) ? library : void 0;
     if (!handler) return;
     const element = candidate.element;
-    if (location.protocol !== "https:" || location.port || candidate.context === "footer" || !isVisible(element) || element.closest(`${editable},${excluded}`) || !element.matches("a[href],button") || candidateLabel(element) !== candidate.label) return;
+    if (location.protocol !== "https:" || location.port || candidate.context === "footer" || !isVisible(element) || element.closest(`${editable3},${excluded}`) || !element.matches("a[href],button") || candidateLabel(element) !== candidate.label) return;
     const name = normalize(candidate.label);
     if (!name || name.length > 100) return;
     return handler(candidate, name);
+  }
+
+  // src/content-evidence.ts
+  var editable4 = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var excluded2 = 'header,footer,nav,aside,article,[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i],[role~="complementary" i],[role~="article" i]';
+  var form2 = 'form,[role~="form" i]';
+  var lists = 'ul,ol,[role~="list" i],[role~="tablist" i]';
+  var headings2 = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
+  var documentKind = /안내서|안내\s*책자|책자|편람|설명서|매뉴얼|자료집|지침서|핸드북|요람|\b(?:handbook|manual|guide|documents?)\b/i;
+  var normalize2 = (text) => text.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var dangerous = /로그아웃|탈퇴|삭제|결제|납부|구매|최종\s*제출|\b(?:log[\s_-]*out|sign[\s_-]*out|delete|remove|unregister|withdraw|pay|payment|checkout|purchase|final[\s_-]*submit|submit[\s_-]*final)\b/i;
+  function utility(element) {
+    for (let node = element, depth = 0; node && depth < 8; node = node.parentElement, depth++) {
+      const metadata = `${node.getAttribute("class") ?? ""} ${node.getAttribute("id") ?? ""}`;
+      if (/(?:^|[\s_-])(?:breadcrumbs?|skip(?:links?|nav|navigation)?)(?:[\s_-]|$)/i.test(metadata) || /breadcrumb|이동\s*경로/i.test(node.getAttribute("aria-label") ?? "")) return true;
+    }
+    return false;
+  }
+  function currentDocument(element) {
+    const raw = element.getAttribute("href")?.trim();
+    if (!raw || /^(?:javascript:|data:)/i.test(raw)) return false;
+    try {
+      const url = new URL(raw, document.baseURI);
+      return /^https?:$/.test(url.protocol) && url.origin === location.origin && url.pathname === location.pathname && url.search === location.search;
+    } catch {
+      return false;
+    }
+  }
+  function selected(element) {
+    return [element, element.parentElement].some((node) => !!node && (/^(?:page|true)$/i.test(node.getAttribute("aria-current") ?? "") || /^true$/i.test(node.getAttribute("aria-selected") ?? "") || /(?:^|\s)(?:active|selected|current|is-active)(?:\s|$)/i.test(node.getAttribute("class") ?? "")));
+  }
+  function listControls(list) {
+    if (list.childElementCount < 2 || list.childElementCount > 12) return [];
+    return [...list.querySelectorAll(':scope > li > a[href],:scope > [role~="listitem" i] > a[href]')].filter((node) => !node.closest(`${excluded2},${form2},${editable4}`) && !!candidateLabel(node) && !node.matches("[onclick],[aria-expanded],[aria-haspopup]") && !dangerous.test(candidateLabel(node)) && safeReadingURL(node));
+  }
+  function safeReadingURL(element) {
+    try {
+      const url = new URL(element.getAttribute("href") ?? "", document.baseURI);
+      if (!/^https?:$/.test(url.protocol)) return false;
+      const parts = url.pathname.split("/").map((part) => {
+        try {
+          return decodeURIComponent(part);
+        } catch {
+          return part;
+        }
+      });
+      if (parts.some((part) => dangerous.test(part.replace(/[_.-]/g, " ")))) return false;
+      for (const [key, value] of url.searchParams) {
+        if (/^(?:logout|signout|delete|remove|payment|checkout|final_submit)$/i.test(key) || /^(?:action|cmd|command|mode|task|event|method|operation|do)$/i.test(key) && (dangerous.test(value) || /^submit$/i.test(value))) return false;
+      }
+      return true;
+    } catch {
+      return false;
+    }
+  }
+  function currentSelection(controls) {
+    const active = controls.filter(selected);
+    return active.length === 1 && currentDocument(active[0]) ? active[0] : void 0;
+  }
+  function localLists(container) {
+    const result = [];
+    const pending = [...container.children].reverse();
+    let visited = 0;
+    while (pending.length && visited++ < 80) {
+      const node = pending.pop();
+      if (!(node instanceof HTMLElement) || node.matches(`${excluded2},${form2},${editable4},section,[role~="region" i]`)) continue;
+      if (node.matches(lists)) {
+        result.push(node);
+        continue;
+      }
+      pending.push(...[...node.children].reverse());
+    }
+    return pending.length ? [] : result;
+  }
+  function fixedHeading(element) {
+    return element.matches(headings2) && !element.closest(`${editable4},${excluded2},${form2}`) && !element.hasAttribute("aria-labelledby") ? normalize2(candidateLabel(element)) : "";
+  }
+  function documentRelation(list, active) {
+    const name = normalize2(candidateLabel(active));
+    const main = list.closest('main,[role~="main" i]');
+    if (main) {
+      const region = list.closest('section,[role~="region" i]') ?? main;
+      if (region.childElementCount <= 12) {
+        const titles = [...region.children].filter((node) => node instanceof HTMLElement && fixedHeading(node) === name && !!(node.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING));
+        if (titles.length === 1) return [main, region, titles[0]];
+      }
+    }
+    for (let container = list.parentElement, depth = 0; container && depth < 4; container = container.parentElement, depth++) {
+      if (container.matches(`html,body,${excluded2},${form2},${editable4}`) || container.childElementCount > 12) break;
+      const content = container.nextElementSibling;
+      if (!(content instanceof HTMLElement) || !content.matches('section,[role~="region" i]') || content.closest(`${excluded2},${form2},${editable4}`)) continue;
+      const parents = localLists(container).filter((peer) => peer !== list && !!(peer.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING)).map((peer) => ({ list: peer, controls: listControls(peer) })).map((peer) => ({ ...peer, active: currentSelection(peer.controls) })).filter((peer) => !!peer.active);
+      if (parents.length === 1) return [container, content, parents[0].list, parents[0].active, parents[0].active.parentElement];
+    }
+  }
+  function evidence2(candidate, level, rule, dependencies, tokens = []) {
+    const nodes = evidenceNodes([candidate.element, ...dependencies]);
+    if (!nodes) return;
+    return {
+      level,
+      rule,
+      dependencies: nodes,
+      fingerprint: JSON.stringify([
+        rule,
+        level,
+        location.origin,
+        location.pathname,
+        candidate.label,
+        candidate.action,
+        tokens,
+        nodes.map((node) => [
+          node.tagName,
+          ...["class", "role", "aria-current", "aria-selected", "aria-expanded", "aria-hidden", "hidden"].map((name) => node.getAttribute(name)),
+          node instanceof HTMLElement && node.matches(headings2) ? fixedHeading(node) : node instanceof HTMLElement && node.matches("a[href],button") ? candidateLabel(node) : "",
+          node instanceof HTMLElement && node.matches("a[href]") ? currentDocument(node) : null
+        ])
+      ])
+    };
+  }
+  function contentEvidence(candidate, _cache, supplementalCache) {
+    const element = candidate.element;
+    if (!candidate.category || !candidate.pageTask || candidate.score < 55 || candidate.context === "footer" || !isVisible(element) || candidateLabel(element) !== candidate.label || element.closest(`${excluded2},${editable4}`) || utility(element) || !element.matches('a[href],button,[role~="button" i],[role~="tab" i]')) return;
+    const supplement = candidate.supplementalDependent ? supplementalEvidence(element, supplementalCache) : void 0;
+    const prep = supplement;
+    const preparation = element.matches("a[href]") && candidate.action === "locate" && !!prep?.preparationAttachment;
+    if (element.closest(form2) && !preparation || element instanceof HTMLButtonElement && !!element.form) return;
+    if (preparation) {
+      const row2 = element.closest('tr,li,[role~="row" i],[role~="listitem" i]');
+      const table = row2?.closest('table,[role~="grid" i]');
+      const owner = element.closest(form2) ?? row2?.parentElement;
+      if (row2 && owner) return evidence2(
+        candidate,
+        2,
+        "explicit-preparation-attachment",
+        [row2, owner, ...table ? [table] : []],
+        [prep?.preparationAttachmentNodes ?? [], supplement?.relatedLabel ?? ""]
+      );
+    }
+    const institution = candidate.institutionEvidence;
+    const panel = institution?.readonlyPanel;
+    const row = element.closest('li,[role~="listitem" i]');
+    if (!panel && (element.matches("[aria-expanded],[aria-haspopup],[aria-controls]") || row?.querySelector(':scope > ul,:scope > ol,:scope > [role~="group" i],:scope > [role~="menu" i]'))) return;
+    if (candidate.pageTask === "reading" && element.matches("a[href]") && documentKind.test(candidate.label)) {
+      const list = element.closest(lists);
+      if (list) {
+        const peers = listControls(list);
+        const active = currentSelection(peers);
+        const documents = peers.filter((peer) => documentKind.test(candidateLabel(peer)));
+        const relation = active && documents.length >= 2 && peers.includes(element) ? documentRelation(list, active) : void 0;
+        if (relation) return evidence2(
+          candidate,
+          2,
+          "current-topic-document-group",
+          [list, active, active.parentElement, ...documents, ...documents.map((peer) => peer.parentElement), ...relation]
+        );
+      }
+    }
+    if (institution?.contentScope === "content") return evidence2(
+      candidate,
+      1,
+      "institution-current-content",
+      [...institution.dependencies],
+      [institution.version, institution.fingerprint]
+    );
   }
 
   // src/classifier.ts
@@ -785,8 +1341,8 @@
     { category: "help", label: /이용\s*안내|도움말|자주\s*(?:묻는|하는|찾는)\s*질문|검색\s*(?:방법|안내)|뷰어\s*(?:설치\s*)?(?:다운로드|프로그램\s*안내)|(?:민원실|상담)\s*(?:안내|운영)|\b(?:faq|help)\b|\bq\s*&\s*a\b|\bcontact\s+us\b|\buser\s+guide\b|\bsearch\s+(?:help|guide|tips?|instructions)\b|\bviewer\s+(?:install\s+)?download\b/i, section: /^(?:이용\s*안내|도움말|자주\s*(?:묻는|하는|찾는)\s*질문(?:\s*\(FAQ\))?|문의|검색\s*(?:방법|안내)|뷰어\s*(?:설치\s*)?(?:다운로드|프로그램\s*안내)|(?:민원실|상담)\s*(?:안내|운영)|faq|help|q\s*&\s*a|contact\s+us|user\s+guide|search\s+(?:help|guide|tips?|instructions)|viewer\s+(?:install\s+)?download)$/i, endpoints: /* @__PURE__ */ new Set(["help", "faq"]) },
     { category: "apply", label: /신청|접수|예약|조회|\b(?:apply|applications?|reservations?|booking)\b/i, section: /^(?:신청(?:\s*[·/]\s*조회)?|접수|예약|조회|apply|applications?|reservations?|booking)$/i, endpoints: /* @__PURE__ */ new Set(["apply", "application", "reservation", "booking"]) }
   ];
-  var normalize2 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
-  var dangerous = /로그아웃|탈퇴|삭제|결제|납부|구매|최종\s*제출|\b(?:log[\s_-]*out|sign[\s_-]*out|delete|remove|unregister|withdraw|pay|payment|checkout|purchase|final[\s_-]*submit|submit[\s_-]*final)\b/i;
+  var normalize3 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var dangerous2 = /로그아웃|탈퇴|삭제|결제|납부|구매|최종\s*제출|\b(?:log[\s_-]*out|sign[\s_-]*out|delete|remove|unregister|withdraw|pay|payment|checkout|purchase|final[\s_-]*submit|submit[\s_-]*final)\b/i;
   var actionKeys = ["action", "cmd", "command", "mode", "task", "event", "method", "operation", "do"];
   var riskyFlagKeys = /* @__PURE__ */ new Set(["logout", "signout", "delete", "remove", "payment", "checkout", "final_submit"]);
   var ambiguousLabel = /^(?:더\s*보기|바로\s*가기|자세히\s*보기|more|read\s*more|open)$/i;
@@ -825,10 +1381,10 @@
   function hasDangerousScript(element) {
     const raw = element.getAttribute("href")?.trim() ?? "";
     const script = [element.getAttribute("onclick") ?? "", /^javascript:/i.test(raw) ? raw : ""].join(" ").replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_-]+/g, " ");
-    return dangerous.test(script);
+    return dangerous2.test(script);
   }
   function contextsFor(candidate, label) {
-    return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize2).filter((value) => value !== label);
+    return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize3).filter((value) => value !== label);
   }
   function hasAcademicContext(candidate, label) {
     const academic = rules.find((rule) => rule.category === "academic");
@@ -840,7 +1396,7 @@
     });
   }
   function academicInformation(candidate, label, target, url) {
-    return !!url && candidate.action === "navigate" && candidate.element.matches("a[href]") && candidate.context !== "footer" && !candidate.element.closest('article, [role~="article"]') && /납부\s*(?:안내|방법|절차|일정)$/.test(label) && !dangerous.test(label.replace(/납부/g, "")) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target)) && hasAcademicContext(candidate, label);
+    return !!url && candidate.action === "navigate" && candidate.element.matches("a[href]") && candidate.context !== "footer" && !candidate.element.closest('article, [role~="article"]') && /납부\s*(?:안내|방법|절차|일정)$/.test(label) && !dangerous2.test(label.replace(/납부/g, "")) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target)) && hasAcademicContext(candidate, label);
   }
   function academicReading(candidate, label, target, url) {
     return !!url && candidate.action === "navigate" && candidate.element.matches("a[href]") && candidate.context !== "footer" && !candidate.element.closest('header, article, [role~="banner"], [role~="article"]') && label.length <= 36 && !/[.!?。？]/.test(label) && !!candidate.element.closest('nav, li, tr, [role~="navigation"], [role~="listitem"], [role~="row"]') && academicConcept.test(label) && academicGuideEnd.test(label) && hasAcademicContext(candidate, label) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target));
@@ -862,20 +1418,20 @@
   function pathParts(url) {
     return url.pathname.split("/").filter(Boolean).map((part) => {
       try {
-        return normalize2(decodeURIComponent(part)).toLowerCase();
+        return normalize3(decodeURIComponent(part)).toLowerCase();
       } catch {
         return part.toLowerCase();
       }
     });
   }
   function isDangerousURL(url, parts) {
-    if (parts.some((part) => dangerous.test(part.replace(/[_.-]/g, " ")))) return true;
+    if (parts.some((part) => dangerous2.test(part.replace(/[_.-]/g, " ")))) return true;
     for (const key of url.searchParams.keys()) {
       const folded = key.replace(/[A-Z]/g, (letter) => letter.toLowerCase());
       if (riskyFlagKeys.has(folded)) return true;
       if (actionKeys.includes(folded) && url.searchParams.getAll(key).some((value) => {
-        const command = normalize2(value);
-        return dangerous.test(command) || /^(?:submit|final[\s_-]*submit|submit[\s_-]*final)$/i.test(command);
+        const command = normalize3(value);
+        return dangerous2.test(command) || /^(?:submit|final[\s_-]*submit|submit[\s_-]*final)$/i.test(command);
       })) return true;
     }
     return false;
@@ -894,7 +1450,7 @@
     if (url && notice.endpoints.has(target) && hasDocumentReference(url)) return "endpoint";
     if (candidate.element.closest('article, [role~="article"]')) return;
     const listedLink = candidate.element.matches("a[href]") && !!candidate.element.closest('tr, li, [role~="row"], [role~="listitem"]');
-    if (!listedLink || ![section, ...candidate.contextLabels ?? []].some((value) => notice.section.test(normalize2(value)) || noticeListHeading.test(normalize2(value)))) return;
+    if (!listedLink || ![section, ...candidate.contextLabels ?? []].some((value) => notice.section.test(normalize3(value)) || noticeListHeading.test(normalize3(value)))) return;
     if (rules.some((rule) => rule.category !== "notice" && rule.endpoints.has(target))) return "conflict";
     return "collection";
   }
@@ -917,6 +1473,7 @@
   }
   function structuredContext(candidate, label, collection, url) {
     const element = candidate.element;
+    if (navigationUtility(element, label)) return;
     if (!collection.kind || candidate.context === "footer" || !isInformationTopicLabel(label) || isDocumentDownload(element, candidate.label) || element.closest('header, footer, article, form, [role~="banner" i], [role~="contentinfo" i], [role~="article" i], [role~="form" i]') || (element instanceof HTMLButtonElement || element instanceof HTMLInputElement) && !!element.form) return;
     let destination2 = url;
     const raw = element.getAttribute("href")?.trim() ?? "";
@@ -934,7 +1491,7 @@
     if (destination2 && (isDangerousURL(destination2, parts) || hasDocumentReference(destination2)) || parts.some((part) => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
     const target = endpoint(parts);
     const contexts = contextsFor(candidate, label);
-    if (contexts.some((heading) => issuanceServiceHeading.test(heading)) && collection.kind === "list" && (collection.controlled || !!destination2) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) {
+    if (contexts.some((heading2) => issuanceServiceHeading.test(heading2)) && collection.kind === "list" && (collection.controlled || !!destination2) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) {
       return { ...candidate, category: "apply", score: 70, reasons: ["\uBC1C\uAE09 \uC11C\uBE44\uC2A4 \uC9C4\uC785", "\uBA85\uC2DC\uC801 \uBC1C\uAE09 \uC2DC\uC2A4\uD15C \uC81C\uBAA9\uACFC \uC6D0\uBCF8 \uBAA9\uB85D \uC81C\uC5B4"], pageTask: "control" };
     }
     const localReading = !!destination2 && destination2.origin === location.origin && candidate.action === "navigate";
@@ -950,15 +1507,15 @@
   }
   function contextualReading(candidate, label) {
     if (candidate.context === "footer" || candidate.element.closest('article, [role~="article"]')) return;
-    const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize2);
+    const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize3);
     const helpContext = candidate.pagePurpose === "help" || contexts.some((value) => rules.find((rule) => rule.category === "help").section.test(value)) || isQuestionCollection(candidate.element);
     const term = candidate.element.closest("dt");
-    const definitionQuestion = !!term?.closest("dl") && isVisible(term) && isVisible(candidate.element) && [candidate.element, term].some((element) => answerToggle.test(normalize2(element.getAttribute("title") ?? "")));
+    const definitionQuestion = !!term?.closest("dl") && isVisible(term) && isVisible(candidate.element) && [candidate.element, term].some((element) => answerToggle.test(normalize3(element.getAttribute("title") ?? "")));
     if (definitionQuestion && label.length >= 4 && candidate.element.matches('a, button, [role~="button"]')) {
       return { category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC9C8\uBB38 \uC77D\uAE30", "\uC815\uC758 \uBAA9\uB85D\uACFC \uBA85\uC2DC\uC801 \uB2F5\uBCC0 \uC5F4\uAE30 \uD45C\uC2DC"], pageTask: "reading" };
     }
     if (helpContext) {
-      const questionMarker = [...candidate.element.querySelectorAll(":scope > abbr[title]")].some((marker) => marker instanceof HTMLElement && isVisible(marker) && /^(?:질문|question)$/i.test(normalize2(marker.getAttribute("title") ?? "")));
+      const questionMarker = [...candidate.element.querySelectorAll(":scope > abbr[title]")].some((marker) => marker instanceof HTMLElement && isVisible(marker) && /^(?:질문|question)$/i.test(normalize3(marker.getAttribute("title") ?? "")));
       if (label.length >= 4 && (questionMarker || interrogative.test(label)) && candidate.element.matches('a, button, [role~="button"]') && candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]')) {
         return { category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC9C8\uBB38 \uC77D\uAE30", "\uBA85\uC2DC\uC801 \uC9C8\uBB38 \uD45C\uC2DC\uC640 \uB3C4\uC6C0\uB9D0 \uBB38\uB9E5"], pageTask: "reading" };
       }
@@ -974,8 +1531,9 @@
   }
   function supplementalClassification(candidate, label, target, supplementalCache, url) {
     const element = candidate.element;
+    if (navigationUtility(element, label)) return;
     if (candidate.context !== "body" || !element.matches('a[href], button, [role~="button" i]') || element.closest('article, [role~="article" i]')) return;
-    const evidence2 = supplementalEvidence(element, supplementalCache);
+    const evidence3 = supplementalEvidence(element, supplementalCache);
     const raw = element.getAttribute("href")?.trim() ?? "";
     if (hasDangerousScript(element)) return;
     let destination2 = url;
@@ -997,18 +1555,21 @@
       reasons: [reason, "\uACE0\uC815 \uC6D0\uBCF8 \uC81C\uC5B4 \uAD6C\uC870"],
       pageTask: task,
       supplementalDependent: true,
-      relatedLabel: evidence2.relatedLabel,
+      relatedLabel: evidence3.relatedLabel,
       snapshot: sourceSnapshot(element, candidate.label, void 0, false, true, supplementalCache)
     });
-    if (!dangerous.test(label) && evidence2.filter && isInformationTopicLabel(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uAC80\uC0C9 \uC591\uC2DD\uC758 \uBD84\uC57C \uD544\uD130", "control");
+    if (!dangerous2.test(label) && evidence3.filter && isInformationTopicLabel(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uAC80\uC0C9 \uC591\uC2DD\uC758 \uBD84\uC57C \uD544\uD130", "control");
+    if (evidence3.preparationAttachment && candidate.action === "locate" && element.matches("a[href]") && !!evidence3.relatedLabel && !dangerous2.test(label) && !dangerous2.test(evidence3.relatedLabel) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) {
+      return result("apply", 70, "\uAC19\uC740 \uC11C\uC2DD \uD589\uC758 \uACE0\uC815 \uC81C\uBAA9\uACFC \uCCA8\uBD80 \uC790\uB8CC", "reading");
+    }
     const contexts = contextsFor(candidate, label);
-    if (!dangerous.test(label) && evidence2.materialRow && label.length >= 2 && label.length <= 60 && !rules.some((rule) => !["apply", "academic"].includes(rule.category) && rule.label.test(label)) && contexts.some((text) => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uC2E0\uCCAD \uC900\uBE44 \uD3B8\uB78C\uC758 \uC6D0\uBCF8 \uC11C\uC2DD \uC790\uB8CC", "reading");
+    if (!dangerous2.test(label) && evidence3.materialRow && label.length >= 2 && label.length <= 60 && !rules.some((rule) => !["apply", "academic"].includes(rule.category) && rule.label.test(label)) && contexts.some((text) => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uC2E0\uCCAD \uC900\uBE44 \uD3B8\uB78C\uC758 \uC6D0\uBCF8 \uC11C\uC2DD \uC790\uB8CC", "reading");
     if (contextualReading(candidate, label)?.category === "academic" || issuanceIntent.test(label) && contexts.some((text) => procedureHeading.test(text))) return;
     const guideContext = contexts.some((text) => text.length <= 60 && /안내$/.test(text));
-    const readingContexts = [...contexts, ...evidence2.associatedHeadings];
+    const readingContexts = [...contexts, ...evidence3.associatedHeadings];
     const guideReading = candidate.pagePurpose === "help" || readingContexts.some((text) => text.length <= 60 && (/(?:안내|설명서|도움말|사용\s*법|이용\s*법|가이드|요령|수칙|매뉴얼|\b(?:instructions?|guide|manual|help))$/i.test(text) || /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)$/i.test(text)));
     const academicPeer = (peer) => {
-      if (!peer.isLink || peer.action !== "navigate" || !peer.href || !isInformationTopicLabel(peer.label) || !academicConcept.test(peer.label) || !academicGuideEnd.test(peer.label) || dangerous.test(peer.label)) return false;
+      if (!peer.isLink || peer.action !== "navigate" || !peer.href || !isInformationTopicLabel(peer.label) || !academicConcept.test(peer.label) || !academicGuideEnd.test(peer.label) || dangerous2.test(peer.label)) return false;
       try {
         const destination3 = new URL(peer.href);
         const peerParts = pathParts(destination3);
@@ -1017,30 +1578,30 @@
         return false;
       }
     };
-    const educationPeers = evidence2.collectionPeers.filter(academicPeer);
-    if (candidate.action === "navigate" && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches("a[href]") }) && educationPeers.length >= 2 && educationPeers.length > evidence2.collectionPeers.length / 2) {
+    const educationPeers = evidence3.collectionPeers.filter(academicPeer);
+    if (candidate.action === "navigate" && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches("a[href]") }) && educationPeers.length >= 2 && educationPeers.length > evidence3.collectionPeers.length / 2) {
       return candidate.pagePurpose === "help" ? result("help", 70, "\uBA85\uC2DC\uC801 \uB3C4\uC6C0\uB9D0 \uBAA9\uC801\uACFC \uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150 \uBAA9\uB85D", "reading") : result("academic", 70, "\uAC19\uC740 \uCD9C\uCC98 \uC77D\uAE30 \uB9C1\uD06C\uC640 \uB2E4\uC218\uC758 \uACE0\uC815 \uAD50\uC721 \uAC1C\uB150", "reading");
     }
-    const readingTopic = evidence2.topicPeers >= 2 && (evidence2.controlledTopic || evidence2.associatedHeadings.length > 0) && !(destination2 && hasDocumentReference(destination2));
+    const readingTopic = evidence3.topicPeers >= 2 && (evidence3.controlledTopic || evidence3.associatedHeadings.length > 0) && !(destination2 && hasDocumentReference(destination2));
     const competingTask = rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label)));
-    const readingSubject = evidence2.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
-    const academicTopic2 = !dangerous.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label) && readingContexts.some((text) => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text)) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target));
+    const readingSubject = evidence3.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
+    const academicTopic2 = !dangerous2.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label) && readingContexts.some((text) => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text)) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target));
     if (academicTopic2 && candidate.pagePurpose !== "help") return result("academic", 70, "\uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150\uACFC \uC5F0\uACB0\uB41C \uB0B4\uC6A9 \uC81C\uBAA9", "reading");
-    if (!dangerous.test(label) && readingTopic && isInformationTopicLabel(label) && !isSearchControl(element, candidate.label) && !element.closest('form, [role~="form" i]') && !isDocumentDownload(element, candidate.label) && (!competingTask || readingSubject) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target)) && guideReading) {
+    if (!dangerous2.test(label) && readingTopic && isInformationTopicLabel(label) && !isSearchControl(element, candidate.label) && !element.closest('form, [role~="form" i]') && !isDocumentDownload(element, candidate.label) && (!competingTask || readingSubject) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target)) && guideReading) {
       return result("help", 70, "\uC6D0\uBCF8 \uC548\uB0B4 \uC8FC\uC81C\uC640 \uC5F0\uACB0\uB41C \uC77D\uAE30 \uC81C\uC5B4", "reading");
     }
     if (academicTopic2) {
       return result("academic", 70, "\uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150\uACFC \uC5F0\uACB0\uB41C \uB0B4\uC6A9 \uC81C\uBAA9", "reading");
     }
-    if (!dangerous.test(label) && guideReading && candidate.action === "locate" && label.length <= 60 && element.matches('button, [role~="button" i]') && !element.closest('form, [role~="form" i]') && /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|받기|download)$/i.test(label)) {
+    if (!dangerous2.test(label) && guideReading && candidate.action === "locate" && label.length <= 60 && element.matches('button, [role~="button" i]') && !element.closest('form, [role~="form" i]') && /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|받기|download)$/i.test(label)) {
       return result("help", 70, "\uC548\uB0B4 \uBB38\uB9E5\uC758 \uBA85\uC2DC\uC801 \uAC00\uC774\uB4DC \uC790\uB8CC \uC81C\uC5B4", "reading");
     }
-    if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === "locate" && (evidence2.informationPanels || guideContext && evidence2.grouped) && !rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label))) && !isDocumentDownload(element, candidate.label) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return result("help", 65, "\uACF5\uAC1C \uC815\uBCF4 \uD328\uB110\xB7\uC548\uB0B4 \uC8FC\uC81C \uC77D\uAE30", "reading");
-    const title = evidence2.title;
-    if (!title || dangerous.test(title.replace(/납부(?=\s*(?:내역|기록))/, "")) || isDocumentDownload(element, candidate.label) || destination2 && hasDocumentReference(destination2) || element.closest('form, [role~="form" i]')) return;
-    if (/^(?=.{2,36}$).*(?:모의\s*계산|간단\s*계산|simulation|calculator)$/i.test(title) && !dangerous.test(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uBA85\uC2DC\uC801 \uBAA8\uC758\xB7\uAC04\uB2E8 \uACC4\uC0B0 \uCE74\uB4DC", "control");
-    if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title) && !dangerous.test(label.replace(/납부(?=\s*(?:내역|기록))/g, "")) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uAC1C\uC778 \uB0B4\uC5ED\xB7\uAE30\uB85D \uD655\uC778 \uCE74\uB4DC", "control");
-    if (!dangerous.test(label) && (applicationControlLabel.test(title) || explicitApplication.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uBA85\uC2DC\uC801 \uC2E0\uCCAD\xB7\uCCAD\uAD6C \uCE74\uB4DC \uC81C\uBAA9", "control");
+    if (!dangerous2.test(label) && isInformationTopicLabel(label) && candidate.action === "locate" && (evidence3.informationPanels || guideContext && evidence3.grouped) && !rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label))) && !isDocumentDownload(element, candidate.label) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return result("help", 65, "\uACF5\uAC1C \uC815\uBCF4 \uD328\uB110\xB7\uC548\uB0B4 \uC8FC\uC81C \uC77D\uAE30", "reading");
+    const title = evidence3.title;
+    if (!title || dangerous2.test(title.replace(/납부(?=\s*(?:내역|기록))/, "")) || isDocumentDownload(element, candidate.label) || destination2 && hasDocumentReference(destination2) || element.closest('form, [role~="form" i]')) return;
+    if (/^(?=.{2,36}$).*(?:모의\s*계산|간단\s*계산|simulation|calculator)$/i.test(title) && !dangerous2.test(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uBA85\uC2DC\uC801 \uBAA8\uC758\xB7\uAC04\uB2E8 \uACC4\uC0B0 \uCE74\uB4DC", "control");
+    if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title) && !dangerous2.test(label.replace(/납부(?=\s*(?:내역|기록))/g, "")) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uAC1C\uC778 \uB0B4\uC5ED\xB7\uAE30\uB85D \uD655\uC778 \uCE74\uB4DC", "control");
+    if (!dangerous2.test(label) && (applicationControlLabel.test(title) || explicitApplication.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uBA85\uC2DC\uC801 \uC2E0\uCCAD\xB7\uCCAD\uAD6C \uCE74\uB4DC \uC81C\uBAA9", "control");
   }
   function readonlyHelpDocument(candidate, label, target, url) {
     if (!url || candidate.context !== "body" || candidate.action !== "navigate" || !candidate.element.matches("a[href]") || !candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]') || candidate.element.closest('article, [role~="article"]') || !hasDocumentReference(url) || candidate.pagePurpose !== "help" || label.length < 4 || label.length > 100 || pathParts(url).some((part) => /^(?:news|articles?|stories|story|press)$/.test(part)) || !(/(?:안내|방법|절차)$/.test(label) || interrogative.test(label)) || rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return;
@@ -1050,10 +1611,13 @@
     const mode = options.mode ?? "institution";
     const collectionCache = /* @__PURE__ */ new WeakMap();
     const supplementalCache = /* @__PURE__ */ new WeakMap();
-    return candidates.flatMap((candidate) => {
-      const sourceLabel = normalize2(candidate.label).replace(/[_-]+/g, " ");
+    const contentCache = /* @__PURE__ */ new WeakMap();
+    const classified = candidates.flatMap((candidate) => {
+      const sourceLabel = normalize3(candidate.label).replace(/[_-]+/g, " ");
       const documentDownload = candidate.action === "locate" && isDocumentDownload(candidate.element, candidate.label);
       const label = documentDownload ? sourceLabel.replace(documentExtension, "").trim() : sourceLabel;
+      const utility2 = navigationUtility(candidate.element, candidate.label);
+      if (utility2 === "position") return [];
       if (orderingLabel.test(label)) return [];
       if (hasDangerousScript(candidate.element)) return [];
       let url;
@@ -1084,21 +1648,22 @@
       const target = endpoint(parts);
       const academicInfo = academicInformation(candidate, label, target, url);
       const element = candidate.element;
-      if (mode === "institution" && candidate.context !== "footer" && !dangerous.test(label) && isVisible(element) && element.matches('a[href], button, [role~="button" i], [role~="tab" i]') && !element.closest('form, [role~="form" i], input, textarea, select, [contenteditable]:not([contenteditable="false" i]), [role~="textbox" i], [role~="searchbox" i], [role~="combobox" i], [role~="spinbutton" i], [role~="slider" i]') && !(element instanceof HTMLButtonElement && element.form)) {
+      if (mode === "institution" && candidate.context !== "footer" && isVisible(element) && element.matches('a[href], button, [role~="button" i], [role~="tab" i]') && !element.closest('form, [role~="form" i], input, textarea, select, [contenteditable]:not([contenteditable="false" i]), [role~="textbox" i], [role~="searchbox" i], [role~="combobox" i], [role~="spinbutton" i], [role~="slider" i]') && !(element instanceof HTMLButtonElement && element.form)) {
         const inspectionParts = inspectionURL ? pathParts(inspectionURL) : [];
         const inspectionTarget = endpoint(inspectionParts);
-        const notice = noticeDocumentEvidence(candidate, label, normalize2(candidate.sectionLabel ?? ""), inspectionTarget, inspectionURL);
+        const notice = noticeDocumentEvidence(candidate, label, normalize3(candidate.sectionLabel ?? ""), inspectionTarget, inspectionURL);
         const supportedAnchor = !(element instanceof HTMLAnchorElement) || !!inspectionURL || (element.getAttribute("href") ?? "").trim().startsWith("#");
         const article = !!element.closest('article, [role~="article" i]') || isArticle(candidate, inspectionParts, inspectionURL);
         if (supportedAnchor && notice !== "conflict" && (!article || !!notice || corroboratedArticleService(candidate, label, inspectionTarget, inspectionParts, inspectionURL))) {
-          const evidence2 = institutionEvidence(candidate);
-          const conflict = evidence2 && rules.some((rule) => rule.category !== evidence2.category && rule.endpoints.has(inspectionTarget));
-          if (evidence2 && !conflict) return [{
+          const evidence3 = institutionEvidence(candidate);
+          const conflict = evidence3 && rules.some((rule) => rule.category !== evidence3.category && rule.endpoints.has(inspectionTarget));
+          const readonlyDeadline = evidence3?.readonlyPanel === true && evidence3.contentScope === "content" && evidence3.category === "help" && evidence3.pageTask === "reading" && candidate.action === "locate" && element instanceof HTMLAnchorElement && /^#[^\s]+$/.test(element.getAttribute("href")?.trim() ?? "") && /^(?=.{2,60}$).*(?:납부\s*(?:기한|기간|일정)|\bpayment\s+(?:deadline|period|schedule))$/i.test(label) && !dangerous2.test(label.replace(/납부|\bpayment\b/gi, ""));
+          if (evidence3 && !conflict && (!dangerous2.test(label) || readonlyDeadline)) return [{
             ...candidate,
-            category: evidence2.category,
-            score: evidence2.score,
-            pageTask: evidence2.pageTask,
-            institutionEvidence: evidence2,
+            category: evidence3.category,
+            score: evidence3.score,
+            pageTask: evidence3.pageTask,
+            institutionEvidence: evidence3,
             reasons: ["\uC6D0\uBCF8 \uBA54\uB274\uC640 \uC548\uB0B4 \uB0B4\uC6A9\uC758 \uAD00\uACC4", "\uAE30\uAD00 \uD398\uC774\uC9C0\uC758 \uBA85\uC2DC\uC801 \uC77D\uAE30 \uBAA9\uC801"]
           }];
         }
@@ -1107,11 +1672,11 @@
       if (readonlyHelp) return [readonlyHelp];
       const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
       if (supplemental) return [supplemental];
-      if (dangerous.test(label) && !academicInfo) return [];
+      if (dangerous2.test(label) && !academicInfo) return [];
       const searchControl = isSearchControl(candidate.element, label);
       const searchGuidance = !searchControl && searchGuidanceLabel.test(label);
       const inquiry = label.split(/[\s\p{P}\p{S}]+/u).some((word) => inquiryWord.test(word));
-      const section = normalize2(candidate.sectionLabel ?? "");
+      const section = normalize3(candidate.sectionLabel ?? "");
       const knownEndpoint = rules.some((rule) => rule.endpoints.has(target));
       const documentEvidence = noticeDocumentEvidence(candidate, label, section, target, url);
       if (documentEvidence === "conflict") return [];
@@ -1126,9 +1691,9 @@
       }
       if (isArticle(candidate, parts, url) && !corroboratedArticleService(candidate, label, target, parts, url)) return [];
       if (academicInfo) return [{ ...candidate, category: "academic", score: 70, reasons: ["\uD559\uC0AC \uB0A9\uBD80 \uC815\uBCF4 \uC77D\uAE30", "\uD559\uC0AC \uC81C\uBAA9\uACFC \uC548\uB0B4 \uBAA9\uC801\uC758 \uC77C\uBC18 \uB9C1\uD06C"], pageTask: "reading" }];
-      const form = formReading(candidate, label, inspectionURL ? endpoint(pathParts(inspectionURL)) : target, url);
-      if (form === "conflict") return [];
-      if (form) return [{ ...candidate, category: "apply", score: 70, reasons: ["\uC2E0\uCCAD \uC900\uBE44 \uBB38\uC11C \uC77D\uAE30", form === "document" ? "\uC11C\uC2DD \uBAA9\uB85D\uACFC \uBA85\uC2DC\uC801 \uBB38\uC11C\uBA85" : "\uBC1C\uAE09\xB7\uC2E0\uCCAD \uC808\uCC28\uC758 \uBA85\uC2DC\uC801 \uC11C\uC2DD \uB2E4\uC6B4\uB85C\uB4DC"], pageTask: "reading" }];
+      const form3 = formReading(candidate, label, inspectionURL ? endpoint(pathParts(inspectionURL)) : target, url);
+      if (form3 === "conflict") return [];
+      if (form3) return [{ ...candidate, category: "apply", score: 70, reasons: ["\uC2E0\uCCAD \uC900\uBE44 \uBB38\uC11C \uC77D\uAE30", form3 === "document" ? "\uC11C\uC2DD \uBAA9\uB85D\uACFC \uBA85\uC2DC\uC801 \uBB38\uC11C\uBA85" : "\uBC1C\uAE09\xB7\uC2E0\uCCAD \uC808\uCC28\uC758 \uBA85\uC2DC\uC801 \uC11C\uC2DD \uB2E4\uC6B4\uB85C\uB4DC"], pageTask: "reading" }];
       if (documentDownload && candidate.context !== "footer") {
         if (issuanceIntent.test(label)) return [{ ...candidate, category: "apply", score: 70, reasons: ["\uBC1C\uAE09 \uC548\uB0B4 \uBB38\uC11C \uC77D\uAE30", "\uBA85\uC2DC\uC801 \uB2E4\uC6B4\uB85C\uB4DC\uC640 \uBC1C\uAE09 \uBAA9\uC801"], pageTask: "reading" }];
         if (label.length <= 60 && (/(?:사용|이용)\s*안내$/.test(label) || legalDocument.test(label))) {
@@ -1182,13 +1747,17 @@
       }
       const guideContext = contextsFor(candidate, label).some((value) => value.length <= 60 && /안내$/.test(value));
       const formSubmit = candidate.element instanceof HTMLButtonElement && !!candidate.element.form && candidate.element.type === "submit";
-      if (!best && guideContext && isInformationTopicLabel(label) && candidate.context !== "footer" && candidate.action === "locate" && !formSubmit && candidate.element.matches('button, [role~="button"]') && /^(?:true|false)$/i.test(candidate.element.getAttribute("aria-expanded") ?? "") && !candidate.element.closest('article, [role~="article"]')) {
+      if (!best && !utility2 && guideContext && isInformationTopicLabel(label) && candidate.context !== "footer" && candidate.action === "locate" && !formSubmit && candidate.element.matches('button, [role~="button"]') && /^(?:true|false)$/i.test(candidate.element.getAttribute("aria-expanded") ?? "") && !candidate.element.closest('article, [role~="article"]')) {
         return [{ ...candidate, category: "help", score: 60, reasons: ["\uC548\uB0B4 \uC815\uBCF4 \uD328\uB110 \uC77D\uAE30", "\uC548\uB0B4 \uC81C\uBAA9\uACFC \uBA85\uC2DC\uC801 \uD3BC\uCE68 \uC81C\uC5B4"], pageTask: "control" }];
       }
       if (!best && url && candidate.action === "navigate" && candidate.element.matches("a[href]") && candidate.context !== "footer" && label.length >= 4 && label.length <= 36 && /안내(?:\s*바로\s*가기)?$/.test(label) && !knownEndpoint && !hasDocumentReference(url) && !/^\d+(?:\.[a-z]+)?$/i.test(parts.at(-1) ?? "") && !candidate.element.closest('article, [role~="article"]')) {
         return [{ ...candidate, category: "help", score: 60, reasons: ["\uACF5\uAC1C \uC548\uB0B4 \uBB38\uC11C \uC77D\uAE30", "\uC9E7\uC740 \uC548\uB0B4 \uBAA9\uC801\uC758 \uC77C\uBC18 \uB9C1\uD06C"], pageTask: void 0 }];
       }
       return best && best.score >= 55 ? [best] : [];
+    });
+    return classified.map((candidate) => {
+      const evidence3 = contentEvidence(candidate, contentCache, supplementalCache);
+      return evidence3 ? { ...candidate, contentEvidence: evidence3 } : candidate;
     });
   }
 
@@ -1199,6 +1768,7 @@
   var contextOrder = { primary: 0, body: 1, footer: 2 };
   var compareText = (a, b) => a < b ? -1 : a > b ? 1 : 0;
   var normalizedLabel = (candidate) => candidate.label.normalize("NFKC").replace(/\s+/g, " ").trim().toLowerCase();
+  var contentPriority = (candidate) => candidate.contentEvidence?.level ?? 0;
   function destination(candidate) {
     if (candidate.action !== "navigate" || !candidate.href) return "";
     try {
@@ -1241,7 +1811,7 @@
     return position & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : position & Node.DOCUMENT_POSITION_PRECEDING ? 1 : 0;
   }
   function compare(a, b) {
-    return pagePriority(b) - pagePriority(a) || navigationPriority(b) - navigationPriority(a) || b.score - a.score || contextOrder[a.context] - contextOrder[b.context] || a.label.length - b.label.length || compareText(normalizedLabel(a), normalizedLabel(b)) || compareText(destination(a), destination(b)) || compareText(a.category ?? "", b.category ?? "") || compareText(a.action, b.action) || compareText(a.element.id, b.element.id);
+    return contentPriority(b) - contentPriority(a) || pagePriority(b) - pagePriority(a) || navigationPriority(b) - navigationPriority(a) || b.score - a.score || contextOrder[a.context] - contextOrder[b.context] || a.label.length - b.label.length || compareText(normalizedLabel(a), normalizedLabel(b)) || compareText(destination(a), destination(b)) || compareText(a.category ?? "", b.category ?? "") || compareText(a.action, b.action) || compareText(a.element.id, b.element.id);
   }
   function ordered(candidates) {
     const sorted = [...candidates].sort(compare);
@@ -1252,23 +1822,23 @@
       if (candidate.pageTask === "reading") {
         const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
         if (!container) return;
-        const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
+        const key = `${candidate.category}:${contentPriority(candidate)}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.score}:${candidate.context}:${candidate.pagePurpose ?? ""}`;
         const peers = groups.get(container) ?? /* @__PURE__ */ new Map();
         peers.set(key, [...peers.get(key) ?? [], index]);
         groups.set(container, peers);
       } else if (candidate.category === "search" && candidate.pageTask === "control" && candidate.supplementalDependent) {
         const element = candidate.element;
         const container = element.closest('ul, ol, [role~="list" i]');
-        const form = element.closest('form, [role~="form" i]') ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
-        if (!container || !form || !supplementalEvidence(element, supplementalCache).filter) return;
-        const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.context}:${candidate.pagePurpose ?? ""}`;
-        const lists = filterGroups.get(form) ?? /* @__PURE__ */ new Map();
-        const peers = lists.get(container) ?? /* @__PURE__ */ new Map();
+        const form3 = element.closest('form, [role~="form" i]') ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
+        if (!container || !form3 || !supplementalEvidence(element, supplementalCache).filter) return;
+        const key = `${candidate.category}:${contentPriority(candidate)}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.score}:${candidate.context}:${candidate.pagePurpose ?? ""}`;
+        const lists2 = filterGroups.get(form3) ?? /* @__PURE__ */ new Map();
+        const peers = lists2.get(container) ?? /* @__PURE__ */ new Map();
         const positions = peers.get(key) ?? [];
         positions.push(index);
         peers.set(key, positions);
-        lists.set(container, peers);
-        filterGroups.set(form, lists);
+        lists2.set(container, peers);
+        filterGroups.set(form3, lists2);
       }
     });
     const applySourceOrder = (peers) => {
@@ -1280,7 +1850,7 @@
       }
     };
     for (const peers of groups.values()) applySourceOrder(peers);
-    for (const lists of filterGroups.values()) for (const peers of lists.values()) applySourceOrder(peers);
+    for (const lists2 of filterGroups.values()) for (const peers of lists2.values()) applySourceOrder(peers);
     return sorted;
   }
   function rank(candidates) {
@@ -1298,52 +1868,72 @@
       return true;
     });
     const counts = /* @__PURE__ */ new Map();
-    const selected = [];
+    const selected2 = [];
+    for (const level of [2, 1]) {
+      const content = unique.filter((candidate) => contentPriority(candidate) === level);
+      const categories = /* @__PURE__ */ new Set();
+      const add = (candidate) => {
+        selected2.push(candidate);
+        counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
+      };
+      for (const candidate of content) {
+        if (categories.has(candidate.category)) continue;
+        categories.add(candidate.category);
+        add(candidate);
+        if (selected2.length === MAX_CARDS) return ordered(selected2);
+      }
+      for (const candidate of content) {
+        if (selected2.includes(candidate)) continue;
+        add(candidate);
+        if (selected2.length === MAX_CARDS) return ordered(selected2);
+      }
+    }
     for (const candidate of unique) {
-      if (!candidate.category || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
+      if (selected2.length >= MAX_PAGE_TASKS) break;
+      if (!candidate.category || selected2.includes(candidate) || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
       counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
-      selected.push(candidate);
-      if (selected.length === MAX_PAGE_TASKS) break;
+      selected2.push(candidate);
+      if (selected2.length === MAX_PAGE_TASKS) break;
     }
     for (const candidate of unique) {
       if (!candidate.category || counts.has(candidate.category)) continue;
       counts.set(candidate.category, 1);
-      selected.push(candidate);
-      if (selected.length === MAX_CARDS) return ordered(selected);
+      selected2.push(candidate);
+      if (selected2.length === MAX_CARDS) return ordered(selected2);
     }
     for (const candidate of unique) {
-      if (!candidate.category || selected.includes(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
+      if (!candidate.category || selected2.includes(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
       counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
-      selected.push(candidate);
-      if (selected.length === MAX_CARDS) break;
+      selected2.push(candidate);
+      if (selected2.length === MAX_CARDS) break;
     }
-    if (selected.length < MAX_CARDS) for (const candidate of unique) {
-      if (selected.includes(candidate)) continue;
-      selected.push(candidate);
-      if (selected.length === MAX_CARDS) break;
+    if (selected2.length < MAX_CARDS) for (const candidate of unique) {
+      if (selected2.includes(candidate)) continue;
+      selected2.push(candidate);
+      if (selected2.length === MAX_CARDS) break;
     }
-    return ordered(selected);
+    return ordered(selected2);
   }
-  function alreadyShown(selected) {
+  function alreadyShown(selected2) {
     const destinations = /* @__PURE__ */ new Set();
     const controls = /* @__PURE__ */ new Set();
-    for (const candidate of selected) {
+    for (const candidate of selected2) {
       const href = destination(candidate);
       if (href) destinations.add(href);
       else controls.add(candidate.element);
     }
     return { destinations, controls };
   }
-  function hasMoreMenus(candidates, selected) {
-    const shown = alreadyShown(selected);
+  function hasMoreMenus(candidates, selected2) {
+    const shown = alreadyShown(selected2);
     return candidates.some((candidate) => {
       if (!candidate.category) return false;
       const href = destination(candidate);
       return href ? !shown.destinations.has(href) : !shown.controls.has(candidate.element);
     });
   }
-  function* remainingMenus(candidates, selected) {
-    const shown = alreadyShown(selected);
+  function* remainingMenus(candidates, selected2) {
+    const shown = alreadyShown(selected2);
     for (const candidate of ordered(candidates.filter((candidate2) => candidate2.category))) {
       const href = destination(candidate);
       if (href) {
@@ -1358,7 +1948,7 @@
   }
 
   // src/page-session.ts
-  function isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose) {
+  function isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache) {
     const label = candidateLabel(candidate.element);
     if (label !== candidate.label) return false;
     if (sourceContext(candidate.element) !== candidate.context) return false;
@@ -1367,8 +1957,13 @@
     if (pagePurpose(candidate.element, labels, commonPurpose) !== candidate.pagePurpose) return false;
     if (candidate.institutionEvidence) {
       const previous = candidate.institutionEvidence;
-      const evidence2 = institutionEvidence(candidate);
-      if (!evidence2 || evidence2.adapter !== previous.adapter || evidence2.version !== previous.version || evidence2.rule !== previous.rule || evidence2.category !== previous.category || evidence2.score !== previous.score || evidence2.fingerprint !== previous.fingerprint || evidence2.dependencies.length !== previous.dependencies.length || evidence2.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+      const evidence3 = institutionEvidence(candidate);
+      if (!evidence3 || evidence3.adapter !== previous.adapter || evidence3.version !== previous.version || evidence3.rule !== previous.rule || evidence3.category !== previous.category || evidence3.score !== previous.score || evidence3.pageTask !== previous.pageTask || evidence3.readonlyPanel !== previous.readonlyPanel || evidence3.contentScope !== previous.contentScope || evidence3.fingerprint !== previous.fingerprint || evidence3.dependencies.length !== previous.dependencies.length || evidence3.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+    }
+    if (candidate.contentEvidence) {
+      const previous = candidate.contentEvidence;
+      const evidence3 = contentEvidence(candidate, contentCache, supplementalCache);
+      if (!evidence3 || evidence3.level !== previous.level || evidence3.rule !== previous.rule || evidence3.fingerprint !== previous.fingerprint || evidence3.dependencies.length !== previous.dependencies.length || evidence3.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
     }
     const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache);
     return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl && current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
@@ -1377,8 +1972,9 @@
     const collectionCache = /* @__PURE__ */ new WeakMap();
     const supplementalCache = /* @__PURE__ */ new WeakMap();
     const contextCache = /* @__PURE__ */ new WeakMap();
+    const contentCache = /* @__PURE__ */ new WeakMap();
     const commonPurpose = documentPurpose() ?? null;
-    return candidates.every((candidate) => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose));
+    return candidates.every((candidate) => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose, contentCache));
   }
   function watchCandidates(getCandidates, onStale) {
     let stopped = false;
@@ -1398,7 +1994,7 @@
       childList: true,
       characterData: true,
       attributes: true,
-      attributeFilter: ["href", "target", "onclick", "aria-controls", "aria-current", "aria-expanded", "download", "type", "form", "id", "role", "disabled", "aria-disabled", "aria-hidden", "hidden", "class", "style", "aria-label", "aria-labelledby", "title", "placeholder", "contenteditable"]
+      attributeFilter: ["href", "rel", "target", "onclick", "aria-controls", "aria-current", "aria-selected", "aria-expanded", "aria-haspopup", "download", "type", "form", "id", "role", "tabindex", "disabled", "aria-disabled", "aria-hidden", "hidden", "class", "style", "aria-label", "aria-labelledby", "title", "placeholder", "contenteditable"]
     });
     const interval = window.setInterval(check, 300);
     window.addEventListener("popstate", check);

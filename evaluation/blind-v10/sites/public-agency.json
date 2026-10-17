@@ -1,0 +1,3805 @@
+{
+  "siteId": "public-agency",
+  "name": "국민연금공단",
+  "pages": [
+    {
+      "id": "v10-public-agency-01",
+      "url": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000937",
+      "finalUrl": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000937",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v10/fixtures/public-agency.html",
+      "observation": {
+        "sourceCapture": "docs/evidence/run008/blind-v10-support/captures/public-agency",
+        "capturedAt": "2026-10-17T19:29:37.261Z",
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        },
+        "fullOriginalBodyPreserved": true,
+        "originalScriptExecutionInReplay": "blocked by CSP; no handler stubs; all network requests blocked in self-QA",
+        "allOriginalMeaningfulControlsAnnotated": true,
+        "visibleControlCount": 111,
+        "controlCount": 669,
+        "privateValues": "removed; fixed public names retained",
+        "expectedGroupsSelectedBeforeProduct": true,
+        "preproductAmbiguities": [
+          "같은 카드의 상세보기는 설명 문서 help/navigate, 발급하기는 실제 업무 진입 apply/locate로 분리했다. 미리보기는 PDF 공개 양식의 읽기 기능 help/locate이다.",
+          "로그인 일반 링크는 navigate이다. 인증서 모바일 내보내기는 명시 팝업 제어여서 login/locate로 주석했다."
+        ],
+        "productExecutions": 0
+      },
+      "accepted": [
+        {
+          "sourceId": "public-agency-c0005",
+          "category": "help",
+          "action": "navigate",
+          "label": "서식찾기",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "서식찾기",
+            "originalAttributes": {
+              "href": "/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0006",
+          "category": "help",
+          "action": "navigate",
+          "label": "지사찾기",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "지사찾기",
+            "originalAttributes": {
+              "href": "/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0007",
+          "category": "apply",
+          "action": "navigate",
+          "label": "사업장(EDI)",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "사업장(EDI)",
+            "originalAttributes": {
+              "href": "https://edi.nps.or.kr",
+              "target": "_blank",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0021",
+          "category": "search",
+          "action": "locate",
+          "label": "검색",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "검색",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "commonUI.search.open(event);"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0035",
+          "category": "login",
+          "action": "navigate",
+          "label": "로그인",
+          "reason": "로그인·계정 또는 인증 관련 명시 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "로그인",
+            "originalAttributes": {
+              "href": "/lgn/loginForm.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0037",
+          "category": "apply",
+          "action": "locate",
+          "label": "전자민원 메뉴 접힘",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "전자민원 메뉴 접힘",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24000865','/elctcvlcpt/comm/getOHAC0000M2.do?menuId=MN24001593','전자민원','N');",
+              "role": "button",
+              "aria-label": "전자민원 메뉴 접힘"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0047",
+          "category": "help",
+          "action": "locate",
+          "label": "국민참여 메뉴 접힘",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "국민참여 메뉴 접힘",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24000866','/cmuctjng/custdscsn/getOHAD0002M0List.do?menuId=MN24000947','국민참여','N');",
+              "role": "button",
+              "aria-label": "국민참여 메뉴 접힘"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0068",
+          "category": "help",
+          "action": "locate",
+          "label": "정보공개 메뉴 접힘",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "정보공개 메뉴 접힘",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24000864','/inforls/inforlsgdnc/getOHAB0006M0.do?menuId=MN24000924','정보공개','N');",
+              "role": "button",
+              "aria-label": "정보공개 메뉴 접힘"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0085",
+          "category": "notice",
+          "action": "locate",
+          "label": "연금소식 메뉴 접힘",
+          "reason": "공식 소식·공고 또는 현재 게시 목록 관련 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "연금소식 메뉴 접힘",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24000867','/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897','연금소식','N');",
+              "role": "button",
+              "aria-label": "연금소식 메뉴 접힘"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0102",
+          "category": "help",
+          "action": "locate",
+          "label": "연금정보 메뉴 접힘",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "연금정보 메뉴 접힘",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24000868','/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103','연금정보','N');",
+              "role": "button",
+              "aria-label": "연금정보 메뉴 접힘"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0515",
+          "category": "apply",
+          "action": "locate",
+          "label": "마이페이지",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "마이페이지",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24001593','/elctcvlcpt/comm/getOHAC0000M2.do','마이페이지','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0517",
+          "category": "apply",
+          "action": "locate",
+          "label": "전체",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "전체",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24001727','/elctcvlcpt/comm/getOHAC0000M3.do','전체','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0518",
+          "category": "apply",
+          "action": "locate",
+          "label": "조회",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "조회",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24000936','/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000936','조회','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0519",
+          "category": "apply",
+          "action": "locate",
+          "label": "증명서 발급",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "증명서 발급",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24000937','/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000937','증명서 발급','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0520",
+          "category": "apply",
+          "action": "locate",
+          "label": "신고 · 신청",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "신고 · 신청",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24000938','/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000938','신고 · 신청','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0521",
+          "category": "apply",
+          "action": "locate",
+          "label": "가입지원 · 신고센터",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "가입지원 · 신고센터",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24000939','/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000939','가입지원 · 신고센터','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0522",
+          "category": "apply",
+          "action": "locate",
+          "label": "인터넷 납부서비스",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "인터넷 납부서비스",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24001723','/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001723','인터넷 납부서비스','N');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0523",
+          "category": "apply",
+          "action": "locate",
+          "label": "사업장(EDI)",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "사업장(EDI)",
+            "originalAttributes": {
+              "href": "javascript:;",
+              "onclick": "goMenuPage('MN24000878','https://edi.nps.or.kr/','사업장(EDI)','Y');",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0525",
+          "category": "apply",
+          "action": "navigate",
+          "label": "전자민원",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "전자민원",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M2.do?menuId=MN24001593"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0526",
+          "category": "apply",
+          "action": "navigate",
+          "label": "개인",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "개인",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0528",
+          "category": "help",
+          "action": "locate",
+          "label": "이용안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "이용안내",
+            "originalAttributes": {
+              "href": "/comm/pop/getOHAH0077P1.do",
+              "onclick": "window.open(this.href,'name1','width=945,height=850,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no');return false;",
+              "title": "(새창열림)증명서발급이용안내"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0529",
+          "category": "apply",
+          "action": "locate",
+          "label": "전체",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "전체",
+            "originalAttributes": {
+              "href": "javascript:fncChangeTab('MN24001727');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0530",
+          "category": "apply",
+          "action": "locate",
+          "label": "조회",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "조회",
+            "originalAttributes": {
+              "href": "javascript:fncChangeTab('MN24000936');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0531",
+          "category": "apply",
+          "action": "locate",
+          "label": "증명서 발급",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "증명서 발급",
+            "originalAttributes": {
+              "href": "javascript:fncChangeTab('MN24000937');",
+              "title": "선택됨"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0532",
+          "category": "apply",
+          "action": "locate",
+          "label": "신고 · 신청",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "신고 · 신청",
+            "originalAttributes": {
+              "href": "javascript:fncChangeTab('MN24000938');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0533",
+          "category": "apply",
+          "action": "locate",
+          "label": "가입지원 · 신고센터",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "가입지원 · 신고센터",
+            "originalAttributes": {
+              "href": "javascript:fncChangeTab('MN24000939');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0534",
+          "category": "apply",
+          "action": "locate",
+          "label": "인터넷 납부서비스",
+          "reason": "민원·신청·발급 등 실제 업무 진입 또는 해당 업무 확인 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "인터넷 납부서비스",
+            "originalAttributes": {
+              "href": "javascript:fncChangeTab('MN24001723');"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0536",
+          "category": "search",
+          "action": "locate",
+          "label": "전체조회증명서 발급신고 · 신청가입지원 · 신고센터인터넷 납부서비스",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "select",
+            "fixedName": "전체조회증명서 발급신고 · 신청가입지원 · 신고센터인터넷 납부서비스",
+            "originalAttributes": {},
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0537",
+          "category": "search",
+          "action": "locate",
+          "label": "전체",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "select",
+            "fixedName": "전체",
+            "originalAttributes": {},
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0538",
+          "category": "search",
+          "action": "locate",
+          "label": "전체 제목 내용",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "select",
+            "fixedName": "전체 제목 내용",
+            "originalAttributes": {
+              "title": "검색 조건"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0541",
+          "category": "search",
+          "action": "locate",
+          "label": "검색어 입력",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "input",
+            "fixedName": "검색어 입력",
+            "originalAttributes": {
+              "type": "text",
+              "title": "검색어 입력"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0542",
+          "category": "search",
+          "action": "locate",
+          "label": "검색",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "input",
+            "fixedName": "검색",
+            "originalAttributes": {
+              "type": "button"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0543",
+          "category": "search",
+          "action": "locate",
+          "label": "이용량순",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "button",
+            "fixedName": "이용량순",
+            "originalAttributes": {
+              "type": "button",
+              "title": "선택됨"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0544",
+          "category": "search",
+          "action": "locate",
+          "label": "가나다순",
+          "reason": "현재 자료·서비스를 찾는 검색 또는 목록 검색 보조 기능이다.",
+          "evidence": {
+            "tag": "button",
+            "fixedName": "가나다순",
+            "originalAttributes": {
+              "type": "button"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0545",
+          "category": "help",
+          "action": "navigate",
+          "label": "가입자 가입증명(국/영문) 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001054",
+              "title": "가입자 가입증명(국/영문) 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0546",
+          "category": "apply",
+          "action": "locate",
+          "label": "가입자 가입증명(국/영문) 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001054','/elctcvlcpt/cfdcissu/getOHAC0020M0.do','가입자 가입증명(국/영문)','N');",
+              "title": "가입자 가입증명(국/영문) 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0547",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 가입자 가입증명(국/영문) 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001054.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 가입자 가입증명(국/영문) 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0548",
+          "category": "help",
+          "action": "navigate",
+          "label": "연금산정용 가입내역 확인서(국/영문) 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001055",
+              "title": "연금산정용 가입내역 확인서(국/영문) 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0549",
+          "category": "apply",
+          "action": "locate",
+          "label": "연금산정용 가입내역 확인서(국/영문) 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001055','/elctcvlcpt/cfdcissu/getOHAC0021M0.do','연금산정용 가입내역 확인서(국/영문)','N');",
+              "title": "연금산정용 가입내역 확인서(국/영문) 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0550",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 연금산정용 가입내역 확인서(국/영문) 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001055.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 연금산정용 가입내역 확인서(국/영문) 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0551",
+          "category": "help",
+          "action": "navigate",
+          "label": "국민연금 수급증명(지급내역) (국/영문) 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001056",
+              "title": "국민연금 수급증명(지급내역) (국/영문) 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0552",
+          "category": "apply",
+          "action": "locate",
+          "label": "국민연금 수급증명(지급내역) (국/영문) 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001056','/elctcvlcpt/cfdcissu/getOHAC0022M0.do','국민연금 수급증명(지급내역) (국/영문)','N');",
+              "title": "국민연금 수급증명(지급내역) (국/영문) 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0553",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 국민연금 수급증명(지급내역) (국/영문) 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001056.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 국민연금 수급증명(지급내역) (국/영문) 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0554",
+          "category": "help",
+          "action": "navigate",
+          "label": "연금소득 원천징수영수증 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001061",
+              "title": "연금소득 원천징수영수증 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0555",
+          "category": "apply",
+          "action": "locate",
+          "label": "연금소득 원천징수영수증 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001061','/elctcvlcpt/cfdcissu/getOHAC0027M0.do','연금소득 원천징수영수증','N');",
+              "title": "연금소득 원천징수영수증 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0556",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 연금소득 원천징수영수증 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001061.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 연금소득 원천징수영수증 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0557",
+          "category": "help",
+          "action": "navigate",
+          "label": "소득공제용 납부확인서 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001058",
+              "title": "소득공제용 납부확인서 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0558",
+          "category": "apply",
+          "action": "locate",
+          "label": "소득공제용 납부확인서 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001058','/elctcvlcpt/cfdcissu/getOHAC0024M0.do','소득공제용 납부확인서','N');",
+              "title": "소득공제용 납부확인서 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0559",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 소득공제용 납부확인서 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001058.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 소득공제용 납부확인서 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0560",
+          "category": "help",
+          "action": "navigate",
+          "label": "개인회생 신청용 확인서 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001060",
+              "title": "개인회생 신청용 확인서 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0561",
+          "category": "apply",
+          "action": "locate",
+          "label": "개인회생 신청용 확인서 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001060','/elctcvlcpt/cfdcissu/getOHAC0026M0.do','개인회생 신청용 확인서','N');",
+              "title": "개인회생 신청용 확인서 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0562",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 개인회생 신청용 확인서 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001060.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 개인회생 신청용 확인서 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0563",
+          "category": "help",
+          "action": "navigate",
+          "label": "퇴직소득 원천징수영수증 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001062",
+              "title": "퇴직소득 원천징수영수증 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0564",
+          "category": "apply",
+          "action": "locate",
+          "label": "퇴직소득 원천징수영수증 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001062','/elctcvlcpt/cfdcissu/getOHAC0028M0.do','퇴직소득 원천징수영수증','N');",
+              "title": "퇴직소득 원천징수영수증 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0565",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 퇴직소득 원천징수영수증 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001062.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 퇴직소득 원천징수영수증 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0566",
+          "category": "help",
+          "action": "navigate",
+          "label": "일시급 지급내역(국/영문) 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001057",
+              "title": "일시급 지급내역(국/영문) 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0567",
+          "category": "apply",
+          "action": "locate",
+          "label": "일시급 지급내역(국/영문) 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001057','/elctcvlcpt/cfdcissu/getOHAC0023M0.do','일시급 지급내역(국/영문)','N');",
+              "title": "일시급 지급내역(국/영문) 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0568",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 일시급 지급내역(국/영문) 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001057.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 일시급 지급내역(국/영문) 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0569",
+          "category": "help",
+          "action": "navigate",
+          "label": "연금 수급증명서 재발급 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001063",
+              "title": "연금 수급증명서 재발급 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0570",
+          "category": "apply",
+          "action": "locate",
+          "label": "연금 수급증명서 재발급 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001063','/elctcvlcpt/cfdcissu/getOHAC0029M0.do','연금 수급증명서 재발급','N');",
+              "title": "연금 수급증명서 재발급 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0571",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 연금 수급증명서 재발급 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001063.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 연금 수급증명서 재발급 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0572",
+          "category": "help",
+          "action": "navigate",
+          "label": "퇴직금 전환금 부과내역서 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001059",
+              "title": "퇴직금 전환금 부과내역서 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0573",
+          "category": "apply",
+          "action": "locate",
+          "label": "퇴직금 전환금 부과내역서 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001059','/elctcvlcpt/cfdcissu/getOHAC0025M0.do','퇴직금 전환금 부과내역서','N');",
+              "title": "퇴직금 전환금 부과내역서 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0574",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 퇴직금 전환금 부과내역서 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001059.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 퇴직금 전환금 부과내역서 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0575",
+          "category": "help",
+          "action": "navigate",
+          "label": "가입자증명서 발급(구 가입자 증서 재발급) 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001064",
+              "title": "가입자증명서 발급(구 가입자 증서 재발급) 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0576",
+          "category": "apply",
+          "action": "locate",
+          "label": "가입자증명서 발급(구 가입자 증서 재발급) 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN24001064','/elctcvlcpt/cfdcissu/getOHAC0030M0.do','가입자증명서 발급(구 가입자 증서 재발급)','N');",
+              "title": "가입자증명서 발급(구 가입자 증서 재발급) 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0577",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 가입자증명서 발급(구 가입자 증서 재발급) 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN24001064.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 가입자증명서 발급(구 가입자 증서 재발급) 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0578",
+          "category": "help",
+          "action": "navigate",
+          "label": "국민연금보험료 납부확인서 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN25000122",
+              "title": "국민연금보험료 납부확인서 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0579",
+          "category": "apply",
+          "action": "locate",
+          "label": "국민연금보험료 납부확인서 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN25000122','/elctcvlcpt/cfdcissu/getOHAC0078M0.do','국민연금보험료 납부확인서','N');",
+              "title": "국민연금보험료 납부확인서 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0580",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 국민연금보험료 납부확인서 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN25000122.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 국민연금보험료 납부확인서 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0581",
+          "category": "help",
+          "action": "navigate",
+          "label": "국민연금보험료 미납증명 상세보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "상세보기",
+            "originalAttributes": {
+              "href": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN26000007",
+              "title": "국민연금보험료 미납증명 상세보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0582",
+          "category": "apply",
+          "action": "locate",
+          "label": "국민연금보험료 미납증명 발급하기",
+          "reason": "동일 서비스 카드에서 실제 발급 업무를 시작하는 제어이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "발급하기",
+            "originalAttributes": {
+              "href": "javascript:goMenuPage('MN26000007','/elctcvlcpt/cfdcissu/getOHAC0083M0.do','국민연금보험료 미납증명','N');",
+              "title": "국민연금보험료 미납증명 발급하기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0583",
+          "category": "help",
+          "action": "locate",
+          "label": "(새창열림) 국민연금보험료 미납증명 미리보기",
+          "reason": "동일 서비스 카드에서 설명 문서 또는 공개 PDF 미리보기이다. 발급 업무 제어와 구별했다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "미리보기",
+            "originalAttributes": {
+              "href": "/html/download/minwon/view_MN26000007.pdf",
+              "target": "_blank",
+              "title": "(새창열림) 국민연금보험료 미납증명 미리보기"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0616",
+          "category": "help",
+          "action": "locate",
+          "label": "고객센터 ARS 구성도",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "고객센터 ARS 구성도",
+            "originalAttributes": {
+              "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0001M0.do','_blank','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=760,height=800')",
+              "title": "고객센터 ARS 구성도(새창열림)"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0617",
+          "category": "help",
+          "action": "locate",
+          "label": "영상수어상담",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "영상수어상담",
+            "originalAttributes": {
+              "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0002M0.do','_blank','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=760,height=700')",
+              "title": "영상수어상담(새창열림)"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0618",
+          "category": "help",
+          "action": "locate",
+          "label": "찾아오시는 길",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "찾아오시는 길",
+            "originalAttributes": {
+              "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0008M0.do','_blank','width=730,height=900,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,directories=no,status=no')",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0619",
+          "category": "help",
+          "action": "navigate",
+          "label": "이용약관",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "이용약관",
+            "originalAttributes": {
+              "href": "/comm/footer/getOHAH0004M0.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0620",
+          "category": "help",
+          "action": "navigate",
+          "label": "홈페이지 개선의견",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "홈페이지 개선의견",
+            "originalAttributes": {
+              "href": "/comm/footer/getOHAH0006M0List.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0621",
+          "category": "login",
+          "action": "locate",
+          "label": "인증서 모바일로 내보내기",
+          "reason": "로그인·계정 또는 인증 관련 명시 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "인증서 모바일로 내보내기",
+            "originalAttributes": {
+              "href": "javascript:fnOpenBrws('/raonnx/nxCR/index.jsp','_blank','')",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0627",
+          "category": "help",
+          "action": "navigate",
+          "label": "개인정보처리방침",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "개인정보처리방침",
+            "originalAttributes": {
+              "href": "/comm/footer/getOHAH0003M0.do"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        },
+        {
+          "sourceId": "public-agency-c0628",
+          "category": "help",
+          "action": "locate",
+          "label": "홈페이지 이용안내",
+          "reason": "이용 안내·설명 문서·공개 정보·지원 도움 기능이다.",
+          "evidence": {
+            "tag": "a",
+            "fixedName": "홈페이지 이용안내",
+            "originalAttributes": {
+              "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0005M0.do','','width=1030,height=683,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no')",
+              "title": "새창열림"
+            },
+            "rowText": null,
+            "sourceInventory": "docs/evidence/run008/blind-v10-support/captures/public-agency/original-controls.json"
+          }
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "public-agency-c0001",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0002",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0003",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0004",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0008",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0009",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0010",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0011",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0012",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0013",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0014",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0015",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0016",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0017",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0018",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0019",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0020",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0022",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0023",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0024",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0025",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0026",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0027",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0028",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0029",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0030",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0031",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0032",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0033",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0034",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0036",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0038",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0039",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0040",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0041",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0042",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0043",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0044",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0045",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0046",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0048",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0049",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0050",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0051",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0052",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0053",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0054",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0055",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0056",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0057",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0058",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0059",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0060",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0061",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0062",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0063",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0064",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0065",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0066",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0067",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0069",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0070",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0071",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0072",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0073",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0074",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0075",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0076",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0077",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0078",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0079",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0080",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0081",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0082",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0083",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0084",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0086",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0087",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0088",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0089",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0090",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0091",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0092",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0093",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0094",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0095",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0096",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0097",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0098",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0099",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0100",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0101",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0103",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0104",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0105",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0106",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0107",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0108",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0109",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0110",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0111",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0112",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0113",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0114",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0115",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0116",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0117",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0118",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0119",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0120",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0121",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0122",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0123",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0124",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0125",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0126",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0127",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0128",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0129",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0130",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0131",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0132",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0133",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0134",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0135",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0136",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0137",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0138",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0139",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0140",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0141",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0142",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0143",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0144",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0145",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0146",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0147",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0148",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0149",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0150",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0151",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0152",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0153",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0154",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0155",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0156",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0157",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0158",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0159",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0160",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0161",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0162",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0163",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0164",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0165",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0166",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0167",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0168",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0169",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0170",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0171",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0172",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0173",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0174",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0175",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0176",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0177",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0178",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0179",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0180",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0181",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0182",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0183",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0184",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0185",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0186",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0187",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0188",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0189",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0190",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0191",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0192",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0193",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0194",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0195",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0196",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0197",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0198",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0199",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0200",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0201",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0202",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0203",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0204",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0205",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0206",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0207",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0208",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0209",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0210",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0211",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0212",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0213",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0214",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0215",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0216",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0217",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0218",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0219",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0220",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0221",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0222",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0223",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0224",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0225",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0226",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0227",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0228",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0229",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0230",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0231",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0232",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0233",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0234",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0235",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0236",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0237",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0238",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0239",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0240",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0241",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0242",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0243",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0244",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0245",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0246",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0247",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0248",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0249",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0250",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0251",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0252",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0253",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0254",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0255",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0256",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0257",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0258",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0259",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0260",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0261",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0262",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0263",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0264",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0265",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0266",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0267",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0268",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0269",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0270",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0271",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0272",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0273",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0274",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0275",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0276",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0277",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0278",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0279",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0280",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0281",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0282",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0283",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0284",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0285",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0286",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0287",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0288",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0289",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0290",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0291",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0292",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0293",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0294",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0295",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0296",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0297",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0298",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0299",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0300",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0301",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0302",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0303",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0304",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0305",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0306",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0307",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0308",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0309",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0310",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0311",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0312",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0313",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0314",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0315",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0316",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0317",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0318",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0319",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0320",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0321",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0322",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0323",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0324",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0325",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0326",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0327",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0328",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0329",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0330",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0331",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0332",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0333",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0334",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0335",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0336",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0337",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0338",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0339",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0340",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0341",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0342",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0343",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0344",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0345",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0346",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0347",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0348",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0349",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0350",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0351",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0352",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0353",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0354",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0355",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0356",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0357",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0358",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0359",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0360",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0361",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0362",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0363",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0364",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0365",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0366",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0367",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0368",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0369",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0370",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0371",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0372",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0373",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0374",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0375",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0376",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0377",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0378",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0379",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0380",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0381",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0382",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0383",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0384",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0385",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0386",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0387",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0388",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0389",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0390",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0391",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0392",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0393",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0394",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0395",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0396",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0397",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0398",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0399",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0400",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0401",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0402",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0403",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0404",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0405",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0406",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0407",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0408",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0409",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0410",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0411",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0412",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0413",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0414",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0415",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0416",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0417",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0418",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0419",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0420",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0421",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0422",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0423",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0424",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0425",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0426",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0427",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0428",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0429",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0430",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0431",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0432",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0433",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0434",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0435",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0436",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0437",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0438",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0439",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0440",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0441",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0442",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0443",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0444",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0445",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0446",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0447",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0448",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0449",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0450",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0451",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0452",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0453",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0454",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0455",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0456",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0457",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0458",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0459",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0460",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0461",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0462",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0463",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0464",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0465",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0466",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0467",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0468",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0469",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0470",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0471",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0472",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0473",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0474",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0475",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0476",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0477",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0478",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0479",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0480",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0481",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0482",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0483",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0484",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0485",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0486",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0487",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0488",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0489",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0490",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0491",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0492",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0493",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0494",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0495",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0496",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0497",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0498",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0499",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0500",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0501",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0502",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0503",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0504",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0505",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0506",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0507",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0508",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0509",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0510",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0511",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0512",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0513",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0514",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0516",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0524",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0527",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0535",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0539",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0540",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0584",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0585",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "public-agency-c0586",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "public-agency-c0587",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "public-agency-c0588",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "public-agency-c0589",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "public-agency-c0590",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0591",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0592",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0593",
+          "reason": "만족도·의견 등 사용자 사적 입력이며 검색 기능이 아니다. 값과 편집 내용은 제거했다."
+        },
+        {
+          "sourceId": "public-agency-c0594",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0595",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0596",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0597",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0598",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0599",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0600",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0601",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0602",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0603",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0604",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0605",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0606",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0607",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0608",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0609",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0610",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0611",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0612",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0613",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0614",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0615",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0622",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0623",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0624",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0625",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0626",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0629",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0630",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0631",
+          "reason": "기관 소개·홍보·외부 SNS·인증 마크 또는 일반 탐색으로, 현재 여섯 기능의 구체적인 사용자 업무에 해당하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0632",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0633",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0634",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0635",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0636",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0637",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0638",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0639",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0640",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0641",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0642",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0643",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0644",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0645",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0646",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0647",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0648",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0649",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0650",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0651",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0652",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0653",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0654",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0655",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0656",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0657",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0658",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0659",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0660",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0661",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0662",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0663",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0664",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0665",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0666",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0667",
+          "reason": "원본 캡처에서 숨김·비노출 제어이다. 구조와 속성은 보존하고 최초 노출 후보로 사용하지 않는다."
+        },
+        {
+          "sourceId": "public-agency-c0668",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        },
+        {
+          "sourceId": "public-agency-c0669",
+          "reason": "일반 탐색·화면·공유·편집 보조 제어이며 구체적인 여섯 기능으로 보지 않았다."
+        }
+      ],
+      "expected": [
+        {
+          "id": "service-search",
+          "category": "search",
+          "label": "증명서 서비스 검색",
+          "action": "locate",
+          "sourceIds": [
+            "public-agency-c0541",
+            "public-agency-c0542"
+          ],
+          "reason": "현재 증명서 발급 목록을 찾는 실제 검색 입력과 버튼이다."
+        },
+        {
+          "id": "certificate-details",
+          "category": "help",
+          "label": "가입자 가입증명(국/영문) 상세보기",
+          "action": "navigate",
+          "sourceIds": [
+            "public-agency-c0545"
+          ],
+          "reason": "현재 첫 서비스 카드의 설명 화면 링크이며 실제 발급하기와 구분된다."
+        },
+        {
+          "id": "certificate-issue-entry",
+          "category": "apply",
+          "label": "가입자 가입증명(국/영문) 발급하기",
+          "action": "locate",
+          "sourceIds": [
+            "public-agency-c0546"
+          ],
+          "reason": "현재 첫 서비스 카드의 실제 발급 업무 진입이며 인증 필요 안내와 명시 JS가 있다. 자동 실행하지 않는다."
+        }
+      ],
+      "task": {
+        "instruction": "가입자 가입증명(국/영문)의 발급 조건과 절차 설명을 읽을 수 있는 상세보기로 이동해 주세요.",
+        "action": "navigate",
+        "expectedSourceIds": [
+          "public-agency-c0545"
+        ]
+      }
+    }
+  ]
+}

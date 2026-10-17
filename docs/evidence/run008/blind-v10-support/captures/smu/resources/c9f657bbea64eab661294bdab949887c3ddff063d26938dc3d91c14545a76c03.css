@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/* lounge 사이트 user.css에서 필요 부분만 발췌 이관 23.08.23 */
+
+/* 채용정보 하단 */
+.list_bottom {width: 100%; padding: 22px 0; margin: 58px 0 0; text-align: center; font-weight:500; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;}
+.list_bottom {font-size: 20px; color:#282828; line-height:35px;}
+.list_bottom img {vertical-align: top; margin:5px 8px 0 0;}
+.list_bottom a {color:#003d91; line-height:35px;}
+
+/* 게시판 탭 */
+.lounge-page .board-tab{margin-bottom: 40px;border: 1px solid #ccc;box-sizing: border-box;text-align: center;padding: 0;}
+.lounge-page .board-tab:after{display:block;clear:both;content:''}
+.lounge-page .board-tab li{float: none;display: inline-block;position: relative;padding: 16px 0;text-align: center;box-sizing: border-box;width:8.3759388%;margin: 0 0 0 -4px;}
+.lounge-page .board-tab li:before{content:"";display:block;clear:both;position:absolute;width:1px;height:10px;background-color:#cdcdcd;top:26px ;left:0;}
+.lounge-page .board-tab li:first-child:before{display:none;}
+.lounge-page .board-tab li a{color: #555;font-size: 18px;font-weight: 400;line-height: 30px;}
+.lounge-page .board-tab li.on{background:#002f70;}
+.lounge-page .board-tab li.on a{color:#fff;font-weight:500;}
+.lounge-page .board-tab li a:hover, .board-tab li a:focus, .board-tab li a:active{color:#003d91;font-weight:700}
+
+@media screen and (max-width:960px) {
+	/* 게시판 탭 */
+	.lounge-page .board-tab li{padding:15px 2%;display: inline-block;width: auto;}
+	.lounge-page .board-tab li:before{display:none;}
+	.lounge-page .board-tab li a{font-size:18px;line-height:25px}
+	.lounge-page 
+	.lounge-page .campus-tab-outer ul li{padding:15px 2%;display: inline-block;width: auto;}
+	.lounge-page .campus-tab-outer ul li.long{padding:15px 2%;display: inline-block;width: auto;}
+	.lounge-page .campus-tab-outer ul li:before{display:none;}
+	.lounge-page .campus-tab-outer ul li a{font-size:18px;line-height:25px}
+	.lounge-page .campus-tab-outer ul li:before{display:none}
+}
+
+@media screen and (max-width:640px) {
+	/* 채용정보 하단 */
+	.list_bottom {font-size: 14px; line-height:20px;}
+	.list_bottom a {line-height:20px;}
+	.list_bottom img {margin:-3px 5px 0 0;}
+
+	/* 게시판 탭 */
+	.lounge-page .board-tab{padding:0px 10px;}
+	.lounge-page .board-tab li{padding:10px 4%;}
+	.lounge-page .board-tab li a{font-size:16px;line-height:23px}
+
+	.lounge-page .campus-tab-outer{padding:0px 10px;}
+	.lounge-page .campus-tab-outer ul li{padding:10px 4%;}
+	.lounge-page .campus-tab-outer ul li.long{padding:10px 4%;}
+	.lounge-page .campus-tab-outer ul li a{font-size:16px;line-height:23px}
+
+	/* 게시판 */
+	.lounge-page .content-search-wrap .board-selectbox:nth-of-type(1){width:80px;}
+	.lounge-page .content-search-wrap .board-selectbox:nth-of-type(1) ul{width:80px;}
+
+	.lounge-page .board-search-input{width:calc(100% - 205px);height:35px;}
+	.lounge-page .board-wrap input, .board-wrap textarea, .common-board input, .common-board textarea{font-size:14px;}
+	.lounge-page .board-thumb-content-wrap{padding-right:0;}
+	.lounge-page .c-board-list-new{display:none;}
+	.lounge-page span.noti{background: url(../img/life/ico-noti.png) no-repeat;background-size:18px;width:18px;height:14px;vertical-align:bottom;}
+	.lounge-page span.cmp{font-size:14px;display:inline-block;vertical-align:bottom;}
+	.lounge-page span.cate{font-size:14px;margin-right:5px;display:inline-block;vertical-align:bottom;}
+
+	.lounge-page .board-thumb-content-title a{font-size:14px;/*display:inline-block;vertical-align:top;*/}
+	.lounge-page .board-thumb-content-title{padding:0 0 7px 0;vertical-align:middle;}
+}

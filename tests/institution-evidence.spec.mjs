@@ -36,7 +36,7 @@ test('교육 메뉴는 낯선 이름·경로·query에서도 로컬 읽기 근�
   expect(items.map(item => [item.id, item.category, item.action, item.pageTask])).toEqual([
     ['training', 'help', 'navigate', 'reading'], ['material', 'help', 'navigate', 'reading'],
   ]);
-  expect(items.every(item => item.adapter === 'safekorea-education' && item.version === 2)).toBe(true);
+  expect(items.every(item => item.adapter === 'safekorea-education' && item.version === 3)).toBe(true);
   expect(JSON.stringify(items)).not.toContain('board=');
 });
 
@@ -202,7 +202,7 @@ test('학사 탭의 선택 주제와 뒤의 실제 표제가 낯선 문서 링�
   expect(items.map(item => [item.id, item.category, item.action])).toEqual([
     ['certificate', 'academic', 'navigate'], ['selected-topic', 'academic', 'navigate'], ['linked-topic', 'academic', 'navigate'],
   ]);
-  expect(items.every(item => item.rule === 'selected-topic-following-content' && item.version === 2)).toBe(true);
+  expect(items.every(item => item.rule === 'selected-topic-following-content' && item.version === 3)).toBe(true);
 });
 
 for (const [name, mutate] of [
@@ -286,4 +286,150 @@ test('새 학사·도서관 관계도 사적 값 getter와 편집 내용을 읽�
   const items = await inspect(page, libraryUrl, html);
   expect(items).toHaveLength(4);
   expect(JSON.stringify(items)).not.toContain('PRIVATE_');
+});
+
+const unfamiliarPension = pensionPanels.replaceAll('새로운 국민연금의 구성', '보험료 납부기한').replaceAll('노후 생활의 사회보장', '기여금 산정 기준');
+const copyInstructions = `<main id="sub_content"><div class="content_top"><div class="content_info"><h3>자료 복제·인쇄</h3><div class="depth4-menu__slider"><div class="swiper-wrapper"><div role="group" class="on swiper-slide-active"><a id="copy-topic" href="/NL/contents/newCopyInfo.do" onclick="return false">관내복제<span class="sr-only">선택됨</span></a></div><div role="group"><a id="print-topic" href="/NL/contents/newPrintInfo.do" onclick="return false">원격인쇄</a></div><div role="group"><a id="postal-topic" href="/NL/contents/newPostalInfo.do" onclick="return false">우편복제</a></div></div></div></div></div><div class="content_wrap"><div class="sub_content"><div class="copy_data_wrap"><div class="txt dot_list"><div class="s_tit" id="instruction-title">이용 안내</div><div class="dot_cont">공개된 자료의 복제 방법을 안내합니다.</div></div><h4 class="tit" id="refund-title">예치 잔액 환급 안내</h4><div class="txt dot_list"><p id="refund-method">- 신청 방법: 개인 메뉴의 [<a id="refund-entry" href="/NL/contents/newRefundEntry.do">복제 예치금 환급</a>] 메뉴에서 대상자가 직접 신청</p></div></div></div></div></main>`;
+const safetyUrl = 'https://www.safekorea.go.kr/safekorea-kor/acts/asck/future/guide.do';
+const safetyGuide = `<main id="contents"><div class="content-right" id="content_area"><h3>이웃 시설 안전점검</h3><div class="cont-area"><button id="checklist-file" type="button" class="btn-down">주변 시설 점검표 다운로드</button><h3>미리 살피는 안전점검</h3><div class="check-listarea"><ul class="check-list"><li><label><input type="radio" checked>시설 안전</label></li><li><label><input type="radio">생활 안전</label></li></ul></div><h3 id="guide-title">재난 대비 체크가이드</h3><ul class="comm-list"><li>준비 상태를 확인하는 안내입니다.</li></ul><div class="button-rightarea"><button id="guided-start" type="button" class="btn-golist" onclick="onSubmit()">시설 점검 리스트 시작</button></div></div></div></main>`;
+
+test('v3 pension unfamiliar topic names prove unique readonly local explanations', async ({ page }) => {
+  const items = await inspect(page, pensionUrl, unfamiliarPension);
+  expect(items).toHaveLength(2);
+  expect(items.every(item => item.category === 'help' && item.pageTask === 'reading' && item.readonlyPanel === true)).toBe(true);
+});
+
+test('v3 readonly flag is withheld for editable or interactive panel descendants', async ({ page }) => {
+  const items = await inspect(page, pensionUrl, unfamiliarPension.replace('<h4>보험료 납부기한</h4>', '<h4>보험료 납부기한</h4><form><input type="text"><button>실행</button></form>'));
+  expect(items.map(item => item.id)).toEqual(['lifecycle']);
+  expect(items[0].readonlyPanel).toBe(true);
+});
+
+test('v3 legacy safe labels can remain guidance but never assert readonly over editors', async ({ page }) => {
+  const items = await inspect(page, pensionUrl, pensionPanels.replace('<h4>새로운 국민연금의 구성</h4>', '<h4>새로운 국민연금의 구성</h4><div contenteditable="true">PRIVATE_PANEL</div>'));
+  expect(items).toHaveLength(2);
+  expect(items.find(item => item.id === 'pension')?.readonlyPanel).toBeUndefined();
+  expect(items.find(item => item.id === 'lifecycle')?.readonlyPanel).toBe(true);
+  expect(JSON.stringify(items)).not.toContain('PRIVATE_');
+});
+
+test('v3 service/payment commands and duplicate targets never prove readonly panels', async ({ page }) => {
+  expect(await inspect(page, pensionUrl, unfamiliarPension.replaceAll('보험료 납부기한', '즉시 납부하기').replaceAll('기여금 산정 기준', '연금 신청'))).toEqual([]);
+  expect(await inspect(page, pensionUrl, unfamiliarPension + '<div id="unfamiliar-benefit"></div><div id="unfamiliar-fund"></div>')).toEqual([]);
+});
+
+test('v3 copying instruction tabs work without a search heading or manual download', async ({ page }) => {
+  const items = await inspect(page, libraryUrl, copyInstructions);
+  expect(items.filter(item => item.category === 'help').map(item => item.id)).toEqual(['copy-topic', 'print-topic', 'postal-topic']);
+  expect(items.find(item => item.id === 'copy-topic')?.label).toBe('관내복제 선택됨');
+});
+
+test('v3 refund entry is a bounded apply control and preserves ordinary navigation', async ({ page }) => {
+  const items = await inspect(page, libraryUrl, copyInstructions);
+  expect(items.find(item => item.id === 'refund-entry')).toMatchObject({ category: 'apply', pageTask: 'control', action: 'navigate' });
+});
+
+test('v3 refund and copy relationships require actual local instruction evidence', async ({ page }) => {
+  const items = await inspect(page, libraryUrl, copyInstructions.replace('신청 방법:', '정책 해설:').replace('메뉴에서 대상자가 직접 신청', '제도에 대한 일반 설명').replace('class="on swiper-slide-active"', ''));
+  expect(items).toEqual([]);
+});
+
+test('v3 copy guide does not borrow editorial titles from an input or another section', async ({ page }) => {
+  const items = await inspect(page, libraryUrl, copyInstructions.replace('id="instruction-title"', 'id="instruction-title" contenteditable="true"').replace('id="refund-title"', 'id="refund-title" contenteditable="true"'));
+  expect(items).toEqual([]);
+});
+
+test('v3 public safety guidance distinguishes a checklist document and guided start', async ({ page }) => {
+  const items = await inspect(page, safetyUrl, safetyGuide);
+  expect(items.map(item => [item.id, item.category, item.pageTask, item.action])).toEqual([
+    ['checklist-file', 'help', 'reading', 'locate'], ['guided-start', 'help', 'control', 'locate'],
+  ]);
+});
+
+test('v3 safety guide never reads input state or turns arbitrary start/download into guidance', async ({ page }) => {
+  const html = safetyGuide + `<button id="random" type="button">시작</button><button id="file-random" type="button">다운로드</button><script>document.querySelectorAll('input').forEach(node=>{for(const key of ['value','checked','innerText','textContent'])Object.defineProperty(node,key,{get(){throw Error('private state read')}})});</script>`;
+  const items = await inspect(page, safetyUrl, html);
+  expect(items.map(item => item.id)).toEqual(['checklist-file', 'guided-start']);
+});
+
+test('v3 safety buttons in a form or unrelated source family abstain', async ({ page }) => {
+  expect(await inspect(page, safetyUrl, safetyGuide.replace('<div class="cont-area">', '<form class="cont-area">').replace('</div></div></main>', '</form></div></main>'))).toEqual([]);
+  expect(await inspect(page, safetyUrl.replace('/acts/asck/', '/account/'), safetyGuide)).toEqual([]);
+});
+
+test('v3 explanation peer and heading replacement changes dependency identity', async ({ page }) => {
+  await inspect(page, pensionUrl, unfamiliarPension);
+  expect(await page.evaluate(() => {
+    const source = sources.find(item => item.element.id === 'pension');
+    const before = InstitutionModule.institutionEvidence(source);
+    const peer = document.getElementById('lifecycle');
+    peer.replaceWith(peer.cloneNode(true));
+    const after = InstitutionModule.institutionEvidence(source);
+    return before.dependencies.includes(peer) && !after.dependencies.includes(peer)
+      && after.dependencies.includes(document.getElementById('lifecycle'));
+  })).toBe(true);
+});
+
+test('v3 instruction headings and refund-method changes invalidate their evidence', async ({ page }) => {
+  await inspect(page, libraryUrl, copyInstructions);
+  expect(await page.evaluate(() => {
+    const tab = sources.find(item => item.element.id === 'print-topic');
+    const refund = sources.find(item => item.element.id === 'refund-entry');
+    const before = InstitutionModule.institutionEvidence(tab);
+    const oldTitle = document.getElementById('instruction-title');
+    oldTitle.replaceWith(oldTitle.cloneNode(true));
+    const after = InstitutionModule.institutionEvidence(tab);
+    document.getElementById('refund-method').firstChild.replaceWith('정책 해설: ');
+    return before.dependencies.includes(oldTitle) && !after.dependencies.includes(oldTitle)
+      && InstitutionModule.institutionEvidence(refund) === undefined;
+  })).toBe(true);
+});
+
+for (const [label, attribute] of [['interactive role', 'role="button"'], ['focus target', 'tabindex="0"'], ['event target', 'onclick="return false"']]) {
+  test(`v3 panel itself cannot claim readonly as ${label}`, async ({ page }) => {
+    const items = await inspect(page, pensionUrl, unfamiliarPension.replace('id="unfamiliar-fund" hidden', `id="unfamiliar-fund" ${attribute} hidden`));
+    expect(items.map(item => item.id)).toEqual(['lifecycle']);
+    expect(items[0].readonlyPanel).toBe(true);
+  });
+}
+
+test('v3 source peer destination structure participates in semantic currentness', async ({ page }) => {
+  await inspect(page, pensionUrl, unfamiliarPension);
+  expect(await page.evaluate(() => {
+    const source = sources.find(item => item.element.id === 'pension');
+    const before = InstitutionModule.institutionEvidence(source);
+    document.getElementById('lifecycle').setAttribute('href', '#different-local-topic');
+    const after = InstitutionModule.institutionEvidence(source);
+    return !!after && before.fingerprint !== after.fingerprint;
+  })).toBe(true);
+});
+
+test('v3 content provenance separates local explanation/operation from navigation', async ({ page }) => {
+  const navigation = await inspect(page, governmentUrl, educationMenu);
+  expect(navigation.every(item => item.contentScope === 'navigation')).toBe(true);
+  const content = await inspect(page, libraryUrl, copyInstructions);
+  expect(content).toHaveLength(4);
+  expect(content.every(item => item.contentScope === 'content')).toBe(true);
+});
+
+test('v3 refund relation rejects editable method descendants without private getters', async ({ page }) => {
+  const html = copyInstructions.replace('메뉴에서 대상자가 직접 신청</p>', '메뉴에서 대상자가 직접 신청<input value="PRIVATE_REFUND"><span contenteditable="true">PRIVATE_METHOD</span></p>')
+    + `<script>document.querySelectorAll('input,[contenteditable]').forEach(node=>{for(const key of ['value','innerText','textContent'])Object.defineProperty(node,key,{get(){throw Error('private method read')}})});</script>`;
+  const items = await inspect(page, libraryUrl, html);
+  expect(items.find(item => item.id === 'refund-entry')).toBeUndefined();
+  expect(JSON.stringify(items)).not.toContain('PRIVATE_');
+});
+
+test('v3 guided safety heading replacement changes actual dependency identity', async ({ page }) => {
+  await inspect(page, safetyUrl, safetyGuide);
+  expect(await page.evaluate(() => {
+    const source = sources.find(item => item.element.id === 'guided-start');
+    const before = InstitutionModule.institutionEvidence(source);
+    const heading = document.getElementById('guide-title');
+    heading.replaceWith(heading.cloneNode(true));
+    const after = InstitutionModule.institutionEvidence(source);
+    document.getElementById('guide-title').replaceChildren('일반 기관 소식');
+    return before.dependencies.includes(heading) && !after.dependencies.includes(heading)
+      && InstitutionModule.institutionEvidence(source) === undefined;
+  })).toBe(true);
 });

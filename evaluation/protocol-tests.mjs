@@ -113,7 +113,7 @@ test('new suite names are recognized and reject invalid inputs before reading da
   const root = await mkdtemp(join(tmpdir(), 'easyweb-v7-corrected-options-'));
   try {
     const script = fileURLToPath(new URL('../scripts/evaluate.mjs', import.meta.url));
-    for (const suite of ['development-v7-corrected', 'development-v7-corrected-v2', 'blind-v8', 'blind-v9', 'blind-v9-v2']) {
+    for (const suite of ['development-v7-corrected', 'development-v7-corrected-v2', 'blind-v8', 'blind-v9', 'blind-v9-v2', 'blind-v10', 'blind-v10-v2']) {
       const result = spawnSync(process.execPath, [script, `--suite=${suite}`, '--split=invalid'], { cwd: root, encoding: 'utf8', timeout: 15_000 });
       assert.notEqual(result.status, 0);
       assert.match(result.stderr, /engine=current\|baseline, split=calibration\|holdout\|all/);

@@ -1,0 +1,64 @@
+{
+  "recordedAt": "2026-10-17T19:37:20.873927+00:00",
+  "classification": "EXPOSED_DEVELOPMENT_ONLY",
+  "rootIntegration": {
+    "reading": {
+      "baselineEngine": "docs/evidence/run007/v0.8-before-blind-v9-engine/src",
+      "baselinePassed": 3,
+      "baselineFailed": 3,
+      "finalPassed": 6,
+      "finalFailed": 0,
+      "logs": [
+        "root-integration/baseline-v0.8.log",
+        "root-integration/first-current.log",
+        "root-integration/final-current.log"
+      ],
+      "harnessCorrection": "First current test expected original-source notice before click; changed-source overlay correctly remains open. Assertion changed to .change-notice; product logic unchanged."
+    },
+    "navigation": {
+      "baselinePassed": 0,
+      "baselineFailed": 4,
+      "finalPassed": 4,
+      "finalFailed": 0,
+      "logs": [
+        "root-integration/navigation-baseline-v0.8.log",
+        "root-integration/navigation-final.log"
+      ]
+    }
+  },
+  "independentSafetyReview": "independent-reading-safety/review.json",
+  "resolvedIssueFamilies": [
+    "Readonly panel excludes nine additional ARIA interactive descendant roles and label[for].",
+    "Institution evidence includes real source-parent/list-item identities.",
+    "Institution and generic fixed-name heading descendants including SVG have real-node identity dependencies.",
+    "Shared bounded expansion excludes private/editor subtrees before reading child collections."
+  ],
+  "finalFocusedSafety": {
+    "passed": 24,
+    "failed": 0,
+    "sameSourceStable": true
+  },
+  "sourceSha256": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "fdf4ed47f0e4cd5d4aa8b3de503dc6c1bd84998830860ceca2849fdb71faf3a6",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "53670fb11c1d7908a401a864a4d2cb9379eac7eb540580b664d50f53043919c8",
+    "src/content-evidence.ts": "b6b7dda68f0bffaa045ce4b5a5674ec17096d9fe86e2822dca96ff455891f105",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+    "src/institution-evidence.ts": "c577aedbe6d54df2efc1d93c68fabc494a16befb07f761114d209d6d43d630ff",
+    "src/navigation-utility.ts": "d4ad0d0e26540e9eb949dc783ea23c763452c2c798e2a502828f7381a5e225aa",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "75b5cfbb60b7580f3617fbcc66f5abb93405a171978f13463ff30b758baa7314",
+    "src/ranker.ts": "1d4d0e122de9cc744f9beacd563ba09902fbdbfdf9bdc9b0ee1e98a99fcfc29a",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "0471b5b8687eadf2a73efafe03f436e2f852fec9f41d67d78aea07b5473c9849",
+    "extension/manifest.json": "80ae41bed3ffcc5c442f254a3661c5bcea0f3ff2df33970706ccd31b9563f91f"
+  },
+  "boundary": "Focused synthetic development regressions; no independent quality, native install, live task completion, user or performance acceptance claim. Original worker handoff hashes are intermediate; hashes here identify the final integrated source before broad verification/freeze.",
+  "freshV10SemanticExposure": false,
+  "uiAutomation": "Fresh isolated headless only; no CUA, existing browser profile, native focus, or existing server restart."
+}

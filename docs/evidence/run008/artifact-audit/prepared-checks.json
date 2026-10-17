@@ -1,0 +1,98 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "scope": "Independent offline artifact and document consistency audit after root signals final engine freeze, first fresh evaluation completion, final ZIP and reports are ready.",
+  "writeScope": "docs/evidence/run008/artifact-audit/ only",
+  "executionBoundary": {
+    "beforeStartSignal": "Read scripts, previous RUN007 audit procedure and historical evidence only. Do not read fresh v10 dataset, QA or result content.",
+    "afterStartSignal": "Read explicitly named final freeze/aggregate/result/package/report records. Verify dataset files as binary hashes only; do not use fresh page labels or fixture content for tuning.",
+    "productSourceChanges": false,
+    "buildOrTestOrBenchmarkReruns": false,
+    "networkCUANativeVisibleBrowserExistingProfileServerOperations": false
+  },
+  "proceduresRead": [
+    "scripts/package.mjs",
+    "scripts/evaluation-protocol.mjs",
+    "scripts/evaluate.mjs",
+    "scripts/verify.mjs",
+    "docs/evidence/run007/final-review.json",
+    "docs/evidence/run007/final-source-review/review.json",
+    "docs/evidence/run007/final-source-review/artifact-audit/audit.py",
+    "docs/evidence/run007/release-gate.json"
+  ],
+  "plannedChecks": [
+    {
+      "area": "final source and tools",
+      "checks": [
+        "Hash every declared product/tool freeze entry against current bytes and explicit frozen archive bytes.",
+        "Check full current src and extension manifest coverage dynamically; do not carry forward RUN007's fixed fifteen-file count after new modules.",
+        "Verify prior freeze pointer/hash and any pre-first tool revision record without replacing prior freezes.",
+        "Capture opening and closing hashes to distinguish artifact stability from product validation."
+      ]
+    },
+    {
+      "area": "first fresh evaluation preservation",
+      "checks": [
+        "Confirm command start/completion bind the correct engine and dataset freeze hashes and report hash.",
+        "Confirm phase is fresh-blind-validation and first output was not overwritten; retain nonzero quality failure separately from execution failure.",
+        "Check declared dataset/supporting hashes and read-only bits without interpreting fresh fixture, URL or annotation contents.",
+        "Cross-check initial-screen counts, per-institution status and separate additional-menu totals across aggregate report, release gate and prose.",
+        "Preserve initial failure, correction/provenance chronology and original/v2 distinction when applicable; do not count two versions as two source pages."
+      ]
+    },
+    {
+      "area": "historical preservation",
+      "checks": [
+        "Compare historical evidence/datasets/packages to explicit Git tags or frozen hash records, never to current product source.",
+        "Include run-004-v0.5.0-dev, run-005-v0.6.0-dev, run-006-v0.7.0-dev and run-007-v0.8.0-dev scopes as appropriate.",
+        "Verify RUN007 v9/v2 freezes, tool-error attempt, first evaluated failure and source archives remain byte-identical.",
+        "Keep v6/v7 annotation corrections as ADJUDICATED_DEVELOPMENT and previous original/parent hashes intact."
+      ]
+    },
+    {
+      "area": "candidate ZIP",
+      "checks": [
+        "Check archive byte length and SHA256 against package report and SHA256SUMS.",
+        "Run ZIP integrity check; reject duplicate, absolute, traversal or unexpected paths and compare every entry byte to current dist.",
+        "Check sorted names, fixed 1980 timestamp, stored compression and 0644 regular-file attributes against deterministic package metadata.",
+        "Confirm source manifest, dist manifest and archive manifest are identical, package version matches, MV3 activeTab/scripting only, no host/optional permissions or automatic injection.",
+        "Verify saved two-build/two-archive/source-stability records and package source/build digests; do not claim an independently repeated build."
+      ]
+    },
+    {
+      "area": "latest validation evidence",
+      "checks": [
+        "Cross-check local verification summary with raw Playwright statistics, failure/flaky/skip counts and recorded stage exits.",
+        "Match automatic accessibility and synthetic performance evidence to their exact source hashes, sample counts and documented scope.",
+        "Keep existing analyzer/overlay thresholds separate from stricter whole-pipeline diagnostic, preserving every PASS and FAIL.",
+        "Check same-source development modes, suite row count, unique exposed-page count and aggregate arithmetic without treating adjudicated or repeated data as fresh.",
+        "Treat prior live public-task observations as historical unless newly observed; never relabel HTTP/guidance arrival as authentication/application/payment or human success."
+      ]
+    },
+    {
+      "area": "documentation and acceptance",
+      "checks": [
+        "Check README, AGENTS, WORK_SPEC, PROGRESS, RUN008, INSTALL, PRETEST, SUPPORT_MATRIX, ACCESSIBILITY, VALIDATION and evaluation README current pointers.",
+        "Resolve relative local Markdown file links in relevant repository documentation; list unresolved paths separately from external URLs and section anchors.",
+        "Check each headline number and cited artifact against saved evidence, including exposed sample totals after fresh first evaluation.",
+        "Keep maximum six plus other/previous menu policy, direct ordinary HTTP navigation and input/risk/currentness protections explicit.",
+        "Keep native install, actual VoiceOver speech, actual browser zoom and pretest/formal participant observations at their evidenced states; do not infer completion.",
+        "Require the release gate and documents to agree on original ten-stage scope and NOT_MET unless every original acceptance requirement actually has evidence.",
+        "Keep usage snapshot boundary and unknown elapsed/account billing/token/cost fields honest."
+      ]
+    }
+  ],
+  "plannedOutputs": [
+    "audit.json: bounded audit result, checks, findings, resolved-during-audit notes and limitations",
+    "hash-checks.json: expected/actual hashes and comparison scopes",
+    "historical-preservation.json: named Git tag/scopes and mismatches",
+    "zip-entries.json: exact archive entry hashes and dist equality",
+    "markdown-links.json: checked relative references and unresolved paths",
+    "source-stability.json: opening/closing artifact source hashes"
+  ],
+  "limits": [
+    "Artifact consistency is separate from quality, safety, performance, accessibility, installation and human acceptance.",
+    "File read-only bits are permission evidence, not a guarantee against privileged later mutation.",
+    "Link checks establish local path existence; external destinations and section anchors are not part of this audit.",
+    "No fresh v10 content, QA or results have been read during this preparation task."
+  ]
+}

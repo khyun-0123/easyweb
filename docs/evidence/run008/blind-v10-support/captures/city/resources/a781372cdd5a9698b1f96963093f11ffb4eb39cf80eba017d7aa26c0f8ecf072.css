@@ -1,0 +1,346 @@
+@charset "utf-8";
+
+html, body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    font-family: "Pretendard GOV", sans-serif;
+    color: var(--gray80);
+    font-weight: 400;
+    line-height: 1.5;
+    word-break: keep-all;
+    word-wrap: break-word;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #fff;
+    font-size: 1.7rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+a:focus, button:focus {
+    outline: none;
+}
+
+a:focus-visible, button:focus-visible {
+    outline: 2px dashed var(--primary50) !important;
+    outline-offset: -0.2rem;
+    /*box-shadow: var(--box-shadow-outline-inset);*/
+    transition: outline 0s, box-shadow 0s !important;
+    border-radius: inherit;
+}
+
+::-moz-selection {
+    background: var(--secondary50);
+    color: var(--gray0);
+}
+
+::selection {
+    background: var(--secondary50);
+    color: var(--gray0);
+}
+
+body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, a, button, select, ul, li, span, em, label, :before, :after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    font-family: inherit;
+    line-height: 1.5;
+    letter-spacing: inherit;
+}
+
+pre {
+    font-family: inherit;
+}
+
+input, textarea, a, button, select, span, label, :before, :after {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #222;
+}
+
+h5 {
+    color: var(--primary70);
+}
+
+h5.black {
+	color: var(--gray90);
+}
+
+strong, b {
+    font-weight: 700;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
+    display: block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img, fieldset {
+    border: 0;
+}
+
+fieldset {
+    min-width: 100%;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+em, address,
+i {
+    font-style: normal;
+}
+
+a, button {
+    transition: var(--transition-base);
+}
+
+a, a:hover, a:active, a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:visited.visited, a:visited .visited {
+    color: #5917b8;
+}
+
+
+button, input[type=submit], input[type=button] {
+    overflow: visible;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    -webkit-appearance: button;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+textarea {
+    /*resize: none;*/
+}
+
+label {
+    cursor: pointer;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input[type=checkbox] {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+}
+
+input[type=text],
+input[type=tel],
+input[type=password],
+input[type=file],
+input[type=number],
+input[type=email],
+input[type=date],
+input[type=search],
+textarea {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: inherit;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    margin: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Internet Explorer (구버전) 대응 */
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+/* Edge 브라우저에서 패스워드 보기 버튼 숨김 */
+input[type=password]::-ms-reveal {
+    display: none;
+}
+
+caption {
+    position: static !important;
+    margin: 0 !important;
+}
+
+table {
+    table-layout: fixed;
+    max-width: none;
+    width: auto;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+[role=button] {
+    cursor: pointer;
+}
+
+.img img {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.img.bg-img {
+    background-size: cover;
+}
+
+hr, .sr-only, legend, caption, .hide {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.blind {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity:0;
+    z-index:998;
+}
+
+.show {
+    display: block !important;
+}
+
+.al {
+    text-align: left !important;
+}
+
+.ac {
+    text-align: center !important;
+}
+
+.ar {
+    text-align: right !important;
+}
+
+.underline, a.underline:hover, a.underline:focus, a.underline:active {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+}
+
+.break-all {
+    word-break: break-all;
+}
+
+#container .layout,
+.inner {
+    max-width: 1248px;
+    padding-left: var(--contents-padding-x);
+    padding-right: var(--contents-padding-x);
+}
+
+#container .in-between {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 6.4rem;
+}
+
+#container .layout.narrow {
+    max-width: calc(98.2rem + var(--contents-padding-x) * 2);
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 1.6rem;
+    }
+    .pc-only {
+        display: none !important;
+    }
+    .pc-only.read {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+    }
+    .mob-line {
+        display: block;
+        line-height: inherit;
+    }
+}
+@media (min-width: 1024px) {
+    .inner {
+        margin: 0 auto;
+    }
+}
+@media (min-width: 768px) {
+    .mob-only {
+        display: none !important;
+    }
+    .mob-only.read {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+    }
+    .pc-line {
+        display: block;
+        line-height: inherit;
+    }
+}

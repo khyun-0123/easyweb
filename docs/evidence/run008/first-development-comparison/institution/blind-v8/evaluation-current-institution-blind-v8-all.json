@@ -1,0 +1,1743 @@
+{
+  "checkedAt": "2026-10-17T19:35:25.168Z",
+  "engine": "current",
+  "suite": "blind-v8",
+  "split": "all",
+  "classificationMode": "institution",
+  "adapterVersion": 3,
+  "evaluationPhase": "post-holdout-development",
+  "adjudication": null,
+  "freezeVerification": null,
+  "toolHashes": {
+    "scripts/evaluate.mjs": "fabec6f673dc1cd54748d238b3d1425c7b77dffa8b60781dc34e90be99df5fc1",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "e75d4763ff234dbe63259242ad132430fb226aaa49659d80c77f1a9ec58f0ba1",
+  "datasetHash": "a3edeaf43e3aecef131dc862f690ddbab9c793f1fb73753cc4d01c31a9739738",
+  "fixtureHashes": {
+    "city-blind-v8": "71da1ea8fd1b484d5cd7f98e4f44a4bcbe9b65c806cf01cded9d1b485e9525bd",
+    "government-blind-v8": "be4dca0e6f1129183d0f8d5a528e6a3d7f1b47c84c86514c4b208f6d2c057d9a",
+    "library-blind-v8": "c6dcc7a71b48fd1db14f1361ebb60236376520b5969a1147920e9f8076290992",
+    "public-agency-blind-v8": "7f2b445de0cc0986187aa484ab2be0ca6ca70ab0ee15669ec07e81da15682f48",
+    "smu-blind-v8": "681b2d42532d6a48b6c581002e921cb5688a7cfe12d3bc107b5066917b4edda4"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 25,
+    "recommended": 25,
+    "matched": 14,
+    "expected": 15,
+    "precision": 1,
+    "recall": 0.9333333333333333,
+    "tasksRecommended": 5
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v8",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 11,
+      "classifiedCount": 5,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "위임장",
+          "action": "locate",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "신청 준비 문서 읽기",
+            "발급·신청 절차의 명시적 서식 다운로드"
+          ],
+          "sectionLabel": "신청서 및 구비서류",
+          "contextLabels": [
+            "신청서 및 구비서류",
+            "사용전검사안내"
+          ],
+          "category": "apply",
+          "pageTask": "reading",
+          "sourceId": "city-v8-c015"
+        },
+        {
+          "label": "정보통신공사 사용전검사 신청서",
+          "action": "locate",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "신청 준비 문서 읽기",
+            "발급·신청 절차의 명시적 서식 다운로드"
+          ],
+          "sectionLabel": "신청서 및 구비서류",
+          "contextLabels": [
+            "신청서 및 구비서류",
+            "사용전검사안내"
+          ],
+          "category": "apply",
+          "pageTask": "reading",
+          "sourceId": "city-v8-c016"
+        },
+        {
+          "label": "민원안내",
+          "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "contextLabels": [],
+          "category": "help",
+          "sourceId": "city-v8-c002"
+        },
+        {
+          "label": "온라인 필증발급",
+          "href": "https://www.cheonan.go.kr/prog/caImnstCerfin/kor/sub01_03_07_02/list.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "사용전검사안내",
+          "contextLabels": [
+            "사용전검사안내"
+          ],
+          "category": "apply",
+          "sourceId": "city-v8-c014"
+        },
+        {
+          "label": "사용전검사안내",
+          "href": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "sectionLabel": "사용전검사안내",
+          "contextLabels": [
+            "사용전검사안내"
+          ],
+          "category": "help",
+          "sourceId": "city-v8-c013"
+        }
+      ],
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "위임장",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-v8-c015",
+                "sourceMatches": 1
+              },
+              {
+                "label": "정보통신공사 사용전검사 신청서",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-v8-c016",
+                "sourceMatches": 1
+              },
+              {
+                "label": "민원안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+                "target": "_self",
+                "sourceId": "city-v8-c002",
+                "sourceMatches": 1
+              },
+              {
+                "label": "온라인 필증발급",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/prog/caImnstCerfin/kor/sub01_03_07_02/list.do",
+                "target": "_self",
+                "sourceId": "city-v8-c014",
+                "sourceMatches": 1
+              },
+              {
+                "label": "사용전검사안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+                "target": "_self",
+                "sourceId": "city-v8-c013",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "certificate-entry": 1,
+          "delegation-form": 1,
+          "inspection-application-form": 1
+        },
+        "selected": [
+          {
+            "label": "위임장",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-v8-c015",
+            "sourceMatches": 1
+          },
+          {
+            "label": "정보통신공사 사용전검사 신청서",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-v8-c016",
+            "sourceMatches": 1
+          },
+          {
+            "label": "민원안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+            "target": "_self",
+            "sourceId": "city-v8-c002",
+            "sourceMatches": 1
+          },
+          {
+            "label": "온라인 필증발급",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/prog/caImnstCerfin/kor/sub01_03_07_02/list.do",
+            "target": "_self",
+            "sourceId": "city-v8-c014",
+            "sourceMatches": 1
+          },
+          {
+            "label": "사용전검사안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+            "target": "_self",
+            "sourceId": "city-v8-c013",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v8",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 7,
+      "classifiedCount": 5,
+      "institutionApplied": 5,
+      "selected": [
+        {
+          "label": "훈련개요",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "훈련개요",
+          "contextLabels": [
+            "훈련개요",
+            "교육훈련"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "safekorea-education",
+            "version": 3,
+            "rule": "local-overview-panels",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"safekorea-education\",\"local-overview-panels\",\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trqv/trainingQverview.do\",\"훈련개요\",\"locate\",\"help\",\"reading\",false,\"content\",[],[[\"BUTTON\",\"tab-one\",\"tab-list active\",null,null,\"true\",null,null,null,\"훈련개요\"],[\"DIV\",\"contents\",\"nf-content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tab-area\",null,null,null,null,null,null,\"\"],[\"H2\",null,null,null,null,null,null,null,null,\"교육훈련\"],[\"H3\",null,null,null,null,null,null,null,null,\"훈련개요\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련의 필요성\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 유형\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 체계 및 절차\"],[\"BUTTON\",\"tab-two\",\"tab-list\",null,null,\"false\",null,null,null,\"종사자교육 개요\"],[\"DIV\",null,\"tab-content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tab-content\",null,null,null,null,null,null,\"\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"개념\"]]]",
+            "dependencyCount": 12
+          },
+          "sourceId": "government-v8-c006"
+        },
+        {
+          "label": "종사자교육 개요",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "훈련 체계 및 절차",
+          "contextLabels": [
+            "훈련 체계 및 절차",
+            "훈련개요",
+            "교육훈련"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "safekorea-education",
+            "version": 3,
+            "rule": "local-overview-panels",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"safekorea-education\",\"local-overview-panels\",\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trqv/trainingQverview.do\",\"종사자교육 개요\",\"locate\",\"help\",\"reading\",false,\"content\",[],[[\"BUTTON\",\"tab-two\",\"tab-list\",null,null,\"false\",null,null,null,\"종사자교육 개요\"],[\"DIV\",\"contents\",\"nf-content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tab-area\",null,null,null,null,null,null,\"\"],[\"H2\",null,null,null,null,null,null,null,null,\"교육훈련\"],[\"H3\",null,null,null,null,null,null,null,null,\"훈련개요\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련의 필요성\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 유형\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 체계 및 절차\"],[\"BUTTON\",\"tab-one\",\"tab-list active\",null,null,\"true\",null,null,null,\"훈련개요\"],[\"DIV\",null,\"tab-content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tab-content\",null,null,null,null,null,null,\"\"],[\"H4\",null,\"page-stitle mt30\",null,null,null,null,null,null,\"법적 근거\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"전문교육 체계\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"운영절차\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"종사자 전문교육 대상 및 이수시간\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"종사자\"],[\"H4\",null,\"page-stitle mt20 mb10\",null,null,null,null,null,null,\"업무절차\"]]]",
+            "dependencyCount": 17
+          },
+          "sourceId": "government-v8-c007"
+        },
+        {
+          "label": "훈련개요",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "교육훈련",
+          "contextLabels": [
+            "교육훈련"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "safekorea-education",
+            "version": 3,
+            "rule": "local-reading-menu",
+            "pageTask": "reading",
+            "contentScope": "navigation",
+            "fingerprint": "[3,\"safekorea-education\",\"local-reading-menu\",\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trqv/trainingQverview.do\",\"훈련개요\",\"navigate\",\"help\",\"reading\",false,\"navigation\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trqv/trainingQverview.do\",\"\"],\"훈련개요\"],[\"DIV\",\"contents\",\"nf-content\",null,null,null,null,null,null,\"\"],[\"DIV\",\"lnbmenu\",null,null,null,null,null,null,null,\"\"],[\"H2\",null,null,null,null,null,null,null,null,\"교육훈련\"],[\"H3\",null,null,null,null,null,null,null,null,\"훈련개요\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련의 필요성\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 유형\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 체계 및 절차\"],[\"LI\",null,\" last-child active\",null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 9
+          },
+          "sourceId": "government-v8-c002"
+        },
+        {
+          "label": "훈련계획",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trpl/trainingPlan.do?menuSn=64",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "교육훈련",
+          "contextLabels": [
+            "교육훈련"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "safekorea-education",
+            "version": 3,
+            "rule": "local-reading-menu",
+            "pageTask": "reading",
+            "contentScope": "navigation",
+            "fingerprint": "[3,\"safekorea-education\",\"local-reading-menu\",\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trqv/trainingQverview.do\",\"훈련계획\",\"navigate\",\"help\",\"reading\",false,\"navigation\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trpl/trainingPlan.do\",\"\"],\"훈련계획\"],[\"DIV\",\"contents\",\"nf-content\",null,null,null,null,null,null,\"\"],[\"DIV\",\"lnbmenu\",null,null,null,null,null,null,null,\"\"],[\"H2\",null,null,null,null,null,null,null,null,\"교육훈련\"],[\"H3\",null,null,null,null,null,null,null,null,\"훈련개요\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련의 필요성\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 유형\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 체계 및 절차\"],[\"LI\",null,\" last-child \",null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 9
+          },
+          "sourceId": "government-v8-c003"
+        },
+        {
+          "label": "훈련자료",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=65&bbsSn=53",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "교육훈련",
+          "contextLabels": [
+            "교육훈련"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "safekorea-education",
+            "version": 3,
+            "rule": "local-reading-menu",
+            "pageTask": "reading",
+            "contentScope": "navigation",
+            "fingerprint": "[3,\"safekorea-education\",\"local-reading-menu\",\"https://www.safekorea.go.kr\",\"/safekorea-kor/edtr/distre/trqv/trainingQverview.do\",\"훈련자료\",\"navigate\",\"help\",\"reading\",false,\"navigation\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.safekorea.go.kr\",\"/safekorea-kor/cmmn/bbs/bbsList.do\",\"\"],\"훈련자료\"],[\"DIV\",\"contents\",\"nf-content\",null,null,null,null,null,null,\"\"],[\"DIV\",\"lnbmenu\",null,null,null,null,null,null,null,\"\"],[\"H2\",null,null,null,null,null,null,null,null,\"교육훈련\"],[\"H3\",null,null,null,null,null,null,null,null,\"훈련개요\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련의 필요성\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 유형\"],[\"H4\",null,\"page-stitle mt20\",null,null,null,null,null,null,\"훈련 체계 및 절차\"],[\"LI\",null,\" last-child \",null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 9
+          },
+          "sourceId": "government-v8-c004"
+        }
+      ],
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "훈련개요",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-v8-c006",
+                "sourceMatches": 1
+              },
+              {
+                "label": "종사자교육 개요",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-v8-c007",
+                "sourceMatches": 1
+              },
+              {
+                "label": "훈련개요",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+                "target": "_self",
+                "sourceId": "government-v8-c002",
+                "sourceMatches": 1
+              },
+              {
+                "label": "훈련계획",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trpl/trainingPlan.do?menuSn=64",
+                "target": "_self",
+                "sourceId": "government-v8-c003",
+                "sourceMatches": 1
+              },
+              {
+                "label": "훈련자료",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=65&bbsSn=53",
+                "target": "_self",
+                "sourceId": "government-v8-c004",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "training-plan": 1,
+          "training-reference": 1,
+          "worker-education-overview": 1
+        },
+        "selected": [
+          {
+            "label": "훈련개요",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-v8-c006",
+            "sourceMatches": 1
+          },
+          {
+            "label": "종사자교육 개요",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-v8-c007",
+            "sourceMatches": 1
+          },
+          {
+            "label": "훈련개요",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+            "target": "_self",
+            "sourceId": "government-v8-c002",
+            "sourceMatches": 1
+          },
+          {
+            "label": "훈련계획",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trpl/trainingPlan.do?menuSn=64",
+            "target": "_self",
+            "sourceId": "government-v8-c003",
+            "sourceMatches": 1
+          },
+          {
+            "label": "훈련자료",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=65&bbsSn=53",
+            "target": "_self",
+            "sourceId": "government-v8-c004",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v8",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N30102000000.do",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 10,
+      "classifiedCount": 5,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "자료당일 열람",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "library-v8-c016"
+        },
+        {
+          "label": "청소년 자료이용",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "library-v8-c018"
+        },
+        {
+          "label": "신청확인 바로가기",
+          "href": "https://www.nl.go.kr/NL/contents/N60501010000.do?mGbn=WEEKEND",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "sourceId": "library-v8-c020"
+        },
+        {
+          "label": "보존용 자료열람 선택됨",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "library-v8-c017"
+        },
+        {
+          "label": "자료검색하기",
+          "href": "https://www.nl.go.kr/NL/contents/search.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "본문 영역"
+          ],
+          "sectionLabel": "자료신청안내",
+          "contextLabels": [
+            "자료신청안내"
+          ],
+          "category": "search",
+          "sourceId": "library-v8-c019"
+        }
+      ],
+      "correct": 5,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "자료당일 열람",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-v8-c016",
+                "sourceMatches": 1
+              },
+              {
+                "label": "청소년 자료이용",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-v8-c018",
+                "sourceMatches": 1
+              },
+              {
+                "label": "신청확인 바로가기",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N60501010000.do?mGbn=WEEKEND",
+                "target": "_self",
+                "sourceId": "library-v8-c020",
+                "sourceMatches": 1
+              },
+              {
+                "label": "보존용 자료열람 선택됨",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-v8-c017",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자료검색하기",
+                "category": "search",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/search.do",
+                "target": "_self",
+                "sourceId": "library-v8-c019",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "catalogue-search": 1,
+          "request-status": 1,
+          "young-reader-guide": 1
+        },
+        "selected": [
+          {
+            "label": "자료당일 열람",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-v8-c016",
+            "sourceMatches": 1
+          },
+          {
+            "label": "청소년 자료이용",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-v8-c018",
+            "sourceMatches": 1
+          },
+          {
+            "label": "신청확인 바로가기",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N60501010000.do?mGbn=WEEKEND",
+            "target": "_self",
+            "sourceId": "library-v8-c020",
+            "sourceMatches": 1
+          },
+          {
+            "label": "보존용 자료열람 선택됨",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-v8-c017",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자료검색하기",
+            "category": "search",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/search.do",
+            "target": "_self",
+            "sourceId": "library-v8-c019",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v8",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 7,
+      "classifiedCount": 4,
+      "institutionApplied": 4,
+      "selected": [
+        {
+          "label": "생애주기로 보는 국민연금",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "국민연금이란",
+          "contextLabels": [
+            "국민연금이란"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "nps-explanation",
+            "version": 3,
+            "rule": "named-local-explanation-panel",
+            "pageTask": "reading",
+            "readonlyPanel": true,
+            "contentScope": "content",
+            "fingerprint": "[3,\"nps-explanation\",\"named-local-explanation-panel\",\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"생애주기로 보는 국민연금\",\"locate\",\"help\",\"reading\",true,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage2\"],\"생애주기로 보는 국민연금\"],[\"DIV\",null,\"tabWrap con-tab\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tabContents\",null,null,null,null,null,null,\"\"],[\"DIV\",\"tabPage2\",\"tabPage\",null,null,null,null,null,null,\"\"],[\"H4\",null,null,null,null,null,null,null,null,\"생애주기로 보는 국민연금\"],[\"H5\",null,\"con-title\",null,null,null,null,null,null,\"생애주기로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage1\"],\"숫자로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage3\"],\"사회보장제도와 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage4\"],\"국민연금의 필요성\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,\"active\",null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 14
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"생애주기로 보는 국민연금\",\"locate\",[3,\"[3,\\\"nps-explanation\\\",\\\"named-local-explanation-panel\\\",\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"생애주기로 보는 국민연금\\\",\\\"locate\\\",\\\"help\\\",\\\"reading\\\",true,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage2\\\"],\\\"생애주기로 보는 국민연금\\\"],[\\\"DIV\\\",null,\\\"tabWrap con-tab\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"tabNav con-tab-nav col4 docuTitle\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DIV\\\",null,\\\"tabContents\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DIV\\\",\\\"tabPage2\\\",\\\"tabPage\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H4\\\",null,null,null,null,null,null,null,null,\\\"생애주기로 보는 국민연금\\\"],[\\\"H5\\\",null,\\\"con-title\\\",null,null,null,null,null,null,\\\"생애주기로 보는 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage1\\\"],\\\"숫자로 보는 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage3\\\"],\\\"사회보장제도와 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage4\\\"],\\\"국민연금의 필요성\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,\\\"active\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"생애주기로 보는 국민연금\",true],[\"DIV\",\"tabWrap con-tab\",null,null,null,null,null,null,\"\",null],[\"UL\",\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tabContents\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tabPage\",null,null,null,null,null,null,\"\",null],[\"H4\",null,null,null,null,null,null,null,\"\",null],[\"H5\",\"con-title\",null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"숫자로 보는 국민연금\",true],[\"A\",null,null,null,null,null,null,null,\"사회보장제도와 국민연금\",true],[\"A\",null,null,null,null,null,null,null,\"국민연금의 필요성\",true],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",\"active\",null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 14
+          },
+          "sourceId": "public-agency-v8-c003"
+        },
+        {
+          "label": "사회보장제도와 국민연금",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "국민연금이란",
+          "contextLabels": [
+            "국민연금이란"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "nps-explanation",
+            "version": 3,
+            "rule": "named-local-explanation-panel",
+            "pageTask": "reading",
+            "readonlyPanel": true,
+            "contentScope": "content",
+            "fingerprint": "[3,\"nps-explanation\",\"named-local-explanation-panel\",\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"사회보장제도와 국민연금\",\"locate\",\"help\",\"reading\",true,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage3\"],\"사회보장제도와 국민연금\"],[\"DIV\",null,\"tabWrap con-tab\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tabContents\",null,null,null,null,null,null,\"\"],[\"DIV\",\"tabPage3\",\"tabPage\",null,null,null,null,null,null,\"\"],[\"H4\",null,null,null,null,null,null,null,null,\"사회보장제도와 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage1\"],\"숫자로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage2\"],\"생애주기로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage4\"],\"국민연금의 필요성\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,\"active\",null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 13
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"사회보장제도와 국민연금\",\"locate\",[3,\"[3,\\\"nps-explanation\\\",\\\"named-local-explanation-panel\\\",\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"사회보장제도와 국민연금\\\",\\\"locate\\\",\\\"help\\\",\\\"reading\\\",true,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage3\\\"],\\\"사회보장제도와 국민연금\\\"],[\\\"DIV\\\",null,\\\"tabWrap con-tab\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"tabNav con-tab-nav col4 docuTitle\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DIV\\\",null,\\\"tabContents\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DIV\\\",\\\"tabPage3\\\",\\\"tabPage\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H4\\\",null,null,null,null,null,null,null,null,\\\"사회보장제도와 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage1\\\"],\\\"숫자로 보는 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage2\\\"],\\\"생애주기로 보는 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage4\\\"],\\\"국민연금의 필요성\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,\\\"active\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"사회보장제도와 국민연금\",true],[\"DIV\",\"tabWrap con-tab\",null,null,null,null,null,null,\"\",null],[\"UL\",\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tabContents\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tabPage\",null,null,null,null,null,null,\"\",null],[\"H4\",null,null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"숫자로 보는 국민연금\",true],[\"A\",null,null,null,null,null,null,null,\"생애주기로 보는 국민연금\",true],[\"A\",null,null,null,null,null,null,null,\"국민연금의 필요성\",true],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",\"active\",null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 13
+          },
+          "sourceId": "public-agency-v8-c004"
+        },
+        {
+          "label": "국민연금의 필요성",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "국민연금이란",
+          "contextLabels": [
+            "국민연금이란"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "nps-explanation",
+            "version": 3,
+            "rule": "named-local-explanation-panel",
+            "pageTask": "reading",
+            "readonlyPanel": true,
+            "contentScope": "content",
+            "fingerprint": "[3,\"nps-explanation\",\"named-local-explanation-panel\",\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"국민연금의 필요성\",\"locate\",\"help\",\"reading\",true,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage4\"],\"국민연금의 필요성\"],[\"DIV\",null,\"tabWrap con-tab\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tabContents\",null,null,null,null,null,null,\"\"],[\"DIV\",\"tabPage4\",\"tabPage\",null,null,null,null,null,null,\"\"],[\"H4\",null,null,null,null,null,null,null,null,\"국민연금의 필요성\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage1\"],\"숫자로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage2\"],\"생애주기로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage3\"],\"사회보장제도와 국민연금\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,\"active\",null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 13
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"국민연금의 필요성\",\"locate\",[3,\"[3,\\\"nps-explanation\\\",\\\"named-local-explanation-panel\\\",\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"국민연금의 필요성\\\",\\\"locate\\\",\\\"help\\\",\\\"reading\\\",true,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage4\\\"],\\\"국민연금의 필요성\\\"],[\\\"DIV\\\",null,\\\"tabWrap con-tab\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"tabNav con-tab-nav col4 docuTitle\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DIV\\\",null,\\\"tabContents\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DIV\\\",\\\"tabPage4\\\",\\\"tabPage\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H4\\\",null,null,null,null,null,null,null,null,\\\"국민연금의 필요성\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage1\\\"],\\\"숫자로 보는 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage2\\\"],\\\"생애주기로 보는 국민연금\\\"],[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.nps.or.kr\\\",\\\"/pnsinfo/ntpsklg/getOHAF0001M0.do\\\",\\\"#tabPage3\\\"],\\\"사회보장제도와 국민연금\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,\\\"active\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"],[\\\"LI\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"국민연금의 필요성\",true],[\"DIV\",\"tabWrap con-tab\",null,null,null,null,null,null,\"\",null],[\"UL\",\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tabContents\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tabPage\",null,null,null,null,null,null,\"\",null],[\"H4\",null,null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"숫자로 보는 국민연금\",true],[\"A\",null,null,null,null,null,null,null,\"생애주기로 보는 국민연금\",true],[\"A\",null,null,null,null,null,null,null,\"사회보장제도와 국민연금\",true],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",\"active\",null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 13
+          },
+          "sourceId": "public-agency-v8-c005"
+        },
+        {
+          "label": "숫자로 보는 국민연금",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "국민연금이란",
+          "contextLabels": [
+            "국민연금이란"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "nps-explanation",
+            "version": 3,
+            "rule": "named-local-explanation-panel",
+            "pageTask": "reading",
+            "fingerprint": "[3,\"nps-explanation\",\"named-local-explanation-panel\",\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"숫자로 보는 국민연금\",\"locate\",\"help\",\"reading\",false,\"\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage1\"],\"숫자로 보는 국민연금\"],[\"DIV\",null,\"tabWrap con-tab\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"tabNav con-tab-nav col4 docuTitle\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"tabContents\",null,null,null,null,null,null,\"\"],[\"DIV\",\"tabPage1\",\"tabPage active\",null,null,null,null,null,null,\"\"],[\"H4\",null,null,null,null,null,null,null,null,\"숫자로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage2\"],\"생애주기로 보는 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage3\"],\"사회보장제도와 국민연금\"],[\"A\",null,null,null,null,null,null,null,[\"https://www.nps.or.kr\",\"/pnsinfo/ntpsklg/getOHAF0001M0.do\",\"#tabPage4\"],\"국민연금의 필요성\"],[\"LI\",null,\"active\",null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 13
+          },
+          "sourceId": "public-agency-v8-c002"
+        }
+      ],
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "생애주기로 보는 국민연금",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-v8-c003",
+                "sourceMatches": 1
+              },
+              {
+                "label": "사회보장제도와 국민연금",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-v8-c004",
+                "sourceMatches": 1
+              },
+              {
+                "label": "국민연금의 필요성",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-v8-c005",
+                "sourceMatches": 1
+              },
+              {
+                "label": "숫자로 보는 국민연금",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-v8-c002",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "lifecycle-explanation": 1,
+          "social-protection-explanation": 1,
+          "pension-need-explanation": 1
+        },
+        "selected": [
+          {
+            "label": "생애주기로 보는 국민연금",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-v8-c003",
+            "sourceMatches": 1
+          },
+          {
+            "label": "사회보장제도와 국민연금",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-v8-c004",
+            "sourceMatches": 1
+          },
+          {
+            "label": "국민연금의 필요성",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-v8-c005",
+            "sourceMatches": 1
+          },
+          {
+            "label": "숫자로 보는 국민연금",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-v8-c002",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v8",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/itmanual.do",
+      "classificationMode": "institution",
+      "adapterVersion": 3,
+      "candidateCount": 20,
+      "classifiedCount": 12,
+      "institutionApplied": 9,
+      "selected": [
+        {
+          "label": "[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내",
+          "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=761682&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "IT서비스 이용안내 게시판",
+          "contextLabels": [
+            "IT서비스 이용안내 게시판"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "smu-it-documents",
+            "version": 3,
+            "rule": "instruction-document",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"smu-it-documents\",\"instruction-document\",\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내\",\"navigate\",\"help\",\"reading\",false,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"\"],\"[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내\"],[\"DIV\",\"ko\",\"common-board  common\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"board-thumb-wrap\",null,null,null,null,null,null,\"\"],[\"DT\",null,\"board-thumb-content-title  \",null,null,null,null,null,null,\"\"],[\"H5\",null,\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\"],[\"LI\",null,\"\",null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내\",\"navigate\",[3,\"[3,\\\"smu-it-documents\\\",\\\"instruction-document\\\",\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내\\\",\\\"navigate\\\",\\\"help\\\",\\\"reading\\\",false,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"\\\"],\\\"[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내\\\"],[\\\"DIV\\\",\\\"ko\\\",\\\"common-board  common\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"board-thumb-wrap\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DT\\\",null,\\\"board-thumb-content-title  \\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H5\\\",null,\\\"h5-tit\\\",null,null,null,null,null,null,\\\"IT서비스 이용안내 게시판\\\"],[\\\"LI\\\",null,\\\"\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"SPAN\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내\",false],[\"DIV\",\"common-board  common\",null,null,null,null,null,null,\"\",null],[\"UL\",\"board-thumb-wrap\",null,null,null,null,null,null,\"\",null],[\"DT\",\"board-thumb-content-title  \",null,null,null,null,null,null,\"\",null],[\"H5\",\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "smu-v8-c020"
+        },
+        {
+          "label": "[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내",
+          "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=766661&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "IT서비스 이용안내 게시판",
+          "contextLabels": [
+            "IT서비스 이용안내 게시판"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "smu-it-documents",
+            "version": 3,
+            "rule": "incident-document",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"smu-it-documents\",\"incident-document\",\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내\",\"navigate\",\"notice\",\"reading\",false,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"\"],\"[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내\"],[\"DIV\",\"ko\",\"common-board  common\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"board-thumb-wrap\",null,null,null,null,null,null,\"\"],[\"DT\",null,\"board-thumb-content-title  \",null,null,null,null,null,null,\"\"],[\"H5\",null,\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\"],[\"LI\",null,\"\",null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내\",\"navigate\",[3,\"[3,\\\"smu-it-documents\\\",\\\"incident-document\\\",\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내\\\",\\\"navigate\\\",\\\"notice\\\",\\\"reading\\\",false,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"\\\"],\\\"[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내\\\"],[\\\"DIV\\\",\\\"ko\\\",\\\"common-board  common\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"board-thumb-wrap\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DT\\\",null,\\\"board-thumb-content-title  \\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H5\\\",null,\\\"h5-tit\\\",null,null,null,null,null,null,\\\"IT서비스 이용안내 게시판\\\"],[\\\"LI\\\",null,\\\"\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"SPAN\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내\",false],[\"DIV\",\"common-board  common\",null,null,null,null,null,null,\"\",null],[\"UL\",\"board-thumb-wrap\",null,null,null,null,null,null,\"\",null],[\"DT\",\"board-thumb-content-title  \",null,null,null,null,null,null,\"\",null],[\"H5\",\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "smu-v8-c017"
+        },
+        {
+          "label": "[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내",
+          "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=764787&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "IT서비스 이용안내 게시판",
+          "contextLabels": [
+            "IT서비스 이용안내 게시판"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "smu-it-documents",
+            "version": 3,
+            "rule": "incident-document",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"smu-it-documents\",\"incident-document\",\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내\",\"navigate\",\"notice\",\"reading\",false,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"\"],\"[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내\"],[\"DIV\",\"ko\",\"common-board  common\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"board-thumb-wrap\",null,null,null,null,null,null,\"\"],[\"DT\",null,\"board-thumb-content-title  \",null,null,null,null,null,null,\"\"],[\"H5\",null,\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\"],[\"LI\",null,\"\",null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내\",\"navigate\",[3,\"[3,\\\"smu-it-documents\\\",\\\"incident-document\\\",\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내\\\",\\\"navigate\\\",\\\"notice\\\",\\\"reading\\\",false,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"\\\"],\\\"[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내\\\"],[\\\"DIV\\\",\\\"ko\\\",\\\"common-board  common\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"board-thumb-wrap\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DT\\\",null,\\\"board-thumb-content-title  \\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H5\\\",null,\\\"h5-tit\\\",null,null,null,null,null,null,\\\"IT서비스 이용안내 게시판\\\"],[\\\"LI\\\",null,\\\"\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"SPAN\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내\",false],[\"DIV\",\"common-board  common\",null,null,null,null,null,null,\"\",null],[\"UL\",\"board-thumb-wrap\",null,null,null,null,null,null,\"\",null],[\"DT\",\"board-thumb-content-title  \",null,null,null,null,null,null,\"\",null],[\"H5\",\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "smu-v8-c018"
+        },
+        {
+          "label": "[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내",
+          "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=763216&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "IT서비스 이용안내 게시판",
+          "contextLabels": [
+            "IT서비스 이용안내 게시판"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "smu-it-documents",
+            "version": 3,
+            "rule": "incident-document",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"smu-it-documents\",\"incident-document\",\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내\",\"navigate\",\"notice\",\"reading\",false,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"\"],\"[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내\"],[\"DIV\",\"ko\",\"common-board  common\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"board-thumb-wrap\",null,null,null,null,null,null,\"\"],[\"DT\",null,\"board-thumb-content-title  \",null,null,null,null,null,null,\"\"],[\"H5\",null,\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\"],[\"LI\",null,\"\",null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내\",\"navigate\",[3,\"[3,\\\"smu-it-documents\\\",\\\"incident-document\\\",\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내\\\",\\\"navigate\\\",\\\"notice\\\",\\\"reading\\\",false,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"\\\"],\\\"[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내\\\"],[\\\"DIV\\\",\\\"ko\\\",\\\"common-board  common\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"board-thumb-wrap\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DT\\\",null,\\\"board-thumb-content-title  \\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H5\\\",null,\\\"h5-tit\\\",null,null,null,null,null,null,\\\"IT서비스 이용안내 게시판\\\"],[\\\"LI\\\",null,\\\"\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"SPAN\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내\",false],[\"DIV\",\"common-board  common\",null,null,null,null,null,null,\"\",null],[\"UL\",\"board-thumb-wrap\",null,null,null,null,null,null,\"\",null],[\"DT\",\"board-thumb-content-title  \",null,null,null,null,null,null,\"\",null],[\"H5\",\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "smu-v8-c019"
+        },
+        {
+          "label": "[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내",
+          "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=758704&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "IT서비스 이용안내 게시판",
+          "contextLabels": [
+            "IT서비스 이용안내 게시판"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "smu-it-documents",
+            "version": 3,
+            "rule": "incident-document",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"smu-it-documents\",\"incident-document\",\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내\",\"navigate\",\"notice\",\"reading\",false,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"\"],\"[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내\"],[\"DIV\",\"ko\",\"common-board  common\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"board-thumb-wrap\",null,null,null,null,null,null,\"\"],[\"DT\",null,\"board-thumb-content-title  \",null,null,null,null,null,null,\"\"],[\"H5\",null,\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\"],[\"LI\",null,\"\",null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내\",\"navigate\",[3,\"[3,\\\"smu-it-documents\\\",\\\"incident-document\\\",\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내\\\",\\\"navigate\\\",\\\"notice\\\",\\\"reading\\\",false,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"\\\"],\\\"[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내\\\"],[\\\"DIV\\\",\\\"ko\\\",\\\"common-board  common\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"board-thumb-wrap\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DT\\\",null,\\\"board-thumb-content-title  \\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H5\\\",null,\\\"h5-tit\\\",null,null,null,null,null,null,\\\"IT서비스 이용안내 게시판\\\"],[\\\"LI\\\",null,\\\"\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"SPAN\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내\",false],[\"DIV\",\"common-board  common\",null,null,null,null,null,null,\"\",null],[\"UL\",\"board-thumb-wrap\",null,null,null,null,null,null,\"\",null],[\"DT\",\"board-thumb-content-title  \",null,null,null,null,null,null,\"\",null],[\"H5\",\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "smu-v8-c021"
+        },
+        {
+          "label": "[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내",
+          "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=756176&article.offset=0&articleLimit=10",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 메뉴와 안내 내용의 관계",
+            "기관 페이지의 명시적 읽기 목적"
+          ],
+          "sectionLabel": "IT서비스 이용안내 게시판",
+          "contextLabels": [
+            "IT서비스 이용안내 게시판"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "institutionEvidence": {
+            "adapter": "smu-it-documents",
+            "version": 3,
+            "rule": "incident-document",
+            "pageTask": "reading",
+            "contentScope": "content",
+            "fingerprint": "[3,\"smu-it-documents\",\"incident-document\",\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내\",\"navigate\",\"notice\",\"reading\",false,\"content\",[],[[\"A\",null,null,null,null,null,null,null,[\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"\"],\"[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내\"],[\"DIV\",\"ko\",\"common-board  common\",null,null,null,null,null,null,\"\"],[\"UL\",null,\"board-thumb-wrap\",null,null,null,null,null,null,\"\"],[\"DT\",null,\"board-thumb-content-title  \",null,null,null,null,null,null,\"\"],[\"H5\",null,\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\"],[\"LI\",null,\"\",null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "institution-current-content",
+            "fingerprint": "[\"institution-current-content\",1,\"https://www.smu.ac.kr\",\"/kor/life/itmanual.do\",\"[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내\",\"navigate\",[3,\"[3,\\\"smu-it-documents\\\",\\\"incident-document\\\",\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내\\\",\\\"navigate\\\",\\\"notice\\\",\\\"reading\\\",false,\\\"content\\\",[],[[\\\"A\\\",null,null,null,null,null,null,null,[\\\"https://www.smu.ac.kr\\\",\\\"/kor/life/itmanual.do\\\",\\\"\\\"],\\\"[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내\\\"],[\\\"DIV\\\",\\\"ko\\\",\\\"common-board  common\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"UL\\\",null,\\\"board-thumb-wrap\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"DT\\\",null,\\\"board-thumb-content-title  \\\",null,null,null,null,null,null,\\\"\\\"],[\\\"H5\\\",null,\\\"h5-tit\\\",null,null,null,null,null,null,\\\"IT서비스 이용안내 게시판\\\"],[\\\"LI\\\",null,\\\"\\\",null,null,null,null,null,null,\\\"\\\"],[\\\"SPAN\\\",null,null,null,null,null,null,null,null,\\\"\\\"]]]\"],[[\"A\",null,null,null,null,null,null,null,\"[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내\",false],[\"DIV\",\"common-board  common\",null,null,null,null,null,null,\"\",null],[\"UL\",\"board-thumb-wrap\",null,null,null,null,null,null,\"\",null],[\"DT\",\"board-thumb-content-title  \",null,null,null,null,null,null,\"\",null],[\"H5\",\"h5-tit\",null,null,null,null,null,null,\"IT서비스 이용안내 게시판\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "smu-v8-c024"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "it-search"
+      ],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c663fffab33d6b9eea4523fabdac72c655273fc9e09966c5d7a3f7115066e536",
+        "classificationMode": "institution",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=761682&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c020",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=766661&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c017",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=764787&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c018",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=763216&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c019",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=758704&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c021",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=756176&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c024",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "[샘물시스템] 무선인증서버 업그레이드 작업에 따른 무선인터넷 일시중지 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=755770&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c025",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 학생메일 별칭(Alias) 추가 안내(@sangmyung.ac.kr)",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=758667&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c022",
+                "sourceMatches": 1
+              },
+              {
+                "label": "[샘물시스템] 알약(백신) 서비스 운영방법 변경 안내",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=755578&article.offset=0&articleLimit=10",
+                "target": "_self",
+                "sourceId": "smu-v8-c026",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색어",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-v8-c015",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-v8-c016",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색분류선택",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-v8-c005",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "institution",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "it-search": 2,
+          "maintenance-notice": 1,
+          "application-installation": 1
+        },
+        "selected": [
+          {
+            "label": "[샘물시스템] 상명대학교 어플리케이션 설치 관련 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=761682&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c020",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 운영 서버 이관 작업 및 교내 메일 연계시스템 업그레이드에 따른 일시 순단 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=766661&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c017",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 통합데이터베이스 암호화 모듈 업그레이드 작업에 따른 일시중지 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=764787&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c018",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 상명대학교 샘물시스템 및 네트워크 일시중지 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=763216&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c019",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 서울캠퍼스 네트워크 일시장애 관련 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=758704&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c021",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 무선인증서버 패치 작업에 따른 무선인터넷 서비스 순단 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=756176&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c024",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 무선인증서버 업그레이드 작업에 따른 무선인터넷 일시중지 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=755770&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c025",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 학생메일 별칭(Alias) 추가 안내(@sangmyung.ac.kr)",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=758667&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c022",
+            "sourceMatches": 1
+          },
+          {
+            "label": "[샘물시스템] 알약(백신) 서비스 운영방법 변경 안내",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/itmanual.do?mode=view&articleNo=755578&article.offset=0&articleLimit=10",
+            "target": "_self",
+            "sourceId": "smu-v8-c026",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색어",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-v8-c015",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-v8-c016",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색분류선택",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-v8-c005",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 12,
+        "recommended": 12,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 1,
+      "recall": 0.9333333333333333
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "library",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 0.6666666666666666,
+        "passed": false
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 31,
+      "recommended": 31,
+      "matched": 15,
+      "expected": 15,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 5
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 5,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 12,
+        "recommended": 12,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      }
+    ],
+    "unresolvedMappings": 0,
+    "repeatedCards": 0
+  }
+}

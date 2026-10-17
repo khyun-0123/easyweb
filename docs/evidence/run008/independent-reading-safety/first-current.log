@@ -1,0 +1,73 @@
+
+Running 3 tests using 1 worker
+
+(node:17269) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/independent-reading-safety.spec.mjs:33:1 › @readonly-semantics ARIA interaction without handlers is not a readonly explanation (90ms)
+(node:17282) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/independent-reading-safety.spec.mjs:40:1 › @identity a replaced local list item invalidates the old proof even with the original anchor (89ms)
+(node:17290) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/independent-reading-safety.spec.mjs:51:1 › @identity a replaced heading child invalidates the old proof with unchanged markup and name (89ms)
+
+
+  1) tests/independent-reading-safety.spec.mjs:33:1 › @readonly-semantics ARIA interaction without handlers is not a readonly explanation 
+
+    Error: link
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      34 |   for (const role of ['link', 'checkbox', 'radio', 'switch', 'menuitem', 'menuitemcheckbox', 'menuitemradio', 'option', 'treeitem']) {
+      35 |     await setup(page, panelPage({ body: `<div role="${role}" aria-label="보험료 결제 업무">선택</div>` }));
+    > 36 |     expect((await inspect(page)).some(c => c.id === 'deadline'), role).toBe(false);
+         |                                                                        ^
+      37 |   }
+      38 | });
+      39 |
+        at /Users/khyun_03/easyweb/tests/independent-reading-safety.spec.mjs:36:72
+
+    Error Context: docs/evidence/run008/independent-reading-safety/test-results/independent-reading-safety-02bdd--not-a-readonly-explanation/error-context.md
+
+  2) tests/independent-reading-safety.spec.mjs:40:1 › @identity a replaced local list item invalidates the old proof even with the original anchor 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      46 |     item.replaceWith(clone); clone.append(...item.childNodes);
+      47 |     return IndependentReading.isCandidateCurrent(c);
+    > 48 |   })).toBe(false);
+         |       ^
+      49 | });
+      50 |
+      51 | test('@identity a replaced heading child invalidates the old proof with unchanged markup and name', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/independent-reading-safety.spec.mjs:48:7
+
+    Error Context: docs/evidence/run008/independent-reading-safety/test-results/independent-reading-safety-49c12-en-with-the-original-anchor/error-context.md
+
+  3) tests/independent-reading-safety.spec.mjs:51:1 › @identity a replaced heading child invalidates the old proof with unchanged markup and name 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      56 |     const piece = document.querySelector('#heading-piece'); piece.replaceWith(piece.cloneNode(true));
+      57 |     return IndependentReading.isCandidateCurrent(c);
+    > 58 |   })).toBe(false);
+         |       ^
+      59 | });
+      60 |
+        at /Users/khyun_03/easyweb/tests/independent-reading-safety.spec.mjs:58:7
+
+    Error Context: docs/evidence/run008/independent-reading-safety/test-results/independent-reading-safety-e1c2f-h-unchanged-markup-and-name/error-context.md
+
+  3 failed
+    tests/independent-reading-safety.spec.mjs:33:1 › @readonly-semantics ARIA interaction without handlers is not a readonly explanation 
+    tests/independent-reading-safety.spec.mjs:40:1 › @identity a replaced local list item invalidates the old proof even with the original anchor 
+    tests/independent-reading-safety.spec.mjs:51:1 › @identity a replaced heading child invalidates the old proof with unchanged markup and name 

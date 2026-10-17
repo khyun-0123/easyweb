@@ -1,0 +1,1267 @@
+{
+  "checkedAt": "2026-10-17T19:35:11.033Z",
+  "engine": "current",
+  "suite": "blind-v7-v2",
+  "split": "all",
+  "classificationMode": "generic",
+  "adapterVersion": 3,
+  "evaluationPhase": "post-holdout-development",
+  "adjudication": null,
+  "freezeVerification": null,
+  "toolHashes": {
+    "scripts/evaluate.mjs": "fabec6f673dc1cd54748d238b3d1425c7b77dffa8b60781dc34e90be99df5fc1",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "c6b2c86c05078ae27a40fe35bd6059955d56b982ca51b7700676daf919e14c7a",
+  "datasetHash": "d0051c66f8599f4875898b3cf9422c20fb330389f7b1030a170a68cd26436f23",
+  "fixtureHashes": {
+    "city-blind-v7": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+    "government-blind-v7": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+    "library-blind-v7": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+    "public-agency-blind-v7": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+    "smu-blind-v7": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 13,
+    "recommended": 18,
+    "matched": 11,
+    "expected": 15,
+    "precision": 0.7222222222222222,
+    "recall": 0.7333333333333333,
+    "tasksRecommended": 4
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 4,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.75,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "tasksRecommended": 0
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v7",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/yeyak/index.do",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 6,
+      "classifiedCount": 5,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "체험/견학 천안박물관 전시 해설 예약 2026-02-01 ~ 2026-12-31 천안박물관 접수중",
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "명시적 신청·청구 카드 제목",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "주요 예약서비스",
+          "contextLabels": [
+            "주요 예약서비스"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "city-museum-guide"
+        },
+        {
+          "label": "체험/견학 상설전시 <나는야 꼬마 왕건> 관람 예약 2026-02-01 ~ 2026-12-31 어린이박물관 접수중",
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "명시적 신청·청구 카드 제목",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "주요 예약서비스",
+          "contextLabels": [
+            "주요 예약서비스"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "supplementalDependent": true,
+          "sourceId": "city-child-museum"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "city-login"
+        },
+        {
+          "label": "예약안내",
+          "action": "locate",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "apply",
+          "sourceId": "city-reservation-help"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "city-service-search"
+        }
+      ],
+      "correct": 3,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [
+        {
+          "label": "로그인",
+          "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "city-login"
+        },
+        {
+          "label": "예약안내",
+          "action": "locate",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "apply",
+          "sourceId": "city-reservation-help"
+        }
+      ],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "a64946a00345f41615e569ac7b19a18cba68ee36aef21d2f14e525a2f2183d0d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "체험/견학 천안박물관 전시 해설 예약 2026-02-01 ~ 2026-12-31 천안박물관 접수중",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+                "target": "_self",
+                "sourceId": "city-museum-guide",
+                "sourceMatches": 1
+              },
+              {
+                "label": "체험/견학 상설전시 <나는야 꼬마 왕건> 관람 예약 2026-02-01 ~ 2026-12-31 어린이박물관 접수중",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+                "target": "_self",
+                "sourceId": "city-child-museum",
+                "sourceMatches": 1
+              },
+              {
+                "label": "로그인",
+                "category": "login",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+                "target": "_self",
+                "sourceId": "city-login",
+                "sourceMatches": 1
+              },
+              {
+                "label": "예약안내",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-reservation-help",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-service-search",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "city-v7-search": 1,
+          "city-v7-museum": 1,
+          "city-v7-children": 1
+        },
+        "selected": [
+          {
+            "label": "체험/견학 천안박물관 전시 해설 예약 2026-02-01 ~ 2026-12-31 천안박물관 접수중",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+            "target": "_self",
+            "sourceId": "city-museum-guide",
+            "sourceMatches": 1
+          },
+          {
+            "label": "체험/견학 상설전시 <나는야 꼬마 왕건> 관람 예약 2026-02-01 ~ 2026-12-31 어린이박물관 접수중",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+            "target": "_self",
+            "sourceId": "city-child-museum",
+            "sourceMatches": 1
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+            "target": "_self",
+            "sourceId": "city-login",
+            "sourceMatches": 1
+          },
+          {
+            "label": "예약안내",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-reservation-help",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-service-search",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 3,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.6,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+            "target": "_self",
+            "sourceId": "city-login",
+            "sourceMatches": 1
+          },
+          {
+            "label": "예약안내",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-reservation-help",
+            "sourceMatches": 1
+          }
+        ],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v7",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 8,
+      "classifiedCount": 3,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "태풍 이후",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "핵심 행동요령",
+          "contextLabels": [
+            "핵심 행동요령",
+            "진행별 행동요령"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "gov-after"
+        },
+        {
+          "label": "태풍 예보시",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "진행별 행동요령",
+          "contextLabels": [
+            "진행별 행동요령"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "gov-before"
+        },
+        {
+          "label": "태풍 특보 중",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "핵심 행동요령",
+          "contextLabels": [
+            "핵심 행동요령",
+            "진행별 행동요령"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "gov-during"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "a64946a00345f41615e569ac7b19a18cba68ee36aef21d2f14e525a2f2183d0d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "태풍 이후",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "gov-after",
+                "sourceMatches": 1
+              },
+              {
+                "label": "태풍 예보시",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "gov-before",
+                "sourceMatches": 1
+              },
+              {
+                "label": "태풍 특보 중",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "gov-during",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 3개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "government-v7-before": 1,
+          "government-v7-during": 1,
+          "government-v7-after": 1
+        },
+        "selected": [
+          {
+            "label": "태풍 이후",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "gov-after",
+            "sourceMatches": 1
+          },
+          {
+            "label": "태풍 예보시",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "gov-before",
+            "sourceMatches": 1
+          },
+          {
+            "label": "태풍 특보 중",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "gov-during",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 3,
+        "recommended": 3,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v7",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 5,
+      "classifiedCount": 4,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "검색결과",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "소장자료 통합검색",
+          "contextLabels": [
+            "소장자료 통합검색"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "lib-result-guide"
+        },
+        {
+          "label": "상세정보",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "소장자료 통합검색",
+          "contextLabels": [
+            "소장자료 통합검색"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "lib-detail-guide"
+        },
+        {
+          "label": "로그인",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "lib-login"
+        },
+        {
+          "label": "검색기능 선택됨",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "소장자료 통합검색",
+          "contextLabels": [
+            "소장자료 통합검색"
+          ],
+          "category": "search",
+          "sourceId": "lib-search-guide"
+        }
+      ],
+      "correct": 3,
+      "recommended": 4,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.75,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "library-v7-full"
+      ],
+      "incorrect": [
+        {
+          "label": "검색기능 선택됨",
+          "action": "locate",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "소장자료 통합검색",
+          "contextLabels": [
+            "소장자료 통합검색"
+          ],
+          "category": "search",
+          "sourceId": "lib-search-guide"
+        }
+      ],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "a64946a00345f41615e569ac7b19a18cba68ee36aef21d2f14e525a2f2183d0d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색결과",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "lib-result-guide",
+                "sourceMatches": 1
+              },
+              {
+                "label": "상세정보",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "lib-detail-guide",
+                "sourceMatches": 1
+              },
+              {
+                "label": "로그인",
+                "category": "login",
+                "action": "locate",
+                "target": null,
+                "sourceId": "lib-login",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색기능 선택됨",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "lib-search-guide",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "library-v7-result": 1,
+          "library-v7-detail": 1,
+          "library-v7-full": null
+        },
+        "selected": [
+          {
+            "label": "검색결과",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "lib-result-guide",
+            "sourceMatches": 1
+          },
+          {
+            "label": "상세정보",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "lib-detail-guide",
+            "sourceMatches": 1
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "locate",
+            "target": null,
+            "sourceId": "lib-login",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색기능 선택됨",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "lib-search-guide",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 3,
+        "recommended": 4,
+        "matched": 2,
+        "expected": 3,
+        "precision": 0.75,
+        "recall": 0.6666666666666666,
+        "missed": [
+          "library-v7-full"
+        ],
+        "incorrect": [
+          {
+            "label": "검색기능 선택됨",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "lib-search-guide",
+            "sourceMatches": 1
+          }
+        ],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v7",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 7,
+      "classifiedCount": 5,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": null
+        },
+        {
+          "label": "신청하기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "apply",
+          "pageTask": "control",
+          "sourceId": "nps-consult"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "nps-login"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "nps-service-search"
+        },
+        {
+          "label": "조회하기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "apply",
+          "sourceId": "nps-history"
+        }
+      ],
+      "correct": 3,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": null
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "nps-login"
+        }
+      ],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "a64946a00345f41615e569ac7b19a18cba68ee36aef21d2f14e525a2f2183d0d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색어 입력",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": null,
+                "sourceMatches": 1
+              },
+              {
+                "label": "신청하기",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "nps-consult",
+                "sourceMatches": 1
+              },
+              {
+                "label": "로그인",
+                "category": "login",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/lgn/loginForm.do",
+                "target": "_self",
+                "sourceId": "nps-login",
+                "sourceMatches": 1
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "nps-service-search",
+                "sourceMatches": 1
+              },
+              {
+                "label": "조회하기",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "nps-history",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [
+          {
+            "page": 1,
+            "label": "검색어 입력",
+            "sourceMatches": 1
+          }
+        ],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "public-agency-v7-search": 1,
+          "public-agency-v7-history": 1,
+          "public-agency-v7-consult": 1
+        },
+        "selected": [
+          {
+            "label": "검색어 입력",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 1
+          },
+          {
+            "label": "신청하기",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "nps-consult",
+            "sourceMatches": 1
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/lgn/loginForm.do",
+            "target": "_self",
+            "sourceId": "nps-login",
+            "sourceMatches": 1
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "nps-service-search",
+            "sourceMatches": 1
+          },
+          {
+            "label": "조회하기",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "nps-history",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 3,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.6,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [
+          {
+            "label": "검색어 입력",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": null,
+            "sourceMatches": 1
+          },
+          {
+            "label": "로그인",
+            "category": "login",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/lgn/loginForm.do",
+            "target": "_self",
+            "sourceId": "nps-login",
+            "sourceMatches": 1
+          }
+        ],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v7",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 7,
+      "classifiedCount": 1,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "smu-login"
+        }
+      ],
+      "correct": 1,
+      "recommended": 1,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "missed": [
+        "smu-v7-linked",
+        "smu-v7-self",
+        "smu-v7-minor"
+      ],
+      "incorrect": [],
+      "taskRecommended": false,
+      "menuFlow": {
+        "bundleSha256": "a64946a00345f41615e569ac7b19a18cba68ee36aef21d2f14e525a2f2183d0d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "Login",
+                "category": "login",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-login",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 1개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "smu-v7-linked": null,
+          "smu-v7-self": null,
+          "smu-v7-minor": null
+        },
+        "selected": [
+          {
+            "label": "Login",
+            "category": "login",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-login",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 1,
+        "recommended": 1,
+        "matched": 0,
+        "expected": 3,
+        "precision": 1,
+        "recall": 0,
+        "missed": [
+          "smu-v7-linked",
+          "smu-v7-self",
+          "smu-v7-minor"
+        ],
+        "incorrect": [],
+        "taskRecommended": false
+      }
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 0.7222222222222222,
+      "recall": 0.7333333333333333
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 0.6,
+        "recall": 1,
+        "passed": false
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "library",
+        "precision": 0.75,
+        "recall": 0.6666666666666666,
+        "passed": false
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 0.6,
+        "recall": 1,
+        "passed": false
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 0,
+        "passed": false
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 13,
+      "recommended": 18,
+      "matched": 11,
+      "expected": 15,
+      "precision": 0.7222222222222222,
+      "recall": 0.7333333333333333,
+      "tasksRecommended": 4
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.6,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 3,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 4,
+        "matched": 2,
+        "expected": 3,
+        "precision": 0.75,
+        "recall": 0.6666666666666666,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 5,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.6,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 1,
+        "recommended": 1,
+        "matched": 0,
+        "expected": 3,
+        "precision": 1,
+        "recall": 0,
+        "tasksRecommended": 0
+      }
+    ],
+    "unresolvedMappings": 1,
+    "repeatedCards": 0
+  }
+}

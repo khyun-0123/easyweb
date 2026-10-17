@@ -1,0 +1,214 @@
+generic core: 72/74 precision, 45/45 recall; PASS
+generic blind-v2: 22/22 precision, 11/11 recall; PASS
+generic blind-v3: 18/18 precision, 11/11 recall; PASS
+generic development-v4-corrected: 15/15 precision, 13/13 recall; PASS
+generic blind-v5: 24/25 precision, 13/15 recall; FAIL
+generic blind-v6: 25/26 precision, 12/15 recall; FAIL
+generic development-v6-corrected: 26/26 precision, 13/15 recall; FAIL
+generic development-v6-corrected-v2: 26/26 precision, 15/15 recall; PASS
+generic blind-v7-v2: 13/18 precision, 11/15 recall; FAIL
+generic development-v7-corrected: 13/18 precision, 11/15 recall; FAIL
+generic development-v7-corrected-v2: 16/18 precision, 11/15 recall; FAIL
+generic blind-v8: 13/16 precision, 7/15 recall; FAIL
+generic blind-v9-v2: 28/28 precision, 7/15 recall; FAIL
+institution core: 72/74 precision, 45/45 recall; PASS
+institution blind-v2: 22/22 precision, 11/11 recall; PASS
+institution blind-v3: 18/18 precision, 11/11 recall; PASS
+institution development-v4-corrected: 15/15 precision, 13/13 recall; PASS
+institution blind-v5: 26/26 precision, 14/15 recall; FAIL
+institution blind-v6: 25/26 precision, 12/15 recall; FAIL
+institution development-v6-corrected: 26/26 precision, 13/15 recall; FAIL
+institution development-v6-corrected-v2: 26/26 precision, 15/15 recall; PASS
+institution blind-v7-v2: 16/24 precision, 12/15 recall; FAIL
+institution development-v7-corrected: 20/24 precision, 15/15 recall; FAIL
+institution development-v7-corrected-v2: 23/24 precision, 15/15 recall; PASS
+institution blind-v8: 25/25 precision, 14/15 recall; FAIL
+institution blind-v9-v2: 30/30 precision, 15/15 recall; PASS
+{
+  "stableBeforeAndAfter": true,
+  "uniquePageAggregates": [
+    {
+      "mode": "generic",
+      "suites": [
+        "core",
+        "blind-v2",
+        "blind-v3",
+        "development-v4-corrected",
+        "blind-v5",
+        "development-v6-corrected-v2",
+        "development-v7-corrected-v2",
+        "blind-v8",
+        "blind-v9-v2"
+      ],
+      "summary": {
+        "pages": 55,
+        "correct": 234,
+        "recommended": 242,
+        "matched": 133,
+        "expected": 155,
+        "tasksRecommended": 48,
+        "precision": 0.9669421487603306,
+        "recall": 0.8580645161290322
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 11,
+          "correct": 53,
+          "recommended": 54,
+          "matched": 34,
+          "expected": 34,
+          "tasksRecommended": 11,
+          "precision": 0.9814814814814815,
+          "recall": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 11,
+          "correct": 39,
+          "recommended": 39,
+          "matched": 23,
+          "expected": 28,
+          "tasksRecommended": 9,
+          "precision": 1,
+          "recall": 0.8214285714285714
+        },
+        {
+          "siteId": "library",
+          "pages": 11,
+          "correct": 47,
+          "recommended": 50,
+          "matched": 26,
+          "expected": 30,
+          "tasksRecommended": 10,
+          "precision": 0.94,
+          "recall": 0.8666666666666667
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 11,
+          "correct": 44,
+          "recommended": 44,
+          "matched": 25,
+          "expected": 32,
+          "tasksRecommended": 9,
+          "precision": 1,
+          "recall": 0.78125
+        },
+        {
+          "siteId": "smu",
+          "pages": 11,
+          "correct": 51,
+          "recommended": 55,
+          "matched": 25,
+          "expected": 31,
+          "tasksRecommended": 9,
+          "precision": 0.9272727272727272,
+          "recall": 0.8064516129032258
+        }
+      ],
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        }
+      },
+      "scope": "Exposed 55-source-page aggregate only; each source counted once. All individual/raw suite failures stay in rows. This aggregate does not replace first independent results, live task completion, or full S07 acceptance."
+    },
+    {
+      "mode": "institution",
+      "suites": [
+        "core",
+        "blind-v2",
+        "blind-v3",
+        "development-v4-corrected",
+        "blind-v5",
+        "development-v6-corrected-v2",
+        "development-v7-corrected-v2",
+        "blind-v8",
+        "blind-v9-v2"
+      ],
+      "summary": {
+        "pages": 55,
+        "correct": 257,
+        "recommended": 260,
+        "matched": 153,
+        "expected": 155,
+        "tasksRecommended": 55,
+        "precision": 0.9884615384615385,
+        "recall": 0.9870967741935484
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 11,
+          "correct": 53,
+          "recommended": 54,
+          "matched": 34,
+          "expected": 34,
+          "tasksRecommended": 11,
+          "precision": 0.9814814814814815,
+          "recall": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 11,
+          "correct": 44,
+          "recommended": 44,
+          "matched": 28,
+          "expected": 28,
+          "tasksRecommended": 11,
+          "precision": 1,
+          "recall": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 11,
+          "correct": 49,
+          "recommended": 51,
+          "matched": 30,
+          "expected": 30,
+          "tasksRecommended": 11,
+          "precision": 0.9607843137254902,
+          "recall": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 11,
+          "correct": 50,
+          "recommended": 50,
+          "matched": 31,
+          "expected": 32,
+          "tasksRecommended": 11,
+          "precision": 1,
+          "recall": 0.96875
+        },
+        {
+          "siteId": "smu",
+          "pages": 11,
+          "correct": 61,
+          "recommended": 61,
+          "matched": 30,
+          "expected": 31,
+          "tasksRecommended": 11,
+          "precision": 1,
+          "recall": 0.967741935483871
+        }
+      ],
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        }
+      },
+      "scope": "Exposed 55-source-page aggregate only; each source counted once. All individual/raw suite failures stay in rows. This aggregate does not replace first independent results, live task completion, or full S07 acceptance."
+    }
+  ],
+  "report": "/Users/khyun_03/easyweb/docs/evidence/run008/first-development-comparison/summary.json"
+}

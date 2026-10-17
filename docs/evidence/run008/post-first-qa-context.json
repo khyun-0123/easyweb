@@ -1,0 +1,136 @@
+{
+  "version": "post-first-qa-context-v1",
+  "createdAt": "2026-10-17T19:42:04.078128+00:00",
+  "scope": "Static evidence context only for the one uncertainty recorded before first product execution. No product execution, network browsing, source/annotation/expected/task/fixture/result change, relabeling, re-scoring, or replacement was performed.",
+  "collectorAdditionalProductExecutions": 0,
+  "immutableInputsChanged": 0,
+  "firstActualEvaluation": {
+    "completedAtUtcAsReportedByRoot": "2026-10-17T19:41:04Z",
+    "path": "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+    "sha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+    "metricsSource": "Parent/root message; file bytes verified by SHA-256 only. This context record does not derive new metrics or reinterpret individual scored outputs.",
+    "reportedMetrics": {
+      "correctPrecision": {
+        "numerator": 26,
+        "denominator": 28
+      },
+      "expectedGroupRecall": {
+        "numerator": 2,
+        "denominator": 15
+      },
+      "readOnlyTaskSuccess": {
+        "numerator": 0,
+        "denominator": 5
+      },
+      "overall": "FAIL"
+    },
+    "priorAttempt": "The preserved earlier command failed freeze-record schema validation before product/browser execution; it produced no quality report. It is not a product evaluation result.",
+    "exposureAfterFirstRunAsReportedByRoot": {
+      "uniqueDevelopmentExposedPages": 60,
+      "freshSuitePages": 5,
+      "laterDiagnosisOnSamePagesIsIndependentEvaluation": false
+    }
+  },
+  "preFirstStaticQa": {
+    "verdict": "PASS_STATIC_WITH_RECORDED_NONBLOCKING_UNCERTAINTY",
+    "createdAt": "2026-10-17T19:39:17.122060+00:00",
+    "confirmedIssues": 0,
+    "requiredCorrections": 0,
+    "uncertaintyCount": 1,
+    "frozenInputsMutated": false
+  },
+  "uncertainty": {
+    "id": "canonical-metadata-content-novelty",
+    "siteId": "government",
+    "nature": "Homepage canonical metadata / source-content novelty alias uncertainty. It is not a confirmed action, category, expected-group, task, ID-correspondence, source-fidelity, hidden-control or privacy defect.",
+    "recordedBeforeFirstProduct": true,
+    "originalDisposition": "No replacement or correction justified. Collector acknowledged this before first product execution; keep separate from confirmed URL and body evidence.",
+    "directlyObserved": {
+      "relCanonical": "https://www.safekorea.go.kr/",
+      "exactCanonicalUrlPresentInPriorExclusionStrings": false,
+      "selectedRequestedUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=82&bbsSn=18",
+      "selectedFinalUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=82&bbsSn=18",
+      "selectedDocumentUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=82&bbsSn=18",
+      "selectedHttpStatus": 200,
+      "selectedTitle": "국민안전24 | 재난지원 | 심리회복지원센터 | 센터소식",
+      "requestedFinalDocumentUrlsEqual": true,
+      "selectedBodyPurpose": "심리회복지원센터의 센터소식 게시판: 자체 자료 검색, 공개 가이드/매뉴얼 항목, 사진/영상 보기 탭을 가진 현재 콘텐츠.",
+      "frozenDiscoveryHomepageRequestedUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "frozenDiscoveryHomepageFinalUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "frozenDiscoveryHomepageTitle": "국민안전24",
+      "frozenDiscoveryHomepageHttpStatus": 200,
+      "frozenDiscoveryHomepageBodyPurpose": "사고속보·재난특보·날씨·재난문자·빠른메뉴·국민행동요령 등을 제공하는 대표 홈페이지.",
+      "frozenHomepageAndSelectedBoardHaveDistinctObservedContent": true,
+      "evidenceOfSameContentRedirectFound": false
+    },
+    "inferenceAndRemainingLimit": [
+      "The homepage canonical value can be explained by a generic/site-wide canonical implementation, but that implementation cause was not independently verified and is an inference.",
+      "A rel=canonical homepage value alone does not prove that the selected URL redirects to a previously exposed homepage or serves the same content. The captured selected document has its own board title/body, unchanged requested/final/document URL and HTTP 200.",
+      "The frozen contemporary discovery homepage and selected board show different observed content. This supports the distinct-page selection without establishing arbitrary canonical aliases or exhaustive historical same-content equivalence against prior content that remained outside the collector/QA allowed inputs."
+    ],
+    "dispositionAfterFirstRun": "Keep the original non-blocking preproduct uncertainty and its evidence. No confirmed duplicate, no replacement, no annotation correction, and no score adjustment is justified by this metadata alone."
+  },
+  "effectOnFirstResultInterpretation": [
+    "The uncertainty does not explain or erase the first observed low recall and zero successful tasks; the frozen first result remains 26/28 precision, 2/15 expected-group recall and 0/5 task success as reported.",
+    "Do not drop the government page, change a denominator, change category/action/labels/expected source IDs/tasks, or re-score using this canonical metadata after seeing quality results.",
+    "The five-page result is the first actual product run on this frozen sample and retains its original evidentiary status. The canonical issue is a bounded source-novelty limitation for one page, recorded before the run, rather than evidence of metric-driven fixture correction.",
+    "Static source/annotation QA passing does not establish that the product can recommend the expected functions or complete tasks. It also provides no native installation, VoiceOver, zoom or human-success evidence.",
+    "Any later diagnosis or improvement using these now-exposed pages is development work; preserve the first immutable result and seek separate new samples for another independent evaluation."
+  ],
+  "preservation": {
+    "originalFreezePreserved": true,
+    "protocolCompatibilityRecordPreserved": true,
+    "independentQaPreserved": true,
+    "preExecutionErrorAttemptPreserved": true,
+    "firstActualResultPreserved": true,
+    "annotationExpectedTaskFixtureBytesChanged": 0,
+    "sourceEngineToolBytesChanged": 0
+  },
+  "proofs": [
+    {
+      "path": "docs/evidence/run008/blind-v10-independent-static-qa/report.json",
+      "sha256": "b5153d2374f5712e5bb6e25bea913ed59952cc719dee7af8da5285af3bbb22a0",
+      "bytes": 8544
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-freeze.json",
+      "sha256": "611ad5bd36a99baf8d413fc4aeb093d1304055fc1d0d80dc277b375fada8bc44",
+      "bytes": 97157
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-freeze-protocol.json",
+      "sha256": "c7313d1ee6887f27a162c4ec927c21ad7738a1d40609f191d0c2d562e5d29910",
+      "bytes": 89427
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-first/command-completion.json",
+      "sha256": "ee6cf07001f82444d050f905f0f948446de92e78d152aa50ba2cd96b40a61ee5",
+      "bytes": 521
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-first-evaluated/evaluation-current-institution-blind-v10-holdout.json",
+      "sha256": "e469fe25011392ea61be795a00d552e02ef7aa7d23789c1e9db08973c5a1c131",
+      "bytes": 60337
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-support/captures/government/capture.json",
+      "sha256": "ea699e3802954e9c120eb3a1aec8caad5e658fa0db4509b9d26a0603152ba783",
+      "bytes": 4521
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-support/captures/government/original-dom.sanitized.html",
+      "sha256": "868867b9e8371b8bc8cb5eefe24e99c78029d1eeb62d6785abea0f838295fbcf",
+      "bytes": 93691
+    },
+    {
+      "path": "docs/evidence/run008/blind-v10-support/discovery/government-home.json",
+      "sha256": "1f36d57e270056ccc1cac744e3c3f72dde1c97cec743f69512f6f55928804c0e",
+      "bytes": 57812
+    },
+    {
+      "path": "docs/evidence/run008/prior-exposed-url-exclusions.json",
+      "sha256": "7a707203b3e7608009a87a8ab30412ef953eb106b151d4b90be291879e0d0e15",
+      "bytes": 3908
+    }
+  ]
+}

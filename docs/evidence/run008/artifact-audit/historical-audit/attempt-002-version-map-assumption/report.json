@@ -1,0 +1,462 @@
+{
+  "startedAtUtc": "2026-10-17T19:46:33.745399+00:00",
+  "checkedAtUtc": "2026-10-17T19:46:34.858182+00:00",
+  "task": "RUN008 independent historical preservation audit",
+  "auditProcedureAttempts": [
+    {
+      "attempt": 1,
+      "result": "AUDIT_HARNESS_PATH_ERROR",
+      "preservedAt": "docs/evidence/run008/artifact-audit/historical-audit/attempt-001-package-path-assumption",
+      "reason": "Historical archive.file is a basename; resolved relative to package metadata directory for the completed audit.",
+      "artifactMismatchConfirmed": false
+    },
+    {
+      "attempt": 2,
+      "result": "COMPLETED"
+    }
+  ],
+  "artifactPreservationStatus": "NEEDS_FIX",
+  "overallAcceptance": "NOT_MET",
+  "completedStages": 5,
+  "totalStages": 10,
+  "automaticSignoff": false,
+  "scope": "Read-only byte and declared-provenance audit of historical evidence, evaluation datasets, reports and packages; writes only this audit directory.",
+  "gitObjectFormat": "sha1",
+  "gitPreservation": [
+    {
+      "label": "baseline-38f37d4",
+      "ref": "38f37d4",
+      "resolvedCommit": "38f37d4ba5da9757d34f0fcc7132e5092d697767",
+      "scopes": [
+        "docs/evidence",
+        "evaluation",
+        "output",
+        "docs/RUN_001_REPORT.md",
+        "docs/RUN_002_REPORT.md",
+        "docs/RUN_003_REPORT.md",
+        "docs/RUN_004_REPORT.md",
+        "docs/RUN_005_REPORT.md",
+        "docs/RUN_006_REPORT.md",
+        "docs/RUN_007_REPORT.md"
+      ],
+      "excludedPaths": [
+        "evaluation/README.md",
+        "evaluation/protocol-tests.mjs"
+      ],
+      "filesCompared": 1759,
+      "mismatchCount": 0,
+      "allPreserved": true,
+      "detail": "docs/evidence/run008/artifact-audit/historical-audit/baseline-38f37d4-preservation.json",
+      "mismatches": []
+    },
+    {
+      "label": "run-004-v0.5.0-dev",
+      "ref": "run-004-v0.5.0-dev",
+      "resolvedCommit": "99fb6d82fd4b51f524790fa9e52485b187468400",
+      "scopes": [
+        "docs/evidence/run004",
+        "evaluation/blind-v7",
+        "evaluation/blind-v7-v2",
+        "output/run004"
+      ],
+      "excludedPaths": [],
+      "filesCompared": 190,
+      "mismatchCount": 0,
+      "allPreserved": true,
+      "detail": "docs/evidence/run008/artifact-audit/historical-audit/run-004-v0.5.0-dev-preservation.json",
+      "mismatches": []
+    },
+    {
+      "label": "run-005-v0.6.0-dev",
+      "ref": "run-005-v0.6.0-dev",
+      "resolvedCommit": "6129140d131278f8cf5fb0414de8e5e5a9566596",
+      "scopes": [
+        "docs/evidence/run005",
+        "evaluation/blind-v8",
+        "evaluation/development-v7-corrected",
+        "output/run005"
+      ],
+      "excludedPaths": [],
+      "filesCompared": 313,
+      "mismatchCount": 0,
+      "allPreserved": true,
+      "detail": "docs/evidence/run008/artifact-audit/historical-audit/run-005-v0.6.0-dev-preservation.json",
+      "mismatches": []
+    },
+    {
+      "label": "run-006-v0.7.0-dev",
+      "ref": "run-006-v0.7.0-dev",
+      "resolvedCommit": "0cba2a6cafbb6585cfa0866ea2c0cb0825829b1e",
+      "scopes": [
+        "docs/evidence/run006",
+        "output/run006"
+      ],
+      "excludedPaths": [],
+      "filesCompared": 122,
+      "mismatchCount": 0,
+      "allPreserved": true,
+      "detail": "docs/evidence/run008/artifact-audit/historical-audit/run-006-v0.7.0-dev-preservation.json",
+      "mismatches": []
+    },
+    {
+      "label": "run-007-v0.8.0-dev",
+      "ref": "run-007-v0.8.0-dev",
+      "resolvedCommit": "38f37d4ba5da9757d34f0fcc7132e5092d697767",
+      "scopes": [
+        "docs/evidence/run007",
+        "evaluation/blind-v9",
+        "evaluation/blind-v9-v2",
+        "evaluation/development-v7-corrected-v2",
+        "output/run007"
+      ],
+      "excludedPaths": [],
+      "filesCompared": 586,
+      "mismatchCount": 0,
+      "allPreserved": true,
+      "detail": "docs/evidence/run008/artifact-audit/historical-audit/run-007-v0.8.0-dev-preservation.json",
+      "mismatches": []
+    }
+  ],
+  "uniqueGitPathsCompared": 1759,
+  "gitBlobComparisons": 2970,
+  "sha256Comparisons": 511,
+  "sha256Mismatches": 21,
+  "checks": [
+    {
+      "name": "baseline-38f37d4_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 1759,
+      "mismatches": []
+    },
+    {
+      "name": "run-004-v0.5.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 190,
+      "mismatches": []
+    },
+    {
+      "name": "run-005-v0.6.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 313,
+      "mismatches": []
+    },
+    {
+      "name": "run-006-v0.7.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 122,
+      "mismatches": []
+    },
+    {
+      "name": "run-007-v0.8.0-dev_historical_git_blobs_preserved",
+      "passed": true,
+      "count": 586,
+      "mismatches": []
+    },
+    {
+      "name": "docs/evidence/run003/blind-v6-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 11
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 11
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-v2-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 11
+    },
+    {
+      "name": "docs/evidence/run007/blind-v9-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 113
+    },
+    {
+      "name": "docs/evidence/run007/blind-v9-v2-freeze.json_all_declared_hashes_preserved",
+      "passed": true,
+      "entries": 130
+    },
+    {
+      "name": "evaluation/development-v6-corrected/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 23
+    },
+    {
+      "name": "evaluation/development-v6-corrected/VERSION.json_remains_adjudicated_development",
+      "passed": true
+    },
+    {
+      "name": "evaluation/development-v6-corrected-v2/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 35
+    },
+    {
+      "name": "evaluation/development-v6-corrected-v2/VERSION.json_remains_adjudicated_development",
+      "passed": true
+    },
+    {
+      "name": "evaluation/development-v7-corrected/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 35
+    },
+    {
+      "name": "evaluation/development-v7-corrected/VERSION.json_remains_adjudicated_development",
+      "passed": true
+    },
+    {
+      "name": "evaluation/development-v7-corrected-v2/VERSION.json_version_current_original_parent_hashes_preserved",
+      "passed": true,
+      "comparisons": 34
+    },
+    {
+      "name": "evaluation/development-v7-corrected-v2/VERSION.json_remains_adjudicated_development",
+      "passed": true
+    },
+    {
+      "name": "v7_v2_separate_artifact_manifest_hashes",
+      "passed": true,
+      "comparisons": 17
+    },
+    {
+      "name": "v7_original_parent_21_before_after_unchanged",
+      "passed": false,
+      "count": 21
+    },
+    {
+      "name": "docs/evidence/run004/v0.5-engine-freeze.json_archived_source_hashes",
+      "passed": true,
+      "count": 14
+    },
+    {
+      "name": "docs/evidence/run005/v0.6-engine-freeze-v2.json_archived_source_hashes",
+      "passed": true,
+      "count": 14
+    },
+    {
+      "name": "docs/evidence/run007/v0.8-engine-freeze.json_archived_source_hashes",
+      "passed": true,
+      "count": 15
+    },
+    {
+      "name": "docs/evidence/run007/v0.8-engine-freeze-v2.json_archived_source_hashes",
+      "passed": true,
+      "count": 15
+    },
+    {
+      "name": "v0_8_original_and_v2_15_sources_identical",
+      "passed": true
+    },
+    {
+      "name": "v0_8_original_freeze_identity_preserved",
+      "passed": true
+    },
+    {
+      "name": "v0_8_only_evaluator_tool_changed_in_v2",
+      "passed": true,
+      "changedTools": [
+        "scripts/evaluate.mjs"
+      ]
+    },
+    {
+      "name": "v0_8_original_evaluator_archive",
+      "passed": true
+    },
+    {
+      "name": "v0_8_corrected_evaluator_archive",
+      "passed": true
+    },
+    {
+      "name": "v0_7_source_snapshot_matches_historical_tag",
+      "passed": true,
+      "count": 16
+    },
+    {
+      "name": "run004_original_zip_matches_saved_metadata",
+      "passed": true
+    },
+    {
+      "name": "run004_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 18
+    },
+    {
+      "name": "run004_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "name": "run005_original_zip_matches_saved_metadata",
+      "passed": true
+    },
+    {
+      "name": "run005_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 18
+    },
+    {
+      "name": "run005_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "name": "run006_original_zip_matches_saved_metadata",
+      "passed": true
+    },
+    {
+      "name": "run006_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 18
+    },
+    {
+      "name": "run006_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "name": "run007_original_zip_matches_saved_metadata",
+      "passed": true
+    },
+    {
+      "name": "run007_package_source_metadata_matches_tag",
+      "passed": true,
+      "count": 19
+    },
+    {
+      "name": "run007_zip_entries_match_historical_metadata",
+      "passed": true,
+      "count": 5
+    },
+    {
+      "name": "v9_v2_first_error_retains_no_report",
+      "passed": true
+    },
+    {
+      "name": "v9_v2_first_error_original_engine_and_dataset_identities",
+      "passed": true
+    },
+    {
+      "name": "v9_v2_first_error_log_retains_ENOENT",
+      "passed": true
+    },
+    {
+      "name": "v9_v2_first_actual_report_hash",
+      "passed": true
+    },
+    {
+      "name": "v9_v2_first_actual_engine_and_dataset_identities",
+      "passed": true
+    },
+    {
+      "name": "v9_v2_first_FAIL_26_30_2_15_0",
+      "passed": true
+    },
+    {
+      "name": "v9_v2_first_additional_60_73_5_15_2_still_separate",
+      "passed": true
+    },
+    {
+      "name": "docs/evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json_first_FAIL_still_present",
+      "passed": true
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json_first_FAIL_still_present",
+      "passed": true
+    },
+    {
+      "name": "v9_original_v2_inputs_and_first_attempt_results_readonly",
+      "passed": true,
+      "entries": 250,
+      "failures": []
+    }
+  ],
+  "findings": [
+    {
+      "severity": "ARTIFACT_PRESERVATION",
+      "check": "v7_original_parent_21_before_after_unchanged",
+      "detail": {
+        "count": 21
+      }
+    }
+  ],
+  "datasetFreezes": [
+    {
+      "path": "docs/evidence/run003/blind-v6-freeze.json",
+      "entryCount": 11,
+      "allMatch": true
+    },
+    {
+      "path": "docs/evidence/run004/blind-v7-freeze.json",
+      "entryCount": 11,
+      "allMatch": true
+    },
+    {
+      "path": "docs/evidence/run004/blind-v7-v2-freeze.json",
+      "entryCount": 11,
+      "allMatch": true
+    },
+    {
+      "path": "docs/evidence/run007/blind-v9-freeze.json",
+      "entryCount": 113,
+      "allMatch": true
+    },
+    {
+      "path": "docs/evidence/run007/blind-v9-v2-freeze.json",
+      "entryCount": 130,
+      "allMatch": true
+    }
+  ],
+  "adjudicatedVersions": [
+    {
+      "path": "evaluation/development-v6-corrected/VERSION.json",
+      "classification": "ADJUDICATED_DEVELOPMENT",
+      "freshHoldout": false,
+      "declaredFiles": 10,
+      "hashComparisons": 23,
+      "allMatch": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/VERSION.json",
+      "classification": "ADJUDICATED_DEVELOPMENT",
+      "freshHoldout": false,
+      "declaredFiles": 10,
+      "hashComparisons": 35,
+      "allMatch": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/VERSION.json",
+      "classification": "ADJUDICATED_DEVELOPMENT",
+      "freshHoldout": false,
+      "declaredFiles": 10,
+      "hashComparisons": 35,
+      "allMatch": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/VERSION.json",
+      "classification": "ADJUDICATED_DEVELOPMENT",
+      "freshHoldout": false,
+      "declaredFiles": 10,
+      "hashComparisons": 34,
+      "allMatch": true
+    }
+  ],
+  "historicalFilesOutsideBaselineCount": 0,
+  "historicalFilesOutsideBaselineDetail": "docs/evidence/run008/artifact-audit/historical-audit/historical-files-outside-baseline.json",
+  "prohibitedActionsPerformed": {
+    "sourceOrToolOrExistingEvidenceWrites": 0,
+    "tests": 0,
+    "builds": 0,
+    "browsers": 0,
+    "CUA": 0,
+    "network": 0,
+    "serverOperations": 0
+  },
+  "limits": [
+    "Git comparison covers the explicit tracked paths at each named ref and working bytes. Arbitrary untracked or ignored historical files do not have a Git baseline; listed files outside baseline are inventory only.",
+    "Excluded current evaluation README and protocol-tests are implementation/documentation rather than immutable historical inputs.",
+    "Historical product/tool source is checked against explicit archives or the matching old Git tag. It is not expected to equal current v0.9 source or dist.",
+    "No historical script, product, evaluator, test, build, browser, network operation, CUA or server operation was executed.",
+    "Read-only permission bits describe the observed filesystem permissions and do not prevent privileged future changes.",
+    "Artifact preservation does not establish product quality, accessibility, installation, business completion or overall acceptance."
+  ]
+}

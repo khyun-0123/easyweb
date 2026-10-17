@@ -14,7 +14,17 @@ export interface InstitutionEvidence {
   rule: string;
   category: Category;
   score: 65 | 70;
-  pageTask: 'reading';
+  pageTask: 'reading' | 'control';
+  /** Only a unique local, noninteractive explanation panel can set this. */
+  readonlyPanel?: true;
+  contentScope?: 'content' | 'navigation';
+  fingerprint: string;
+  dependencies: readonly Element[];
+}
+
+export interface ContentEvidence {
+  level: 1 | 2;
+  rule: string;
   fingerprint: string;
   dependencies: readonly Element[];
 }
@@ -40,6 +50,7 @@ export interface Candidate {
   supplementalDependent?: boolean;
   relatedLabel?: string;
   institutionEvidence?: InstitutionEvidence;
+  contentEvidence?: ContentEvidence;
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

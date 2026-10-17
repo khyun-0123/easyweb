@@ -1,0 +1,13 @@
+{
+  "status": "SELF_QA_PASS",
+  "productExecutions": 0,
+  "fivePageCheck": "Full serialized DOM attributes/order/text match after removing only evaluation metadata, head security/style additions and reversing documented passive resource substitutions. Control attributes and first twelve ancestor nodes match the live source inventory; headings/forms/table cells are preserved. Original visibility matches offline visibility for all 11653 inventoried controls.",
+  "parserChecks": [
+    "Source and replay signature comparison uses scripting-enabled noscript semantics; original scripts remain blocked by CSP.",
+    "One source page has one serialized head/body relocation during standards parsing (same total element count). All inventoried control ancestors, attributes, visibility and text signatures match; no semantic body wrapper was introduced."
+  ],
+  "privacy": "All text-input values and private editable content removed; public static labels retained.",
+  "offline": "Each self-QA route fulfilled only the original document URL; every other request was aborted. Only document requests were made. Script globals remained absent.",
+  "visualReview": "Five offline viewport screenshots were visually reviewed; substantive layout, menus, forms, tables and current page content were retained.",
+  "accessibleNames": "Full offline Chromium accessibility trees plus source-id name correspondence saved; original DOM, ARIA and static label context preserved."
+}
