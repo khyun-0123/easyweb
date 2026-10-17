@@ -1,5 +1,5 @@
 import type { Candidate, Category } from './types';
-import { collectionEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache } from './analyzer';
+import { collectionEvidence, supplementalEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache, type SupplementalCache } from './analyzer';
 import { isDocumentDownload } from './action-policy';
 
 const rules: { category: Category; label: RegExp; section: RegExp; endpoints: ReadonlySet<string> }[] = [
@@ -251,8 +251,72 @@ function contextualReading(candidate: Candidate, label: string): { category: Cat
   }
 }
 
+function supplementalClassification(candidate: Candidate, label: string, target: string, supplementalCache: SupplementalCache, url?: URL): Candidate | undefined {
+  const element = candidate.element;
+  if (candidate.context !== 'body' || !element.matches('a[href], button, [role~="button" i]')
+    || element.closest('article, [role~="article" i]')) return;
+  if (!element.closest('form, [role~="form" i], tr, [role~="row" i], [role~="group" i]')
+    && !element.hasAttribute('aria-expanded') && !element.querySelector(':scope > p')) return;
+  // Inspect only the source's fixed structural metadata; original actions are
+  // retained. In particular, search filters and downloads are never activated.
+  const evidence = supplementalEvidence(element, supplementalCache);
+  const raw = element.getAttribute('href')?.trim() ?? '';
+  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
+  if (dangerous.test(script)) return;
+  let destination = url;
+  if (!destination && raw && !/^(?:#|javascript:)/i.test(raw)) {
+    try { destination = new URL(raw, document.baseURI); } catch { return; }
+    if (!/^https?:$/.test(destination.protocol)) return;
+  }
+  if (destination && isDangerousURL(destination, pathParts(destination))) return;
+  if (destination) target = endpoint(pathParts(destination));
+  const result = (category: Category, score: number, reason: string, task: NonNullable<Candidate['pageTask']>): Candidate => ({
+    ...candidate, category, score, reasons: [reason, '고정 원본 제어 구조'], pageTask: task, supplementalDependent: true,
+    relatedLabel: evidence.relatedLabel,
+    snapshot: sourceSnapshot(element, candidate.label, undefined, false, true, supplementalCache),
+  });
+  if (!dangerous.test(label) && evidence.filter && isInformationTopicLabel(label)
+    && !rules.some(rule => rule.category !== 'search' && rule.endpoints.has(target))) return result('search', 70, '검색 양식의 분야 필터', 'control');
+  const contexts = contextsFor(candidate, label);
+  if (!dangerous.test(label) && evidence.materialRow && label.length >= 2 && label.length <= 60
+    && !rules.some(rule => !['apply', 'academic'].includes(rule.category) && rule.label.test(label))
+    && contexts.some(text => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text))
+    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '신청 준비 편람의 원본 서식 자료', 'reading');
+  const guideContext = contexts.some(text => text.length <= 60 && /안내$/.test(text));
+  if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === 'locate'
+    && (evidence.informationPanels || guideContext && evidence.grouped)
+    && !rules.some(rule => rule.category !== 'help' && rule.label.test(label) && !(rule.category === 'search' && searchGuidanceLabel.test(label)))
+    && !isDocumentDownload(element, candidate.label)
+    && !rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target))) return result('help', 65, '공개 정보 패널·안내 주제 읽기', 'reading');
+  const title = evidence.title;
+  if (!title || dangerous.test(title.replace(/납부(?=\s*(?:내역|기록))/, '')) || isDocumentDownload(element, candidate.label)
+    || destination && hasDocumentReference(destination) || element.closest('form, [role~="form" i]')) return;
+  if (/^(?=.{2,36}$).*(?:모의\s*계산|간단\s*계산|simulation|calculator)$/i.test(title)
+    && !dangerous.test(label)
+    && !rules.some(rule => rule.category !== 'search' && rule.endpoints.has(target))) return result('search', 70, '명시적 모의·간단 계산 카드', 'control');
+  // A readonly own-record title is distinct from a payment command. Only the
+  // fixed title may carry 납부내역; descriptions cannot create this exception.
+  if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title)
+    && !dangerous.test(label.replace(/납부(?=\s*(?:내역|기록))/g, ''))
+    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '개인 내역·기록 확인 카드', 'control');
+  if (!dangerous.test(label) && (applicationControlLabel.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title))
+    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '명시적 신청·청구 카드 제목', 'control');
+}
+
+function readonlyHelpDocument(candidate: Candidate, label: string, target: string, url?: URL): Candidate | undefined {
+  if (!url || candidate.context !== 'body' || candidate.action !== 'navigate' || !candidate.element.matches('a[href]')
+    || !candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]') || candidate.element.closest('article, [role~="article"]')
+    || !hasDocumentReference(url) || candidate.pagePurpose !== 'help' || label.length < 4 || label.length > 100
+    || pathParts(url).some(part => /^(?:news|articles?|stories|story|press)$/.test(part))
+    || !(/(?:안내|방법|절차)$/.test(label) || interrogative.test(label))
+    || rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target))) return;
+  return { ...candidate, category: 'help', score: 72, reasons: ['도움말 안내 문서 읽기', '도움말 목적과 목록의 명시적 읽기 문서'], pageTask: 'reading' };
+}
+
 export function classify(candidates: Candidate[]): Candidate[] {
   const collectionCache: CollectionCache = new WeakMap();
+  const supplementalCache: SupplementalCache = new WeakMap();
   return candidates.flatMap(candidate => {
     // Machine-authored accessible names can separate words with _ or -. This
     // lexical view does not alter source labels, URL paths or action metadata.
@@ -270,10 +334,14 @@ export function classify(candidates: Candidate[]): Candidate[] {
     const parts = url ? pathParts(url) : [];
     if (url && isDangerousURL(url, parts)) return [];
     const target = endpoint(parts);
-    // Only a public academic information link may describe tuition payment.
-    // Executable payment labels, controls, URLs and other dangerous words keep
-    // the same rejection policy; source action/URL are never rewritten here.
+    // Verified reading metadata can describe payment/history topics. The URL
+    // command guard runs first; the narrow reading/card branches retain the
+    // source action and cannot execute a payment, delete, or final submission.
     const academicInfo = academicInformation(candidate, label, target, url);
+    const readonlyHelp = readonlyHelpDocument(candidate, label, target, url);
+    if (readonlyHelp) return [readonlyHelp];
+    const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
+    if (supplemental) return [supplemental];
     if (dangerous.test(label) && !academicInfo) return [];
     // The safe candidate name is fixed metadata, never the input's current value.
     const searchControl = isSearchControl(candidate.element, label);

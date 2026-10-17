@@ -1,0 +1,453 @@
+diff --git a/src/analyzer.ts b/src/analyzer.ts
+index ddbe6fb..a66b7d0 100644
+--- a/src/analyzer.ts
++++ b/src/analyzer.ts
+@@ -110,25 +110,30 @@ function headingBelongsTo(heading: HTMLElement, element: HTMLElement): boolean {
+   return onlyHeading(region);
+ }
+ 
+-export function contextLabels(element: HTMLElement): string[] {
++interface ContextHeading { element: HTMLElement; label: string; visible: boolean }
++export type ContextCache = WeakMap<Element, ContextHeading[]>;
++
++export function contextLabels(element: HTMLElement, cache?: ContextCache): string[] {
+   const labels: string[] = [];
+   const add = (text: string) => { if (text && text.length <= 60 && !labels.includes(text)) labels.push(text); };
+   let parent = element.parentElement;
+   for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
+-    const headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)];
+-    const preceding = headings.filter(heading => {
++    let headings = cache?.get(parent);
++    if (!headings) {
++      headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)]
++        .map(heading => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) }));
++      cache?.set(parent, headings);
++    }
++    const preceding = headings.filter(({ element: heading, visible }) => {
+       let branch = heading;
+       while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
+       // 같은 내용 상자 안에서 이미 읽은 하위 표제가 상위 표제를 덮지 않게 합니다.
+       if (branch !== heading && branch.contains(element)) return false;
+-      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading)
++      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && visible
+         && headingBelongsTo(heading, element) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+     });
+     const label = preceding.at(-1);
+-    if (label) {
+-      const text = clean(getSafeLabel(label));
+-      add(text);
+-    }
++    if (label) add(label.label);
+     // 작은 기능 상자는 제목을 p로 표시하기도 합니다. 가까운 상자의 첫 짧은 문구만 문맥으로 씁니다.
+     if (!label && level < 2 && parent.querySelectorAll('a, button, input').length <= 3) {
+       const firstParagraph = parent.querySelector<HTMLElement>(':scope > p');
+@@ -144,7 +149,7 @@ export function contextLabels(element: HTMLElement): string[] {
+ 
+ export function sectionLabel(element: HTMLElement): string | undefined { return contextLabels(element)[0]; }
+ 
+-function documentPurpose(): PagePurpose | undefined {
++export function documentPurpose(): PagePurpose | undefined {
+   // 현재 URL의 경로와 명시된 페이지 표제만 분류하며 title·검색 쿼리·입력값은 읽지 않습니다.
+   if (/(?:^|[\/_.-])academic[-_]?calendar(?:[\/_.-]|$)/i.test(location.pathname)) return 'academic-calendar';
+   if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return 'help';
+@@ -165,7 +170,7 @@ function documentPurpose(): PagePurpose | undefined {
+   return undefined;
+ }
+ 
+-export function pagePurpose(element: HTMLElement, labels = contextLabels(element), common = documentPurpose()): PagePurpose | undefined {
++export function pagePurpose(element: HTMLElement, labels = contextLabels(element), common: PagePurpose | null | undefined = documentPurpose()): PagePurpose | undefined {
+   if (common) return common;
+   if (labels.some(text => helpHeading.test(text) || informationConcept.test(text))) return 'help';
+   // 본문 영역 안의 로컬 목차만 확인합니다. 전역 header/footer의 FAQ는 페이지 목적이 아닙니다.
+@@ -239,7 +244,105 @@ export function collectionEvidence(element: HTMLElement, cache?: CollectionCache
+   return { kind: tabs ? 'tabs' as const : 'list' as const, ...summary, controlled, targetExists };
+ }
+ 
+-export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false): SourceSnapshot {
++// Fixed control structure only: never inspect form values or editable text.
++// Shared tables/panel groups are scanned once per classification/currentness
++// check, rather than once for every control and its derived snapshot.
++interface SupplementalSummary {
++  columns?: string[];
++  materials?: Set<HTMLElement>;
++  panels?: Set<HTMLElement>;
++  groups?: Set<HTMLElement>;
++}
++export type SupplementalCache = WeakMap<Element, SupplementalSummary>;
++export function supplementalEvidence(element: HTMLElement, cache?: SupplementalCache) {
++  const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
++  const form = element.closest('form, [role~="form" i]')
++    ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
++  const metadataWords = (text: string) => text.replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase().split(/[^a-z]+/).filter(Boolean);
++  const searchMetadata = (target: Element) => ['id', 'class'].some(name => metadataWords(target.getAttribute(name) ?? '').includes('search'))
++    || /검색|\bsearch\b/i.test(target.getAttribute('aria-label') ?? '');
++  const filter = bodyControl && !!form && searchMetadata(form) && searchMetadata(element)
++    && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
++  let title: string | undefined;
++  // A title preceding a paragraph is an explicit card title/description split.
++  // Respect an authored accessible-name override instead of second-guessing it.
++  if (bodyControl && !form && !element.hasAttribute('aria-label') && !element.hasAttribute('aria-labelledby')
++    && element.matches('a, button, [role~="button" i]')) {
++    const children = [...element.children];
++    const paragraph = children.findIndex(child => child.matches('p'));
++    if (paragraph === 1 && children[0] instanceof HTMLElement && children[0].matches('span, strong, b, em, h2, h3, h4, h5, h6')
++      && isVisible(children[0]) && isVisible(children[1] as HTMLElement)) {
++      const text = clean(staticText(children[0]));
++      if (isInformationTopicLabel(text) && clean(staticText(children[1]))) title = text;
++    }
++  }
++  let materialRow = false;
++  const row = bodyControl && !form ? element.closest('tr, [role~="row" i]') : null;
++  const table = row?.closest('table, [role~="grid" i]');
++  if (row && table) {
++    let rowSummary = cache?.get(row);
++    if (!rowSummary?.materials) {
++      let tableSummary = cache?.get(table);
++      if (!tableSummary?.columns) {
++        const columns = [...table.querySelectorAll<HTMLElement>('thead th, [role~="columnheader" i]')]
++          .filter(header => header.closest('table, [role~="grid" i]') === table)
++          .map(header => isVisible(header) ? clean(staticText(header)) : '');
++        tableSummary = { ...tableSummary, columns }; cache?.set(table, tableSummary);
++      }
++      const titleColumn = (text: string) => /^(?:제목|민원명|사무명|서식명|title|form\s+name)$/i.test(text);
++      const attachmentColumn = (text: string) => /^(?:첨부|서식|첨부파일|attachment|forms?)$/i.test(text);
++      const download = (control: HTMLElement) => /^(?:자료\s*받기|다운로드|서식\s*받기|download)$/i.test(candidateLabel(control));
++      const cells = [...row.querySelectorAll<HTMLElement>(':scope > td, :scope > th, :scope > [role~="cell" i], :scope > [role~="gridcell" i]')];
++      const controls = [...row.querySelectorAll<HTMLElement>('a[href], button, [role~="button" i]')]
++        .filter(control => control.closest('tr, [role~="row" i]') === row && !!candidateLabel(control));
++      const columns = tableSummary.columns!;
++      const materials = new Set<HTMLElement>();
++      if (columns.some(titleColumn) && columns.some(attachmentColumn)) {
++        if (cells.length === columns.length) {
++          const titles = cells.flatMap((cell, index) => titleColumn(columns[index])
++            ? controls.filter(control => control.matches('a[href]') && cell.contains(control)).slice(0, 1) : []);
++          const attachments = controls.filter(control => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control)) && download(control));
++          if (titles.length && attachments.length) [...titles, ...attachments].forEach(control => materials.add(control));
++        }
++      }
++      rowSummary = { ...rowSummary, materials }; cache?.set(row, rowSummary);
++    }
++    materialRow = rowSummary.materials!.has(element);
++  }
++  let informationPanels = false;
++  if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '')) {
++    const parent = element.parentElement;
++    if (!parent) return { filter, title, materialRow, informationPanels: false, grouped: false };
++    let summary = cache?.get(parent);
++    if (!summary?.panels) {
++      const controls = [...parent.children].filter((child): child is HTMLElement => child instanceof HTMLElement
++        && child.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(child.getAttribute('aria-expanded') ?? '')
++        && !(child instanceof HTMLButtonElement && child.form) && isInformationTopicLabel(candidateLabel(child)));
++      const panels = controls.length >= 2 && controls.filter(control => /(?:안내|절차|방법|예시|기준|종류)$/.test(candidateLabel(control))).length >= 2
++        ? new Set(controls) : new Set<HTMLElement>();
++      summary = { ...summary, panels }; cache?.set(parent, summary);
++    }
++    informationPanels = summary.panels!.has(element);
++  }
++  let grouped = false;
++  const group = bodyControl && !form ? element.closest('[role~="group" i]') : null;
++  const parent = group?.parentElement;
++  if (parent) {
++    let summary = cache?.get(parent);
++    if (!summary?.groups) {
++      const controls = [...parent.children].filter(child => child.matches('[role~="group" i]')).flatMap(child => {
++        const groupControls = [...child.querySelectorAll<HTMLElement>('a[href], button, [role~="button" i]')]
++          .filter(control => !control.closest('form, [role~="form" i]') && !(control instanceof HTMLButtonElement && control.form) && !!candidateLabel(control));
++        return groupControls.length === 1 ? groupControls : [];
++      });
++      summary = { ...summary, groups: controls.length >= 2 ? new Set(controls) : new Set<HTMLElement>() }; cache?.set(parent, summary);
++    }
++    grouped = summary.groups!.has(element);
++  }
++  return { filter, title, materialRow, informationPanels, grouped };
++}
++
++export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {
+   return {
+     pageUrl: location.href,
+     baseUrl: document.baseURI,
+@@ -261,6 +364,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
+       !!element.closest('article, [role~="article"]'),
+       isQuestionCollection(element),
+       includeCollection ? collectionEvidence(element, collectionCache) : null,
++      includeSupplemental ? supplementalEvidence(element, supplementalCache) : null,
+       !!element.closest('form, [role~="form" i]'),
+       sourceAction(element, safeLabel),
+     ]),
+@@ -269,6 +373,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
+ 
+ export function analyzePage(): Candidate[] {
+   const commonPurpose = documentPurpose();
++  const contextCache: ContextCache = new WeakMap();
+   const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
+   const elements = document.querySelectorAll<HTMLElement>(selector + (commonPurpose === 'academic-calendar' ? ', table a:not([href]), [role~="grid"] a:not([href])' : ''));
+   const candidates: Candidate[] = [];
+@@ -291,14 +396,14 @@ export function analyzePage(): Candidate[] {
+         }
+       } catch { /* 해석할 수 없는 링크는 원본에서 확인합니다. */ }
+     }
+-    const labels = contextLabels(element);
++    const labels = contextLabels(element, contextCache);
+     candidates.push({
+       element, label, href, action, target,
+       destinationHost, opensNewWindow,
+       context: sourceContext(element),
+       score: 0, reasons: [],
+       snapshot: sourceSnapshot(element, label),
+-      sectionLabel: labels[0], contextLabels: labels, pagePurpose: pagePurpose(element, labels, commonPurpose),
++      sectionLabel: labels[0], contextLabels: labels, pagePurpose: pagePurpose(element, labels, commonPurpose ?? null),
+     });
+   }
+   return candidates;
+diff --git a/src/classifier.ts b/src/classifier.ts
+index d55bd74..a92e10e 100644
+--- a/src/classifier.ts
++++ b/src/classifier.ts
+@@ -1,5 +1,5 @@
+ import type { Candidate, Category } from './types';
+-import { collectionEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache } from './analyzer';
++import { collectionEvidence, supplementalEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache, type SupplementalCache } from './analyzer';
+ import { isDocumentDownload } from './action-policy';
+ 
+ const rules: { category: Category; label: RegExp; section: RegExp; endpoints: ReadonlySet<string> }[] = [
+@@ -251,8 +251,71 @@ function contextualReading(candidate: Candidate, label: string): { category: Cat
+   }
+ }
+ 
++function supplementalClassification(candidate: Candidate, label: string, target: string, supplementalCache: SupplementalCache, url?: URL): Candidate | undefined {
++  const element = candidate.element;
++  if (candidate.context !== 'body' || !element.matches('a[href], button, [role~="button" i]')
++    || element.closest('article, [role~="article" i]')) return;
++  if (!element.closest('form, [role~="form" i], tr, [role~="row" i], [role~="group" i]')
++    && !element.hasAttribute('aria-expanded') && !element.querySelector(':scope > p')) return;
++  // Inspect only the source's fixed structural metadata; original actions are
++  // retained. In particular, search filters and downloads are never activated.
++  const evidence = supplementalEvidence(element, supplementalCache);
++  const raw = element.getAttribute('href')?.trim() ?? '';
++  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
++    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
++  if (dangerous.test(script)) return;
++  let destination = url;
++  if (!destination && raw && !/^(?:#|javascript:)/i.test(raw)) {
++    try { destination = new URL(raw, document.baseURI); } catch { return; }
++    if (!/^https?:$/.test(destination.protocol)) return;
++  }
++  if (destination && isDangerousURL(destination, pathParts(destination))) return;
++  if (destination) target = endpoint(pathParts(destination));
++  const result = (category: Category, score: number, reason: string, task: NonNullable<Candidate['pageTask']>): Candidate => ({
++    ...candidate, category, score, reasons: [reason, '고정 원본 제어 구조'], pageTask: task, supplementalDependent: true,
++    snapshot: sourceSnapshot(element, candidate.label, undefined, false, true, supplementalCache),
++  });
++  if (!dangerous.test(label) && evidence.filter && isInformationTopicLabel(label)
++    && !rules.some(rule => rule.category !== 'search' && rule.endpoints.has(target))) return result('search', 70, '검색 양식의 분야 필터', 'control');
++  const contexts = contextsFor(candidate, label);
++  if (!dangerous.test(label) && evidence.materialRow && label.length >= 2 && label.length <= 60
++    && !rules.some(rule => !['apply', 'academic'].includes(rule.category) && rule.label.test(label))
++    && contexts.some(text => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text))
++    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '신청 준비 편람의 원본 서식 자료', 'reading');
++  const guideContext = contexts.some(text => text.length <= 60 && /안내$/.test(text));
++  if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === 'locate'
++    && (evidence.informationPanels || guideContext && evidence.grouped)
++    && !rules.some(rule => rule.category !== 'help' && rule.label.test(label) && !(rule.category === 'search' && searchGuidanceLabel.test(label)))
++    && !isDocumentDownload(element, candidate.label)
++    && !rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target))) return result('help', 65, '공개 정보 패널·안내 주제 읽기', 'reading');
++  const title = evidence.title;
++  if (!title || dangerous.test(title.replace(/납부(?=\s*(?:내역|기록))/, '')) || isDocumentDownload(element, candidate.label)
++    || destination && hasDocumentReference(destination) || element.closest('form, [role~="form" i]')) return;
++  if (/^(?=.{2,36}$).*(?:모의\s*계산|간단\s*계산|simulation|calculator)$/i.test(title)
++    && !dangerous.test(label)
++    && !rules.some(rule => rule.category !== 'search' && rule.endpoints.has(target))) return result('search', 70, '명시적 모의·간단 계산 카드', 'control');
++  // A readonly own-record title is distinct from a payment command. Only the
++  // fixed title may carry 납부내역; descriptions cannot create this exception.
++  if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title)
++    && !dangerous.test(label.replace(/납부(?=\s*(?:내역|기록))/g, ''))
++    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '개인 내역·기록 확인 카드', 'control');
++  if (!dangerous.test(label) && (applicationControlLabel.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title))
++    && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '명시적 신청·청구 카드 제목', 'control');
++}
++
++function readonlyHelpDocument(candidate: Candidate, label: string, target: string, url?: URL): Candidate | undefined {
++  if (!url || candidate.context !== 'body' || candidate.action !== 'navigate' || !candidate.element.matches('a[href]')
++    || !candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]') || candidate.element.closest('article, [role~="article"]')
++    || !hasDocumentReference(url) || candidate.pagePurpose !== 'help' || label.length < 4 || label.length > 100
++    || pathParts(url).some(part => /^(?:news|articles?|stories|story|press)$/.test(part))
++    || !(/(?:안내|방법|절차)$/.test(label) || interrogative.test(label))
++    || rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target))) return;
++  return { ...candidate, category: 'help', score: 72, reasons: ['도움말 안내 문서 읽기', '도움말 목적과 목록의 명시적 읽기 문서'], pageTask: 'reading' };
++}
++
+ export function classify(candidates: Candidate[]): Candidate[] {
+   const collectionCache: CollectionCache = new WeakMap();
++  const supplementalCache: SupplementalCache = new WeakMap();
+   return candidates.flatMap(candidate => {
+     // Machine-authored accessible names can separate words with _ or -. This
+     // lexical view does not alter source labels, URL paths or action metadata.
+@@ -270,10 +333,14 @@ export function classify(candidates: Candidate[]): Candidate[] {
+     const parts = url ? pathParts(url) : [];
+     if (url && isDangerousURL(url, parts)) return [];
+     const target = endpoint(parts);
+-    // Only a public academic information link may describe tuition payment.
+-    // Executable payment labels, controls, URLs and other dangerous words keep
+-    // the same rejection policy; source action/URL are never rewritten here.
++    // Verified reading metadata can describe payment/history topics. The URL
++    // command guard runs first; the narrow reading/card branches retain the
++    // source action and cannot execute a payment, delete, or final submission.
+     const academicInfo = academicInformation(candidate, label, target, url);
++    const readonlyHelp = readonlyHelpDocument(candidate, label, target, url);
++    if (readonlyHelp) return [readonlyHelp];
++    const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
++    if (supplemental) return [supplemental];
+     if (dangerous.test(label) && !academicInfo) return [];
+     // The safe candidate name is fixed metadata, never the input's current value.
+     const searchControl = isSearchControl(candidate.element, label);
+diff --git a/src/page-session.ts b/src/page-session.ts
+index 3e376db..5699819 100644
+--- a/src/page-session.ts
++++ b/src/page-session.ts
+@@ -1,21 +1,24 @@
+-import { candidateLabel, contextLabels, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache } from './analyzer';
+-import type { Candidate } from './types';
++import { candidateLabel, contextLabels, documentPurpose, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache, type SupplementalCache, type ContextCache } from './analyzer';
++import type { Candidate, PagePurpose } from './types';
+ 
+-export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache): boolean {
++export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache, supplementalCache?: SupplementalCache, contextCache?: ContextCache, commonPurpose?: PagePurpose | null): boolean {
+   const label = candidateLabel(candidate.element);
+   if (label !== candidate.label) return false;
+   if (sourceContext(candidate.element) !== candidate.context) return false;
+-  const labels = contextLabels(candidate.element);
++  const labels = contextLabels(candidate.element, contextCache);
+   if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
+-  if (pagePurpose(candidate.element, labels) !== candidate.pagePurpose) return false;
+-  const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent);
++  if (pagePurpose(candidate.element, labels, commonPurpose) !== candidate.pagePurpose) return false;
++  const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache);
+   return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl &&
+     current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
+ }
+ 
+ export function areCandidatesCurrent(candidates: readonly Candidate[]): boolean {
+   const collectionCache: CollectionCache = new WeakMap();
+-  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache));
++  const supplementalCache: SupplementalCache = new WeakMap();
++  const contextCache: ContextCache = new WeakMap();
++  const commonPurpose = documentPurpose() ?? null;
++  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose));
+ }
+ 
+ export function watchCandidates(getCandidates: () => Candidate[], onStale: () => void): () => void {
+diff --git a/src/types.ts b/src/types.ts
+index f918c84..a45b986 100644
+--- a/src/types.ts
++++ b/src/types.ts
+@@ -26,6 +26,7 @@ export interface Candidate {
+   pagePurpose?: PagePurpose;
+   pageTask?: 'control' | 'collection' | 'reading';
+   collectionDependent?: boolean;
++  supplementalDependent?: boolean;
+ }
+ 
+ export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {
+diff --git a/tests/generic-controls.spec.mjs b/tests/generic-controls.spec.mjs
+new file mode 100644
+index 0000000..b8dad4d
+--- /dev/null
++++ b/tests/generic-controls.spec.mjs
+@@ -0,0 +1,97 @@
++import { test, expect } from '@playwright/test';
++import { build } from 'esbuild';
++let engine;
++test.beforeAll(async () => {
++  const r = await build({ stdin: { contents: `export {analyzePage} from './src/analyzer'; export {classify} from './src/classifier'; export {isCandidateCurrent,areCandidatesCurrent} from './src/page-session';`, resolveDir: process.cwd() }, bundle: true, write: false, format: 'iife', globalName: 'GenericEngine' });
++  engine = r.outputFiles[0].text;
++});
++async function inspect(page, html) {
++  await page.route('https://sample.test/**', route => route.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
++  await page.goto('https://sample.test/opaque'); await page.addScriptTag({ content: engine });
++  return page.evaluate(() => {
++    window.items = GenericEngine.classify(GenericEngine.analyzePage());
++    return items.map(({ element, ...item }) => ({ ...item, id: element.id }));
++  });
++}
++test('검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>자료 목록</h2><form id="catalogSearchForm"><input type="text" aria-label="검색어" value="PRIVATE_NOT_READ"><div role="textbox" contenteditable="true">PRIVATE_EDITOR_NOT_READ</div><ul><li><a id="filter" href="#" class="category_search">과학/기술</a></li><li><a href="#" class="category_search">문학/예술</a></li></ul></form><form id="applicationForm"><ul><li><a id="ordinary" href="#">교육/훈련</a></li></ul></form><script>document.querySelectorAll('input,select,textarea').forEach(e=>Object.defineProperty(e,'value',{get(){throw Error('private value')}}))</script></main>`);
++  expect(JSON.stringify(items)).not.toContain('PRIVATE_');
++  expect(items.filter(i=>i.label!=='검색어').map(i => [i.id, i.category, i.action])).toEqual([['filter','search','locate'],['','search','locate']]);
++  expect(await page.evaluate(() => GenericEngine.isCandidateCurrent(items.find(item=>item.element.id==='filter')))).toBe(true);
++  expect(await page.evaluate(() => { document.querySelector('form').id='application'; return GenericEngine.isCandidateCurrent(items.find(item=>item.element.id==='filter')); })).toBe(false);
++});
++test('신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>민원 편람</h2><table><thead><tr><th>제목</th><th>첨부</th></tr></thead><tbody><tr><td><a id="material" href="#view" onclick="return false">건축물 현황 변경신고서</a></td><td><button id="download" type="button">자료받기</button></td></tr><tr><td><a id="opaque" href="#view" onclick="return false">공공시설 사용 인가</a></td><td><button type="button">자료받기</button></td></tr></tbody></table><section><h2>사진 목록</h2><table><tr><td><a id="photo" href="#view">봄 전경</a></td><td><button type="button">자료받기</button></td></tr></table></section></main>`);
++  expect(items.filter(i=>['material','download','opaque'].includes(i.id)).map(i=>[i.id,i.category])).toEqual([['material','apply'],['download','apply'],['opaque','apply']]);
++  expect(items.find(i=>i.id==='photo')).toBeUndefined();
++  expect(await page.evaluate(() => { document.querySelector('th').textContent='사진'; return GenericEngine.isCandidateCurrent(items.find(i=>i.element.id==='opaque')); })).toBe(false);
++});
++test('정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>재해 보상</h2><div><button id="panel" type="button" aria-expanded="false">지원금 예시</button><button type="button" aria-expanded="false">지원 절차</button><button type="button" aria-expanded="false">기관 및 가입안내</button></div><section><h3>시설 이용안내</h3><div><div role="group"><a id="reading" href="/x/18" onclick="return false">보관 자료 열람</a></div><div role="group"><a href="/x/19" onclick="return false">청년 자료 이용</a></div></div></section><button id="delete" aria-expanded="false">삭제</button></main>`);
++  expect(items.find(i=>i.id==='panel')?.category).toBe('help');
++  expect(items.find(i=>i.id==='reading')?.category).toBe('help');
++  expect(items.find(i=>i.id==='delete')).toBeUndefined();
++});
++test('고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>생활 지원 서비스</h2><ul><li><a id="calc" href="#" onclick="return false"><strong>생활비 모의계산</strong><p>소득과 가족 수를 직접 입력하면 예상 생활비를 확인할 수 있습니다. 실제 신청과 연결되지 않습니다.</p></a></li><li><a id="own" href="#" onclick="return false"><span>가입·납부내역 조회</span><p>본인의 납부 기록을 확인할 수 있습니다.</p></a></li><li><a id="request" href="/x/44"><b>상담 예약신청</b><p>상담 시간을 신청하고 담당 안내를 받을 수 있습니다.</p></a></li><li><a id="danger" href="#"><strong>수수료 결제</strong><p>예상액 조회와 신청 안내</p></a></li></ul></main>`);
++  expect(items.filter(i=>['calc','own','request'].includes(i.id)).map(i=>[i.id,i.category])).toEqual([['calc','search'],['own','apply'],['request','apply']]);
++  expect(items.find(i=>i.id==='danger')).toBeUndefined();
++  expect(items.find(i=>i.id==='calc').label).toContain('실제 신청');
++});
++test('도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>자주 묻는 질문</h2><ul><li><a id="guide" href="?mode=view&articleNo=31">연구실 출입카드 잠금 관련 안내</a></li><li><a id="question" href="?mode=view&articleNo=32">연회비를 납부했는데 환불할 수 있나요?</a></li><li><a id="unsafe" href="?action=delete&articleNo=33">자료 삭제 안내</a></li><li><a id="notice" href="/notice?articleNo=34">공지사항 안내</a></li></ul></main>`);
++  expect(items.filter(i=>['guide','question'].includes(i.id)).map(i=>[i.id,i.category])).toEqual([['guide','help'],['question','help']]);
++  expect(items.find(i=>i.id==='unsafe')).toBeUndefined();
++  expect(items.find(i=>i.id==='notice')?.category).toBe('notice');
++});
++
++test('같은 전체 이름도 카드 제목 분할이 바뀌면 이전 근거를 무효화한다', async ({ page }) => {
++  await inspect(page, `<main><a id="card" href="#" onclick="return false"><strong>생활비 모의계산</strong><p>안내</p></a></main>`);
++  expect(await page.evaluate(()=>GenericEngine.isCandidateCurrent(items[0]))).toBe(true);
++  expect(await page.evaluate(()=>{document.querySelector('strong').textContent='생활비'; document.querySelector('p').textContent='모의계산 안내'; return GenericEngine.isCandidateCurrent(items[0]);})).toBe(false);
++});
++test('보조 근거는 위험 URL·스크립트·폼 제출·기사·편집 제어를 허용하지 않는다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>자주 묻는 질문</h2><ul><li><a id="news" href="/news/42?mode=view&amp;articleNo=7">연구 결과 안내</a></li><li><a id="pay" href="/pay" onclick="return false"><strong>모의계산</strong><p>비용을 살펴봅니다.</p></a></li><li><a id="script" href="javascript:openPayment()"><strong>간단계산</strong><p>비용을 살펴봅니다.</p></a></li><li><a id="editable" href="#"><strong contenteditable="true">PRIVATE_TITLE</strong><p>PRIVATE_DESC <input value="PRIVATE_INPUT"></p></a></li></ul><form id="command"></form><div><button id="submit" form="command" type="submit" aria-expanded="false">범위 안내</button><button type="button" aria-expanded="false">활용 예시</button><button type="button" aria-expanded="false">등록 절차</button></div></main>`);
++  expect(items.filter(i=>['news','pay','script','editable','submit'].includes(i.id))).toEqual([]);
++  expect(JSON.stringify(items)).not.toContain('PRIVATE_');
++});
++test('패널 동료 근거와 그룹 링크 구조가 사라지면 이전 읽기 후보는 무효다', async ({ page }) => {
++  await inspect(page, `<main><div><button id="panel" type="button" aria-expanded="false">지원 예시</button><button id="peer" type="button" aria-expanded="false">지원 절차</button></div></main>`);
++  expect(await page.evaluate(()=>GenericEngine.isCandidateCurrent(items[0]))).toBe(true);
++  expect(await page.evaluate(()=>{document.querySelector('#peer').setAttribute('hidden',''); return GenericEngine.isCandidateCurrent(items[0]);})).toBe(false);
++});
++
++test('구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>민원 편람</h2><table><thead><tr><th>제목</th><th>첨부</th></tr></thead><tr><td><a href="#view">사용 변경 서식</a><input id="search-input" type="search" aria-label="검색어"><button id="search-button" type="button">검색</button></td><td><button type="button">자료받기</button></td></tr></table><section><h3>자료 이용안내</h3><div><div role="group"><a id="request" href="#" onclick="return false">신청확인 바로가기</a></div><div role="group"><a href="#" onclick="return false">보관 자료 열람</a></div></div></section></main>`);
++  expect(items.find(i=>i.id==='search-input')?.category).toBe('search');
++  expect(items.find(i=>i.id==='search-button')?.category).toBe('search');
++  expect(items.find(i=>i.id==='request')?.category).toBe('apply');
++});
++
++test('서식 표의 제목·첨부 열 밖에 있는 불투명 기관 링크는 신청으로 보완하지 않는다', async ({ page }) => {
++  const items = await inspect(page, `<main><h2>민원 편람</h2><table><thead><tr><th>제목</th><th>첨부</th><th>관련기관</th></tr></thead><tr><td><a id="title" href="#view">시설 사용 인가</a></td><td><button id="file" type="button">자료받기</button></td><td><a id="other" href="https://another.test/x/8">기관 소개</a></td></tr></table></main>`);
++  expect(items.filter(i=>['title','file'].includes(i.id)).map(i=>i.category)).toEqual(['apply','apply']);
++  expect(items.find(i=>i.id==='other')).toBeUndefined();
++});
++
++test('배치 문맥 cache는 다음 검사에 재사용하지 않고 제목 변화를 즉시 감지한다', async ({ page }) => {
++  await inspect(page, `<main><section><h2>시설 이용안내</h2><div><div role="group"><a href="#" onclick="return false">보관 자료 열람</a></div><div role="group"><a href="#" onclick="return false">청년 자료 이용</a></div></div></section></main>`);
++  expect(await page.evaluate(()=>GenericEngine.areCandidatesCurrent(items))).toBe(true);
++  expect(await page.evaluate(()=>{document.querySelector('h2').textContent='시설 사진';return GenericEngine.areCandidatesCurrent(items);})).toBe(false);
++  expect(await page.evaluate(()=>{document.querySelector('h2').textContent='시설 이용안내';return GenericEngine.areCandidatesCurrent(items);})).toBe(true);
++});
++test('부모가 없는 documentElement 역할 제어도 보조 분석에서 예외를 내지 않는다', async ({ page }) => {
++  await page.setContent('<html role="button" aria-expanded="false" aria-label="정보 예시"><body><main>고정 설명</main></body></html>');
++  await page.addScriptTag({content:engine});
++  expect(await page.evaluate(()=>{GenericEngine.classify(GenericEngine.analyzePage());return true;})).toBe(true);
++});
++
++test('목적 없는 페이지도 분석과 배치 현재성마다 전체 목적 검사는 한 번만 수행한다', async ({ page }) => {
++  await inspect(page, `<main><h2>생활 지원</h2><a href="/search">통합 검색</a><a href="/apply">이용 신청</a></main>`);
++  expect(await page.evaluate(()=>{
++    const original=document.querySelectorAll.bind(document); let count=0;
++    document.querySelectorAll=function(selector){if(selector.startsWith('main > :is('))count++;return original(selector);};
++    items=GenericEngine.classify(GenericEngine.analyzePage());const analysis=count;count=0;
++    const current=GenericEngine.areCandidatesCurrent(items);return {analysis,batch:count,current};
++  })).toEqual({analysis:1,batch:1,current:true});
++});

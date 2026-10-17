@@ -1,0 +1,216 @@
+diff --git a/scripts/menu-flow-evaluation.mjs b/scripts/menu-flow-evaluation.mjs
+index 90b6452..53698c8 100644
+--- a/scripts/menu-flow-evaluation.mjs
++++ b/scripts/menu-flow-evaluation.mjs
+@@ -15,10 +15,11 @@ window.inspectEasyWebMenuFlow=()=>{
+   if(!root)throw new Error('Menu flow is not open');
+   const cards=[...root.querySelectorAll('.card')].map(card=>{
+     const label=card.querySelector('.card-source')?.textContent?.replace(/^찾은 메뉴 · /,'')??'';
++    const relatedLabel=card.querySelector('.card-context')?.textContent?.replace(/^관련 항목 · /,'')??undefined;
+     const category=card.dataset.category,action=card.tagName==='A'?'navigate':'locate';
+     const href=action==='navigate'?card.href:undefined;
+-    const sources=window.easyWebFlowSources.filter(source=>source.label===label&&source.category===category&&source.action===action&&(action!=='navigate'||source.href===href));
+-    return {label,category,action,href,target:card.getAttribute('target'),sourceId:sources.length===1?sources[0].element.dataset.evalId??null:null,sourceMatches:sources.length};
++    const sources=window.easyWebFlowSources.filter(source=>source.label===label&&source.category===category&&source.action===action&&(action!=='navigate'||source.href===href)&&(source.relatedLabel&&source.relatedLabel!==source.label?source.relatedLabel:undefined)===relatedLabel);
++    return {label,relatedLabel,category,action,href,target:card.getAttribute('target'),sourceId:sources.length===1?sources[0].element.dataset.evalId??null:null,sourceMatches:sources.length};
+   });
+   const next=[...root.querySelectorAll('button')].find(button=>button.textContent.trim()==='다른 메뉴 보기');
+   return {cards,nextAvailable:!!next&&!next.disabled&&next.getAttribute('aria-disabled')!=='true'&&!!next.getClientRects().length,stale:root.querySelector('.change-notice')?.hidden===false,status:root.querySelector('.status')?.textContent??null};
+@@ -43,7 +44,7 @@ export async function observeMenuFlow(page, cdp, contextId, bundle, target, sour
+     if (view.cards.length > 6) throw new Error('Menu flow exceeded six visible cards');
+     if (!view.cards.length && view.nextAvailable) throw new Error('Empty menu page advertises a next page');
+     for (const candidate of view.cards) {
+-      if (!candidate.sourceId) unresolved.push({ page: index + 1, label: candidate.label, sourceMatches: candidate.sourceMatches });
++      if (!candidate.sourceId) unresolved.push({ page: index + 1, label: candidate.label, relatedLabel: candidate.relatedLabel, sourceMatches: candidate.sourceMatches });
+       const key = candidate.action === 'navigate' ? `url:${candidate.href}` : `source:${candidate.sourceId ?? candidate.label}`;
+       if (keys.has(key)) repeated.push({ page: index + 1, key });
+       else { keys.add(key); selected.push(candidate); }
+diff --git a/src/analyzer.ts b/src/analyzer.ts
+index a66b7d0..f7763ee 100644
+--- a/src/analyzer.ts
++++ b/src/analyzer.ts
+@@ -249,7 +249,7 @@ export function collectionEvidence(element: HTMLElement, cache?: CollectionCache
+ // check, rather than once for every control and its derived snapshot.
+ interface SupplementalSummary {
+   columns?: string[];
+-  materials?: Set<HTMLElement>;
++  materials?: Map<HTMLElement, string | undefined>;
+   panels?: Set<HTMLElement>;
+   groups?: Set<HTMLElement>;
+ }
+@@ -277,6 +277,7 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+     }
+   }
+   let materialRow = false;
++  let relatedLabel: string | undefined;
+   const row = bodyControl && !form ? element.closest('tr, [role~="row" i]') : null;
+   const table = row?.closest('table, [role~="grid" i]');
+   if (row && table) {
+@@ -296,23 +297,30 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+       const controls = [...row.querySelectorAll<HTMLElement>('a[href], button, [role~="button" i]')]
+         .filter(control => control.closest('tr, [role~="row" i]') === row && !!candidateLabel(control));
+       const columns = tableSummary.columns!;
+-      const materials = new Set<HTMLElement>();
++      const materials = new Map<HTMLElement, string | undefined>();
+       if (columns.some(titleColumn) && columns.some(attachmentColumn)) {
+         if (cells.length === columns.length) {
+           const titles = cells.flatMap((cell, index) => titleColumn(columns[index])
+             ? controls.filter(control => control.matches('a[href]') && cell.contains(control)).slice(0, 1) : []);
+           const attachments = controls.filter(control => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control)) && download(control));
+-          if (titles.length && attachments.length) [...titles, ...attachments].forEach(control => materials.add(control));
++          if (titles.length && attachments.length) {
++            const labels = [...new Set(titles.map(candidateLabel))];
++            titles.forEach(control => materials.set(control, candidateLabel(control)));
++            // Multiple different title columns do not identify one attachment
++            // subject. Keep that relationship unresolved rather than invent it.
++            attachments.forEach(control => materials.set(control, labels.length === 1 ? labels[0] : undefined));
++          }
+         }
+       }
+       rowSummary = { ...rowSummary, materials }; cache?.set(row, rowSummary);
+     }
+     materialRow = rowSummary.materials!.has(element);
++    relatedLabel = rowSummary.materials!.get(element);
+   }
+   let informationPanels = false;
+   if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '')) {
+     const parent = element.parentElement;
+-    if (!parent) return { filter, title, materialRow, informationPanels: false, grouped: false };
++    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false };
+     let summary = cache?.get(parent);
+     if (!summary?.panels) {
+       const controls = [...parent.children].filter((child): child is HTMLElement => child instanceof HTMLElement
+@@ -339,7 +347,7 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+     }
+     grouped = summary.groups!.has(element);
+   }
+-  return { filter, title, materialRow, informationPanels, grouped };
++  return { filter, title, materialRow, relatedLabel, informationPanels, grouped };
+ }
+ 
+ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {
+diff --git a/src/classifier.ts b/src/classifier.ts
+index a92e10e..3d77470 100644
+--- a/src/classifier.ts
++++ b/src/classifier.ts
+@@ -273,6 +273,7 @@ function supplementalClassification(candidate: Candidate, label: string, target:
+   if (destination) target = endpoint(pathParts(destination));
+   const result = (category: Category, score: number, reason: string, task: NonNullable<Candidate['pageTask']>): Candidate => ({
+     ...candidate, category, score, reasons: [reason, '고정 원본 제어 구조'], pageTask: task, supplementalDependent: true,
++    relatedLabel: evidence.relatedLabel,
+     snapshot: sourceSnapshot(element, candidate.label, undefined, false, true, supplementalCache),
+   });
+   if (!dangerous.test(label) && evidence.filter && isInformationTopicLabel(label)
+diff --git a/src/easy-mode.ts b/src/easy-mode.ts
+index 37447a8..4791542 100644
+--- a/src/easy-mode.ts
++++ b/src/easy-mode.ts
+@@ -195,6 +195,9 @@ export function openEasyMode(host: HTMLElement): () => void {
+     const titleNode = el('span', 'card-title', cardTitle);
+     const sourceNode = el('span', 'card-source', `찾은 메뉴 · ${candidate.label}`);
+     item.append(image, titleNode, el('span', 'card-description', info.description), sourceNode);
++    if (candidate.relatedLabel && candidate.relatedLabel !== candidate.label) {
++      item.append(el('span', 'card-context card-source', `관련 항목 · ${candidate.relatedLabel}`));
++    }
+     if (candidate.destinationHost && candidate.destinationHost !== location.hostname) {
+       const destination = el('span', 'card-source', `연결된 사이트 · ${candidate.destinationHost}`);
+       item.append(destination);
+diff --git a/src/types.ts b/src/types.ts
+index a45b986..249ab63 100644
+--- a/src/types.ts
++++ b/src/types.ts
+@@ -27,6 +27,7 @@ export interface Candidate {
+   pageTask?: 'control' | 'collection' | 'reading';
+   collectionDependent?: boolean;
+   supplementalDependent?: boolean;
++  relatedLabel?: string;
+ }
+ 
+ export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {
+diff --git a/tests/material-context.spec.mjs b/tests/material-context.spec.mjs
+new file mode 100644
+index 0000000..209b39f
+--- /dev/null
++++ b/tests/material-context.spec.mjs
+@@ -0,0 +1,81 @@
++import { test, expect } from '@playwright/test';
++import { build } from 'esbuild';
++import { buildMenuFlowHarness, observeMenuFlow } from '../scripts/menu-flow-evaluation.mjs';
++let engine, flowBundle;
++test.beforeAll(async () => {
++  const sourceRoot=process.env.EASYWEB_ENGINE_ROOT??'./src';
++  const result = await build({ stdin: { contents: `export {analyzePage} from ${JSON.stringify(`${sourceRoot}/analyzer`)}; export {classify} from ${JSON.stringify(`${sourceRoot}/classifier`)}; export {isCandidateCurrent} from ${JSON.stringify(`${sourceRoot}/page-session`)}; export {openEasyMode} from ${JSON.stringify(`${sourceRoot}/easy-mode`)};`, resolveDir: process.cwd() }, bundle: true, write: false, format: 'iife', globalName: 'MaterialEngine', loader: { '.css': 'text' } });
++  engine = result.outputFiles[0].text;
++  flowBundle = await buildMenuFlowHarness();
++});
++const table = (first='시설 이용 인가', second='사업장 변경 신고') => `<main><h2>민원 편람</h2><table><thead><tr><th>제목</th><th>첨부</th></tr></thead><tbody><tr><td><a id="title-one" data-eval-id="title-one" href="#view-one">${first}</a></td><td><button id="file-one" data-eval-id="file-one" type="button">자료받기</button></td></tr><tr><td><a id="title-two" data-eval-id="title-two" href="#view-two">${second}</a></td><td><button id="file-two" data-eval-id="file-two" type="button">자료받기</button></td></tr></tbody></table></main>`;
++async function setup(page, markup=table(), controlledClock=false) {
++  await page.route('https://material.example.test/**', route=>route.fulfill({contentType:'text/html; charset=utf-8',body:`<!doctype html><html lang="ko"><meta charset="utf-8">${markup}</html>`}));
++  await page.goto('https://material.example.test/opaque');
++  if(controlledClock)await page.clock.install();
++  await page.evaluate(()=>{document.querySelectorAll('input,textarea,select').forEach(control=>Object.defineProperty(control,'value',{get(){throw Error('private value read');}}));});
++  await page.addScriptTag({content:engine});
++  await page.evaluate(()=>{
++    window.materialCandidates=MaterialEngine.classify(MaterialEngine.analyzePage());
++    const host=document.createElement('div');host.dataset.easywebHost='true';document.body.append(host);MaterialEngine.openEasyMode(host);
++  });
++}
++const next = page=>page.getByRole('button',{name:'다른 메뉴 보기',exact:true});
++async function findMaterial(page, title) {
++  for(let index=0;index<3;index++){
++    const card=page.locator('button.card').filter({has:page.locator('.card-context',{hasText:`관련 항목 · ${title}`})});
++    if(await card.count())return card;
++    if(!(await next(page).isVisible()))break;
++    await next(page).click();
++  }
++  throw Error(`Missing material card: ${title}`);
++}
++test('동명 자료 카드의 관련 제목과 실제 접근성 이름·표시 원본 매핑을 구분한다', async ({page})=>{
++  await setup(page);
++  const observed=[];
++  for(let index=0;index<3;index++){
++    for(const card of await page.locator('button.card').filter({has:page.locator('.card-source',{hasText:/^찾은 메뉴 · 자료받기$/})}).all()){
++      await expect(card.locator('.card-source').first()).toHaveText('찾은 메뉴 · 자료받기');
++      await expect(card.locator('.card-context')).toHaveCount(1,{timeout:500});
++      const caption=await card.locator('.card-context').textContent();
++      await expect(card).toHaveAccessibleName(new RegExp(caption));
++      expect(await card.ariaSnapshot()).toContain(caption);
++      observed.push(caption);
++    }
++    if(!(await next(page).isVisible()))break;
++    await next(page).click();
++  }
++  expect(observed.sort()).toEqual(['관련 항목 · 사업장 변경 신고','관련 항목 · 시설 이용 인가'].sort());
++  await page.keyboard.press('Escape');
++  await expect(page.locator('[data-easyweb-host]')).toHaveCount(0);
++  const cdp=await page.context().newCDPSession(page);
++  try{
++    await cdp.send('Page.enable');const {frameTree}=await cdp.send('Page.getFrameTree');
++    const {executionContextId}=await cdp.send('Page.createIsolatedWorld',{frameId:frameTree.frame.id,worldName:'material-caption-test'});
++    const ids=['title-one','file-one','title-two','file-two'];
++    const target={accepted:ids.map(sourceId=>({sourceId,category:'apply',action:'locate'})),expected:['file-one','file-two'].map(sourceId=>({id:sourceId,sourceIds:[sourceId],category:'apply',action:'locate'})),task:{expectedSourceIds:['file-two']}};
++    const flow=await observeMenuFlow(page,cdp,executionContextId,flowBundle,target,{},4);
++    expect(flow.unresolvedMappings).toEqual([]);expect(flow.repeatedCards).toEqual([]);
++    expect(flow.correct).toBe(4);expect(flow.matched).toBe(2);
++    expect(flow.selected.filter(item=>item.label==='자료받기').map(item=>[item.sourceId,item.relatedLabel]).sort()).toEqual([['file-one','시설 이용 인가'],['file-two','사업장 변경 신고']]);
++  }finally{await cdp.detach();}
++});
++test('관련 제목이 바뀌면 자료 버튼 이름이 같아도 snapshot과 즉시 실행을 무효화한다',async({page})=>{
++  await setup(page,table(),true);
++  expect(await page.evaluate(()=>MaterialEngine.isCandidateCurrent(materialCandidates.find(item=>item.element.id==='file-one')))).toBe(true);
++  expect(await page.evaluate(()=>{document.querySelector('#title-one').textContent='교체된 인가 서식';return MaterialEngine.isCandidateCurrent(materialCandidates.find(item=>item.element.id==='file-one'));})).toBe(false);
++  const card=await findMaterial(page,'시설 이용 인가');
++  await card.click();
++  await expect(page.locator('.change-notice')).toBeVisible();await expect(card).toHaveAttribute('aria-disabled','true');
++  await expect(page.locator('[data-easyweb-notice]')).toHaveCount(0);
++});
++test('관련 항목은 고정 제목만 사용하고 자식 편집 내용·입력값을 후보와 UI에 넣지 않는다',async({page})=>{
++  await setup(page,table('고정 시설 서식 <span role="textbox" contenteditable="true">PRIVATE_EDITOR</span><input aria-label="비공개 내용" value="PRIVATE_VALUE">'));
++  const result=await page.evaluate(()=>{
++    const item=materialCandidates.find(item=>item.element.id==='file-one');
++    return{label:item.label,relatedLabel:item.relatedLabel,snapshot:item.snapshot};
++  });
++  expect(result.label).toBe('자료받기');expect(result.relatedLabel).toBe('고정 시설 서식');expect(JSON.stringify(result)).not.toContain('PRIVATE_');
++  const card=await findMaterial(page,'고정 시설 서식');await expect(card.locator('.card-context')).toHaveText('관련 항목 · 고정 시설 서식');
++  expect(await page.locator('[data-easyweb-host]').evaluate(host=>host.shadowRoot.textContent)).not.toContain('PRIVATE_');
++});

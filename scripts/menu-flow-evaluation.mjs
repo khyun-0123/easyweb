@@ -15,10 +15,11 @@ window.inspectEasyWebMenuFlow=()=>{
   if(!root)throw new Error('Menu flow is not open');
   const cards=[...root.querySelectorAll('.card')].map(card=>{
     const label=card.querySelector('.card-source')?.textContent?.replace(/^찾은 메뉴 · /,'')??'';
+    const relatedLabel=card.querySelector('.card-context')?.textContent?.replace(/^관련 항목 · /,'')??undefined;
     const category=card.dataset.category,action=card.tagName==='A'?'navigate':'locate';
     const href=action==='navigate'?card.href:undefined;
-    const sources=window.easyWebFlowSources.filter(source=>source.label===label&&source.category===category&&source.action===action&&(action!=='navigate'||source.href===href));
-    return {label,category,action,href,target:card.getAttribute('target'),sourceId:sources.length===1?sources[0].element.dataset.evalId??null:null,sourceMatches:sources.length};
+    const sources=window.easyWebFlowSources.filter(source=>source.label===label&&source.category===category&&source.action===action&&(action!=='navigate'||source.href===href)&&(source.relatedLabel&&source.relatedLabel!==source.label?source.relatedLabel:undefined)===relatedLabel);
+    return {label,relatedLabel,category,action,href,target:card.getAttribute('target'),sourceId:sources.length===1?sources[0].element.dataset.evalId??null:null,sourceMatches:sources.length};
   });
   const next=[...root.querySelectorAll('button')].find(button=>button.textContent.trim()==='다른 메뉴 보기');
   return {cards,nextAvailable:!!next&&!next.disabled&&next.getAttribute('aria-disabled')!=='true'&&!!next.getClientRects().length,stale:root.querySelector('.change-notice')?.hidden===false,status:root.querySelector('.status')?.textContent??null};
@@ -43,7 +44,7 @@ export async function observeMenuFlow(page, cdp, contextId, bundle, target, sour
     if (view.cards.length > 6) throw new Error('Menu flow exceeded six visible cards');
     if (!view.cards.length && view.nextAvailable) throw new Error('Empty menu page advertises a next page');
     for (const candidate of view.cards) {
-      if (!candidate.sourceId) unresolved.push({ page: index + 1, label: candidate.label, sourceMatches: candidate.sourceMatches });
+      if (!candidate.sourceId) unresolved.push({ page: index + 1, label: candidate.label, relatedLabel: candidate.relatedLabel, sourceMatches: candidate.sourceMatches });
       const key = candidate.action === 'navigate' ? `url:${candidate.href}` : `source:${candidate.sourceId ?? candidate.label}`;
       if (keys.has(key)) repeated.push({ page: index + 1, key });
       else { keys.add(key); selected.push(candidate); }

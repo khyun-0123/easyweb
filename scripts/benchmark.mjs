@@ -5,7 +5,15 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
-const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run003';
+if (process.argv.includes('--help')) {
+  console.log('node scripts/benchmark.mjs [--shape=mixed|flat|table] [--output-dir=docs/evidence/run004]\nEach shape has exactly 1,000 synthetic controls, one excluded warmup and ten measured runs. Reports remain separate; no native browser or real-site timing claim.');
+  process.exit(0);
+}
+for (const arg of process.argv.slice(2)) if (!/^--(?:shape|output-dir)=.+$/.test(arg)) throw new Error(`Unknown or incomplete option: ${arg}`);
+const shape = process.argv.find(arg => arg.startsWith('--shape='))?.slice('--shape='.length) ?? 'mixed';
+if (!['mixed', 'flat', 'table'].includes(shape)) throw new Error('shape=mixed|flat|table');
+const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run004';
+const outputName = shape === 'mixed' ? 'performance.json' : `performance-${shape}.json`;
 const sha256 = data => createHash('sha256').update(data).digest('hex');
 async function sourceHashes(dir = 'src') {
   const result = {};
@@ -41,11 +49,15 @@ const control = index => {
   }
 };
 const section = (start, count) => Array.from({ length: count }, (_, offset) => control(start + offset)).join('');
-const html = `<!doctype html><html lang="ko"><meta charset="utf-8"><title>EasyWeb synthetic performance fixture</title>
+const mixedHtml = `<!doctype html><html lang="ko"><meta charset="utf-8"><title>EasyWeb synthetic performance fixture</title>
 <style>body{margin:0;font:16px sans-serif}nav,section,footer{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:12px}a,button,input,[role]{min-height:36px;box-sizing:border-box}h1,h2{grid-column:1/-1}</style>
 <header><nav aria-label="전역 메뉴">${section(0, 200)}</nav></header><main><h1>합성 성능 검사</h1>
 ${Array.from({ length: 6 }, (_, index) => `<section><h2>공개 기능 ${index + 1}</h2>${section(200 + index * 100, 100)}</section>`).join('')}
 </main><footer>${section(800, 200)}</footer></html>`;
+const simpleHead = '<!doctype html><html lang="ko"><meta charset="utf-8"><title>EasyWeb structural performance fixture</title><style>body{margin:0;font:16px sans-serif}a,button{display:inline-block;min-height:36px;padding:6px}td,th{padding:4px}</style>';
+const flatHtml = `${simpleHead}<main><h1>지원 안내</h1><div>${Array.from({ length: 1000 }, (_, index) => `<button type="button" aria-expanded="false">지원 ${index + 1} 절차</button>`).join('')}</div></main></html>`;
+const tableHtml = `${simpleHead}<main><h1>민원 편람</h1><table><thead><tr><th>제목</th><th>첨부</th></tr></thead><tbody>${Array.from({ length: 500 }, (_, index) => `<tr><td><a href="#view" onclick="return false">공공시설 ${index + 1} 사용 인가</a></td><td><button type="button">자료받기</button></td></tr>`).join('')}</tbody></table></main></html>`;
+const html = { mixed: mixedHtml, flat: flatHtml, table: tableHtml }[shape];
 const percentile = values => [...values].sort((a, b) => a - b)[Math.ceil(values.length * .95) - 1];
 const browser = await chromium.launch({ headless: true });
 try {
@@ -88,13 +100,15 @@ try {
   const report = {
     checkedAt: new Date().toISOString(),
     status: validSamples && analyzerP95 <= 300 && overlayReadyP95 <= 1000 ? 'PASS' : 'FAIL',
-    scope: 'Synthetic mixed 1,000-control benchmark; 10 measured runs after one excluded warmup. No real site loading or user data. Headless Chromium is recorded and is separate from native extension installation checks.',
+    scope: `Synthetic ${shape} 1,000-control benchmark; 10 measured runs after one excluded warmup. No real site loading or user data. Headless Chromium is recorded and is separate from native extension installation checks.`,
     environment: {
       platform: process.platform, architecture: process.arch, osRelease: os.release(), node: process.version,
       cpuModel: os.cpus()[0]?.model ?? 'UNKNOWN', logicalCpus: os.cpus().length, memoryBytes: os.totalmem(),
       chromium: browser.version(), headless: true, viewport: { width: 1440, height: 1080 }, deviceScaleFactor: 1,
     },
-    fixture: { controls: 1000, distinctControlKinds: 10, regions: { primary: 200, body: 600, footer: 200 }, sha256: sha256(html) },
+    fixture: { shape, controls: 1000, distinctControlKinds: shape === 'mixed' ? 10 : shape === 'flat' ? 1 : 2,
+      regions: shape === 'mixed' ? { primary: 200, body: 600, footer: 200 } : { primary: 0, body: 1000, footer: 0 },
+      structure: shape === 'flat' ? 'One parent containing 1,000 information-panel buttons.' : shape === 'table' ? '500 rows, two fixed source controls per row, explicit title/attachment columns.' : 'Mixed landmarks and control kinds.', sha256: sha256(html) },
     measurement: {
       analysis: 'analyzePage() only; includes visibility, safe label, context, action, and source snapshot work',
       overlayReady: 'append host, openEasyMode() (including analysis/classification/ranking/render/focus/watchers), then two requestAnimationFrame callbacks and layout/readiness check',
@@ -109,7 +123,7 @@ try {
     bundleSha256: sha256(bundle.outputFiles[0].contents), sourceSha256: sourceBefore,
   };
   await mkdir(outputDir, { recursive: true });
-  await writeFile(path.join(outputDir, 'performance.json'), JSON.stringify(report, null, 2) + '\n');
-  console.log(JSON.stringify({ status: report.status, runs: observations.measures.length, analyzerP95Milliseconds: analyzerP95, overlayReadyP95Milliseconds: overlayReadyP95, validity: report.validity, output: path.join(outputDir, 'performance.json') }, null, 2));
+  await writeFile(path.join(outputDir, outputName), JSON.stringify(report, null, 2) + '\n');
+  console.log(JSON.stringify({ status: report.status, shape, runs: observations.measures.length, analyzerP95Milliseconds: analyzerP95, overlayReadyP95Milliseconds: overlayReadyP95, validity: report.validity, output: path.join(outputDir, outputName) }, null, 2));
   if (report.status !== 'PASS') process.exitCode = 1;
 } finally { await browser.close(); }

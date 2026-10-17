@@ -110,25 +110,30 @@ function headingBelongsTo(heading: HTMLElement, element: HTMLElement): boolean {
   return onlyHeading(region);
 }
 
-export function contextLabels(element: HTMLElement): string[] {
+interface ContextHeading { element: HTMLElement; label: string; visible: boolean }
+export type ContextCache = WeakMap<Element, ContextHeading[]>;
+
+export function contextLabels(element: HTMLElement, cache?: ContextCache): string[] {
   const labels: string[] = [];
   const add = (text: string) => { if (text && text.length <= 60 && !labels.includes(text)) labels.push(text); };
   let parent = element.parentElement;
   for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-    const headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)];
-    const preceding = headings.filter(heading => {
+    let headings = cache?.get(parent);
+    if (!headings) {
+      headings = [...parent.querySelectorAll<HTMLElement>(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)]
+        .map(heading => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) }));
+      cache?.set(parent, headings);
+    }
+    const preceding = headings.filter(({ element: heading, visible }) => {
       let branch = heading;
       while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
       // 같은 내용 상자 안에서 이미 읽은 하위 표제가 상위 표제를 덮지 않게 합니다.
       if (branch !== heading && branch.contains(element)) return false;
-      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && isVisible(heading)
+      return !heading.closest('header, nav, footer, [role~="banner"], [role~="navigation"], [role~="contentinfo"]') && visible
         && headingBelongsTo(heading, element) && !!(heading.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
     });
     const label = preceding.at(-1);
-    if (label) {
-      const text = clean(getSafeLabel(label));
-      add(text);
-    }
+    if (label) add(label.label);
     // 작은 기능 상자는 제목을 p로 표시하기도 합니다. 가까운 상자의 첫 짧은 문구만 문맥으로 씁니다.
     if (!label && level < 2 && parent.querySelectorAll('a, button, input').length <= 3) {
       const firstParagraph = parent.querySelector<HTMLElement>(':scope > p');
@@ -144,7 +149,7 @@ export function contextLabels(element: HTMLElement): string[] {
 
 export function sectionLabel(element: HTMLElement): string | undefined { return contextLabels(element)[0]; }
 
-function documentPurpose(): PagePurpose | undefined {
+export function documentPurpose(): PagePurpose | undefined {
   // 현재 URL의 경로와 명시된 페이지 표제만 분류하며 title·검색 쿼리·입력값은 읽지 않습니다.
   if (/(?:^|[\/_.-])academic[-_]?calendar(?:[\/_.-]|$)/i.test(location.pathname)) return 'academic-calendar';
   if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return 'help';
@@ -165,7 +170,7 @@ function documentPurpose(): PagePurpose | undefined {
   return undefined;
 }
 
-export function pagePurpose(element: HTMLElement, labels = contextLabels(element), common = documentPurpose()): PagePurpose | undefined {
+export function pagePurpose(element: HTMLElement, labels = contextLabels(element), common: PagePurpose | null | undefined = documentPurpose()): PagePurpose | undefined {
   if (common) return common;
   if (labels.some(text => helpHeading.test(text) || informationConcept.test(text))) return 'help';
   // 본문 영역 안의 로컬 목차만 확인합니다. 전역 header/footer의 FAQ는 페이지 목적이 아닙니다.
@@ -239,7 +244,113 @@ export function collectionEvidence(element: HTMLElement, cache?: CollectionCache
   return { kind: tabs ? 'tabs' as const : 'list' as const, ...summary, controlled, targetExists };
 }
 
-export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false): SourceSnapshot {
+// Fixed control structure only: never inspect form values or editable text.
+// Shared tables/panel groups are scanned once per classification/currentness
+// check, rather than once for every control and its derived snapshot.
+interface SupplementalSummary {
+  columns?: string[];
+  materials?: Map<HTMLElement, string | undefined>;
+  panels?: Set<HTMLElement>;
+  groups?: Set<HTMLElement>;
+}
+export type SupplementalCache = WeakMap<Element, SupplementalSummary>;
+export function supplementalEvidence(element: HTMLElement, cache?: SupplementalCache) {
+  const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
+  const form = element.closest('form, [role~="form" i]')
+    ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
+  const metadataWords = (text: string) => text.replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase().split(/[^a-z]+/).filter(Boolean);
+  const searchMetadata = (target: Element) => ['id', 'class'].some(name => metadataWords(target.getAttribute(name) ?? '').includes('search'))
+    || /검색|\bsearch\b/i.test(target.getAttribute('aria-label') ?? '');
+  const filter = bodyControl && !!form && searchMetadata(form) && searchMetadata(element)
+    && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
+  let title: string | undefined;
+  // A title preceding a paragraph is an explicit card title/description split.
+  // Respect an authored accessible-name override instead of second-guessing it.
+  if (bodyControl && !form && !element.hasAttribute('aria-label') && !element.hasAttribute('aria-labelledby')
+    && element.matches('a, button, [role~="button" i]')) {
+    const children = [...element.children];
+    const paragraph = children.findIndex(child => child.matches('p'));
+    if (paragraph === 1 && children[0] instanceof HTMLElement && children[0].matches('span, strong, b, em, h2, h3, h4, h5, h6')
+      && isVisible(children[0]) && isVisible(children[1] as HTMLElement)) {
+      const text = clean(staticText(children[0]));
+      if (isInformationTopicLabel(text) && clean(staticText(children[1]))) title = text;
+    }
+  }
+  let materialRow = false;
+  let relatedLabel: string | undefined;
+  const row = bodyControl && !form ? element.closest('tr, [role~="row" i]') : null;
+  const table = row?.closest('table, [role~="grid" i]');
+  if (row && table) {
+    let rowSummary = cache?.get(row);
+    if (!rowSummary?.materials) {
+      let tableSummary = cache?.get(table);
+      if (!tableSummary?.columns) {
+        const columns = [...table.querySelectorAll<HTMLElement>('thead th, [role~="columnheader" i]')]
+          .filter(header => header.closest('table, [role~="grid" i]') === table)
+          .map(header => isVisible(header) ? clean(staticText(header)) : '');
+        tableSummary = { ...tableSummary, columns }; cache?.set(table, tableSummary);
+      }
+      const titleColumn = (text: string) => /^(?:제목|민원명|사무명|서식명|title|form\s+name)$/i.test(text);
+      const attachmentColumn = (text: string) => /^(?:첨부|서식|첨부파일|attachment|forms?)$/i.test(text);
+      const download = (control: HTMLElement) => /^(?:자료\s*받기|다운로드|서식\s*받기|download)$/i.test(candidateLabel(control));
+      const cells = [...row.querySelectorAll<HTMLElement>(':scope > td, :scope > th, :scope > [role~="cell" i], :scope > [role~="gridcell" i]')];
+      const controls = [...row.querySelectorAll<HTMLElement>('a[href], button, [role~="button" i]')]
+        .filter(control => control.closest('tr, [role~="row" i]') === row && !!candidateLabel(control));
+      const columns = tableSummary.columns!;
+      const materials = new Map<HTMLElement, string | undefined>();
+      if (columns.some(titleColumn) && columns.some(attachmentColumn)) {
+        if (cells.length === columns.length) {
+          const titles = cells.flatMap((cell, index) => titleColumn(columns[index])
+            ? controls.filter(control => control.matches('a[href]') && cell.contains(control)).slice(0, 1) : []);
+          const attachments = controls.filter(control => cells.some((cell, index) => attachmentColumn(columns[index]) && cell.contains(control)) && download(control));
+          if (titles.length && attachments.length) {
+            const labels = [...new Set(titles.map(candidateLabel))];
+            titles.forEach(control => materials.set(control, candidateLabel(control)));
+            // Multiple different title columns do not identify one attachment
+            // subject. Keep that relationship unresolved rather than invent it.
+            attachments.forEach(control => materials.set(control, labels.length === 1 ? labels[0] : undefined));
+          }
+        }
+      }
+      rowSummary = { ...rowSummary, materials }; cache?.set(row, rowSummary);
+    }
+    materialRow = rowSummary.materials!.has(element);
+    relatedLabel = rowSummary.materials!.get(element);
+  }
+  let informationPanels = false;
+  if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '')) {
+    const parent = element.parentElement;
+    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false };
+    let summary = cache?.get(parent);
+    if (!summary?.panels) {
+      const controls = [...parent.children].filter((child): child is HTMLElement => child instanceof HTMLElement
+        && child.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(child.getAttribute('aria-expanded') ?? '')
+        && !(child instanceof HTMLButtonElement && child.form) && isInformationTopicLabel(candidateLabel(child)));
+      const panels = controls.length >= 2 && controls.filter(control => /(?:안내|절차|방법|예시|기준|종류)$/.test(candidateLabel(control))).length >= 2
+        ? new Set(controls) : new Set<HTMLElement>();
+      summary = { ...summary, panels }; cache?.set(parent, summary);
+    }
+    informationPanels = summary.panels!.has(element);
+  }
+  let grouped = false;
+  const group = bodyControl && !form ? element.closest('[role~="group" i]') : null;
+  const parent = group?.parentElement;
+  if (parent) {
+    let summary = cache?.get(parent);
+    if (!summary?.groups) {
+      const controls = [...parent.children].filter(child => child.matches('[role~="group" i]')).flatMap(child => {
+        const groupControls = [...child.querySelectorAll<HTMLElement>('a[href], button, [role~="button" i]')]
+          .filter(control => !control.closest('form, [role~="form" i]') && !(control instanceof HTMLButtonElement && control.form) && !!candidateLabel(control));
+        return groupControls.length === 1 ? groupControls : [];
+      });
+      summary = { ...summary, groups: controls.length >= 2 ? new Set(controls) : new Set<HTMLElement>() }; cache?.set(parent, summary);
+    }
+    grouped = summary.groups!.has(element);
+  }
+  return { filter, title, materialRow, relatedLabel, informationPanels, grouped };
+}
+
+export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {
   return {
     pageUrl: location.href,
     baseUrl: document.baseURI,
@@ -261,6 +372,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
       !!element.closest('article, [role~="article"]'),
       isQuestionCollection(element),
       includeCollection ? collectionEvidence(element, collectionCache) : null,
+      includeSupplemental ? supplementalEvidence(element, supplementalCache) : null,
       !!element.closest('form, [role~="form" i]'),
       sourceAction(element, safeLabel),
     ]),
@@ -269,6 +381,7 @@ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(
 
 export function analyzePage(): Candidate[] {
   const commonPurpose = documentPurpose();
+  const contextCache: ContextCache = new WeakMap();
   const selector = 'a[href], button, [role~="button"], [role~="tab" i], input[type="submit"], input[type="button"], input[type="search"], input[type="text"], input:not([type]), [role~="searchbox"], [role~="textbox"], textarea';
   const elements = document.querySelectorAll<HTMLElement>(selector + (commonPurpose === 'academic-calendar' ? ', table a:not([href]), [role~="grid"] a:not([href])' : ''));
   const candidates: Candidate[] = [];
@@ -291,14 +404,14 @@ export function analyzePage(): Candidate[] {
         }
       } catch { /* 해석할 수 없는 링크는 원본에서 확인합니다. */ }
     }
-    const labels = contextLabels(element);
+    const labels = contextLabels(element, contextCache);
     candidates.push({
       element, label, href, action, target,
       destinationHost, opensNewWindow,
       context: sourceContext(element),
       score: 0, reasons: [],
       snapshot: sourceSnapshot(element, label),
-      sectionLabel: labels[0], contextLabels: labels, pagePurpose: pagePurpose(element, labels, commonPurpose),
+      sectionLabel: labels[0], contextLabels: labels, pagePurpose: pagePurpose(element, labels, commonPurpose ?? null),
     });
   }
   return candidates;

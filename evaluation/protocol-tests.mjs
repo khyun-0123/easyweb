@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { validateFreshMode, verifyFrozenFiles } from '../scripts/evaluation-protocol.mjs';
+import { validateFreshMode, verifyFrozenFiles, verifyAdjudicatedDataset } from '../scripts/evaluation-protocol.mjs';
 
 const sha = value => createHash('sha256').update(value).digest('hex');
 test('help and invalid options never run evaluation or write output', async () => {
@@ -25,9 +25,41 @@ test('help and invalid options never run evaluation or write output', async () =
 test('fresh mode requires current blind holdout and explicit frozen inputs', () => {
   const valid = { engine: 'current', suite: 'blind-v5', split: 'holdout', outputDir: 'new-first', explicitOutput: true, engineFreeze: 'engine.json', datasetFreeze: 'data.json' };
   assert.doesNotThrow(() => validateFreshMode(valid));
-  for (const override of [{ engine: 'baseline' }, { suite: 'core' }, { suite: 'development-v4-corrected' }, { split: 'all' }, { explicitOutput: false }, { engineFreeze: undefined }, { datasetFreeze: undefined }]) {
+  assert.doesNotThrow(() => validateFreshMode({ ...valid, suite: 'blind-v7-v2' }));
+  for (const override of [{ engine: 'baseline' }, { suite: 'core' }, { suite: 'development-v4-corrected' }, { suite: 'development-v6-corrected' }, { suite: 'development-v6-corrected-v2' }, { split: 'all' }, { explicitOutput: false }, { engineFreeze: undefined }, { datasetFreeze: undefined }]) {
     assert.throws(() => validateFreshMode({ ...valid, ...override }));
   }
+});
+
+test('corrected annotations require unchanged original and corrected bytes and never qualify as fresh data', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'easyweb-adjudication-'));
+  try {
+    await writeFile(join(root, 'original.json'), 'original category');
+    await writeFile(join(root, 'corrected.json'), 'corrected category');
+    const version = { version: 'annotation-v2', classification: 'ADJUDICATED_DEVELOPMENT', freshHoldout: false,
+      files: [{ path: 'corrected.json', sha256: sha('corrected category'), basePath: 'original.json', baseSha256: sha('original category') }] };
+    await writeFile(join(root, 'VERSION.json'), JSON.stringify(version));
+    assert.equal((await verifyAdjudicatedDataset('VERSION.json', ['corrected.json'], root)).originals.length, 1);
+    await writeFile(join(root, 'parent.json'), 'previous correction');
+    const chained = { ...version, files: version.files.map(file => ({ ...file, parentPath: 'parent.json', parentSha256: sha('previous correction') })) };
+    await writeFile(join(root, 'VERSION.json'), JSON.stringify(chained));
+    assert.equal((await verifyAdjudicatedDataset('VERSION.json', [], root)).parents.length, 1);
+    await writeFile(join(root, 'parent.json'), 'changed parent correction');
+    await assert.rejects(verifyAdjudicatedDataset('VERSION.json', [], root), /Parent adjudication input changed/);
+    await writeFile(join(root, 'VERSION.json'), JSON.stringify(version));
+    await writeFile(join(root, 'original.json'), 'changed original');
+    await assert.rejects(verifyAdjudicatedDataset('VERSION.json', [], root), /Original adjudication input changed/);
+    await writeFile(join(root, 'original.json'), 'original category');
+    await writeFile(join(root, 'corrected.json'), 'changed correction');
+    await assert.rejects(verifyAdjudicatedDataset('VERSION.json', [], root), /Frozen file changed/);
+    await writeFile(join(root, 'corrected.json'), 'corrected category');
+    await writeFile(join(root, 'VERSION.json'), JSON.stringify({ ...version, freshHoldout: true }));
+    await assert.rejects(verifyAdjudicatedDataset('VERSION.json', [], root), /must be adjudicated development/);
+    const script = fileURLToPath(new URL('../scripts/evaluate.mjs', import.meta.url));
+    const result = spawnSync(process.execPath, [script, '--suite=development-v6-corrected', '--phase=fresh-blind-validation'], { cwd: root, encoding: 'utf8', timeout: 15_000 });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /Adjudicated data is development only/);
+  } finally { await rm(root, { recursive: true, force: true }); }
 });
 
 test('freeze verification checks every byte and required annotation coverage', async () => {

@@ -3,11 +3,11 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 if (process.argv.includes('--help')) {
-  console.log('node scripts/verify.mjs [--with-core] [--output-dir=docs/evidence/run003]\nRuns typecheck, build, and local Playwright regression tests. --with-core also runs the post-development core fixture suite and synthetic performance benchmark. Never runs live sites, blind evaluation, native UI checks, or a user study.');
+  console.log('node scripts/verify.mjs [--with-core] [--output-dir=docs/evidence/run004]\nRuns typecheck, build, and local Playwright regression tests. --with-core also runs the post-development core fixture suite and mixed, flat and table synthetic performance benchmarks. Never runs live sites, blind evaluation, native UI checks, or a user study.');
   process.exit(0);
 }
 const withCore = process.argv.includes('--with-core');
-const outputDir = path.resolve(process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run003');
+const outputDir = path.resolve(process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run004');
 await mkdir(outputDir, { recursive: true });
 const startedAt = new Date().toISOString();
 const stages = [];
@@ -50,6 +50,7 @@ if (stages.some(stage => stage.name === 'playwright')) {
 const localRegressionStatus = ok ? 'PASS' : 'FAIL';
 let coreQuality = null;
 let performanceSummary = null;
+let structuralPerformance = null;
 if (withCore && ok) {
   const coreDir = path.join(outputDir, 'core-regression');
   const coreFile = path.join(coreDir, 'evaluation-current-all.json');
@@ -78,15 +79,35 @@ if (withCore && ok) {
     const status = valid && perf.analyzerP95Milliseconds <= 300 && perf.overlayReadyP95Milliseconds <= 1000 ? 'PASS' : 'FAIL';
     performanceSummary = { status, runs: perf.measures?.length ?? null, analyzerP95Milliseconds: perf.analyzerP95Milliseconds, overlayReadyP95Milliseconds: perf.overlayReadyP95Milliseconds, thresholds: { analyzerP95Milliseconds: 300, overlayReadyP95Milliseconds: 1000 }, scope: 'Synthetic mixed 1,000-control page; headless Chromium; excludes real site loading and native toolbar activation.', report: performanceFile };
   } catch (error) { performanceSummary = { status: 'FAIL', error: error.message, report: performanceFile }; }
-  ok = coreQuality.status === 'PASS' && performanceSummary.status === 'PASS';
+  const structures = [];
+  for (const shape of ['flat', 'table']) {
+    const file = path.join(outputDir, `performance-${shape}.json`);
+    await rm(file, { force: true });
+    const ran = await run(`performance-${shape}`, ['scripts/benchmark.mjs', `--shape=${shape}`, `--output-dir=${outputDir}`]);
+    try {
+      if (!ran) throw new Error(`${shape} performance command failed`);
+      const perf = JSON.parse(await readFile(file, 'utf8'));
+      const valid = perf.status === 'PASS' && perf.fixture?.shape === shape && perf.validity?.sourceStable === true
+        && perf.validity?.exactlyTenRuns === true && perf.validity?.allCandidatesCount1000 === true && perf.validity?.allOverlaysReady === true
+        && Array.isArray(perf.measures) && perf.measures.length === 10
+        && [perf.analyzerP95Milliseconds, perf.overlayReadyP95Milliseconds].every(value => Number.isFinite(value) && value >= 0);
+      structures.push({ shape, status: valid && perf.analyzerP95Milliseconds <= 300 && perf.overlayReadyP95Milliseconds <= 1000 ? 'PASS' : 'FAIL',
+        runs: perf.measures?.length ?? null, analyzerP95Milliseconds: perf.analyzerP95Milliseconds,
+        overlayReadyP95Milliseconds: perf.overlayReadyP95Milliseconds, report: file });
+    } catch (error) { structures.push({ shape, status: 'FAIL', error: error.message, report: file }); }
+  }
+  structuralPerformance = { status: structures.every(row => row.status === 'PASS') ? 'PASS' : 'FAIL',
+    thresholds: { analyzerP95Milliseconds: 300, overlayReadyP95Milliseconds: 1000 }, shapes: structures,
+    scope: 'Additional 1,000-control structures: one flat information-panel parent and 500 two-control table rows; ten samples per shape. Same thresholds; separate from the original mixed case and real sites.' };
+  ok = coreQuality.status === 'PASS' && performanceSummary.status === 'PASS' && structuralPerformance.status === 'PASS';
 }
 const report = {
   startedAt, completedAt: new Date().toISOString(), localRegressionStatus, requestedChecksStatus: ok ? 'PASS' : 'FAIL', requestedMode: withCore ? 'local-with-core' : 'local',
   scope: withCore ? 'Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.' : 'Local typecheck, build, and Playwright regression only. This is not a full release or S07/S08/S09/S10 acceptance decision.',
   excluded: ['live public-site observations and task completion', 'fresh blind evaluation', ...(withCore ? [] : ['performance benchmark']), 'native extension installation and activeTab gesture', 'actual VoiceOver speech', 'real user study'],
-  stages, tests, coreQuality, performance: performanceSummary,
+  stages, tests, coreQuality, performance: performanceSummary, structuralPerformance,
 };
 const summaryFile = path.join(outputDir, 'local-verification.json');
 await writeFile(summaryFile, JSON.stringify(report, null, 2) + '\n');
-console.log(JSON.stringify({ localRegressionStatus: report.localRegressionStatus, requestedChecksStatus: report.requestedChecksStatus, stages: stages.map(stage => ({ name: stage.name, status: stage.status })), tests, coreQuality, performance: performanceSummary, summary: summaryFile }, null, 2));
+console.log(JSON.stringify({ localRegressionStatus: report.localRegressionStatus, requestedChecksStatus: report.requestedChecksStatus, stages: stages.map(stage => ({ name: stage.name, status: stage.status })), tests, coreQuality, performance: performanceSummary, structuralPerformance, summary: summaryFile }, null, 2));
 if (!ok) process.exitCode = 1;

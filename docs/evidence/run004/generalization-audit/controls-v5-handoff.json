@@ -1,0 +1,177 @@
+{
+  "status": "READY_FOR_ROOT_REVIEW",
+  "scope": "Development generalization only, all original core/v2-v6 fixtures already exposed; no independent pass claim. No CUA/native/visible UI used. New v7 files not opened.",
+  "baseCommit": "a5f772d",
+  "patch": "/tmp/easyweb-controls-v5-definitive.patch",
+  "patchSha256": "5db2ca2ceb02cd2d2e2297c95a6379b1faab4a914c2f2c0782fb656a796183fb",
+  "sourceSha256": {
+    "src/analyzer.ts": "ce80294dc939958fba5d9f5b4ae3fd1b369cd02b946c9743b11e1a3629398516",
+    "src/classifier.ts": "911ac540438da6c52b4566bcc59feda64daa5c59aac9a9ec3adb88ede5f591cd",
+    "src/page-session.ts": "d26474e6812de594a185dfb84180aaf2e5875a904c849ce565e317ebebc11ae7",
+    "src/types.ts": "17e8079c8aa627d8d4244686a089db1c6f6fe05f9e48263e4383e15f9d2b7675",
+    "tests/generic-controls.spec.mjs": "37f445d2b30e7abfd76c67bcf73c259db11c6cf32065cb3c0ec892e2edd3be84"
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "build": "PASS",
+    "diffCheck": "PASS",
+    "related": {
+      "passed": 111,
+      "total": 111,
+      "log": "/tmp/controls-v5-definitive-related.log"
+    },
+    "full": {
+      "passed": 185,
+      "total": 185,
+      "seconds": 28.8,
+      "log": "/tmp/controls-v5-full-definitive.log"
+    },
+    "structuralTiming": "/tmp/controls-v5-structural-benchmark.json",
+    "beforeContextCache": "/tmp/controls-v5-structural-before-context-cache.json",
+    "beforePurposeSentinel": "/tmp/controls-v5-structural-before-purpose-cache.json",
+    "originalFiveBranchFailures": "/tmp/controls-v5-baseline.log",
+    "explicitSemanticBoundaryFailure": "/tmp/controls-v5-explicit-boundary-before.log"
+  },
+  "evaluation": {
+    "evaluation-current-all.json": {
+      "summary": {
+        "pages": 15,
+        "correct": 69,
+        "recommended": 69,
+        "matched": 45,
+        "expected": 45,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "quality": "PASS",
+      "menuFlow": null,
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-all.json"
+    },
+    "evaluation-current-blind-v2-all.json": {
+      "summary": {
+        "pages": 5,
+        "correct": 22,
+        "recommended": 22,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": "PASS",
+      "menuFlow": null,
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-blind-v2-all.json"
+    },
+    "evaluation-current-blind-v3-all.json": {
+      "summary": {
+        "pages": 5,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": "PASS",
+      "menuFlow": null,
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-blind-v3-all.json"
+    },
+    "evaluation-current-blind-v5-all.json": {
+      "summary": {
+        "pages": 5,
+        "correct": 16,
+        "recommended": 17,
+        "matched": 8,
+        "expected": 15,
+        "precision": 0.9411764705882353,
+        "recall": 0.5333333333333333,
+        "tasksRecommended": 4
+      },
+      "quality": "FAIL",
+      "menuFlow": {
+        "pages": 5,
+        "correct": 26,
+        "recommended": 27,
+        "matched": 14,
+        "expected": 15,
+        "precision": 0.9629629629629629,
+        "recall": 0.9333333333333333,
+        "tasksRecommended": 5
+      },
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-blind-v5-all.json"
+    },
+    "evaluation-current-blind-v6-all.json": {
+      "summary": {
+        "pages": 5,
+        "correct": 21,
+        "recommended": 22,
+        "matched": 11,
+        "expected": 15,
+        "precision": 0.9545454545454546,
+        "recall": 0.7333333333333333,
+        "tasksRecommended": 4
+      },
+      "quality": "FAIL",
+      "menuFlow": {
+        "pages": 5,
+        "correct": 35,
+        "recommended": 36,
+        "matched": 12,
+        "expected": 15,
+        "precision": 0.9722222222222222,
+        "recall": 0.8,
+        "tasksRecommended": 4
+      },
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-blind-v6-all.json"
+    },
+    "evaluation-current-development-v4-corrected-all.json": {
+      "summary": {
+        "pages": 5,
+        "correct": 15,
+        "recommended": 15,
+        "matched": 13,
+        "expected": 13,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": "PASS",
+      "menuFlow": null,
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-development-v4-corrected-all.json"
+    },
+    "evaluation-current-development-v6-corrected-v2-all.json": {
+      "summary": {
+        "pages": 5,
+        "correct": 24,
+        "recommended": 24,
+        "matched": 14,
+        "expected": 15,
+        "precision": 1,
+        "recall": 0.9333333333333333,
+        "tasksRecommended": 5
+      },
+      "quality": "FAIL",
+      "menuFlow": {
+        "pages": 5,
+        "correct": 38,
+        "recommended": 39,
+        "matched": 15,
+        "expected": 15,
+        "precision": 0.9743589743589743,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "file": "/tmp/controls-v5-evaluation-definitive/evaluation-current-development-v6-corrected-v2-all.json"
+    }
+  },
+  "remaining": [
+    "Corrected v6 city expected filter is classified but excluded from first screen by unchanged category cap and deterministic ordering.",
+    "The same row title/material may occupy two initial apply slots; rank unchanged.",
+    "Three identical material-button labels cause ambiguous UI source matching and weak user-facing context.",
+    "Raw v6 table remains malformed and taxonomy original; preserve failures separately from corrected version.",
+    "v5 original certificate taxonomy ambiguity remains; do not rewrite to fit product.",
+    "Original 10-run mixed benchmark and final root source/manifest checks must be run after integration."
+  ]
+}

@@ -1,21 +1,24 @@
-import { candidateLabel, contextLabels, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache } from './analyzer';
-import type { Candidate } from './types';
+import { candidateLabel, contextLabels, documentPurpose, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache, type SupplementalCache, type ContextCache } from './analyzer';
+import type { Candidate, PagePurpose } from './types';
 
-export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache): boolean {
+export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache, supplementalCache?: SupplementalCache, contextCache?: ContextCache, commonPurpose?: PagePurpose | null): boolean {
   const label = candidateLabel(candidate.element);
   if (label !== candidate.label) return false;
   if (sourceContext(candidate.element) !== candidate.context) return false;
-  const labels = contextLabels(candidate.element);
+  const labels = contextLabels(candidate.element, contextCache);
   if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
-  if (pagePurpose(candidate.element, labels) !== candidate.pagePurpose) return false;
-  const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent);
+  if (pagePurpose(candidate.element, labels, commonPurpose) !== candidate.pagePurpose) return false;
+  const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache);
   return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl &&
     current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
 }
 
 export function areCandidatesCurrent(candidates: readonly Candidate[]): boolean {
   const collectionCache: CollectionCache = new WeakMap();
-  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache));
+  const supplementalCache: SupplementalCache = new WeakMap();
+  const contextCache: ContextCache = new WeakMap();
+  const commonPurpose = documentPurpose() ?? null;
+  return candidates.every(candidate => isCandidateCurrent(candidate, collectionCache, supplementalCache, contextCache, commonPurpose));
 }
 
 export function watchCandidates(getCandidates: () => Candidate[], onStale: () => void): () => void {

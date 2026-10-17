@@ -1,0 +1,169 @@
+{
+  "version": "v6-annotation-corrected.1",
+  "createdAt": "2026-10-17T17:40:33.422493+00:00",
+  "classification": "ADJUDICATED_DEVELOPMENT",
+  "freshHoldout": false,
+  "baseDataset": "blind-v6",
+  "baseFreeze": "docs/evidence/run003/blind-v6-freeze.json",
+  "baseFreezeSha256": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f",
+  "annotationAudit": "docs/evidence/run003/annotation-taxonomy-audit.json",
+  "annotationAuditSha256": "77a29adaf57149a4697aa7ba8bcf900b63b86f681e5fc672a8f6fb3f331f83e8",
+  "annotationRootReview": "docs/evidence/run003/annotation-taxonomy-root-review.json",
+  "annotationRootReviewSha256": "c3801cbbe4f3a8c21eb09e4e6c6d892a1dd2446509a1ec2f8ed4fd8a9903e476",
+  "reason": "Apply ROOT-approved E01–E04: authenticated own pension result/contribution/history inquiries use apply under the existing own-record/result/history rule. Free simulations and all six ambiguity groups retain their original annotations.",
+  "product": "NOT_RUN",
+  "independence": "This is adjudicated development data derived from exposed frozen blind-v6. No product source, dist, tests, evaluation results or product execution informed this correction work; no live network or browser/native UI was used.",
+  "onlySemanticChanges": {
+    "sourceFile": "sites/public-agency.json",
+    "changes": [
+      {
+        "path": "/pages/0/accepted/2/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E01",
+        "sourceId": "public-agency-blind-v6-control-3"
+      },
+      {
+        "path": "/pages/0/accepted/3/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E02",
+        "sourceId": "public-agency-blind-v6-control-4"
+      },
+      {
+        "path": "/pages/0/accepted/4/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E03",
+        "sourceId": "public-agency-blind-v6-control-5"
+      },
+      {
+        "path": "/pages/0/accepted/5/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E04",
+        "sourceId": "public-agency-blind-v6-control-6"
+      },
+      {
+        "path": "/pages/0/expected/1/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E03",
+        "expectedFeatureId": "public-agency-blind-v6-feature-2",
+        "sourceIds": [
+          "public-agency-blind-v6-control-5"
+        ]
+      }
+    ]
+  },
+  "preservation": {
+    "originalIds": true,
+    "sourceIds": true,
+    "actions": true,
+    "hrefs": true,
+    "labels": true,
+    "notes": true,
+    "allOtherExpectedFields": true,
+    "tasks": true,
+    "fixtureContentsByteIdentical": true,
+    "originalFixtureReferencesRetained": true,
+    "frozenFilesModified": 0
+  },
+  "fixtureReferencePolicy": "Site JSON fixture paths retain original evaluation/blind-v6 references so category is the only site-metadata change. Byte-identical copies of all five fixtures are included in this version directory.",
+  "historicalMetadataPolicy": "Original split, observation, notes, labels and task metadata remain unchanged as provenance. In particular, the original public-agency note contains the superseded category rationale; this VERSION.json records the adjudication without rewriting that note. This directory is ADJUDICATED_DEVELOPMENT regardless of the retained per-page split text.",
+  "firstEvaluationPolicy": "This corrected development dataset does not replace, overwrite or relabel the original blind-v6 inputs, freeze, first failure, or first evaluation reports. A rerun with it is development evaluation and must not be called a fresh independent holdout or erase the original failure.",
+  "validationReport": "docs/evidence/run004/v6-correction-validation.json",
+  "hashAlgorithm": "SHA-256",
+  "files": [
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/city.html",
+      "sha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "basePath": "evaluation/blind-v6/fixtures/city.html",
+      "baseSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "bytes": 29810,
+      "baseBytes": 29810,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/government.html",
+      "sha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "basePath": "evaluation/blind-v6/fixtures/government.html",
+      "baseSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "bytes": 1663,
+      "baseBytes": 1663,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/library.html",
+      "sha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "basePath": "evaluation/blind-v6/fixtures/library.html",
+      "baseSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "bytes": 2579,
+      "baseBytes": 2579,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/public-agency.html",
+      "sha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "basePath": "evaluation/blind-v6/fixtures/public-agency.html",
+      "baseSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "bytes": 5268,
+      "baseBytes": 5268,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/smu.html",
+      "sha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "basePath": "evaluation/blind-v6/fixtures/smu.html",
+      "baseSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "bytes": 13428,
+      "baseBytes": 13428,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/city.json",
+      "sha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "basePath": "evaluation/blind-v6/sites/city.json",
+      "baseSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "bytes": 6695,
+      "baseBytes": 6695,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/government.json",
+      "sha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "basePath": "evaluation/blind-v6/sites/government.json",
+      "baseSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "bytes": 4942,
+      "baseBytes": 4942,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/library.json",
+      "sha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "basePath": "evaluation/blind-v6/sites/library.json",
+      "baseSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "bytes": 5234,
+      "baseBytes": 5234,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/public-agency.json",
+      "sha256": "5119fd89c3bff48be5b8388aa8b393432f04afc5eb3cd1208d3a57f15ad929cf",
+      "basePath": "evaluation/blind-v6/sites/public-agency.json",
+      "baseSha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113",
+      "bytes": 6459,
+      "baseBytes": 6464,
+      "byteIdenticalToBase": false
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/smu.json",
+      "sha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "basePath": "evaluation/blind-v6/sites/smu.json",
+      "baseSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "bytes": 6321,
+      "baseBytes": 6321,
+      "byteIdenticalToBase": true
+    }
+  ]
+}

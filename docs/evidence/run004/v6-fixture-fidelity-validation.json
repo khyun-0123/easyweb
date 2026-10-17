@@ -1,0 +1,713 @@
+{
+  "schemaVersion": "v6-fixture-fidelity-validation-1",
+  "validatedAt": "2026-10-17T17:47:34.569829+00:00",
+  "status": "PASS",
+  "classification": "ADJUDICATED_DEVELOPMENT",
+  "dataset": "evaluation/development-v6-corrected-v2",
+  "version": "evaluation/development-v6-corrected-v2/VERSION.json",
+  "versionSha256": "87a70a1067613a95f89baa77c225a02d98fd48c0a88f58e51b7bb7d7275441ce",
+  "basis": {
+    "originalFreeze": {
+      "path": "docs/evidence/run003/blind-v6-freeze.json",
+      "sha256": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f"
+    },
+    "parentVersion": {
+      "path": "evaluation/development-v6-corrected/VERSION.json",
+      "sha256": "0dc25561a3bc3abd2116a9fa7f350a28c6953c17ca742b26f9e645d1c78a029a"
+    },
+    "sourceObservation": {
+      "path": "docs/evidence/run004/city-table-fidelity-observation.json",
+      "sha256": "6fc8281c44ab54e61818bcdab958e804de38bb3a7cb0483e5cbc91a313d7209b",
+      "scope": "Read-only fresh anonymous public-page table headers and fixed control cell positions; no source click, input value, form submission or business action."
+    }
+  },
+  "validationMethod": "Data-only SHA-256/byte comparison, recursive JSON scalar comparison, HTMLParser DOM comparison, exact reverse-removal of the nine inserted empty TD tokens, and public-control column checks against the supplied readonly source observation. No product, test, evaluation, browser or network was run by this worker.",
+  "confirmedReconstructionDefect": {
+    "sourceHeaders": [
+      "순번",
+      "제목",
+      "담당부서",
+      "첨부",
+      "수정일"
+    ],
+    "sourceBodyCellCounts": [
+      5,
+      5,
+      5
+    ],
+    "originalFixtureBodyCellCounts": [
+      2,
+      2,
+      2
+    ],
+    "parentFixtureBodyCellCounts": [
+      2,
+      2,
+      2
+    ],
+    "sourceTitleCellIndex": 1,
+    "sourceAttachmentCellIndex": 3,
+    "defectiveFixtureTitleCellIndex": 0,
+    "defectiveFixtureAttachmentCellIndex": 1,
+    "conclusion": "Frozen fixture omitted non-control cells for 순번/담당부서/수정일; retaining five headers with only two cells shifted the title and attachment mapping."
+  },
+  "summary": {
+    "originalFrozenFilesVerified": 11,
+    "parentFilesVerifiedIncludingVersion": 11,
+    "allOriginalFrozenHashesMatch": true,
+    "allParentFilesByteIdentical": true,
+    "originalFreezeManifestUnchanged": true,
+    "sourceObservationUnchanged": true,
+    "categoryFieldsRetainedFromV1": 5,
+    "newCategoryChangesFromV1": 0,
+    "siteFixturePointerChanges": 1,
+    "unexpectedSiteSemanticDifferences": 0,
+    "emptyTdInsertions": 9,
+    "correctedBodyRows": 3,
+    "correctedCellsPerRow": 5,
+    "insertedCellsContainNoTextAttrsOrControls": true,
+    "allControlSubtreesUnchanged": true,
+    "allOtherDomNodesAttrsAndTextUnchanged": true,
+    "htmlExactlyRestoresParentAfterRemovingNineInsertions": true,
+    "unexpectedFixtureDomDifferences": 0,
+    "unchangedFixtureCopiesByteIdenticalToParent": 4,
+    "unchangedSiteCopiesByteIdenticalToParent": 4,
+    "product": "NOT_RUN",
+    "freshIndependentEvaluation": false,
+    "firstFailureReplaced": false
+  },
+  "siteChecks": [
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/city.json",
+      "basePath": "evaluation/blind-v6/sites/city.json",
+      "parentPath": "evaluation/development-v6-corrected/sites/city.json",
+      "changesFromOriginal": [
+        {
+          "path": "/pages/0/fixture",
+          "before": "evaluation/blind-v6/fixtures/city.html",
+          "after": "evaluation/development-v6-corrected-v2/fixtures/city.html"
+        }
+      ],
+      "changesFromParent": [
+        {
+          "path": "/pages/0/fixture",
+          "before": "evaluation/blind-v6/fixtures/city.html",
+          "after": "evaluation/development-v6-corrected-v2/fixtures/city.html"
+        }
+      ],
+      "unexpectedSemanticDifferences": 0,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/government.json",
+      "basePath": "evaluation/blind-v6/sites/government.json",
+      "parentPath": "evaluation/development-v6-corrected/sites/government.json",
+      "changesFromOriginal": [],
+      "changesFromParent": [],
+      "unexpectedSemanticDifferences": 0,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/library.json",
+      "basePath": "evaluation/blind-v6/sites/library.json",
+      "parentPath": "evaluation/development-v6-corrected/sites/library.json",
+      "changesFromOriginal": [],
+      "changesFromParent": [],
+      "unexpectedSemanticDifferences": 0,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/public-agency.json",
+      "basePath": "evaluation/blind-v6/sites/public-agency.json",
+      "parentPath": "evaluation/development-v6-corrected/sites/public-agency.json",
+      "changesFromOriginal": [
+        {
+          "path": "/pages/0/expected/1/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/2/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/3/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/4/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/5/category",
+          "before": "search",
+          "after": "apply"
+        }
+      ],
+      "changesFromParent": [],
+      "unexpectedSemanticDifferences": 0,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/smu.json",
+      "basePath": "evaluation/blind-v6/sites/smu.json",
+      "parentPath": "evaluation/development-v6-corrected/sites/smu.json",
+      "changesFromOriginal": [],
+      "changesFromParent": [],
+      "unexpectedSemanticDifferences": 0,
+      "byteIdenticalToParent": true
+    }
+  ],
+  "fixtureFidelityChanges": {
+    "sourceFile": "fixtures/city.html",
+    "basis": "docs/evidence/run004/city-table-fidelity-observation.json",
+    "changeType": "restore-empty-source-table-columns",
+    "originalBodyCellCounts": [
+      2,
+      2,
+      2
+    ],
+    "parentBodyCellCounts": [
+      2,
+      2,
+      2
+    ],
+    "correctedBodyCellCounts": [
+      5,
+      5,
+      5
+    ],
+    "sourceBodyCellCounts": [
+      5,
+      5,
+      5
+    ],
+    "sourceHeaders": [
+      "순번",
+      "제목",
+      "담당부서",
+      "첨부",
+      "수정일"
+    ],
+    "insertedElement": "<td></td>",
+    "insertedElementCount": 9,
+    "insertions": [
+      {
+        "rowIndex": 0,
+        "cellIndexAfter": 0,
+        "column": "순번",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 0,
+        "cellIndexAfter": 2,
+        "column": "담당부서",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 0,
+        "cellIndexAfter": 4,
+        "column": "수정일",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 1,
+        "cellIndexAfter": 0,
+        "column": "순번",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 1,
+        "cellIndexAfter": 2,
+        "column": "담당부서",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 1,
+        "cellIndexAfter": 4,
+        "column": "수정일",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 2,
+        "cellIndexAfter": 0,
+        "column": "순번",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 2,
+        "cellIndexAfter": 2,
+        "column": "담당부서",
+        "html": "<td></td>"
+      },
+      {
+        "rowIndex": 2,
+        "cellIndexAfter": 4,
+        "column": "수정일",
+        "html": "<td></td>"
+      }
+    ],
+    "existingControlSubtreesUnchanged": true,
+    "allOtherFixtureBytesUnchanged": true,
+    "noSourceNonControlValuesInvented": true
+  },
+  "rowChecks": [
+    {
+      "rowIndex": 0,
+      "originalFixtureCellCount": 2,
+      "parentFixtureCellCount": 2,
+      "correctedFixtureCellCount": 5,
+      "sourceObservedCellCount": 5,
+      "titleCellIndex": 1,
+      "attachmentCellIndex": 3,
+      "emptyCellIndices": [
+        0,
+        2,
+        4
+      ],
+      "originalTitleAndAttachmentSubtreesUnchanged": true,
+      "observedControlColumnMappingMatches": true
+    },
+    {
+      "rowIndex": 1,
+      "originalFixtureCellCount": 2,
+      "parentFixtureCellCount": 2,
+      "correctedFixtureCellCount": 5,
+      "sourceObservedCellCount": 5,
+      "titleCellIndex": 1,
+      "attachmentCellIndex": 3,
+      "emptyCellIndices": [
+        0,
+        2,
+        4
+      ],
+      "originalTitleAndAttachmentSubtreesUnchanged": true,
+      "observedControlColumnMappingMatches": true
+    },
+    {
+      "rowIndex": 2,
+      "originalFixtureCellCount": 2,
+      "parentFixtureCellCount": 2,
+      "correctedFixtureCellCount": 5,
+      "sourceObservedCellCount": 5,
+      "titleCellIndex": 1,
+      "attachmentCellIndex": 3,
+      "emptyCellIndices": [
+        0,
+        2,
+        4
+      ],
+      "originalTitleAndAttachmentSubtreesUnchanged": true,
+      "observedControlColumnMappingMatches": true
+    }
+  ],
+  "byteInsertions": [
+    {
+      "rowIndex": 0,
+      "cellIndexAfter": 0,
+      "column": "순번",
+      "offsetInParent": 4549,
+      "html": "<td></td>",
+      "offsetInCorrected": 4549
+    },
+    {
+      "rowIndex": 0,
+      "cellIndexAfter": 2,
+      "column": "담당부서",
+      "offsetInParent": 4740,
+      "html": "<td></td>",
+      "offsetInCorrected": 4749
+    },
+    {
+      "rowIndex": 0,
+      "cellIndexAfter": 4,
+      "column": "수정일",
+      "offsetInParent": 5064,
+      "html": "<td></td>",
+      "offsetInCorrected": 5082
+    },
+    {
+      "rowIndex": 1,
+      "cellIndexAfter": 0,
+      "column": "순번",
+      "offsetInParent": 5140,
+      "html": "<td></td>",
+      "offsetInCorrected": 5167
+    },
+    {
+      "rowIndex": 1,
+      "cellIndexAfter": 2,
+      "column": "담당부서",
+      "offsetInParent": 5331,
+      "html": "<td></td>",
+      "offsetInCorrected": 5367
+    },
+    {
+      "rowIndex": 1,
+      "cellIndexAfter": 4,
+      "column": "수정일",
+      "offsetInParent": 5655,
+      "html": "<td></td>",
+      "offsetInCorrected": 5700
+    },
+    {
+      "rowIndex": 2,
+      "cellIndexAfter": 0,
+      "column": "순번",
+      "offsetInParent": 5731,
+      "html": "<td></td>",
+      "offsetInCorrected": 5785
+    },
+    {
+      "rowIndex": 2,
+      "cellIndexAfter": 2,
+      "column": "담당부서",
+      "offsetInParent": 5922,
+      "html": "<td></td>",
+      "offsetInCorrected": 5985
+    },
+    {
+      "rowIndex": 2,
+      "cellIndexAfter": 4,
+      "column": "수정일",
+      "offsetInParent": 6246,
+      "html": "<td></td>",
+      "offsetInCorrected": 6318
+    }
+  ],
+  "cityFixtureBytes": {
+    "before": 29810,
+    "after": 29891,
+    "delta": 81
+  },
+  "originalFrozenFileChecks": [
+    {
+      "path": "evaluation/blind-v6/sites/city.json",
+      "frozenSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "actualSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "frozenBytes": 6695,
+      "actualBytes": 6695,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/government.json",
+      "frozenSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "actualSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "frozenBytes": 4942,
+      "actualBytes": 4942,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/library.json",
+      "frozenSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "actualSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "frozenBytes": 5234,
+      "actualBytes": 5234,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/public-agency.json",
+      "frozenSha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113",
+      "actualSha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113",
+      "frozenBytes": 6464,
+      "actualBytes": 6464,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/smu.json",
+      "frozenSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "actualSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "frozenBytes": 6321,
+      "actualBytes": 6321,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/city.html",
+      "frozenSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "actualSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "frozenBytes": 29810,
+      "actualBytes": 29810,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/government.html",
+      "frozenSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "actualSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "frozenBytes": 1663,
+      "actualBytes": 1663,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/library.html",
+      "frozenSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "actualSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "frozenBytes": 2579,
+      "actualBytes": 2579,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/public-agency.html",
+      "frozenSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "actualSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "frozenBytes": 5268,
+      "actualBytes": 5268,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/smu.html",
+      "frozenSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "actualSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "frozenBytes": 13428,
+      "actualBytes": 13428,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "docs/evidence/run003/blind-v6-observations.json",
+      "frozenSha256": "e5c2d1df2d0b9eab4efda83212bfa1e790afef128413a7a3fd13e0ffbe390323",
+      "actualSha256": "e5c2d1df2d0b9eab4efda83212bfa1e790afef128413a7a3fd13e0ffbe390323",
+      "frozenBytes": 267937,
+      "actualBytes": 267937,
+      "matchesOriginalFreeze": true
+    }
+  ],
+  "parentPreservationChecks": [
+    {
+      "path": "evaluation/development-v6-corrected/VERSION.json",
+      "sha256Before": "0dc25561a3bc3abd2116a9fa7f350a28c6953c17ca742b26f9e645d1c78a029a",
+      "sha256After": "0dc25561a3bc3abd2116a9fa7f350a28c6953c17ca742b26f9e645d1c78a029a",
+      "bytesBefore": 7822,
+      "bytesAfter": 7822,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/city.html",
+      "sha256Before": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "sha256After": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "bytesBefore": 29810,
+      "bytesAfter": 29810,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/government.html",
+      "sha256Before": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "sha256After": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "bytesBefore": 1663,
+      "bytesAfter": 1663,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/library.html",
+      "sha256Before": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "sha256After": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "bytesBefore": 2579,
+      "bytesAfter": 2579,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/public-agency.html",
+      "sha256Before": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "sha256After": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "bytesBefore": 5268,
+      "bytesAfter": 5268,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/smu.html",
+      "sha256Before": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "sha256After": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "bytesBefore": 13428,
+      "bytesAfter": 13428,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/city.json",
+      "sha256Before": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "sha256After": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "bytesBefore": 6695,
+      "bytesAfter": 6695,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/government.json",
+      "sha256Before": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "sha256After": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "bytesBefore": 4942,
+      "bytesAfter": 4942,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/library.json",
+      "sha256Before": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "sha256After": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "bytesBefore": 5234,
+      "bytesAfter": 5234,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/public-agency.json",
+      "sha256Before": "5119fd89c3bff48be5b8388aa8b393432f04afc5eb3cd1208d3a57f15ad929cf",
+      "sha256After": "5119fd89c3bff48be5b8388aa8b393432f04afc5eb3cd1208d3a57f15ad929cf",
+      "bytesBefore": 6459,
+      "bytesAfter": 6459,
+      "byteIdentical": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/smu.json",
+      "sha256Before": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "sha256After": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "bytesBefore": 6321,
+      "bytesAfter": 6321,
+      "byteIdentical": true
+    }
+  ],
+  "originalFreezeManifest": {
+    "path": "docs/evidence/run003/blind-v6-freeze.json",
+    "sha256Before": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f",
+    "sha256After": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f",
+    "byteIdentical": true
+  },
+  "files": [
+    {
+      "path": "evaluation/development-v6-corrected-v2/fixtures/city.html",
+      "sha256": "ae0683b2e771cea10e3ca9b9494886706c326e8b67eb8ce11ce2f2c1af7ee93c",
+      "bytes": 29891,
+      "basePath": "evaluation/blind-v6/fixtures/city.html",
+      "baseSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "baseBytes": 29810,
+      "parentPath": "evaluation/development-v6-corrected/fixtures/city.html",
+      "parentSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "parentBytes": 29810,
+      "byteIdenticalToBase": false,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/fixtures/government.html",
+      "sha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "bytes": 1663,
+      "basePath": "evaluation/blind-v6/fixtures/government.html",
+      "baseSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "baseBytes": 1663,
+      "parentPath": "evaluation/development-v6-corrected/fixtures/government.html",
+      "parentSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "parentBytes": 1663,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/fixtures/library.html",
+      "sha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "bytes": 2579,
+      "basePath": "evaluation/blind-v6/fixtures/library.html",
+      "baseSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "baseBytes": 2579,
+      "parentPath": "evaluation/development-v6-corrected/fixtures/library.html",
+      "parentSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "parentBytes": 2579,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/fixtures/public-agency.html",
+      "sha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "bytes": 5268,
+      "basePath": "evaluation/blind-v6/fixtures/public-agency.html",
+      "baseSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "baseBytes": 5268,
+      "parentPath": "evaluation/development-v6-corrected/fixtures/public-agency.html",
+      "parentSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "parentBytes": 5268,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/fixtures/smu.html",
+      "sha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "bytes": 13428,
+      "basePath": "evaluation/blind-v6/fixtures/smu.html",
+      "baseSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "baseBytes": 13428,
+      "parentPath": "evaluation/development-v6-corrected/fixtures/smu.html",
+      "parentSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "parentBytes": 13428,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/city.json",
+      "sha256": "f6f4ab20dd924616c6581c5bafeb2705cac85d489ad9fb97a9386a60dc2b986f",
+      "bytes": 6714,
+      "basePath": "evaluation/blind-v6/sites/city.json",
+      "baseSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "baseBytes": 6695,
+      "parentPath": "evaluation/development-v6-corrected/sites/city.json",
+      "parentSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "parentBytes": 6695,
+      "byteIdenticalToBase": false,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/government.json",
+      "sha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "bytes": 4942,
+      "basePath": "evaluation/blind-v6/sites/government.json",
+      "baseSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "baseBytes": 4942,
+      "parentPath": "evaluation/development-v6-corrected/sites/government.json",
+      "parentSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "parentBytes": 4942,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/library.json",
+      "sha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "bytes": 5234,
+      "basePath": "evaluation/blind-v6/sites/library.json",
+      "baseSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "baseBytes": 5234,
+      "parentPath": "evaluation/development-v6-corrected/sites/library.json",
+      "parentSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "parentBytes": 5234,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/public-agency.json",
+      "sha256": "5119fd89c3bff48be5b8388aa8b393432f04afc5eb3cd1208d3a57f15ad929cf",
+      "bytes": 6459,
+      "basePath": "evaluation/blind-v6/sites/public-agency.json",
+      "baseSha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113",
+      "baseBytes": 6464,
+      "parentPath": "evaluation/development-v6-corrected/sites/public-agency.json",
+      "parentSha256": "5119fd89c3bff48be5b8388aa8b393432f04afc5eb3cd1208d3a57f15ad929cf",
+      "parentBytes": 6459,
+      "byteIdenticalToBase": false,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected-v2/sites/smu.json",
+      "sha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "bytes": 6321,
+      "basePath": "evaluation/blind-v6/sites/smu.json",
+      "baseSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "baseBytes": 6321,
+      "parentPath": "evaluation/development-v6-corrected/sites/smu.json",
+      "parentSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "parentBytes": 6321,
+      "byteIdenticalToBase": true,
+      "byteIdenticalToParent": true
+    }
+  ],
+  "limitations": [
+    "The three restored columns are intentionally empty: source row-number, department and date text values were not copied or invented. Only table column structure is restored.",
+    "The supplied observation is a readonly public-source observation, not proof that any popup, download or business action works.",
+    "Original taxonomy ambiguities, first evaluation results and original reconstruction remain preserved. Development v2 is not a fresh independent evaluation."
+  ],
+  "writeScope": [
+    "evaluation/development-v6-corrected-v2",
+    "docs/evidence/run004/v6-fixture-fidelity-validation.json"
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "siteId": "city",
+  "name": "천안시청",
+  "type": "municipality",
+  "observedAt": "2026-10-17T17:17:53.338Z",
+  "pages": [
+    {
+      "id": "city-blind-v6",
+      "url": "https://www.cheonan.go.kr/prog/caCffdn/kor/sub01_01_07/list.do",
+      "finalUrl": "https://www.cheonan.go.kr/prog/caCffdn/kor/sub01_01_07/list.do",
+      "title": "민원사무편람 < 민원안내 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/development-v6-corrected-v2/fixtures/city.html",
+      "observation": {
+        "method": "Independent headless public-source observation with actual Chromium AX snapshots and safe original DOM ancestry/fixed heading-sibling context. No product source/engine/evaluation output read or run.",
+        "observedAt": "2026-10-17T17:17:53.338Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "One source task focus/hit-test per page and safe public destination GETs are stored in docs/evidence/run003/blind-v6-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions only; no full page, source CSS/media, app scripts, authenticated state or real extension activation. Original fixed labels, href/target, relevant original ancestor tags/classes/IDs and nearby fixed headings/siblings retained.",
+          "All source controls had nonzero boxes and were not CSS-hidden, inert or aria-hidden. One task control per page additionally received read-only scroll/focus/center hit testing; this is not a complete keyboard or assistive-technology audit.",
+          "Actual Chromium AX snapshots exclude value fields. Playwright ariaSnapshot additionally saved for non-editable controls where selector injection works. NL source DOM read through a CDP isolated world after a source-page selector-injection conflict; no security/authentication/certificate settings changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "city-blind-v6-feature-1",
+          "category": "search",
+          "label": "회계/세무",
+          "sourceIds": [
+            "city-blind-v6-control-1"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "city-blind-v6-feature-2",
+          "category": "apply",
+          "label": "자동차 저당 설정 서식",
+          "sourceIds": [
+            "city-blind-v6-control-11",
+            "city-blind-v6-control-12"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "city-blind-v6-feature-3",
+          "category": "apply",
+          "label": "산림경영계획(변경)인가",
+          "sourceIds": [
+            "city-blind-v6-control-13",
+            "city-blind-v6-control-14"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-blind-v6-control-1",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-2",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-3",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-4",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-5",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-6",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-7",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-8",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-9",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-10",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-11",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-12",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-13",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-14",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-15",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-blind-v6-control-16",
+          "category": "apply",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-blind-v6-task",
+        "instruction": "민원사무편람 첫 목록의 자동차 저당 설정 서식 원본 제목 제어 위치를 찾으세요. 상세 팝업·자료받기·다운로드·신청을 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "city-blind-v6-control-11"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "민원 이용자가 신청 절차와 서식을 찾는 대표 공개 편람을 선정했다. 분야 분류 10개를 모두 포함하고 기본 목록의 첫 세 행을 순서대로 복원했다. 분야 분류는 information finding인 search, 민원 신청사무와 해당 서식을 여는 제목/자료받기 제어는 apply이다. 제목의 원본 onclick과 #view는 locate, 자료받기 버튼도 실행하지 않는 locate이다. 첫 세 행은 원본 기본 순서로 선정했으며 쉬운 단어/어려운 단어를 기준으로 고르지 않았다.",
+        "Base href resolves unchanged original relative hrefs against observed source URL. CSP script-src none/object-src none/form-action none; source onclick presence has an inert return-false marker, without original handler implementations. Only fixed labels and empty fixture editables; no actual input values."
+      ]
+    }
+  ]
+}

@@ -30,7 +30,36 @@ export async function verifyFrozenFiles(freezePath, requiredPaths = [], root = p
 }
 
 export function validateFreshMode({ engine, suite, split, outputDir, explicitOutput, engineFreeze, datasetFreeze }) {
-  if (engine !== 'current' || !/^blind-v\d+$/.test(suite) || split !== 'holdout') throw new Error('Fresh evaluation requires current engine and a blind holdout suite');
+  if (engine !== 'current' || !/^blind-v\d+(?:-v\d+)?$/.test(suite) || split !== 'holdout') throw new Error('Fresh evaluation requires current engine and a blind holdout suite');
   if (!explicitOutput || !outputDir) throw new Error('Fresh evaluation requires an explicit new output directory');
   if (!engineFreeze || !datasetFreeze) throw new Error('Fresh evaluation requires both engine and dataset freeze records');
+}
+
+// Adjudication never turns exposed examples into a new holdout. Bind both the
+// corrected files and the original source files to the versioned change record.
+export async function verifyAdjudicatedDataset(versionPath, requiredPaths = [], root = process.cwd()) {
+  const record = JSON.parse(await readFile(resolve(root, versionPath), 'utf8'));
+  if (record.classification !== 'ADJUDICATED_DEVELOPMENT' || record.freshHoldout !== false)
+    throw new Error('Corrected annotations must be adjudicated development data');
+  const corrected = await verifyFrozenFiles(versionPath, requiredPaths, root);
+  const originals = [];
+  const parents = [];
+  const basePaths = new Set();
+  for (const entry of record.files) {
+    if (typeof entry.basePath !== 'string' || !/^[a-f0-9]{64}$/.test(entry.baseSha256)) throw new Error('Missing original annotation hash');
+    const path = relative(resolve(root), resolve(root, entry.basePath));
+    if (!path || path === '..' || path.startsWith('../') || isAbsolute(path) || basePaths.has(path)) throw new Error('Invalid or duplicate original annotation path');
+    basePaths.add(path);
+    if (sha256(await readFile(resolve(root, path))) !== entry.baseSha256) throw new Error(`Original adjudication input changed: ${path}`);
+    originals.push({ path, sha256: entry.baseSha256 });
+    if (entry.parentPath !== undefined || entry.parentSha256 !== undefined) {
+      if (typeof entry.parentPath !== 'string' || !/^[a-f0-9]{64}$/.test(entry.parentSha256)) throw new Error('Invalid parent annotation hash');
+      const parentPath = relative(resolve(root), resolve(root, entry.parentPath));
+      if (!parentPath || parentPath === '..' || parentPath.startsWith('../') || isAbsolute(parentPath)) throw new Error('Invalid parent annotation path');
+      if (sha256(await readFile(resolve(root, parentPath))) !== entry.parentSha256) throw new Error(`Parent adjudication input changed: ${parentPath}`);
+      parents.push({ path: parentPath, sha256: entry.parentSha256 });
+    }
+  }
+  return { ...corrected, version: record.version, classification: record.classification, freshHoldout: false,
+    originals, parents, scope: 'Versioned correction, original and available parent hashes only; no independent quality claim.' };
 }

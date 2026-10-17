@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T18:04:33.571265+00:00",
+  "status": "READ_ONLY_FAILURE_DIAGNOSIS",
+  "version": "v0.5.0 / first blind-v7-v2",
+  "method": {
+    "offlineOnly": true,
+    "computerUse": false,
+    "network": false,
+    "productOrEvaluatorRun": false,
+    "sourceDatasetEvaluationEdits": false,
+    "basis": "Existing first report,5 fixtures and site annotations, current source verified against14-file engine freeze; static code-path diagnosis, not instrumented runtime tracing."
+  },
+  "report": {
+    "path": "docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json",
+    "sha256": "c9a403cb64178f395575a9668a24521f09d3ded58c6ac1e7ea4efc2c211c4fd0",
+    "checkedAt": "2026-10-17T18:02:06.546Z",
+    "engineHash": "4faaf34b88607f3198960e594a749bc33ae0f9419ee3809e8e9aecef987a2a03",
+    "datasetHash": "d0051c66f8599f4875898b3cf9422c20fb330389f7b1030a170a68cd26436f23",
+    "quality": "FAIL",
+    "summary": {
+      "pages": 5,
+      "correct": 6,
+      "recommended": 12,
+      "matched": 4,
+      "expected": 15,
+      "precision": 0.5,
+      "recall": 0.26666666666666666,
+      "tasksRecommended": 1
+    }
+  },
+  "integrity": {
+    "engineFreezeFiles": 14,
+    "engineFreezeMatch": true,
+    "datasetFreezeFiles": 11,
+    "datasetFreezeMatch": true,
+    "firstArtifactHashes": {
+      "docs/evidence/run004/blind-v7-v2-first/first.log": "f7740f9c1dc2e53bbbff324a7ce5415698d7bf6e5e50aec32345e43c3319fa9d",
+      "docs/evidence/run004/blind-v7-v2-first/first-command.json": "31c1894bde612bccd3cb29339a64ba9aceaba83f26b4f1c68c79fb265edee4a2",
+      "docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json": "c9a403cb64178f395575a9668a24521f09d3ded58c6ac1e7ea4efc2c211c4fd0"
+    },
+    "protectedFilesUnchanged": true
+  },
+  "assessment": [
+    "FAIL remains unchanged:6/12 precision,4/15 recall; every site fails at least one site threshold.",
+    "Counts are consistent with initial extraction of the32 annotated controls plus1 additional real search input. Per-candidate pre-classification traces are absent; no runtime extraction omission is demonstrated here.",
+    "Selection capacity is not the observed blocker: classifiedCount equals selectedCount on all5 pages, selected counts are0..5, each menuFlow is one page with no next. Ranking cannot recover rejected or misclassified sources.",
+    "Category and action are both part of accepted matching. A physically displayed source can still be a miss when its category or action differs. Separate annotation-policy discrepancies from demonstrated classification defects.",
+    "After this diagnosis the same v7-v2 material is exposed development material. No future rerun on it can be presented as a new independent first evaluation."
+  ],
+  "pages": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v7",
+      "candidateCount": 6,
+      "acceptedControlCount": 6,
+      "classifiedCount": 3,
+      "selectedCount": 3,
+      "correct": 1,
+      "matched": 1,
+      "expected": 3,
+      "precision": 0.3333333333333333,
+      "recall": 0.3333333333333333,
+      "missed": [
+        {
+          "id": "city-v7-museum",
+          "category": "apply",
+          "label": "천안박물관 전시 해설 예약",
+          "sourceIds": [
+            "city-museum-guide"
+          ],
+          "action": "navigate"
+        },
+        {
+          "id": "city-v7-children",
+          "category": "apply",
+          "label": "상설전시 <나는야 꼬마 왕건> 관람 예약",
+          "sourceIds": [
+            "city-child-museum"
+          ],
+          "action": "navigate"
+        }
+      ],
+      "incorrect": [
+        {
+          "sourceId": "city-login",
+          "label": "로그인",
+          "actualCategory": "login",
+          "actualAction": "navigate",
+          "accepted": {
+            "sourceId": "city-login",
+            "category": "login",
+            "action": "locate"
+          },
+          "mismatchDimensions": [
+            "action"
+          ]
+        },
+        {
+          "sourceId": "city-reservation-help",
+          "label": "예약안내",
+          "actualCategory": "apply",
+          "actualAction": "locate",
+          "accepted": {
+            "sourceId": "city-reservation-help",
+            "category": "help",
+            "action": "navigate"
+          },
+          "mismatchDimensions": [
+            "category",
+            "action"
+          ]
+        }
+      ],
+      "causes": [
+        {
+          "stage": "classification",
+          "confidence": "high-static-inference",
+          "finding": "Composite reservation cards include category/date/place/status in one fixed label. The lexical apply score is 60 minus 15 for label length >36 =45, below55. The separate card-title fallback expects a direct title then p, unlike the actual div/strong/div/span shape.",
+          "sources": [
+            "src/analyzer.ts:50-74",
+            "src/analyzer.ts:267-277",
+            "src/classifier.ts:254-259",
+            "src/classifier.ts:403-406",
+            "src/classifier.ts:452",
+            "evaluation/blind-v7-v2/fixtures/city.html"
+          ]
+        },
+        {
+          "stage": "category",
+          "confidence": "observed",
+          "finding": "city-reservation-help is selected as apply; accepted category is help. Broad reservation text wins without a guide interpretation.",
+          "sources": [
+            "src/classifier.ts:5-11",
+            "evaluation/blind-v7-v2/sites/city.json"
+          ]
+        },
+        {
+          "stage": "action-policy-contract",
+          "confidence": "observed-mismatch-with-static-policy-explanation",
+          "finding": "city-login navigate vs accepted locate; city-reservation-help locate vs accepted navigate. Plain HTTP login has no explicit handler, while reservation help has role=button/aria-controls/aria-haspopup. Existing sourceAction deterministically explains both outputs. This requires separate policy/annotation review; do not classify both as demonstrated engine defects or change this first result.",
+          "sources": [
+            "src/action-policy.ts:14-32",
+            "evaluation/blind-v7-v2/fixtures/city.html",
+            "evaluation/blind-v7-v2/sites/city.json"
+          ]
+        }
+      ]
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v7",
+      "candidateCount": 8,
+      "acceptedControlCount": 8,
+      "classifiedCount": 0,
+      "selectedCount": 0,
+      "correct": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "missed": [
+        {
+          "id": "government-v7-before",
+          "category": "help",
+          "label": "태풍 예보시 행동요령",
+          "sourceIds": [
+            "gov-before"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-v7-during",
+          "category": "help",
+          "label": "태풍 특보 중 행동요령",
+          "sourceIds": [
+            "gov-during"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-v7-after",
+          "category": "help",
+          "label": "태풍 이후 행동요령",
+          "sourceIds": [
+            "gov-after"
+          ],
+          "action": "locate"
+        }
+      ],
+      "incorrect": [],
+      "causes": [
+        {
+          "stage": "classification-context",
+          "confidence": "high-static-inference",
+          "finding": "All8 extracted candidates produce0 classified. Expected stage controls are sibling buttons in div.tab-area, rather than ul/ol/tablist. They have aria-expanded but their short phase labels do not satisfy the supplemental panel group label-suffix guards. The generic contextual-help branch supports questions/handoffs, not these phase tabs. A page-purpose signal alone intentionally cannot classify every link.",
+          "sources": [
+            "src/analyzer.ts:204-244",
+            "src/analyzer.ts:320-349",
+            "src/classifier.ts:222-243",
+            "src/classifier.ts:254-291",
+            "evaluation/blind-v7-v2/fixtures/government.html"
+          ]
+        },
+        {
+          "stage": "classification-purpose",
+          "confidence": "bounded-static-inference",
+          "finding": "Purpose detection only uses selected pathname tokens, selected semantic heading locations, and eligible preceding context. Unclassified candidates do not log their derived purpose/context, so this diagnosis does not claim which context label was produced at runtime. Even a help purpose does not bypass the missing specific-control evidence path.",
+          "sources": [
+            "src/analyzer.ts:116-182",
+            "src/classifier.ts:188-220"
+          ]
+        }
+      ]
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v7",
+      "candidateCount": 5,
+      "acceptedControlCount": 5,
+      "classifiedCount": 3,
+      "selectedCount": 3,
+      "correct": 1,
+      "matched": 0,
+      "expected": 3,
+      "precision": 0.3333333333333333,
+      "recall": 0,
+      "missed": [
+        {
+          "id": "library-v7-result",
+          "category": "help",
+          "label": "검색결과 이용 안내",
+          "sourceIds": [
+            "lib-result-guide"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-v7-detail",
+          "category": "help",
+          "label": "상세정보 이용 안내",
+          "sourceIds": [
+            "lib-detail-guide"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-v7-full",
+          "category": "help",
+          "label": "상세 가이드 다운로드",
+          "sourceIds": [
+            "lib-full-guide"
+          ],
+          "action": "locate"
+        }
+      ],
+      "incorrect": [
+        {
+          "sourceId": "lib-result-guide",
+          "label": "검색결과",
+          "actualCategory": "search",
+          "actualAction": "locate",
+          "accepted": {
+            "sourceId": "lib-result-guide",
+            "category": "help",
+            "action": "locate"
+          },
+          "mismatchDimensions": [
+            "category"
+          ]
+        },
+        {
+          "sourceId": "lib-search-guide",
+          "label": "검색기능 선택됨",
+          "actualCategory": "search",
+          "actualAction": "locate",
+          "accepted": {
+            "sourceId": "lib-search-guide",
+            "category": "help",
+            "action": "locate"
+          },
+          "mismatchDimensions": [
+            "category"
+          ]
+        }
+      ],
+      "causes": [
+        {
+          "stage": "category",
+          "confidence": "observed",
+          "finding": "lib-result-guide and lib-search-guide are selected as search, but accepted category is help. The expected result guide source is present on screen yet fails expected matching because its category differs.",
+          "sources": [
+            "evaluation/blind-v7-v2/sites/library.json",
+            "src/classifier.ts:7",
+            "src/classifier.ts:20",
+            "src/classifier.ts:388-426"
+          ]
+        },
+        {
+          "stage": "classification-context",
+          "confidence": "high-static-inference",
+          "finding": "The group-slide source has role=group and locate action, but its visible preceding title is a subject title, not a guide title ending 안내. Supplemental group help requires guideContext; collection fallback expects list/tablist structure. The generic detail label and download button therefore have no qualifying help path.",
+          "sources": [
+            "src/analyzer.ts:204-244",
+            "src/analyzer.ts:335-349",
+            "src/classifier.ts:254-291",
+            "evaluation/blind-v7-v2/fixtures/library.html"
+          ]
+        },
+        {
+          "stage": "classification-download",
+          "confidence": "high-static-inference",
+          "finding": "The full-guide control is a button. isDocumentDownload recognizes anchors only, and there is no explicit generic guide-button classification. Its safe locate action is available, but it is not classified.",
+          "sources": [
+            "src/action-policy.ts:6-9",
+            "src/classifier.ts:324-327",
+            "src/classifier.ts:368-372",
+            "evaluation/blind-v7-v2/fixtures/library.html"
+          ]
+        }
+      ]
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v7",
+      "candidateCount": 7,
+      "acceptedControlCount": 6,
+      "classifiedCount": 5,
+      "selectedCount": 5,
+      "correct": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [
+        {
+          "sourceId": null,
+          "label": "검색어 입력",
+          "actualCategory": "search",
+          "actualAction": "locate",
+          "accepted": null,
+          "mismatchDimensions": [
+            "unmapped-or-not-accepted-source"
+          ]
+        },
+        {
+          "sourceId": "nps-login",
+          "label": "로그인",
+          "actualCategory": "login",
+          "actualAction": "navigate",
+          "accepted": {
+            "sourceId": "nps-login",
+            "category": "login",
+            "action": "locate"
+          },
+          "mismatchDimensions": [
+            "action"
+          ]
+        }
+      ],
+      "causes": [
+        {
+          "stage": "precision-task-identity",
+          "confidence": "observed",
+          "finding": "All3 expected functions match. The extra search input has a safe fixed label but no evaluation sourceId; accepted search source is the separate search button. It is counted incorrect and also leaves1 unresolved menuFlow source mapping. This is a real original control, not evidence that an absent function was invented.",
+          "sources": [
+            "evaluation/blind-v7-v2/sites/public-agency.json",
+            "src/analyzer.ts:61-94",
+            "src/ranker.ts:88-103"
+          ]
+        },
+        {
+          "stage": "action-policy-contract",
+          "confidence": "observed-mismatch-with-static-policy-explanation",
+          "finding": "nps-login is classified login but navigate vs accepted locate. Source is a plain HTTP anchor with no explicit handler. sourceAction explains navigate; separately adjudicate the authentication-entry contract without overwriting this first result.",
+          "sources": [
+            "src/action-policy.ts:14-32",
+            "evaluation/blind-v7-v2/fixtures/public-agency.html",
+            "evaluation/blind-v7-v2/sites/public-agency.json"
+          ]
+        },
+        {
+          "stage": "classification-context",
+          "confidence": "high-static-inference",
+          "finding": "The2 accepted non-required detail/help links are not classified. Their fixed visible name is generic detail, while card subject lives in sibling item-info/strong and title. Safe label extraction prefers visible text over title; card fallback only supports title/paragraph inside the control.",
+          "sources": [
+            "src/analyzer.ts:65-74",
+            "src/analyzer.ts:267-277",
+            "src/classifier.ts:394-396",
+            "evaluation/blind-v7-v2/fixtures/public-agency.html"
+          ]
+        }
+      ]
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v7",
+      "candidateCount": 7,
+      "acceptedControlCount": 7,
+      "classifiedCount": 1,
+      "selectedCount": 1,
+      "correct": 1,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "missed": [
+        {
+          "id": "smu-v7-linked",
+          "category": "academic",
+          "label": "다전공(연계/융합전공)",
+          "sourceIds": [
+            "smu-linked"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "smu-v7-self",
+          "category": "academic",
+          "label": "다전공(자기설계융합전공)",
+          "sourceIds": [
+            "smu-self"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "smu-v7-minor",
+          "category": "academic",
+          "label": "부전공",
+          "sourceIds": [
+            "smu-minor"
+          ],
+          "action": "locate"
+        }
+      ],
+      "incorrect": [],
+      "causes": [
+        {
+          "stage": "classification-context",
+          "confidence": "high-static-inference",
+          "finding": "All7 candidate controls are extracted, only login classified. Primary academic lexical rules omit the actual major-system concepts; academic concept fallbacks additionally require a qualifying academic context. Tab links precede the page h4 in a sibling content section, and preceding scoped-heading extraction cannot use that later title. No site-specific URL endpoint is recognized.",
+          "sources": [
+            "src/classifier.ts:9",
+            "src/classifier.ts:39-40",
+            "src/classifier.ts:56-89",
+            "src/analyzer.ts:116-145",
+            "evaluation/blind-v7-v2/fixtures/smu.html"
+          ]
+        },
+        {
+          "stage": "latent-action-policy-contract",
+          "confidence": "static-inference-not-an-observed-selected-action",
+          "finding": "Expected cross-path fragment links are annotated locate, but sourceAction only treats same-document fragment URLs as locate. If these sources later classify, their action requires separate contract review. No selected SMU academic action was evaluated in this report.",
+          "sources": [
+            "src/action-policy.ts:27-32",
+            "evaluation/blind-v7-v2/sites/smu.json"
+          ]
+        }
+      ]
+    }
+  ],
+  "menuFlow": {
+    "summary": {
+      "pages": 5,
+      "correct": 6,
+      "recommended": 12,
+      "matched": 4,
+      "expected": 15,
+      "precision": 0.5,
+      "recall": 0.26666666666666666,
+      "tasksRecommended": 1
+    },
+    "unresolvedMappings": 1,
+    "repeatedCards": 0,
+    "allPagesOneScreen": true,
+    "allPagesNoNext": true,
+    "interpretation": "Additional-menu traversal only exposes classified overflow. Here it adds no expected coverage and cannot substitute for first-screen quality. It proves fixture UI display/source matching only, not action activation or installed-extension/user task success."
+  },
+  "recommendedGenericRegressionThemes": [
+    {
+      "priority": 1,
+      "theme": "Fixed service-card title versus metadata",
+      "nextWork": "Use safe fixed structural subject evidence across varied card layouts; keep dates/status/places from weakening an explicit service title. Add unrelated news/article and dangerous-command negatives. Do not tune by site IDs, captured labels or metric thresholds."
+    },
+    {
+      "priority": 1,
+      "theme": "Subject versus current task in guides",
+      "nextWork": "Distinguish search/help and reservation/help using bounded purpose and local control evidence; cover guide tabs expressed as lists, role groups, and plain sibling buttons. Include unrelated links on the same guide page as negatives."
+    },
+    {
+      "priority": 1,
+      "theme": "Academic topic tabs with distant context",
+      "nextWork": "Cover fixed educational-topic reading controls whose contextual title appears later or in a sibling content region, without importing arbitrary article text or classifying all links by page topic."
+    },
+    {
+      "priority": 1,
+      "theme": "Action policy and annotation contract",
+      "nextWork": "Document and test plain HTTP authentication-entry links, role/aria menu triggers, same-document fragments and cross-document fragments independently of category accuracy. If annotation errors are established, preserve originals and create a separate justified adjudication version; do not recompute or replace the first report."
+    },
+    {
+      "priority": 2,
+      "theme": "Search task identity and evaluator source mapping",
+      "nextWork": "Review safe input plus submit-button grouping as one user task and mapping of fixed-name inputs without IDs, while preserving input-value noncollection and distinct controls with identical labels. Do not alter the acceptance metric to erase the first false positive."
+    },
+    {
+      "priority": 2,
+      "theme": "Structured generic detail and guide download controls",
+      "nextWork": "Cover safe association of visible generic controls to sibling fixed subject titles and button download/guide structures. Test adversarial unrelated sibling descriptions and editable descendants."
+    }
+  ],
+  "nextCheckpoint": "Keep S07 IN_PROGRESS and v0.5 frozen; use these exposed5 pages only for development diagnosis. Any later generic implementation belongs to a separate version with preserved first artifacts and a newly frozen independent dataset for generalization.",
+  "actionAdjudicationStatus": {
+    "status": "COMPLETED_INDEPENDENT_V2_ACTION_CONTRACT_REVIEW",
+    "audit": {
+      "path": "docs/evidence/run004/v7-v2-action-audit.json",
+      "sha256": "41ced3f106af3112a2f014baa862363dd289aaea7856b82ce87cfbc324f000c9",
+      "status": "ANNOTATION_CONFLICTS_AND_LOGIN_POLICY_AMBIGUITY_IDENTIFIED"
+    },
+    "rootReview": {
+      "path": "docs/evidence/run004/v7-v2-action-root-review.json",
+      "sha256": "0d953d05335cc33cf869b67c411df2dd4cee615286cbd237268e912a72551833",
+      "classification": "POST_FIRST_HOLDOUT_STATIC_ADJUDICATION"
+    },
+    "acceptedDefiniteActionConflicts": 6,
+    "acceptedConflictSources": [
+      "city-reservation-help",
+      "smu-advanced",
+      "smu-linked",
+      "smu-micro",
+      "smu-minor",
+      "smu-self"
+    ],
+    "expectedActionGroupsAffected": [
+      "smu-v7-linked",
+      "smu-v7-self",
+      "smu-v7-minor"
+    ],
+    "taskAffected": "smu-v7-public-task",
+    "plainLoginContractAmbiguity": {
+      "sourceIds": [
+        "city-login",
+        "nps-login"
+      ],
+      "status": "UNRESOLVED_CONTRACT_COVERAGE",
+      "reason": "Ordinary HTTP destinations have no explicit action markers. Opening a public login form and initiating authentication are not established as equivalent by the available evidence. Do not invent handlers or change gold to match output."
+    },
+    "sameDocumentFragment": {
+      "sourceId": "smu-second",
+      "contractualAction": "locate",
+      "evaluatorInspection": "scripts/evaluate.mjs:100-103 routes HTML and navigates to target.finalUrl || target.url; does not use setContent/about:blank for product evaluation. Structural parity observation about:blank is a separate observation context.",
+      "newProductExecution": false
+    },
+    "scope": "The six accepted conflicts are post-first annotation-contract findings, not six observed selected product-action defects. Three expected actions and the SMU task are affected. Classification failures and generic regression conclusions remain unchanged.",
+    "caveat": "The original v7 audit reporting0 category/action errors covered the prior reconstructed fixture, including invented action markers. Independent v2 actual-attribute review is now complete. Source/frozen datasets/first raw6/12 precision and4/15 recall FAIL remain unchanged; no data correction, metric recomputation or product/evaluator rerun occurred."
+  }
+}

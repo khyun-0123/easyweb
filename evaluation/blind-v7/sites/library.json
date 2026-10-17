@@ -1,0 +1,108 @@
+{
+  "siteId": "library",
+  "siteName": "국립중앙도서관",
+  "pages": [
+    {
+      "id": "library-blind-v7",
+      "title": "국립중앙도서관>사이트 이용안내>누리집이용가이드>소장자료 통합검색>검색기능",
+      "url": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+      "fixture": "evaluation/blind-v7/fixtures/library.html",
+      "split": "holdout",
+      "observation": {
+        "capturedAt": "2026-10-17T17:44:47.345Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "method": "headless-chromium-public-dom",
+        "httpStatus": 200,
+        "sourceEvidence": "docs/evidence/run004/blind-v7-observations.json",
+        "selectionPlanSha256": "4c43a0b466a59dcefdf2c89b1440efaacb527d7e22b52c3c24b9edf68edd378e",
+        "fixtureKind": "reduced-source-controls",
+        "sourceControlCount": 5
+      },
+      "expected": [
+        {
+          "id": "library-v7-result",
+          "category": "help",
+          "label": "검색결과 이용 안내",
+          "sourceIds": [
+            "lib-result-guide"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-v7-detail",
+          "category": "help",
+          "label": "상세정보 이용 안내",
+          "sourceIds": [
+            "lib-detail-guide"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-v7-full",
+          "category": "help",
+          "label": "상세 가이드 다운로드",
+          "sourceIds": [
+            "lib-full-guide"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "lib-search-guide",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "lib-result-guide",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "lib-detail-guide",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "lib-full-guide",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "lib-login",
+          "category": "login",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-v7-public-task",
+        "instruction": "소장자료 통합검색의 검색결과 이용 안내를 여는 원본 탭을 찾으세요.",
+        "expectedSourceIds": [
+          "lib-result-guide"
+        ],
+        "action": "locate",
+        "destinationUrl": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+        "evidence": {
+          "type": "public-GET-plus-original-control",
+          "observationPath": "docs/evidence/run004/blind-v7-observations.json",
+          "controlIds": [
+            "lib-result-guide"
+          ],
+          "clickPerformed": false,
+          "finalSubmissionPerformed": false
+        }
+      },
+      "notes": [
+        "원본 본문의 필요한 기능 제어, 고정 문구와 근거 조상 구조를 재구성한 축약 fixture이다. 전체 사이트 복사본이나 원래 JS 실행 환경이 아니다.",
+        "사용자 입력값은 읽거나 저장하지 않았다. 텍스트 입력은 빈 요소로 재구성하고 제어의 고정 이름만 관찰했다.",
+        "onclick 및 javascript URL의 실행 코드는 제거했다. fixture의 onclick/onsubmit은 return false 표지만 사용한다. 위치 수치는 원본 관찰 증거이며 축약 fixture는 원본 스크린샷 복제가 아니다.",
+        "이 페이지의 검색결과·상세정보는 검색 실행이나 자료 상세 자체가 아니라 검색 이용 안내이다. 페이지 경로, 본문 제목과 설명을 근거로 help로 분류했다. 탭의 추적 onclick도 명시적 handler이므로 locate이다.",
+        "다운로드 제어는 문서를 실제 내려받지 않고 원본 위치만 안내한다."
+      ]
+    }
+  ]
+}

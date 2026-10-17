@@ -2,13 +2,19 @@
 
 ## 재개할 때
 
-- `docs/WORK_SPEC.md`, `docs/PROGRESS.md`, 필요한 부분의 `docs/EXECUTION_BUDGET.md`를 읽는다.
-- 사용자가 지정한 단계·예산·작업 범위를 우선한다. 이미 끝난 단계를 처음부터 반복하지 않는다.
-- 사용자는 컴퓨터로 다른 작업을 해야 하므로 컴퓨터 유즈를 되도록 사용하지 말라고 했다. 현재 native UI 자동화는 중단했다. 터미널·헤드리스 검증을 우선하고 포커스를 바꾸는 브라우저/앱 조작을 임의로 재개하지 않는다. 필요한 수동 검증은 사용자용 안내로 남긴다.
-- 현재 다음 작업은 `docs/PROGRESS.md`와 `docs/RUN_003_REPORT.md`의 인수 미달 항목이다. S05부터 처음 반복하지 않는다. 최신 소스와 같은 해시의 검증인지 확인한다.
-- RUN-003의 최종 v0.4.0 소스는 `docs/evidence/run003/final-engine-freeze.json`에 고정했다. v6 첫 평가 당시 엔진은 별도의 `v0.4-engine-freeze.json`에 보존한다. 최신 후보 검증은 최종 동결과 같은 소스인지 확인한다. v5·v6 첫 독립 실패는 각각 `blind-v5-first/`·`blind-v6-first/`에 보존했다. 현재 core+v2~v6의 40페이지는 모두 노출된 개발 자료다. 새 독립 자료를 추가하면 소스 개선 담당자는 동결 전에 읽지 않고, root가 엔진·자료 해시 고정을 명시한 뒤 처음 평가한다.
-- v0.4.0의 “다른 메뉴 보기”는 첫 화면 밖 후보를 추가로 표시하는 별도 경로다. 첫 화면의 정확도·재현율을 이 경로의 합집합 수치로 대체하지 않는다. v6은 추가 경로까지도 재현5/15로 S07 미달이다. 최신 실제 공개 과제 결과는 RUN-003 증거를 사용하고 v0.3의15/15나 부분 native 관찰을 v0.4로 전이하지 않는다.
-- 초기 `docs/DEVELOPMENT_PLAN.md`는 v0.1의 이력이다. v1.0 단계 번호의 기준으로 혼용하지 않는다.
+- `docs/WORK_SPEC.md`, `docs/PROGRESS.md`, 필요한 부분의 `docs/EXECUTION_BUDGET.md`를 읽는다. 사용자 지정 단계·예산·범위를 우선하고 끝난 단계를 반복하지 않는다.
+- 사용자가 컴퓨터로 다른 작업을 해야 하므로 컴퓨터 유즈와 native UI 자동화를 중단했다. 브라우저/앱의 창·초점을 임의로 바꾸지 않는다. 터미널·헤드리스 검증을 우선하고 필요한 수동 검증은 사용자 안내로 남긴다.
+- 현재는 `docs/RUN_004_REPORT.md`와 `docs/PROGRESS.md`의 범용 카드/탭/제목과 제어의 연결 근거 개선 인계 지점이다. 완료 5/10·전체 인수 NOT_MET을 유지한다. 산출물 검사 PASS가 필수 인수를 대신하지 않는다.
+- v0.5 최종 소스는 `docs/evidence/run004/v0.5-engine-freeze.json`의 14파일과 별도 아카이브로 02:53:53 KST에 고정했다. root/구현자는 동결 전 v7 본문을 읽지 않았고 첫 평가 뒤 소스 변경·재실행은 없다. 같은 해시의 검증인지 확인한다. RUN-003 동결·v5/v6 첫 실패·ZIP도 보존한다.
+- v7-v2 첫 결과는 정확 6/12(50%)·재현 4/15(26.7%)·과제 추천 1/5, 모든 5사이트 FAIL이다. 추가 메뉴 표시도 6/12·4/15·1/5이며 unresolvedMappings 1·repeatedCards 0이다. `docs/evidence/run004/blind-v7-v2-first/`를 보존하고 첫 화면을 추가 메뉴 합집합으로 대체하지 않는다.
+- 첫 결과 후 독립 감사에서 accepted action 충돌 6건(city 1·SMU 다른 문서 fragment 5), expected 3건·SMU 과제 영향을 확정했다. `docs/evidence/run004/v7-v2-action-audit.json`과 root review는 별도 개발 정정 후보로 승인했으나 이번 checkpoint의 데이터 정정·재계산·재평가는 없다. 로그인 2건은 계약 모호성이다. 구 v7 오류 0은 구 fixture 대상이며 첫 raw 점수를 순수 제품 품질로 단정하지 않는다.
+- 알려진 자료는 기존 40+새 5=45페이지다. 원본 v7/v2는 같은 5페이지이므로 10개로 세지 않는다. 첫 실패를 본 자료의 재평가는 개발용이다. 새 독립 자료는 소스 개선 담당자가 동결 전 읽지 않고 root가 엔진·자료 해시 고정을 명시한 뒤 처음 평가한다.
+- v6 category v1은 `evaluation/development-v6-corrected/`, fixture 충실도 v2는 `evaluation/development-v6-corrected-v2/`의 별도 `ADJUDICATED_DEVELOPMENT`다. v1은 category 5필드, v2는 이를 유지한 city 3행의 빈 td 9개·fixture 경로 1곳만 정정했다. 원본 11파일·v1 전체 11파일과 첫 실패를 보존하고 원본/v1/v2 해시를 확인해 개발용으로만 평가한다.
+- 개발용 v6-v2는 첫 화면 24/24·14/15·과제 5/5이나 city 2/3으로 사이트 75% 기준 미달이다. 추가 표시 41/41·15/15·5/5로 첫 화면 인수를 대체하지 않는다. 최신 공개 과제는 같은 동결 v0.5의 15/15·HTTP 9/원본 안내 6이며 사람의 업무 성공이나 실제 설치 결과가 아니다.
+- 구 v7의 조상 평탄화·heading/form 변환 때문에 root가 S07 증거 범위상 v2 복원을 선택했다. 감사자는 좁은 fixed-control 평가 허용 가능으로 보았으므로 이를 감사자의 필수 승인 요구로 쓰지 않는다. `docs/evidence/run004/v7-fidelity-decision.json`과 관찰자 교체 사건 `v7-observer-boundary-incident.json`을 보존한다.
+- 다음 기술 작업은 현재 45페이지에 맞춘 라벨 추가가 아니라 범용 카드/안내 탭/지역 제목과 제어의 연결 근거 개선이다. 승인된 action 충돌과 로그인 진입 계약은 별도 주석·정책 근거로 보존한다. `docs/evidence/run004/v7-failure-diagnosis.md`는 정적 코드 경로 추론이며 분류 전 trace가 아니다. 첫 6개 제한이 원인이 아니고 unresolved 검색 입력 1건은 입력값 유출 증거가 아니다.
+- RUN-004의 기술 검증·정적 감사 관찰 경계는 `docs/evidence/run004/goal-usage-snapshot.json`의 02:39:51→03:05:48 KST, 1,557초다. 전체 실제 시작/경과가 아니며 이후 문서 마감·commit은 제외한다. 목표 도구 누적값·이전 대비 차분을 이번 고유 사용량이나 청구량으로 쓰지 않고 전체 실제 경과·계정 토큰·비용은 UNKNOWN으로 둔다.
+- 초기 `docs/DEVELOPMENT_PLAN.md`는 v0.1 이력이며 v1.0 단계 번호의 기준으로 혼용하지 않는다.
 
 ## 제품 기준
 

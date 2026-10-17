@@ -104,20 +104,22 @@ test('optional core verification stays offline, summarizes quality/timing, and r
     await writeFile(path.join(dir, 'scripts', 'evaluate.mjs'), `import {writeFileSync} from 'node:fs'; import path from 'node:path'; if(!process.argv.includes('--suite=core')||!process.argv.includes('--split=all')) throw new Error('Only explicit offline core all is allowed'); const out=process.argv.find(arg=>arg.startsWith('--output-dir=')).slice('--output-dir='.length); writeFileSync(path.join(out,'evaluation-current-all.json'),JSON.stringify(${JSON.stringify(quality)}));\n`);
     const perf = { status: 'PASS', validity: { sourceStable: true, exactlyTenRuns: true, allCandidatesCount1000: true, allOverlaysReady: true }, analyzerP95Milliseconds: 123, overlayReadyP95Milliseconds: 456, measures: Array.from({ length: 10 }, (_, run) => ({ run })) };
     const benchmark = path.join(dir, 'scripts', 'benchmark.mjs');
-    const writeBenchmark = async value => writeFile(benchmark, `import {writeFileSync} from 'node:fs'; import path from 'node:path'; const out=process.argv.find(arg=>arg.startsWith('--output-dir=')).slice('--output-dir='.length); writeFileSync(path.join(out,'performance.json'),JSON.stringify(${JSON.stringify(value)}));\n`);
+    const writeBenchmark = async (value, overrides = {}) => writeFile(benchmark, `import {writeFileSync} from 'node:fs'; import path from 'node:path'; const out=process.argv.find(arg=>arg.startsWith('--output-dir=')).slice('--output-dir='.length); const shape=process.argv.find(arg=>arg.startsWith('--shape='))?.slice('--shape='.length)??'mixed'; const report={...${JSON.stringify(value)},...(${JSON.stringify(overrides)}[shape]??{}),fixture:{shape}}; writeFileSync(path.join(out,shape==='mixed'?'performance.json':'performance-'+shape+'.json'),JSON.stringify(report));\n`);
     await writeBenchmark(perf);
     const invoke = () => spawnSync(process.execPath, [verify, '--with-core', '--output-dir=verification'], { cwd: dir, encoding: 'utf8', timeout: 30_000 });
     const passed = invoke();
     expect(passed.status, passed.stderr).toBe(0);
     let report = JSON.parse(await readFile(path.join(dir, 'verification', 'local-verification.json'), 'utf8'));
     expect(report.requestedChecksStatus).toBe('PASS');
-    expect(report.stages.map(stage => stage.name)).toEqual(['typecheck', 'build', 'playwright', 'core-evaluation', 'performance']);
+    expect(report.stages.map(stage => stage.name)).toEqual(['typecheck', 'build', 'playwright', 'core-evaluation', 'performance', 'performance-flat', 'performance-table']);
     expect(report.coreQuality.summary).toMatchObject({ pages: 15, correct: 60, recommended: 60, matched: 45, expected: 45, tasksRecommended: 15, precision: 1, recall: 1 });
     expect(report.coreQuality.evaluationPhase).toBe('post-holdout-development');
     expect(report.excluded).toContain('fresh blind evaluation');
     expect(report.excluded).toContain('live public-site observations and task completion');
     expect(report.performance.analyzerP95Milliseconds).toBe(123);
     expect(report.performance.overlayReadyP95Milliseconds).toBe(456);
+    expect(report.structuralPerformance.status).toBe('PASS');
+    expect(report.structuralPerformance.shapes.map(row => row.shape)).toEqual(['flat', 'table']);
     await writeBenchmark({ ...perf, overlayReadyP95Milliseconds: 1001 });
     const failed = invoke();
     expect(failed.status).not.toBe(0);
@@ -126,5 +128,12 @@ test('optional core verification stays offline, summarizes quality/timing, and r
     expect(report.requestedChecksStatus).toBe('FAIL');
     expect(report.coreQuality.status).toBe('PASS');
     expect(report.performance.status).toBe('FAIL');
+    await writeBenchmark(perf, { table: { analyzerP95Milliseconds: 301 } });
+    const tableFailure = invoke();
+    expect(tableFailure.status).not.toBe(0);
+    report = JSON.parse(await readFile(path.join(dir, 'verification', 'local-verification.json'), 'utf8'));
+    expect(report.performance.status).toBe('PASS');
+    expect(report.structuralPerformance.status).toBe('FAIL');
+    expect(report.structuralPerformance.shapes.find(row => row.shape === 'table').status).toBe('FAIL');
   } finally { await rm(dir, { recursive: true, force: true }); }
 });

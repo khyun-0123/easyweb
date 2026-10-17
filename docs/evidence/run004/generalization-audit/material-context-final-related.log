@@ -1,0 +1,43 @@
+
+Running 35 tests using 1 worker
+
+(node:73027) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/35] tests/generic-controls.spec.mjs:16:1 › 검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다
+[2/35] tests/generic-controls.spec.mjs:23:1 › 신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다
+[3/35] tests/generic-controls.spec.mjs:29:1 › 정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다
+[4/35] tests/generic-controls.spec.mjs:35:1 › 고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다
+[5/35] tests/generic-controls.spec.mjs:41:1 › 도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다
+[6/35] tests/generic-controls.spec.mjs:48:1 › 같은 전체 이름도 카드 제목 분할이 바뀌면 이전 근거를 무효화한다
+[7/35] tests/generic-controls.spec.mjs:53:1 › 보조 근거는 위험 URL·스크립트·폼 제출·기사·편집 제어를 허용하지 않는다
+[8/35] tests/generic-controls.spec.mjs:58:1 › 패널 동료 근거와 그룹 링크 구조가 사라지면 이전 읽기 후보는 무효다
+[9/35] tests/generic-controls.spec.mjs:64:1 › 구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다
+[10/35] tests/generic-controls.spec.mjs:71:1 › 서식 표의 제목·첨부 열 밖에 있는 불투명 기관 링크는 신청으로 보완하지 않는다
+[11/35] tests/generic-controls.spec.mjs:77:1 › 배치 문맥 cache는 다음 검사에 재사용하지 않고 제목 변화를 즉시 감지한다
+[12/35] tests/generic-controls.spec.mjs:83:1 › 부모가 없는 documentElement 역할 제어도 보조 분석에서 예외를 내지 않는다
+[13/35] tests/generic-controls.spec.mjs:89:1 › 목적 없는 페이지도 분석과 배치 현재성마다 전체 목적 검사는 한 번만 수행한다
+[14/35] tests/material-context.spec.mjs:33:1 › 동명 자료 카드의 관련 제목과 실제 접근성 이름·표시 원본 매핑을 구분한다
+[15/35] tests/material-context.spec.mjs:63:1 › 관련 제목이 바뀌면 자료 버튼 이름이 같아도 snapshot과 즉시 실행을 무효화한다
+[16/35] tests/material-context.spec.mjs:72:1 › 관련 항목은 고정 제목만 사용하고 자식 편집 내용·입력값을 후보와 UI에 넣지 않는다
+[17/35] tests/menu-flow-evaluation.spec.mjs:18:1 › 추가 화면의 실제 표시 경로를 세되 첫 화면 재현율과 합치지 않는다
+[18/35] tests/menu-flow-evaluation.spec.mjs:43:1 › 같은 이름·목적지로 원본을 하나로 식별할 수 없으면 표시 정답을 만들어 세지 않는다
+[19/35] tests/more-menus.spec.mjs:29:1 › 같은 분류의 실제 메뉴 8개를 첫 추천 유지·한 화면 6개 이하로 모두 찾아갈 수 있다
+[20/35] tests/more-menus.spec.mjs:47:1 › 마지막 화면·이전 화면은 안정적이고 새 메뉴는 다시 찾기에서만 추가되며 첫 화면으로 돌아온다
+[21/35] tests/more-menus.spec.mjs:74:1 › 화면 사이 중복 목적지는 제거하고 서로 다른 원본 버튼과 외부·새창 메타데이터를 보존한다
+[22/35] tests/more-menus.spec.mjs:99:3 › 다음 화면의 숨은 원본이 removed 상태면 넘어가지 않고 다시 찾기에서만 안전하게 갱신한다
+[23/35] tests/more-menus.spec.mjs:99:3 › 다음 화면의 숨은 원본이 dangerous-href 상태면 넘어가지 않고 다시 찾기에서만 안전하게 갱신한다
+[24/35] tests/more-menus.spec.mjs:99:3 › 다음 화면의 숨은 원본이 editable-parent 상태면 넘어가지 않고 다시 찾기에서만 안전하게 갱신한다
+[25/35] tests/more-menus.spec.mjs:126:1 › 이전 화면의 바뀐 후보와 같은 프레임에서 바뀐 현재 후보도 전환 직전에 차단한다
+[26/35] tests/more-menus.spec.mjs:147:1 › 페이지 전환은 첫 카드 초점·상태를 갱신하고 키보드 순환·Esc 원본 복귀를 유지한다
+[27/35] tests/more-menus.spec.mjs:166:1 › 1000개 후보에서도 주기 감시는 현재 화면만 확인하고 숨은 입력 내용을 읽지 않는다
+[28/35] tests/more-menus.spec.mjs:188:1 › 초과 메뉴가 없으면 숨은 페이지 버튼이 키보드 순환에 끼어들지 않는다
+[29/35] tests/more-menus.spec.mjs:200:1 › 남은 후보 순회는 같은 locate 요소를 중복하지 않고 원래 후보 객체·액션을 그대로 보존한다
+[30/35] tests/privacy.spec.mjs:10:1 › 편집 제어와 이를 포함하는 메뉴·label에서 입력 내용을 읽지 않는다
+[31/35] tests/privacy.spec.mjs:44:1 › 실제 키보드로 바뀐 spinbutton·slider 값은 부모 링크·접근성 이름·주변 제목에서 제외한다
+[32/35] tests/privacy.spec.mjs:103:1 › aria-label·연결 label·search role로 일반 검색창을 찾되 일반 개인정보 필드는 제외
+[33/35] tests/privacy.spec.mjs:117:1 › 쉬운 화면에도 사용자 정의 검색창의 입력 문구가 나타나지 않는다
+[34/35] tests/privacy.spec.mjs:125:1 › 일반 제어의 고정 문구와 접근성 이름을 보조 title보다 우선한다
+[35/35] tests/privacy.spec.mjs:134:1 › 작은 기능 상자의 짧은 문맥을 읽을 때 편집 내용을 건너뛴다
+  35 passed (5.5s)

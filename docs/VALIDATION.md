@@ -1,6 +1,42 @@
 # EasyWeb 검증 기록
 
-## 현재 v0.4.0 · RUN-003
+## RUN-004 · v0.5.0 / 독립 품질 FAIL
+
+2026-10-18 (한국 시간). [전체 보고서](RUN_004_REPORT.md) · [진행표](PROGRESS.md)
+
+**완료 5/10, S07 품질 인수 FAIL.** 같은 동결 엔진의 v7-v2 첫 결과는 정확 6/12·재현 4/15·과제 제어 추천 1/5로 모든 사이트가 미달했다. 이후 독립 감사가 accepted action 충돌 6건·expected 3건·SMU 과제 영향을 확인했다. 원본 점수는 그 주석 오류를 포함하며 보정 점수는 미산정이다. 최초 점수·FAIL을 보존하고 정정·재계산·재평가는 하지 않았다. 단계 수는 공수 비율이 아니다.
+
+| 항목 | 결과와 범위 |
+| --- | --- |
+| 소스 동결 | [14개 파일·아카이브](evidence/run004/v0.5-engine-freeze.json), UTC 17:53:53.116468/02:53:53 KST. root/구현자는 그 전에 v7 본문 미열람. 첫 평가 후 소스 변경·재실행 없음 |
+| v6 category v1 | category 5필드만 정정. 그 외 의미 차이 0·fixture 5/5 바이트 동일·원본 11파일 유지. [버전](../evaluation/development-v6-corrected/VERSION.json) · [검증](evidence/run004/v6-correction-validation.json) |
+| v6 fixture v2 | v1 category 유지. city 3행에 빈 td 9개·fixture 경로 1곳만 복원해 실제 5열·제목 index 1·첨부 index 3 일치. 기존 제어·정답·과제, 원본 11파일·v1 전체 11파일 유지. [버전](../evaluation/development-v6-corrected-v2/VERSION.json) · [검증](evidence/run004/v6-fixture-fidelity-validation.json) |
+| 타입·빌드·로컬 | **189/189 PASS**, 실패·flaky·skipped 0. 범용 13개·caption 3개·manual 옵션 1개 회귀 추가. 옵션 검사는 사람 시험이 아님. [기록](evidence/run004/local-verification.json) |
+| core 개발 회귀 | 정확 **69/69**·재현 **45/45**·과제 추천 **15/15**. [노출 자료의 결과](evidence/run004/core-regression/evaluation-current-all.json) |
+| 자동 접근성 | **21조건**, 오류·위반·incomplete·넘침·타깃·대비 미달 0. 실제 VoiceOver 발화·브라우저 확대·전체 적합성 판정과 별개 |
+| 합성 성능 | 각 10샘플·총 30. p95 분석/준비 mixed 1,000제어 **27.5/57.8ms**, flat 1,000제어 **39.6/78.4ms**, table 500행×2제어 **89.6/146.4ms**. 300/1,000ms 기준 PASS. 실제 로딩/native 제외 |
+| 도구 첫 실패 | root 184/185의 mock 1개 실패는 가짜 benchmark fixture의 새 shape 파일 누락. [원본](evidence/run004/first-integration-tool-mock-failure/) 보존·수정 후 target PASS·최종 189/189 |
+| 개발 재평가 | [요약](evidence/run004/final-development/summary.json): raw v6 **21/22·11/15**, category v1 **22/22·12/15**, fixture v2 **24/24·14/15·5/5**. 모두 FAIL이며 v2는 city **2/3(66.7%)**가 사이트 75% 기준 미달 |
+| v6 추가 메뉴 표시 | 정확 **41/41**·재현 **15/15**·과제 추천 **5/5**, unresolved/repeated 0. caption으로 동명 자료 3개 구별. 첫 화면 판정·초기 순서·label/href/action 유지 |
+| 다른 개발 자료 | v5 첫 화면 **16/17·8/15 FAIL**, 추가 메뉴 **26/27·14/15**. core·v2·v3·정정 v4 개발 PASS. 과거 독립 첫 실패를 대체하지 않음 |
+| v7 복원 판단 | 구 감사는 category/action 오류 0·좁은 fixed-control 평가 허용 가능으로 보았음. root는 32/32 조상 평탄화·heading/form 변환을 S07 일반화 증거로 약하다고 판단해 [v2 재구성](evidence/run004/v7-fidelity-decision.json) 선택. 감사자의 필수 승인 요구가 아님 |
+| v7-v2 복원 범위 | 같은 5페이지·15기대·32accepted. 조상 342항목·순서 32/32·HTTP 16/16·AX role/target 32/32·AX name 정확 29/32, 공백 제외 32/32. [자료 동결](evidence/run004/blind-v7-v2-freeze.json) SHA256 `c0a385e0…`. 전체 사이트/설치 입증은 아님 |
+| v7-v2 최초 평가 | [첫 결과](evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json): **정확 6/12(50%)·재현 4/15(26.7%)·과제 추천 1/5**, 모든 5사이트 FAIL. 03:02:06 KST 종료·exit 1·sourceFreezeMatched=true |
+| v7-v2 추가 메뉴 | **6/12·4/15·1/5**, unresolvedMappings 1·repeatedCards 0. 첫 화면과 별도이며 품질 미달을 해소하지 못함 |
+| v2 action 독립 감사 | [감사](evidence/run004/v7-v2-action-audit.json)·[root 검토](evidence/run004/v7-v2-action-root-review.json): city 예약 안내 1건 navigate→locate, SMU 다른 문서 fragment 5건 locate→navigate. expected 3건·SMU 과제 영향. 별도 개발 정정 후보 승인만 했고 데이터/점수/평가 미변경. 로그인 2건은 계약 모호성 |
+| 자료 수·관찰 경계 | 알려진 **45페이지** = 기존 40+새 5. 원본 v7 실행 0회, v2가 같은 5페이지의 최초 평가이며 두 버전을 10페이지로 세지 않음. [관찰자 교체 사건](evidence/run004/v7-observer-boundary-incident.json) 보존 |
+| 실제 공개 과제 | 같은 동결 소스로 **15/15 PASS**, HTTP 9·원본 안내 6·재시도/관찰 오류 0. [기록](evidence/run004/tasks-live-final.json). 인증/신청 업무 완료나 사람 실증이 아님 |
+| 후보 ZIP | [v0.5.0 ZIP](../output/run004/EasyWeb-0.5.0-candidate.zip), **275,816bytes**, SHA256 `aa94ee22…`. 두 빌드/ZIP 동일·sourceStable·현재 14파일 동결 일치. 개발 후보 |
+| 산출물 검토 | [PASS](evidence/run004/final-review.json), 해시 불일치·깨진 로컬 링크 0, ZIP 5entry 바이트 일치·RUN-002/003 보존. 최종 개수는 해당 JSON 기준 |
+| 수동 확인실 | [3경로](evidence/run004/manual-fixture-final.json)의 HTTP 200·바이트 일치만 확인. 실제 사람 시험 0 |
+| native·사용자 | 컴퓨터 유즈 0. 실제 설치·VoiceOver 발화·브라우저 200/400% 확대 미검증. 정식 실증 0·1인 시험 0 |
+| 시간·토큰 | [계측](evidence/run004/goal-usage-snapshot.json): 02:39:51→03:05:48 KST, **1,557초(25분 57초)**의 기술 검증·정적 감사 관찰 경계. 전체 시작/경과가 아니며 이후 문서 마감·commit 제외. 누적 counter 5,504,237/7,266초와 이전 대비 1,243,365/1,691초 차분은 이번 고유/생성/청구량 아님. 계정 토큰·비용 UNKNOWN |
+
+정정본은 `ADJUDICATED_DEVELOPMENT`이며 최초 실패를 대체하지 않는다. 첫 화면과 추가 메뉴, 개발 재평가와 독립 첫 평가, 헤드리스 관찰과 사람의 실제 성공을 구별한다. 구 v7 오류 0 감사는 구 fixture 대상이다. v2의 같은 문서 fragment인 smu-second는 locate이며 about:blank parity와 실제 URL의 평가 문맥을 혼동하지 않는다. [정적 원인 진단](evidence/run004/v7-failure-diagnosis.md)은 분류 전 trace가 아닌 코드 경로 추론이다. 첫 6개 제한보다 범용 카드·탭·제목 연결과 action 계약을 먼저 다룬다. unresolved 1건은 accepted에 없는 실제 검색 입력의 매핑이며 입력값 유출 증거가 아니다. 문서 담당자는 제품 검사나 소스 변경을 실행하지 않았다.
+
+아래는 각 과거 버전의 기록이다. 현재 인수 판정과 혼용하지 않는다.
+
+## v0.4.0 · RUN-003 이력
 
 2026-10-18 (한국 시간). [전체 보고서](RUN_003_REPORT.md) · [진행표](PROGRESS.md) · 최종 소스 동결 02:34:37 KST
 
@@ -20,7 +56,7 @@
 | 후보 패키지 | 최종v0.4 ZIP SHA256 `feac9d08…`,239945bytes·두빌드/ZIP동일·소스안정·원래Manifest일치. [보고서](../output/run003/EasyWeb-0.4.0-candidate.json). DEVELOPMENT_CANDIDATE이며 전체 인수 미통과 |
 | 시간·토큰 | RUN-003시작별도계측없어경과UNKNOWN. 목표도구누적4,260,872tokensUsed/5,575초는이전작업포함·이번묶음별도사용량아님. 입력/출력/캐시/청구토큰·금액UNKNOWN. [집계범위](evidence/run003/goal-usage-snapshot.json) |
 
-추가 메뉴는 첫 화면 밖 후보로 가는 경로다. 첫 화면 품질을 추가 메뉴 합집합으로 바꾸거나, 알고 있는40페이지 재평가를 새 독립 검증으로 표시하지 않는다. `npm run verify` PASS도 S06~S10 전체 인수 통과가 아니다. [최종 인수 판정5/10·NOT_MET](evidence/run003/release-gate.json)
+추가 메뉴는 첫 화면 밖 후보로 가는 경로다. 첫 화면 품질을 추가 메뉴 합집합으로 바꾸거나, RUN-003 당시 알고 있던 40페이지 재평가를 새 독립 검증으로 표시하지 않는다. `npm run verify` PASS도 S06~S10 전체 인수 통과가 아니다. [RUN-003 당시 인수 판정 5/10·NOT_MET](evidence/run003/release-gate.json)
 
 초기 전체169개 중4건의 접근성 검사 실패는 숨긴 이전 메뉴도 AX에 나와야 한다는 검사 오류였다. 실제 숨김 제어가 AX에서 제외되는지를 확인하도록 고친 후170개가 통과했고, 실제 공유 제어 회귀를 추가한 최종172개도 통과했다. 별도 평가 프로토콜5/5도 통과했다. [최초 실패 보존](evidence/run003/verify-first-integration-failure/local-verification.json)
 
@@ -144,3 +180,7 @@
 기존 11개 테스트는 재실행 시에도 통과했습니다. 다만 일반 HTML input의 `value` 비수집 테스트만으로 모든 입력 제어의 비수집이 입증되지는 않습니다. 가상 DOM에서 `contenteditable[role=searchbox]`의 입력 내용이 후보 문구로 읽히는 결함을 재현했습니다. 별도 서버 전송은 확인된 현상이 아니며, 입력 내용의 읽힘 자체를 우선 수정할 예정입니다.
 
 같은 재현에서 placeholder 없이 aria-label만 있는 일반 텍스트 검색창의 누락, URL 단독 분류의 미채택을 확인했습니다. [재현 결과](evidence/planning-baseline.json)와 [작업명세서](WORK_SPEC.md)에 우선순위·인수 조건을 기록했습니다. 당시 계획 작성에서는 제품 소스 코드를 수정하지 않았습니다. 이 결함은 이후 RUN-001에서 수정했습니다.
+
+## 현재 판정으로 돌아가기
+
+최신 상태는 [RUN-004 인수 판정](evidence/run004/release-gate.json), [보고서](RUN_004_REPORT.md), [진행표](PROGRESS.md)를 따른다. 알려진 자료는 45페이지이며 완료 5/10이다. v7-v2 첫 점수·FAIL은 action 주석 충돌 6건의 영향을 포함한 원본 기록으로 보존하며 보정 점수는 미산정이다. 기술 검증·정적 감사 관찰 경계는 25분 57초이고 전체 경과·계정 토큰·비용은 UNKNOWN이다.

@@ -26,6 +26,8 @@ export interface Candidate {
   pagePurpose?: PagePurpose;
   pageTask?: 'control' | 'collection' | 'reading';
   collectionDependent?: boolean;
+  supplementalDependent?: boolean;
+  relatedLabel?: string;
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

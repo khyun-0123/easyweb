@@ -195,6 +195,9 @@ export function openEasyMode(host: HTMLElement): () => void {
     const titleNode = el('span', 'card-title', cardTitle);
     const sourceNode = el('span', 'card-source', `찾은 메뉴 · ${candidate.label}`);
     item.append(image, titleNode, el('span', 'card-description', info.description), sourceNode);
+    if (candidate.relatedLabel && candidate.relatedLabel !== candidate.label) {
+      item.append(el('span', 'card-context card-source', `관련 항목 · ${candidate.relatedLabel}`));
+    }
     if (candidate.destinationHost && candidate.destinationHost !== location.hostname) {
       const destination = el('span', 'card-source', `연결된 사이트 · ${candidate.destinationHost}`);
       item.append(destination);

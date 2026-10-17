@@ -1,0 +1,116 @@
+
+Running 108 tests using 1 worker
+
+(node:69722) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/108] tests/analyzer-context.spec.mjs:14:1 › 가까운 제목과 상위 제목을 함께 수집하고 사용자 입력·문서 title은 읽지 않는다
+[2/108] tests/analyzer-context.spec.mjs:23:1 › 전역 FAQ 링크는 본문의 목적이 아니고 가까운 영역의 로컬 FAQ 목차만 근거가 된다
+[3/108] tests/analyzer-context.spec.mjs:30:1 › href 없는 일정 항목은 학사 페이지의 표·그리드 안에서만 수집한다
+[4/108] tests/analyzer-context.spec.mjs:40:1 › 숨겨진 페이지 표제와 로컬 FAQ는 보이는 기능의 목적 근거로 쓰지 않는다
+[5/108] tests/analyzer-context.spec.mjs:47:1 › 표제·목적 문맥이 바뀌면 기존 카드의 유효성이 사라진다
+[6/108] tests/analyzer-context.spec.mjs:55:1 › 질문 의미 표식과 전역·로컬 메뉴 구조 변화도 기존 후보에서 무효화한다
+[7/108] tests/analyzer-context.spec.mjs:67:1 › 대문자 aria 숨김·비활성을 제외하고 공백 있는 대상 창 이름을 그대로 해석한다
+[8/108] tests/analyzer-context.spec.mjs:75:1 › 현재 메뉴·펼침 상태·하위 메뉴 구조 변화는 추천 우선순위의 이전 근거를 무효화한다
+[9/108] tests/analyzer-context.spec.mjs:87:1 › 중첩된 본문 목록은 앞선 한 겹 표제 문맥만 사용하고 전역 메뉴 제목은 제외한다
+[10/108] tests/analyzer-context.spec.mjs:95:1 › 여러 질문 표식·목록 역할·문서 영역·형제 질문 변경의 이전 의미를 무효화한다
+[11/108] tests/analyzer-context.spec.mjs:115:1 › 서식 읽기의 표 행·순서 있는 절차 목록 근거가 사라지면 이전 후보를 막는다
+[12/108] tests/analyzer-context.spec.mjs:124:1 › 고정 제목과 검색 placeholder를 함께 판단하되 값은 읽지 않고 변경 뒤 무효화한다
+[13/108] tests/analyzer-context.spec.mjs:134:1 › 질문·답변 목록의 제어 title과 정의 목록 의미 변경도 실행 전에 막는다
+[14/108] tests/analyzer-context.spec.mjs:150:1 › 정보 패널 버튼이 폼 제출 제어로 연결되면 이전 카드의 의미를 무효화한다
+[15/108] tests/analyzer-context.spec.mjs:159:1 › 다른 의미 영역의 국소 제목은 넘어오지 않고 공통 페이지 제목은 보존한다
+[16/108] tests/analyzer-context.spec.mjs:166:1 › h4부터 h6과 heading 역할의 안전한 제목도 문맥으로 사용한다
+[17/108] tests/analyzer-context.spec.mjs:175:1 › 낮은 표제와 heading 역할의 페이지 목적도 고정 제목으로만 확인한다
+[18/108] tests/analyzer-context.spec.mjs:184:1 › 원본 제어가 다른 의미 영역으로 이동하면 이전 제목 문맥을 무효화한다
+[19/108] tests/analyzer-context.spec.mjs:192:1 › 동료 정보 개념과 목록의 보이는 항목 수 변경은 원래 주제 후보를 무효화한다
+[20/108] tests/analyzer-context.spec.mjs:205:1 › 목록 역할·탭 대상 존재·원본 폼 영역이 바뀌면 주제 제어의 근거를 무효화한다
+[21/108] tests/analyzer-context.spec.mjs:221:1 › 동료의 편집 텍스트는 정보 개념·목록 후보·snapshot으로 읽지 않는다
+[22/108] tests/classifier-ranking.spec.mjs:47:1 › 강한 메뉴 URL은 단독 근거가 되며 문구 근거를 우선한다
+[23/108] tests/classifier-ranking.spec.mjs:60:1 › 더보기는 짧고 명확한 주변 기능 제목으로만 보완하며 기사·하단·모순은 제외한다
+[24/108] tests/classifier-ranking.spec.mjs:78:1 › 모호한 문구·부분 문자열·기사 URL을 기능으로 부풀리지 않는다
+[25/108] tests/classifier-ranking.spec.mjs:93:1 › 한국어·영어·유니코드 정규화와 범용 의미를 지원한다
+[26/108] tests/classifier-ranking.spec.mjs:105:1 › FAQ·검색 사용법·도움말 다운로드·민원실 안내와 새소식을 구별한다
+[27/108] tests/classifier-ranking.spec.mjs:117:1 › 소식알림·상담 운영은 일반적인 공지·도움 기능이며 모집 기사는 승격하지 않는다
+[28/108] tests/classifier-ranking.spec.mjs:129:1 › 공고·고시 목록과 뷰어 설치 제어는 찾되 글 제목의 공고만으로 기능을 만들지 않는다
+[29/108] tests/classifier-ranking.spec.mjs:142:1 › 전자책 읽기는 FAQ 목적지 근거가 있어야 도움말이며 임의 도서는 승격하지 않는다
+[30/108] tests/classifier-ranking.spec.mjs:158:1 › 명확한 상위 Q&A 문맥과 홈페이지 바로가기 동작을 함께 요구한다
+[31/108] tests/classifier-ranking.spec.mjs:171:1 › FAQ 페이지의 명시적 질문 표시는 읽기 기능이고 기사·일반 문답 표기는 기능이 아니다
+[32/108] tests/classifier-ranking.spec.mjs:183:1 › 별개 항목의 안전하고 보이는 질문 표시 두 개는 FAQ 문맥이며 숨김·유사표시·편집·기사·단일항목은 아니다
+[33/108] tests/classifier-ranking.spec.mjs:196:1 › 학사일정 페이지 목적은 일정 보기 모드를 설명하지만 임의 보기·기사에는 전파하지 않는다
+[34/108] tests/classifier-ranking.spec.mjs:208:1 › 학사일정 표의 원본 행사만 읽기로 안내하고 일반 표·링크·위험 행사는 제외한다
+[35/108] tests/classifier-ranking.spec.mjs:223:1 › 새 문맥·읽기 정책의 부정 사례는 이전 엔진과 동일하게 후보를 만들지 않는다
+[36/108] tests/classifier-ranking.spec.mjs:241:1 › 정확한 하단 도움말 일반 링크는 낮은 순위로 남기고 모호한 문구·동작은 제외한다
+[37/108] tests/classifier-ranking.spec.mjs:255:1 › 안전한 FAQ 제목은 바로가기 원본 제어를 설명하지만 일반 설명문은 기능을 만들지 않는다
+[38/108] tests/classifier-ranking.spec.mjs:265:1 › 문의는 실제 질문 목적만 인식하고 방문의 해·방문의날·영문의 해설은 제외한다
+[39/108] tests/classifier-ranking.spec.mjs:273:1 › 안전한 이름의 text·기본 입력 검색창은 submit보다 의미 근거가 높고 입력값을 읽지 않는다
+[40/108] tests/classifier-ranking.spec.mjs:287:1 › Q&A·뷰어프로그램 안내·기계식 검색 팁 이름을 도움말로 읽고 실제 입력 의미는 보존한다
+[41/108] tests/classifier-ranking.spec.mjs:299:1 › 학사 분야와 신청 목적이 동점이면 명시적 신청을 우선하며 조회·도움말은 보존한다
+[42/108] tests/classifier-ranking.spec.mjs:305:1 › 조회순·검색순 같은 정렬 기준을 업무 조회로 오인하지 않고 실제 조회는 보존한다
+[43/108] tests/classifier-ranking.spec.mjs:313:1 › 연락처·조직 전화번호 기능은 도움말이며 단어가 섞인 설명문과 기사는 아니다
+[44/108] tests/classifier-ranking.spec.mjs:324:1 › 이용·운영·개관 시간 안내는 도움말이며 시간 주제의 발표·기사는 아니다
+[45/108] tests/classifier-ranking.spec.mjs:336:1 › 서식 목록·발급 절차의 명시적 문서만 신청 준비 읽기로 분류하며 일반 다운로드·기사는 아니다
+[46/108] tests/classifier-ranking.spec.mjs:352:1 › 납부 정보는 학사 문맥·일반 링크·안내 목적이 모두 필요하며 실제 결제·위험 URL 예외는 없다
+[47/108] tests/classifier-ranking.spec.mjs:373:1 › 안내 예외도 대소문자·인코딩·중복 명령의 위험값과 submit을 막고 일반 검색값은 분류에 쓰지 않는다
+[48/108] tests/classifier-ranking.spec.mjs:381:1 › 발급·재발급 기능명 문법은 신청 경로이며 발급 주제의 연구·기사는 아니다
+[49/108] tests/classifier-ranking.spec.mjs:392:1 › 짧은 안내 링크는 구체 분류 뒤의 도움말 fallback이며 문서·기사·알려진 모순 URL은 아니다
+[50/108] tests/classifier-ranking.spec.mjs:408:1 › 약한 안내명 fallback은 명확한 상담 운영 기능을 여섯 카드 밖으로 밀어내지 않는다
+[51/108] tests/classifier-ranking.spec.mjs:422:1 › 본문의 명확한 부서·상담 운영 기능은 전역 검색 중복보다 먼저 두 경로를 보존한다
+[52/108] tests/classifier-ranking.spec.mjs:438:1 › 학사 제목 아래 목록의 교육 개념·지침은 읽기이며 신청·FAQ 의도와 기사는 별개다
+[53/108] tests/classifier-ranking.spec.mjs:449:1 › 명확한 FAQ 제목과 표·목록의 질문형 문장은 abbr 없이도 질문 읽기다
+[54/108] tests/classifier-ranking.spec.mjs:459:1 › 정의 목록의 답변 열기 표시는 질문 읽기이며 marker 없는 dt·일반 버튼·기사는 아니다
+[55/108] tests/classifier-ranking.spec.mjs:464:1 › 기관 지사·센터 목록은 도움말이며 안전한 placeholder 검색 입력은 검색 의미가 우선한다
+[56/108] tests/classifier-ranking.spec.mjs:476:1 › 명시적 문서 다운로드는 확장자를 의미 판정에서만 빼고 발급·사용안내·법령 읽기를 구별한다
+[57/108] tests/classifier-ranking.spec.mjs:492:1 › 안내 문맥의 접이식 정보 패널은 도움말이며 실제 신청·삭제·폼 제출과 문맥 없는 토글은 아니다
+[58/108] tests/classifier-ranking.spec.mjs:505:1 › 채용·입찰·모집 공고 목록의 글은 신청 주제여도 공지 읽기이며 기사 표는 아니다
+[59/108] tests/classifier-ranking.spec.mjs:515:1 › 학생 지원·학교생활 제목의 짧은 지역 목적지는 학사 읽기이며 임의 본문·기사·신청은 구별한다
+[60/108] tests/classifier-ranking.spec.mjs:528:1 › 공지 제목의 일반 동의어를 허용하되 장식된 더보기에는 endpoint 확인을 유지한다
+[61/108] tests/classifier-ranking.spec.mjs:539:1 › 알려진 공지 문서는 읽기 대상으로 분류하고 제목의 학사·등록금을 업무로 오인하지 않는다
+[62/108] tests/classifier-ranking.spec.mjs:552:1 › 명확한 공지 제목과 목록 구조는 불투명한 문서 URL을 보완하며 실제 액션을 보존한다
+[63/108] tests/classifier-ranking.spec.mjs:564:1 › 위험 문구와 위험 URL·명령 쿼리를 모두 거절하고 잘못된 URL에 견딘다
+[64/108] tests/classifier-ranking.spec.mjs:579:1 › 하단은 문구와 강한 URL이 함께 있어야 보조 후보가 된다
+[65/108] tests/classifier-ranking.spec.mjs:590:1 › 목적지 중복은 분류와 독립적으로 제거하고 주요 메뉴를 남긴다
+[66/108] tests/classifier-ranking.spec.mjs:601:1 › 분류 다양성을 먼저 확보하고 같은 분류의 별개 중요 기능도 보존한다
+[67/108] tests/classifier-ranking.spec.mjs:616:1 › 업무가 집중된 페이지에서도 세 가지 별개 도움 기능을 보존하되 전체는 여섯 개 이하다
+[68/108] tests/classifier-ranking.spec.mjs:628:1 › 전역 여섯 분류가 있어도 현재 학사일정의 보기 두 모드와 행사를 먼저 보존한다
+[69/108] tests/classifier-ranking.spec.mjs:641:1 › 같은 분류의 지역 목차는 전역 메뉴보다 우선하고 단순 본문 문구는 예약 슬롯이 아니다
+[70/108] tests/classifier-ranking.spec.mjs:652:1 › 지역 목차의 별개 leaf 목적지는 현재 페이지 재진입·상위 그룹 토글보다 우선한다
+[71/108] tests/classifier-ranking.spec.mjs:666:1 › 같은 공지 목록의 읽기 순서는 제목 철자보다 우선하며 무관한 DOM·입력배열 변화는 무관하다
+[72/108] tests/classifier-ranking.spec.mjs:677:1 › 여러 읽기 목록을 섞어도 비교 순환 없이 모든 입력 순열에서 같은 결과를 낸다
+[73/108] tests/classifier-ranking.spec.mjs:689:1 › 동작형 중복은 원본 요소를 기준으로 하고 같은 문구의 별개 제어는 합치지 않는다
+[74/108] tests/classifier-ranking.spec.mjs:698:1 › 정규화된 같은 URL만 합치며 쿼리·앵커가 다른 목적지와 위치 안내는 보존한다
+[75/108] tests/classifier-ranking.spec.mjs:713:1 › 동점 순서는 관계없는 DOM 순서와 입력 배열 순서에 흔들리지 않는다
+[76/108] tests/classifier-ranking.spec.mjs:725:1 › 구조가 달라져도 식별 가능한 같은 이름 제어의 동점 순서는 유지한다
+[77/108] tests/classifier-ranking.spec.mjs:736:1 › 명확한 본문 신청과 예약은 전역 메뉴가 많아도 현재 페이지 제어로 보존한다
+[78/108] tests/classifier-ranking.spec.mjs:759:1 › 신청을 언급하는 안내나 제출 제어까지 본문 예약 슬롯으로 올리지 않는다
+[79/108] tests/classifier-ranking.spec.mjs:772:1 › article의 서비스는 고정 기능 문구와 완전한 같은 기능 경로가 모두 필요하다
+[80/108] tests/classifier-ranking.spec.mjs:790:1 › 이웃 section의 공지 제목은 실제 예약 링크의 분류와 예약 슬롯을 바꾸지 않는다
+[81/108] tests/classifier-ranking.spec.mjs:797:1 › 같은 공고 목록은 h2부터 h6과 heading 역할의 표제에서 같은 범주를 유지한다
+[82/108] tests/classifier-ranking.spec.mjs:817:1 › 문맥으로 보완한 일반 로컬 목차가 구체적인 신청안내 경로를 예약 슬롯에서 밀어내지 않는다
+[83/108] tests/classifier-ranking.spec.mjs:825:1 › 안내 제목 아래의 공유·인쇄·확대 도구는 내용 패널로 추천하지 않는다
+[84/108] tests/classifier-ranking.spec.mjs:830:1 › 명시적인 발급 시스템 제목과 실제 목록은 고유 이름의 서비스 진입을 설명한다
+[85/108] tests/classifier-ranking.spec.mjs:837:1 › 발급 문맥 보완은 다른 기능·문서·전역 메뉴·폼·기사·위험 동작을 덮지 않는다
+[86/108] tests/classifier-ranking.spec.mjs:846:1 › 행동요령의 짧은 원본 주제 목록은 도움말 읽기이며 JS와 fragment를 그대로 보존한다
+[87/108] tests/classifier-ranking.spec.mjs:852:1 › camelCase의 일반 행동요령·instructions 경로는 실제 주제 목록의 목적만 보완한다
+[88/108] tests/classifier-ranking.spec.mjs:861:1 › 주제 탭과 동료의 명시적 정보 개념은 일반 페이지의 정보 목록을 설명한다
+[89/108] tests/classifier-ranking.spec.mjs:868:1 › 정보 목록 보완에는 명시적 문맥과 실제 구조가 필요하며 다른 강한 기능은 우선한다
+[90/108] tests/generic-controls.spec.mjs:16:1 › 검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다
+[91/108] tests/generic-controls.spec.mjs:23:1 › 신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다
+[92/108] tests/generic-controls.spec.mjs:29:1 › 정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다
+[93/108] tests/generic-controls.spec.mjs:35:1 › 고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다
+[94/108] tests/generic-controls.spec.mjs:41:1 › 도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다
+[95/108] tests/generic-controls.spec.mjs:48:1 › 같은 전체 이름도 카드 제목 분할이 바뀌면 이전 근거를 무효화한다
+[96/108] tests/generic-controls.spec.mjs:53:1 › 보조 근거는 위험 URL·스크립트·폼 제출·기사·편집 제어를 허용하지 않는다
+[97/108] tests/generic-controls.spec.mjs:58:1 › 패널 동료 근거와 그룹 링크 구조가 사라지면 이전 읽기 후보는 무효다
+[98/108] tests/generic-controls.spec.mjs:64:1 › 구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다
+[99/108] tests/generic-controls.spec.mjs:71:1 › 서식 표의 제목·첨부 열 밖에 있는 불투명 기관 링크는 신청으로 보완하지 않는다
+[100/108] tests/information-topics.spec.mjs:15:1 › 독립된 두 정보 설명 항목과 원본 주제 제어가 있을 때만 짧은 목록의 의미를 보완한다
+[101/108] tests/information-topics.spec.mjs:22:1 › 정보 명사 한 개나 편집된 동료 텍스트만으로 목록 전체를 도움말로 만들지 않는다
+[102/108] tests/information-topics.spec.mjs:27:1 › 동료의 두 번째 정보 근거가 사라지면 원본 주제의 이전 snapshot을 무효화한다
+[103/108] tests/privacy.spec.mjs:10:1 › 편집 제어와 이를 포함하는 메뉴·label에서 입력 내용을 읽지 않는다
+[104/108] tests/privacy.spec.mjs:44:1 › 실제 키보드로 바뀐 spinbutton·slider 값은 부모 링크·접근성 이름·주변 제목에서 제외한다
+[105/108] tests/privacy.spec.mjs:103:1 › aria-label·연결 label·search role로 일반 검색창을 찾되 일반 개인정보 필드는 제외
+[106/108] tests/privacy.spec.mjs:117:1 › 쉬운 화면에도 사용자 정의 검색창의 입력 문구가 나타나지 않는다
+[107/108] tests/privacy.spec.mjs:125:1 › 일반 제어의 고정 문구와 접근성 이름을 보조 title보다 우선한다
+[108/108] tests/privacy.spec.mjs:134:1 › 작은 기능 상자의 짧은 문맥을 읽을 때 편집 내용을 건너뛴다
+  108 passed (9.7s)

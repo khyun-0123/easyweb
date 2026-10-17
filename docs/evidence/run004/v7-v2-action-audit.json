@@ -1,0 +1,1466 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-17T18:04:51.835380Z",
+  "auditKind": "INDEPENDENT_STATIC_ACTION_CONTRACT_AUDIT_AFTER_FIRST_HOLDOUT",
+  "status": "ANNOTATION_CONFLICTS_AND_LOGIN_POLICY_AMBIGUITY_IDENTIFIED",
+  "scope": {
+    "root": "/Users/khyun_03/easyweb",
+    "pages": 5,
+    "acceptedControls": 32,
+    "expectedGroups": 15,
+    "readProductRecommendations": false,
+    "readEvaluationResults": false,
+    "readOtherDiagnosis": false,
+    "productExecution": false,
+    "networkAccess": false,
+    "visibleUIAutomation": false,
+    "inputDataRead": false,
+    "mutatedDatasetOrProduct": false,
+    "metricsRecomputed": false,
+    "rawFirstResultMustRemainPreserved": true,
+    "note": "This audit predicts the sourceAction branch by reading source and static attributes. It does not claim observed product output or live site behavior. No evaluation metric is changed."
+  },
+  "inputs": [
+    {
+      "path": "docs/ACTION_POLICY.md",
+      "sha256": "0215de46d895f1d36137a434419fc3b4220c3b20e31cf2321115aedb926c86e2",
+      "bytes": 12457
+    },
+    {
+      "path": "src/action-policy.ts",
+      "sha256": "4a0ebea0748b6a88bfd772fb2a5c98d944c3aaac8454f6237e7f706fb9dd51bb",
+      "bytes": 2605
+    },
+    {
+      "path": "docs/evidence/run004/blind-v7-v2-observations.json",
+      "sha256": "17f0b650e85ec368bd12881fef73c2debdec3cb4e4757cf7a82281fe8422eade",
+      "bytes": 412369
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/city.json",
+      "sha256": "f8912e7261ed8dc651a69071a35ffa3b026f370444d0b8c319bcc64adde5503d",
+      "bytes": 5615
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/government.json",
+      "sha256": "84af772d7496152bffec69b1468628d984ddf87c7d582c0d9e58e587b935ff39",
+      "bytes": 5871
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/library.json",
+      "sha256": "62c1611ef8e63281853de6565d6d191469392faae5c0cdba5e078770b58644df",
+      "bytes": 5676
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/public-agency.json",
+      "sha256": "bfa74982c7163d11ce516c083ac8b2045571954742dcec038396890be65e02f9",
+      "bytes": 5697
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/smu.json",
+      "sha256": "888b4fd279e0aeec9ea5602858d172926b9228a175e9f6a15e69920ead11e7ac",
+      "bytes": 5678
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/city.html",
+      "sha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "bytes": 13712
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/government.html",
+      "sha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "bytes": 14193
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/library.html",
+      "sha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "bytes": 14609
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+      "sha256": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+      "bytes": 20817
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/smu.html",
+      "sha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "bytes": 10948
+    }
+  ],
+  "contractEvidence": [
+    {
+      "path": "docs/ACTION_POLICY.md",
+      "lines": [
+        7,
+        13
+      ],
+      "quote": "일반 링크는 바로 이동한다는 사용자 선택",
+      "meaning": "Plain HTTP links are direct navigation; property/delegated handlers are a documented uncertainty."
+    },
+    {
+      "path": "docs/ACTION_POLICY.md",
+      "lines": [
+        19,
+        24
+      ],
+      "quote": "상대 #fragment·동일 문서 absolute fragment",
+      "meaning": "Only local/same-document fragment links receive the fragment locate exception; role button and aria-controls/haspopup independently locate."
+    },
+    {
+      "path": "src/action-policy.ts",
+      "lines": [
+        19,
+        19
+      ],
+      "quote": "[role~=\"button\"], [aria-controls], [aria-haspopup]",
+      "meaning": "Explicit marker rule precedes URL navigation."
+    },
+    {
+      "path": "src/action-policy.ts",
+      "lines": [
+        27,
+        32
+      ],
+      "quote": "url.origin === location.origin && url.pathname === location.pathname && url.search === location.search && !!url.hash",
+      "meaning": "A cross-document fragment fails localFragment, then ordinary reserved/empty target permits navigate."
+    },
+    {
+      "path": "docs/ACTION_POLICY.md",
+      "lines": [
+        11,
+        35
+      ],
+      "quote": "SSO 식별 목록과 파일 확장자 목록은 완전하지 않다.",
+      "meaning": "Authentication wording and limited SSO recognition must be distinguished; plain login-form destinations are not resolved by simply equating category login with locate."
+    }
+  ],
+  "findings": [
+    {
+      "id": "A01",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "confidence": "HIGH",
+      "sourceIds": [
+        "city-reservation-help"
+      ],
+      "annotation": "navigate",
+      "contractualAction": "locate",
+      "evidenceQuotes": [
+        "observation role: \"button\"",
+        "fixture role=\"button\" aria-controls=\"gnb-depth1-q6haupy\" aria-haspopup=\"true\"",
+        "fixture href=\"https://www.cheonan.go.kr/yeyak/sub07_01.do\""
+      ],
+      "reason": "The explicit control markers require locate despite the public HTTP destination. The observation independently records role=button; ARIA attributes are additionally visible in the frozen fixture. This is not evidence of a product defect.",
+      "proposedPostHoldoutOnlyCorrection": "In a separate adjudicated development revision, change this accepted action to locate with rationale. Preserve original v7/v2, freezes and first raw evaluation."
+    },
+    {
+      "id": "A02",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "confidence": "HIGH",
+      "sourceIds": [
+        "smu-advanced",
+        "smu-linked",
+        "smu-micro",
+        "smu-minor",
+        "smu-self"
+      ],
+      "expectedGroupIds": [
+        "smu-v7-linked",
+        "smu-v7-self",
+        "smu-v7-minor"
+      ],
+      "affectedTaskId": "smu-v7-public-task",
+      "annotation": "locate",
+      "contractualAction": "navigate",
+      "evidenceQuotes": [
+        "observed documentURL=\"https://www.smu.ac.kr/kor/life/multiMajor.do\"",
+        "smu-linked href=\"/kor/life/multiMajor2.do#tab18284_\"",
+        "smu-self href=\"/kor/life/multiMajor3.do#tab18285_\"",
+        "smu-minor href=\"/kor/life/minor.do#tab18286_\"",
+        "smu-micro href=\"/kor/life/microMajor.do#tab19085_\"",
+        "smu-advanced href=\"/kor/life/advancedDegree.do#tab18287_\"",
+        "source targetAttribute=\"\"; explicitHandlers=[]; role=null",
+        "site note: \"HTTP 경로의 fragment가 있으므로 모두 locate이다.\""
+      ],
+      "reason": "Each destination has a different pathname. The note applies an any-fragment rule that the action contract does not define. Empty target explicitly means _self. No recorded explicit control marker changes these to locate. Mere appearance as tabs does not establish handler behavior.",
+      "proposedPostHoldoutOnlyCorrection": "Separately version the five accepted actions, three expected actions and the SMU task action/instruction to match cross-document direct navigation; retain smu-second as locate in the real source document. No raw metric should be overwritten."
+    },
+    {
+      "id": "A03",
+      "classification": "LOGIN_CONTRACT_COVERAGE_AMBIGUITY",
+      "confidence": "HIGH_FOR_STATIC_BRANCH;UNRESOLVED_FOR_AUTHENTICATION_BEHAVIOR",
+      "sourceIds": [
+        "city-login",
+        "nps-login"
+      ],
+      "annotation": "locate",
+      "lowLevelStaticSourceAction": "navigate",
+      "evidenceQuotes": [
+        "city-login href=\"/yeyak/login.do?returnUrl=/yeyak.do\"; explicitHandlers=[]; onclickPresent=false; role=null",
+        "nps-login href=\"/lgn/loginForm.do\"; explicitHandlers=[]; onclickPresent=false; role=null",
+        "src/action-policy.ts only recognizes sso|oauth2?|saml|authorize pathname markers",
+        "docs/ACTION_POLICY.md includes \"인증 등 locate 제어\" and admits incomplete SSO recognition"
+      ],
+      "reason": "The accepted locate annotations appear to encode semantic login safety, while sourceAction has no category argument and these plain login-form URLs match no authentication path marker. Static evidence does not prove that opening the form starts authentication, nor prove absence of delegated/property handlers. Thus this is a policy coverage/annotation-contract ambiguity, not a proven site-behavior defect or an unconditional annotation error.",
+      "proposedPostHoldoutOnlyCorrection": "Explicitly decide whether public login-form-page navigation is permitted direct navigation. If permitted, document that and separately adjudicate these accepted actions to navigate. If login entry itself must always locate, keep the annotation but record and address authentication-recognition coverage as a product limitation. Do not invent onclick or other markers to force the fixture result."
+    },
+    {
+      "id": "A04",
+      "classification": "FIXTURE_DOCUMENT_CONTEXT_CAVEAT",
+      "confidence": "HIGH",
+      "sourceIds": [
+        "smu-second"
+      ],
+      "evidenceQuotes": [
+        "source documentURL=\"https://www.smu.ac.kr/kor/life/multiMajor.do\"",
+        "source href=\"/kor/life/multiMajor.do#tab18283_\"",
+        "fixture documentURL=\"about:blank\"; fixture documentBaseURI=\"about:blank\""
+      ],
+      "reason": "smu-second is genuinely a same-document fragment on the observed source. The parity observation used about:blank for the fixture, so preservation of absolute href/destination alone does not preserve localFragment semantics. This audit did not inspect or execute the evaluator and cannot establish its context.",
+      "proposedPostHoldoutOnlyCorrection": "Audit evaluator document URL context separately before attributing any same-document-fragment mismatch to the engine. Do not change the smu-second source-context action solely because of an about:blank fixture observation."
+    }
+  ],
+  "staticAuditCountsNotProductMetrics": {
+    "acceptedRowsReviewed": 32,
+    "definiteAnnotationConflicts": 6,
+    "expectedGroupsAffectedByDefiniteActionConflicts": 3,
+    "loginPolicyCoverageAmbiguities": 2,
+    "otherAcceptedRowsCompatibleInSourceContext": 24,
+    "additionalConflictsFoundOutsideListedCases": 0
+  },
+  "allAcceptedReview": [
+    {
+      "sourceId": "city-service-search",
+      "siteId": "city",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "city-v7-search"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/city.json#/pages/0/accepted/0",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/controls/0",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/accessibilityAndDestinationVerification/controls/0",
+        "source": {
+          "sourceTag": "button",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.cheonan.go.kr/yeyak/index.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"city-service-search\"]",
+        "fixtureTag": "button",
+        "fixtureAttributes": {
+          "type": "button",
+          "id": "searchBtn",
+          "class": "search-btn",
+          "data-source-node-path": "2.23.1.3.1.1.3.1",
+          "data-eval-id": "city-service-search"
+        }
+      }
+    },
+    {
+      "sourceId": "city-reset",
+      "siteId": "city",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/city.json#/pages/0/accepted/1",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/controls/1",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/accessibilityAndDestinationVerification/controls/1",
+        "source": {
+          "sourceTag": "button",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.cheonan.go.kr/yeyak/index.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"city-reset\"]",
+        "fixtureTag": "button",
+        "fixtureAttributes": {
+          "type": "button",
+          "id": "resetBtn",
+          "class": "reset-btn",
+          "data-source-node-path": "2.23.1.3.1.1.3.3",
+          "data-eval-id": "city-reset"
+        }
+      }
+    },
+    {
+      "sourceId": "city-museum-guide",
+      "siteId": "city",
+      "annotationAction": "navigate",
+      "expectedGroupIds": [
+        "city-v7-museum"
+      ],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "COMPATIBLE",
+      "reason": "Ordinary HTTP(S) destination with no preserved explicit control marker; actual delegated/property handler behavior remains unverified.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/city.json#/pages/0/accepted/2",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/controls/2",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/accessibilityAndDestinationVerification/controls/2",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+            "resolved": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.cheonan.go.kr/yeyak/index.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"city-museum-guide\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+          "class": "service-item",
+          "tabindex": "-1",
+          "data-source-node-path": "2.23.3.1.3.3.0.0.41.0",
+          "data-eval-id": "city-museum-guide"
+        }
+      }
+    },
+    {
+      "sourceId": "city-child-museum",
+      "siteId": "city",
+      "annotationAction": "navigate",
+      "expectedGroupIds": [
+        "city-v7-children"
+      ],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "COMPATIBLE",
+      "reason": "Ordinary HTTP(S) destination with no preserved explicit control marker; actual delegated/property handler behavior remains unverified.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/city.json#/pages/0/accepted/3",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/controls/3",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/accessibilityAndDestinationVerification/controls/3",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+            "resolved": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.cheonan.go.kr/yeyak/index.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"city-child-museum\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+          "class": "service-item",
+          "tabindex": "-1",
+          "data-source-node-path": "2.23.3.1.3.3.0.0.42.0",
+          "data-eval-id": "city-child-museum"
+        }
+      }
+    },
+    {
+      "sourceId": "city-reservation-help",
+      "siteId": "city",
+      "annotationAction": "navigate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "reason": "Explicit role=button is already decisive; fixture also contains aria-controls and aria-haspopup. HTTP href does not override these markers.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/city.json#/pages/0/accepted/4",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/controls/4",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/accessibilityAndDestinationVerification/controls/4",
+        "source": {
+          "sourceTag": "a",
+          "role": "button",
+          "href": {
+            "raw": "/yeyak/sub07_01.do",
+            "resolved": "https://www.cheonan.go.kr/yeyak/sub07_01.do",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.cheonan.go.kr/yeyak/index.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"city-reservation-help\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.cheonan.go.kr/yeyak/sub07_01.do",
+          "class": "depth1-btn has-depth",
+          "role": "button",
+          "aria-controls": "gnb-depth1-q6haupy",
+          "aria-expanded": "false",
+          "aria-haspopup": "true",
+          "data-source-node-path": "2.17.5.3.3.15.3",
+          "data-eval-id": "city-reservation-help"
+        }
+      }
+    },
+    {
+      "sourceId": "city-login",
+      "siteId": "city",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "LOGIN_CONTRACT_COVERAGE_AMBIGUITY",
+      "reason": "Plain HTTP login-form destination; no explicit control marker and no SSO/OAuth/SAML/authorize pathname segment. Low-level sourceAction predicts navigate; high-level authentication-locate wording does not explicitly settle merely opening a login form.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/city.json#/pages/0/accepted/5",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/controls/5",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/0/accessibilityAndDestinationVerification/controls/5",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/yeyak/login.do?returnUrl=/yeyak.do",
+            "resolved": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.cheonan.go.kr/yeyak/index.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"city-login\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+          "class": "util-btn",
+          "data-source-node-path": "2.17.3.1.5.3.1",
+          "data-eval-id": "city-login"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-hospital",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/0",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/0",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/0",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-hospital\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "data-source-node-path": "1.8.13.1.5.3.5.1.2.3.1",
+          "data-eval-id": "gov-hospital"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-pharmacy",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/1",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/1",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/1",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-pharmacy\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "data-source-node-path": "1.8.13.1.5.3.5.1.2.3.3",
+          "data-eval-id": "gov-pharmacy"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-typhoon-status",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/2",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/2",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/2",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-typhoon-status\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "data-source-node-path": "1.8.13.1.5.3.5.1.4.3.1",
+          "data-eval-id": "gov-typhoon-status"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-wind-status",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/3",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/3",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/3",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-wind-status\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "data-source-node-path": "1.8.13.1.5.3.5.1.4.3.3",
+          "data-eval-id": "gov-wind-status"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-guide-pdf",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/4",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/4",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/4",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-guide-pdf\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "data-source-node-path": "1.8.13.1.5.3.5.1.6.3.1",
+          "data-eval-id": "gov-guide-pdf"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-before",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "government-v7-before"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/5",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/5",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/5",
+        "source": {
+          "sourceTag": "button",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-before\"]",
+        "fixtureTag": "button",
+        "fixtureAttributes": {
+          "class": "tab-list active",
+          "name": "grp",
+          "onclick": "return false;",
+          "aria-expanded": "true",
+          "data-source-node-path": "1.8.13.1.5.3.16.3",
+          "data-eval-id": "gov-before"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-during",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "government-v7-during"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/6",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/6",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/6",
+        "source": {
+          "sourceTag": "button",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-during\"]",
+        "fixtureTag": "button",
+        "fixtureAttributes": {
+          "class": "tab-list",
+          "name": "grp",
+          "onclick": "return false;",
+          "aria-expanded": "false",
+          "data-source-node-path": "1.8.13.1.5.3.16.11",
+          "data-eval-id": "gov-during"
+        }
+      }
+    },
+    {
+      "sourceId": "gov-after",
+      "siteId": "government",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "government-v7-after"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/government.json#/pages/0/accepted/7",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/controls/7",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/1/accessibilityAndDestinationVerification/controls/7",
+        "source": {
+          "sourceTag": "button",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"gov-after\"]",
+        "fixtureTag": "button",
+        "fixtureAttributes": {
+          "class": "tab-list",
+          "name": "grp",
+          "onclick": "return false;",
+          "aria-expanded": "false",
+          "data-source-node-path": "1.8.13.1.5.3.16.19",
+          "data-eval-id": "gov-after"
+        }
+      }
+    },
+    {
+      "sourceId": "lib-search-guide",
+      "siteId": "library",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Explicit inline onclick presence is preserved as an inert marker; handler execution is unnecessary to decide locate.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/library.json#/pages/0/accepted/0",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/controls/0",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/accessibilityAndDestinationVerification/controls/0",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/NL/contents/N71230100000.do",
+            "resolved": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+            "scheme": "http"
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"lib-search-guide\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+          "onclick": "return false;",
+          "data-source-node-path": "2.45.3.3.1.1.14.1.1.1",
+          "data-eval-id": "lib-search-guide"
+        }
+      }
+    },
+    {
+      "sourceId": "lib-result-guide",
+      "siteId": "library",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "library-v7-result"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Explicit inline onclick presence is preserved as an inert marker; handler execution is unnecessary to decide locate.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/library.json#/pages/0/accepted/1",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/controls/1",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/accessibilityAndDestinationVerification/controls/1",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/NL/contents/N71230200000.do",
+            "resolved": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+            "scheme": "http"
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"lib-result-guide\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+          "onclick": "return false;",
+          "data-source-node-path": "2.45.3.3.1.1.14.1.3.1",
+          "data-eval-id": "lib-result-guide"
+        }
+      }
+    },
+    {
+      "sourceId": "lib-detail-guide",
+      "siteId": "library",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "library-v7-detail"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Explicit inline onclick presence is preserved as an inert marker; handler execution is unnecessary to decide locate.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/library.json#/pages/0/accepted/2",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/controls/2",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/accessibilityAndDestinationVerification/controls/2",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/NL/contents/N71230300000.do",
+            "resolved": "https://www.nl.go.kr/NL/contents/N71230300000.do",
+            "scheme": "http"
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"lib-detail-guide\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.nl.go.kr/NL/contents/N71230300000.do",
+          "onclick": "return false;",
+          "data-source-node-path": "2.45.3.3.1.1.14.1.5.1",
+          "data-eval-id": "lib-detail-guide"
+        }
+      }
+    },
+    {
+      "sourceId": "lib-full-guide",
+      "siteId": "library",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "library-v7-full"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/library.json#/pages/0/accepted/3",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/controls/3",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/accessibilityAndDestinationVerification/controls/3",
+        "source": {
+          "sourceTag": "button",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [
+            "onclick"
+          ],
+          "onclickPresent": true
+        },
+        "documentURL": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"lib-full-guide\"]",
+        "fixtureTag": "button",
+        "fixtureAttributes": {
+          "type": "button",
+          "onclick": "return false;",
+          "class": "download_btn",
+          "data-source-node-path": "2.45.3.3.5.1.3.1.1",
+          "data-eval-id": "lib-full-guide"
+        }
+      }
+    },
+    {
+      "sourceId": "lib-login",
+      "siteId": "library",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/library.json#/pages/0/accepted/4",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/controls/4",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/2/accessibilityAndDestinationVerification/controls/4",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"lib-login\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "class": "login",
+          "data-source-node-path": "2.31.1.3.1.3.3.3.0",
+          "data-eval-id": "lib-login"
+        }
+      }
+    },
+    {
+      "sourceId": "nps-service-search",
+      "siteId": "public-agency",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "public-agency-v7-search"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "Non-anchor control.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/public-agency.json#/pages/0/accepted/0",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/controls/0",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/accessibilityAndDestinationVerification/controls/0",
+        "source": {
+          "sourceTag": "input",
+          "role": null,
+          "href": {
+            "raw": null,
+            "resolved": null,
+            "scheme": null
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"nps-service-search\"]",
+        "fixtureTag": "input",
+        "fixtureAttributes": {
+          "type": "button",
+          "name": "btnSearch",
+          "id": "btnSearch",
+          "class": "btn-search",
+          "value": "검색",
+          "data-source-node-path": "2.3.5.9.7.5.1.3.3.1.9",
+          "data-eval-id": "nps-service-search"
+        }
+      }
+    },
+    {
+      "sourceId": "nps-history-help",
+      "siteId": "public-agency",
+      "annotationAction": "navigate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "COMPATIBLE",
+      "reason": "Ordinary HTTP(S) destination with no preserved explicit control marker; actual delegated/property handler behavior remains unverified.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/public-agency.json#/pages/0/accepted/1",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/controls/1",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/accessibilityAndDestinationVerification/controls/1",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+            "resolved": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"nps-history-help\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+          "class": "btn white btn-go",
+          "title": "가입내역조회 상세보기",
+          "data-source-node-path": "2.3.5.9.7.9.1.1.3.3",
+          "data-eval-id": "nps-history-help"
+        }
+      }
+    },
+    {
+      "sourceId": "nps-history",
+      "siteId": "public-agency",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "public-agency-v7-history"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/public-agency.json#/pages/0/accepted/2",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/controls/2",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/accessibilityAndDestinationVerification/controls/2",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"nps-history\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "class": "btn btn-go loadingOnMenu",
+          "title": "가입내역조회 조회하기",
+          "data-source-node-path": "2.3.5.9.7.9.1.1.3.5",
+          "data-eval-id": "nps-history"
+        }
+      }
+    },
+    {
+      "sourceId": "nps-consult-help",
+      "siteId": "public-agency",
+      "annotationAction": "navigate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "COMPATIBLE",
+      "reason": "Ordinary HTTP(S) destination with no preserved explicit control marker; actual delegated/property handler behavior remains unverified.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/public-agency.json#/pages/0/accepted/3",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/controls/3",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/accessibilityAndDestinationVerification/controls/3",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+            "resolved": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"nps-consult-help\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+          "class": "btn white btn-go",
+          "title": "연금업무 상담예약 신청 상세보기",
+          "data-source-node-path": "2.3.5.9.7.9.1.99.3.3",
+          "data-eval-id": "nps-consult-help"
+        }
+      }
+    },
+    {
+      "sourceId": "nps-consult",
+      "siteId": "public-agency",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "public-agency-v7-consult"
+      ],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/public-agency.json#/pages/0/accepted/4",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/controls/4",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/accessibilityAndDestinationVerification/controls/4",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"nps-consult\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "class": "btn btn-go ",
+          "title": "연금업무 상담예약 신청 신청하기",
+          "data-source-node-path": "2.3.5.9.7.9.1.99.3.5",
+          "data-eval-id": "nps-consult"
+        }
+      }
+    },
+    {
+      "sourceId": "nps-login",
+      "siteId": "public-agency",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "LOGIN_CONTRACT_COVERAGE_AMBIGUITY",
+      "reason": "Plain HTTP login-form destination; no explicit control marker and no SSO/OAuth/SAML/authorize pathname segment. Low-level sourceAction predicts navigate; high-level authentication-locate wording does not explicitly settle merely opening a login form.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/public-agency.json#/pages/0/accepted/5",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/controls/5",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/3/accessibilityAndDestinationVerification/controls/5",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/lgn/loginForm.do",
+            "resolved": "https://www.nps.or.kr/lgn/loginForm.do",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"nps-login\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "class": "btn-login",
+          "data-source-node-path": "2.3.1.9.1.1.1.3.9.16.1",
+          "data-eval-id": "nps-login"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-second",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE_SOURCE_CONTEXT",
+      "reason": "Same origin, pathname and query as the observed source document, with a nonempty fragment. Fixture observation used about:blank; evaluator document context must be established separately.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/0",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/0",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/0",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/kor/life/multiMajor.do#tab18283_",
+            "resolved": "https://www.smu.ac.kr/kor/life/multiMajor.do#tab18283_",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": "",
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-second\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor.do#tab18283_",
+          "title": "다전공(제2전공) 선택됨",
+          "id": "tab18283",
+          "target": "",
+          "data-source-node-path": "2.3.3.1.3.3.1.3.1.1",
+          "data-eval-id": "smu-second"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-linked",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "smu-v7-linked"
+      ],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "reason": "HTTP destination is a different pathname from the observed document, with no explicit control marker. A fragment on another document is not the same-document fragment exception.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/1",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/1",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/1",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/kor/life/multiMajor2.do#tab18284_",
+            "resolved": "https://www.smu.ac.kr/kor/life/multiMajor2.do#tab18284_",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": "",
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-linked\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor2.do#tab18284_",
+          "title": "다전공(연계/융합전공)",
+          "id": "tab18284",
+          "target": "",
+          "data-source-node-path": "2.3.3.1.3.3.1.3.3.1",
+          "data-eval-id": "smu-linked"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-self",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "smu-v7-self"
+      ],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "reason": "HTTP destination is a different pathname from the observed document, with no explicit control marker. A fragment on another document is not the same-document fragment exception.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/2",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/2",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/2",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/kor/life/multiMajor3.do#tab18285_",
+            "resolved": "https://www.smu.ac.kr/kor/life/multiMajor3.do#tab18285_",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": "",
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-self\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor3.do#tab18285_",
+          "title": "다전공(자기설계융합전공)",
+          "id": "tab18285",
+          "target": "",
+          "data-source-node-path": "2.3.3.1.3.3.1.3.5.1",
+          "data-eval-id": "smu-self"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-minor",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [
+        "smu-v7-minor"
+      ],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "reason": "HTTP destination is a different pathname from the observed document, with no explicit control marker. A fragment on another document is not the same-document fragment exception.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/3",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/3",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/3",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/kor/life/minor.do#tab18286_",
+            "resolved": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": "",
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-minor\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+          "title": "부전공",
+          "id": "tab18286",
+          "target": "",
+          "data-source-node-path": "2.3.3.1.3.3.1.3.7.1",
+          "data-eval-id": "smu-minor"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-micro",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "reason": "HTTP destination is a different pathname from the observed document, with no explicit control marker. A fragment on another document is not the same-document fragment exception.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/4",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/4",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/4",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/kor/life/microMajor.do#tab19085_",
+            "resolved": "https://www.smu.ac.kr/kor/life/microMajor.do#tab19085_",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": "",
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-micro\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/microMajor.do#tab19085_",
+          "title": "마이크로전공",
+          "id": "tab19085",
+          "target": "",
+          "data-source-node-path": "2.3.3.1.3.3.1.3.9.1",
+          "data-eval-id": "smu-micro"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-advanced",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "navigate",
+      "classification": "DEFINITE_ANNOTATION_CONFLICT",
+      "reason": "HTTP destination is a different pathname from the observed document, with no explicit control marker. A fragment on another document is not the same-document fragment exception.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/5",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/5",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/5",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "/kor/life/advancedDegree.do#tab18287_",
+            "resolved": "https://www.smu.ac.kr/kor/life/advancedDegree.do#tab18287_",
+            "scheme": "http"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": "",
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-advanced\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/advancedDegree.do#tab18287_",
+          "title": "심화전공",
+          "id": "tab18287",
+          "target": "",
+          "data-source-node-path": "2.3.3.1.3.3.1.3.11.1",
+          "data-eval-id": "smu-advanced"
+        }
+      }
+    },
+    {
+      "sourceId": "smu-login",
+      "siteId": "smu",
+      "annotationAction": "locate",
+      "expectedGroupIds": [],
+      "staticSourceActionInObservedDocument": "locate",
+      "classification": "COMPATIBLE",
+      "reason": "javascript scheme is an explicit locate case; executable source body is deliberately absent.",
+      "evidence": {
+        "annotationPointer": "evaluation/blind-v7-v2/sites/smu.json#/pages/0/accepted/6",
+        "observationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/controls/6",
+        "accessibilityDestinationPointer": "docs/evidence/run004/blind-v7-v2-observations.json#/pages/4/accessibilityAndDestinationVerification/controls/6",
+        "source": {
+          "sourceTag": "a",
+          "role": null,
+          "href": {
+            "raw": "javascript:[fixed control marker]",
+            "resolved": null,
+            "scheme": "javascript"
+          },
+          "explicitHandlers": [],
+          "onclickPresent": false
+        },
+        "documentURL": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "targetAttribute": null,
+        "effectiveTarget": "",
+        "fixtureSelector": "[data-eval-id=\"smu-login\"]",
+        "fixtureTag": "a",
+        "fixtureAttributes": {
+          "href": "javascript:void(0);",
+          "class": "login",
+          "title": "로그인 새창열림",
+          "data-source-node-path": "2.3.1.5.1.9.1.5.1.1.1",
+          "data-eval-id": "smu-login"
+        }
+      }
+    }
+  ],
+  "uncertainties": [
+    "No source control was clicked and no login/authentication flow was executed. Public HTTP href is evidence of a destination only.",
+    "Absence of inline onclick does not prove absence of property/addEventListener/delegated/SPA behavior. The user-selected direct-link policy explicitly accepts this limitation for otherwise ordinary links.",
+    "CSS, scripts and external resources are omitted by fixture design. Tab appearance and source screenshots are not established by this static audit.",
+    "The sourceAction source file is hashed here. Matching it to the frozen engine archive is the root review responsibility; this audit did not read recommendation/result artifacts.",
+    "Counts describe annotation review only and must not replace the first independent product score or create a new independent evaluation."
+  ],
+  "preservationInstruction": "Create any annotation correction under a new ADJUDICATED_DEVELOPMENT version after preserving the first raw holdout. Keep category, expected membership and action changes separately documented, with old/new hashes and reasons. Do not patch frozen v7/v2 in place."
+}

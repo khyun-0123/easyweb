@@ -1,0 +1,207 @@
+
+Running 5 tests using 1 worker
+
+(node:66401) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/5] tests/generic-controls.spec.mjs:16:1 › 검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다
+  1) tests/generic-controls.spec.mjs:16:1 › 검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다 ───────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 12
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "filter",
+    -     "search",
+    -     "locate",
+    -   ],
+    -   Array [
+    -     "",
+    -     "search",
+    -     "locate",
+    -   ],
+    - ]
+    + Array []
+
+      16 | test('검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다', async ({ page }) => {
+      17 |   const items = await inspect(page, `<main><h2>자료 목록</h2><form id="catalogSearchForm"><ul><li><a id="filter" href="#" class="category_search">과학/기술</a></li><li><a href="#" class="category_search">문학/예술</a></li></ul></form><form id="applicationForm"><ul><li><a id="ordinary" href="#">교육/훈련</a></li></ul></form><script>document.querySelectorAll('input,select,textarea').forEach(e=>Object.defineProperty(e,'value',{get(){throw Error('private value')}}))</script></main>`);
+    > 18 |   expect(items.map(i => [i.id, i.category, i.action])).toEqual([['filter','search','locate'],['','search','locate']]);
+         |                                                        ^
+      19 |   expect(await page.evaluate(() => GenericEngine.isCandidateCurrent(items[0]))).toBe(true);
+      20 |   expect(await page.evaluate(() => { document.querySelector('form').id='application'; return GenericEngine.isCandidateCurrent(items[0]); })).toBe(false);
+      21 | });
+        at /private/tmp/easyweb-controls-v5/tests/generic-controls.spec.mjs:18:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/generic-controls-검색-form의--2ef17--사용하고-값과-일반-신청-form은-읽지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/generic-controls-검색-form의--2ef17--사용하고-값과-일반-신청-form은-읽지-않는다/error-context.md
+
+
+(node:66407) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/5] tests/generic-controls.spec.mjs:22:1 › 신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다
+  2) tests/generic-controls.spec.mjs:22:1 › 신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다 ─────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 14
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "material",
+    -     "apply",
+    -   ],
+    -   Array [
+    -     "download",
+    -     "apply",
+    -   ],
+    -   Array [
+    -     "opaque",
+    -     "apply",
+    -   ],
+    - ]
+    + Array []
+
+      22 | test('신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다', async ({ page }) => {
+      23 |   const items = await inspect(page, `<main><h2>민원 편람</h2><table><thead><tr><th>제목</th><th>첨부</th></tr></thead><tbody><tr><td><a id="material" href="#view" onclick="return false">건축물 현황 변경신고서</a></td><td><button id="download" type="button">자료받기</button></td></tr><tr><td><a id="opaque" href="#view" onclick="return false">공공시설 사용 인가</a></td><td><button type="button">자료받기</button></td></tr></tbody></table><section><h2>사진 목록</h2><table><tr><td><a id="photo" href="#view">봄 전경</a></td><td><button type="button">자료받기</button></td></tr></table></section></main>`);
+    > 24 |   expect(items.filter(i=>['material','download','opaque'].includes(i.id)).map(i=>[i.id,i.category])).toEqual([['material','apply'],['download','apply'],['opaque','apply']]);
+         |                                                                                                      ^
+      25 |   expect(items.find(i=>i.id==='photo')).toBeUndefined();
+      26 |   expect(await page.evaluate(() => { document.querySelector('th').textContent='사진'; return GenericEngine.isCandidateCurrent(items.find(i=>i.element.id==='opaque')); })).toBe(false);
+      27 | });
+        at /private/tmp/easyweb-controls-v5/tests/generic-controls.spec.mjs:24:102
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/generic-controls-신청-준비-편람의-제목-자료-제어를-인식하고-임의-표·뉴스는-제외한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/generic-controls-신청-준비-편람의-제목-자료-제어를-인식하고-임의-표·뉴스는-제외한다/error-context.md
+
+
+(node:66413) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[3/5] tests/generic-controls.spec.mjs:28:1 › 정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다
+  3) tests/generic-controls.spec.mjs:28:1 › 정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다 ────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "help"
+    Received: undefined
+
+      28 | test('정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다', async ({ page }) => {
+      29 |   const items = await inspect(page, `<main><h2>재해 보상</h2><div><button id="panel" type="button" aria-expanded="false">지원금 예시</button><button type="button" aria-expanded="false">지원 절차</button><button type="button" aria-expanded="false">기관 및 가입안내</button></div><section><h3>시설 이용안내</h3><div><div role="group"><a id="reading" href="/x/18" onclick="return false">보관 자료 열람</a></div><div role="group"><a href="/x/19" onclick="return false">청년 자료 이용</a></div></div></section><button id="delete" aria-expanded="false">삭제</button></main>`);
+    > 30 |   expect(items.find(i=>i.id==='panel')?.category).toBe('help');
+         |                                                   ^
+      31 |   expect(items.find(i=>i.id==='reading')?.category).toBe('help');
+      32 |   expect(items.find(i=>i.id==='delete')).toBeUndefined();
+      33 | });
+        at /private/tmp/easyweb-controls-v5/tests/generic-controls.spec.mjs:30:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/generic-controls-정보-패널-형제-제어와-안내-제목의-그룹-링크를-읽기로-분류한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/generic-controls-정보-패널-형제-제어와-안내-제목의-그룹-링크를-읽기로-분류한다/error-context.md
+
+
+(node:66419) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[4/5] tests/generic-controls.spec.mjs:34:1 › 고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다
+  4) tests/generic-controls.spec.mjs:34:1 › 고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다 ────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 14
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "calc",
+    -     "search",
+    -   ],
+    -   Array [
+    -     "own",
+    -     "apply",
+    -   ],
+    -   Array [
+    -     "request",
+    -     "apply",
+    -   ],
+    - ]
+    + Array []
+
+      34 | test('고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다', async ({ page }) => {
+      35 |   const items = await inspect(page, `<main><h2>생활 지원 서비스</h2><ul><li><a id="calc" href="#" onclick="return false"><strong>생활비 모의계산</strong><p>소득과 가족 수를 직접 입력하면 예상 생활비를 확인할 수 있습니다. 실제 신청과 연결되지 않습니다.</p></a></li><li><a id="own" href="#" onclick="return false"><span>가입·납부내역 조회</span><p>본인의 납부 기록을 확인할 수 있습니다.</p></a></li><li><a id="request" href="/x/44"><b>상담 예약신청</b><p>상담 시간을 신청하고 담당 안내를 받을 수 있습니다.</p></a></li><li><a id="danger" href="#"><strong>수수료 결제</strong><p>예상액 조회와 신청 안내</p></a></li></ul></main>`);
+    > 36 |   expect(items.filter(i=>['calc','own','request'].includes(i.id)).map(i=>[i.id,i.category])).toEqual([['calc','search'],['own','apply'],['request','apply']]);
+         |                                                                                              ^
+      37 |   expect(items.find(i=>i.id==='danger')).toBeUndefined();
+      38 |   expect(items.find(i=>i.id==='calc').label).toContain('실제 신청');
+      39 | });
+        at /private/tmp/easyweb-controls-v5/tests/generic-controls.spec.mjs:36:94
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/generic-controls-고정-카드-제목과-설명을-분리하여-모의-계산·개인-내역·신청을-구분한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/generic-controls-고정-카드-제목과-설명을-분리하여-모의-계산·개인-내역·신청을-구분한다/error-context.md
+
+
+(node:66439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[5/5] tests/generic-controls.spec.mjs:40:1 › 도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다
+  5) tests/generic-controls.spec.mjs:40:1 › 도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다 ──────────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 10
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "guide",
+    -     "help",
+    -   ],
+    -   Array [
+    -     "question",
+    -     "help",
+    -   ],
+    - ]
+    + Array []
+
+      40 | test('도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다', async ({ page }) => {
+      41 |   const items = await inspect(page, `<main><h2>자주 묻는 질문</h2><ul><li><a id="guide" href="?mode=view&articleNo=31">연구실 출입카드 잠금 관련 안내</a></li><li><a id="question" href="?mode=view&articleNo=32">연회비를 납부했는데 환불할 수 있나요?</a></li><li><a id="unsafe" href="?action=delete&articleNo=33">자료 삭제 안내</a></li><li><a id="notice" href="/notice?articleNo=34">공지사항 안내</a></li></ul></main>`);
+    > 42 |   expect(items.filter(i=>['guide','question'].includes(i.id)).map(i=>[i.id,i.category])).toEqual([['guide','help'],['question','help']]);
+         |                                                                                          ^
+      43 |   expect(items.find(i=>i.id==='unsafe')).toBeUndefined();
+      44 |   expect(items.find(i=>i.id==='notice')?.category).toBe('notice');
+      45 | });
+        at /private/tmp/easyweb-controls-v5/tests/generic-controls.spec.mjs:42:90
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/generic-controls-도움말-게시판의-평서-안내-문서를-공지·실행-제어와-구별한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/generic-controls-도움말-게시판의-평서-안내-문서를-공지·실행-제어와-구별한다/error-context.md
+
+
+  5 failed
+    tests/generic-controls.spec.mjs:16:1 › 검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다 ────────
+    tests/generic-controls.spec.mjs:22:1 › 신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다 ──────────────────
+    tests/generic-controls.spec.mjs:28:1 › 정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다 ─────────────────────
+    tests/generic-controls.spec.mjs:34:1 › 고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다 ─────────────────
+    tests/generic-controls.spec.mjs:40:1 › 도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다 ───────────────────────

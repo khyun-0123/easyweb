@@ -1,0 +1,142 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "type": "university",
+  "observedAt": "2026-10-17T17:17:37.210Z",
+  "pages": [
+    {
+      "id": "smu-blind-v6",
+      "url": "https://www.smu.ac.kr/kor/life/faq.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/faq.do",
+      "title": "상명라운지 | 상명 Q&A | 자주하는 질문 게시판목록 | 상명대학교 국문 | 목록",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v6/fixtures/smu.html",
+      "observation": {
+        "method": "Independent headless public-source observation with actual Chromium AX snapshots and safe original DOM ancestry/fixed heading-sibling context. No product source/engine/evaluation output read or run.",
+        "observedAt": "2026-10-17T17:17:37.210Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "One source task focus/hit-test per page and safe public destination GETs are stored in docs/evidence/run003/blind-v6-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions only; no full page, source CSS/media, app scripts, authenticated state or real extension activation. Original fixed labels, href/target, relevant original ancestor tags/classes/IDs and nearby fixed headings/siblings retained.",
+          "All source controls had nonzero boxes and were not CSS-hidden, inert or aria-hidden. One task control per page additionally received read-only scroll/focus/center hit testing; this is not a complete keyboard or assistive-technology audit.",
+          "Actual Chromium AX snapshots exclude value fields. Playwright ariaSnapshot additionally saved for non-editable controls where selector injection works. NL source DOM read through a CDP isolated world after a source-page selector-injection conflict; no security/authentication/certificate settings changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "smu-blind-v6-feature-1",
+          "category": "search",
+          "label": "검색어",
+          "sourceIds": [
+            "smu-blind-v6-control-1",
+            "smu-blind-v6-control-2"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "smu-blind-v6-feature-2",
+          "category": "help",
+          "label": "학사) 연계전공과 융합전공의 교육과정은 어디서 볼 수 있나요?",
+          "sourceIds": [
+            "smu-blind-v6-control-4"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=746604&article.offset=0&articleLimit=10"
+        },
+        {
+          "id": "smu-blind-v6-feature-3",
+          "category": "help",
+          "label": "교직)교원자격증 재교부 안내",
+          "sourceIds": [
+            "smu-blind-v6-control-5"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/faq.do?mode=view&articleNo=745218&article.offset=0&articleLimit=10"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-blind-v6-control-1",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-2",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-3",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-4",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-5",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-6",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-7",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-8",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-9",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-10",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-11",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v6-control-12",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "smu-blind-v6-task",
+        "instruction": "자주하는 질문 게시판에서 연계전공과 융합전공의 교육과정에 관한 공개 답변 페이지에 도달하세요. 검색어 입력·로그인·학사 신청은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "smu-blind-v6-control-4"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "대학의 대표 공개 Q&A 중 자주하는 질문 게시판을 선정했다. 본문의 검색 입력/버튼과 기본 첫 화면의 FAQ 10건을 순서대로 모두 복원했다. 키워드 난이도로 문항을 고르지 않았다. FAQ의 학사·교직 문의는 공개 답변을 찾는 도움말이므로 help이며, 검색 입력과 검색 실행 위치는 search이다. 원본 입력의 고정 label과 placeholder만 읽고 실제 입력 값은 읽지 않았다.",
+        "Base href resolves unchanged original relative hrefs against observed source URL. CSP script-src none/object-src none/form-action none; source onclick presence has an inert return-false marker, without original handler implementations. Only fixed labels and empty fixture editables; no actual input values."
+      ]
+    }
+  ]
+}

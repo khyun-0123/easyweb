@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "v6-correction-validation-1",
+  "validatedAt": "2026-10-17T17:40:33.422493+00:00",
+  "status": "PASS",
+  "classification": "ADJUDICATED_DEVELOPMENT",
+  "dataset": "evaluation/development-v6-corrected",
+  "version": "evaluation/development-v6-corrected/VERSION.json",
+  "versionSha256": "0dc25561a3bc3abd2116a9fa7f350a28c6953c17ca742b26f9e645d1c78a029a",
+  "basis": [
+    {
+      "path": "docs/evidence/run003/annotation-taxonomy-audit.json",
+      "sha256": "77a29adaf57149a4697aa7ba8bcf900b63b86f681e5fc672a8f6fb3f331f83e8"
+    },
+    {
+      "path": "docs/evidence/run003/annotation-taxonomy-root-review.json",
+      "sha256": "c3801cbbe4f3a8c21eb09e4e6c6d892a1dd2446509a1ec2f8ed4fd8a9903e476"
+    },
+    {
+      "path": "docs/evidence/run003/blind-v6-freeze.json",
+      "sha256": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f"
+    }
+  ],
+  "validationMethod": "Data-only structural JSON comparison and byte/SHA-256 comparison. Product, tests, evaluation and network/browser/native UI were not run. Each original frozen input is rehashed against the original manifest.",
+  "approvedSemanticChanges": {
+    "file": "sites/public-agency.json",
+    "changes": [
+      {
+        "path": "/pages/0/accepted/2/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E01",
+        "sourceId": "public-agency-blind-v6-control-3"
+      },
+      {
+        "path": "/pages/0/accepted/3/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E02",
+        "sourceId": "public-agency-blind-v6-control-4"
+      },
+      {
+        "path": "/pages/0/accepted/4/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E03",
+        "sourceId": "public-agency-blind-v6-control-5"
+      },
+      {
+        "path": "/pages/0/accepted/5/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E04",
+        "sourceId": "public-agency-blind-v6-control-6"
+      },
+      {
+        "path": "/pages/0/expected/1/category",
+        "before": "search",
+        "after": "apply",
+        "auditErrorId": "E03",
+        "expectedFeatureId": "public-agency-blind-v6-feature-2",
+        "sourceIds": [
+          "public-agency-blind-v6-control-5"
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "siteFilesCompared": 5,
+    "fixtureFilesCompared": 5,
+    "approvedCategoryFieldChanges": 5,
+    "actualSemanticDifferences": 5,
+    "unexpectedSemanticDifferences": 0,
+    "allOtherSiteFieldsUnchanged": true,
+    "allFixtureCopiesByteIdentical": true,
+    "unmodifiedSiteCopiesByteIdentical": 4,
+    "originalFrozenFilesChecked": 11,
+    "allOriginalFrozenHashesMatch": true,
+    "originalFreezeManifestUnchanged": true,
+    "originalFrozenFilesModified": 0,
+    "firstFailureReplaced": false,
+    "product": "NOT_RUN",
+    "freshIndependentEvaluation": false
+  },
+  "siteChecks": [
+    {
+      "path": "evaluation/development-v6-corrected/sites/city.json",
+      "basePath": "evaluation/blind-v6/sites/city.json",
+      "semanticDifferenceCount": 0,
+      "unexpectedSemanticDifferenceCount": 0,
+      "differences": [],
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/government.json",
+      "basePath": "evaluation/blind-v6/sites/government.json",
+      "semanticDifferenceCount": 0,
+      "unexpectedSemanticDifferenceCount": 0,
+      "differences": [],
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/library.json",
+      "basePath": "evaluation/blind-v6/sites/library.json",
+      "semanticDifferenceCount": 0,
+      "unexpectedSemanticDifferenceCount": 0,
+      "differences": [],
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/public-agency.json",
+      "basePath": "evaluation/blind-v6/sites/public-agency.json",
+      "semanticDifferenceCount": 5,
+      "unexpectedSemanticDifferenceCount": 0,
+      "differences": [
+        {
+          "path": "/pages/0/expected/1/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/2/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/3/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/4/category",
+          "before": "search",
+          "after": "apply"
+        },
+        {
+          "path": "/pages/0/accepted/5/category",
+          "before": "search",
+          "after": "apply"
+        }
+      ],
+      "byteIdenticalToBase": false
+    },
+    {
+      "path": "evaluation/development-v6-corrected/sites/smu.json",
+      "basePath": "evaluation/blind-v6/sites/smu.json",
+      "semanticDifferenceCount": 0,
+      "unexpectedSemanticDifferenceCount": 0,
+      "differences": [],
+      "byteIdenticalToBase": true
+    }
+  ],
+  "fixtureChecks": [
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/city.html",
+      "sha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "basePath": "evaluation/blind-v6/fixtures/city.html",
+      "baseSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "bytes": 29810,
+      "baseBytes": 29810,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/government.html",
+      "sha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "basePath": "evaluation/blind-v6/fixtures/government.html",
+      "baseSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "bytes": 1663,
+      "baseBytes": 1663,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/library.html",
+      "sha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "basePath": "evaluation/blind-v6/fixtures/library.html",
+      "baseSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "bytes": 2579,
+      "baseBytes": 2579,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/public-agency.html",
+      "sha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "basePath": "evaluation/blind-v6/fixtures/public-agency.html",
+      "baseSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "bytes": 5268,
+      "baseBytes": 5268,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v6-corrected/fixtures/smu.html",
+      "sha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "basePath": "evaluation/blind-v6/fixtures/smu.html",
+      "baseSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "bytes": 13428,
+      "baseBytes": 13428,
+      "byteIdenticalToBase": true
+    }
+  ],
+  "originalFreezeManifest": {
+    "path": "docs/evidence/run003/blind-v6-freeze.json",
+    "sha256Before": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f",
+    "sha256After": "d668c9cd3207bb939abd03bf6b16842968149433bbc230dcaceda0216812210f",
+    "byteIdentical": true
+  },
+  "originalFrozenFileChecks": [
+    {
+      "path": "evaluation/blind-v6/sites/city.json",
+      "frozenSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "actualSha256": "9da8d7c1cf201b7ed93d6502f43b1b74ddb38194ea1433de30c38d0d50ee291a",
+      "frozenBytes": 6695,
+      "actualBytes": 6695,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/government.json",
+      "frozenSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "actualSha256": "386028f369e1dc93d54ff372e8a64d4940c44d3765c62ffd3ef91d0f55f3f270",
+      "frozenBytes": 4942,
+      "actualBytes": 4942,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/library.json",
+      "frozenSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "actualSha256": "6767113eadec2be70f6ef37111bace6e7e5bafa4ed2319637325200763a70b23",
+      "frozenBytes": 5234,
+      "actualBytes": 5234,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/public-agency.json",
+      "frozenSha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113",
+      "actualSha256": "8ba68163c3c7fe33545095b472fed51b488ed4f21694c2145be59d2aff8d4113",
+      "frozenBytes": 6464,
+      "actualBytes": 6464,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/sites/smu.json",
+      "frozenSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "actualSha256": "4eb65c9719cdbbdd3a40e80913db375b5b4f5e717aac9c395ef4728a9ae354c2",
+      "frozenBytes": 6321,
+      "actualBytes": 6321,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/city.html",
+      "frozenSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "actualSha256": "bda8ff8ea595a119874311819e36e8223d10b6a877405220d6074176c3f3c7d3",
+      "frozenBytes": 29810,
+      "actualBytes": 29810,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/government.html",
+      "frozenSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "actualSha256": "86809fbcebb3a1dca10035b19f0774a0fd37f5cd1b38499d52befe2d5b0b90ba",
+      "frozenBytes": 1663,
+      "actualBytes": 1663,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/library.html",
+      "frozenSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "actualSha256": "7c803fc17488825ee2673d82217547a0e40a43a5f7c0df1c4b25366bdff6b457",
+      "frozenBytes": 2579,
+      "actualBytes": 2579,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/public-agency.html",
+      "frozenSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "actualSha256": "4ae8ddfdcfc7252c28768fdb77e98fab663cc441806653a7691fc79c8e226653",
+      "frozenBytes": 5268,
+      "actualBytes": 5268,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "evaluation/blind-v6/fixtures/smu.html",
+      "frozenSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "actualSha256": "c2ac5cd35c8624fe20703f8d2cb4a10be80c1ee6168bf83ec8e52024601f9fec",
+      "frozenBytes": 13428,
+      "actualBytes": 13428,
+      "matchesOriginalFreeze": true
+    },
+    {
+      "path": "docs/evidence/run003/blind-v6-observations.json",
+      "frozenSha256": "e5c2d1df2d0b9eab4efda83212bfa1e790afef128413a7a3fd13e0ffbe390323",
+      "actualSha256": "e5c2d1df2d0b9eab4efda83212bfa1e790afef128413a7a3fd13e0ffbe390323",
+      "frozenBytes": 267937,
+      "actualBytes": 267937,
+      "matchesOriginalFreeze": true
+    }
+  ],
+  "originalAuditAndReviewUnchanged": {
+    "audit": true,
+    "rootReview": true
+  },
+  "firstEvaluationPreservation": "Original blind-v6 inputs and original freeze remain byte-identical to their frozen manifest. First evaluation results were not read, run or edited; this report and development dataset do not replace the preserved first failure.",
+  "writeScope": [
+    "evaluation/development-v6-corrected",
+    "docs/evidence/run004/v6-correction-validation.json"
+  ]
+}

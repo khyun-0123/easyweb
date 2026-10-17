@@ -1,0 +1,33 @@
+
+Running 1 test using 1 worker
+
+(node:68497) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] tests/generic-controls.spec.mjs:64:1 › 구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다
+  1) tests/generic-controls.spec.mjs:64:1 › 구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다 ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "search"
+    Received: "apply"
+
+      64 | test('구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다', async ({ page }) => {
+      65 |   const items = await inspect(page, `<main><h2>민원 편람</h2><table><thead><tr><th>제목</th><th>첨부</th></tr></thead><tr><td><a href="#view">사용 변경 서식</a><input id="search-input" type="search" aria-label="검색어"><button id="search-button" type="button">검색</button></td><td><button type="button">자료받기</button></td></tr></table><section><h3>자료 이용안내</h3><div><div role="group"><a id="request" href="#" onclick="return false">신청확인 바로가기</a></div><div role="group"><a href="#" onclick="return false">보관 자료 열람</a></div></div></section></main>`);
+    > 66 |   expect(items.find(i=>i.id==='search-input')?.category).toBe('search');
+         |                                                          ^
+      67 |   expect(items.find(i=>i.id==='search-button')?.category).toBe('search');
+      68 |   expect(items.find(i=>i.id==='request')?.category).toBe('apply');
+      69 | });
+        at /private/tmp/easyweb-controls-v5/tests/generic-controls.spec.mjs:66:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/generic-controls-구조-보완은-표-안-검색창·검색-버튼·명시적-신청-그룹의-기능을-덮지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/generic-controls-구조-보완은-표-안-검색창·검색-버튼·명시적-신청-그룹의-기능을-덮지-않는다/error-context.md
+
+
+  1 failed
+    tests/generic-controls.spec.mjs:64:1 › 구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다 ──────────────

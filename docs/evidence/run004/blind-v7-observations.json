@@ -1,0 +1,2108 @@
+{
+  "schemaVersion": 1,
+  "selectionPlan": {
+    "lockedAt": "2026-10-17T17:42:58.936Z",
+    "basis": "공개 원본의 본문 목적과 기능 문맥을 먼저 관찰한 뒤 3개 핵심 기능을 선정했다. 제어 순서, 위치, 엔진 점수, 키워드 정렬을 선정 기준으로 사용하지 않았다.",
+    "pages": [
+      {
+        "siteId": "city",
+        "url": "https://www.cheonan.go.kr/yeyak/index.do",
+        "required": [
+          "예약 서비스 검색",
+          "천안박물관 전시 해설 예약 상세",
+          "어린이박물관 상설전시 관람 예약 상세"
+        ],
+        "rationale": "통합예약의 공공 목적을 직접 수행하는 예약 서비스 탐색과, 연중 운영하는 시립 박물관 두 곳의 상설 방문 예약 진입을 핵심으로 정했다. 날짜 한정 특별행사의 노출 위치를 기준으로 삼지 않았다."
+      },
+      {
+        "siteId": "government",
+        "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+        "required": [
+          "태풍 예보시",
+          "태풍 특보 중",
+          "태풍 이후"
+        ],
+        "rationale": "태풍 안전행동의 시간 순서인 예보·특보·이후를 원본이 진행별 행동요령으로 명시한다. 동일한 도움말의 동의어가 아니라 서로 다른 재난 단계의 안내 패널을 여는 세 제어이다."
+      },
+      {
+        "siteId": "library",
+        "url": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+        "required": [
+          "검색결과",
+          "상세정보",
+          "상세 가이드 다운로드"
+        ],
+        "rationale": "검색 기능 안내를 읽는 이용자가 다음으로 필요한 결과 해석·자료 상세 해석·전체 안내서 접근을 원본 본문 탭 및 다운로드 제어에서 선정했다. 검색어 입력이나 실제 자료검색 실행과 구별한다."
+      },
+      {
+        "siteId": "public-agency",
+        "url": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+        "required": [
+          "서비스 검색",
+          "가입내역조회 조회하기",
+          "연금업무 상담예약 신청 신청하기"
+        ],
+        "rationale": "개인 전자민원의 서비스 탐색, 본인 가입기록 확인, 연금 상담 예약 진입을 선정했다. 각각 일반 탐색·개인 기록·예약이라는 독립 목적이며 이용량순이나 가나다순 노출을 근거로 삼지 않았다."
+      },
+      {
+        "siteId": "smu",
+        "url": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+        "required": [
+          "다전공(연계/융합전공)",
+          "다전공(자기설계융합전공)",
+          "부전공"
+        ],
+        "rationale": "전공제도 본문의 정규 다전공 이외에 학생이 비교해야 하는 연계/융합·자기설계·부전공의 제도 안내 진입을 선정했다. 등록이나 본인 신청을 수행하는 제어로 해석하지 않았다."
+      }
+    ]
+  },
+  "selectionPlanSha256": "4c43a0b466a59dcefdf2c89b1440efaacb527d7e22b52c3c24b9edf68edd378e",
+  "observationMethod": "새로운 headless Chromium 세션, 1440x1080, 공개 GET 및 DOM의 고정 레이블/제어 구조/가시성 관찰. 클릭·입력·폼 제출·로그인·다운로드 실행 없음.",
+  "pages": [
+    {
+      "title": "통합예약시스템",
+      "finalUrl": "https://www.cheonan.go.kr/yeyak/index.do",
+      "controls": [
+        {
+          "id": "city-service-search",
+          "category": "search",
+          "action": "locate",
+          "area": "search",
+          "tag": "button",
+          "label": "검색",
+          "text": "검색",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1132,
+              "y": 472,
+              "width": 124,
+              "height": 61
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "search-button-group",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "search-container",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "searchArea",
+              "className": "search-area",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "mainVisualContent",
+              "className": "layout aos-init aos-animate",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "city-reset",
+          "category": "search",
+          "action": "locate",
+          "area": "search",
+          "tag": "button",
+          "label": "초기화",
+          "text": "초기화",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1260,
+              "y": 470,
+              "width": 65,
+              "height": 65
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "search-button-group",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "search-container",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "searchArea",
+              "className": "search-area",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "mainVisualContent",
+              "className": "layout aos-init aos-animate",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "city-museum-guide",
+          "category": "apply",
+          "action": "navigate",
+          "area": "museum",
+          "tag": "a",
+          "label": "체험/견학천안박물관 전시 해설 예약2026-02-01 ~ 2026-12-31천안박물관접수중",
+          "text": "체험/견학천안박물관 전시 해설 예약2026-02-01 ~ 2026-12-31천안박물관접수중",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+          "hrefScheme": "http",
+          "originalHref": "/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 12491,
+              "y": 1300,
+              "width": 316,
+              "height": 287
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-container swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "reservationContent",
+              "className": "reservation-content",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "city-child-museum",
+          "category": "apply",
+          "action": "navigate",
+          "area": "museum",
+          "tag": "a",
+          "label": "체험/견학상설전시 <나는야 꼬마 왕건> 관람 예약2026-02-01 ~ 2026-12-31어린이박물관접수중",
+          "text": "체험/견학상설전시 <나는야 꼬마 왕건> 관람 예약2026-02-01 ~ 2026-12-31어린이박물관접수중",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+          "hrefScheme": "http",
+          "originalHref": "/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 12828,
+              "y": 1300,
+              "width": 316,
+              "height": 287
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-container swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "reservationContent",
+              "className": "reservation-content",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "city-reservation-help",
+          "category": "help",
+          "action": "navigate",
+          "area": "nav",
+          "tag": "a",
+          "label": "예약안내",
+          "text": "예약안내",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": "button",
+          "role": "button",
+          "href": "https://www.cheonan.go.kr/yeyak/sub07_01.do",
+          "hrefScheme": "http",
+          "originalHref": "/yeyak/sub07_01.do",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1235,
+              "y": 149,
+              "width": 126,
+              "height": 54
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "n8",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "depth1-ul n8",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "layout",
+              "headings": []
+            },
+            {
+              "tag": "nav",
+              "id": "gnb",
+              "className": "gnb",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "city-login",
+          "category": "login",
+          "action": "locate",
+          "area": "header",
+          "tag": "a",
+          "label": "로그인",
+          "text": "로그인",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+          "hrefScheme": "http",
+          "originalHref": "/yeyak/login.do?returnUrl=/yeyak.do",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1160,
+              "y": 88,
+              "width": 96,
+              "height": 40
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "util-login",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "util-wrap",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "layout",
+              "headings": [
+                "천안시청 통합예약시스템"
+              ]
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "header-wrap",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        }
+      ],
+      "formFields": [],
+      "siteId": "city",
+      "url": "https://www.cheonan.go.kr/yeyak/index.do",
+      "capturedAt": "2026-10-17T17:44:11.110Z",
+      "httpStatus": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "interactionsPerformed": [],
+      "taskDestinationGet": {
+        "requestedUrl": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+        "finalUrl": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+        "status": 200,
+        "title": "체험/견학 < 체험/견학 < 통합예약시스템",
+        "method": "GET",
+        "capturedAt": "2026-10-17T17:44:12.266Z",
+        "clickPerformed": false
+      }
+    },
+    {
+      "title": "국민안전24 | 행동요령 | 태풍",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+      "controls": [
+        {
+          "id": "gov-hospital",
+          "category": "search",
+          "action": "locate",
+          "area": "facilities",
+          "tag": "a",
+          "label": "병원",
+          "text": "병원",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "fn_moveEvacuationArea",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 344,
+              "y": 713,
+              "width": 54,
+              "height": 23
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "public-link",
+              "headings": [
+                "주변 안전시설"
+              ]
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-listarea",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-pharmacy",
+          "category": "search",
+          "action": "locate",
+          "area": "facilities",
+          "tag": "a",
+          "label": "약국",
+          "text": "약국",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "fn_moveEvacuationArea",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 418,
+              "y": 713,
+              "width": 54,
+              "height": 23
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "public-link",
+              "headings": [
+                "주변 안전시설"
+              ]
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-listarea",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-typhoon-status",
+          "category": "search",
+          "action": "locate",
+          "area": "weather",
+          "tag": "a",
+          "label": "태풍",
+          "text": "태풍",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "fn_moveWeatherSpecial",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 895,
+              "y": 713,
+              "width": 54,
+              "height": 23
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "safety-link",
+              "headings": [
+                "재난 현황"
+              ]
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-listarea",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-wind-status",
+          "category": "search",
+          "action": "locate",
+          "area": "weather",
+          "tag": "a",
+          "label": "강풍",
+          "text": "강풍",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "fn_moveWeatherSpecial",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 970,
+              "y": 713,
+              "width": 54,
+              "height": 23
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "safety-link",
+              "headings": [
+                "재난 현황"
+              ]
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-listarea",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-guide-pdf",
+          "category": "help",
+          "action": "locate",
+          "area": "resources",
+          "tag": "a",
+          "label": "행동요령 PDF다운로드",
+          "text": "행동요령 PDF다운로드",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "safeKorea.guideFileDown",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 344,
+              "y": 811,
+              "width": 186,
+              "height": 23
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "data-link",
+              "headings": [
+                "관련 자료"
+              ]
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "guide-list",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "guide-listarea",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-before",
+          "category": "help",
+          "action": "locate",
+          "area": "stages",
+          "tag": "button",
+          "label": "태풍 예보시",
+          "text": "태풍 예보시",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "inline-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 319,
+              "y": 1743,
+              "width": 367,
+              "height": 55
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "tab-area",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "cont-area",
+              "headings": [
+                "관련동영상",
+                "진행별 행동요령",
+                "태풍",
+                "하천 급류",
+                "차량 침수",
+                "강풍에 의한 낙하물",
+                "낙뢰",
+                "세월교·교량 횡단",
+                "물꼬",
+                "어린이",
+                "노약자"
+              ]
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "className": "content-right",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "className": "nf-content",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-during",
+          "category": "help",
+          "action": "locate",
+          "area": "stages",
+          "tag": "button",
+          "label": "태풍 특보 중",
+          "text": "태풍 특보 중",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "inline-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 687,
+              "y": 1743,
+              "width": 372,
+              "height": 55
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "tab-area",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "cont-area",
+              "headings": [
+                "관련동영상",
+                "진행별 행동요령",
+                "태풍",
+                "하천 급류",
+                "차량 침수",
+                "강풍에 의한 낙하물",
+                "낙뢰",
+                "세월교·교량 횡단",
+                "물꼬",
+                "어린이",
+                "노약자"
+              ]
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "className": "content-right",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "className": "nf-content",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "gov-after",
+          "category": "help",
+          "action": "locate",
+          "area": "stages",
+          "tag": "button",
+          "label": "태풍 이후",
+          "text": "태풍 이후",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "inline-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 1060,
+              "y": 1743,
+              "width": 351,
+              "height": 55
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "tab-area",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "cont-area",
+              "headings": [
+                "관련동영상",
+                "진행별 행동요령",
+                "태풍",
+                "하천 급류",
+                "차량 침수",
+                "강풍에 의한 낙하물",
+                "낙뢰",
+                "세월교·교량 횡단",
+                "물꼬",
+                "어린이",
+                "노약자"
+              ]
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "className": "content-right",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "className": "nf-content",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        }
+      ],
+      "formFields": [],
+      "siteId": "government",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=typhoon&actsHeaderTitle=%ED%83%9C%ED%92%8D&menuSn=4",
+      "capturedAt": "2026-10-17T17:44:14.200Z",
+      "httpStatus": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "interactionsPerformed": [],
+      "taskDestinationGet": {
+        "method": "original-control-only",
+        "reason": "동작이 본인 인증 또는 인라인 JS 제어에 연결되므로 원본 제어의 고정 이름과 처리표시까지만 관찰했다.",
+        "clickPerformed": false
+      }
+    },
+    {
+      "title": "국립중앙도서관>사이트 이용안내>누리집이용가이드>소장자료 통합검색>검색기능",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+      "controls": [
+        {
+          "id": "lib-search-guide",
+          "category": "help",
+          "action": "locate",
+          "area": "guides",
+          "tag": "a",
+          "label": "검색기능선택됨",
+          "text": "검색기능선택됨",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+          "hrefScheme": "http",
+          "originalHref": "/NL/contents/N71230100000.do",
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "tracking-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 385,
+              "y": 478,
+              "width": 102,
+              "height": 49
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": "TAB2_N71230100000",
+              "className": "swiper-slide on swiper-slide-active",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "swiper-wrapper-9706c62d0c627727",
+              "className": "swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "menu-wrap-tab4",
+              "className": "depth4-menu__slider swiper-initialized swiper-horizontal swiper-backface-hidden",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "content_info",
+              "headings": [
+                "소장자료 통합검색"
+              ]
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "lib-result-guide",
+          "category": "help",
+          "action": "locate",
+          "area": "guides",
+          "tag": "a",
+          "label": "검색결과",
+          "text": "검색결과",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+          "hrefScheme": "http",
+          "originalHref": "/NL/contents/N71230200000.do",
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "tracking-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 487,
+              "y": 478,
+              "width": 102,
+              "height": 45
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": "TAB2_N71230200000",
+              "className": "swiper-slide swiper-slide-next",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "swiper-wrapper-9706c62d0c627727",
+              "className": "swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "menu-wrap-tab4",
+              "className": "depth4-menu__slider swiper-initialized swiper-horizontal swiper-backface-hidden",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "content_info",
+              "headings": [
+                "소장자료 통합검색"
+              ]
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "lib-detail-guide",
+          "category": "help",
+          "action": "locate",
+          "area": "guides",
+          "tag": "a",
+          "label": "상세정보",
+          "text": "상세정보",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.nl.go.kr/NL/contents/N71230300000.do",
+          "hrefScheme": "http",
+          "originalHref": "/NL/contents/N71230300000.do",
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "tracking-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 588,
+              "y": 478,
+              "width": 102,
+              "height": 45
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": "TAB2_N71230300000",
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "swiper-wrapper-9706c62d0c627727",
+              "className": "swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": "menu-wrap-tab4",
+              "className": "depth4-menu__slider swiper-initialized swiper-horizontal swiper-backface-hidden",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "content_info",
+              "headings": [
+                "소장자료 통합검색"
+              ]
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "lib-full-guide",
+          "category": "help",
+          "action": "locate",
+          "area": "resources",
+          "tag": "button",
+          "label": "상세 가이드 다운로드",
+          "text": "상세 가이드 다운로드",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": true,
+          "handlerKind": "inline-handler",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1163,
+              "y": 552,
+              "width": 192,
+              "height": 39
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "h4",
+              "id": null,
+              "className": "tit",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "link_api_cont",
+              "headings": [
+                "상세 가이드 다운로드"
+              ]
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "sub_content",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "content_wrap",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "lib-login",
+          "category": "login",
+          "action": "locate",
+          "area": "header",
+          "tag": "a",
+          "label": "로그인",
+          "text": "로그인",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "anyidAdaptor.ssoLoginPage",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1068,
+              "y": 95,
+              "width": 91,
+              "height": 42
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "login",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "prv_menus",
+              "headings": [
+                "국립중앙도서관"
+              ]
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "inner",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        }
+      ],
+      "formFields": [],
+      "siteId": "library",
+      "url": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+      "capturedAt": "2026-10-17T17:44:47.345Z",
+      "httpStatus": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "interactionsPerformed": [],
+      "taskDestinationGet": {
+        "requestedUrl": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+        "finalUrl": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+        "status": 200,
+        "title": "국립중앙도서관>사이트 이용안내>누리집이용가이드>소장자료 통합검색>검색결과",
+        "method": "GET",
+        "capturedAt": "2026-10-17T17:44:48.119Z",
+        "clickPerformed": false
+      }
+    },
+    {
+      "title": "전자민원 > 개인 > 전체 - 국민을 튼튼하게 연금을 튼튼하게",
+      "finalUrl": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+      "controls": [
+        {
+          "id": "nps-service-search",
+          "category": "search",
+          "action": "locate",
+          "area": "search",
+          "tag": "input",
+          "label": "검색",
+          "text": "",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "button",
+          "href": null,
+          "hrefScheme": null,
+          "originalHref": null,
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1144,
+              "y": 580,
+              "width": 120,
+              "height": 44
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "data-search-input",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "data-search-form",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "data-search-wrap elec",
+              "headings": []
+            },
+            {
+              "tag": "fieldset",
+              "id": null,
+              "className": "",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "nps-history-help",
+          "category": "help",
+          "action": "navigate",
+          "area": "history",
+          "tag": "a",
+          "label": "상세보기",
+          "text": "상세보기",
+          "title": "가입내역조회 상세보기",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+          "hrefScheme": "http",
+          "originalHref": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1157,
+              "y": 777,
+              "width": 116,
+              "height": 38
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "item-btn",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "minwon-list",
+              "headings": []
+            }
+          ],
+          "contextText": "가입자의 보험료 및 예상연금액 등 가입내역을 확인할 수 있습니다."
+        },
+        {
+          "id": "nps-history",
+          "category": "apply",
+          "action": "locate",
+          "area": "history",
+          "tag": "a",
+          "label": "조회하기",
+          "text": "조회하기",
+          "title": "가입내역조회 조회하기",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "goMenuPage",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1282,
+              "y": 777,
+              "width": 116,
+              "height": 38
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "item-btn",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "minwon-list",
+              "headings": []
+            }
+          ],
+          "contextText": "가입자의 보험료 및 예상연금액 등 가입내역을 확인할 수 있습니다."
+        },
+        {
+          "id": "nps-consult-help",
+          "category": "help",
+          "action": "navigate",
+          "area": "consult",
+          "tag": "a",
+          "label": "상세보기",
+          "text": "상세보기",
+          "title": "연금업무 상담예약 신청 상세보기",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+          "hrefScheme": "http",
+          "originalHref": "/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 1157,
+              "y": 9504,
+              "width": 116,
+              "height": 38
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "item-btn",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "minwon-list",
+              "headings": []
+            }
+          ],
+          "contextText": "연금업무에 관하여 상담해 드립니다. (직원 확인 후 처리)"
+        },
+        {
+          "id": "nps-consult",
+          "category": "apply",
+          "action": "locate",
+          "area": "consult",
+          "tag": "a",
+          "label": "신청하기",
+          "text": "신청하기",
+          "title": "연금업무 상담예약 신청 신청하기",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "goMenuPage",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": false,
+            "rect": {
+              "x": 1282,
+              "y": 9504,
+              "width": 116,
+              "height": 38
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "item-btn",
+              "headings": []
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "minwon-list",
+              "headings": []
+            }
+          ],
+          "contextText": "연금업무에 관하여 상담해 드립니다. (직원 확인 후 처리)"
+        },
+        {
+          "id": "nps-login",
+          "category": "login",
+          "action": "locate",
+          "area": "header",
+          "tag": "a",
+          "label": "로그인",
+          "text": "로그인",
+          "title": null,
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "hrefScheme": "http",
+          "originalHref": "/lgn/loginForm.do",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 1337,
+              "y": 89,
+              "width": 83,
+              "height": 28
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "className": "header-menu-login",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "header-menu",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "header-util-area",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "top-inner",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        }
+      ],
+      "formFields": [
+        {
+          "tag": "select",
+          "id": "mainCateMenuId",
+          "label": "대분류",
+          "title": null,
+          "placeholder": "",
+          "options": [
+            "전체",
+            "조회",
+            "증명서 발급",
+            "신고 · 신청",
+            "가입지원 · 신고센터",
+            "인터넷 납부서비스"
+          ]
+        },
+        {
+          "tag": "select",
+          "id": "subCateMenuId",
+          "label": "중분류",
+          "title": null,
+          "placeholder": "",
+          "options": [
+            "전체"
+          ]
+        },
+        {
+          "tag": "select",
+          "id": "searchGbu",
+          "label": "",
+          "title": "검색 조건",
+          "placeholder": "",
+          "options": [
+            "전체",
+            "제목",
+            "내용"
+          ]
+        },
+        {
+          "tag": "input",
+          "id": "searchText",
+          "label": "",
+          "title": "검색어 입력",
+          "placeholder": "검색어를 입력하세요",
+          "options": []
+        }
+      ],
+      "siteId": "public-agency",
+      "url": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24001727",
+      "capturedAt": "2026-10-17T17:44:49.901Z",
+      "httpStatus": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "interactionsPerformed": [],
+      "taskDestinationGet": {
+        "method": "original-control-only",
+        "reason": "원본 JS 제어까지만 관찰하고 본인 인증에 진입하지 않았다.",
+        "clickPerformed": false
+      }
+    },
+    {
+      "title": "상명대학교 국문 | 학사안내 | 학사 | 전공제도 | 다전공(제2전공)",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+      "controls": [
+        {
+          "id": "smu-second",
+          "category": "academic",
+          "action": "locate",
+          "area": "major",
+          "tag": "a",
+          "label": "다전공(제2전공)",
+          "text": "다전공(제2전공)",
+          "title": "다전공(제2전공) 선택됨",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor.do#tab18283_",
+          "hrefScheme": "http",
+          "originalHref": "/kor/life/multiMajor.do#tab18283_",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": "",
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 195,
+              "y": 224,
+              "width": 146,
+              "height": 80
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "swiper-slide active first swiper-slide-active",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "tab-ul swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "double-tab-wrap pc",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "smu-linked",
+          "category": "academic",
+          "action": "locate",
+          "area": "major",
+          "tag": "a",
+          "label": "다전공(연계/융합전공)",
+          "text": "다전공(연계/융합전공)",
+          "title": "다전공(연계/융합전공)",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor2.do#tab18284_",
+          "hrefScheme": "http",
+          "originalHref": "/kor/life/multiMajor2.do#tab18284_",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": "",
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 341,
+              "y": 224,
+              "width": 184,
+              "height": 80
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "swiper-slide swiper-slide-next",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "tab-ul swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "double-tab-wrap pc",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "smu-self",
+          "category": "academic",
+          "action": "locate",
+          "area": "major",
+          "tag": "a",
+          "label": "다전공(자기설계융합전공)",
+          "text": "다전공(자기설계융합전공)",
+          "title": "다전공(자기설계융합전공)",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor3.do#tab18285_",
+          "hrefScheme": "http",
+          "originalHref": "/kor/life/multiMajor3.do#tab18285_",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": "",
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 525,
+              "y": 224,
+              "width": 205,
+              "height": 80
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "tab-ul swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "double-tab-wrap pc",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "smu-minor",
+          "category": "academic",
+          "action": "locate",
+          "area": "major",
+          "tag": "a",
+          "label": "부전공",
+          "text": "부전공",
+          "title": "부전공",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+          "hrefScheme": "http",
+          "originalHref": "/kor/life/minor.do#tab18286_",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": "",
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 730,
+              "y": 224,
+              "width": 92,
+              "height": 80
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "tab-ul swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "double-tab-wrap pc",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "smu-micro",
+          "category": "academic",
+          "action": "locate",
+          "area": "major",
+          "tag": "a",
+          "label": "마이크로전공",
+          "text": "마이크로전공",
+          "title": "마이크로전공",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.smu.ac.kr/kor/life/microMajor.do#tab19085_",
+          "hrefScheme": "http",
+          "originalHref": "/kor/life/microMajor.do#tab19085_",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": "",
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 821,
+              "y": 224,
+              "width": 130,
+              "height": 80
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "tab-ul swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "double-tab-wrap pc",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "smu-advanced",
+          "category": "academic",
+          "action": "locate",
+          "area": "major",
+          "tag": "a",
+          "label": "심화전공",
+          "text": "심화전공",
+          "title": "심화전공",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": "https://www.smu.ac.kr/kor/life/advancedDegree.do#tab18287_",
+          "hrefScheme": "http",
+          "originalHref": "/kor/life/advancedDegree.do#tab18287_",
+          "sourceFunction": null,
+          "handlerPresent": false,
+          "handlerKind": null,
+          "target": "",
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 951,
+              "y": 224,
+              "width": 105,
+              "height": 80
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "swiper-slide",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "tab-ul swiper-wrapper",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "double-tab-wrap pc",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        },
+        {
+          "id": "smu-login",
+          "category": "login",
+          "action": "locate",
+          "area": "header",
+          "tag": "a",
+          "label": "Login",
+          "text": "Login",
+          "title": "로그인 새창열림",
+          "ariaLabel": null,
+          "roleAttribute": null,
+          "role": "link",
+          "href": null,
+          "hrefScheme": "javascript",
+          "originalHref": "javascript:[fixed control marker]",
+          "sourceFunction": "loginPopupOpen",
+          "handlerPresent": false,
+          "handlerKind": "javascript-href",
+          "target": null,
+          "visibility": {
+            "layoutVisible": true,
+            "inViewport": true,
+            "rect": {
+              "x": 0,
+              "y": 778,
+              "width": 120,
+              "height": 48
+            }
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "className": "",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "login-box",
+              "headings": []
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "className": "util-box",
+              "headings": []
+            }
+          ],
+          "contextText": ""
+        }
+      ],
+      "formFields": [],
+      "siteId": "smu",
+      "url": "https://www.smu.ac.kr/kor/life/multiMajor.do",
+      "capturedAt": "2026-10-17T17:44:51.112Z",
+      "httpStatus": 200,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "interactionsPerformed": [],
+      "taskDestinationGet": {
+        "requestedUrl": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+        "finalUrl": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+        "status": 200,
+        "title": "상명대학교 국문 | 학사안내 | 학사 | 전공제도 | 부전공",
+        "method": "GET",
+        "capturedAt": "2026-10-17T17:44:51.507Z",
+        "clickPerformed": false
+      }
+    }
+  ]
+}

@@ -3,12 +3,12 @@ import { build } from 'esbuild';
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { scorePage, qualityGate } from './evaluation-metrics.mjs';
-import { validateFreshMode, verifyFrozenFiles } from './evaluation-protocol.mjs';
+import { validateFreshMode, verifyFrozenFiles, verifyAdjudicatedDataset } from './evaluation-protocol.mjs';
 import { buildMenuFlowHarness, observeMenuFlow } from './menu-flow-evaluation.mjs';
 
 const args = process.argv.slice(2);
 if (args.includes('--help')) {
-  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|development-v4-corrected] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run003] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. Menu-flow coverage is separate from initial-screen quality.');
+  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run004] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
   process.exit(0);
 }
 for (const arg of args) {
@@ -18,16 +18,17 @@ for (const arg of args) {
 const value = (name, fallback) => args.find(arg => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
 const engine = value('engine', 'current');
 const split = value('split', 'calibration');
-const outputDir = value('output-dir', 'docs/evidence/run003');
+const outputDir = value('output-dir', 'docs/evidence/run004');
 const suite = value('suite', 'core');
 const withMenuFlow = args.includes('--with-menu-flow');
 if (withMenuFlow && engine !== 'current') throw new Error('Menu flow is supported for the current engine only');
-if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'blind-v5', 'blind-v6', 'development-v4-corrected'].includes(suite)) throw new Error('suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|development-v4-corrected');
+if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'blind-v5', 'blind-v6', 'blind-v7', 'blind-v7-v2', 'development-v4-corrected', 'development-v6-corrected', 'development-v6-corrected-v2'].includes(suite)) throw new Error('Unknown evaluation suite');
 const dataRoot = suite === 'core' ? 'evaluation' : `evaluation/${suite}`;
-const fixtureRoot = suite === 'development-v4-corrected' ? 'evaluation/blind-v4' : dataRoot;
+const correctedVersion = /^development-v(4|6)-corrected(?:-v2)?$/.exec(suite);
+const fixtureRoots = correctedVersion ? [`evaluation/blind-v${correctedVersion[1]}`, dataRoot] : [dataRoot];
 const phase = value('phase', engine === 'baseline' ? 'frozen-baseline' : 'post-holdout-development');
 if (!['frozen-baseline', 'fresh-blind-validation', 'post-holdout-development'].includes(phase)) throw new Error('Invalid evaluation phase');
-if (suite === 'development-v4-corrected' && phase !== 'post-holdout-development') throw new Error('Adjudicated v4 data is development only');
+if (correctedVersion && phase !== 'post-holdout-development') throw new Error('Adjudicated data is development only');
 const output = `${outputDir}/evaluation-${engine}-${suite === 'core' ? '' : `${suite}-`}${split}.json`;
 let freezeVerification = null;
 if (phase === 'fresh-blind-validation') {
@@ -57,11 +58,14 @@ for (const site of sites) {
     if (page.expected.length < 2 || !page.task?.expectedSourceIds?.length) throw new Error(`정답/과제 부족: ${page.id}`);
     if (!page.expected.every(x => categories.has(x.category) && x.sourceIds?.length)) throw new Error(`정답 분류/소스 누락: ${page.id}`);
     if (!page.accepted.every(x => categories.has(x.category) && x.sourceId)) throw new Error(`허용 추천 형식 오류: ${page.id}`);
-    if (page.fixture.includes('..') || !page.fixture.startsWith(`${fixtureRoot}/fixtures/`)) throw new Error('fixture 경로 오류');
+    if (page.fixture.includes('..') || !fixtureRoots.some(root => page.fixture.startsWith(`${root}/fixtures/`))) throw new Error('fixture 경로 오류');
     expectedCount += page.expected.length;
   }
 }
 if (sites.length !== 5 || ids.size !== requiredPageCount || expectedCount < minimumExpected) throw new Error(`5개 사이트·${requiredPageCount}개 페이지·${minimumExpected}개 이상 기대 기능이 필요합니다.`);
+const adjudication = correctedVersion
+  ? await verifyAdjudicatedDataset(`${dataRoot}/VERSION.json`, siteFiles.map(file => `${dataRoot}/sites/${file}`))
+  : null;
 if (phase === 'fresh-blind-validation') {
   const productFiles = (await readdir('src')).map(file => `src/${file}`).concat('extension/manifest.json');
   const datasetFiles = siteFiles.map(file => `${dataRoot}/sites/${file}`).concat(sites.flatMap(site => site.pages.map(page => page.fixture)));
@@ -131,6 +135,7 @@ function summarize(rows) {
 }
 const report = { checkedAt: new Date().toISOString(), engine, suite, split,
   evaluationPhase: phase,
+  adjudication,
   freezeVerification,
   toolHashes,
   evaluationWorld: 'CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.',
@@ -139,6 +144,10 @@ const report = { checkedAt: new Date().toISOString(), engine, suite, split,
   engineHash: sha(bundle.outputFiles[0].text), datasetHash: sha(JSON.stringify(sites)), fixtureHashes,
   summary: summarize(results), sites: sites.map(site => ({ siteId: site.siteId, ...summarize(results.filter(row => row.siteId === site.siteId)) })), results };
 report.quality = qualityGate(report.summary, report.sites);
+if (correctedVersion) {
+  const after = await verifyAdjudicatedDataset(`${dataRoot}/VERSION.json`, siteFiles.map(file => `${dataRoot}/sites/${file}`));
+  if (JSON.stringify(after) !== JSON.stringify(adjudication)) throw new Error('Adjudicated data changed during evaluation');
+}
 for (const path of toolPaths) if (sha(await readFile(path)) !== toolHashes[path]) throw new Error(`Evaluation tool changed during run: ${path}`);
 if (withMenuFlow) report.menuFlow = {
   scope: 'Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.',

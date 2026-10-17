@@ -1,0 +1,130 @@
+{
+  "siteId": "public-agency",
+  "name": "국민연금공단",
+  "type": "public-agency",
+  "observedAt": "2026-10-17T17:17:11.229Z",
+  "pages": [
+    {
+      "id": "public-agency-blind-v6",
+      "url": "https://www.nps.or.kr/comm/quick/getOHAH0011M0.do",
+      "finalUrl": "https://www.nps.or.kr/comm/quick/getOHAH0011M0.do",
+      "title": "국민연금 알아보기 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v6/fixtures/public-agency.html",
+      "observation": {
+        "method": "Independent headless public-source observation with actual Chromium AX snapshots and safe original DOM ancestry/fixed heading-sibling context. No product source/engine/evaluation output read or run.",
+        "observedAt": "2026-10-17T17:17:11.229Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "Fresh anonymous ko-KR context; headless Chromium; DOMContentLoaded plus 1600ms",
+          "Only GET/HEAD network methods allowed; no input values read, text entry, authentication, form submission, download activation, destructive action or business action",
+          "All selected source controls had nonzero layout boxes and were not CSS-hidden, inert or aria-hidden",
+          "One source task focus/hit-test per page and safe public destination GETs are stored in docs/evidence/run003/blind-v6-observations.json."
+        ],
+        "limitations": [
+          "Small selected-control reconstructions only; no full page, source CSS/media, app scripts, authenticated state or real extension activation. Original fixed labels, href/target, relevant original ancestor tags/classes/IDs and nearby fixed headings/siblings retained.",
+          "All source controls had nonzero boxes and were not CSS-hidden, inert or aria-hidden. One task control per page additionally received read-only scroll/focus/center hit testing; this is not a complete keyboard or assistive-technology audit.",
+          "Actual Chromium AX snapshots exclude value fields. Playwright ariaSnapshot additionally saved for non-editable controls where selector injection works. NL source DOM read through a CDP isolated world after a source-page selector-injection conflict; no security/authentication/certificate settings changed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "public-agency-blind-v6-feature-1",
+          "category": "search",
+          "label": "예상연금 간단계산 월 납입보험료를 입력하시면 조회하는 해의 1월 1일부터 가입하여 10년 이상 납입 후 예상연금액을 알아볼 수 있습니다.",
+          "sourceIds": [
+            "public-agency-blind-v6-control-2"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "public-agency-blind-v6-feature-2",
+          "category": "apply",
+          "label": "가입·납부내역 조회 국민연금 가입납부내역을 알아볼 수 있습니다.",
+          "sourceIds": [
+            "public-agency-blind-v6-control-5"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "public-agency-blind-v6-feature-3",
+          "category": "apply",
+          "label": "연금급여청구 연금을 받을 수 있는 경우 연금을 신청합니다.",
+          "sourceIds": [
+            "public-agency-blind-v6-control-7"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/elctcvlcpt/dclraply/getOHAC0040M0.do?menuId=MN24001074"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "public-agency-blind-v6-control-1",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-2",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-3",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-4",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-5",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-6",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-7",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-8",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-9",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "public-agency-blind-v6-control-10",
+          "category": "search",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "public-agency-blind-v6-task",
+        "instruction": "로그인 없이 간단하게 예상연금 알아보기에서 예상연금 간단계산 원본 링크 위치를 찾으세요. 팝업 열기·보험료 입력·계산·인증을 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "public-agency-blind-v6-control-2"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "공단의 대표 국민연금 알아보기 공개 진입 페이지에서 본문 전체 계산/조회/신청 제어 10개를 선정했다. 예상연금 계산과 가입·납부내역 등 정보 확인은 search이며, 연금급여 청구와 상담 예약신청은 apply이다. 가입·납부내역은 신청내역/신청결과가 아니므로 apply로 합치지 않았다. JS/SSO 및 명시적 inline popup 제어는 locate, 실제 일반 HTTP 서비스 진입 링크는 navigate이다. 뒤이어 인증이 필요한 서비스라도 공개 진입 링크 이동 자체가 인증·신청 완료를 뜻하지 않는다.",
+        "Base href resolves unchanged original relative hrefs against observed source URL. CSP script-src none/object-src none/form-action none; source onclick presence has an inert return-false marker, without original handler implementations. Only fixed labels and empty fixture editables; no actual input values."
+      ]
+    }
+  ]
+}

@@ -59,6 +59,23 @@
       <p>가림막은 나타난 뒤 45초 후 자동으로 없어집니다. 화면을 가려도 키 입력을 가로채거나 초점을 자동으로 이동하지 않습니다. 새로고침으로 언제든 초기 상태로 돌아올 수 있습니다.</p>
     </section>
 
+    <section aria-labelledby="materials-check-title">
+      <h2 id="materials-check-title">자료 버튼 구분 시험</h2>
+      <p>같은 이름의 ‘자료받기’를 관련 서식 제목으로 구분하고 추가 메뉴를 오가는 시험입니다. 실제 파일이나 다운로드는 없습니다. 먼저 켠 뒤 확장을 여세요.</p>
+      <button id="toggle-materials" type="button" aria-pressed="false">서식 구분 시험 켜기</button>
+      <section id="context-materials" hidden aria-labelledby="materials-title">
+        <h3 id="materials-title">민원 편람</h3>
+        <table>
+          <thead><tr><th>제목</th><th>첨부</th></tr></thead>
+          <tbody>
+            <tr><td><a href="#material-a">합성 열람 서식</a></td><td><button type="button">자료받기</button></td></tr>
+            <tr><td><a href="#material-b">합성 보관 서식</a></td><td><button type="button">자료받기</button></td></tr>
+          </tbody>
+        </table>
+        <p id="materials-result" role="status" data-activation-count="0">합성 자료 제어 실행 횟수: 0</p>
+      </section>
+    </section>
+
     <section aria-labelledby="check-title">
       <h2 id="check-title">직접 확인할 순서</h2>
       <ol>
@@ -86,6 +103,9 @@
       const result = document.getElementById('source-result');
       const state = document.getElementById('lab-state');
       const cover = document.getElementById('lab-cover');
+      const materials = document.getElementById('context-materials');
+      const materialsToggle = document.getElementById('toggle-materials');
+      const materialsResult = document.getElementById('materials-result');
       let timer, countdown, cleanup, activations = 0;
       // Only a fixed local navigation marker is used; no input fields or values are read.
       if (new URL(location.href).searchParams.get('view') === 'next') {
@@ -108,6 +128,10 @@
         cancelTimers(); cover.hidden = true; source.textContent = '통합검색'; activations = 0;
         result.dataset.activationCount = '0';
         result.textContent = '원본 버튼 실행 횟수: 0 · 아직 직접 누르지 않았습니다.';
+        materials.hidden = true; materialsToggle.setAttribute('aria-pressed', 'false');
+        materialsToggle.textContent = '서식 구분 시험 켜기';
+        materialsResult.dataset.activationCount = '0';
+        materialsResult.textContent = '합성 자료 제어 실행 횟수: 0';
         setState('idle', '대기 중 · 예약 없음');
       };
       const arm = kind => {
@@ -140,6 +164,17 @@
       document.getElementById('arm-cover').addEventListener('click', () => arm('cover'));
       document.getElementById('reset-lab').addEventListener('click', reset);
       document.getElementById('dismiss-cover').addEventListener('click', removeCover);
+      materialsToggle.addEventListener('click', () => {
+        materials.hidden = !materials.hidden;
+        materialsToggle.setAttribute('aria-pressed', String(!materials.hidden));
+        materialsToggle.textContent = materials.hidden ? '서식 구분 시험 켜기' : '서식 구분 시험 끄기';
+      });
+      materials.querySelectorAll('a,button').forEach(control => control.addEventListener('click', event => {
+        event.preventDefault();
+        const count = Number(materialsResult.dataset.activationCount) + 1;
+        materialsResult.dataset.activationCount = String(count);
+        materialsResult.textContent = '합성 자료 제어 실행 횟수: ' + count;
+      }));
     })();
   </script>
 </body>

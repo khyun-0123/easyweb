@@ -1,0 +1,20 @@
+{
+  "decidedAt": "2026-10-17T17:56:04.228487+00:00",
+  "engineFreeze": "docs/evidence/run004/v0.5-engine-freeze.json",
+  "engineFrozenBeforeRootReadAudit": true,
+  "productEvaluationOnV7BeforeDecision": "NOT_RUN",
+  "audit": "docs/evidence/run004/blind-v7-annotation-audit.json",
+  "auditSha256": "10fdb16b4dd7f0111c2462de215f48b60dfaf74088065e900e21da294b8210d7",
+  "reviewerFinding": "Static label/action checks pass; all 32 nearest ancestor chains differ, some authored semantic wrappers/headings/handler markers differ. Reviewer permits a narrowly described reconstructed-control fixture test.",
+  "rootDecision": "Preserve the original v7 version and audit, but use a separately frozen v2 with observed ancestor, heading and control structure for the first source-structure quality evaluation.",
+  "reason": "The product intentionally depends on landmarks, form/list/row structure and nearby headings. A label/action-only reconstruction does not provide strong evidence of those original-page conditions.",
+  "notAReviewerMandatoryApprovalRule": true,
+  "sourcePagesUnchanged": 5,
+  "expectedGroupsUnchanged": 15,
+  "acceptedControlsUnchanged": 32,
+  "criteriaChanged": false,
+  "engineChangesAfterExposure": "NONE",
+  "newVersion": "evaluation/blind-v7-v2",
+  "newVersionStatus": "PREPARING_WITHOUT_PRODUCT_RESULTS",
+  "claimBoundary": "A same-page source reconstruction refinement adds no pages. Preserve both versions and all original hashes. No original result is being replaced because evaluation has not run."
+}

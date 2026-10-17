@@ -1,0 +1,112 @@
+{
+  "siteId": "city",
+  "siteName": "천안시",
+  "pages": [
+    {
+      "id": "city-blind-v7",
+      "title": "통합예약시스템",
+      "url": "https://www.cheonan.go.kr/yeyak/index.do",
+      "finalUrl": "https://www.cheonan.go.kr/yeyak/index.do",
+      "fixture": "evaluation/blind-v7/fixtures/city.html",
+      "split": "holdout",
+      "observation": {
+        "capturedAt": "2026-10-17T17:44:11.110Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "method": "headless-chromium-public-dom",
+        "httpStatus": 200,
+        "sourceEvidence": "docs/evidence/run004/blind-v7-observations.json",
+        "selectionPlanSha256": "4c43a0b466a59dcefdf2c89b1440efaacb527d7e22b52c3c24b9edf68edd378e",
+        "fixtureKind": "reduced-source-controls",
+        "sourceControlCount": 6
+      },
+      "expected": [
+        {
+          "id": "city-v7-search",
+          "category": "search",
+          "label": "예약 서비스 검색",
+          "sourceIds": [
+            "city-service-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "city-v7-museum",
+          "category": "apply",
+          "label": "천안박물관 전시 해설 예약",
+          "sourceIds": [
+            "city-museum-guide"
+          ],
+          "action": "navigate"
+        },
+        {
+          "id": "city-v7-children",
+          "category": "apply",
+          "label": "상설전시 <나는야 꼬마 왕건> 관람 예약",
+          "sourceIds": [
+            "city-child-museum"
+          ],
+          "action": "navigate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-service-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-reset",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-museum-guide",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-child-museum",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-reservation-help",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-login",
+          "category": "login",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-v7-public-task",
+        "instruction": "천안박물관 전시 해설 예약의 상세 안내로 이동하세요. 예약 최종 신청은 하지 마세요.",
+        "expectedSourceIds": [
+          "city-museum-guide"
+        ],
+        "action": "navigate",
+        "destinationUrl": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+        "evidence": {
+          "type": "public-GET-plus-original-control",
+          "observationPath": "docs/evidence/run004/blind-v7-observations.json",
+          "controlIds": [
+            "city-museum-guide"
+          ],
+          "clickPerformed": false,
+          "finalSubmissionPerformed": false
+        }
+      },
+      "notes": [
+        "원본 본문의 필요한 기능 제어, 고정 문구와 근거 조상 구조를 재구성한 축약 fixture이다. 전체 사이트 복사본이나 원래 JS 실행 환경이 아니다.",
+        "사용자 입력값은 읽거나 저장하지 않았다. 텍스트 입력은 빈 요소로 재구성하고 제어의 고정 이름만 관찰했다.",
+        "onclick 및 javascript URL의 실행 코드는 제거했다. fixture의 onclick/onsubmit은 return false 표지만 사용한다. 위치 수치는 원본 관찰 증거이며 축약 fixture는 원본 스크린샷 복제가 아니다.",
+        "박물관 링크는 예약 대상의 공개 상세로 진입하므로 apply이다. 최종 예약·로그인은 실행하지 않았다. 동일한 carousel 복제 노드는 중복 정답에서 제외했다."
+      ]
+    }
+  ]
+}

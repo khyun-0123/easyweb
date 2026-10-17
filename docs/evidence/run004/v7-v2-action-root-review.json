@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-10-17T18:05:24.236034+00:00",
+  "classification": "POST_FIRST_HOLDOUT_STATIC_ADJUDICATION",
+  "audit": "docs/evidence/run004/v7-v2-action-audit.json",
+  "auditSha256": "41ced3f106af3112a2f014baa862363dd289aaea7856b82ce87cfbc324f000c9",
+  "decision": "Accept six explicit action-contract conflicts as correction candidates for a separately versioned development dataset. Preserve both original v7 versions and the first result. No relabeling or scoring rerun in this checkpoint.",
+  "acceptedActionCorrectionsApprovedInPrinciple": {
+    "city-reservation-help": "navigate -> locate",
+    "smu-advanced": "locate -> navigate",
+    "smu-linked": "locate -> navigate",
+    "smu-micro": "locate -> navigate",
+    "smu-minor": "locate -> navigate",
+    "smu-self": "locate -> navigate"
+  },
+  "expectedActionCorrectionsIfVersioned": [
+    "smu-v7-linked",
+    "smu-v7-self",
+    "smu-v7-minor"
+  ],
+  "taskInstructionCorrectionIfVersioned": "smu-v7-public-task",
+  "loginAmbiguity": {
+    "sourceIds": [
+      "city-login",
+      "nps-login"
+    ],
+    "status": "UNRESOLVED_CONTRACT_COVERAGE",
+    "reason": "Ordinary HTTP destinations have no explicit action markers. Opening a public login form and initiating authentication are not established as equivalent by the available evidence. Do not invent handlers or change gold to match output."
+  },
+  "sameDocumentFragmentContext": {
+    "sourceId": "smu-second",
+    "contractualAction": "locate",
+    "evaluatorInspection": "scripts/evaluate.mjs:100-103 routes HTML and navigates to target.finalUrl || target.url; does not use setContent/about:blank for product evaluation. Structural parity observation about:blank is a separate observation context.",
+    "newProductExecution": false
+  },
+  "firstReport": "docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json",
+  "firstReportSha256": "c9a403cb64178f395575a9668a24521f09d3ded58c6ac1e7ea4efc2c211c4fd0",
+  "firstRecordedQuality": "FAIL",
+  "rawMetricsRecomputed": false,
+  "productOrFrozenDatasetChanged": false,
+  "scope": "Interpretation of annotation action contracts only; neither six conflicts nor two ambiguities erase independently observed missing/incorrect category classifications. Raw first metrics remain explicitly qualified.",
+  "additionalAnnotationCompletenessCaveat": {
+    "source": "docs/evidence/run004/v7-failure-diagnosis.json",
+    "issue": "The faithful public-agency form also contains a fixed search input without an accepted source ID. Its displayed presence is recorded as an unmatched recommendation; that alone does not establish a fabricated function or input-content leakage. Review accepted coverage separately before interpreting all raw precision mismatches as product defects.",
+    "action": "No membership or score changes in this checkpoint."
+  }
+}

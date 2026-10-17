@@ -17,6 +17,24 @@ test.beforeEach(async ({ page }) => {
 const open = page => page.addScriptTag({ content });
 const card = (page, label) => page.locator('.card').filter({ has: page.locator('.card-source', { hasText: `찾은 메뉴 · ${label}` }) });
 
+test('수동 확인실의 추가 메뉴에서 같은 자료 버튼을 관련 서식으로 구분하고 초기화한다', async ({ page }) => {
+  await page.locator('#toggle-materials').click();
+  await open(page);
+  const contexts = new Set();
+  for (let index = 0; index < 4; index++) {
+    for (const text of await page.locator('.card-context').allTextContents()) contexts.add(text);
+    const next = page.getByRole('button', { name: '다른 메뉴 보기', exact: true });
+    if (!await next.isVisible()) break;
+    await next.click();
+  }
+  expect([...contexts].sort()).toEqual(['관련 항목 · 합성 보관 서식', '관련 항목 · 합성 열람 서식']);
+  await expect(page.locator('#materials-result')).toHaveAttribute('data-activation-count', '0');
+  await page.keyboard.press('Escape');
+  await page.locator('#reset-lab').click();
+  await expect(page.locator('#context-materials')).toBeHidden();
+  await expect(page.locator('#toggle-materials')).toHaveAttribute('aria-pressed', 'false');
+});
+
 test('수동 확인실의 원본 안내는 실제 버튼만 가리키며 사용자가 누르기 전에는 합성 동작도 실행하지 않는다', async ({ page }) => {
   const requests = [];
   page.on('request', request => requests.push(request.url()));
