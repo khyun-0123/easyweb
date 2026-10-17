@@ -1,0 +1,131 @@
+{
+  "siteId": "public-agency",
+  "siteName": "국민연금공단",
+  "pages": [
+    {
+      "id": "public-agency-blind-v8",
+      "title": "연금정보 > 알기쉬운 국민연금 > 국민연금 제도 > 국민연금이란 - 숫자로 보는 국민연금 - 국민을 튼튼하게 연금을 튼튼하게",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+      "fixture": "evaluation/blind-v8/fixtures/public-agency-blind-v8.html",
+      "split": "holdout",
+      "observation": {
+        "capturedAt": "2026-10-17T18:14:47.474Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "method": "Fresh headless Playwright Chromium; read-only public HTTP DOMContentLoaded plus 1500ms; no interactions",
+        "httpStatus": 200,
+        "sourceEvidence": {
+          "observationsFile": "docs/evidence/run005/blind-v8-observations.json",
+          "pageId": "public-agency-blind-v8",
+          "selectors": [
+            "#contents > .page-top",
+            "#contents > .page-contents"
+          ],
+          "sourceDocumentUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+          "sourceBaseURI": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+          "fixtureSha256": "7f2b445de0cc0986187aa484ab2be0ca6ca70ab0ee15669ec07e81da15682f48"
+        },
+        "authState": "Fresh anonymous context; no credentials or auth action",
+        "inputValuesObserved": false,
+        "visibilityPreservation": "Recorded computed display, visibility, and opacity copied as inline presentation styles; original style attributes retained in observation; semantic tags/roles/ids/classes/order/headings remain source-exact."
+      },
+      "accepted": [
+        {
+          "sourceId": "public-agency-v8-c001",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-v8-c002",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-v8-c003",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-v8-c004",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-v8-c005",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-v8-c006",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-v8-c007",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "expected": [
+        {
+          "id": "lifecycle-explanation",
+          "category": "help",
+          "label": "생애주기로 보는 국민연금",
+          "sourceIds": [
+            "public-agency-v8-c003"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "social-protection-explanation",
+          "category": "help",
+          "label": "사회보장제도와 국민연금",
+          "sourceIds": [
+            "public-agency-v8-c004"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "pension-need-explanation",
+          "category": "help",
+          "label": "국민연금의 필요성",
+          "sourceIds": [
+            "public-agency-v8-c005"
+          ],
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "public-agency-v8-task",
+        "instruction": "생애주기에 따른 국민연금 설명을 읽을 수 있는 탭의 원본 위치를 찾으세요.",
+        "expectedSourceIds": [
+          "public-agency-v8-c003"
+        ],
+        "action": "locate",
+        "evidence": {
+          "observedSourceId": "public-agency-v8-c003",
+          "accessibleName": {
+            "name": "생애주기로 보는 국민연금",
+            "basis": "rendered-text"
+          },
+          "hrefAttribute": "#tabPage2",
+          "resolvedHref": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103#tabPage2",
+          "inlineHandlers": {
+            "onclick": "javascript:fnc_partPerson('')"
+          },
+          "target": null,
+          "defaultVisible": true,
+          "scope": "Read-only recognition of a public function or original source location; no authentication, form submission, or download executed."
+        }
+      },
+      "notes": [
+        "Public read-only source capture only. Scripts, stylesheets, external assets, embedded documents, input value attributes, and editable text were omitted. Original inline handler strings remain inert under script-src none CSP; no handlers were activated.",
+        "The fixture preserves the entire selected subtree plus all original ancestors and referenced ID targets. Siblings outside the selected source blocks are outside this bounded fixture. Source URL, base URI, control ancestor chains, headings, node order, and every retained control are recorded separately.",
+        "The browser capture uses a new headless context without existing user profiles or tabs. Source site delegated event behavior is not reproduced or inferred. Ordinary HTTP link destinations are judged only by observable metadata."
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 # EasyWeb 단계별 진행표
 
-최종 갱신: 2026-10-18 (한국 시간) · RUN-004 / v0.5.0 개발 후보
+최종 갱신: 2026-10-18 (한국 시간) · RUN-005 / v0.6.0 동결 후보·독립 첫 FAIL
 
-기준 명세: [WORK_SPEC.md](WORK_SPEC.md) · 예산: [EXECUTION_BUDGET.md](EXECUTION_BUDGET.md) · [최신 보고서](RUN_004_REPORT.md) · [이전 후보 기록](RUN_003_REPORT.md)
+기준 명세: [WORK_SPEC.md](WORK_SPEC.md) · 예산: [EXECUTION_BUDGET.md](EXECUTION_BUDGET.md) · [현재 보고서](RUN_005_REPORT.md) · [직전 후보 기록](RUN_004_REPORT.md)
 
-**완료 단계: 5/10 · 인수 NOT_MET.** S01~S05는 완료했다. v0.5 로컬 189/189·자동 접근성·합성 성능·공개 과제 15/15·패키지 재현성은 통과했다. v7-v2 원본 첫 점수는 정확 6/12·재현 4/15·과제 추천 1/5로 FAIL이다. 이후 action 주석 충돌 6건이 확인돼 점수의 해석에는 한계가 있다. 원본·첫 실패는 보존하고 정정·재계산·재평가는 하지 않았다. S06/S08/S09 실제 확인과 S07 품질 인수가 남으며 단계 수는 공수 비율이 아니다. [인수 판정](evidence/run004/release-gate.json)
+**완료 단계: 4/10 · 인수 NOT_MET.** S01~S04는 완료했으며 명시적 다운로드 식별 누락 2건으로 S05를 재개했다. 최종 v0.6 로컬 **222/222**, 자동 접근성·합성 성능은 통과했지만 blind-v8 첫 **10/17·4/15·과제 추천 1/5**로 모든 5사이트 FAIL이다. 기존 v7-v2 원본 첫 FAIL과 action 충돌의 해석 한계도 보존한다. S06/S08/S09 실제 확인과 S07 품질 인수가 남으며 단계 수는 공수 비율이 아니다. 공개 과제 최종15/15와 패키지 재현성도 확인했으며 개발9suite도 같은 동결로 확인했으며 산출물 무결성 검사도 PASS이며 품질·사용자 인수와 구별한다.
 
 ## 상태
 
@@ -15,23 +15,35 @@
 | ID | 단계 | 상태 | 완료 증거 / 남은 항목 |
 | --- | --- | --- | --- |
 | S01 | 기준선·작업명세 | DONE | 명세·예산·진행표·초기 재현 증거 보존 |
-| S02 | 5개 사이트 정답표 | DONE | core 15페이지·45기대·15과제와 원래 10/5 분리 보존. 후속 독립 첫 자료·결과·동결 보존. v6 category v1/fixture v2 분리, v7/v2 같은 5페이지로 알려진 자료 총 45페이지 |
+| S02 | 5개 사이트 정답표 | DONE | core 15페이지·45기대·15과제와 원래 10/5 분리 보존. 후속 독립 첫 자료·결과·동결 보존. v8 첫 평가 뒤 알려진 총 50페이지. v7 원본/v2/정정본은 같은 5페이지로 한 번만 계산 |
 | S03 | 입력 보호·DOM 분석 | DONE | 편집 입력 비수집·안전한 정적 문맥·현재성 batch 재검사·stale 방어. 다른 batch에 cache 공유하지 않음 |
 | S04 | 분류·순위·중복 | DONE | 범용 문맥·본문 과제·중복·결정적 순위 회귀. 첫 순위 정책과 별도 추가 메뉴 유지. S07 독립 품질은 별개 |
-| S05 | 원본 연결·복귀 | DONE | 액션·가림·초점 변경·실패 복구 회귀. 일반 링크 직접 이동은 사용자 선택이며 원본 JS 식별 한계 명시 |
-| S06 | UI·접근성 | NEEDS_MANUAL | 자동 21조건 오류·위반·incomplete·넘침·타깃·대비 미달 0. 실제 VoiceOver 발화·브라우저 200/400% 확대 NOT_RUN |
-| S07 | 회귀·성능 | IN_PROGRESS / NOT_MET | 로컬·core·성능 3종·공개 과제 통과. v7-v2 첫 raw 6/12·4/15·1/5 FAIL, action 충돌 6건은 별도 개발 정정 후보 승인. 보정 점수 미산정. v6-v2 city 2/3도 미달 |
+| S05 | 원본 연결·복귀 | IN_PROGRESS / NEEDS_FIX | `/cmm/fms/FileDown.do` + `i.ir-download`의 명시적 다운로드 2건이 navigate로 처리됨. [root 판정](evidence/run005/file-download-root-review.json)으로 이 미해결 반례를 재개. 과거 통과 보존. MIME/body·실제 실행/피해 미관찰 |
+| S06 | UI·접근성 | NEEDS_MANUAL | v0.6 자동 21조건 미달 0. 실제 VoiceOver 발화·브라우저 200/400% 확대 NOT_RUN |
+| S07 | 회귀·성능 | IN_PROGRESS / NOT_MET | v0.6 최종 222/222·core 72/74,45/45·합성 3종 PASS. v8 첫 10/17·4/15·1/5 모든 사이트 FAIL, 추가 표시 11/19·5/15·1/5는 별도. v7 정정본은 개발용. 공개 과제15/15·HTTP9/원본안내6 확인, [개발9suite](evidence/run005/final-development/summary.json)의 v5/v6/v7 FAIL도 보존 |
 | S08 | 배포본 실제 설치 | NEEDS_MANUAL / NOT_RUN | 컴퓨터 유즈 중단 유지. 현재 후보의 원래 Manifest 실제 설치·toolbar·단축키·이동·복구 미검증. v0.3 부분 관찰은 이력 |
 | S09 | 사용자 실증 | NEEDS_USER | 정식 6~8명·1인 시험 모두 실제 결과 0. 확인실·양식 준비는 실증이 아님 |
-| S10 | 파일럿 인계 | IN_PROGRESS | v0.5 ZIP·해시·두 빌드/ZIP 동일·산출물 검사 PASS. S06/S07/S08/S09 필수 조건 미달로 DONE 불가 |
+| S10 | 파일럿 인계 | IN_PROGRESS | v0.6 ZIP315,166bytes·해시·두 빌드/ZIP 동일 확인. [산출물 최종 검토](evidence/run005/final-review.json) PASS(해시/링크 불일치0·ZIP5entry동일). S05/S06/S07/S08/S09 필수 조건 미달로 DONE 불가 |
 
 ## 다음 첫 작업
 
-1. [정적 원인 진단](evidence/run004/v7-failure-diagnosis.md)에 따라 범용 서비스 카드·안내 탭·지역 제목과 제어를 연결하는 근거 및 반례 회귀를 개선한다. 현재 45페이지의 결과에 맞춘 라벨 추가를 목표로 삼지 않는다. 첫 6개 제한이 원인이 아니며 분류 전 trace가 없는 정적 추론임을 유지한다.
-2. [독립 action 감사](evidence/run004/v7-v2-action-audit.json)와 [root 검토](evidence/run004/v7-v2-action-root-review.json)의 accepted 6건·expected 3건·SMU 과제 영향 및 로그인 2건의 계약 모호성을 별도로 보존한다. 후속 개발 정정본은 근거·범위를 분리하고 원본과 첫 점수를 덮어쓰지 않는다.
+1. 별도 v0.7에서 FileDown 경로+다운로드 아이콘의 보수적 locate 식별을 수정한다. 일반 양성·유사 일반 링크 음성·stale 회귀로 검증한다. [v2 최종 동결](evidence/run005/v0.6-engine-freeze-v2.json)과 [v8 최초 FAIL](evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json)을 그대로 보존하고 첫 결과 이후 재평가는 개발용으로 구별한다.
+2. v8 실패 원인과 범용 규칙·기관별 adapter 분리 평가 전략을 검토한다. [v7 개발 정정본](../evaluation/development-v7-corrected/VERSION.json)의 11필드·로그인 2건·미주석 검색 입력 미해결 범위와 원본 첫 실패를 유지한다.
 3. 컴퓨터 유즈를 사용하지 않는다. 실제 발화·확대·현재 후보 설치·정식 실증·[1인 사전 시험](PRETEST.md)은 실제 관찰이 올 때만 기록한다.
 
 ## 실행 기록
+
+### RUN-005 · v0.6.0 동결 후보 / 현재 4/10·NOT_MET
+
+- 카드 고정 제목·외부 관련 제목 `relatedLabel`·탭 읽기 문맥, 구체 목적 우선 규칙과 반례를 보강했다. 과제·분류 다양성 우선 선택 뒤 서로 다른 분류 완료 후보로 최대 6개까지 빈 자리를 채운다. threshold·권한·action 정책 유지. 사용자는 최대 6개+“다른 메뉴 보기”를 재확인했으며 기존 구현과 같아 추가 소스/UI 변경은 없다.
+- 초기 204개 통과 후 독립 검토가 semantic 경계 밖 제목 차용을 발견해 반례 4개(수정 전 3실패·1통과)를 추가·수정했다. [보존](evidence/run005/before-code-review-fix/) · [해결](evidence/run005/code-review-resolution.json). 이후 208개 통과·v1 동결 뒤 기존 개발/live 분류 회귀(14/15)를 찾아 v8 미열람·첫 실행 0 상태에서 수정했다. [이전 검사·ZIP·동결 보존 경계](evidence/run005/pre-first-engine-revision.json)
+- 최종 [14파일·아카이브 v2](evidence/run005/v0.6-engine-freeze-v2.json)는 **03:25:20 KST / UTC18:25:20.245610** 동결이다. root/구현자는 그 전에 v8 본문·URL·정답 내용을 읽지 않았다.
+- [최종 로컬 222/222](evidence/run005/local-verification.json), fail/flaky/skipped 0, 32,040.867ms. core 정확 **72/74(97.3%)**·재현 **45/45**·과제 추천 **15/15 PASS**, 오탐 2개도 포함. 자동 접근성 21조건 미달 0.
+- 성능 각 10표본 p95 분석/준비: mixed **27.3/58.6ms**, flat **39.7/95.7ms**, table **88.9/164.9ms**. 300/1,000ms 기준 PASS이며 실제 사이트 로딩·native 제외.
+- [새 v8 최초](evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json)는 UTC18:25:41.668686→18:25:42.472586, exit1. 첫 화면 **10/17(58.8%)·4/15(26.7%)·1/5**, 모든 5사이트 FAIL. 추가 메뉴 **11/19·5/15·1/5**, unresolved/repeated 0이며 첫 화면을 대체하지 않는다. 알려진 총 **50페이지**이며 v7 정정본 추가 0개.
+- [v7 별도 정정판](../evaluation/development-v7-corrected/VERSION.json)은 accepted6·expected3·SMU task2의 11필드다. fixture5개 동일·원본 freeze11입력 보존, 로그인2건/미주석 검색 입력 미해결. [프로토콜10/10](evidence/run005/v7-adjudication/validation.json)은 정적 검증이며 최초 점수를 재계산하지 않았다.
+- [최종 개발9suite](evidence/run005/final-development/summary.json): v2/v3/정정v4 PASS, v5 24/25·13/15 FAIL, rawv6 25/26·11/15·4/5 FAIL, v6 category1 26/26·12/15·4/5 FAIL, fixture2 26/26·14/15·5/5 FAIL(city2/3), v7 raw/정정 둘 다13/18·11/15·4/5 FAIL. v6fixture2 추가41/41·15/15·5/5와 v7 추가13/18·11/15·4/5(unresolved1)은 첫 화면과 별도다. sourceStable=true.
+- [최종 공개 과제15/15](evidence/run005/tasks-live-final.json), HTTP9·원본안내6·재시도/관찰오류0. [최종ZIP](../output/run005/EasyWeb-0.6.0-candidate.zip)315,166bytes·SHA256 `6ddd10dd…`, 두 빌드/ZIP 동일·sourceStable. [수동 확인실](evidence/run005/manual-fixture-final.json)은 HTTP3경로200·바이트 동일만 확인했다. [산출물 최종 검토](evidence/run005/final-review.json)는 **PASS**, 해시305비교/불일치0·검사시점406링크/깨짐0·ZIP5entry동일·이전기록/첫v8FAIL보존. 인수 통과와 별개다. FileDown2건은 명시 다운로드 식별 누락으로 확정해 S05를 재개했고 현재 **4/10**이다. 초기5/10은 발견 전 판정으로 보존하며 core/live15 통과는 이2건을 수행한 증거가 아니다. 컴퓨터 유즈0, native/발화/확대 NOT_RUN, 정식 실증0·1인 시험0. [계측 경계](evidence/run005/goal-usage-snapshot.json)는 **03:10:33→03:31:44 KST / UTC18:10:33→18:31:44, 1,271초(21분11초)**로 이전 준비·분담 및 이후 최종문서·검토·commit을 제외한다. 누적6,672,859tokensUsed/8,825초와 이전대비1,168,622/1,559초는 누적counter/차분일 뿐 이번 고유·생성·청구량이 아니다. 전체 실제 경과·계정 토큰·비용 UNKNOWN. [보고서](RUN_005_REPORT.md)
 
 ### RUN-004 · v0.5.0 개발 후보 / 5/10·NOT_MET
 
@@ -102,4 +114,4 @@
 
 ## 재개용 지시문
 
-> WORK_SPEC·PROGRESS·RUN_004_REPORT를 읽고 현재 45페이지에 맞춘 라벨 추가가 아니라 범용 카드·탭·제목과 제어를 연결하는 근거 개선부터 이어서 진행해줘. v0.5 동결과 v7-v2 첫 raw 6/12·4/15·과제 추천 1/5 FAIL을 보존해. 독립 감사가 accepted action 충돌 6건·expected 3건·SMU 과제 영향을 확인했으나 이번에는 정정·재계산·재평가하지 않았고 로그인 2건은 모호성이 남는다. 원본 점수를 순수 제품 일반화 품질로 단정하지 마. 알려진 45페이지는 개발 자료이며 원본 v7/v2의 같은 5페이지를 10개로 세지 마. v6 category v1/fixture v2·관찰자 교체·root 복원 판단도 보존해. 완료 5/10·NOT_MET은 공수 비율이 아니다. 컴퓨터 유즈를 재개하지 말고 실제 설치·발화·확대·1인 시험·정식 실증은 관찰이 올 때만 기록해. 25분 57초는 기술 검증·정적 감사 관찰 경계이고 전체 작업 시간이 아니며 계정 토큰·비용은 UNKNOWN이야.
+> WORK_SPEC·PROGRESS·RUN_005_REPORT를 읽고 산출물최종검토PASS도보존하고 별도v0.7에서 FileDown경로+다운로드아이콘 결합의 보수적locate 식별·일반양성/유사일반링크음성/stale회귀부터 수정해줘. 공개과제최종15/15·HTTP9/원본안내6·retry/오류0·ZIP315166bytes/SHA6ddd10dd…도확인했어. S05는명시다운로드2건식별누락으로재개했고현재완료4/10이야. MIME/body·실제실행·피해는미관찰이야. v0.6 최종v2 동결03:25:20KST·222/222·core72/74,45/45·자동21조건·성능3종PASS와 새v8 최초10/17·4/15·과제1/5 모든사이트FAIL을 보존해. 첫 화면을 추가11/19·5/15·1/5로 대체하지 마. 알려진 총50페이지에서 v7원본/v2/정정본은 같은5페이지야. v7별도정정11필드·프로토콜10/10과 로그인2건/미주석검색입력미해결·과거첫실패·ZIP·v1/v2동결·수정전204/208과14/15도 보존해. v8을 본 뒤의 재평가는 개발용이야. 다음 기술 전략은 실패 원인과 범용 규칙/명세 허용 기관adapter 분리평가 검토야. 현재완료4/10·NOT_MET, 컴퓨터유즈0·실제설치/발화/확대NOT_RUN·사람시험0을 유지하고 21분11초는03:10:33→03:31:44KST 관찰경계이며 준비·분담과 최종문서·검토·commit은제외야. 전체경과·계정토큰·비용은UNKNOWN으로 둬.

@@ -1,0 +1,53 @@
+{
+  "reviewType": "BOUNDED_SOURCE_REVIEW",
+  "baselineCommit": "99fb6d82fd4b51f524790fa9e52485b187468400",
+  "reviewedSourceHashes": {
+    "src/analyzer.ts": "aa577b2360e35527f5fbb35e04e61de75065da3b89e332e9f7ebbd2ff4645644",
+    "src/classifier.ts": "0be8b8cb49d8d22c91443584b3322987041962ad99b99b78052cfc1975ff4fac",
+    "src/ranker.ts": "e3459131d494e684cf28f2b73164cc0c16e0f422b89986e4e77c0791a854224d"
+  },
+  "method": [
+    "Read source diff against baseline",
+    "Read structural-context and ranker-capacity tests without rerunning full tests",
+    "Inspect safe static text, URL/script guards, supplemental snapshot and page-session comparison",
+    "One synthetic offline headless Chromium reproduction using page.setContent; no source or original history modification"
+  ],
+  "findings": [
+    {
+      "id": "R005-CR01",
+      "severity": "medium",
+      "confidence": "high",
+      "statusAtReview": "OPEN",
+      "location": "src/analyzer.ts:295-306",
+      "title": "Generic detail title can be borrowed across an aside boundary",
+      "cause": "cardTitle ancestor stop selector omits aside and role=complementary; heading branch validation only checks the title against the outer container and does not validate the control branch.",
+      "fixture": "<main><div><strong>시설 이용 기록 조회</strong><aside><a id=\"side\" href=\"https://structure.test/resource/92\">상세보기</a></aside></div></main>",
+      "observed": {
+        "id": "side",
+        "label": "상세보기",
+        "category": "apply",
+        "relatedLabel": "시설 이용 기록 조회",
+        "action": "navigate",
+        "pageTask": "control"
+      },
+      "expected": "Do not create supplemental card-title evidence across the complementary semantic region. Without other evidence, this generic detail link should remain unclassified.",
+      "impact": "An unrelated sidebar detail link becomes an application/control recommendation and receives a borrowed title. The source action is retained; no automatic execution was observed.",
+      "recommendedFix": "Stop generic card-title ascent at all matching semantic content boundaries, including aside/role=complementary, and add a regression case retaining legitimate plain-div cards."
+    }
+  ],
+  "otherBoundedObservations": [
+    "New title text is obtained through staticText and rejects editable ancestors; no actual input value property is introduced in inspected paths.",
+    "Supplemental classification retains source actions and performs existing script/HTTP(S)/dangerous-URL checks before new classifications.",
+    "Supplemental snapshot serializes the new evidence; page-session recomputes it with fresh per-check caches.",
+    "Capacity fill runs after destination/control deduplication and prior category diversity selection, is bounded by six, and shares the same unique list as overflow."
+  ],
+  "limits": [
+    "One targeted reproduction, not exhaustive semantic DOM coverage",
+    "No independent dataset or results read",
+    "No full suite duplicate; root owns full verification",
+    "No native UI, visible browser, network or real user input",
+    "Static observations and synthetic reproduction do not satisfy product acceptance; complete steps remain 5/10 and overall acceptance NOT_MET",
+    "Findings apply to the recorded hashes; later fixes require their own evidence"
+  ],
+  "acceptance": "NOT_AN_ACCEPTANCE_DECISION"
+}

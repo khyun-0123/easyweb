@@ -1,0 +1,245 @@
+{
+  "startedAt": "2026-10-17T18:13:46.477Z",
+  "completedAt": "2026-10-17T18:14:25.561Z",
+  "localRegressionStatus": "PASS",
+  "requestedChecksStatus": "PASS",
+  "requestedMode": "local-with-core",
+  "scope": "Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.",
+  "excluded": [
+    "live public-site observations and task completion",
+    "fresh blind evaluation",
+    "native extension installation and activeTab gesture",
+    "actual VoiceOver speech",
+    "real user study"
+  ],
+  "stages": [
+    {
+      "name": "typecheck",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 113.24591699999999,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/build.mjs"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 69.32162499999998,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-build.log"
+    },
+    {
+      "name": "playwright",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--reporter=list,json"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 30774.823791000003,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-playwright.log"
+    },
+    {
+      "name": "core-evaluation",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/evaluate.mjs",
+        "--engine=current",
+        "--suite=core",
+        "--split=all",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run005/core-regression"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 1137.849083000001,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-core-evaluation.log"
+    },
+    {
+      "name": "performance",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run005"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 1458.9004579999964,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-performance.log"
+    },
+    {
+      "name": "performance-flat",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--shape=flat",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run005"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 2110.8601249999992,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-performance-flat.log"
+    },
+    {
+      "name": "performance-table",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--shape=table",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run005"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 3414.7294580000016,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run005/verify-performance-table.log"
+    }
+  ],
+  "tests": {
+    "expected": 204,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMilliseconds": 30517.416,
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run005/playwright-local.json"
+  },
+  "coreQuality": {
+    "status": "PASS",
+    "suite": "core",
+    "evaluationPhase": "post-holdout-development",
+    "summary": {
+      "pages": 15,
+      "correct": 72,
+      "recommended": 72,
+      "matched": 45,
+      "expected": 45,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 15
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 3,
+        "correct": 16,
+        "recommended": 16,
+        "matched": 10,
+        "expected": 10,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "government",
+        "pages": 3,
+        "correct": 10,
+        "recommended": 10,
+        "matched": 6,
+        "expected": 6,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "library",
+        "pages": 3,
+        "correct": 14,
+        "recommended": 14,
+        "matched": 9,
+        "expected": 9,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 3,
+        "correct": 14,
+        "recommended": 14,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "smu",
+        "pages": 3,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 9,
+        "expected": 9,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      }
+    ],
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75,
+      "offlineTasksRecommended": 15
+    },
+    "scope": "Offline fixtures already used during development. Tasks recommended are not live task completion. This is not independent blind validation.",
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run005/core-regression/evaluation-current-all.json"
+  },
+  "performance": {
+    "status": "PASS",
+    "runs": 10,
+    "analyzerP95Milliseconds": 28,
+    "overlayReadyP95Milliseconds": 57.600000001490116,
+    "thresholds": {
+      "analyzerP95Milliseconds": 300,
+      "overlayReadyP95Milliseconds": 1000
+    },
+    "scope": "Synthetic mixed 1,000-control page; headless Chromium; excludes real site loading and native toolbar activation.",
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run005/performance.json"
+  },
+  "structuralPerformance": {
+    "status": "PASS",
+    "thresholds": {
+      "analyzerP95Milliseconds": 300,
+      "overlayReadyP95Milliseconds": 1000
+    },
+    "shapes": [
+      {
+        "shape": "flat",
+        "status": "PASS",
+        "runs": 10,
+        "analyzerP95Milliseconds": 44.19999999552965,
+        "overlayReadyP95Milliseconds": 108.5,
+        "report": "/Users/khyun_03/easyweb/docs/evidence/run005/performance-flat.json"
+      },
+      {
+        "shape": "table",
+        "status": "PASS",
+        "runs": 10,
+        "analyzerP95Milliseconds": 96.30000000447035,
+        "overlayReadyP95Milliseconds": 177.80000000447035,
+        "report": "/Users/khyun_03/easyweb/docs/evidence/run005/performance-table.json"
+      }
+    ],
+    "scope": "Additional 1,000-control structures: one flat information-panel parent and 500 two-control table rows; ten samples per shape. Same thresholds; separate from the original mixed case and real sites."
+  }
+}

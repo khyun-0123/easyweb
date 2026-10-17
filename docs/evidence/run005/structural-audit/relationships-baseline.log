@@ -1,0 +1,108 @@
+
+Running 7 tests using 1 worker
+
+(node:86323) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/context-relationships.spec.mjs:19:1 › 제어 밖에 다른 업무가 없는 세 단계 div wrapper 뒤의 설명서 다운로드 제목을 읽기 근거로 연결한다 (112ms)
+(node:86336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/context-relationships.spec.mjs:23:1 › 학사 목록의 여러 고정 교육 개념과 같은 출처 일반 읽기 링크 자체로 의미를 보완한다 (110ms)
+(node:86351) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/context-relationships.spec.mjs:27:1 › 교육 개념이 다수여도 명시된 FAQ 페이지는 도움말 주제 읽기를 우선한다 (102ms)
+  ✓  4 tests/context-relationships.spec.mjs:31:1 › 단일 개념·동수 혼합 메뉴·외부 목적지·문서 참조·기사·전역 메뉴로 교육 목록을 만들지 않는다 (76ms)
+  ✓  5 tests/context-relationships.spec.mjs:35:1 › wrapper의 다른 제어·semantic 형제·다른 지역의 제목·임의 프로그램 다운로드에서 읽기 근거를 빌리지 않는다 (131ms)
+  ✓  6 tests/context-relationships.spec.mjs:47:1 › 편집 peer·검색 form·위험 명령은 교육 개념의 근거가 아니며 실제 입력을 읽지 않는다 (76ms)
+  ✘  7 tests/context-relationships.spec.mjs:52:1 › 교육 peer 교체와 wrapper 바깥 제어 추가는 원본 이름이 같아도 연결 근거를 무효화한다 (107ms)
+
+
+  1) tests/context-relationships.spec.mjs:19:1 › 제어 밖에 다른 업무가 없는 세 단계 div wrapper 뒤의 설명서 다운로드 제목을 읽기 근거로 연결한다 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+        "action": "locate",
+    -   "category": "help",
+    -   "pageTask": "reading",
+    +   "category": "search",
+    +   "pageTask": undefined,
+      }
+
+      19 | test('제어 밖에 다른 업무가 없는 세 단계 div wrapper 뒤의 설명서 다운로드 제목을 읽기 근거로 연결한다', async ({page}) => {
+      20 |   const items = await inspect(page, `<main><div><div><div><h3>자료 화면</h3><div>${readingGroups}</div></div></div><div><h3>전체 사용 설명서 다운로드</h3></div></div></main>`);
+    > 21 |   expect(items.find(i=>i.id==='group-topic')).toMatchObject({category:'help',pageTask:'reading',action:'locate'});
+         |                                               ^
+      22 | });
+      23 | test('학사 목록의 여러 고정 교육 개념과 같은 출처 일반 읽기 링크 자체로 의미를 보완한다', async ({page}) => {
+      24 |   const items = await inspect(page, `<main><div><div><div>${educationList}</div></div></div><section><h4>별도 기관 소개</h4></section></main>`);
+        at /Users/khyun_03/easyweb/tests/context-relationships.spec.mjs:21:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/context-relationships-제어-밖-11c9a-뒤의-설명서-다운로드-제목을-읽기-근거로-연결한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/context-relationships-제어-밖-11c9a-뒤의-설명서-다운로드-제목을-읽기-근거로-연결한다/error-context.md
+
+  2) tests/context-relationships.spec.mjs:23:1 › 학사 목록의 여러 고정 교육 개념과 같은 출처 일반 읽기 링크 자체로 의미를 보완한다 ───
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 12
+    + Received  +  1
+
+    - Array [
+    -   Array [
+    -     "academic",
+    -     "reading",
+    -     "navigate",
+    -   ],
+    -   Array [
+    -     "academic",
+    -     "reading",
+    -     "navigate",
+    -   ],
+    - ]
+    + Array []
+
+      23 | test('학사 목록의 여러 고정 교육 개념과 같은 출처 일반 읽기 링크 자체로 의미를 보완한다', async ({page}) => {
+      24 |   const items = await inspect(page, `<main><div><div><div>${educationList}</div></div></div><section><h4>별도 기관 소개</h4></section></main>`);
+    > 25 |   expect(items.filter(i=>i.id.startsWith('education')).map(i=>[i.category,i.pageTask,i.action])).toEqual([['academic','reading','navigate'],['academic','reading','navigate']]);
+         |                                                                                                  ^
+      26 | });
+      27 | test('교육 개념이 다수여도 명시된 FAQ 페이지는 도움말 주제 읽기를 우선한다', async ({page}) => {
+      28 |   const items = await inspect(page, `<main><h2>자주 묻는 질문</h2>${educationList}</main>`);
+        at /Users/khyun_03/easyweb/tests/context-relationships.spec.mjs:25:98
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/context-relationships-학사-목-d716c-같은-출처-일반-읽기-링크-자체로-의미를-보완한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/context-relationships-학사-목-d716c-같은-출처-일반-읽기-링크-자체로-의미를-보완한다/error-context.md
+
+  3) tests/context-relationships.spec.mjs:52:1 › 교육 peer 교체와 wrapper 바깥 제어 추가는 원본 이름이 같아도 연결 근거를 무효화한다 
+
+    Error: page.evaluate: TypeError: Cannot read properties of undefined (reading 'element')
+        at Object.isCandidateCurrent (<anonymous>:879:44)
+        at eval (eval at evaluate (:370:30), <anonymous>:1:26)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at Object.isCandidateCurrent (<anonymous>:879:44)
+        at eval (eval at evaluate (:370:30), <anonymous>:1:26)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /Users/khyun_03/easyweb/tests/context-relationships.spec.mjs:54:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/context-relationships-교육-p-68cb3-추가는-원본-이름이-같아도-연결-근거를-무효화한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/context-relationships-교육-p-68cb3-추가는-원본-이름이-같아도-연결-근거를-무효화한다/error-context.md
+
+  3 failed
+    tests/context-relationships.spec.mjs:19:1 › 제어 밖에 다른 업무가 없는 세 단계 div wrapper 뒤의 설명서 다운로드 제목을 읽기 근거로 연결한다 
+    tests/context-relationships.spec.mjs:23:1 › 학사 목록의 여러 고정 교육 개념과 같은 출처 일반 읽기 링크 자체로 의미를 보완한다 ────
+    tests/context-relationships.spec.mjs:52:1 › 교육 peer 교체와 wrapper 바깥 제어 추가는 원본 이름이 같아도 연결 근거를 무효화한다 
+  4 passed (1.7s)

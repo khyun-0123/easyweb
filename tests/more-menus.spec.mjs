@@ -24,13 +24,13 @@ const current = page => page.locator('.card-source').filter({ hasText: /^찾은 
 const next = page => page.getByRole('button', { name: '다른 메뉴 보기', exact: true });
 const previous = page => page.getByRole('button', { name: '이전 메뉴', exact: true });
 
-// Added before implementation: v0.3 cannot expose the five classified controls
-// omitted by its unchanged per-category cap, reproducing the missing path.
+// The overflow path was introduced in v0.4. From v0.6, category diversity gets
+// first choice, then focused pages fill unused capacity before showing overflow.
 test('같은 분류의 실제 메뉴 8개를 첫 추천 유지·한 화면 6개 이하로 모두 찾아갈 수 있다', async ({ page }) => {
   await setup(page, links(8));
   const initialIds = await page.evaluate(() => window.initialMenuIds);
   const first = await current(page);
-  expect(first).toHaveLength(3);
+  expect(first).toHaveLength(6);
   expect(await page.locator('.card').evaluateAll(cards => cards.map(card => new URL(card.href).pathname.replace('/guide-', 'help-')))).toEqual(initialIds);
   await expect(next(page)).toBeVisible();
   const all = [...first];
@@ -51,7 +51,7 @@ test('마지막 화면·이전 화면은 안정적이고 새 메뉴는 다시 �
     await next(page).click();
     snapshots.push(await current(page));
   }
-  expect(snapshots.map(items => items.length)).toEqual([3, 6, 5]);
+  expect(snapshots.map(items => items.length)).toEqual([6, 6, 2]);
   expect(new Set(snapshots.flat()).size).toBe(14);
   await page.locator('main ul').evaluate(list => list.insertAdjacentHTML('beforeend', '<li><a id="help-15" href="/guide-15">이용 안내 15</a></li>'));
   await expect(next(page)).toBeHidden(); // no automatic full re-analysis of unseen controls
@@ -140,7 +140,7 @@ test('이전 화면의 바뀐 후보와 같은 프레임에서 바뀐 현재 후
   });
   await expect(page.locator('.change-notice')).toBeVisible();
   await expect(next(page)).toBeDisabled();
-  expect(await page.locator('.card').count()).toBe(3);
+  expect(await page.locator('.card').count()).toBe(6);
   await expect(page).toHaveURL('http://127.0.0.1:4173/');
 });
 

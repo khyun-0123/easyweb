@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-17T18:13:46.751472+00:00",
+  "status": "SOURCE_READY_FOR_ROOT_VALIDATION",
+  "changedFiles": [
+    {
+      "path": "src/analyzer.ts",
+      "sha256": "aa577b2360e35527f5fbb35e04e61de75065da3b89e332e9f7ebbd2ff4645644"
+    },
+    {
+      "path": "src/classifier.ts",
+      "sha256": "0be8b8cb49d8d22c91443584b3322987041962ad99b99b78052cfc1975ff4fac"
+    },
+    {
+      "path": "tests/structural-context.spec.mjs",
+      "sha256": "1b45130e38dac763d654a47eab6ea2dcb97d3ac80eea91169f131a6ca46da1de"
+    }
+  ],
+  "untouchedOwnedFiles": [
+    "src/types.ts",
+    "src/page-session.ts",
+    "tests/generic-controls.spec.mjs"
+  ],
+  "baseline": {
+    "scope": "Initial nine new structural cases on v0.5 classifier/analyzer before changes; ranker is not imported",
+    "passed": 1,
+    "failed": 8,
+    "log": "docs/evidence/run005/structural-audit/baseline.log"
+  },
+  "boundaryBaseline": {
+    "scope": "Additional unrelated-headline boundary negative on intermediate implementation; actual false positives captured",
+    "passed": 0,
+    "failed": 1,
+    "log": "docs/evidence/run005/structural-audit/boundary-baseline.log"
+  },
+  "intermediateRegression": {
+    "passed": 126,
+    "failed": 1,
+    "log": "docs/evidence/run005/structural-audit/targeted-regression.log",
+    "failure": "An unlinked explicit application group control was incorrectly treated as help; corrected with competing task versus linked reading subject evidence."
+  },
+  "finalTargeted": {
+    "structuralCases": 11,
+    "existingGenericCases": 13,
+    "passed": 24,
+    "failed": 0,
+    "log": "docs/evidence/run005/structural-audit/final-targeted.log"
+  },
+  "typecheck": "PASS",
+  "diffCheck": "PASS",
+  "changes": [
+    "Preserve source label/action; extract single safe nested strong/heading card titles before descriptions/metadata.",
+    "Associate generic detail controls with a preceding title in a bounded single-control card and expose safe relatedLabel.",
+    "Recognize explicit linked panels, same-parent expanded peers and role-group reading topics with bounded guide/educational heading evidence.",
+    "Distinguish reading subject search/application labels from actual task entry; known endpoints and forms remain authoritative.",
+    "Recognize guide/manual download buttons within a guide context without changing locate actions.",
+    "Supplemental snapshot includes fixed title, related caption, peer/relationship booleans and associated heading strings; currentness invalidates on evidence changes.",
+    "Reject document/article/dangerous URL/script metadata, authored name replacement, editable subtrees, global/interactive target references and nested unrelated semantic region headings."
+  ],
+  "limits": [
+    "Generic deterministic evidence, not a claim that all source layouts are covered.",
+    "Existing candidate name length bound remains; authored aria-label/labelledby overrides are respected.",
+    "New topic grouping is bounded to 2-12 controls with at most 24 immediate children; following content must be adjacent in the same local branch.",
+    "No acceptance claim; root must run integrated quality/performance/accessibility/live checks and fresh independent evaluation."
+  ],
+  "forbiddenBlindV8Access": "NONE",
+  "computerUse": "NONE; headless Playwright only",
+  "rankThresholdPermissionsChanges": "NONE by this worker; root independently owns ranker policy changes"
+}

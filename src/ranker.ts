@@ -123,6 +123,14 @@ export function rank(candidates: Candidate[]): Candidate[] {
     selected.push(candidate);
     if (selected.length === MAX_CARDS) break;
   }
+  // The category cap reserves space while alternatives exist. On a focused
+  // page it must not leave usable slots empty and force a needless next page.
+  // Diversity and source-backed task selection above still get first choice.
+  if (selected.length < MAX_CARDS) for (const candidate of unique) {
+    if (selected.includes(candidate)) continue;
+    selected.push(candidate);
+    if (selected.length === MAX_CARDS) break;
+  }
   return ordered(selected);
 }
 

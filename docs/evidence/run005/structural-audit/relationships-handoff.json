@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-17T18:23:48.315821+00:00",
+  "status": "SOURCE_READY_V3_FOR_ROOT_VALIDATION",
+  "changedFiles": [
+    "src/analyzer.ts",
+    "src/classifier.ts",
+    "tests/context-relationships.spec.mjs"
+  ],
+  "preservedExistingStructuralTest": "de31d0193b5f8cc7cd074e3017249463456b1e14a198a41f92d93b8bb837b725",
+  "hashes": {
+    "src/analyzer.ts": "5845cff7dc445cebeca713999c01e7882f653213fbbeeecd1fe8d933a456518b",
+    "src/classifier.ts": "1138b9ebbd1dd746317ef83f4e6c1cba80423ce2828cc6197931a98bc7b182dd",
+    "tests/context-relationships.spec.mjs": "841ff6206e92a9a6ffa4fa4245eda26141a8c965a452a66df26e808ff8ab43b6",
+    "tests/structural-context.spec.mjs": "de31d0193b5f8cc7cd074e3017249463456b1e14a198a41f92d93b8bb837b725"
+  },
+  "baseline": {
+    "log": "docs/evidence/run005/structural-audit/relationships-baseline.log",
+    "tests": 7,
+    "failed": 3,
+    "passed": 4
+  },
+  "intermediate": {
+    "log": "docs/evidence/run005/structural-audit/relationships-targeted.log",
+    "tests": 44,
+    "failed": 2,
+    "passed": 42,
+    "reason": "Independent peer evidence also accepted two mixed editable/semantic-region boxes from existing negative cases. Added a readonly uncontested local collection boundary; did not change those frozen tests."
+  },
+  "final": {
+    "log": "docs/evidence/run005/structural-audit/relationships-final-targeted.log",
+    "tests": 116,
+    "failed": 0,
+    "passed": 116,
+    "newRelationshipCases": 8,
+    "existingStructuralCases": 21,
+    "typecheck": "PASS",
+    "diffCheck": "PASS"
+  },
+  "changes": [
+    "Follow the first content sibling through at most three plain div wrapper ascents only when outside that branch has no other controls, editable content, or semantic-region boundary.",
+    "Do not skip an intervening sibling and do not borrow headings inside another section/article/form/interactive control.",
+    "A fixed guide/manual download heading can identify reading context; a generic program download heading cannot.",
+    "A semantic readonly list/tablist can identify education reading from at least two and a strict majority of fixed educational concept peers, each ordinary same-origin navigate link without dangerous commands, article paths, document references, or conflicting task endpoints.",
+    "A collection mixed with editable content, another local semantic region, or other local controls does not acquire independent peer meaning.",
+    "Explicit help/FAQ purpose remains help; issuance preparation and academic calendar mode precedence remain unchanged.",
+    "Peer names, actions and destinations plus associated headings are recorded in supplemental snapshots to invalidate changes between analyses."
+  ],
+  "limits": [
+    "No arbitrary semantic section crossing. Academic collections can rely on their own peer meaning instead of borrowing unrelated section headings.",
+    "No claim of complete wrapper/layout coverage. Group size and depth limits stay bounded.",
+    "Peer inference requires ordinary same-origin navigation; original locate actions, cross-origin links and unresolved references do not become academic solely through peer text."
+  ],
+  "blindV8ReadCount": 0,
+  "knownDatasetProductEvaluationCountByWorker": 0,
+  "computerUseCount": 0,
+  "acceptanceClaim": "NONE; root integrated/performance/accessibility/live/development/fresh independent validation still required."
+}

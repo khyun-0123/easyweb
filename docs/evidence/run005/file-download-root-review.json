@@ -1,0 +1,76 @@
+{
+  "reviewedAt": "2026-10-17T18:31:09.842998+00:00",
+  "reviewMode": "STATIC_SOURCE_AND_FROZEN_EVIDENCE_ONLY_NO_PRODUCT_RERUN",
+  "contract": "docs/WORK_SPEC.md S05: explicit download controls must locate the original element without automatically activating it; ordinary HTTP(S) navigation remains the user policy.",
+  "evidence": {
+    "fixture": "evaluation/blind-v8/fixtures/city-blind-v8.html",
+    "fixtureSha256": "71da1ea8fd1b484d5cd7f98e4f44a4bcbe9b65c806cf01cded9d1b485e9525bd",
+    "controls": [
+      {
+        "sourceId": "city-v8-c015",
+        "label": "위임장"
+      },
+      {
+        "sourceId": "city-v8-c016",
+        "label": "정보통신공사 사용전검사 신청서"
+      }
+    ],
+    "sharedObservedMarkup": {
+      "hrefPattern": "/cmm/fms/FileDown.do?atchFileId=…&fileSn=0",
+      "anchorClass": "btn btn-noline btn-icon",
+      "child": "i.ir.ir-bbs.ir-download[aria-hidden=true]",
+      "absentAttributes": [
+        "title",
+        "download",
+        "onclick",
+        "target"
+      ]
+    },
+    "firstReport": "docs/evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json",
+    "firstReportSha256": "0cfe3c22d66699fee1cb40a04cbd6407e49d94128d90f493db9afa6cf2d053ba",
+    "currentSourceAction": "navigate",
+    "requiredConservativeAction": "locate",
+    "basis": "The route names a file download operation and the same control contains an explicit download icon. Their combined original DOM evidence is sufficient for the explicit-download contract; not inferred event handlers."
+  },
+  "notObserved": {
+    "responseMime": "UNKNOWN",
+    "contentDisposition": "UNKNOWN",
+    "responseBody": "NOT_OBSERVED",
+    "fileExecution": "NOT_RUN",
+    "harm": "NOT_OBSERVED"
+  },
+  "decision": {
+    "S05": "IN_PROGRESS/NEEDS_FIX",
+    "completedStages": 4,
+    "totalStages": 10,
+    "completedStageIds": [
+      "S01",
+      "S02",
+      "S03",
+      "S04"
+    ],
+    "overallAcceptance": "NOT_MET",
+    "reason": "Two concrete unresolved explicit-download identification counterexamples reopen S05. Earlier defined-case and live15 passes are bounded evidence and do not cover these controls.",
+    "historicalRun004": "Preserve previous 5/10 as the assessment before these counterexamples; do not rewrite historical evidence."
+  },
+  "preservation": {
+    "version": "0.6.0",
+    "sourceFreeze": "docs/evidence/run005/v0.6-engine-freeze-v2.json",
+    "sourceFreezeSha256": "c79988249869ade1a01609ea56355e2210dcc430874cb0115c9fb1ac2e202a0d",
+    "firstReportUnchanged": true,
+    "currentEngineUnchanged": true,
+    "v06PackageUnchanged": true,
+    "scope": "No new source behavior, annotation, first metric, browser operation, network request or file download in this review."
+  },
+  "nextWork": {
+    "version": "0.7.0",
+    "firstPriority": "Conservative FileDown route plus explicit original download signal -> locate; retain normal lookalike navigation.",
+    "verification": [
+      "Generic positive examples not tied to site, evaluation IDs or captured file IDs",
+      "Ordinary route and icon lookalike negative examples",
+      "Signal addition/removal and icon mutation stale-invalidation regression",
+      "Existing action/privacy/original-guidance regression"
+    ],
+    "afterSafetyFix": "Separate institution adapters and generic rules with independent evaluations as permitted by WORK_SPEC; preserve v8 first failure."
+  }
+}

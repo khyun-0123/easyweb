@@ -1,0 +1,345 @@
+{
+  "version": "v7-action-corrected.1",
+  "annotationVersion": 1,
+  "createdAt": "2026-10-17T18:10:28.400675+00:00",
+  "classification": "ADJUDICATED_DEVELOPMENT",
+  "freshHoldout": false,
+  "baseDataset": "blind-v7-v2",
+  "baseFreeze": "docs/evidence/run004/blind-v7-v2-freeze.json",
+  "baseFreezeSha256": "c0a385e094b34d360129d56c34c9ea736cda98eee04f5b316cab77acf1b46f44",
+  "originalFrozenFiles": [
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/city.html",
+      "sha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "bytes": 13712
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/government.html",
+      "sha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "bytes": 14193
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/library.html",
+      "sha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "bytes": 14609
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+      "sha256": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+      "bytes": 20817
+    },
+    {
+      "path": "evaluation/blind-v7-v2/fixtures/smu.html",
+      "sha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "bytes": 10948
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/city.json",
+      "sha256": "f8912e7261ed8dc651a69071a35ffa3b026f370444d0b8c319bcc64adde5503d",
+      "bytes": 5615
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/government.json",
+      "sha256": "84af772d7496152bffec69b1468628d984ddf87c7d582c0d9e58e587b935ff39",
+      "bytes": 5871
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/library.json",
+      "sha256": "62c1611ef8e63281853de6565d6d191469392faae5c0cdba5e078770b58644df",
+      "bytes": 5676
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/public-agency.json",
+      "sha256": "bfa74982c7163d11ce516c083ac8b2045571954742dcec038396890be65e02f9",
+      "bytes": 5697
+    },
+    {
+      "path": "evaluation/blind-v7-v2/sites/smu.json",
+      "sha256": "888b4fd279e0aeec9ea5602858d172926b9228a175e9f6a15e69920ead11e7ac",
+      "bytes": 5678
+    },
+    {
+      "path": "docs/evidence/run004/blind-v7-v2-observations.json",
+      "sha256": "17f0b650e85ec368bd12881fef73c2debdec3cb4e4757cf7a82281fe8422eade",
+      "bytes": 412369
+    }
+  ],
+  "originalV7FreezeSha256": "4423bc74aaefda6d873b6d205c2026545ebfd8ef0a74f98bfcbb7de1b013be5b",
+  "annotationAudit": "docs/evidence/run004/v7-v2-action-audit.json",
+  "annotationAuditSha256": "41ced3f106af3112a2f014baa862363dd289aaea7856b82ce87cfbc324f000c9",
+  "annotationRootReview": "docs/evidence/run004/v7-v2-action-root-review.json",
+  "annotationRootReviewSha256": "c983e7333996fbdff8c31136903a5e152430c45e97bf7f79fd2c63eff63a7ba3",
+  "reason": "Apply only the six accepted action-contract corrections approved prospectively after the first v7-v2 holdout, plus three directly corresponding expected actions and the SMU task action/instruction. Explicit city control markers require locate; five SMU destinations with different pathnames require navigate. No product outputs informed this version.",
+  "product": "NOT_RUN",
+  "independence": {
+    "productSourceRead": false,
+    "productDistRead": false,
+    "productRecommendationsRead": false,
+    "evaluationResultFilesRead": false,
+    "productExecution": false,
+    "newBlindDataRead": false,
+    "networkAccess": false,
+    "visibleUIAutomation": false,
+    "sourcePageCount": 5,
+    "newIndependentPageCount": 0,
+    "scope": "Static correction from original annotations, fixtures and the pre-existing audit/root review. Existing first-result facts quoted by those reviews are provenance, not a new result inspection or metric computation."
+  },
+  "onlySemanticChanges": {
+    "relativeTo": "blind-v7-v2",
+    "siteChanges": [
+      {
+        "sourceFile": "sites/city.json",
+        "changes": [
+          {
+            "path": "/pages/0/accepted/4/action",
+            "before": "navigate",
+            "after": "locate",
+            "sourceId": "city-reservation-help",
+            "auditFindingId": "A01",
+            "rationale": "Explicit role=button/aria-controls/aria-haspopup requires original-control location."
+          }
+        ]
+      },
+      {
+        "sourceFile": "sites/smu.json",
+        "changes": [
+          {
+            "path": "/pages/0/accepted/1/action",
+            "before": "locate",
+            "after": "navigate",
+            "sourceId": "smu-linked",
+            "auditFindingId": "A02",
+            "rationale": "Different destination pathname makes this an ordinary cross-document HTTP(S) link, despite its fragment."
+          },
+          {
+            "path": "/pages/0/accepted/2/action",
+            "before": "locate",
+            "after": "navigate",
+            "sourceId": "smu-self",
+            "auditFindingId": "A02",
+            "rationale": "Different destination pathname makes this an ordinary cross-document HTTP(S) link, despite its fragment."
+          },
+          {
+            "path": "/pages/0/accepted/3/action",
+            "before": "locate",
+            "after": "navigate",
+            "sourceId": "smu-minor",
+            "auditFindingId": "A02",
+            "rationale": "Different destination pathname makes this an ordinary cross-document HTTP(S) link, despite its fragment."
+          },
+          {
+            "path": "/pages/0/accepted/4/action",
+            "before": "locate",
+            "after": "navigate",
+            "sourceId": "smu-micro",
+            "auditFindingId": "A02",
+            "rationale": "Different destination pathname makes this an ordinary cross-document HTTP(S) link, despite its fragment."
+          },
+          {
+            "path": "/pages/0/accepted/5/action",
+            "before": "locate",
+            "after": "navigate",
+            "sourceId": "smu-advanced",
+            "auditFindingId": "A02",
+            "rationale": "Different destination pathname makes this an ordinary cross-document HTTP(S) link, despite its fragment."
+          },
+          {
+            "path": "/pages/0/expected/0/action",
+            "before": "locate",
+            "after": "navigate",
+            "expectedFeatureId": "smu-v7-linked",
+            "sourceIds": [
+              "smu-linked"
+            ],
+            "auditFindingId": "A02",
+            "rationale": "Expected action follows its accepted cross-document link."
+          },
+          {
+            "path": "/pages/0/expected/1/action",
+            "before": "locate",
+            "after": "navigate",
+            "expectedFeatureId": "smu-v7-self",
+            "sourceIds": [
+              "smu-self"
+            ],
+            "auditFindingId": "A02",
+            "rationale": "Expected action follows its accepted cross-document link."
+          },
+          {
+            "path": "/pages/0/expected/2/action",
+            "before": "locate",
+            "after": "navigate",
+            "expectedFeatureId": "smu-v7-minor",
+            "sourceIds": [
+              "smu-minor"
+            ],
+            "auditFindingId": "A02",
+            "rationale": "Expected action follows its accepted cross-document link."
+          },
+          {
+            "path": "/pages/0/task/action",
+            "before": "locate",
+            "after": "navigate",
+            "taskId": "smu-v7-public-task",
+            "auditFindingId": "A02",
+            "rationale": "The public minor-program destination is a direct HTTP(S) link on a different pathname."
+          },
+          {
+            "path": "/pages/0/task/instruction",
+            "before": "부전공 제도 안내로 가는 원본 탭을 찾으세요. 본인 신청은 수행하지 마세요.",
+            "after": "부전공 제도 안내 문서로 바로 이동하는 링크를 찾으세요. 본인 신청은 수행하지 마세요.",
+            "taskId": "smu-v7-public-task",
+            "auditFindingId": "A02",
+            "rationale": "Describe reaching the same public destination through direct navigation; preserve the prohibition on personal applications."
+          }
+        ]
+      }
+    ],
+    "fixtureChanges": []
+  },
+  "changeSummary": {
+    "acceptedActionFieldChanges": 6,
+    "expectedActionFieldChanges": 3,
+    "taskActionFieldChanges": 1,
+    "taskInstructionFieldChanges": 1,
+    "totalSiteSemanticFieldChanges": 11,
+    "categoryFieldChanges": 0,
+    "sourceIdChanges": 0,
+    "expectedMembershipChanges": 0,
+    "labelChanges": 0,
+    "fixturePointerChanges": 0,
+    "fixtureByteChanges": 0,
+    "unexpectedSiteSemanticDifferences": 0
+  },
+  "unresolved": [
+    {
+      "sourceIds": [
+        "city-login",
+        "nps-login"
+      ],
+      "status": "UNRESOLVED_CONTRACT_COVERAGE",
+      "annotationActionRetained": "locate",
+      "reason": "Ordinary HTTP destinations have no explicit action markers. Opening a public login form and initiating authentication are not established as equivalent by the available evidence. Do not invent handlers or change gold to match output."
+    },
+    {
+      "siteId": "public-agency",
+      "status": "UNRESOLVED_ACCEPTED_COVERAGE",
+      "reason": "The faithful form contains a fixed search input without an accepted source ID. Do not add accepted membership, source IDs or a gold action in this correction. An unmatched recommendation alone is not evidence of fabricated function or input-value leakage."
+    }
+  ],
+  "preservation": {
+    "originalV7AndV2Unchanged": true,
+    "allElevenV2FrozenInputsVerified": true,
+    "categories": true,
+    "labels": true,
+    "sourceIds": true,
+    "expectedMembership": true,
+    "hrefs": true,
+    "urls": true,
+    "fixtureContentsByteIdentical": true,
+    "originalFixtureReferencesRetained": true,
+    "sameDocumentSmuSecondLocateRetained": true,
+    "notesAndObservationMetadata": true,
+    "allOtherTaskFields": true,
+    "originalFrozenFilesModified": 0,
+    "unchangedSiteCopiesByteIdenticalToBase": 3,
+    "unchangedFixtureCopiesByteIdenticalToBase": 5
+  },
+  "fixtureReferencePolicy": "All five site JSON fixture references retain their original evaluation/blind-v7-v2/fixtures paths. Five byte-identical fixture copies are included in this version directory. The evaluator explicitly permits the blind-v7-v2 base root for this development suite.",
+  "historicalMetadataPolicy": "Retain original split, observation, notes and all other historical fields. The SMU note saying every fragment is locate is superseded only by the explicit action changes in this VERSION; it is preserved as original annotation provenance. Retained per-page holdout text does not make this suite fresh.",
+  "firstEvaluationPolicy": "Preserve original blind-v7, blind-v7-v2, freezes and first raw failure. This exposed development correction and any later development rerun do not replace, relabel or recalculate the first result. This worker did not read the first report.",
+  "validationReport": "docs/evidence/run005/v7-adjudication/validation.json",
+  "hashAlgorithm": "SHA-256",
+  "files": [
+    {
+      "path": "evaluation/development-v7-corrected/fixtures/city.html",
+      "sha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "bytes": 13712,
+      "basePath": "evaluation/blind-v7-v2/fixtures/city.html",
+      "baseSha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "baseBytes": 13712,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/fixtures/government.html",
+      "sha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "bytes": 14193,
+      "basePath": "evaluation/blind-v7-v2/fixtures/government.html",
+      "baseSha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "baseBytes": 14193,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/fixtures/library.html",
+      "sha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "bytes": 14609,
+      "basePath": "evaluation/blind-v7-v2/fixtures/library.html",
+      "baseSha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "baseBytes": 14609,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/fixtures/public-agency.html",
+      "sha256": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+      "bytes": 20817,
+      "basePath": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+      "baseSha256": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+      "baseBytes": 20817,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/fixtures/smu.html",
+      "sha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "bytes": 10948,
+      "basePath": "evaluation/blind-v7-v2/fixtures/smu.html",
+      "baseSha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "baseBytes": 10948,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/sites/city.json",
+      "sha256": "eef3353887243ed7c20636473dafe0e0054ab5f6cceb4a82350b9ab39f85856e",
+      "bytes": 5613,
+      "basePath": "evaluation/blind-v7-v2/sites/city.json",
+      "baseSha256": "f8912e7261ed8dc651a69071a35ffa3b026f370444d0b8c319bcc64adde5503d",
+      "baseBytes": 5615,
+      "byteIdenticalToBase": false
+    },
+    {
+      "path": "evaluation/development-v7-corrected/sites/government.json",
+      "sha256": "84af772d7496152bffec69b1468628d984ddf87c7d582c0d9e58e587b935ff39",
+      "bytes": 5871,
+      "basePath": "evaluation/blind-v7-v2/sites/government.json",
+      "baseSha256": "84af772d7496152bffec69b1468628d984ddf87c7d582c0d9e58e587b935ff39",
+      "baseBytes": 5871,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/sites/library.json",
+      "sha256": "62c1611ef8e63281853de6565d6d191469392faae5c0cdba5e078770b58644df",
+      "bytes": 5676,
+      "basePath": "evaluation/blind-v7-v2/sites/library.json",
+      "baseSha256": "62c1611ef8e63281853de6565d6d191469392faae5c0cdba5e078770b58644df",
+      "baseBytes": 5676,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/sites/public-agency.json",
+      "sha256": "bfa74982c7163d11ce516c083ac8b2045571954742dcec038396890be65e02f9",
+      "bytes": 5697,
+      "basePath": "evaluation/blind-v7-v2/sites/public-agency.json",
+      "baseSha256": "bfa74982c7163d11ce516c083ac8b2045571954742dcec038396890be65e02f9",
+      "baseBytes": 5697,
+      "byteIdenticalToBase": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected/sites/smu.json",
+      "sha256": "d016a4035fbe4ceb6a7fc52c845cc44bb58ae6da6f7f1c80c171d484c1ec383d",
+      "bytes": 5712,
+      "basePath": "evaluation/blind-v7-v2/sites/smu.json",
+      "baseSha256": "888b4fd279e0aeec9ea5602858d172926b9228a175e9f6a15e69920ead11e7ac",
+      "baseBytes": 5678,
+      "byteIdenticalToBase": false
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "siteId": "city",
+  "siteName": "천안시청",
+  "pages": [
+    {
+      "id": "city-blind-v8",
+      "title": "사용전검사안내 < 정보통신공사 사용전검사 < 기타 민원서비스 < 민원안내 < 천안시청",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+      "fixture": "evaluation/blind-v8/fixtures/city-blind-v8.html",
+      "split": "holdout",
+      "observation": {
+        "capturedAt": "2026-10-17T18:14:43.077Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "method": "Fresh headless Playwright Chromium; read-only public HTTP DOMContentLoaded plus 1500ms; no interactions",
+        "httpStatus": 200,
+        "sourceEvidence": {
+          "observationsFile": "docs/evidence/run005/blind-v8-observations.json",
+          "pageId": "city-blind-v8",
+          "selectors": [
+            "#contens > .contents-header",
+            "#txt"
+          ],
+          "sourceDocumentUrl": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+          "sourceBaseURI": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do",
+          "fixtureSha256": "71da1ea8fd1b484d5cd7f98e4f44a4bcbe9b65c806cf01cded9d1b485e9525bd"
+        },
+        "authState": "Fresh anonymous context; no credentials or auth action",
+        "inputValuesObserved": false,
+        "visibilityPreservation": "Recorded computed display, visibility, and opacity copied as inline presentation styles; original style attributes retained in observation; semantic tags/roles/ids/classes/order/headings remain source-exact."
+      },
+      "accepted": [
+        {
+          "sourceId": "city-v8-c002",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do"
+        },
+        {
+          "sourceId": "city-v8-c003",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_03_02.do"
+        },
+        {
+          "sourceId": "city-v8-c004",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do"
+        },
+        {
+          "sourceId": "city-v8-c013",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_03_07_01.do"
+        },
+        {
+          "sourceId": "city-v8-c014",
+          "category": "apply",
+          "action": "navigate",
+          "destinationUrl": "https://www.cheonan.go.kr/prog/caImnstCerfin/kor/sub01_03_07_02/list.do"
+        },
+        {
+          "sourceId": "city-v8-c015",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "city-v8-c016",
+          "category": "apply",
+          "action": "locate"
+        }
+      ],
+      "expected": [
+        {
+          "id": "certificate-entry",
+          "category": "apply",
+          "label": "온라인 필증발급",
+          "sourceIds": [
+            "city-v8-c014"
+          ],
+          "action": "navigate",
+          "destinationUrl": "https://www.cheonan.go.kr/prog/caImnstCerfin/kor/sub01_03_07_02/list.do"
+        },
+        {
+          "id": "delegation-form",
+          "category": "apply",
+          "label": "위임장 양식",
+          "sourceIds": [
+            "city-v8-c015"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "inspection-application-form",
+          "category": "apply",
+          "label": "정보통신공사 사용전검사 신청서",
+          "sourceIds": [
+            "city-v8-c016"
+          ],
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-v8-task",
+        "instruction": "정보통신공사 사용전검사 신청서 양식이 있는 원본 위치를 찾으세요. 파일을 내려받지는 마세요.",
+        "expectedSourceIds": [
+          "city-v8-c016"
+        ],
+        "action": "locate",
+        "evidence": {
+          "observedSourceId": "city-v8-c016",
+          "accessibleName": {
+            "name": "정보통신공사 사용전검사 신청서",
+            "basis": "rendered-text"
+          },
+          "hrefAttribute": "/cmm/fms/FileDown.do?atchFileId=FILE_00000051471Wd1x&fileSn=0",
+          "resolvedHref": "https://www.cheonan.go.kr/cmm/fms/FileDown.do?atchFileId=FILE_00000051471Wd1x&fileSn=0",
+          "inlineHandlers": {},
+          "target": null,
+          "defaultVisible": true,
+          "scope": "Read-only recognition of a public function or original source location; no authentication, form submission, or download executed."
+        }
+      },
+      "notes": [
+        "Public read-only source capture only. Scripts, stylesheets, external assets, embedded documents, input value attributes, and editable text were omitted. Original inline handler strings remain inert under script-src none CSP; no handlers were activated.",
+        "The fixture preserves the entire selected subtree plus all original ancestors and referenced ID targets. Siblings outside the selected source blocks are outside this bounded fixture. Source URL, base URI, control ancestor chains, headings, node order, and every retained control are recorded separately.",
+        "The browser capture uses a new headless context without existing user profiles or tabs. Source site delegated event behavior is not reproduced or inferred. Ordinary HTTP link destinations are judged only by observable metadata."
+      ]
+    }
+  ]
+}

@@ -252,8 +252,152 @@ interface SupplementalSummary {
   materials?: Map<HTMLElement, string | undefined>;
   panels?: Set<HTMLElement>;
   groups?: Set<HTMLElement>;
+  topicControls?: HTMLElement[];
+  cardControls?: HTMLElement[];
+  followingHeadings?: string[];
+  wrapperControls?: HTMLElement[];
 }
 export type SupplementalCache = WeakMap<Element, SupplementalSummary>;
+const contentBoundarySelector = 'section,article,aside,nav,form,header,footer,[role~="region" i],[role~="article" i],[role~="complementary" i],[role~="navigation" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i]';
+
+function withinContentBranch(node: Element, container: Element): boolean {
+  const boundary = node.closest(contentBoundarySelector);
+  return !boundary || boundary === container || !container.contains(boundary);
+}
+
+function fixedHeadingLabels(container: Element): string[] {
+  return [...(container instanceof HTMLElement && container.matches(headingSelector) ? [container] : []),
+    ...container.querySelectorAll<HTMLElement>(headingSelector)]
+    .filter(heading => !heading.closest(`${editableSelector},a,button,[role~="button" i],[role~="tab" i]`)
+      && withinContentBranch(heading, container) && isVisible(heading))
+    .map(getSafeLabel).filter(text => text.length >= 2 && text.length <= 60);
+}
+
+function followingContentHeadings(container: HTMLElement, cache?: SupplementalCache): string[] {
+  let branch = container;
+  for (let depth = 0; depth <= 3; depth++) {
+    const next = branch.nextElementSibling;
+    if (next) {
+      // The first following branch is the only possible relation. Never skip
+      // another section/control to borrow a more convenient distant heading.
+      return !next.matches(`${contentBoundarySelector},a,button,[role~="button" i],[role~="tab" i]`)
+        && next.childElementCount <= 12 ? fixedHeadingLabels(next) : [];
+    }
+    const parent = branch.parentElement;
+    if (!parent?.matches('div') || parent.matches('[role]') || parent.childElementCount > 12) break;
+    const outside = [...parent.children].filter(child => child !== branch);
+    if (outside.some(child => child.matches(contentBoundarySelector) || child.querySelector(contentBoundarySelector)
+      || child.matches(editableSelector) || child.querySelector(editableSelector))) break;
+    let summary = cache?.get(parent);
+    if (!summary?.wrapperControls) {
+      summary = { ...summary, wrapperControls: [...parent.querySelectorAll<HTMLElement>(collectionControlSelector)] };
+      cache?.set(parent, summary);
+    }
+    if (summary.wrapperControls!.some(control => !branch.contains(control))) break;
+    branch = parent;
+  }
+  return [];
+}
+
+function cardTitle(element: HTMLElement, cache?: SupplementalCache): { title?: string; relatedLabel?: string } {
+  if (element.hasAttribute('aria-label') || element.hasAttribute('aria-labelledby')) return {};
+  const fixedTitles = (container: Element) => [...container.querySelectorAll<HTMLElement>(`${headingSelector},strong,b`)]
+    .filter(node => !node.closest(editableSelector) && withinContentBranch(node, container) && isVisible(node))
+    .filter(node => !node.parentElement?.closest(`${headingSelector},strong,b`))
+    .map(node => ({ node, label: clean(staticText(node)) }))
+    .filter(({ label }) => isInformationTopicLabel(label));
+  // A single fixed title may be wrapped in layout divs, followed by dates,
+  // locations or a description. Do not infer a title from arbitrary prose.
+  const titles = fixedTitles(element);
+  if (titles.length === 1 && !element.querySelector(collectionControlSelector)) {
+    const { node, label } = titles[0];
+    const description = [...element.querySelectorAll<HTMLElement>('p,div,dl,ul')].some(block => !block.contains(node)
+      && !block.closest(editableSelector) && isVisible(block) && !!clean(staticText(block))
+      && !!(node.compareDocumentPosition(block) & Node.DOCUMENT_POSITION_FOLLOWING));
+    if (description) return { title: label };
+  }
+  if (!/^(?:더\s*보기|자세히\s*보기|상세\s*보기|more|read\s*more|details?|view\s*details?)$/i.test(candidateLabel(element))) return {};
+  // A generic detail control can borrow a sibling title only from a bounded
+  // single-control card. Stop before a page/semantic region can become a card.
+  for (let parent = element.parentElement, depth = 0; parent && depth < 3; depth++, parent = parent.parentElement) {
+    if (parent.matches(`html,body,main,[role~="main" i],${contentBoundarySelector}`) || parent.childElementCount > 12) break;
+    let summary = cache?.get(parent);
+    if (!summary?.cardControls) {
+      summary = { ...summary, cardControls: [...parent.querySelectorAll<HTMLElement>(collectionControlSelector)]
+        .filter(control => !!candidateLabel(control)) };
+      cache?.set(parent, summary);
+    }
+    if (summary.cardControls!.length !== 1 || summary.cardControls![0] !== element) break;
+    const neighbours = fixedTitles(parent).filter(({ node }) => !element.contains(node)
+      && !!(node.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING));
+    if (neighbours.length === 1) return { title: neighbours[0].label, relatedLabel: neighbours[0].label };
+  }
+  return {};
+}
+
+function topicEvidence(element: HTMLElement, cache?: SupplementalCache) {
+  const empty = { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[],
+    collectionPeers: [] as { label: string; action: 'locate' | 'navigate'; href?: string; isLink: boolean }[] };
+  if (!isInformationTopicLabel(candidateLabel(element))) return empty;
+  const references = (control: HTMLElement) => (control.getAttribute('aria-controls') ?? '').split(/\s+/).filter(Boolean);
+  const contentTarget = (control: HTMLElement, id: string): HTMLElement | undefined => {
+    const target = document.getElementById(id);
+    if (!target || target === control || target.closest(editableSelector)
+      || target.matches('html,body,main,[role~="main" i],a,button,[role~="button" i],[role~="tab" i]')
+      || target.closest('article,aside,form,header,footer,nav,[role~="article" i],[role~="complementary" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i]')
+      || target.closest('main,[role~="main" i]') !== control.closest('main,[role~="main" i]')) return;
+    return target;
+  };
+  const controlsTarget = (control: HTMLElement) => { const ids = references(control); return ids.length > 0 && ids.every(id => !!contentTarget(control, id)); };
+  const expanded = (control: HTMLElement) => /^(?:true|false)$/i.test(control.getAttribute('aria-expanded') ?? '');
+  const semanticCollection = element.closest(collectionSelector);
+  let container: HTMLElement | null = semanticCollection as HTMLElement | null;
+  if (!container) {
+    container = element.parentElement;
+    if (container?.matches('[role~="group" i]') && container.parentElement) container = container.parentElement;
+  }
+  if (!container || container.matches('body,main,section,article,form,header,footer') || container.childElementCount > 24) return empty;
+  let summary = cache?.get(container);
+  if (!summary?.topicControls) {
+    const controls = [...container.querySelectorAll<HTMLElement>(collectionControlSelector)].filter(control =>
+      !control.closest(collectionExcludedSelector) && !(control instanceof HTMLButtonElement && control.form)
+      && isInformationTopicLabel(candidateLabel(control)) && (semanticCollection
+        ? control.closest(collectionSelector) === container
+        : control.parentElement === container || control.parentElement?.parentElement === container));
+    summary = { ...summary, topicControls: controls }; cache?.set(container, summary);
+  }
+  const controls = summary.topicControls!;
+  if (controls.length < 2 || controls.length > 12 || !controls.includes(element)) return empty;
+  // Only the immediately following content branch of the same local container
+  // can describe a list. A neighbouring section's heading is not evidence.
+  if (!summary.followingHeadings) {
+    const headings = followingContentHeadings(container, cache);
+    summary = { ...summary, followingHeadings: headings }; cache?.set(container, summary);
+  }
+  const associatedHeadings = [...summary.followingHeadings!];
+  for (const id of references(element)) {
+    const target = contentTarget(element, id);
+    if (target && target.childElementCount <= 24) {
+      for (const label of fixedHeadingLabels(target)) if (!associatedHeadings.includes(label)) associatedHeadings.push(label);
+    }
+  }
+  const controlledTopic = controlsTarget(element) && controls.filter(controlsTarget).length >= 2
+    || expanded(element) && controls.filter(expanded).length >= 2
+    || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]')
+    || !!element.closest('[role~="group" i]') && controls.every(control => !!control.closest('[role~="group" i]'));
+  const linkedTopic = controlsTarget(element) || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]');
+  // A readonly semantic collection can supply peer meaning independently of
+  // a nearby heading. Keep fixed names/actions/destinations in the snapshot so
+  // a peer's replacement cannot silently preserve an obsolete interpretation.
+  const localParent = container.parentElement;
+  const outsideCollection = localParent?.matches('div') ? [...localParent.children].filter(child => child !== container) : [];
+  const isolatedCollection = !outsideCollection.some(child => child.matches(`${contentBoundarySelector},${editableSelector},${collectionControlSelector}`)
+    || child.querySelector(`${contentBoundarySelector},${editableSelector},${collectionControlSelector}`));
+  const collectionPeers = semanticCollection && isolatedCollection && !container.querySelector(`form,[role~="form" i],${editableSelector}`)
+    ? controls.map(control => ({ label: candidateLabel(control), ...sourceAction(control, candidateLabel(control)), isLink: control.matches('a[href]') })) : [];
+  return { topicPeers: Math.min(controls.length, 2), controlledTopic, linkedTopic, associatedHeadings, collectionPeers };
+}
+
 export function supplementalEvidence(element: HTMLElement, cache?: SupplementalCache) {
   const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
   const form = element.closest('form, [role~="form" i]')
@@ -264,6 +408,7 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
   const filter = bodyControl && !!form && searchMetadata(form) && searchMetadata(element)
     && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
   let title: string | undefined;
+  let cardRelatedLabel: string | undefined;
   // A title preceding a paragraph is an explicit card title/description split.
   // Respect an authored accessible-name override instead of second-guessing it.
   if (bodyControl && !form && !element.hasAttribute('aria-label') && !element.hasAttribute('aria-labelledby')
@@ -275,9 +420,10 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
       const text = clean(staticText(children[0]));
       if (isInformationTopicLabel(text) && clean(staticText(children[1]))) title = text;
     }
+    if (!title) ({ title, relatedLabel: cardRelatedLabel } = cardTitle(element, cache));
   }
   let materialRow = false;
-  let relatedLabel: string | undefined;
+  let relatedLabel: string | undefined = cardRelatedLabel;
   const row = bodyControl && !form ? element.closest('tr, [role~="row" i]') : null;
   const table = row?.closest('table, [role~="grid" i]');
   if (row && table) {
@@ -320,7 +466,8 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
   let informationPanels = false;
   if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '')) {
     const parent = element.parentElement;
-    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false };
+    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false,
+      topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[], collectionPeers: [] };
     let summary = cache?.get(parent);
     if (!summary?.panels) {
       const controls = [...parent.children].filter((child): child is HTMLElement => child instanceof HTMLElement
@@ -347,7 +494,9 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
     }
     grouped = summary.groups!.has(element);
   }
-  return { filter, title, materialRow, relatedLabel, informationPanels, grouped };
+  const topics = bodyControl && !form ? topicEvidence(element, cache)
+    : { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[], collectionPeers: [] };
+  return { filter, title, materialRow, relatedLabel, informationPanels, grouped, ...topics };
 }
 
 export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {

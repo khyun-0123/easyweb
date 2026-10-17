@@ -1,0 +1,97 @@
+
+Running 3 tests using 1 worker
+
+(node:84942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/structural-context.spec.mjs:91:1 › 발급 준비 안내의 재발급 제어는 같은 그룹의 사진 규격 읽기와 구분한다 (114ms)
+(node:84948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/structural-context.spec.mjs:97:1 › 명시적 절차 아래 재발급 준비와 실제 검색 안내 탭의 읽기 목적을 보존한다 (102ms)
+  ✘  3 tests/structural-context.spec.mjs:103:1 › 발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다 (104ms)
+
+
+  1) tests/structural-context.spec.mjs:91:1 › 발급 준비 안내의 재발급 제어는 같은 그룹의 사진 규격 읽기와 구분한다 ──────────────
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "action": "locate",
+    -   "category": "apply",
+    +   "category": "help",
+      }
+
+      91 | test('발급 준비 안내의 재발급 제어는 같은 그룹의 사진 규격 읽기와 구분한다', async ({ page }) => {
+      92 |   const items = await inspect(page, `<main><section><h2>수료증 발급 안내</h2><div><div role="group"><a id="issue-preparation" href="/service/11" onclick="return false">수료증 재발급 안내 바로가기</a></div><div role="group"><a id="photo-reading" href="/service/12" onclick="return false">사진 크기 기준</a></div></div></section></main>`);
+    > 93 |   expect(items.find(i => i.id === 'issue-preparation')).toMatchObject({ category:'apply', action:'locate' });
+         |                                                         ^
+      94 |   expect(items.find(i => i.id === 'photo-reading')).toMatchObject({ category:'help', pageTask:'reading', action:'locate' });
+      95 | });
+      96 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:93:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-발급-준비-안내의-재발급-제어는-같은-그룹의-사진-규격-읽기와-구분한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-발급-준비-안내의-재발급-제어는-같은-그룹의-사진-규격-읽기와-구분한다/error-context.md
+
+  2) tests/structural-context.spec.mjs:103:1 › 발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다 ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 29
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "category": "apply",
+    +     "context": "body",
+    +     "contextLabels": Array [
+    +       "수료증 발급 안내",
+    +     ],
+    +     "destinationHost": undefined,
+    +     "href": undefined,
+    +     "id": "script-issue",
+    +     "label": "수료증 재발급 방법",
+    +     "opensNewWindow": undefined,
+    +     "pagePurpose": undefined,
+    +     "pageTask": undefined,
+    +     "reasons": Array [
+    +       "고정 문구 일치",
+    +       "본문 영역",
+    +     ],
+    +     "score": 70,
+    +     "sectionLabel": "수료증 발급 안내",
+    +     "snapshot": Object {
+    +       "attributes": "[\"javascript:openPayment()\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,null,false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "target": undefined,
+    +   },
+    + ]
+
+      103 | test('발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다', async ({ page }) => {
+      104 |   const items = await inspect(page, `<main><h2>수료증 발급 안내</h2><div><div role="group"><a id="unsafe-issue" href="/service?cmd=delete">수료증 재발급 안내</a></div><div role="group"><a id="script-issue" href="javascript:openPayment()">수료증 재발급 방법</a></div><div role="group"><a id="news-issue" href="/news/51">수료증 재발급 안내</a></div><div role="group"><a id="editable-issue" href="/service/18"><span contenteditable="true">PRIVATE_ISSUE 수료증 재발급 안내</span></a></div></div></main>`);
+    > 105 |   expect(items.filter(i => ['unsafe-issue','script-issue','news-issue','editable-issue'].includes(i.id))).toEqual([]);
+          |                                                                                                           ^
+      106 |   expect(JSON.stringify(items)).not.toContain('PRIVATE_ISSUE');
+      107 | });
+      108 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:105:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-발급-준비의--305f4--URL·스크립트·기사·입력-내용의-예외가-아니다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-발급-준비의--305f4--URL·스크립트·기사·입력-내용의-예외가-아니다/error-context.md
+
+  2 failed
+    tests/structural-context.spec.mjs:91:1 › 발급 준비 안내의 재발급 제어는 같은 그룹의 사진 규격 읽기와 구분한다 ───────────────
+    tests/structural-context.spec.mjs:103:1 › 발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다 ───────────
+  1 passed (1.0s)

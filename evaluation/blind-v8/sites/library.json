@@ -1,0 +1,148 @@
+{
+  "siteId": "library",
+  "siteName": "국립중앙도서관",
+  "pages": [
+    {
+      "id": "library-blind-v8",
+      "title": "국립중앙도서관>도서관 이용>자료상담·신청>자료신청안내>보존용 자료열람",
+      "url": "https://www.nl.go.kr/NL/contents/N30102000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N30102000000.do",
+      "fixture": "evaluation/blind-v8/fixtures/library-blind-v8.html",
+      "split": "holdout",
+      "observation": {
+        "capturedAt": "2026-10-17T18:14:49.894Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "method": "Fresh headless Playwright Chromium; read-only public HTTP DOMContentLoaded plus 1500ms; no interactions",
+        "httpStatus": 200,
+        "sourceEvidence": {
+          "observationsFile": "docs/evidence/run005/blind-v8-observations.json",
+          "pageId": "library-blind-v8",
+          "selectors": [
+            "#sub_content"
+          ],
+          "sourceDocumentUrl": "https://www.nl.go.kr/NL/contents/N30102000000.do",
+          "sourceBaseURI": "https://www.nl.go.kr/NL/contents/N30102000000.do",
+          "fixtureSha256": "c6dcc7a71b48fd1db14f1361ebb60236376520b5969a1147920e9f8076290992"
+        },
+        "authState": "Fresh anonymous context; no credentials or auth action",
+        "inputValuesObserved": false,
+        "visibilityPreservation": "Recorded computed display, visibility, and opacity copied as inline presentation styles; original style attributes retained in observation; semantic tags/roles/ids/classes/order/headings remain source-exact."
+      },
+      "accepted": [
+        {
+          "sourceId": "library-v8-c002",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N40000000000.do"
+        },
+        {
+          "sourceId": "library-v8-c003",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N41900000000.do"
+        },
+        {
+          "sourceId": "library-v8-c004",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N30100000000.do"
+        },
+        {
+          "sourceId": "library-v8-c005",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N30102000000.do"
+        },
+        {
+          "sourceId": "library-v8-c016",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-v8-c017",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-v8-c018",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-v8-c019",
+          "category": "search",
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/search.do"
+        },
+        {
+          "sourceId": "library-v8-c020",
+          "category": "apply",
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N60501010000.do?mGbn=WEEKEND"
+        }
+      ],
+      "expected": [
+        {
+          "id": "catalogue-search",
+          "category": "search",
+          "label": "자료검색하기",
+          "sourceIds": [
+            "library-v8-c019"
+          ],
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/search.do"
+        },
+        {
+          "id": "request-status",
+          "category": "apply",
+          "label": "신청확인 바로가기",
+          "sourceIds": [
+            "library-v8-c020"
+          ],
+          "action": "navigate",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N60501010000.do?mGbn=WEEKEND"
+        },
+        {
+          "id": "young-reader-guide",
+          "category": "help",
+          "label": "청소년 자료이용 안내",
+          "sourceIds": [
+            "library-v8-c018"
+          ],
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-v8-task",
+        "instruction": "청소년의 자료이용 방법을 설명하는 안내로 가는 원본 위치를 찾으세요.",
+        "expectedSourceIds": [
+          "library-v8-c018"
+        ],
+        "action": "locate",
+        "evidence": {
+          "observedSourceId": "library-v8-c018",
+          "accessibleName": {
+            "name": "청소년 자료이용",
+            "basis": "rendered-text"
+          },
+          "hrefAttribute": "/NL/contents/N30103000000.do",
+          "resolvedHref": "https://www.nl.go.kr/NL/contents/N30103000000.do",
+          "inlineHandlers": {
+            "onclick": "fn_wiseTracker(\"^SNB^자료신청안내^청소년 자료이용\");"
+          },
+          "target": null,
+          "defaultVisible": true,
+          "scope": "Read-only recognition of a public function or original source location; no authentication, form submission, or download executed."
+        }
+      },
+      "notes": [
+        "Public read-only source capture only. Scripts, stylesheets, external assets, embedded documents, input value attributes, and editable text were omitted. Original inline handler strings remain inert under script-src none CSP; no handlers were activated.",
+        "The fixture preserves the entire selected subtree plus all original ancestors and referenced ID targets. Siblings outside the selected source blocks are outside this bounded fixture. Source URL, base URI, control ancestor chains, headings, node order, and every retained control are recorded separately.",
+        "The browser capture uses a new headless context without existing user profiles or tabs. Source site delegated event behavior is not reproduced or inferred. Ordinary HTTP link destinations are judged only by observable metadata."
+      ]
+    }
+  ]
+}

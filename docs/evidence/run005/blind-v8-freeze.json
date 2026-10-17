@@ -1,0 +1,119 @@
+{
+  "datasetId": "blind-v8",
+  "createdAt": "2026-10-17T18:18:03.361228+00:00",
+  "status": "FROZEN_BEFORE_FIRST_PRODUCT_EVALUATION",
+  "pages": 5,
+  "siteJsonFiles": 5,
+  "fixtureHtmlFiles": 5,
+  "observationFiles": 1,
+  "expectedCoreFunctions": 15,
+  "inputFileCount": 11,
+  "files": [
+    {
+      "path": "evaluation/blind-v8/fixtures/city-blind-v8.html",
+      "sha256": "71da1ea8fd1b484d5cd7f98e4f44a4bcbe9b65c806cf01cded9d1b485e9525bd",
+      "bytes": 207250
+    },
+    {
+      "path": "evaluation/blind-v8/fixtures/government-blind-v8.html",
+      "sha256": "be4dca0e6f1129183d0f8d5a528e6a3d7f1b47c84c86514c4b208f6d2c057d9a",
+      "bytes": 28216
+    },
+    {
+      "path": "evaluation/blind-v8/fixtures/library-blind-v8.html",
+      "sha256": "c6dcc7a71b48fd1db14f1361ebb60236376520b5969a1147920e9f8076290992",
+      "bytes": 20400
+    },
+    {
+      "path": "evaluation/blind-v8/fixtures/public-agency-blind-v8.html",
+      "sha256": "7f2b445de0cc0986187aa484ab2be0ca6ca70ab0ee15669ec07e81da15682f48",
+      "bytes": 44265
+    },
+    {
+      "path": "evaluation/blind-v8/fixtures/smu-blind-v8.html",
+      "sha256": "681b2d42532d6a48b6c581002e921cb5688a7cfe12d3bc107b5066917b4edda4",
+      "bytes": 37345
+    },
+    {
+      "path": "evaluation/blind-v8/sites/city.json",
+      "sha256": "52689c1ac785d57f81c1fdd6685f96443f229a243183aae29dc8ef33c4261b35",
+      "bytes": 5606
+    },
+    {
+      "path": "evaluation/blind-v8/sites/government.json",
+      "sha256": "763dcd7bc6b86de71677fe35f05d7eb351ef791732a7cfa5aaca045efbc3d084",
+      "bytes": 5718
+    },
+    {
+      "path": "evaluation/blind-v8/sites/library.json",
+      "sha256": "d30458a912af5e7741d5f7dbaa6492242f4151e1603854dcb898b95f4980f0de",
+      "bytes": 5964
+    },
+    {
+      "path": "evaluation/blind-v8/sites/public-agency.json",
+      "sha256": "5c45b17cc8e744b30c0528fc3b2c73fd5cd18e546e978f838b652104a41d91c4",
+      "bytes": 5396
+    },
+    {
+      "path": "evaluation/blind-v8/sites/smu.json",
+      "sha256": "12bafe5870c7a2911b9c2a51f68b6267c1934b7b2c46a187bbc62b6f68571994",
+      "bytes": 9014
+    },
+    {
+      "path": "docs/evidence/run005/blind-v8-observations.json",
+      "sha256": "e1bbe66df57364100f72a0777c0ea2868bc3a909971eb90e47bcc4582e5a2af4",
+      "bytes": 827467
+    }
+  ],
+  "selectedPagePlan": {
+    "path": "docs/evidence/run005/blind-v8-authoring/selected-page-plan.json",
+    "sha256": "b5d8796f5121a5b2b95ce12087c6417c10b02773ce0662e6fabde709bd3d5dca",
+    "bytes": 2585
+  },
+  "qaEvidence": [
+    {
+      "path": "docs/evidence/run005/blind-v8-authoring/structural-qa.json",
+      "sha256": "e1eee5671e2b00a94d5e163a6c6cc09135deb641c2e93c833c0fa1659ed8f44e",
+      "bytes": 2189
+    },
+    {
+      "path": "docs/evidence/run005/blind-v8-authoring/independent-static-qa.json",
+      "sha256": "4ba8c184c18d16fb208188ea1736e841b714536a881d9bde23a48ab5e7d76283",
+      "bytes": 98021
+    }
+  ],
+  "authoringEvidence": [
+    {
+      "path": "docs/evidence/run005/blind-v8-authoring/collect.mjs",
+      "sha256": "68833fbc08321bcef2072263ed90d1d074b90737a3584c8f58f8d6e048c4af35",
+      "bytes": 9406
+    },
+    {
+      "path": "docs/evidence/run005/blind-v8-authoring/annotate.py",
+      "sha256": "4229470b120aded5f33239ef7a8a2db0f8c874d38fc2db485badab8cc5fdc62c",
+      "bytes": 10755
+    },
+    {
+      "path": "docs/evidence/run005/blind-v8-authoring/capture-observations.json",
+      "sha256": "1a29fe0954ac5f4efe0e16d8a04caa12563e26b231afddce7d0065e4a02c3b73",
+      "bytes": 789679
+    }
+  ],
+  "fidelityStatus": "PASS_BOUNDED_DOM_STRUCTURE_VISIBILITY_AND_ANNOTATION",
+  "fidelityScope": "Source-selected full subtrees plus original ancestor shells and actual ID-reference targets; tags/roles/ids/classes/form boundaries/list/heading placement/node order/inline-handler metadata and observed default visibility preserved. Presentation-only display/visibility/opacity styles preserve effective visibility after omitting external assets. No claim of pixel-layout or delegated JavaScript reproduction.",
+  "independenceDeclaration": {
+    "productSourceFilesRead": false,
+    "productDistFilesRead": false,
+    "productTestsRead": false,
+    "priorDatasetsFixturesAuditsRead": false,
+    "priorEvaluationResultFilesRead": false,
+    "productExecutionOrEvaluation": false,
+    "onlyInitialRepositoryData": "/tmp/easyweb-v8-excluded-pages.json",
+    "sourceSelectionAndGoldBasedOn": "Public source DOM metadata and semantic functions only; no product behavior",
+    "existingBrowserProfileUsed": false,
+    "visibleOrNativeUIUsed": false,
+    "userInputValuesRead": false,
+    "authDownloadOrBusinessActionsExecuted": false
+  },
+  "freezeRule": "Stop writes to the 11 frozen inputs and freeze document after this snapshot. Any later confirmed source-fidelity issue must be explicit and versioned; never silently patch after product results."
+}

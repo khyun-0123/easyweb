@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-10-17T18:16:19.497357+00:00",
+  "finding": "R005-CR01",
+  "review": "docs/evidence/run005/code-review.json",
+  "resolution": "Stop external card-title ancestor traversal at html/body/main and the shared semantic content boundary selector, including aside and ARIA complementary/form/navigation regions. Preserve the existing plain div-card positive and original label/action.",
+  "source": "src/analyzer.ts",
+  "sourceSha256": "735075bf92189cfde3408ccd0ac49afad533d4a7f857bf977c4d72ddbd3ab5a4",
+  "regression": "tests/structural-context.spec.mjs",
+  "before": {
+    "cases": 4,
+    "failed": 3,
+    "passed": 1,
+    "log": "docs/evidence/run005/structural-audit/semantic-boundary-before.log"
+  },
+  "after": {
+    "status": "PASS",
+    "integratedTests": 208,
+    "report": "docs/evidence/run005/before-development-regression-fix/local-verification.json",
+    "newBoundaryCases": 4,
+    "sourceSha256": "735075bf92189cfde3408ccd0ac49afad533d4a7f857bf977c4d72ddbd3ab5a4",
+    "scope": "208-test verification before later classification-precedence regression repair; semantic boundary fix retained."
+  },
+  "preservedPriorVerification": "docs/evidence/run005/before-code-review-fix",
+  "newBlindDataRead": false,
+  "productOrGoldActionsChanged": false
+}

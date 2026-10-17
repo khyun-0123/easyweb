@@ -1,0 +1,102 @@
+
+Running 4 tests using 1 worker
+
+(node:80290) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/ranker-capacity.spec.mjs:39:1 › focused page uses available first-screen capacity for four distinct reading controls (78ms)
+(node:80303) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/ranker-capacity.spec.mjs:48:1 › category diversity keeps all six available categories before extra same-category menus (69ms)
+  ✘  3 tests/ranker-capacity.spec.mjs:57:1 › focused overflow stays bounded and each distinct source appears once (79ms)
+(node:80319) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/ranker-capacity.spec.mjs:66:1 › capacity fill preserves destination deduplication (98ms)
+
+
+  1) tests/ranker-capacity.spec.mjs:39:1 › focused page uses available first-screen capacity for four distinct reading controls 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 0
+
+      Array [
+        "north",
+        "east",
+        "south",
+    -   "west",
+      ]
+
+      40 |   const rows = ['north', 'east', 'south', 'west'].map(id => ({id, category: 'help', reading: true}));
+      41 |   const result = await choose(page, rows);
+    > 42 |   expect(result.ids).toEqual(rows.map(row => row.id));
+         |                      ^
+      43 |   expect(result.hasMore).toBe(false);
+      44 |   expect(result.remaining).toEqual([]);
+      45 |   expect(result.reversedInputIds).toEqual(result.ids);
+        at /Users/khyun_03/easyweb/tests/ranker-capacity.spec.mjs:42:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ranker-capacity-focused-pa-c0199-r-distinct-reading-controls/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ranker-capacity-focused-pa-c0199-r-distinct-reading-controls/error-context.md
+
+  2) tests/ranker-capacity.spec.mjs:57:1 › focused overflow stays bounded and each distinct source appears once 
+
+    Error: expect(received).toHaveLength(expected)
+
+    Expected length: 6
+    Received length: 3
+    Received array:  ["topic-0", "topic-1", "topic-2"]
+
+      58 |   const rows = Array.from({length: 8}, (_, index) => ({id: `topic-${index}`, category: 'help', reading: true}));
+      59 |   const result = await choose(page, rows);
+    > 60 |   expect(result.ids).toHaveLength(6);
+         |                      ^
+      61 |   expect(result.hasMore).toBe(true);
+      62 |   expect(new Set([...result.ids, ...result.remaining]).size).toBe(8);
+      63 |   expect([...result.ids, ...result.remaining]).toEqual(rows.map(row => row.id));
+        at /Users/khyun_03/easyweb/tests/ranker-capacity.spec.mjs:60:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ranker-capacity-focused-ov-4c504-istinct-source-appears-once/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ranker-capacity-focused-ov-4c504-istinct-source-appears-once/error-context.md
+
+  3) tests/ranker-capacity.spec.mjs:66:1 › capacity fill preserves destination deduplication ───────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 0
+
+      Array [
+        "menu-0",
+        "menu-1",
+        "menu-2",
+    -   "menu-3",
+    -   "menu-4",
+      ]
+
+      68 |   rows.push({id: 'duplicate', category: 'help', reading: true, href: 'https://catalog.example/resource/0'});
+      69 |   const result = await choose(page, rows);
+    > 70 |   expect(result.ids).toEqual(rows.map(row => row.id).slice(0, 5));
+         |                      ^
+      71 |   expect(result.hasMore).toBe(false);
+      72 | });
+      73 |
+        at /Users/khyun_03/easyweb/tests/ranker-capacity.spec.mjs:70:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ranker-capacity-capacity-f-75f24-s-destination-deduplication/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ranker-capacity-capacity-f-75f24-s-destination-deduplication/error-context.md
+
+  3 failed
+    tests/ranker-capacity.spec.mjs:39:1 › focused page uses available first-screen capacity for four distinct reading controls 
+    tests/ranker-capacity.spec.mjs:57:1 › focused overflow stays bounded and each distinct source appears once 
+    tests/ranker-capacity.spec.mjs:66:1 › capacity fill preserves destination deduplication ────────
+  1 passed (1.3s)

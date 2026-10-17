@@ -1,0 +1,144 @@
+
+Running 1 test using 1 worker
+
+(node:81569) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/structural-context.spec.mjs:65:1 › 패널 관계는 body·상호작용 제어와 내부 기사·폼·다른 지역의 제목을 빌리지 않는다 (114ms)
+
+
+  1) tests/structural-context.spec.mjs:65:1 › 패널 관계는 body·상호작용 제어와 내부 기사·폼·다른 지역의 제목을 빌리지 않는다 ──────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -   1
+    + Received  + 110
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "category": "help",
+    +     "context": "body",
+    +     "contextLabels": Array [],
+    +     "destinationHost": undefined,
+    +     "href": undefined,
+    +     "id": "body-target",
+    +     "label": "구성 항목",
+    +     "opensNewWindow": undefined,
+    +     "pagePurpose": undefined,
+    +     "pageTask": "reading",
+    +     "reasons": Array [
+    +       "원본 안내 주제와 연결된 읽기 제어",
+    +       "고정 원본 제어 구조",
+    +     ],
+    +     "relatedLabel": undefined,
+    +     "score": 70,
+    +     "sectionLabel": undefined,
+    +     "snapshot": Object {
+    +       "attributes": "[null,null,null,\"whole-page\",null,\"false\",null,\"button\",null,null,null,null,null,[\"button\",false],null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"materialRow\":false,\"informationPanels\":false,\"grouped\":false,\"topicPeers\":2,\"controlledTopic\":true,\"linkedTopic\":false,\"associatedHeadings\":[\"학위 이수 제도\",\"전자 자료 사용 설명서\",\"열람실 사용 가이드\"]},false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "supplementalDependent": true,
+    +     "target": undefined,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "category": "help",
+    +     "context": "body",
+    +     "contextLabels": Array [],
+    +     "destinationHost": undefined,
+    +     "href": undefined,
+    +     "id": "article-heading",
+    +     "label": "세부전공",
+    +     "opensNewWindow": undefined,
+    +     "pagePurpose": undefined,
+    +     "pageTask": "reading",
+    +     "reasons": Array [
+    +       "원본 안내 주제와 연결된 읽기 제어",
+    +       "고정 원본 제어 구조",
+    +     ],
+    +     "relatedLabel": undefined,
+    +     "score": 70,
+    +     "sectionLabel": undefined,
+    +     "snapshot": Object {
+    +       "attributes": "[null,null,null,\"wrapped-article\",null,null,null,\"button\",null,null,null,null,null,[\"button\",false],null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"materialRow\":false,\"informationPanels\":false,\"grouped\":false,\"topicPeers\":2,\"controlledTopic\":true,\"linkedTopic\":true,\"associatedHeadings\":[\"학위 이수 제도\",\"전자 자료 사용 설명서\"]},false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "supplementalDependent": true,
+    +     "target": undefined,
+    +   },
+    +   Object {
+    +     "action": "navigate",
+    +     "category": "academic",
+    +     "context": "body",
+    +     "contextLabels": Array [],
+    +     "destinationHost": "structure.test",
+    +     "href": "https://structure.test/opaque/91",
+    +     "id": "region-heading",
+    +     "label": "세부전공",
+    +     "opensNewWindow": false,
+    +     "pagePurpose": undefined,
+    +     "pageTask": "reading",
+    +     "reasons": Array [
+    +       "원본 교육 개념과 연결된 내용 제목",
+    +       "고정 원본 제어 구조",
+    +     ],
+    +     "relatedLabel": undefined,
+    +     "score": 70,
+    +     "sectionLabel": undefined,
+    +     "snapshot": Object {
+    +       "attributes": "[\"/opaque/91\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,true,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"materialRow\":false,\"informationPanels\":false,\"grouped\":false,\"topicPeers\":2,\"controlledTopic\":false,\"linkedTopic\":false,\"associatedHeadings\":[\"학위 이수 제도\"]},false,{\"action\":\"navigate\",\"href\":\"https://structure.test/opaque/91\",\"target\":\"_self\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "supplementalDependent": true,
+    +     "target": "_self",
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "category": "help",
+    +     "context": "body",
+    +     "contextLabels": Array [],
+    +     "destinationHost": undefined,
+    +     "href": undefined,
+    +     "id": "interactive-target",
+    +     "label": "구성 항목",
+    +     "opensNewWindow": undefined,
+    +     "pagePurpose": undefined,
+    +     "pageTask": "reading",
+    +     "reasons": Array [
+    +       "원본 안내 주제와 연결된 읽기 제어",
+    +       "고정 원본 제어 구조",
+    +     ],
+    +     "relatedLabel": undefined,
+    +     "score": 70,
+    +     "sectionLabel": undefined,
+    +     "snapshot": Object {
+    +       "attributes": "[null,null,null,\"other-control\",null,\"false\",null,\"button\",null,null,null,null,null,[\"button\",false],null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"materialRow\":false,\"informationPanels\":false,\"grouped\":false,\"topicPeers\":2,\"controlledTopic\":true,\"linkedTopic\":false,\"associatedHeadings\":[\"열람실 사용 가이드\"]},false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "supplementalDependent": true,
+    +     "target": undefined,
+    +   },
+    + ]
+
+      65 | test('패널 관계는 body·상호작용 제어와 내부 기사·폼·다른 지역의 제목을 빌리지 않는다', async ({ page }) => {
+      66 |   const items = await inspect(page, `<body id="whole-page"><main><div><button id="body-target" type="button" aria-controls="whole-page" aria-expanded="false">구성 항목</button><button type="button" aria-controls="whole-page" aria-expanded="false">일반 설명</button></div><div><button id="article-heading" type="button" aria-controls="wrapped-article">세부전공</button><button type="button" aria-controls="wrapped-article">교양과정</button></div><div id="wrapped-article"><article><h3>학위 이수 제도</h3></article><form><h3>전자 자료 사용 설명서</h3></form></div><div><ul><li><a id="region-heading" href="/opaque/91">세부전공</a></li><li><a href="/opaque/92">교양과정</a></li></ul><div><section><h4>학위 이수 제도</h4></section></div></div><div><button id="interactive-target" type="button" aria-controls="other-control" aria-expanded="false">구성 항목</button><button type="button" aria-controls="other-control" aria-expanded="false">일반 설명</button></div><button id="other-control" type="button"><span role="heading">열람실 사용 가이드</span></button></main><article><h3>전자 자료 사용 설명서</h3></article></body>`);
+    > 67 |   expect(items.filter(i => ['body-target','article-heading','region-heading','interactive-target'].includes(i.id))).toEqual([]);
+         |                                                                                                                     ^
+      68 | });
+      69 |
+      70 | test('같은 상세보기 두 개는 각자의 제목을 보존하고 authored 이름·숨은 제목을 대신하지 않는다', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:67:117
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-패널-관계는--807f7--내부-기사·폼·다른-지역의-제목을-빌리지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-패널-관계는--807f7--내부-기사·폼·다른-지역의-제목을-빌리지-않는다/error-context.md
+
+  1 failed
+    tests/structural-context.spec.mjs:65:1 › 패널 관계는 body·상호작용 제어와 내부 기사·폼·다른 지역의 제목을 빌리지 않는다 ───────

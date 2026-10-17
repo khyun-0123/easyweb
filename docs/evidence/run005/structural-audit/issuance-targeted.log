@@ -1,0 +1,101 @@
+
+Running 36 tests using 1 worker
+
+(node:85162) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/generic-controls.spec.mjs:16:1 › 검색 form의 고정 검색 필터 표식만 사용하고 값과 일반 신청 form은 읽지 않는다 (105ms)
+  ✓   2 tests/generic-controls.spec.mjs:23:1 › 신청 준비 편람의 제목/자료 제어를 인식하고 임의 표·뉴스는 제외한다 (96ms)
+  ✓   3 tests/generic-controls.spec.mjs:29:1 › 정보 패널 형제 제어와 안내 제목의 그룹 링크를 읽기로 분류한다 (94ms)
+  ✓   4 tests/generic-controls.spec.mjs:35:1 › 고정 카드 제목과 설명을 분리하여 모의 계산·개인 내역·신청을 구분한다 (94ms)
+  ✓   5 tests/generic-controls.spec.mjs:41:1 › 도움말 게시판의 평서 안내 문서를 공지·실행 제어와 구별한다 (98ms)
+  ✓   6 tests/generic-controls.spec.mjs:48:1 › 같은 전체 이름도 카드 제목 분할이 바뀌면 이전 근거를 무효화한다 (92ms)
+  ✓   7 tests/generic-controls.spec.mjs:53:1 › 보조 근거는 위험 URL·스크립트·폼 제출·기사·편집 제어를 허용하지 않는다 (94ms)
+  ✓   8 tests/generic-controls.spec.mjs:58:1 › 패널 동료 근거와 그룹 링크 구조가 사라지면 이전 읽기 후보는 무효다 (78ms)
+  ✓   9 tests/generic-controls.spec.mjs:64:1 › 구조 보완은 표 안 검색창·검색 버튼·명시적 신청 그룹의 기능을 덮지 않는다 (93ms)
+  ✓  10 tests/generic-controls.spec.mjs:71:1 › 서식 표의 제목·첨부 열 밖에 있는 불투명 기관 링크는 신청으로 보완하지 않는다 (93ms)
+  ✓  11 tests/generic-controls.spec.mjs:77:1 › 배치 문맥 cache는 다음 검사에 재사용하지 않고 제목 변화를 즉시 감지한다 (78ms)
+  ✓  12 tests/generic-controls.spec.mjs:83:1 › 부모가 없는 documentElement 역할 제어도 보조 분석에서 예외를 내지 않는다 (65ms)
+  ✓  13 tests/generic-controls.spec.mjs:89:1 › 목적 없는 페이지도 분석과 배치 현재성마다 전체 목적 검사는 한 번만 수행한다 (75ms)
+  ✓  14 tests/material-context.spec.mjs:33:1 › 동명 자료 카드의 관련 제목과 실제 접근성 이름·표시 원본 매핑을 구분한다 (133ms)
+  ✓  15 tests/material-context.spec.mjs:63:1 › 관련 제목이 바뀌면 자료 버튼 이름이 같아도 snapshot과 즉시 실행을 무효화한다 (140ms)
+  ✓  16 tests/material-context.spec.mjs:72:1 › 관련 항목은 고정 제목만 사용하고 자식 편집 내용·입력값을 후보와 UI에 넣지 않는다 (99ms)
+  ✓  17 tests/structural-context.spec.mjs:17:1 › 중첩 카드의 고정 제목을 날짜·장소·상태와 분리하고 원본 이름과 액션은 보존한다 (76ms)
+  ✓  18 tests/structural-context.spec.mjs:22:1 › 단일 제어 카드의 형제 제목을 일반 상세보기와 연결한다 (72ms)
+  ✓  19 tests/structural-context.spec.mjs:26:1 › 일반 div 안의 펼침 단계 버튼도 명시된 사용 설명서 안에서는 읽기 주제다 (94ms)
+  ✓  20 tests/structural-context.spec.mjs:31:1 › 안내 탭의 검색·신청 주제는 실제 실행 제어와 구별한다 (94ms)
+  ✓  21 tests/structural-context.spec.mjs:38:1 › 뒤쪽의 같은 지역 학위 제목이 교육 개념 목록을 설명한다 (74ms)
+  ✓  22 tests/structural-context.spec.mjs:42:1 › 가이드 제목 아래 그룹 주제와 button 다운로드를 읽기로 다룬다 (92ms)
+  ✓  23 tests/structural-context.spec.mjs:47:1 › 새 구조 근거도 기사·명령·폼·다른 section의 제목·여러 제어 카드에는 적용하지 않는다 (97ms)
+  ✓  24 tests/structural-context.spec.mjs:51:1 › 고정 문맥은 사용자 입력 하위 트리를 읽지 않으며 실제 값 getter를 호출하지 않는다 (92ms)
+  ✓  25 tests/structural-context.spec.mjs:58:1 › 연결된 바깥 제목 또는 제어 패널 관계가 바뀌면 원본 이름이 같아도 낡은 후보를 거절한다 (95ms)
+  ✓  26 tests/structural-context.spec.mjs:65:1 › 패널 관계는 body·상호작용 제어와 내부 기사·폼·다른 지역의 제목을 빌리지 않는다 (92ms)
+  ✓  27 tests/structural-context.spec.mjs:70:1 › 같은 상세보기 두 개는 각자의 제목을 보존하고 authored 이름·숨은 제목을 대신하지 않는다 (106ms)
+  ✓  28 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 aside 경계 밖에서 빌리지 않는다 (75ms)
+  ✓  29 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 complementary 경계 밖에서 빌리지 않는다 (74ms)
+  ✓  30 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 form-role 경계 밖에서 빌리지 않는다 (73ms)
+  ✓  31 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 document-body 경계 밖에서 빌리지 않는다 (75ms)
+  ✓  32 tests/structural-context.spec.mjs:91:1 › 발급 준비 안내의 재발급 제어는 같은 그룹의 사진 규격 읽기와 구분한다 (75ms)
+  ✓  33 tests/structural-context.spec.mjs:97:1 › 명시적 절차 아래 재발급 준비와 실제 검색 안내 탭의 읽기 목적을 보존한다 (93ms)
+  ✘  34 tests/structural-context.spec.mjs:103:1 › 발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다 (84ms)
+(node:85217) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  35 tests/structural-context.spec.mjs:109:1 › 학사일정 페이지의 calendar/list view는 일반 안내 그룹보다 구체적인 학사 보기 제어다 (85ms)
+  ✓  36 tests/structural-context.spec.mjs:114:1 › 교육과정의 개념 탭은 학사 읽기이며 명시적 FAQ 목적은 도움말 읽기로 구분한다 (101ms)
+
+
+  1) tests/structural-context.spec.mjs:103:1 › 발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다 ──────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 29
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "category": "apply",
+    +     "context": "body",
+    +     "contextLabels": Array [
+    +       "수료증 발급 안내",
+    +     ],
+    +     "destinationHost": undefined,
+    +     "href": undefined,
+    +     "id": "script-issue",
+    +     "label": "수료증 재발급 방법",
+    +     "opensNewWindow": undefined,
+    +     "pagePurpose": undefined,
+    +     "pageTask": undefined,
+    +     "reasons": Array [
+    +       "고정 문구 일치",
+    +       "본문 영역",
+    +     ],
+    +     "score": 70,
+    +     "sectionLabel": "수료증 발급 안내",
+    +     "snapshot": Object {
+    +       "attributes": "[\"javascript:openPayment()\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,null,false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "target": undefined,
+    +   },
+    + ]
+
+      103 | test('발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다', async ({ page }) => {
+      104 |   const items = await inspect(page, `<main><h2>수료증 발급 안내</h2><div><div role="group"><a id="unsafe-issue" href="/service?cmd=delete">수료증 재발급 안내</a></div><div role="group"><a id="script-issue" href="javascript:openPayment()">수료증 재발급 방법</a></div><div role="group"><a id="news-issue" href="/news/51">수료증 재발급 안내</a></div><div role="group"><a id="editable-issue" href="/service/18"><span contenteditable="true">PRIVATE_ISSUE 수료증 재발급 안내</span></a></div></div></main>`);
+    > 105 |   expect(items.filter(i => ['unsafe-issue','script-issue','news-issue','editable-issue'].includes(i.id))).toEqual([]);
+          |                                                                                                           ^
+      106 |   expect(JSON.stringify(items)).not.toContain('PRIVATE_ISSUE');
+      107 | });
+      108 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:105:107
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-발급-준비의--305f4--URL·스크립트·기사·입력-내용의-예외가-아니다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-발급-준비의--305f4--URL·스크립트·기사·입력-내용의-예외가-아니다/error-context.md
+
+  1 failed
+    tests/structural-context.spec.mjs:103:1 › 발급 준비의 우선순위도 위험 URL·스크립트·기사·입력 내용의 예외가 아니다 ───────────
+  35 passed (4.1s)

@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-17T18:15:29.605187+00:00",
+  "command": [
+    "node",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "tests/structural-context.spec.mjs",
+    "-g",
+    "상세보기 카드 제목은"
+  ],
+  "exitCode": 1,
+  "preservedInitialVerification": "before-code-review-fix",
+  "reason": "Independent source review found external card-title borrowing across aside. Root extended regression to equivalent ARIA and page boundaries before fixing."
+}

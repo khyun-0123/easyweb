@@ -1,6 +1,6 @@
 # 접근성 검증과 수동 확인
 
-v0.5.0 개발 후보의 자동 검사와 실제 보조기술 확인을 구분한다. 최신 수치·소스 해시는 [RUN-004 자동 검사 JSON](evidence/run004/a11y-automated.json), 최종 판정은 [진행표](PROGRESS.md)를 따른다. 정식 접근성 인증 결과가 아니다. 현재 버전의 실제 VoiceOver 발화·브라우저 확대·네이티브 설치 검사는 **NOT_RUN**이다.
+v0.6.0 개발 후보의 자동 검사와 실제 보조기술 확인을 구분한다. 최신 수치·소스 해시는 [RUN-005 자동 검사 JSON](evidence/run005/a11y-automated.json), 최종 판정은 [진행표](PROGRESS.md)를 따른다. 정식 접근성 인증 결과가 아니다. 현재 버전의 실제 VoiceOver 발화·브라우저 확대·네이티브 설치 검사는 **NOT_RUN**이다.
 
 ## 자동·키보드 검사
 
@@ -12,7 +12,7 @@ v0.5.0 개발 후보의 자동 검사와 실제 보조기술 확인을 구분한
 
 ## 네이티브 확대·VoiceOver 기록
 
-아래는 **v0.3 계열의 과거 예비 관찰**이며 v0.5 검증으로 승계하지 않는다. 별도 Google Chrome for Testing 프로필에 원래 Manifest를 설치해 도구 모음으로 실행한 화면에서 브라우저 확대 표시 200%, 400%와 키보드 초점을 관찰했다. 예비 설치 빌드의 관찰은 [native-ui-check.json](evidence/run002/native-ui-check.json)에 보존한다.
+아래는 **v0.3 계열의 과거 예비 관찰**이며 v0.6 검증으로 승계하지 않는다. 별도 Google Chrome for Testing 프로필에 원래 Manifest를 설치해 도구 모음으로 실행한 화면에서 브라우저 확대 표시 200%, 400%와 키보드 초점을 관찰했다. 예비 설치 빌드의 관찰은 [native-ui-check.json](evidence/run002/native-ui-check.json)에 보존한다.
 
 VoiceOver를 켜고 Chrome 카드로 초점을 옮기는 과정은 수행했다. 실제 읽힌 음성·캡션의 이름과 상태 메시지를 독립적으로 확인하지 못했으므로 **PARTIAL_UNVERIFIED_SPEECH**이며 S06 인수 통과가 아니다. 검증 뒤 VoiceOver 설정은 원래 꺼진 상태로 복원했다. Windows/NVDA 실기기는 확인하지 않았다.
 

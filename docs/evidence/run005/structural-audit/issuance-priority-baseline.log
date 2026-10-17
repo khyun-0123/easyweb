@@ -1,0 +1,88 @@
+
+Running 2 tests using 1 worker
+
+(node:85092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/structural-context.spec.mjs:109:1 › 학사일정 페이지의 calendar/list view는 일반 안내 그룹보다 구체적인 학사 보기 제어다 (93ms)
+(node:85098) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/structural-context.spec.mjs:114:1 › 교육과정의 개념 탭은 학사 읽기이며 명시적 FAQ 목적은 도움말 읽기로 구분한다 (113ms)
+
+
+  1) tests/structural-context.spec.mjs:109:1 › 학사일정 페이지의 calendar/list view는 일반 안내 그룹보다 구체적인 학사 보기 제어다 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 4
+
+      Array [
+        Array [
+    -     "academic",
+    -     "control",
+    +     "help",
+    +     "reading",
+          "locate",
+        ],
+        Array [
+    -     "academic",
+    -     "control",
+    +     "help",
+    +     "reading",
+          "locate",
+        ],
+      ]
+
+      109 | test('학사일정 페이지의 calendar/list view는 일반 안내 그룹보다 구체적인 학사 보기 제어다', async ({ page }) => {
+      110 |   const items = await inspect(page, `<main><h2>학사일정</h2><section><h3>교육과정 안내</h3><div><div role="group"><button id="calendar-mode" type="button">calendar view</button></div><div role="group"><button id="list-mode" type="button">list view</button></div></div></section></main>`);
+    > 111 |   expect(items.filter(i => ['calendar-mode','list-mode'].includes(i.id)).map(i => [i.category,i.pageTask,i.action])).toEqual([['academic','control','locate'],['academic','control','locate']]);
+          |                                                                                                                      ^
+      112 | });
+      113 |
+      114 | test('교육과정의 개념 탭은 학사 읽기이며 명시적 FAQ 목적은 도움말 읽기로 구분한다', async ({ page }) => {
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:111:118
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-학사일정-페이-2ea50-는-일반-안내-그룹보다-구체적인-학사-보기-제어다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-학사일정-페이-2ea50-는-일반-안내-그룹보다-구체적인-학사-보기-제어다/error-context.md
+
+  2) tests/structural-context.spec.mjs:114:1 › 교육과정의 개념 탭은 학사 읽기이며 명시적 FAQ 목적은 도움말 읽기로 구분한다 ────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Array [
+        Array [
+    -     "academic",
+    +     "help",
+          "reading",
+        ],
+        Array [
+    -     "academic",
+    +     "help",
+          "reading",
+        ],
+      ]
+
+      115 |   const tabs = `<section><h3>교육과정 안내</h3><div role="tablist"><button id="concept-track" type="button" role="tab" aria-controls="track-panel">세부전공</button><button id="concept-course" type="button" role="tab" aria-controls="course-panel">교양과정</button></div><div id="track-panel"><h4>학위 이수 구성</h4></div><div id="course-panel"><h4>교양과정 구성</h4></div></section>`;
+      116 |   const academic = await inspect(page, `<main>${tabs}</main>`);
+    > 117 |   expect(academic.filter(i => i.id.startsWith('concept')).map(i => [i.category,i.pageTask])).toEqual([['academic','reading'],['academic','reading']]);
+          |                                                                                              ^
+      118 |   const faq = await inspect(page, `<main><h2>자주 묻는 질문</h2>${tabs}</main>`);
+      119 |   expect(faq.filter(i => i.id.startsWith('concept')).map(i => [i.category,i.pageTask])).toEqual([['help','reading'],['help','reading']]);
+      120 | });
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:117:94
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-교육과정의-개-cfdc9-이며-명시적-FAQ-목적은-도움말-읽기로-구분한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-교육과정의-개-cfdc9-이며-명시적-FAQ-목적은-도움말-읽기로-구분한다/error-context.md
+
+  2 failed
+    tests/structural-context.spec.mjs:109:1 › 학사일정 페이지의 calendar/list view는 일반 안내 그룹보다 구체적인 학사 보기 제어다 
+    tests/structural-context.spec.mjs:114:1 › 교육과정의 개념 탭은 학사 읽기이며 명시적 FAQ 목적은 도움말 읽기로 구분한다 ─────────

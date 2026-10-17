@@ -1,6 +1,36 @@
 # EasyWeb 검증 기록
 
-## RUN-004 · v0.5.0 / 독립 품질 FAIL
+## RUN-005 · v0.6.0 / 독립 최초 품질 FAIL
+
+2026-10-18 (한국 시간). [보고서](RUN_005_REPORT.md) · [진행표](PROGRESS.md)
+
+**완료 4/10 · 인수 NOT_MET.** 명시적 다운로드 식별 누락 2건으로 S05를 재개했다. 로컬 최종 검사는 통과했지만 blind-v8 첫 화면 품질은 모든 5사이트 FAIL이다. 헤드리스 fixture·합성 검사·공개 과제·native 설치·사람의 성공을 구별한다.
+
+| 항목 | 확인한 결과와 범위 |
+| --- | --- |
+| 최종 소스 동결 | [v2 14파일·아카이브](evidence/run005/v0.6-engine-freeze-v2.json), **03:25:20 KST / UTC18:25:20.245610**. root/구현자는 동결 전 v8 본문·URL·정답 미열람. v1 보존 |
+| 수정 전 이력 | 초기 204개 PASS 뒤 aside 경계 밖 제목 차용을 발견·수정. 208개 PASS 뒤 기존 개발의 발급 준비·live 학사 달력 분류 회귀로 14/15가 되어 v8 미열람·첫 실행0 상태에서 재수정. [204 보존](evidence/run005/before-code-review-fix/) · [208·개발/live·ZIP 보존](evidence/run005/pre-first-engine-revision.json) |
+| 타입·빌드·로컬 | [최종 222/222 PASS](evidence/run005/local-verification.json), 실패·flaky·skipped0, 테스트32,040.867ms. 중간204/208을 최종으로 쓰지 않음 |
+| core 개발 회귀 | 정확 **72/74(97.3%)**·재현 **45/45**·과제 추천 **15/15**, 품질 PASS. 오탐2개 포함. 이미 노출된15페이지의 축약 fixture 회귀 |
+| 자동 접근성 | [21조건](evidence/run005/a11y-automated.json), 오류·위반·incomplete·넘침·타깃·대비 미달0. 실제 VoiceOver 발화·브라우저 확대와 별개 |
+| 합성 성능 | 각10표본·warmup 제외, p95분석/준비 [mixed](evidence/run005/performance.json) **27.3/58.6ms**, [flat](evidence/run005/performance-flat.json) **39.7/95.7ms**, [table](evidence/run005/performance-table.json) **88.9/164.9ms**. 300/1,000ms 기준 PASS. 실제 로딩/native 제외, p95는10표본 최대값 |
+| v8 독립 최초 | [첫 결과](evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json), UTC18:25:41.668686→18:25:42.472586·exit1. **정확10/17(58.8%)·재현4/15(26.7%)·과제추천1/5, 모든5사이트 FAIL**. 같은 최종 동결 사용 |
+| v8 추가 메뉴 | 정확 **11/19(57.9%)**·재현 **5/15(33.3%)**·과제추천 **1/5**, unresolvedMappings0·repeatedCards0. 첫 화면 인수를 대체하지 않음 |
+| v8 static QA | 작성자 보고320/320, 전체89제어 accepted50/rejected39. 제품 품질·전체 사이트 재현·사람 성공의 증거가 아님 |
+| v7 정정본·프로토콜 | [VERSION](../evaluation/development-v7-corrected/VERSION.json)은 **ADJUDICATED_DEVELOPMENT / freshHoldout=false**, accepted6·expected3·SMU task2의11필드. [정적 검증](evidence/run005/v7-adjudication/validation.json)·[10/10](evidence/run005/v7-adjudication/protocol-tests.log): fixture5개 동일·원본freeze11입력 SHA 보존. 로그인2건/미주석 검색 입력 미해결 |
+| 실사이트 공개 과제 | [최종15/15 PASS](evidence/run005/tasks-live-final.json), HTTP9·원본안내6·재시도/관찰오류0. 최종v2동결 일치. 이전14/15 보존, 사람 업무 성공·인증/신청 완료·설치확장 검사와 별개 |
+| 후보 패키지 | [ZIP](../output/run005/EasyWeb-0.6.0-candidate.zip)315,166bytes·SHA256 `6ddd10dd9dd509fb7e65e84c2eb135bb97b39b445d2b28458dd92366984404a2`, 두 빌드/ZIP 동일·sourceStable. [메타](../output/run005/EasyWeb-0.6.0-candidate.json). [산출물 최종 검토 PASS](evidence/run005/final-review.json), 해시305비교/불일치0·검사시점406링크/깨짐0·ZIP5entry동일·과거체크포인트/첫v8FAIL보존. 인수 통과와 별개 |
+| 수동 확인실 | [3경로](evidence/run005/manual-fixture-final.json) HTTP200·바이트 동일만 확인. 실제 UI·스크립트 실행·사람 관찰0 |
+| S05 다운로드 반례 | `/cmm/fms/FileDown.do` + `i.ir-download`인 2개 명시적 제어가 navigate로 처리됨. [root 판정](evidence/run005/file-download-root-review.json)에서 원본 안내 요구 미충족으로 IN_PROGRESS/NEEDS_FIX, 현재4/10. MIME/body·실제 실행/피해 미관찰. core/live15는 해당2건 수행 증거가 아님 |
+| 개발9suite | [최종 요약](evidence/run005/final-development/summary.json)·sourceStable=true. v2/v3/정정v4 PASS. v5 24/25·13/15·5/5 FAIL. rawv6 25/26·11/15·4/5, category1 26/26·12/15·4/5, fixture2 26/26·14/15·5/5 모두 FAIL. rawv7-v2/정정v7 둘 다13/18·11/15·4/5 FAIL |
+| 개발 추가 메뉴 | v6fixture2 41/41·15/15·5/5·unresolved0, v7두버전13/18·11/15·4/5·unresolved1. v6fixture2 첫 화면city2/3 등 첫 품질 미달을 대체하지 않음 |
+| 관찰 경계 | [스냅샷](evidence/run005/goal-usage-snapshot.json): **03:10:33→03:31:44 KST / UTC18:10:33→18:31:44, 1,271초(21분11초)**. 이전 준비·분담과 이후 최종문서·산출물검토·commit 제외. 전체 RUN-005 경과 아님 |
+| 누적counter·비용 | 6,672,859tokensUsed/8,825초, RUN-004대비1,168,622/1,559초 차분은 이번 고유·생성·청구량 아님. 계정 입력/출력/캐시/추론/청구 토큰·비용과 전체 실제 경과 UNKNOWN |
+| native·사용자·계측 | 컴퓨터 유즈0. 실제 설치·발화·브라우저 확대 NOT_RUN, 1인시험0·정식실증0. 전체 실제 경과·계정 토큰·비용 UNKNOWN |
+
+알려진 자료는 **50페이지 = 기존45+v8의5**다. v7 원본/v2/정정본의 같은5페이지는 한 번만 센다. v8 첫 FAIL을 본 후 재평가는 개발용이다. RUN-004 원본 첫6/12·4/15·과제1/5 FAIL과 주석 충돌의 해석 한계를 보존하며 v7 정정 작업의 정적 검증은 최초 점수 재계산이 아니다.
+
+## RUN-004 · v0.5.0 / 독립 품질 FAIL 이력
 
 2026-10-18 (한국 시간). [전체 보고서](RUN_004_REPORT.md) · [진행표](PROGRESS.md)
 
@@ -183,4 +213,4 @@
 
 ## 현재 판정으로 돌아가기
 
-최신 상태는 [RUN-004 인수 판정](evidence/run004/release-gate.json), [보고서](RUN_004_REPORT.md), [진행표](PROGRESS.md)를 따른다. 알려진 자료는 45페이지이며 완료 5/10이다. v7-v2 첫 점수·FAIL은 action 주석 충돌 6건의 영향을 포함한 원본 기록으로 보존하며 보정 점수는 미산정이다. 기술 검증·정적 감사 관찰 경계는 25분 57초이고 전체 경과·계정 토큰·비용은 UNKNOWN이다.
+최신 상태는 [RUN-005 보고서](RUN_005_REPORT.md)와 [진행표](PROGRESS.md)를 따른다. 현재 완료4/10·NOT_MET(S05 재개), 최종222/222와 v8 첫10/17·4/15·1/5 모든사이트FAIL을 함께 기록한다. 알려진50페이지에서 v7정정본은 새 자료가 아니다. [RUN-004 인수 판정](evidence/run004/release-gate.json)·첫 raw FAIL·해석 한계와 수정전204/208·live14/15·ZIP·동결v1/v2를 보존한다. RUN-004의25분57초를 RUN-005 경과로 쓰지 않으며 전체 경과·계정 토큰·비용은 UNKNOWN이다.

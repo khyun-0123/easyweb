@@ -1,0 +1,83 @@
+
+Running 4 tests using 1 worker
+
+(node:83048) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 aside 경계 밖에서 빌리지 않는다 (114ms)
+(node:83064) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 complementary 경계 밖에서 빌리지 않는다 (114ms)
+(node:83079) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 form-role 경계 밖에서 빌리지 않는다 (104ms)
+  ✘  4 tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 document-body 경계 밖에서 빌리지 않는다 (106ms)
+
+
+  1) tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 aside 경계 밖에서 빌리지 않는다 ─────────────────────
+
+    Error: expect(received).toBeUndefined()
+
+    Received: {"action": "navigate", "category": "apply", "context": "body", "contextLabels": [], "destinationHost": "structure.test", "href": "https://structure.test/opaque/93", "id": "separate-detail", "label": "상세보기", "opensNewWindow": false, "pagePurpose": undefined, "pageTask": "control", "reasons": ["개인 내역·기록 확인 카드", "고정 원본 제어 구조"], "relatedLabel": "시설 이용 기록 조회", "score": 70, "sectionLabel": undefined, "snapshot": {"attributes": "[\"/opaque/93\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"title\":\"시설 이용 기록 조회\",\"materialRow\":false,\"relatedLabel\":\"시설 이용 기록 조회\",\"informationPanels\":false,\"grouped\":false,\"topicPeers\":0,\"controlledTopic\":false,\"linkedTopic\":false,\"associatedHeadings\":[]},false,{\"action\":\"navigate\",\"href\":\"https://structure.test/opaque/93\",\"target\":\"_self\"}]", "baseUrl": "https://structure.test/opaque", "pageUrl": "https://structure.test/opaque"}, "supplementalDependent": true, "target": "_self"}
+
+      85 |     const html = '<strong>시설 이용 기록 조회</strong>' + wrapper.replace('CONTROL', control);
+      86 |     const items = await inspect(page, name === 'document-body' ? html : `<main><div>${html}</div></main>`);
+    > 87 |     expect(items.find(item => item.id === 'separate-detail')).toBeUndefined();
+         |                                                               ^
+      88 |   });
+      89 | }
+      90 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:87:63
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-상세보기-카드-제목은-aside-경계-밖에서-빌리지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-상세보기-카드-제목은-aside-경계-밖에서-빌리지-않는다/error-context.md
+
+  2) tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 complementary 경계 밖에서 빌리지 않는다 ─────────────
+
+    Error: expect(received).toBeUndefined()
+
+    Received: {"action": "navigate", "category": "apply", "context": "body", "contextLabels": [], "destinationHost": "structure.test", "href": "https://structure.test/opaque/93", "id": "separate-detail", "label": "상세보기", "opensNewWindow": false, "pagePurpose": undefined, "pageTask": "control", "reasons": ["개인 내역·기록 확인 카드", "고정 원본 제어 구조"], "relatedLabel": "시설 이용 기록 조회", "score": 70, "sectionLabel": undefined, "snapshot": {"attributes": "[\"/opaque/93\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"title\":\"시설 이용 기록 조회\",\"materialRow\":false,\"relatedLabel\":\"시설 이용 기록 조회\",\"informationPanels\":false,\"grouped\":false,\"topicPeers\":0,\"controlledTopic\":false,\"linkedTopic\":false,\"associatedHeadings\":[]},false,{\"action\":\"navigate\",\"href\":\"https://structure.test/opaque/93\",\"target\":\"_self\"}]", "baseUrl": "https://structure.test/opaque", "pageUrl": "https://structure.test/opaque"}, "supplementalDependent": true, "target": "_self"}
+
+      85 |     const html = '<strong>시설 이용 기록 조회</strong>' + wrapper.replace('CONTROL', control);
+      86 |     const items = await inspect(page, name === 'document-body' ? html : `<main><div>${html}</div></main>`);
+    > 87 |     expect(items.find(item => item.id === 'separate-detail')).toBeUndefined();
+         |                                                               ^
+      88 |   });
+      89 | }
+      90 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:87:63
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-상세보기-카드-제목은-complementary-경계-밖에서-빌리지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-상세보기-카드-제목은-complementary-경계-밖에서-빌리지-않는다/error-context.md
+
+  3) tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 document-body 경계 밖에서 빌리지 않는다 ─────────────
+
+    Error: expect(received).toBeUndefined()
+
+    Received: {"action": "navigate", "category": "apply", "context": "body", "contextLabels": [], "destinationHost": "structure.test", "href": "https://structure.test/opaque/93", "id": "separate-detail", "label": "상세보기", "opensNewWindow": false, "pagePurpose": undefined, "pageTask": "control", "reasons": ["개인 내역·기록 확인 카드", "고정 원본 제어 구조"], "relatedLabel": "시설 이용 기록 조회", "score": 70, "sectionLabel": undefined, "snapshot": {"attributes": "[\"/opaque/93\",null,null,null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,{\"filter\":false,\"title\":\"시설 이용 기록 조회\",\"materialRow\":false,\"relatedLabel\":\"시설 이용 기록 조회\",\"informationPanels\":false,\"grouped\":false,\"topicPeers\":0,\"controlledTopic\":false,\"linkedTopic\":false,\"associatedHeadings\":[]},false,{\"action\":\"navigate\",\"href\":\"https://structure.test/opaque/93\",\"target\":\"_self\"}]", "baseUrl": "https://structure.test/opaque", "pageUrl": "https://structure.test/opaque"}, "supplementalDependent": true, "target": "_self"}
+
+      85 |     const html = '<strong>시설 이용 기록 조회</strong>' + wrapper.replace('CONTROL', control);
+      86 |     const items = await inspect(page, name === 'document-body' ? html : `<main><div>${html}</div></main>`);
+    > 87 |     expect(items.find(item => item.id === 'separate-detail')).toBeUndefined();
+         |                                                               ^
+      88 |   });
+      89 | }
+      90 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:87:63
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-상세보기-카드-제목은-document-body-경계-밖에서-빌리지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-상세보기-카드-제목은-document-body-경계-밖에서-빌리지-않는다/error-context.md
+
+  3 failed
+    tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 aside 경계 밖에서 빌리지 않는다 ──────────────────────
+    tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 complementary 경계 밖에서 빌리지 않는다 ──────────────
+    tests/structural-context.spec.mjs:83:3 › 상세보기 카드 제목은 document-body 경계 밖에서 빌리지 않는다 ──────────────
+  1 passed (1.5s)

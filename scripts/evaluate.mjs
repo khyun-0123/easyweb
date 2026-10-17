@@ -8,7 +8,7 @@ import { buildMenuFlowHarness, observeMenuFlow } from './menu-flow-evaluation.mj
 
 const args = process.argv.slice(2);
 if (args.includes('--help')) {
-  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run004] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
+  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|blind-v8|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2|development-v7-corrected] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run005] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
   process.exit(0);
 }
 for (const arg of args) {
@@ -18,14 +18,22 @@ for (const arg of args) {
 const value = (name, fallback) => args.find(arg => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
 const engine = value('engine', 'current');
 const split = value('split', 'calibration');
-const outputDir = value('output-dir', 'docs/evidence/run004');
+const outputDir = value('output-dir', 'docs/evidence/run005');
 const suite = value('suite', 'core');
 const withMenuFlow = args.includes('--with-menu-flow');
 if (withMenuFlow && engine !== 'current') throw new Error('Menu flow is supported for the current engine only');
-if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'blind-v5', 'blind-v6', 'blind-v7', 'blind-v7-v2', 'development-v4-corrected', 'development-v6-corrected', 'development-v6-corrected-v2'].includes(suite)) throw new Error('Unknown evaluation suite');
+if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'blind-v5', 'blind-v6', 'blind-v7', 'blind-v7-v2', 'blind-v8', 'development-v4-corrected', 'development-v6-corrected', 'development-v6-corrected-v2', 'development-v7-corrected'].includes(suite)) throw new Error('Unknown evaluation suite');
 const dataRoot = suite === 'core' ? 'evaluation' : `evaluation/${suite}`;
-const correctedVersion = /^development-v(4|6)-corrected(?:-v2)?$/.exec(suite);
-const fixtureRoots = correctedVersion ? [`evaluation/blind-v${correctedVersion[1]}`, dataRoot] : [dataRoot];
+// Corrected suites retain original fixture references as provenance. Bind each
+// suite explicitly to its source version; v7 uses the structure-faithful v2.
+const correctedBaseSuite = {
+  'development-v4-corrected': 'blind-v4',
+  'development-v6-corrected': 'blind-v6',
+  'development-v6-corrected-v2': 'blind-v6',
+  'development-v7-corrected': 'blind-v7-v2',
+}[suite];
+const correctedVersion = correctedBaseSuite !== undefined;
+const fixtureRoots = correctedVersion ? [`evaluation/${correctedBaseSuite}`, dataRoot] : [dataRoot];
 const phase = value('phase', engine === 'baseline' ? 'frozen-baseline' : 'post-holdout-development');
 if (!['frozen-baseline', 'fresh-blind-validation', 'post-holdout-development'].includes(phase)) throw new Error('Invalid evaluation phase');
 if (correctedVersion && phase !== 'post-holdout-development') throw new Error('Adjudicated data is development only');

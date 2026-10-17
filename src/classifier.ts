@@ -48,6 +48,13 @@ const counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대�
 const applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
 const issuanceServiceHeading = /^(?=.{2,48}$)(?:(?:온라인|인터넷|전자)\s*)?(?:(?:증명(?:서)?|민원|서류)\s*)?발급\s*(?:시스템|서비스)(?:\s*(?:바로\s*가기|목록))?$/;
 
+function hasDangerousScript(element: HTMLElement): boolean {
+  const raw = element.getAttribute('href')?.trim() ?? '';
+  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
+  return dangerous.test(script);
+}
+
 function contextsFor(candidate: Candidate, label: string): string[] {
   return [candidate.sectionLabel, ...(candidate.contextLabels ?? [])]
     .filter((value): value is string => !!value).map(normalize).filter(value => value !== label);
@@ -197,9 +204,7 @@ function structuredContext(candidate: Candidate, label: string, collection: Retu
   }
   // Only this new fallback examines fixed script metadata. It never executes
   // it, and a dangerous command remains ineligible when href is a locate action.
-  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
-  if (dangerous.test(script)) return;
+  if (hasDangerousScript(element)) return;
   const parts = destination ? pathParts(destination) : [];
   if (destination && (isDangerousURL(destination, parts) || hasDocumentReference(destination))
     || parts.some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
@@ -255,21 +260,18 @@ function supplementalClassification(candidate: Candidate, label: string, target:
   const element = candidate.element;
   if (candidate.context !== 'body' || !element.matches('a[href], button, [role~="button" i]')
     || element.closest('article, [role~="article" i]')) return;
-  if (!element.closest('form, [role~="form" i], tr, [role~="row" i], [role~="group" i]')
-    && !element.hasAttribute('aria-expanded') && !element.querySelector(':scope > p')) return;
   // Inspect only the source's fixed structural metadata; original actions are
   // retained. In particular, search filters and downloads are never activated.
   const evidence = supplementalEvidence(element, supplementalCache);
   const raw = element.getAttribute('href')?.trim() ?? '';
-  const script = [element.getAttribute('onclick') ?? '', /^javascript:/i.test(raw) ? raw : ''].join(' ')
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ');
-  if (dangerous.test(script)) return;
+  if (hasDangerousScript(element)) return;
   let destination = url;
   if (!destination && raw && !/^(?:#|javascript:)/i.test(raw)) {
     try { destination = new URL(raw, document.baseURI); } catch { return; }
     if (!/^https?:$/.test(destination.protocol)) return;
   }
   if (destination && isDangerousURL(destination, pathParts(destination))) return;
+  if (destination && pathParts(destination).some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
   if (destination) target = endpoint(pathParts(destination));
   const result = (category: Category, score: number, reason: string, task: NonNullable<Candidate['pageTask']>): Candidate => ({
     ...candidate, category, score, reasons: [reason, '고정 원본 제어 구조'], pageTask: task, supplementalDependent: true,
@@ -283,7 +285,59 @@ function supplementalClassification(candidate: Candidate, label: string, target:
     && !rules.some(rule => !['apply', 'academic'].includes(rule.category) && rule.label.test(label))
     && contexts.some(text => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text))
     && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '신청 준비 편람의 원본 서식 자료', 'reading');
+  // A broad guide relationship must not replace a more specific, established
+  // page control or issuance-preparation intent. Let those existing branches
+  // classify the original label and retain their own action/safety checks.
+  if (contextualReading(candidate, label)?.category === 'academic'
+    || issuanceIntent.test(label) && contexts.some(text => procedureHeading.test(text))) return;
   const guideContext = contexts.some(text => text.length <= 60 && /안내$/.test(text));
+  const readingContexts = [...contexts, ...evidence.associatedHeadings];
+  const guideReading = candidate.pagePurpose === 'help' || readingContexts.some(text => text.length <= 60
+    && (/(?:안내|설명서|도움말|사용\s*법|이용\s*법|가이드|요령|수칙|매뉴얼|\b(?:instructions?|guide|manual|help))$/i.test(text)
+      || /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)$/i.test(text)));
+  const academicPeer = (peer: typeof evidence.collectionPeers[number]): boolean => {
+    if (!peer.isLink || peer.action !== 'navigate' || !peer.href || !isInformationTopicLabel(peer.label)
+      || !academicConcept.test(peer.label) || !academicGuideEnd.test(peer.label) || dangerous.test(peer.label)) return false;
+    try {
+      const destination = new URL(peer.href);
+      const peerParts = pathParts(destination);
+      return /^https?:$/.test(destination.protocol) && destination.origin === location.origin
+        && !isDangerousURL(destination, peerParts) && !hasDocumentReference(destination)
+        && !peerParts.some(part => /^(?:news|articles?|stories|story|press)$/.test(part))
+        && !rules.some(rule => rule.category !== 'academic' && rule.endpoints.has(endpoint(peerParts)));
+    } catch { return false; }
+  };
+  const educationPeers = evidence.collectionPeers.filter(academicPeer);
+  if (candidate.action === 'navigate' && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches('a[href]') })
+    && educationPeers.length >= 2 && educationPeers.length > evidence.collectionPeers.length / 2) {
+    return candidate.pagePurpose === 'help'
+      ? result('help', 70, '명시적 도움말 목적과 원본 교육 개념 목록', 'reading')
+      : result('academic', 70, '같은 출처 읽기 링크와 다수의 고정 교육 개념', 'reading');
+  }
+  const readingTopic = evidence.topicPeers >= 2 && (evidence.controlledTopic || evidence.associatedHeadings.length > 0)
+    && !(destination && hasDocumentReference(destination));
+  const competingTask = rules.some(rule => rule.category !== 'help' && rule.label.test(label)
+    && !(rule.category === 'search' && searchGuidanceLabel.test(label)));
+  const readingSubject = evidence.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
+  const academicTopic = !dangerous.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label)
+    && readingContexts.some(text => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text))
+    && !rules.some(rule => rule.category !== 'academic' && rule.endpoints.has(target));
+  // Education concepts describe an academic reading task unless the source
+  // explicitly identifies this as a help/FAQ/instructions page.
+  if (academicTopic && candidate.pagePurpose !== 'help') return result('academic', 70, '원본 교육 개념과 연결된 내용 제목', 'reading');
+  if (!dangerous.test(label) && readingTopic && isInformationTopicLabel(label) && !isSearchControl(element, candidate.label)
+    && !element.closest('form, [role~="form" i]') && !isDocumentDownload(element, candidate.label)
+    && (!competingTask || readingSubject) && !rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target)) && guideReading) {
+    return result('help', 70, '원본 안내 주제와 연결된 읽기 제어', 'reading');
+  }
+  if (academicTopic) {
+    return result('academic', 70, '원본 교육 개념과 연결된 내용 제목', 'reading');
+  }
+  if (!dangerous.test(label) && guideReading && candidate.action === 'locate' && label.length <= 60
+    && element.matches('button, [role~="button" i]') && !element.closest('form, [role~="form" i]')
+    && /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|받기|download)$/i.test(label)) {
+    return result('help', 70, '안내 문맥의 명시적 가이드 자료 제어', 'reading');
+  }
   if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === 'locate'
     && (evidence.informationPanels || guideContext && evidence.grouped)
     && !rules.some(rule => rule.category !== 'help' && rule.label.test(label) && !(rule.category === 'search' && searchGuidanceLabel.test(label)))
@@ -300,7 +354,7 @@ function supplementalClassification(candidate: Candidate, label: string, target:
   if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title)
     && !dangerous.test(label.replace(/납부(?=\s*(?:내역|기록))/g, ''))
     && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '개인 내역·기록 확인 카드', 'control');
-  if (!dangerous.test(label) && (applicationControlLabel.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title))
+  if (!dangerous.test(label) && (applicationControlLabel.test(title) || explicitApplication.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title))
     && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '명시적 신청·청구 카드 제목', 'control');
 }
 
@@ -326,6 +380,10 @@ export function classify(candidates: Candidate[]): Candidate[] {
     // suffix only from this lexical view of an explicit download control.
     const label = documentDownload ? sourceLabel.replace(documentExtension, '').trim() : sourceLabel;
     if (orderingLabel.test(label)) return [];
+    // Reject an explicit dangerous command before any lexical fallback can
+    // revive a source that a structural reading branch has already rejected.
+    // This inspects fixed attributes only and never executes source scripts.
+    if (hasDangerousScript(candidate.element)) return [];
     let url: URL | undefined;
     if (candidate.href) {
       try { url = new URL(candidate.href); } catch { return []; }
@@ -333,6 +391,18 @@ export function classify(candidates: Candidate[]): Candidate[] {
     }
     const parts = url ? pathParts(url) : [];
     if (url && isDangerousURL(url, parts)) return [];
+    if (!url) {
+      // A locate action intentionally omits href from Candidate, but an
+      // explicit source HTTP command is still safety evidence. Read only the
+      // fixed destination metadata, without promoting it to navigation.
+      const raw = candidate.element.getAttribute('href')?.trim() ?? '';
+      if (raw && !/^(?:#|javascript:)/i.test(raw)) {
+        try {
+          const sourceURL = new URL(raw, document.baseURI);
+          if (/^https?:$/.test(sourceURL.protocol) && isDangerousURL(sourceURL, pathParts(sourceURL))) return [];
+        } catch { /* An unresolved source stays a locate action. */ }
+      }
+    }
     const target = endpoint(parts);
     // Verified reading metadata can describe payment/history topics. The URL
     // command guard runs first; the narrow reading/card branches retain the

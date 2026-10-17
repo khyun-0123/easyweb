@@ -1,0 +1,223 @@
+diff --git a/src/analyzer.ts b/src/analyzer.ts
+index f7763ee..9bba5e8 100644
+--- a/src/analyzer.ts
++++ b/src/analyzer.ts
+@@ -252,8 +252,117 @@ interface SupplementalSummary {
+   materials?: Map<HTMLElement, string | undefined>;
+   panels?: Set<HTMLElement>;
+   groups?: Set<HTMLElement>;
++  topicControls?: HTMLElement[];
++  cardControls?: HTMLElement[];
++  followingHeadings?: string[];
+ }
+ export type SupplementalCache = WeakMap<Element, SupplementalSummary>;
++const contentBoundarySelector = 'section,article,aside,nav,form,header,footer,[role~="region" i],[role~="article" i],[role~="complementary" i],[role~="navigation" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i]';
++
++function withinContentBranch(node: Element, container: Element): boolean {
++  const boundary = node.closest(contentBoundarySelector);
++  return !boundary || boundary === container || !container.contains(boundary);
++}
++
++function fixedHeadingLabels(container: Element): string[] {
++  return [...(container instanceof HTMLElement && container.matches(headingSelector) ? [container] : []),
++    ...container.querySelectorAll<HTMLElement>(headingSelector)]
++    .filter(heading => !heading.closest(`${editableSelector},a,button,[role~="button" i],[role~="tab" i]`)
++      && withinContentBranch(heading, container) && isVisible(heading))
++    .map(getSafeLabel).filter(text => text.length >= 2 && text.length <= 60);
++}
++
++function cardTitle(element: HTMLElement, cache?: SupplementalCache): { title?: string; relatedLabel?: string } {
++  if (element.hasAttribute('aria-label') || element.hasAttribute('aria-labelledby')) return {};
++  const fixedTitles = (container: Element) => [...container.querySelectorAll<HTMLElement>(`${headingSelector},strong,b`)]
++    .filter(node => !node.closest(editableSelector) && withinContentBranch(node, container) && isVisible(node))
++    .filter(node => !node.parentElement?.closest(`${headingSelector},strong,b`))
++    .map(node => ({ node, label: clean(staticText(node)) }))
++    .filter(({ label }) => isInformationTopicLabel(label));
++  // A single fixed title may be wrapped in layout divs, followed by dates,
++  // locations or a description. Do not infer a title from arbitrary prose.
++  const titles = fixedTitles(element);
++  if (titles.length === 1 && !element.querySelector(collectionControlSelector)) {
++    const { node, label } = titles[0];
++    const description = [...element.querySelectorAll<HTMLElement>('p,div,dl,ul')].some(block => !block.contains(node)
++      && !block.closest(editableSelector) && isVisible(block) && !!clean(staticText(block))
++      && !!(node.compareDocumentPosition(block) & Node.DOCUMENT_POSITION_FOLLOWING));
++    if (description) return { title: label };
++  }
++  if (!/^(?:더\s*보기|자세히\s*보기|상세\s*보기|more|read\s*more|details?|view\s*details?)$/i.test(candidateLabel(element))) return {};
++  // A generic detail control can borrow a sibling title only from a bounded
++  // single-control card. Stop before a page/semantic region can become a card.
++  for (let parent = element.parentElement, depth = 0; parent && depth < 3; depth++, parent = parent.parentElement) {
++    if (parent.matches('main,section,article,nav,form,header,footer,[role~="main" i],[role~="region" i]') || parent.childElementCount > 12) break;
++    let summary = cache?.get(parent);
++    if (!summary?.cardControls) {
++      summary = { ...summary, cardControls: [...parent.querySelectorAll<HTMLElement>(collectionControlSelector)]
++        .filter(control => !!candidateLabel(control)) };
++      cache?.set(parent, summary);
++    }
++    if (summary.cardControls!.length !== 1 || summary.cardControls![0] !== element) break;
++    const neighbours = fixedTitles(parent).filter(({ node }) => !element.contains(node)
++      && !!(node.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING));
++    if (neighbours.length === 1) return { title: neighbours[0].label, relatedLabel: neighbours[0].label };
++  }
++  return {};
++}
++
++function topicEvidence(element: HTMLElement, cache?: SupplementalCache) {
++  const empty = { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[] };
++  if (!isInformationTopicLabel(candidateLabel(element))) return empty;
++  const references = (control: HTMLElement) => (control.getAttribute('aria-controls') ?? '').split(/\s+/).filter(Boolean);
++  const contentTarget = (control: HTMLElement, id: string): HTMLElement | undefined => {
++    const target = document.getElementById(id);
++    if (!target || target === control || target.closest(editableSelector)
++      || target.matches('html,body,main,[role~="main" i],a,button,[role~="button" i],[role~="tab" i]')
++      || target.closest('article,aside,form,header,footer,nav,[role~="article" i],[role~="complementary" i],[role~="form" i],[role~="banner" i],[role~="contentinfo" i],[role~="navigation" i]')
++      || target.closest('main,[role~="main" i]') !== control.closest('main,[role~="main" i]')) return;
++    return target;
++  };
++  const controlsTarget = (control: HTMLElement) => { const ids = references(control); return ids.length > 0 && ids.every(id => !!contentTarget(control, id)); };
++  const expanded = (control: HTMLElement) => /^(?:true|false)$/i.test(control.getAttribute('aria-expanded') ?? '');
++  const semanticCollection = element.closest(collectionSelector);
++  let container: HTMLElement | null = semanticCollection as HTMLElement | null;
++  if (!container) {
++    container = element.parentElement;
++    if (container?.matches('[role~="group" i]') && container.parentElement) container = container.parentElement;
++  }
++  if (!container || container.matches('body,main,section,article,form,header,footer') || container.childElementCount > 24) return empty;
++  let summary = cache?.get(container);
++  if (!summary?.topicControls) {
++    const controls = [...container.querySelectorAll<HTMLElement>(collectionControlSelector)].filter(control =>
++      !control.closest(collectionExcludedSelector) && !(control instanceof HTMLButtonElement && control.form)
++      && isInformationTopicLabel(candidateLabel(control)) && (semanticCollection
++        ? control.closest(collectionSelector) === container
++        : control.parentElement === container || control.parentElement?.parentElement === container));
++    summary = { ...summary, topicControls: controls }; cache?.set(container, summary);
++  }
++  const controls = summary.topicControls!;
++  if (controls.length < 2 || controls.length > 12 || !controls.includes(element)) return empty;
++  // Only the immediately following content branch of the same local container
++  // can describe a list. A neighbouring section's heading is not evidence.
++  if (!summary.followingHeadings) {
++    const next = container.nextElementSibling;
++    const headings = next && !next.matches(`${contentBoundarySelector},a,button,[role~="button" i],[role~="tab" i]`)
++      && next.childElementCount <= 12 ? fixedHeadingLabels(next) : [];
++    summary = { ...summary, followingHeadings: headings }; cache?.set(container, summary);
++  }
++  const associatedHeadings = [...summary.followingHeadings!];
++  for (const id of references(element)) {
++    const target = contentTarget(element, id);
++    if (target && target.childElementCount <= 24) {
++      for (const label of fixedHeadingLabels(target)) if (!associatedHeadings.includes(label)) associatedHeadings.push(label);
++    }
++  }
++  const controlledTopic = controlsTarget(element) && controls.filter(controlsTarget).length >= 2
++    || expanded(element) && controls.filter(expanded).length >= 2
++    || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]')
++    || !!element.closest('[role~="group" i]') && controls.every(control => !!control.closest('[role~="group" i]'));
++  const linkedTopic = controlsTarget(element) || element.matches('[role~="tab" i]') && !!semanticCollection?.matches('[role~="tablist" i]');
++  return { topicPeers: Math.min(controls.length, 2), controlledTopic, linkedTopic, associatedHeadings };
++}
++
+ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalCache) {
+   const bodyControl = !element.closest('header, footer, article, [role~="banner" i], [role~="contentinfo" i], [role~="article" i]');
+   const form = element.closest('form, [role~="form" i]')
+@@ -264,6 +373,7 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+   const filter = bodyControl && !!form && searchMetadata(form) && searchMetadata(element)
+     && !!element.closest('li, [role~="listitem" i]') && element.matches('a[href], button[type="button"], [role~="button" i]');
+   let title: string | undefined;
++  let cardRelatedLabel: string | undefined;
+   // A title preceding a paragraph is an explicit card title/description split.
+   // Respect an authored accessible-name override instead of second-guessing it.
+   if (bodyControl && !form && !element.hasAttribute('aria-label') && !element.hasAttribute('aria-labelledby')
+@@ -275,9 +385,10 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+       const text = clean(staticText(children[0]));
+       if (isInformationTopicLabel(text) && clean(staticText(children[1]))) title = text;
+     }
++    if (!title) ({ title, relatedLabel: cardRelatedLabel } = cardTitle(element, cache));
+   }
+   let materialRow = false;
+-  let relatedLabel: string | undefined;
++  let relatedLabel: string | undefined = cardRelatedLabel;
+   const row = bodyControl && !form ? element.closest('tr, [role~="row" i]') : null;
+   const table = row?.closest('table, [role~="grid" i]');
+   if (row && table) {
+@@ -320,7 +431,8 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+   let informationPanels = false;
+   if (bodyControl && !form && element.matches('button, [role~="button" i]') && /^(?:true|false)$/i.test(element.getAttribute('aria-expanded') ?? '')) {
+     const parent = element.parentElement;
+-    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false };
++    if (!parent) return { filter, title, materialRow, relatedLabel, informationPanels: false, grouped: false,
++      topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[] };
+     let summary = cache?.get(parent);
+     if (!summary?.panels) {
+       const controls = [...parent.children].filter((child): child is HTMLElement => child instanceof HTMLElement
+@@ -347,7 +459,9 @@ export function supplementalEvidence(element: HTMLElement, cache?: SupplementalC
+     }
+     grouped = summary.groups!.has(element);
+   }
+-  return { filter, title, materialRow, relatedLabel, informationPanels, grouped };
++  const topics = bodyControl && !form ? topicEvidence(element, cache)
++    : { topicPeers: 0, controlledTopic: false, linkedTopic: false, associatedHeadings: [] as string[] };
++  return { filter, title, materialRow, relatedLabel, informationPanels, grouped, ...topics };
+ }
+ 
+ export function sourceSnapshot(element: HTMLElement, safeLabel = candidateLabel(element), collectionCache?: CollectionCache, includeCollection = false, includeSupplemental = false, supplementalCache?: SupplementalCache): SourceSnapshot {
+diff --git a/src/classifier.ts b/src/classifier.ts
+index 3d77470..d03f37f 100644
+--- a/src/classifier.ts
++++ b/src/classifier.ts
+@@ -255,8 +255,6 @@ function supplementalClassification(candidate: Candidate, label: string, target:
+   const element = candidate.element;
+   if (candidate.context !== 'body' || !element.matches('a[href], button, [role~="button" i]')
+     || element.closest('article, [role~="article" i]')) return;
+-  if (!element.closest('form, [role~="form" i], tr, [role~="row" i], [role~="group" i]')
+-    && !element.hasAttribute('aria-expanded') && !element.querySelector(':scope > p')) return;
+   // Inspect only the source's fixed structural metadata; original actions are
+   // retained. In particular, search filters and downloads are never activated.
+   const evidence = supplementalEvidence(element, supplementalCache);
+@@ -270,6 +268,7 @@ function supplementalClassification(candidate: Candidate, label: string, target:
+     if (!/^https?:$/.test(destination.protocol)) return;
+   }
+   if (destination && isDangerousURL(destination, pathParts(destination))) return;
++  if (destination && pathParts(destination).some(part => /^(?:news|articles?|stories|story|press)$/.test(part))) return;
+   if (destination) target = endpoint(pathParts(destination));
+   const result = (category: Category, score: number, reason: string, task: NonNullable<Candidate['pageTask']>): Candidate => ({
+     ...candidate, category, score, reasons: [reason, '고정 원본 제어 구조'], pageTask: task, supplementalDependent: true,
+@@ -284,6 +283,29 @@ function supplementalClassification(candidate: Candidate, label: string, target:
+     && contexts.some(text => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text))
+     && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '신청 준비 편람의 원본 서식 자료', 'reading');
+   const guideContext = contexts.some(text => text.length <= 60 && /안내$/.test(text));
++  const readingContexts = [...contexts, ...evidence.associatedHeadings];
++  const guideReading = candidate.pagePurpose === 'help' || readingContexts.some(text => text.length <= 60
++    && /(?:안내|설명서|도움말|사용\s*법|이용\s*법|가이드|요령|수칙|매뉴얼|\b(?:instructions?|guide|manual|help))$/i.test(text));
++  const readingTopic = evidence.topicPeers >= 2 && (evidence.controlledTopic || evidence.associatedHeadings.length > 0)
++    && !(destination && hasDocumentReference(destination));
++  const competingTask = rules.some(rule => rule.category !== 'help' && rule.label.test(label)
++    && !(rule.category === 'search' && searchGuidanceLabel.test(label)));
++  const readingSubject = evidence.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
++  if (!dangerous.test(label) && readingTopic && isInformationTopicLabel(label) && !isSearchControl(element, candidate.label)
++    && !element.closest('form, [role~="form" i]') && !isDocumentDownload(element, candidate.label)
++    && (!competingTask || readingSubject) && !rules.some(rule => rule.category !== 'help' && rule.endpoints.has(target)) && guideReading) {
++    return result('help', 70, '원본 안내 주제와 연결된 읽기 제어', 'reading');
++  }
++  if (!dangerous.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label)
++    && readingContexts.some(text => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text))
++    && !rules.some(rule => rule.category !== 'academic' && rule.endpoints.has(target))) {
++    return result('academic', 70, '원본 교육 개념과 연결된 내용 제목', 'reading');
++  }
++  if (!dangerous.test(label) && guideReading && candidate.action === 'locate' && label.length <= 60
++    && element.matches('button, [role~="button" i]') && !element.closest('form, [role~="form" i]')
++    && /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|받기|download)$/i.test(label)) {
++    return result('help', 70, '안내 문맥의 명시적 가이드 자료 제어', 'reading');
++  }
+   if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === 'locate'
+     && (evidence.informationPanels || guideContext && evidence.grouped)
+     && !rules.some(rule => rule.category !== 'help' && rule.label.test(label) && !(rule.category === 'search' && searchGuidanceLabel.test(label)))
+@@ -300,7 +322,7 @@ function supplementalClassification(candidate: Candidate, label: string, target:
+   if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title)
+     && !dangerous.test(label.replace(/납부(?=\s*(?:내역|기록))/g, ''))
+     && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '개인 내역·기록 확인 카드', 'control');
+-  if (!dangerous.test(label) && (applicationControlLabel.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title))
++  if (!dangerous.test(label) && (applicationControlLabel.test(title) || explicitApplication.test(title) || /^(?=.{2,36}$).*(?:급여|급부|지원금)\s*청구$/.test(title))
+     && !rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return result('apply', 70, '명시적 신청·청구 카드 제목', 'control');
+ }
+ 

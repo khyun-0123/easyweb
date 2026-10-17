@@ -1,0 +1,134 @@
+{
+  "siteId": "government",
+  "siteName": "국민안전24",
+  "pages": [
+    {
+      "id": "government-blind-v8",
+      "title": "국민안전24 | 교육훈련 | 훈련개요",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+      "fixture": "evaluation/blind-v8/fixtures/government-blind-v8.html",
+      "split": "holdout",
+      "observation": {
+        "capturedAt": "2026-10-17T18:14:45.088Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "method": "Fresh headless Playwright Chromium; read-only public HTTP DOMContentLoaded plus 1500ms; no interactions",
+        "httpStatus": 200,
+        "sourceEvidence": {
+          "observationsFile": "docs/evidence/run005/blind-v8-observations.json",
+          "pageId": "government-blind-v8",
+          "selectors": [
+            "#contents"
+          ],
+          "sourceDocumentUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+          "sourceBaseURI": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63",
+          "fixtureSha256": "be4dca0e6f1129183d0f8d5a528e6a3d7f1b47c84c86514c4b208f6d2c057d9a"
+        },
+        "authState": "Fresh anonymous context; no credentials or auth action",
+        "inputValuesObserved": false,
+        "visibilityPreservation": "Recorded computed display, visibility, and opacity copied as inline presentation styles; original style attributes retained in observation; semantic tags/roles/ids/classes/order/headings remain source-exact."
+      },
+      "accepted": [
+        {
+          "sourceId": "government-v8-c001",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-v8-c002",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trqv/trainingQverview.do?menuSn=63"
+        },
+        {
+          "sourceId": "government-v8-c003",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trpl/trainingPlan.do?menuSn=64"
+        },
+        {
+          "sourceId": "government-v8-c004",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=65&bbsSn=53"
+        },
+        {
+          "sourceId": "government-v8-c005",
+          "category": "help",
+          "action": "navigate",
+          "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/psdp/publicSafetyEducationPlatform.do?menuSn=67"
+        },
+        {
+          "sourceId": "government-v8-c006",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-v8-c007",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "expected": [
+        {
+          "id": "training-plan",
+          "category": "help",
+          "label": "훈련계획 안내",
+          "sourceIds": [
+            "government-v8-c003"
+          ],
+          "action": "navigate",
+          "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/distre/trpl/trainingPlan.do?menuSn=64"
+        },
+        {
+          "id": "training-reference",
+          "category": "help",
+          "label": "훈련자료",
+          "sourceIds": [
+            "government-v8-c004"
+          ],
+          "action": "navigate",
+          "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=65&bbsSn=53"
+        },
+        {
+          "id": "worker-education-overview",
+          "category": "help",
+          "label": "종사자교육 개요",
+          "sourceIds": [
+            "government-v8-c007"
+          ],
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "government-v8-task",
+        "instruction": "재난관리 종사자교육의 개요를 읽을 수 있는 탭의 원본 위치를 찾으세요.",
+        "expectedSourceIds": [
+          "government-v8-c007"
+        ],
+        "action": "locate",
+        "evidence": {
+          "observedSourceId": "government-v8-c007",
+          "accessibleName": {
+            "name": "종사자교육 개요",
+            "basis": "rendered-text"
+          },
+          "hrefAttribute": null,
+          "resolvedHref": null,
+          "inlineHandlers": {},
+          "target": null,
+          "defaultVisible": true,
+          "scope": "Read-only recognition of a public function or original source location; no authentication, form submission, or download executed."
+        }
+      },
+      "notes": [
+        "Public read-only source capture only. Scripts, stylesheets, external assets, embedded documents, input value attributes, and editable text were omitted. Original inline handler strings remain inert under script-src none CSP; no handlers were activated.",
+        "The fixture preserves the entire selected subtree plus all original ancestors and referenced ID targets. Siblings outside the selected source blocks are outside this bounded fixture. Source URL, base URI, control ancestor chains, headings, node order, and every retained control are recorded separately.",
+        "The browser capture uses a new headless context without existing user profiles or tabs. Source site delegated event behavior is not reproduced or inferred. Ordinary HTTP link destinations are judged only by observable metadata."
+      ]
+    }
+  ]
+}

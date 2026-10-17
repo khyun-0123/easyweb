@@ -12,7 +12,7 @@ const option = (name, fallback) => {
   if (!value || value.startsWith('--')) throw new Error(`Missing value for --${name}`);
   return value;
 };
-const output = option('output', 'docs/evidence/run004/tasks-live.json');
+const output = option('output', 'docs/evidence/run005/tasks-live.json');
 const only = [...new Set([option('only', ''), option('page-ids', '')].flatMap(value => value.split(',').map(id => id.trim()).filter(Boolean)))];
 const observeOnly = process.argv.includes('--observe-only');
 const files = (await readdir('evaluation/sites')).filter(name => name.endsWith('.json')).sort();

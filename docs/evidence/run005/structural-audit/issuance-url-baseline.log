@@ -1,0 +1,90 @@
+
+Running 1 test using 1 worker
+
+(node:85567) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/structural-context.spec.mjs:122:1 › 원본 위치 안내 링크도 명시적 HTTP 위험 명령을 일반 발급 문구로 되살리지 않는다 (113ms)
+
+
+  1) tests/structural-context.spec.mjs:122:1 › 원본 위치 안내 링크도 명시적 HTTP 위험 명령을 일반 발급 문구로 되살리지 않는다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 56
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "category": "apply",
+    +     "context": "body",
+    +     "contextLabels": Array [
+    +       "수료증 발급 안내",
+    +     ],
+    +     "destinationHost": "structure.test",
+    +     "href": undefined,
+    +     "id": "located-delete",
+    +     "label": "수료증 재발급 방법",
+    +     "opensNewWindow": false,
+    +     "pagePurpose": undefined,
+    +     "pageTask": undefined,
+    +     "reasons": Array [
+    +       "고정 문구 일치",
+    +       "본문 영역",
+    +     ],
+    +     "score": 70,
+    +     "sectionLabel": "수료증 발급 안내",
+    +     "snapshot": Object {
+    +       "attributes": "[\"/service?cmd=delete\",null,\"return false\",null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,null,false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "target": undefined,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "category": "apply",
+    +     "context": "body",
+    +     "contextLabels": Array [
+    +       "수료증 발급 안내",
+    +     ],
+    +     "destinationHost": "structure.test",
+    +     "href": undefined,
+    +     "id": "located-payment",
+    +     "label": "수료증 재발급 안내",
+    +     "opensNewWindow": false,
+    +     "pagePurpose": undefined,
+    +     "pageTask": undefined,
+    +     "reasons": Array [
+    +       "고정 문구 일치",
+    +       "본문 영역",
+    +     ],
+    +     "score": 70,
+    +     "sectionLabel": "수료증 발급 안내",
+    +     "snapshot": Object {
+    +       "attributes": "[\"/payment\",null,\"return false\",null,null,null,null,null,null,null,null,null,null,null,null,[],false,false,false,false,false,false,null,false,false,false,false,false,null,null,false,{\"action\":\"locate\"}]",
+    +       "baseUrl": "https://structure.test/opaque",
+    +       "pageUrl": "https://structure.test/opaque",
+    +     },
+    +     "target": undefined,
+    +   },
+    + ]
+
+      122 | test('원본 위치 안내 링크도 명시적 HTTP 위험 명령을 일반 발급 문구로 되살리지 않는다', async ({ page }) => {
+      123 |   const items = await inspect(page, `<main><h2>수료증 발급 안내</h2><a id="located-delete" href="/service?cmd=delete" onclick="return false">수료증 재발급 방법</a><a id="located-payment" href="/payment" onclick="return false">수료증 재발급 안내</a><a id="safe-located" href="/service/21" onclick="return false">수료증 재발급 방법</a></main>`);
+    > 124 |   expect(items.filter(i => ['located-delete','located-payment'].includes(i.id))).toEqual([]);
+          |                                                                                  ^
+      125 |   expect(items.find(i => i.id === 'safe-located')).toMatchObject({ category:'apply', action:'locate' });
+      126 | });
+      127 |
+        at /Users/khyun_03/easyweb/tests/structural-context.spec.mjs:124:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/structural-context-원본-위치-안-7dc84-P-위험-명령을-일반-발급-문구로-되살리지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/structural-context-원본-위치-안-7dc84-P-위험-명령을-일반-발급-문구로-되살리지-않는다/error-context.md
+
+  1 failed
+    tests/structural-context.spec.mjs:122:1 › 원본 위치 안내 링크도 명시적 HTTP 위험 명령을 일반 발급 문구로 되살리지 않는다 ──────

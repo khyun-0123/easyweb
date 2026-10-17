@@ -1,0 +1,22 @@
+
+Running 15 tests using 1 worker
+
+(node:80854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/more-menus.spec.mjs:29:1 › 같은 분류의 실제 메뉴 8개를 첫 추천 유지·한 화면 6개 이하로 모두 찾아갈 수 있다 (210ms)
+  ✓   2 tests/more-menus.spec.mjs:47:1 › 마지막 화면·이전 화면은 안정적이고 새 메뉴는 다시 찾기에서만 추가되며 첫 화면으로 돌아온다 (404ms)
+  ✓   3 tests/more-menus.spec.mjs:74:1 › 화면 사이 중복 목적지는 제거하고 서로 다른 원본 버튼과 외부·새창 메타데이터를 보존한다 (198ms)
+  ✓   4 tests/more-menus.spec.mjs:99:3 › 다음 화면의 숨은 원본이 removed 상태면 넘어가지 않고 다시 찾기에서만 안전하게 갱신한다 (234ms)
+  ✓   5 tests/more-menus.spec.mjs:99:3 › 다음 화면의 숨은 원본이 dangerous-href 상태면 넘어가지 않고 다시 찾기에서만 안전하게 갱신한다 (215ms)
+  ✓   6 tests/more-menus.spec.mjs:99:3 › 다음 화면의 숨은 원본이 editable-parent 상태면 넘어가지 않고 다시 찾기에서만 안전하게 갱신한다 (237ms)
+  ✓   7 tests/more-menus.spec.mjs:126:1 › 이전 화면의 바뀐 후보와 같은 프레임에서 바뀐 현재 후보도 전환 직전에 차단한다 (219ms)
+  ✓   8 tests/more-menus.spec.mjs:147:1 › 페이지 전환은 첫 카드 초점·상태를 갱신하고 키보드 순환·Esc 원본 복귀를 유지한다 (177ms)
+  ✓   9 tests/more-menus.spec.mjs:166:1 › 1000개 후보에서도 주기 감시는 현재 화면만 확인하고 숨은 입력 내용을 읽지 않는다 (548ms)
+  ✓  10 tests/more-menus.spec.mjs:188:1 › 초과 메뉴가 없으면 숨은 페이지 버튼이 키보드 순환에 끼어들지 않는다 (132ms)
+  ✓  11 tests/more-menus.spec.mjs:200:1 › 남은 후보 순회는 같은 locate 요소를 중복하지 않고 원래 후보 객체·액션을 그대로 보존한다 (131ms)
+  ✓  12 tests/ranker-capacity.spec.mjs:39:1 › focused page uses available first-screen capacity for four distinct reading controls (64ms)
+  ✓  13 tests/ranker-capacity.spec.mjs:48:1 › category diversity keeps all six available categories before extra same-category menus (51ms)
+  ✓  14 tests/ranker-capacity.spec.mjs:57:1 › focused overflow stays bounded and each distinct source appears once (65ms)
+  ✓  15 tests/ranker-capacity.spec.mjs:66:1 › capacity fill preserves destination deduplication (66ms)
+
+  15 passed (3.4s)

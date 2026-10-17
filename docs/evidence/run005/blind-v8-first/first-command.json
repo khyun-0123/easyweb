@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-10-17T18:25:41.668686+00:00",
+  "command": [
+    "node",
+    "scripts/evaluate.mjs",
+    "--suite=blind-v8",
+    "--engine=current",
+    "--split=holdout",
+    "--phase=fresh-blind-validation",
+    "--engine-freeze=docs/evidence/run005/v0.6-engine-freeze-v2.json",
+    "--dataset-freeze=docs/evidence/run005/blind-v8-freeze.json",
+    "--output-dir=docs/evidence/run005/blind-v8-first",
+    "--with-menu-flow",
+    "--require-quality"
+  ],
+  "firstProductEvaluationOfV8SourcePages": true,
+  "sourceFreezeMatched": true,
+  "datasetFreezeSha256": "954689587c7e53941772c0170264bd5763fcd004ef5dd53def77b082f71d39ef",
+  "rootReadV8ContentBeforeFinalFreeze": false,
+  "endedAt": "2026-10-17T18:25:42.472586+00:00",
+  "exitCode": 1
+}
