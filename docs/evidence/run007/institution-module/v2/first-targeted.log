@@ -1,0 +1,203 @@
+
+Running 45 tests using 1 worker
+
+(node:3510) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/institution-evidence.spec.mjs:34:1 › 교육 메뉴는 낯선 이름·경로·query에서도 로컬 읽기 근거만 분류한다 (85ms)
+  ✓   2 tests/institution-evidence.spec.mjs:43:1 › 교육 펼침 버튼과 인접 내용 패널의 읽기 관계를 보존한다 (96ms)
+  ✓   3 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 이웃 지역 제목에서 확장되지 않는다 (76ms)
+  ✓   4 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 펼침 상태 없는 버튼에서 확장되지 않는다 (92ms)
+  ✓   5 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 다른 패널 구조에서 확장되지 않는다 (77ms)
+  ✓   6 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 실제 폼에서 확장되지 않는다 (73ms)
+  ✓   7 tests/institution-evidence.spec.mjs:59:1 › 연금 fragment는 낯선 ID·역순 패널에서도 같은 지역의 고정 제목으로 연결된다 (75ms)
+  ✓   8 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 중복 target ID에서 중단된다 (77ms)
+  ✓   9 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 다른 지역 패널에서 중단된다 (73ms)
+  ✓  10 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 잘못된 fragment에서 중단된다 (76ms)
+  ✓  11 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 본문 제목 불일치에서 중단된다 (81ms)
+  ✓  12 tests/institution-evidence.spec.mjs:76:1 › SMU 게시판은 공유 배지 대신 문서의 구체적인 목적을 분류한다 (76ms)
+  ✓  13 tests/institution-evidence.spec.mjs:84:1 › SMU 문서 번호·순서·배지 변경은 문서 목적을 바꾸지 않는다 (75ms)
+  ✓  14 tests/institution-evidence.spec.mjs:91:1 › 장문 사건 공지를 임의 길이 감점 없이 근거로 다룬다 (73ms)
+  ✓  15 tests/institution-evidence.spec.mjs:99:1 › 모호한 게시글·목적 충돌·실제 포털 링크는 강제 보정하지 않는다 (76ms)
+  ✓  16 tests/institution-evidence.spec.mjs:106:1 › SMU 문서 구조·고정 게시판 문맥이 없는 제목은 분류하지 않는다 (91ms)
+  ✓  17 tests/institution-evidence.spec.mjs:111:1 › 사건을 설명하는 해결·대처 지침은 사건 공지로 단정하지 않는다 (73ms)
+  ✓  18 tests/institution-evidence.spec.mjs:117:1 › 같은 지역 제목을 가진 실제 신청·예약 탭은 설명으로 보정하지 않는다 (73ms)
+  ✓  19 tests/institution-evidence.spec.mjs:123:1 › 교육 신청 메뉴도 안내 읽기와 충돌하면 보정하지 않는다 (72ms)
+  ✓  20 tests/institution-evidence.spec.mjs:129:1 › 게시판 고정 제목 노드의 동일 문구 교체도 의존 참조를 바꾼다 (74ms)
+  ✓  21 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 위장 접미 호스트 (74ms)
+  ✓  22 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 미지원 하위 도메인 (75ms)
+  ✓  23 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: SMU 다른 경로 (72ms)
+  ✓  24 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 정부 다른 기능 (76ms)
+  ✓  25 tests/institution-evidence.spec.mjs:149:3 › 기관 경계: 연금 다른 기능 (74ms)
+  ✓  26 tests/institution-evidence.spec.mjs:154:1 › 편집 제어·입력 값 getter·사적 문맥을 읽지 않는다 (73ms)
+  ✓  27 tests/institution-evidence.spec.mjs:163:1 › 사적 편집 제목은 설명 근거가 아니며 외부 aria-labelledby 제목도 빌리지 않는다 (74ms)
+  ✓  28 tests/institution-evidence.spec.mjs:170:1 › 같은 cache 인자에도 제목 변경·target 교체가 새 근거에 반영된다 (76ms)
+  ✓  29 tests/institution-evidence.spec.mjs:187:1 › 원본 액션·href·안전 snapshot을 모듈이 변경하지 않는다 (74ms)
+  ✓  30 tests/institution-evidence.spec.mjs:200:1 › 학사 탭의 선택 주제와 뒤의 실제 표제가 낯선 문서 링크의 목적을 설명한다 (73ms)
+  ✓  31 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 표제 불일치에서는 보정하지 않는다 (72ms)
+  ✓  32 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 선택 주제 없음에서는 보정하지 않는다 (76ms)
+  ✓  33 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 여러 선택 주제에서는 보정하지 않는다 (74ms)
+  ✓  34 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 다른 지역 표제에서는 보정하지 않는다 (77ms)
+  ✓  35 tests/institution-evidence.spec.mjs:215:3 › 학사 문서 근거: 편집 표제에서는 보정하지 않는다 (76ms)
+  ✓  36 tests/institution-evidence.spec.mjs:220:1 › 실제 신청·포털·외부 SSO 링크를 학사 문서로 바꾸지 않는다 (74ms)
+  ✓  37 tests/institution-evidence.spec.mjs:227:1 › 학사 표제를 같은 문구의 새 노드로 바꾸면 근거 참조가 바뀐다 (73ms)
+  ✓  38 tests/institution-evidence.spec.mjs:240:1 › 도서관 자체 표제의 명시적 매뉴얼 버튼과 실제 읽기 탭을 help로 연결한다 (94ms)
+  ✓  39 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 가이드 아닌 파일는 읽기 의미를 만들지 않는다 (90ms)
+  ✘  40 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 폼 안의 제출 제어는 읽기 의미를 만들지 않는다 (102ms)
+(node:3580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  41 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 편집 중인 표제는 읽기 의미를 만들지 않는다 (103ms)
+  ✘  42 tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 타 영역의 다운로드는 읽기 의미를 만들지 않는다 (105ms)
+(node:3591) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 tests/institution-evidence.spec.mjs:259:1 › 도서관 전역 검색 입력·submit·예약 탭에는 문서 가이드 의미를 주지 않는다 (105ms)
+  ✓  44 tests/institution-evidence.spec.mjs:266:1 › 도서관 다운로드 표제 교체·가이드 의미 변경은 읽기 탭 근거도 변경한다 (97ms)
+  ✓  45 tests/institution-evidence.spec.mjs:283:1 › 새 학사·도서관 관계도 사적 값 getter와 편집 내용을 읽지 않는다 (93ms)
+
+
+  1) tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 폼 안의 제출 제어는 읽기 의미를 만들지 않는다 ────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 41
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 12,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"local-explanatory-guide-tabs\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"색인검색 기능 선택됨\",\"locate\",[[\"A\",\"function-guide\",null,null,null,null,null,null,\"색인검색 기능 선택됨\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"content_info\",null,null,null,null,null,\"\"],[\"DIV\",null,\"depth4-menu__slider\",null,null,null,null,null,\"\"],[\"DIV\",null,\"swiper-wrapper\",null,null,null,null,null,\"\"],[\"DIV\",null,\"on\",\"group\",null,null,null,null,\"\"],[\"H3\",null,null,null,null,null,null,null,\"연구 자료 통합검색\"],[\"A\",\"result-guide\",null,null,null,null,null,null,\"정렬결과\"],[\"A\",\"detail-guide\",null,null,null,null,null,null,\"서지정보\"],[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"FORM\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "function-guide",
+    +     "label": "색인검색 기능 선택됨",
+    +     "pageTask": "reading",
+    +     "rule": "local-explanatory-guide-tabs",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 12,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"local-explanatory-guide-tabs\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"정렬결과\",\"locate\",[[\"A\",\"result-guide\",null,null,null,null,null,null,\"정렬결과\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"content_info\",null,null,null,null,null,\"\"],[\"DIV\",null,\"depth4-menu__slider\",null,null,null,null,null,\"\"],[\"DIV\",null,\"swiper-wrapper\",null,null,null,null,null,\"\"],[\"DIV\",null,null,\"group\",null,null,null,null,\"\"],[\"H3\",null,null,null,null,null,null,null,\"연구 자료 통합검색\"],[\"A\",\"function-guide\",null,null,null,null,null,null,\"색인검색 기능 선택됨\"],[\"A\",\"detail-guide\",null,null,null,null,null,null,\"서지정보\"],[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"FORM\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "result-guide",
+    +     "label": "정렬결과",
+    +     "pageTask": "reading",
+    +     "rule": "local-explanatory-guide-tabs",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 12,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"local-explanatory-guide-tabs\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"서지정보\",\"locate\",[[\"A\",\"detail-guide\",null,null,null,null,null,null,\"서지정보\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"content_info\",null,null,null,null,null,\"\"],[\"DIV\",null,\"depth4-menu__slider\",null,null,null,null,null,\"\"],[\"DIV\",null,\"swiper-wrapper\",null,null,null,null,null,\"\"],[\"DIV\",null,null,\"group\",null,null,null,null,\"\"],[\"H3\",null,null,null,null,null,null,null,\"연구 자료 통합검색\"],[\"A\",\"function-guide\",null,null,null,null,null,null,\"색인검색 기능 선택됨\"],[\"A\",\"result-guide\",null,null,null,null,null,null,\"정렬결과\"],[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"FORM\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "detail-guide",
+    +     "label": "서지정보",
+    +     "pageTask": "reading",
+    +     "rule": "local-explanatory-guide-tabs",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    + ]
+
+      253 | ]) {
+      254 |   test(`도서관 가이드 근거: ${name}는 읽기 의미를 만들지 않는다`, async ({ page }) => {
+    > 255 |     expect(await inspect(page, libraryUrl, mutate(libraryGuides))).toEqual([]);
+          |                                                                    ^
+      256 |   });
+      257 | }
+      258 |
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:255:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-도서관-가이드-근거-폼-안의-제출-제어는-읽기-의미를-만들지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-도서관-가이드-근거-폼-안의-제출-제어는-읽기-의미를-만들지-않는다/error-context.md
+
+  2) tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 타 영역의 다운로드는 읽기 의미를 만들지 않는다 ────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 54
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 12,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"local-explanatory-guide-tabs\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"색인검색 기능 선택됨\",\"locate\",[[\"A\",\"function-guide\",null,null,null,null,null,null,\"색인검색 기능 선택됨\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"content_info\",null,null,null,null,null,\"\"],[\"DIV\",null,\"depth4-menu__slider\",null,null,null,null,null,\"\"],[\"DIV\",null,\"swiper-wrapper\",null,null,null,null,null,\"\"],[\"DIV\",null,\"on\",\"group\",null,null,null,null,\"\"],[\"H3\",null,null,null,null,null,null,null,\"연구 자료 통합검색\"],[\"A\",\"result-guide\",null,null,null,null,null,null,\"정렬결과\"],[\"A\",\"detail-guide\",null,null,null,null,null,null,\"서지정보\"],[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"DIV\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "function-guide",
+    +     "label": "색인검색 기능 선택됨",
+    +     "pageTask": "reading",
+    +     "rule": "local-explanatory-guide-tabs",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 12,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"local-explanatory-guide-tabs\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"정렬결과\",\"locate\",[[\"A\",\"result-guide\",null,null,null,null,null,null,\"정렬결과\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"content_info\",null,null,null,null,null,\"\"],[\"DIV\",null,\"depth4-menu__slider\",null,null,null,null,null,\"\"],[\"DIV\",null,\"swiper-wrapper\",null,null,null,null,null,\"\"],[\"DIV\",null,null,\"group\",null,null,null,null,\"\"],[\"H3\",null,null,null,null,null,null,null,\"연구 자료 통합검색\"],[\"A\",\"function-guide\",null,null,null,null,null,null,\"색인검색 기능 선택됨\"],[\"A\",\"detail-guide\",null,null,null,null,null,null,\"서지정보\"],[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"DIV\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "result-guide",
+    +     "label": "정렬결과",
+    +     "pageTask": "reading",
+    +     "rule": "local-explanatory-guide-tabs",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 12,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"local-explanatory-guide-tabs\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"서지정보\",\"locate\",[[\"A\",\"detail-guide\",null,null,null,null,null,null,\"서지정보\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"content_info\",null,null,null,null,null,\"\"],[\"DIV\",null,\"depth4-menu__slider\",null,null,null,null,null,\"\"],[\"DIV\",null,\"swiper-wrapper\",null,null,null,null,null,\"\"],[\"DIV\",null,null,\"group\",null,null,null,null,\"\"],[\"H3\",null,null,null,null,null,null,null,\"연구 자료 통합검색\"],[\"A\",\"function-guide\",null,null,null,null,null,null,\"색인검색 기능 선택됨\"],[\"A\",\"result-guide\",null,null,null,null,null,null,\"정렬결과\"],[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"DIV\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "detail-guide",
+    +     "label": "서지정보",
+    +     "pageTask": "reading",
+    +     "rule": "local-explanatory-guide-tabs",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    +   Object {
+    +     "action": "locate",
+    +     "adapter": "nl-reading-guides",
+    +     "category": "help",
+    +     "dependencyCount": 4,
+    +     "fingerprint": "[2,\"nl-reading-guides\",\"editorial-guide-download\",\"https://www.nl.go.kr\",\"/NL/contents/unknownInstruction.do\",\"확장 검색 매뉴얼 다운로드\",\"locate\",[[\"BUTTON\",\"download-guide\",\"download_btn\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"],[\"MAIN\",\"sub_content\",null,null,null,null,null,null,\"\"],[\"DIV\",null,\"link_api_cont\",null,null,null,null,null,\"\"],[\"H4\",\"download-title\",\"tit\",null,null,null,null,null,\"확장 검색 매뉴얼 다운로드\"]]]",
+    +     "id": "download-guide",
+    +     "label": "확장 검색 매뉴얼 다운로드",
+    +     "pageTask": "reading",
+    +     "rule": "editorial-guide-download",
+    +     "score": 70,
+    +     "version": 2,
+    +   },
+    + ]
+
+      253 | ]) {
+      254 |   test(`도서관 가이드 근거: ${name}는 읽기 의미를 만들지 않는다`, async ({ page }) => {
+    > 255 |     expect(await inspect(page, libraryUrl, mutate(libraryGuides))).toEqual([]);
+          |                                                                    ^
+      256 |   });
+      257 | }
+      258 |
+        at /Users/khyun_03/easyweb/tests/institution-evidence.spec.mjs:255:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/institution-evidence-도서관-가이드-근거-타-영역의-다운로드는-읽기-의미를-만들지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/institution-evidence-도서관-가이드-근거-타-영역의-다운로드는-읽기-의미를-만들지-않는다/error-context.md
+
+  2 failed
+    tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 폼 안의 제출 제어는 읽기 의미를 만들지 않는다 ─────────────
+    tests/institution-evidence.spec.mjs:254:3 › 도서관 가이드 근거: 타 영역의 다운로드는 읽기 의미를 만들지 않는다 ─────────────
+  43 passed (4.8s)

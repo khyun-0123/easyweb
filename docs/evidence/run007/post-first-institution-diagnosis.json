@@ -1,0 +1,1803 @@
+{
+  "createdAt": "2026-10-17T19:15:07.798079+00:00",
+  "scope": "Post-first next-version planning from immutable failed fresh v9-v2 result. Static source/fixture/report inspection only; no product/test execution, source/evaluation edits, network or CUA. Dataset is now exposed development,55unique pages total.",
+  "firstReport": {
+    "path": "docs/evidence/run007/blind-v9-v2-first-evaluated/evaluation-current-institution-blind-v9-v2-holdout.json",
+    "sha256": "dbfe766cba9b28737b7ab84db571e4c4d5d36d226483604c4775c128f4279be8",
+    "summary": {
+      "pages": 5,
+      "correct": 26,
+      "recommended": 30,
+      "matched": 2,
+      "expected": 15,
+      "precision": 0.8666666666666667,
+      "recall": 0.13333333333333333,
+      "tasksRecommended": 0
+    },
+    "quality": {
+      "status": "FAIL",
+      "thresholds": {
+        "overallPrecision": 0.9,
+        "overallRecall": 0.85,
+        "sitePrecision": 0.8,
+        "siteRecall": 0.75
+      },
+      "overall": {
+        "precision": 0.8666666666666667,
+        "recall": 0.13333333333333333
+      },
+      "sites": [
+        {
+          "siteId": "cheonan",
+          "precision": 0.6666666666666666,
+          "recall": 0,
+          "passed": false
+        },
+        {
+          "siteId": "nl",
+          "precision": 1,
+          "recall": 0,
+          "passed": false
+        },
+        {
+          "siteId": "nps",
+          "precision": 0.8333333333333334,
+          "recall": 0,
+          "passed": false
+        },
+        {
+          "siteId": "safekorea",
+          "precision": 0.8333333333333334,
+          "recall": 0.3333333333333333,
+          "passed": false
+        },
+        {
+          "siteId": "smu",
+          "precision": 1,
+          "recall": 0.3333333333333333,
+          "passed": false
+        }
+      ],
+      "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+    },
+    "additionalMenu": {
+      "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+      "summary": {
+        "pages": 5,
+        "correct": 60,
+        "recommended": 73,
+        "matched": 5,
+        "expected": 15,
+        "precision": 0.821917808219178,
+        "recall": 0.3333333333333333,
+        "tasksRecommended": 2
+      },
+      "sites": [
+        {
+          "siteId": "cheonan",
+          "pages": 1,
+          "correct": 14,
+          "recommended": 19,
+          "matched": 1,
+          "expected": 3,
+          "precision": 0.7368421052631579,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "nl",
+          "pages": 1,
+          "correct": 17,
+          "recommended": 19,
+          "matched": 0,
+          "expected": 3,
+          "precision": 0.8947368421052632,
+          "recall": 0,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "nps",
+          "pages": 1,
+          "correct": 7,
+          "recommended": 8,
+          "matched": 0,
+          "expected": 3,
+          "precision": 0.875,
+          "recall": 0,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "safekorea",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 9,
+          "matched": 1,
+          "expected": 3,
+          "precision": 0.6666666666666666,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 16,
+          "recommended": 18,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.8888888888888888,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "unresolvedMappings": 0,
+      "repeatedCards": 0
+    }
+  },
+  "sourceFreeze": {
+    "path": "docs/evidence/run007/v0.8-engine-freeze-v2.json",
+    "sha256": "310b2f64f915fea0eca91a83fdece2638129487434ddef6db4f6871eec9d907d",
+    "sourceVerification": {
+      "src/action-bridge.ts": {
+        "frozenSha256": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+        "currentSha256": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+        "matchesFrozen": true
+      },
+      "src/action-policy.ts": {
+        "frozenSha256": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+        "currentSha256": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+        "matchesFrozen": true
+      },
+      "src/analyzer.ts": {
+        "frozenSha256": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+        "currentSha256": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+        "matchesFrozen": true
+      },
+      "src/assets.d.ts": {
+        "frozenSha256": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+        "currentSha256": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+        "matchesFrozen": true
+      },
+      "src/background.ts": {
+        "frozenSha256": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+        "currentSha256": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+        "matchesFrozen": true
+      },
+      "src/classifier.ts": {
+        "frozenSha256": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+        "currentSha256": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+        "matchesFrozen": true
+      },
+      "src/content.ts": {
+        "frozenSha256": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+        "currentSha256": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+        "matchesFrozen": true
+      },
+      "src/easy-mode.ts": {
+        "frozenSha256": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+        "currentSha256": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+        "matchesFrozen": true
+      },
+      "src/institution-evidence.ts": {
+        "frozenSha256": "4f0f8e337260b3d6870d4dd85a8eaa2e688b2c56f642c5b5f5de59ed0a7cb494",
+        "currentSha256": "4f0f8e337260b3d6870d4dd85a8eaa2e688b2c56f642c5b5f5de59ed0a7cb494",
+        "matchesFrozen": true
+      },
+      "src/original-notice.ts": {
+        "frozenSha256": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+        "currentSha256": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+        "matchesFrozen": true
+      },
+      "src/page-session.ts": {
+        "frozenSha256": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+        "currentSha256": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+        "matchesFrozen": true
+      },
+      "src/ranker.ts": {
+        "frozenSha256": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+        "currentSha256": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+        "matchesFrozen": true
+      },
+      "src/styles.css": {
+        "frozenSha256": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+        "currentSha256": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+        "matchesFrozen": true
+      },
+      "src/types.ts": {
+        "frozenSha256": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7",
+        "currentSha256": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7",
+        "matchesFrozen": true
+      },
+      "extension/manifest.json": {
+        "frozenSha256": "fae2e8a1a97b00914d1cf0b3c7e1c073069f49b2857f8f1408d6b70123dc545a",
+        "currentSha256": "fae2e8a1a97b00914d1cf0b3c7e1c073069f49b2857f8f1408d6b70123dc545a",
+        "matchesFrozen": true
+      }
+    }
+  },
+  "datasetFreeze": {
+    "path": "docs/evidence/run007/blind-v9-v2-freeze.json",
+    "sha256": "266d6094aeeb6a32dee20a25a030976e799464a6cc4728ea30f59664bd8359ff",
+    "fileVerification": [
+      {
+        "path": "evaluation/blind-v9-v2/cheonan.json",
+        "frozenSha256": "af1e84f1d27926d508ba0edebbea8126576e0face2bdc025a0611c4a14a3f0c8",
+        "currentSha256": "af1e84f1d27926d508ba0edebbea8126576e0face2bdc025a0611c4a14a3f0c8",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/cheonan.html",
+        "frozenSha256": "79f7e9e66a25b7bf6d593199a95c366d043bdc736ed94c5cfa353d2716e2c26c",
+        "currentSha256": "79f7e9e66a25b7bf6d593199a95c366d043bdc736ed94c5cfa353d2716e2c26c",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/safekorea.json",
+        "frozenSha256": "9efc4da0dc5f2761f54385c8e884d28f47991a10cab8882ddd85b41a98084e5a",
+        "currentSha256": "9efc4da0dc5f2761f54385c8e884d28f47991a10cab8882ddd85b41a98084e5a",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/safekorea.html",
+        "frozenSha256": "ca10e77f7cdfa3b99d2678a01ab7e75a7a0d6df5e6ec5da1a55316aa64f46961",
+        "currentSha256": "ca10e77f7cdfa3b99d2678a01ab7e75a7a0d6df5e6ec5da1a55316aa64f46961",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/nl.json",
+        "frozenSha256": "8b4cfafdbabb735fb9016c654c0cb116402b9ad06420aa4dd0b132e2f7f30eea",
+        "currentSha256": "8b4cfafdbabb735fb9016c654c0cb116402b9ad06420aa4dd0b132e2f7f30eea",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/nl.html",
+        "frozenSha256": "8a5861166599e99887c496719d844c90e40e1e415b5a344643c1a2a0d297aac0",
+        "currentSha256": "8a5861166599e99887c496719d844c90e40e1e415b5a344643c1a2a0d297aac0",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/nps.json",
+        "frozenSha256": "1e71f669792a7b915dd9c4b653cbb2e50a10a144e56c81790a2cc8bff0044101",
+        "currentSha256": "1e71f669792a7b915dd9c4b653cbb2e50a10a144e56c81790a2cc8bff0044101",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/nps.html",
+        "frozenSha256": "db410f0ae903dc8203204f55fd7bdac3b97ea6871bfe9f49e7af3eccfa0bfaf1",
+        "currentSha256": "db410f0ae903dc8203204f55fd7bdac3b97ea6871bfe9f49e7af3eccfa0bfaf1",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/smu.json",
+        "frozenSha256": "b2a69bfbf432f5e07eee4017a3bd5cad3c2c83d257076943847467ac8618ce77",
+        "currentSha256": "b2a69bfbf432f5e07eee4017a3bd5cad3c2c83d257076943847467ac8618ce77",
+        "matchesFrozen": true
+      },
+      {
+        "path": "evaluation/blind-v9-v2/smu.html",
+        "frozenSha256": "1c87197d4363861f040629eb5052afdedc9f5f03de33540a706f10beea179d7b",
+        "currentSha256": "1c87197d4363861f040629eb5052afdedc9f5f03de33540a706f10beea179d7b",
+        "matchesFrozen": true
+      },
+      {
+        "path": "docs/evidence/run007/blind-v9-v2-observation.json",
+        "frozenSha256": "00fd7a085a11299b247d8e3d5a14115b27b6cec94f0cdef64937dc7ee1845475",
+        "currentSha256": "00fd7a085a11299b247d8e3d5a14115b27b6cec94f0cdef64937dc7ee1845475",
+        "matchesFrozen": true
+      }
+    ]
+  },
+  "counts": {
+    "expectedGroups": 15,
+    "matchedFirst": 2,
+    "missedFirst": 13,
+    "missedButDisplayedAdditionalMenu": 3,
+    "missedAbsentFromAllDisplayedMenus": 10,
+    "firstIncorrect": 4,
+    "confirmedMissingExtraction": 0
+  },
+  "expectedGroupDiagnosis": [
+    {
+      "pageId": "nl-v9-01",
+      "expected": {
+        "id": "nl-v9-printing-instructions",
+        "category": "help",
+        "label": "출력",
+        "action": "locate",
+        "sourceIds": [
+          "nl-v9-1511"
+        ],
+        "reason": "자료복사·출력 영역의 출력 이용 안내다. 원본 onclick 문자열을 보존하며 별도 목적지로 치환하지 않는다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-overconstrained-adapter",
+      "evidence": "Visible tracked anchor 출력 in source depth4-menu__slider/role-group reading menu under 자료복사·출력. Absent from all menus. Current NL adapter requires a 검색 heading, a separate exact guide-download structure, and search-topic words; this legitimate copying/printing instruction family has none of those incidental constraints. Generic topic rules do not identify 출력 as explanatory reading.",
+      "nextVersionProposal": "Recognize the stable NL explanatory navigation/content relationship from selected topic, local fixed instruction headings and real information document links; do not require a downloadable manual or globally classify 출력 as help.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/NL/contents/N40602000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^자료복사·출력^출력\");"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content_top"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content_info"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "depth4-menu__slider swiper-initialized swiper-horizontal swiper-backface-hidden",
+                "id": "menu-wrap-tab4"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-wrapper",
+                "id": "swiper-wrapper-46a758a55105f2379"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-slide swiper-slide-next",
+                "id": "TAB2_N40602000000",
+                "role": "group"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "nl-v9-1511",
+          "visible": true,
+          "name": "출력"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/nl.html"
+    },
+    {
+      "pageId": "nl-v9-01",
+      "expected": {
+        "id": "nl-v9-postal-copy-instructions",
+        "category": "help",
+        "label": "우편복사",
+        "action": "locate",
+        "sourceIds": [
+          "nl-v9-1512"
+        ],
+        "reason": "자료복사·출력 영역의 우편복사 이용 안내다. 원본 JavaScript 이벤트가 명시돼 있다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-overconstrained-adapter",
+      "evidence": "Tracked 우편복사 source anchor is a sibling of the selected 관내복사 information topic. Same structural instructional family; absent from all menus.",
+      "nextVersionProposal": "Same bounded reading-family evidence as printing, without list-position or opaque N-route mappings.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/NL/contents/N40603000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^자료복사·출력^우편복사\");"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content_top"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content_info"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "depth4-menu__slider swiper-initialized swiper-horizontal swiper-backface-hidden",
+                "id": "menu-wrap-tab4"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-wrapper",
+                "id": "swiper-wrapper-46a758a55105f2379"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-slide",
+                "id": "TAB2_N40603000000",
+                "role": "group"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "nl-v9-1512",
+          "visible": true,
+          "name": "우편복사"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/nl.html"
+    },
+    {
+      "pageId": "nl-v9-01",
+      "expected": {
+        "id": "nl-v9-copy-refund-entry",
+        "category": "apply",
+        "label": "복사·출력 사이버머니 환급",
+        "action": "navigate",
+        "sourceIds": [
+          "nl-v9-1513"
+        ],
+        "reason": "본문이 대상자가 직접 신청하는 메뉴라고 설명하며, 제어 자체는 명시적 인증 이벤트 없는 일반 HTTPS 앵커다.",
+        "destinationUrl": "https://www.nl.go.kr/NL/contents/N60515000000.do"
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-operation-kind",
+      "evidence": "Visible ordinary HTTPS link 복사·출력 사이버머니 환급 is in .copy_data_wrap under fixed h4 환급 안내. Local fixed paragraph identifies 신청 방법 and the named menu for users to apply. It is neither a search nor a guide tab and is absent from all menus. Current apply lexical intents omit 환급; InstitutionEvidence is hardcoded pageTask reading and cannot faithfully describe this operation entry.",
+      "nextVersionProposal": "Model instruction/document vs service-entry explicitly; allow apply/control evidence from a named refund/return entry plus bounded fixed application-method/heading relationship, preserving the original navigate policy. Do not perform refund/authentication or treat every financial noun as an operation.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "https://www.nl.go.kr/NL/contents/N60515000000.do"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "sub_content",
+                "class": "sub_contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "sub_content"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "copy_data_wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "txt dot_list"
+              }
+            },
+            {
+              "tag": "p",
+              "attributes": {}
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "nl-v9-1513",
+          "visible": true,
+          "name": "복사·출력 사이버머니 환급"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/nl.html"
+    },
+    {
+      "pageId": "nps-v9-01",
+      "expected": {
+        "id": "nps-v9-premium-rate-explanation",
+        "category": "help",
+        "label": "보험료 금액 및 보험료율",
+        "action": "locate",
+        "sourceIds": [
+          "nps-v9-0582"
+        ],
+        "reason": "보험료 금액과 보험료율을 설명하는 원본 문서의 local fragment 탭이다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-own-label-gate",
+      "evidence": "Visible fragment tab with real local tabPanel and corresponding fixed explanatory title is absent from all menus. Current pension adapter requires the control name itself to contain 국민연금/사회보장/노후; 보험료 금액 및 보험료율 fails that own-label condition despite official pension information region.",
+      "nextVersionProposal": "Derive institutional explanatory purpose from bounded local content heading + unique real panel relationship; topic names may be unfamiliar and need not repeat institution/subject words.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "#tab2",
+            "id": "tab2a"
+          },
+          "ancestors": [
+            {
+              "tag": "section",
+              "attributes": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "tabNav con-tab-nav col7 docuTitle"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {}
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "nps-v9-0582",
+          "visible": true,
+          "name": "보험료 금액 및 보험료율"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/nps.html"
+    },
+    {
+      "pageId": "nps-v9-01",
+      "expected": {
+        "id": "nps-v9-premium-deadline",
+        "category": "help",
+        "label": "보험료 납부기한",
+        "action": "locate",
+        "sourceIds": [
+          "nps-v9-0583"
+        ],
+        "reason": "납부기한과 연장신청 설명을 읽는 원본 문서의 local fragment 탭이다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "readonly-information-vs-danger-label",
+      "evidence": "Visible fragment explanation tab 보험료 납부기한 is absent from all menus. In addition to the own-name gate, shared dangerous-label regex matches 납부 before institution evidence; academicInformation is the existing narrow exception but does not cover this pension explanation. This is static guard inference, not a captured branch trace.",
+      "nextVersionProposal": "Separate dangerous command evidence from readonly explanation evidence. A narrowly proven local informational panel may permit help/locate for deadline text, but pay/delete/final-submit commands, form targets and auth actions must remain rejected. Do not globally remove 납부 from safety policy or bypass the shared gate.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "#tab3",
+            "id": "tab3a"
+          },
+          "ancestors": [
+            {
+              "tag": "section",
+              "attributes": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "tabNav con-tab-nav col7 docuTitle"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {}
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "nps-v9-0583",
+          "visible": true,
+          "name": "보험료 납부기한"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/nps.html"
+    },
+    {
+      "pageId": "nps-v9-01",
+      "expected": {
+        "id": "nps-v9-regional-subscriber-support",
+        "category": "help",
+        "label": "지역가입자 연금보험료 지원",
+        "action": "locate",
+        "sourceIds": [
+          "nps-v9-0587"
+        ],
+        "reason": "본문은 지원대상·지원금액·신청방법을 설명하며 탭 자체는 실제 신청 entry가 아니다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-own-label-gate",
+      "evidence": "Visible local tab 지역가입자 연금보험료 지원 (지역가입자 연금보험료 지원) has actual explanatory target with fixed 지원대상/지원금액/신청방법 headings. Absent from all menus. Own-label pension gate misses it; this tab describes eligibility and support, not an application control.",
+      "nextVersionProposal": "Use the same source-panel explanation evidence. Keep actual 신청하기 entries/forms a separate kind; fixed method heading does not itself authorize submission.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "#tab7",
+            "id": "tab7a"
+          },
+          "ancestors": [
+            {
+              "tag": "section",
+              "attributes": {
+                "class": "section-container"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "section-contents",
+                "id": "contents"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "page-contents gre"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tabWrap con-tab"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "tabNav con-tab-nav col7 docuTitle"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {}
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "nps-v9-0587",
+          "visible": true,
+          "name": "지역가입자 연금보험료 지원"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/nps.html"
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "expected": {
+        "id": "cheonan-v9-passport-preparation-form",
+        "category": "apply",
+        "label": "여권신청서",
+        "action": "locate",
+        "sourceIds": [
+          "cheonan-v9-0833",
+          "cheonan-v9-0834"
+        ],
+        "reason": "원본 민원서식 작성예시 목록의 여권신청서 상세 제어와 명시적 HWP 첨부파일은 신청 준비 서식이다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "classified-overflow",
+      "evidence": "Source title button 여권신청서 is actually shown on additional-menu page3 as apply/locate. First6 are global/local search and menu categories. No extraction/classification failure for this expected alternative.",
+      "nextVersionProposal": "Main-content form-preparation controls should outrank category-navigation peers when bounded title/attachment row evidence exists; source provenance priority, not this title/index.",
+      "sourceFacts": [
+        {
+          "tag": "button",
+          "attributes": {
+            "onclick": "fn_search_detail('B000003215486VhspbM5'); return false;",
+            "class": "board__link"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "program__board-list"
+              }
+            },
+            {
+              "tag": "form",
+              "attributes": {
+                "id": "deleteForm"
+              }
+            },
+            {
+              "tag": "table",
+              "attributes": {
+                "class": "program__board-table typeTable bbsTable"
+              }
+            },
+            {
+              "tag": "tbody",
+              "attributes": {}
+            },
+            {
+              "tag": "tr",
+              "attributes": {}
+            },
+            {
+              "tag": "td",
+              "attributes": {
+                "class": "board__table--title"
+              }
+            }
+          ]
+        },
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/cmm/fms/FileDown.do?atchFileId=FILE_000000000475920&fileSn=0",
+            "class": "board__button board__button--file"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "program__board-list"
+              }
+            },
+            {
+              "tag": "form",
+              "attributes": {
+                "id": "deleteForm"
+              }
+            },
+            {
+              "tag": "table",
+              "attributes": {
+                "class": "program__board-table typeTable bbsTable"
+              }
+            },
+            {
+              "tag": "tbody",
+              "attributes": {}
+            },
+            {
+              "tag": "tr",
+              "attributes": {}
+            },
+            {
+              "tag": "td",
+              "attributes": {
+                "class": "board__table--file"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "cheonan-v9-0833",
+          "visible": true,
+          "name": "여권신청서"
+        },
+        {
+          "sourceId": "cheonan-v9-0834",
+          "visible": true,
+          "name": "첨부파일 다운로드 [별지 제1호서식] 여권발급신청서&#40;여권법 시행규칙&#41;.hwp"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [
+        "cheonan-v9-0833"
+      ],
+      "firstReachedPage": 3,
+      "fixture": "evaluation/blind-v9-v2/cheonan.html"
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "expected": {
+        "id": "cheonan-v9-moving-preparation-form",
+        "category": "apply",
+        "label": "전입신고서",
+        "action": "locate",
+        "sourceIds": [
+          "cheonan-v9-0837",
+          "cheonan-v9-0838"
+        ],
+        "reason": "표 행의 전입신고서 제목과 첨부 ZIP이 신청 준비 서식임을 직접 보여준다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-row-relationship",
+      "evidence": "Both expected visible alternatives absent from all menus. Title is a button named 전입신고서 (...) rather than an anchor; attachment is ZIP 파일다운로드 with fragment+explicit ZIP handler. Existing material-row evidence excludes form ancestors and recognizes title anchors/exact download names only. These rows are in form#deleteForm, although each visible control locates a form/example rather than executing deletion. Generic 신청 lexical rule does not recognize the 신고서 document.",
+      "nextVersionProposal": "Add a readonly table-row evidence path for fixed title column buttons and adjacent attachment operation metadata. Preserve locate and all dangerous-command checks. Do not infer deletion from form ID or execute default-submit buttons; eligibility must distinguish semantic guidance from submission authority.",
+      "sourceFacts": [
+        {
+          "tag": "button",
+          "attributes": {
+            "onclick": "fn_search_detail('B000003215468Qkq9TZH'); return false;",
+            "class": "board__link"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "program__board-list"
+              }
+            },
+            {
+              "tag": "form",
+              "attributes": {
+                "id": "deleteForm"
+              }
+            },
+            {
+              "tag": "table",
+              "attributes": {
+                "class": "program__board-table typeTable bbsTable"
+              }
+            },
+            {
+              "tag": "tbody",
+              "attributes": {}
+            },
+            {
+              "tag": "tr",
+              "attributes": {}
+            },
+            {
+              "tag": "td",
+              "attributes": {
+                "class": "board__table--title"
+              }
+            }
+          ]
+        },
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "#zipDownload",
+            "class": "board__button board__button--file",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475918'); return false;"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "program__board-list"
+              }
+            },
+            {
+              "tag": "form",
+              "attributes": {
+                "id": "deleteForm"
+              }
+            },
+            {
+              "tag": "table",
+              "attributes": {
+                "class": "program__board-table typeTable bbsTable"
+              }
+            },
+            {
+              "tag": "tbody",
+              "attributes": {}
+            },
+            {
+              "tag": "tr",
+              "attributes": {}
+            },
+            {
+              "tag": "td",
+              "attributes": {
+                "class": "board__table--file"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "cheonan-v9-0837",
+          "visible": true,
+          "name": "전입신고서 (세대전부 및 세대합가(편입))"
+        },
+        {
+          "sourceId": "cheonan-v9-0838",
+          "visible": true,
+          "name": "ZIP 파일다운로드"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/cheonan.html"
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "expected": {
+        "id": "cheonan-v9-marriage-preparation-form",
+        "category": "apply",
+        "label": "혼인신고서 및 이혼신고서",
+        "action": "locate",
+        "sourceIds": [
+          "cheonan-v9-0845",
+          "cheonan-v9-0846"
+        ],
+        "reason": "표 행의 명시적인 신고서 제목과 첨부 ZIP을 원본에서 찾는 기능이다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-row-relationship",
+      "evidence": "Visible title button 혼인신고서 및 이혼신고서 (혼인신고서 및 이혼신고서) and associated ZIP attachment have same form/table structure; absent from all menus. Not a first6-only loss.",
+      "nextVersionProposal": "Use the same table title/attachment relationship and explicit document-kind signals, independent of captured document names and attachment IDs.",
+      "sourceFacts": [
+        {
+          "tag": "button",
+          "attributes": {
+            "onclick": "fn_search_detail('B00000321539UhEQQiuF'); return false;",
+            "class": "board__link"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "program__board-list"
+              }
+            },
+            {
+              "tag": "form",
+              "attributes": {
+                "id": "deleteForm"
+              }
+            },
+            {
+              "tag": "table",
+              "attributes": {
+                "class": "program__board-table typeTable bbsTable"
+              }
+            },
+            {
+              "tag": "tbody",
+              "attributes": {}
+            },
+            {
+              "tag": "tr",
+              "attributes": {}
+            },
+            {
+              "tag": "td",
+              "attributes": {
+                "class": "board__table--title"
+              }
+            }
+          ]
+        },
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "#zipDownload",
+            "class": "board__button board__button--file",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475911'); return false;"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "program__board-list"
+              }
+            },
+            {
+              "tag": "form",
+              "attributes": {
+                "id": "deleteForm"
+              }
+            },
+            {
+              "tag": "table",
+              "attributes": {
+                "class": "program__board-table typeTable bbsTable"
+              }
+            },
+            {
+              "tag": "tbody",
+              "attributes": {}
+            },
+            {
+              "tag": "tr",
+              "attributes": {}
+            },
+            {
+              "tag": "td",
+              "attributes": {
+                "class": "board__table--file"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "cheonan-v9-0845",
+          "visible": true,
+          "name": "혼인신고서 및 이혼신고서"
+        },
+        {
+          "sourceId": "cheonan-v9-0846",
+          "visible": true,
+          "name": "ZIP 파일다운로드"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/cheonan.html"
+    },
+    {
+      "pageId": "smu-v9-01",
+      "expected": {
+        "id": "smu-v9-academic-policy-handbook",
+        "category": "academic",
+        "label": "학사제도 안내서 \"유연하게 엄정하게\"",
+        "action": "navigate",
+        "sourceIds": [
+          "smu-v9-0327"
+        ],
+        "reason": "학사 안내서로 가는 원본의 일반 앵커이며 현재 문서와 다른 경로의 fragment다.",
+        "destinationUrl": "https://www.smu.ac.kr/kor/life/policyGuide.do#tab18145_"
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "classified-overflow",
+      "evidence": "Academic/navigate source is actually displayed on additional-menu page2. First6 choose curriculum/major/course local navigation plus search/application/login. The handbook is a sibling in another tab-ul branch. This is ranking and substantive-document priority, not failed classification.",
+      "nextVersionProposal": "Rank source-backed substantive documents in current main content separately from global navigation and broad sibling topic indexes; a title/document kind and content scope may justify priority. Do not hardcode handbook title, source ID or its later tab position.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/kor/life/policyGuide.do#tab18145_",
+            "title": "학사제도 안내서 \"유연하게 엄정하게\"",
+            "id": "tab18145",
+            "data-id": "tab18145_",
+            "target": ""
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": "swiper-slide swiper-slide-next"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "smu-v9-0327",
+          "visible": true,
+          "name": "학사제도 안내서 \"유연하게 엄정하게\""
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [
+        "smu-v9-0327"
+      ],
+      "firstReachedPage": 2,
+      "fixture": "evaluation/blind-v9-v2/smu.html"
+    },
+    {
+      "pageId": "smu-v9-01",
+      "expected": {
+        "id": "smu-v9-course-handbook",
+        "category": "academic",
+        "label": "학사제도 및 강의시간표 안내책자",
+        "action": "navigate",
+        "sourceIds": [
+          "smu-v9-0328"
+        ],
+        "reason": "학사제도·강의시간표 안내책자로 가는 별도 문서의 일반 앵커다.",
+        "destinationUrl": "https://www.smu.ac.kr/kor/life/CourseRegistration.do#tab18556_"
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "classified-overflow",
+      "evidence": "Academic/navigate source is actually displayed on additional-menu page3. Different-document fragment action/destination already match; this expected group is not restored by further classifier words.",
+      "nextVersionProposal": "Same content/document versus navigation provenance ranking; retain first6 cap and evaluate group-diversity tradeoff on all55 exposed pages.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/kor/life/CourseRegistration.do#tab18556_",
+            "title": "학사제도 및 강의시간표 안내책자",
+            "id": "tab18556",
+            "data-id": "tab18556_",
+            "target": ""
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "double-tab-wrap pc"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": "swiper-slide last"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "smu-v9-0328",
+          "visible": true,
+          "name": "학사제도 및 강의시간표 안내책자"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [
+        "smu-v9-0328"
+      ],
+      "firstReachedPage": 3,
+      "fixture": "evaluation/blind-v9-v2/smu.html"
+    },
+    {
+      "pageId": "smu-v9-01",
+      "expected": {
+        "id": "smu-v9-curriculum-information",
+        "category": "academic",
+        "label": "교육과정",
+        "action": "navigate",
+        "sourceIds": [
+          "smu-v9-0316"
+        ],
+        "reason": "같은 학사 영역의 교육과정 정보로 가는 별도 문서의 일반 앵커다.",
+        "destinationUrl": "https://www.smu.ac.kr/kor/life/curriculum_2026.do#tab18257_"
+      },
+      "firstScreenMissed": false,
+      "diagnosticClass": "matched-first-screen",
+      "evidence": "Expected source/action/category present on first screen.",
+      "nextVersionProposal": "No targeted correction proposed for this matched group.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/kor/life/curriculum_2026.do#tab18257_",
+            "title": "교육과정",
+            "id": "tab18257",
+            "data-id": "tab18257_",
+            "target": ""
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "contents-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tab-outer"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "tab-wrap",
+                "id": "tab-wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "tab-ul swiper-wrapper"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": "swiper-slide swiper-slide-next"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "smu-v9-0316",
+          "visible": true,
+          "name": "교육과정"
+        }
+      ],
+      "firstScreenSources": [
+        "smu-v9-0316"
+      ],
+      "additionalMenuSources": [
+        "smu-v9-0316"
+      ],
+      "firstReachedPage": 1,
+      "fixture": "evaluation/blind-v9-v2/smu.html"
+    },
+    {
+      "pageId": "safekorea-v9-01",
+      "expected": {
+        "id": "safekorea-v9-checklist-document",
+        "category": "help",
+        "label": "생활안전점검표 다운로드",
+        "action": "locate",
+        "sourceIds": [
+          "safekorea-v9-0197"
+        ],
+        "reason": "안전점검 방법을 확인하는 점검표이며 신청서가 아니다. 버튼에 다운로드가 명시돼 있다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-source-family-and-document-kind",
+      "evidence": "Visible button.btn-down 생활안전점검표 다운로드 is absent from all menus. Current Safekorea adapter activates only /edtr/ education pages, while this is /acts/asck/ safety guidance. Generic guide-download branch expects manual/guide names and surrounding guide context; 점검표 (점검표) is a distinct public preparation document.",
+      "nextVersionProposal": "Add an official safety-guidance family contract using local 안전점검 heading, explicit download control and fixed checklist document semantics; keep locate and no file transfer. General document-kind evidence should work for unknown checklist titles.",
+      "sourceFacts": [
+        {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "class": "btn-down"
+          },
+          "ancestors": [
+            {
+              "tag": "body",
+              "attributes": {}
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "contents",
+                "class": "nf-content"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content-right",
+                "id": "content_area"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "cont-area"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "safekorea-v9-0197",
+          "visible": true,
+          "name": "생활안전점검표 다운로드"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/safekorea.html"
+    },
+    {
+      "pageId": "safekorea-v9-01",
+      "expected": {
+        "id": "safekorea-v9-guided-checklist",
+        "category": "help",
+        "label": "생활안전점검 리스트 시작",
+        "action": "locate",
+        "sourceIds": [
+          "safekorea-v9-0200"
+        ],
+        "reason": "원본 안내문이 안전대비지수와 대비·대응방법 안내를 설명한다. 실제 체크리스트 실행은 하지 않는다."
+      },
+      "firstScreenMissed": true,
+      "diagnosticClass": "semantic-source-family-and-guided-control",
+      "evidence": "Visible non-form button.btn-golist 생활안전점검 리스트 시작 has explicit onSubmit handler, so original action locate is appropriate. Absent from all menus. Local source explains a guided safety index/preparation-response checklist, but neither the education adapter nor generic label lexicon models this instruction interaction. Handler name alone is not evidence of a final business submission.",
+      "nextVersionProposal": "Add guided-instruction control kind backed by same-region fixed guide heading and explicit local checklist relationship. Never read radio checked/value state or activate onSubmit. Unknown submit/auth/delete behavior still gets conservative source guidance or abstention.",
+      "sourceFacts": [
+        {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "class": "btn-golist mt60",
+            "onclick": "javascript:onSubmit();"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "wrap",
+                "class": "main-bg"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "wrap"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "contents",
+                "class": "nf-content"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "content-right",
+                "id": "content_area"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "cont-area"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "class": "button-rightarea"
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "safekorea-v9-0200",
+          "visible": true,
+          "name": "생활안전점검 리스트 시작"
+        }
+      ],
+      "firstScreenSources": [],
+      "additionalMenuSources": [],
+      "firstReachedPage": null,
+      "fixture": "evaluation/blind-v9-v2/safekorea.html"
+    },
+    {
+      "pageId": "safekorea-v9-01",
+      "expected": {
+        "id": "safekorea-v9-disaster-preparation",
+        "category": "help",
+        "label": "재난대비안전점검",
+        "action": "navigate",
+        "sourceIds": [
+          "safekorea-v9-0195"
+        ],
+        "reason": "같은 안전점검 영역의 별도 재난대비안전점검 안내로 가는 평문 HTTP 경로다.",
+        "destinationUrl": "https://www.safekorea.go.kr/safekorea-kor/acts/asck/cal/calamityPreparationSafetyCheck.do?menuSn=13"
+      },
+      "firstScreenMissed": false,
+      "diagnosticClass": "matched-first-screen",
+      "evidence": "Expected source/action/category present on first screen.",
+      "nextVersionProposal": "No targeted correction proposed for this matched group.",
+      "sourceFacts": [
+        {
+          "tag": "a",
+          "attributes": {
+            "href": "/safekorea-kor/acts/asck/cal/calamityPreparationSafetyCheck.do?menuSn=13",
+            "alt": "재난대비안전점검"
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "contents",
+                "class": "nf-content"
+              }
+            },
+            {
+              "tag": "div",
+              "attributes": {
+                "id": "lnbmenu"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {
+                "class": "ko_portal_left"
+              }
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": "has-sub open"
+              }
+            },
+            {
+              "tag": "ul",
+              "attributes": {}
+            },
+            {
+              "tag": "li",
+              "attributes": {
+                "class": " last-child "
+              }
+            }
+          ]
+        }
+      ],
+      "sourceObservedVisible": [
+        {
+          "sourceId": "safekorea-v9-0195",
+          "visible": true,
+          "name": "재난대비안전점검"
+        }
+      ],
+      "firstScreenSources": [
+        "safekorea-v9-0195"
+      ],
+      "additionalMenuSources": [
+        "safekorea-v9-0195"
+      ],
+      "firstReachedPage": 1,
+      "fixture": "evaluation/blind-v9-v2/safekorea.html"
+    }
+  ],
+  "firstIncorrectInterpretation": [
+    {
+      "pageId": "nps-v9-01",
+      "recommendation": {
+        "label": "가입 및 신고",
+        "action": "locate",
+        "context": "primary",
+        "score": 65,
+        "reasons": [
+          "정보 주제 읽기",
+          "원본 목록·탭과 동료의 명시적 정보 개념"
+        ],
+        "sectionLabel": "연금정보",
+        "contextLabels": [
+          "연금정보"
+        ],
+        "category": "help",
+        "pageTask": "reading",
+        "collectionDependent": true,
+        "sourceId": "nps-v9-0520"
+      },
+      "accepted": [],
+      "rejected": [
+        {
+          "sourceId": "nps-v9-0520",
+          "label": "가입 및 신고",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "가입 및 신고",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        }
+      ],
+      "interpretation": "Real broad JavaScript navigation expander explicitly rejected as insufficiently specific function in frozen annotation. Distinguish scope judgment from fabricated control; raw verdict unchanged."
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "recommendation": {
+        "label": "민원 신청안내",
+        "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+        "action": "navigate",
+        "target": "_self",
+        "destinationHost": "www.cheonan.go.kr",
+        "opensNewWindow": false,
+        "context": "primary",
+        "score": 85,
+        "reasons": [
+          "고정 문구 일치",
+          "주요 메뉴 영역"
+        ],
+        "contextLabels": [],
+        "category": "apply",
+        "sourceId": "cheonan-v9-0777"
+      },
+      "accepted": [
+        {
+          "sourceId": "cheonan-v9-0777",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원 신청안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "evidence": {
+            "name": "민원 신청안내",
+            "href": "/kor/sub01_01_01.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        }
+      ],
+      "rejected": [],
+      "interpretation": "Real source control, category mismatch apply vs instructional help."
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "recommendation": {
+        "label": "여권 신청안내",
+        "href": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+        "action": "navigate",
+        "target": "_self",
+        "destinationHost": "www.cheonan.go.kr",
+        "opensNewWindow": false,
+        "context": "primary",
+        "score": 85,
+        "reasons": [
+          "고정 문구 일치",
+          "주요 메뉴 영역"
+        ],
+        "contextLabels": [],
+        "category": "apply",
+        "sourceId": "cheonan-v9-0779"
+      },
+      "accepted": [
+        {
+          "sourceId": "cheonan-v9-0779",
+          "category": "help",
+          "action": "navigate",
+          "label": "여권 신청안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+          "evidence": {
+            "name": "여권 신청안내",
+            "href": "/kor/sub01_01_06.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        }
+      ],
+      "rejected": [],
+      "interpretation": "Real source control, category mismatch apply vs instructional help."
+    },
+    {
+      "pageId": "safekorea-v9-01",
+      "recommendation": {
+        "label": "자율안전점검",
+        "action": "locate",
+        "context": "body",
+        "score": 70,
+        "reasons": [
+          "원본 안내 주제와 연결된 읽기 제어",
+          "고정 원본 제어 구조"
+        ],
+        "sectionLabel": "행동요령",
+        "contextLabels": [
+          "행동요령"
+        ],
+        "pagePurpose": "help",
+        "category": "help",
+        "pageTask": "reading",
+        "supplementalDependent": true,
+        "sourceId": "safekorea-v9-0193"
+      },
+      "accepted": [],
+      "rejected": [
+        {
+          "sourceId": "safekorea-v9-0193",
+          "label": "자율안전점검",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "자율안전점검",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        }
+      ],
+      "interpretation": "Real broad JavaScript navigation expander explicitly rejected as insufficiently specific function in frozen annotation. Distinguish scope judgment from fabricated control; raw verdict unchanged."
+    }
+  ],
+  "systemicFinding": "The v2 adapters encode narrow incidental page features (own subject keyword, education-only path, downloadable manual, selected-topic following h4) rather than reusable institutional source semantics. Generic reading/pageTask evidence meanwhile promotes broad navigation. Three substantive groups are correctly classified but ranked after these controls; ten remain semantically unsupported. This diagnosis does not prove every absent group reached collection or every static branch prediction executed.",
+  "architectureForNextVersion": [
+    "Keep common privacy, visibility, source action/currentness, dangerous URL/handler authority. Replace page-label lists with explicit evidence kinds: explanatory panel, public preparation document, guided instruction, substantive document, actual service entry; service entry needs control pageTask rather than the present reading-only InstitutionEvidence shape.",
+    "Institution contracts should identify actual stable local source families/relationships. Own unfamiliar topic names must not repeat parent subject. Reuse bounded safe fixed heading/label and row/tab/panel evidence, never raw input/body dumps.",
+    "Rank provenance separately: current main-content document/operation versus local navigation versus global header/utility. Existing pageTask reading alone does not distinguish these, and category diversity alone fills first6 with navigation.",
+    "Readonly panel validation may inform narrow label-risk exceptions, but cannot bypass dangerous operation or form execution policy. Preserve locate for controls; do not reclassify payment/deletion/final-submit as reading to improve recall.",
+    "Keep all55pages development-only and compare generic/institution plus ranking change separately, with unchanged first6 and original thresholds. Freeze a later source version before another independent first evaluation."
+  ],
+  "syntheticTestProposals": [
+    {
+      "family": "NPS explanatory panel + operation safety",
+      "positive": "Unknown topic names such as 給付基準の説明 or 기여금 기준일 in an official pension info group; unique local targets with matching safe headings, including deadline text containing 납부.",
+      "negative": "Same label on immediate-payment command, submitted form, auth endpoint, missing/duplicate target or panel replacement; no safety resurrection, no value/checked getter reads."
+    },
+    {
+      "family": "Safekorea safety document and guided instruction",
+      "positive": "Unfamiliar 주변 시설 점검표 다운로드 and 대비 수준 확인 시작 under a bounded safety guide heading and actual local control structure.",
+      "negative": "Download lookalike outside source guide region, destructive handler, form-final-submit control, unrelated adjacent heading, radio-state getter canary; locate only, no activation."
+    },
+    {
+      "family": "NL instruction tabs vs service entry",
+      "positive": "Unknown 문헌스캔/원격출력 informational tabs related to actual current instruction content; separate 예치잔액 반환 entry under fixed 신청 방법 relation.",
+      "negative": "Global query input/submit, ordinary printer action button, arbitrary finance news link, explanatory refund article or unrelated guide, hidden/duplicate content and input descendants."
+    },
+    {
+      "family": "SMU main documents and navigation ranking",
+      "positive": "Two real tab groups with unfamiliar study handbook documents and broad navigation; preserve matched ordinary document actions while selecting substantive current-content evidence.",
+      "negative": "Do not prioritize solely last index, source order gold, word handbook, document ID, global header promotion or incoming user text; changed selected topic/header identity invalidates candidates."
+    },
+    {
+      "family": "Public form preparation in source tables",
+      "positive": "Unknown 사업변경 신고서 row with title button and paired ZIP/HWP attachment in a form wrapper; safe fixed document title and column relationship only.",
+      "negative": "Actual submit/delete/payment rows, unrelated attachment cell, multi-title ambiguity, dangerous URL/handler, editable title or queried input values; no source click or form submission."
+    }
+  ],
+  "limitations": [
+    "All required source controls are visible in original recorded source metadata and present in frozen markup, but no per-candidate collection/classification trace is available. Exact extraction omission is not established by this report.",
+    "Raw first26/30,2/15,0/5 remains FAIL; additional60/73,5/15,2/5 is separate and does not replace it. No adjudication, corrected score, task completion or pass interpretation supplied.",
+    "Four first-screen incorrect cards are actual source controls:2category conflicts,2annotation scope rejections for broad expanders. Do not label them fabricated functions.",
+    "No file responses/download execution, original JavaScript behavior, actual business completion, native install or user evidence is established here.",
+    "Current immutable0.8source remains unchanged. Prior blind-v9 versions/first attempts and v9-v2 first evaluated result are preserved."
+  ],
+  "inputHashes": {
+    "evaluation/blind-v9-v2/nl.json": "8b4cfafdbabb735fb9016c654c0cb116402b9ad06420aa4dd0b132e2f7f30eea",
+    "evaluation/blind-v9-v2/nl.html": "8a5861166599e99887c496719d844c90e40e1e415b5a344643c1a2a0d297aac0",
+    "evaluation/blind-v9-v2/nps.json": "1e71f669792a7b915dd9c4b653cbb2e50a10a144e56c81790a2cc8bff0044101",
+    "evaluation/blind-v9-v2/nps.html": "db410f0ae903dc8203204f55fd7bdac3b97ea6871bfe9f49e7af3eccfa0bfaf1",
+    "evaluation/blind-v9-v2/cheonan.json": "af1e84f1d27926d508ba0edebbea8126576e0face2bdc025a0611c4a14a3f0c8",
+    "evaluation/blind-v9-v2/cheonan.html": "79f7e9e66a25b7bf6d593199a95c366d043bdc736ed94c5cfa353d2716e2c26c",
+    "evaluation/blind-v9-v2/smu.json": "b2a69bfbf432f5e07eee4017a3bd5cad3c2c83d257076943847467ac8618ce77",
+    "evaluation/blind-v9-v2/smu.html": "1c87197d4363861f040629eb5052afdedc9f5f03de33540a706f10beea179d7b",
+    "evaluation/blind-v9-v2/safekorea.json": "9efc4da0dc5f2761f54385c8e884d28f47991a10cab8882ddd85b41a98084e5a",
+    "evaluation/blind-v9-v2/safekorea.html": "ca10e77f7cdfa3b99d2678a01ab7e75a7a0d6df5e6ec5da1a55316aa64f46961"
+  }
+}

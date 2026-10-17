@@ -1,0 +1,1037 @@
+{
+  "siteId": "nps",
+  "name": "국민연금공단",
+  "pages": [
+    {
+      "id": "nps-v9-01",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0038M0.do?menuId=MN24001113",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0038M0.do?menuId=MN24001113",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v9/nps.html",
+      "observation": {
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "capturedAt": "2026-10-17T18:57:48.541Z",
+        "baseURI": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0038M0.do?menuId=MN24001113",
+        "title": "연금정보 > 알기쉬운 국민연금 > 보험료 납부 > 연금보험료 - 특징 - 국민을 튼튼하게 연금을 튼튼하게",
+        "sourceCapture": "docs/evidence/run007/blind-v9-raw/nps-capture.json",
+        "sourceControls": "docs/evidence/run007/blind-v9-raw/nps-controls.json",
+        "visibleControlCount": 74,
+        "retainedControlCount": 673,
+        "notes": [
+          "지원 신청방법을 설명하는 탭을 실제 신청 entry apply와 구분해 help로 주석했다.",
+          "모든 고정 JavaScript 메뉴·팝업 문자열을 보존했고 내부 인자 경로를 일반 앵커로 만들지 않았다.",
+          "설문 radio·제안 textarea·확인은 실제 입력 및 제출 제어이므로 추천에서 거절했다."
+        ]
+      },
+      "accepted": [
+        {
+          "sourceId": "nps-v9-0035",
+          "category": "login",
+          "action": "navigate",
+          "label": "로그인",
+          "destinationUrl": "https://www.nps.or.kr/lgn/loginForm.do",
+          "evidence": {
+            "name": "로그인",
+            "href": "/lgn/loginForm.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0021",
+          "category": "search",
+          "action": "locate",
+          "label": "검색",
+          "evidence": {
+            "name": "검색",
+            "href": "javascript:;",
+            "onclick": "commonUI.search.open(event);",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0005",
+          "category": "apply",
+          "action": "navigate",
+          "label": "서식찾기",
+          "destinationUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+          "evidence": {
+            "name": "서식찾기",
+            "href": "/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0037",
+          "category": "apply",
+          "action": "locate",
+          "label": "전자민원 메뉴 접힘",
+          "evidence": {
+            "name": "전자민원 메뉴 접힘",
+            "href": "javascript:goMenuPage('MN24000865','/elctcvlcpt/comm/getOHAC0000M2.do?menuId=MN24001593','전자민원','N');",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0085",
+          "category": "notice",
+          "action": "locate",
+          "label": "연금소식 메뉴 접힘",
+          "evidence": {
+            "name": "연금소식 메뉴 접힘",
+            "href": "javascript:goMenuPage('MN24000867','/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897','연금소식','N');",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0006",
+          "category": "help",
+          "action": "navigate",
+          "label": "지사찾기",
+          "destinationUrl": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+          "evidence": {
+            "name": "지사찾기",
+            "href": "/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0102",
+          "category": "help",
+          "action": "locate",
+          "label": "연금정보 메뉴 접힘",
+          "evidence": {
+            "name": "연금정보 메뉴 접힘",
+            "href": "javascript:goMenuPage('MN24000868','/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103','연금정보','N');",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0515",
+          "category": "help",
+          "action": "locate",
+          "label": "알기쉬운 국민연금",
+          "evidence": {
+            "name": "알기쉬운 국민연금",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0516",
+          "category": "help",
+          "action": "locate",
+          "label": "국민연금 제도",
+          "evidence": {
+            "name": "국민연금 제도",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0528",
+          "category": "help",
+          "action": "locate",
+          "label": "보험료 납부",
+          "evidence": {
+            "name": "보험료 납부",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0529",
+          "category": "help",
+          "action": "locate",
+          "label": "연금보험료",
+          "evidence": {
+            "name": "연금보험료",
+            "href": "javascript:;",
+            "onclick": "goMenuPage('MN24001113','/pnsinfo/ntpsklg/getOHAF0038M0.do','연금보험료','N');",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0530",
+          "category": "help",
+          "action": "locate",
+          "label": "반납금 및 추납보험료 납부방법",
+          "evidence": {
+            "name": "반납금 및 추납보험료 납부방법",
+            "href": "javascript:;",
+            "onclick": "goMenuPage('MN24001114','/pnsinfo/ntpsklg/getOHAF0045M0.do','반납금 및 추납보험료 납부방법','N');",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0531",
+          "category": "help",
+          "action": "locate",
+          "label": "반환일시금 반납",
+          "evidence": {
+            "name": "반환일시금 반납",
+            "href": "javascript:;",
+            "onclick": "goMenuPage('MN24001115','/pnsinfo/ntpsklg/getOHAF0046M0.do','반환일시금 반납','N');",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0532",
+          "category": "help",
+          "action": "locate",
+          "label": "연금보험료의 추후납부(추납)",
+          "evidence": {
+            "name": "연금보험료의 추후납부(추납)",
+            "href": "javascript:;",
+            "onclick": "goMenuPage('MN24001116','/pnsinfo/ntpsklg/getOHAF0047M0.do','연금보험료의 추후납부(추납)','N');",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0533",
+          "category": "help",
+          "action": "locate",
+          "label": "연금 종류 및 청구",
+          "evidence": {
+            "name": "연금 종류 및 청구",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0544",
+          "category": "help",
+          "action": "locate",
+          "label": "권리구제 제도 안내",
+          "evidence": {
+            "name": "권리구제 제도 안내",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0550",
+          "category": "help",
+          "action": "locate",
+          "label": "국민연금 용어사전",
+          "evidence": {
+            "name": "국민연금 용어사전",
+            "href": "javascript:;",
+            "onclick": "goMenuPage('MN24000988','/pnsinfo/ntpsklg/getOHAF0110P0.do','국민연금 용어사전','Y');",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0576",
+          "category": "help",
+          "action": "navigate",
+          "label": "연금정보",
+          "destinationUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+          "evidence": {
+            "name": "연금정보",
+            "href": "/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0577",
+          "category": "help",
+          "action": "navigate",
+          "label": "알기쉬운 국민연금",
+          "destinationUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+          "evidence": {
+            "name": "알기쉬운 국민연금",
+            "href": "/pnsinfo/ntpsklg/getOHAF0001M0.do?menuId=MN24001103",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0578",
+          "category": "help",
+          "action": "navigate",
+          "label": "보험료 납부",
+          "destinationUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0038M0.do?menuId=MN24001113",
+          "evidence": {
+            "name": "보험료 납부",
+            "href": "/pnsinfo/ntpsklg/getOHAF0038M0.do?menuId=MN24001113",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0580",
+          "category": "help",
+          "action": "locate",
+          "label": "점자보기 BRF",
+          "evidence": {
+            "name": "점자보기 BRF",
+            "href": "javascript:;",
+            "onclick": "makeDocuBrailleElements();showDocuBrailleViewer();",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0581",
+          "category": "help",
+          "action": "locate",
+          "label": "특징",
+          "evidence": {
+            "name": "특징",
+            "href": "#tab1",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0582",
+          "category": "help",
+          "action": "locate",
+          "label": "보험료 금액 및 보험료율",
+          "evidence": {
+            "name": "보험료 금액 및 보험료율",
+            "href": "#tab2",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0583",
+          "category": "help",
+          "action": "locate",
+          "label": "보험료 납부기한",
+          "evidence": {
+            "name": "보험료 납부기한",
+            "href": "#tab3",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0584",
+          "category": "help",
+          "action": "locate",
+          "label": "보험료 납부기간",
+          "evidence": {
+            "name": "보험료 납부기간",
+            "href": "#tab4",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0585",
+          "category": "help",
+          "action": "locate",
+          "label": "농어업인에 대한 연금보험료 국고보조",
+          "evidence": {
+            "name": "농어업인에 대한 연금보험료 국고보조",
+            "href": "#tab5",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0586",
+          "category": "help",
+          "action": "locate",
+          "label": "연금보험에 대한 소득공제",
+          "evidence": {
+            "name": "연금보험에 대한 소득공제",
+            "href": "#tab6",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0587",
+          "category": "help",
+          "action": "locate",
+          "label": "지역가입자 연금보험료 지원",
+          "evidence": {
+            "name": "지역가입자 연금보험료 지원",
+            "href": "#tab7",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0588",
+          "category": "help",
+          "action": "locate",
+          "label": "청년 생애 첫 연금보험료 지원",
+          "evidence": {
+            "name": "청년 생애 첫 연금보험료 지원",
+            "href": "#tab8",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0620",
+          "category": "help",
+          "action": "locate",
+          "label": "고객센터 ARS 구성도",
+          "evidence": {
+            "name": "고객센터 ARS 구성도",
+            "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0001M0.do','_blank','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=760,height=800')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0621",
+          "category": "help",
+          "action": "locate",
+          "label": "영상수어상담",
+          "evidence": {
+            "name": "영상수어상담",
+            "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0002M0.do','_blank','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=760,height=700')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0622",
+          "category": "help",
+          "action": "locate",
+          "label": "찾아오시는 길",
+          "evidence": {
+            "name": "찾아오시는 길",
+            "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0008M0.do','_blank','width=730,height=900,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,directories=no,status=no')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0623",
+          "category": "help",
+          "action": "navigate",
+          "label": "이용약관",
+          "destinationUrl": "https://www.nps.or.kr/comm/footer/getOHAH0004M0.do",
+          "evidence": {
+            "name": "이용약관",
+            "href": "/comm/footer/getOHAH0004M0.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nps-v9-0632",
+          "category": "help",
+          "action": "locate",
+          "label": "홈페이지 이용안내",
+          "evidence": {
+            "name": "홈페이지 이용안내",
+            "href": "javascript:fnOpenBrws('/comm/footer/getOHAH0005M0.do','','width=1030,height=683,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "nps-v9-0001",
+          "label": "본문 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "본문 바로가기",
+            "href": "#contents",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0002",
+          "label": "주메뉴 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "주메뉴 바로가기",
+            "href": "#gnav",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0003",
+          "label": "푸터 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "푸터 바로가기",
+            "href": "#footer",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0004",
+          "label": "NPS 국민연금 National Persion Service",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "NPS 국민연금 National Persion Service",
+            "href": "/main.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0007",
+          "label": "사업장(EDI)",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "사업장(EDI)",
+            "href": "https://edi.nps.or.kr",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0008",
+          "label": "Language 목록 접힘",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "Language 목록 접힘",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0014",
+          "label": "화면크기 목록 접힘",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "화면크기 목록 접힘",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0047",
+          "label": "국민참여 메뉴 접힘",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "국민참여 메뉴 접힘",
+            "href": "javascript:goMenuPage('MN24000866','/cmuctjng/custdscsn/getOHAD0002M0List.do?menuId=MN24000947','국민참여','N');",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0068",
+          "label": "정보공개 메뉴 접힘",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "정보공개 메뉴 접힘",
+            "href": "javascript:goMenuPage('MN24000864','/inforls/inforlsgdnc/getOHAB0006M0.do?menuId=MN24000924','정보공개','N');",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0134",
+          "label": "공단소개 메뉴 접힘",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "공단소개 메뉴 접힘",
+            "href": "javascript:goMenuPage('MN24000869','/pbcpgdnc/cmbd/getOHAG0001M0.do?menuId=MN24001013','공단소개','N');",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0157",
+          "label": "전체메뉴 접힘",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "전체메뉴 접힘",
+            "href": "#header-allmenu",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0520",
+          "label": "가입 및 신고",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "가입 및 신고",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0551",
+          "label": "홍보센터",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "홍보센터",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0559",
+          "label": "국민연금 통계",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "국민연금 통계",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0564",
+          "label": "세계 속 연금제도",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "세계 속 연금제도",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0570",
+          "label": "자료실",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "자료실",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0575",
+          "label": "home",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "home",
+            "href": "/main.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0589",
+          "label": "매우만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "매우만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0590",
+          "label": "만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0591",
+          "label": "보통",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "보통",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0592",
+          "label": "불만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "불만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0593",
+          "label": "매우불만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "매우불만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0597",
+          "label": "제안 사항 입력",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "제안 사항 입력",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "textarea"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0598",
+          "label": "확인",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "확인",
+            "href": null,
+            "onclick": "fncSaveDgstfn();",
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0599",
+          "label": "직원",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "직원",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0601",
+          "label": "위원회",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "위원회",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0605",
+          "label": "업무별 홈페이지",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "업무별 홈페이지",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0624",
+          "label": "홈페이지 개선의견",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "홈페이지 개선의견",
+            "href": "/comm/footer/getOHAH0006M0List.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0625",
+          "label": "인증서 모바일로 내보내기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "인증서 모바일로 내보내기",
+            "href": "javascript:fnOpenBrws('/raonnx/nxCR/index.jsp','_blank','')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0626",
+          "label": "페이스북",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "페이스북",
+            "href": "https://www.facebook.com/proNPS",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0627",
+          "label": "인스타그램",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "인스타그램",
+            "href": "https://instagram.com/npstagram",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0628",
+          "label": "유튜브",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "유튜브",
+            "href": "https://www.youtube.com/user/NaionalPensionServic",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0629",
+          "label": "블로그",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "블로그",
+            "href": "https://blog.naver.com/pro_nps",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0630",
+          "label": "onAir",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "onAir",
+            "href": "http://www.npsonair.kr/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0631",
+          "label": "개인정보처리방침",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "개인정보처리방침",
+            "href": "/comm/footer/getOHAH0003M0.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0633",
+          "label": "개인정보보호 관리체계 국제표준인증 ISO2770",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "개인정보보호 관리체계 국제표준인증 ISO2770",
+            "href": "/comm/pop/getISO27701.do",
+            "onclick": "window.open(this.href,'name','width=575,height=954,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no');return false;",
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0634",
+          "label": "정보보호인증ISO27001",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "정보보호인증ISO27001",
+            "href": "/comm/pop/getISO27001.do",
+            "onclick": "window.open(this.href,'name','width=575,height=954,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no');return false;",
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0635",
+          "label": "웹접근성품질마크",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "웹접근성품질마크",
+            "href": "javascript:fnOpenBrws('https://www.wa.or.kr/board/list.asp?search=total&SearchString=www.nps.or.kr&BoardID=0006','_blank','')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0672",
+          "label": "퀵메뉴 축소됨",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "퀵메뉴 축소됨",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nps-v9-0673",
+          "label": "TOP",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "TOP",
+            "href": "javascript:window.scrollTo(0,0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        }
+      ],
+      "expected": [
+        {
+          "id": "nps-v9-premium-rate-explanation",
+          "category": "help",
+          "label": "보험료 금액 및 보험료율",
+          "action": "locate",
+          "sourceIds": [
+            "nps-v9-0582"
+          ],
+          "reason": "보험료 금액과 보험료율을 설명하는 원본 문서의 local fragment 탭이다."
+        },
+        {
+          "id": "nps-v9-premium-deadline",
+          "category": "help",
+          "label": "보험료 납부기한",
+          "action": "locate",
+          "sourceIds": [
+            "nps-v9-0583"
+          ],
+          "reason": "납부기한과 연장신청 설명을 읽는 원본 문서의 local fragment 탭이다."
+        },
+        {
+          "id": "nps-v9-regional-subscriber-support",
+          "category": "help",
+          "label": "지역가입자 연금보험료 지원",
+          "action": "locate",
+          "sourceIds": [
+            "nps-v9-0587"
+          ],
+          "reason": "본문은 지원대상·지원금액·신청방법을 설명하며 탭 자체는 실제 신청 entry가 아니다."
+        }
+      ],
+      "task": {
+        "instruction": "국민연금 보험료의 납부기한 설명을 확인할 수 있는 원본 탭 위치를 찾으세요. 개인 조회, 로그인, 신청은 진행하지 마세요.",
+        "action": "locate",
+        "expectedSourceIds": [
+          "nps-v9-0583"
+        ]
+      }
+    }
+  ]
+}

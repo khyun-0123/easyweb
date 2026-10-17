@@ -1,0 +1,28 @@
+
+Running 21 tests using 1 worker
+
+(node:6568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/application-guidance.spec.mjs:6:188 › 공개 menu의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 (79ms)
+  ✓   2 tests/application-guidance.spec.mjs:6:188 › 공개 document의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 (66ms)
+  ✓   3 tests/application-guidance.spec.mjs:6:188 › 공개 help의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 (80ms)
+  ✓   4 tests/application-guidance.spec.mjs:11:1 › 명시적 실제 업무 endpoint·제출 form·기사에는 안내 문구만으로 읽기 분류를 붙이지 않는다 (83ms)
+  ✓   5 tests/application-guidance.spec.mjs:17:1 › 설명 이름도 위험 URL·handler를 되살리지 않으며 실제 예약 동작을 바꾸지 않는다 (80ms)
+  ✓   6 tests/institution-integration.spec.mjs:28:1 › 동일 소스의 generic/institution 모드를 비교하며 문서 목적이 학사 주제 배지보다 우선한다 (98ms)
+  ✓   7 tests/institution-integration.spec.mjs:36:1 › 교육 메뉴의 일반 이동·명시 handler 위치 안내와 원본 URL을 변경하지 않는다 (91ms)
+  ✓   8 tests/institution-integration.spec.mjs:43:1 › href 없는 명시적 교육 패널 버튼은 그대로 locate이며 form 제출로 승격하지 않는다 (95ms)
+  ✓   9 tests/institution-integration.spec.mjs:48:1 › locate여서 href가 생략돼도 원본 HTTP 위험 명령·onclick·javascript 위험을 되살리지 않는다 (95ms)
+  ✓  10 tests/institution-integration.spec.mjs:54:1 › login 경로 충돌·비HTTP·잘못된 URL에는 기관 근거를 붙이지 않는다 (90ms)
+  ✓  11 tests/institution-integration.spec.mjs:60:1 › 외부 소유 submit·form 내부 제어·입력과 편집 역할은 adapter를 얻지 않는다 (121ms)
+  ✓  12 tests/institution-integration.spec.mjs:72:1 › 기사·숨김·비활성 제어와 무관한 기관 경계는 adapter로 확대하지 않는다 (165ms)
+  ✓  13 tests/institution-integration.spec.mjs:82:1 › 국민연금 설명 탭은 낯선 fragment·역순 패널에서도 위치 안내를 보존한다 (89ms)
+  ✓  14 tests/institution-integration.spec.mjs:88:1 › 제목·컨테이너·패널을 같은 내용으로 교체해도 기존 기관 후보는 stale이다 (174ms)
+  ✓  15 tests/institution-integration.spec.mjs:103:1 › 동일 fragment 대상의 추가·설명 제목 변경도 후보를 무효화한다 (98ms)
+  ✓  16 tests/institution-integration.spec.mjs:114:1 › 동일 프레임의 의존 제목 교체는 이동 카드의 기본 동작을 취소하고 원본을 실행하지 않는다 (135ms)
+  ✓  17 tests/institution-integration.spec.mjs:125:1 › 원본 초점 중 패널 교체는 성공 안내와 원본 활성화를 거절한다 (141ms)
+  ✓  18 tests/institution-integration.spec.mjs:134:1 › UI의 모드는 다른 메뉴·이전 메뉴·다시 찾기에서 계속 유지된다 (356ms)
+  ✓  19 tests/institution-integration.spec.mjs:145:1 › 연결된 고정 제목의 편집 자식과 입력값 getter는 수집하지 않는다 (93ms)
+  ✓  20 tests/institution-integration.spec.mjs:160:40 › 새 academic 관계의 동일 표제 교체·의미 변경은 저장된 후보를 무효화한다 (99ms)
+  ✓  21 tests/institution-integration.spec.mjs:160:40 › 새 library 관계의 동일 표제 교체·의미 변경은 저장된 후보를 무효화한다 (104ms)
+
+  21 passed (2.9s)

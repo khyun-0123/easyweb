@@ -1,0 +1,261 @@
+{
+  "version": "v7-contract-corrected.2",
+  "annotationVersion": 2,
+  "createdAt": "2026-10-17T19:08:51.333041+00:00",
+  "classification": "ADJUDICATED_DEVELOPMENT",
+  "freshHoldout": false,
+  "baseDataset": "blind-v7-v2",
+  "baseFreeze": "docs/evidence/run004/blind-v7-v2-freeze.json",
+  "baseFreezeSha256": "c0a385e094b34d360129d56c34c9ea736cda98eee04f5b316cab77acf1b46f44",
+  "parentDataset": "development-v7-corrected",
+  "parentVersionPath": "evaluation/development-v7-corrected/VERSION.json",
+  "parentVersionSha256": "c1231d33608cc4d73d6e6d57cca0e4017380e7187a7f05cfe05deecdfe9170f8",
+  "annotationAudit": "docs/evidence/run007/v7-contract-static-review/audit.json",
+  "annotationAuditSha256": "6c084b9bca7183350272883b2b39831ba0e367c471442b17c41b7fbffcc5e760",
+  "annotationProposals": "docs/evidence/run007/v7-contract-static-review/corrections-proposed.json",
+  "annotationProposalsSha256": "aa4a80b4ecda9268ee3c968eeb570118d1c25f28f60e018aca2bb377ef9705de",
+  "reason": "Apply only the three static-contract proposals against v1: two plain HTTPS login-form actions become navigate; retain and label the actual NPS search text input as an accepted search/locate control. No existing category, expected group or task changes.",
+  "product": "NOT_RUN",
+  "independence": {
+    "productSourceRead": false,
+    "productDistRead": false,
+    "productRecommendationsRead": false,
+    "evaluationResultFilesRead": false,
+    "productExecution": false,
+    "newBlindDataRead": false,
+    "networkAccess": false,
+    "visibleUIAutomation": false,
+    "nativeUIAutomation": false,
+    "sourcePageCount": 5,
+    "newIndependentPageCount": 0,
+    "authority": "Only the independent exposed-v7 static audit and its non-applied JSON-pointer proposals; no product result informs these changes."
+  },
+  "onlySemanticChanges": {
+    "relativeTo": "development-v7-corrected",
+    "siteChanges": [
+      {
+        "sourceFile": "evaluation/development-v7-corrected-v2/sites/city.json",
+        "changes": [
+          {
+            "pointer": "/pages/0/accepted/5/action",
+            "before": "locate",
+            "after": "navigate",
+            "kind": "semantic",
+            "findingId": "V7-C03"
+          }
+        ]
+      },
+      {
+        "sourceFile": "evaluation/development-v7-corrected-v2/sites/public-agency.json",
+        "changes": [
+          {
+            "pointer": "/pages/0/accepted/5/action",
+            "before": "locate",
+            "after": "navigate",
+            "kind": "semantic",
+            "findingId": "V7-C03"
+          },
+          {
+            "pointer": "/pages/0/accepted/6",
+            "before": "ABSENT",
+            "after": {
+              "sourceId": "nps-search-input",
+              "category": "search",
+              "action": "locate"
+            },
+            "kind": "semantic",
+            "findingId": "V7-C04"
+          }
+        ]
+      }
+    ],
+    "fixtureChanges": [
+      {
+        "file": "evaluation/development-v7-corrected-v2/fixtures/public-agency.html",
+        "parentPath": "evaluation/development-v7-corrected/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+        "operation": "addAttribute",
+        "attribute": "data-eval-id",
+        "value": "nps-search-input",
+        "allOtherBytesIdentical": true,
+        "byteDelta": 32,
+        "findingId": "V7-C04",
+        "fixedIdentity": {
+          "tag": "input",
+          "id": "searchText",
+          "name": "searchText",
+          "title": "검색어 입력",
+          "type": "text"
+        }
+      }
+    ]
+  },
+  "changeSummary": {
+    "acceptedActionFieldChanges": 2,
+    "acceptedMembershipAdditions": 1,
+    "existingCategoryFieldChanges": 0,
+    "expectedFieldChanges": 0,
+    "taskFieldChanges": 0,
+    "existingSourceIdChanges": 0,
+    "labelChanges": 0,
+    "fixturePointerChanges": 5,
+    "fixtureSourceMarkerAdditions": 1,
+    "otherFixtureByteChanges": 0,
+    "totalSiteSemanticChanges": 3,
+    "newUniquePages": 0
+  },
+  "preservation": {
+    "baseInputsModified": 0,
+    "parentInputsModified": 0,
+    "firstResultsModified": 0,
+    "existingCategories": true,
+    "expectedGroups": true,
+    "tasks": true,
+    "existingLabels": true,
+    "existingSourceIds": true,
+    "notesAndObservationMetadata": true,
+    "originalFixtureBytesPreserved": true,
+    "newFixtureChangeOnlyNpsSourceMarker": true,
+    "allOtherNewFixtureBytesIdenticalToParent": true,
+    "sourcePreservationReport": "docs/evidence/run007/v7-contract-static-review/v2/source-preservation.json"
+  },
+  "fixtureReferencePolicy": "Each new site JSON refers to its new v2 fixture copy so the added NPS annotation identity resolves. These five reference rewrites are bookkeeping, separately listed from the three semantic annotation changes.",
+  "historicalMetadataPolicy": "All original notes/observation fields, including historical counts and fragment wording, remain byte-preserved in base/v1 and semantically preserved in v2. They describe original provenance, not a new observation or fresh holdout.",
+  "firstEvaluationPolicy": "Do not replace, relabel or recompute any first result. This is a separately versioned exposed development correction; product execution is NOT_RUN.",
+  "sourceCoveragePolicy": "The NPS search input is identified only by fixed title/id/name and an annotation-only data-eval-id. Its editable contents are not extracted, stored or used. Existing expected membership is unchanged.",
+  "validationReport": "docs/evidence/run007/v7-contract-static-review/v2/validation.json",
+  "exactDiffReport": "docs/evidence/run007/v7-contract-static-review/v2/exact-diff.json",
+  "hashAlgorithm": "SHA-256",
+  "files": [
+    {
+      "path": "evaluation/development-v7-corrected-v2/fixtures/city.html",
+      "sha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "bytes": 13712,
+      "basePath": "evaluation/blind-v7-v2/fixtures/city.html",
+      "baseSha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "baseBytes": 13712,
+      "byteIdenticalToBase": true,
+      "parentPath": "evaluation/development-v7-corrected/fixtures/city.html",
+      "parentSha256": "e69e2e5096b3140a694907f21da8bcc6cd890d965f0e58116e6cbdb05e229e47",
+      "parentBytes": 13712,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/fixtures/government.html",
+      "sha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "bytes": 14193,
+      "basePath": "evaluation/blind-v7-v2/fixtures/government.html",
+      "baseSha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "baseBytes": 14193,
+      "byteIdenticalToBase": true,
+      "parentPath": "evaluation/development-v7-corrected/fixtures/government.html",
+      "parentSha256": "da5e759d30dba595e1c218a7ac91353ad2682548dcae1b59df9c16e6eeeae7f7",
+      "parentBytes": 14193,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/fixtures/library.html",
+      "sha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "bytes": 14609,
+      "basePath": "evaluation/blind-v7-v2/fixtures/library.html",
+      "baseSha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "baseBytes": 14609,
+      "byteIdenticalToBase": true,
+      "parentPath": "evaluation/development-v7-corrected/fixtures/library.html",
+      "parentSha256": "c3f73667164e97da7d849f64d6f5cd923f969c4d0709b2d84b19673d818f0e32",
+      "parentBytes": 14609,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/fixtures/public-agency.html",
+      "sha256": "3380621ecc3886a4df4ead45079c45fbe9f118efafca563bf07060c7d5070d1e",
+      "bytes": 20849,
+      "basePath": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+      "baseSha256": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+      "baseBytes": 20817,
+      "byteIdenticalToBase": false,
+      "parentPath": "evaluation/development-v7-corrected/fixtures/public-agency.html",
+      "parentSha256": "b90fa6af37d71e557de696ad7771bdc96ee9d50e8f179b8ecf0822b373d60d5c",
+      "parentBytes": 20817,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/fixtures/smu.html",
+      "sha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "bytes": 10948,
+      "basePath": "evaluation/blind-v7-v2/fixtures/smu.html",
+      "baseSha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "baseBytes": 10948,
+      "byteIdenticalToBase": true,
+      "parentPath": "evaluation/development-v7-corrected/fixtures/smu.html",
+      "parentSha256": "e5043909ce7d5e7d3473317850ce5c438221f6b0d014fefb95a3af2456b7f1cd",
+      "parentBytes": 10948,
+      "byteIdenticalToParent": true
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/sites/city.json",
+      "sha256": "bbb4fd1dea5ba0319a133ae9757e5f5497563a2abda9c962bfbd5973b8dbcc84",
+      "bytes": 5631,
+      "basePath": "evaluation/blind-v7-v2/sites/city.json",
+      "baseSha256": "f8912e7261ed8dc651a69071a35ffa3b026f370444d0b8c319bcc64adde5503d",
+      "baseBytes": 5615,
+      "byteIdenticalToBase": false,
+      "parentPath": "evaluation/development-v7-corrected/sites/city.json",
+      "parentSha256": "eef3353887243ed7c20636473dafe0e0054ab5f6cceb4a82350b9ab39f85856e",
+      "parentBytes": 5613,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/sites/government.json",
+      "sha256": "def585d7a199be32179e4498df4f416b5965127c87c127d649423e2320111107",
+      "bytes": 5887,
+      "basePath": "evaluation/blind-v7-v2/sites/government.json",
+      "baseSha256": "84af772d7496152bffec69b1468628d984ddf87c7d582c0d9e58e587b935ff39",
+      "baseBytes": 5871,
+      "byteIdenticalToBase": false,
+      "parentPath": "evaluation/development-v7-corrected/sites/government.json",
+      "parentSha256": "84af772d7496152bffec69b1468628d984ddf87c7d582c0d9e58e587b935ff39",
+      "parentBytes": 5871,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/sites/library.json",
+      "sha256": "a010bf0b1b7bc5f0857580cae24a499f9b964a058272084c093853f83c2e5d3d",
+      "bytes": 5692,
+      "basePath": "evaluation/blind-v7-v2/sites/library.json",
+      "baseSha256": "62c1611ef8e63281853de6565d6d191469392faae5c0cdba5e078770b58644df",
+      "baseBytes": 5676,
+      "byteIdenticalToBase": false,
+      "parentPath": "evaluation/development-v7-corrected/sites/library.json",
+      "parentSha256": "62c1611ef8e63281853de6565d6d191469392faae5c0cdba5e078770b58644df",
+      "parentBytes": 5676,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/sites/public-agency.json",
+      "sha256": "8567a84c29d9086f3f7f6b86e0ae2888e366c50ca8a0e26271460ae487e3e79b",
+      "bytes": 5839,
+      "basePath": "evaluation/blind-v7-v2/sites/public-agency.json",
+      "baseSha256": "bfa74982c7163d11ce516c083ac8b2045571954742dcec038396890be65e02f9",
+      "baseBytes": 5697,
+      "byteIdenticalToBase": false,
+      "parentPath": "evaluation/development-v7-corrected/sites/public-agency.json",
+      "parentSha256": "bfa74982c7163d11ce516c083ac8b2045571954742dcec038396890be65e02f9",
+      "parentBytes": 5697,
+      "byteIdenticalToParent": false
+    },
+    {
+      "path": "evaluation/development-v7-corrected-v2/sites/smu.json",
+      "sha256": "c2623fc6d0c68a6a00b4ccd8db86702aef560e01fa341ea26c169ccdae4c23cd",
+      "bytes": 5728,
+      "basePath": "evaluation/blind-v7-v2/sites/smu.json",
+      "baseSha256": "888b4fd279e0aeec9ea5602858d172926b9228a175e9f6a15e69920ead11e7ac",
+      "baseBytes": 5678,
+      "byteIdenticalToBase": false,
+      "parentPath": "evaluation/development-v7-corrected/sites/smu.json",
+      "parentSha256": "d016a4035fbe4ceb6a7fc52c845cc44bb58ae6da6f7f1c80c171d484c1ec383d",
+      "parentBytes": 5712,
+      "byteIdenticalToParent": false
+    }
+  ]
+}

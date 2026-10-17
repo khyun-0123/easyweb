@@ -8,6 +8,17 @@ export interface SourceSnapshot {
   attributes: string;
 }
 
+export interface InstitutionEvidence {
+  adapter: string;
+  version: number;
+  rule: string;
+  category: Category;
+  score: 65 | 70;
+  pageTask: 'reading';
+  fingerprint: string;
+  dependencies: readonly Element[];
+}
+
 export interface Candidate {
   element: HTMLElement;
   label: string;
@@ -28,6 +39,7 @@ export interface Candidate {
   collectionDependent?: boolean;
   supplementalDependent?: boolean;
   relatedLabel?: string;
+  institutionEvidence?: InstitutionEvidence;
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

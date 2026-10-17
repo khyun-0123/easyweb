@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-17T18:56:22.936Z",
+  "checkedAt": "2026-10-17T18:56:44.220Z",
+  "status": "FAIL",
+  "scope": "Synthetic supported-origin institution adapter performance, same source in both modes. No real institution response, native browser operation, user profile or file execution.",
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "27.0.0",
+    "node": "v26.0.0",
+    "cpuModel": "Apple M4 Pro",
+    "logicalCpus": 12,
+    "memoryBytes": 25769803776,
+    "chromium": "156.0.8078.4",
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 1080
+    },
+    "deviceScaleFactor": 1,
+    "coordination": "Root development comparisons terminal; no root product benchmarks running; fresh observer quiescent and holding new browser launches.",
+    "observerLoadNote": "Observer confirmed no active headless browser and held new browser launches. Observer reported continuing read-only HTTP checks. Other OS background CPU load was not measured."
+  },
+  "fixture": {
+    "url": "https://www.smu.ac.kr/kor/life/technical.do",
+    "controls": 1000,
+    "structure": "One common-board, fixed IT services heading, 1,000 list items containing dt.board-thumb-content-title source anchors and unfamiliar synthetic article references.",
+    "sha256": "224149a9dd450325c47894aaf43771caec0b18fddca6debea4b1cb3cc27f574c",
+    "minimumInstitutionEvidenceCount": 900
+  },
+  "measurement": {
+    "analysisPipeline": "analyzePage + classify(mode) + rank; phase timings also recorded. Pipeline <=300ms is an additional stricter diagnostic, not a replacement for the existing analyzePage-only <=300ms acceptance gate.",
+    "overlayReady": "append host, openEasyMode(mode) including analysis/classification/ranking/render/focus/watchers, then two requestAnimationFrame callbacks and layout/focus readiness check; identical ready semantics to benchmark.mjs.",
+    "currentnessBatch": "areCandidatesCurrent(all classified candidates), separately timed; not part of the analysis/overlay budget.",
+    "warmupExcluded": true,
+    "runsPerMode": 10,
+    "order": [
+      {
+        "mode": "generic",
+        "run": 1
+      },
+      {
+        "mode": "institution",
+        "run": 1
+      },
+      {
+        "mode": "institution",
+        "run": 2
+      },
+      {
+        "mode": "generic",
+        "run": 2
+      },
+      {
+        "mode": "generic",
+        "run": 3
+      },
+      {
+        "mode": "institution",
+        "run": 3
+      },
+      {
+        "mode": "institution",
+        "run": 4
+      },
+      {
+        "mode": "generic",
+        "run": 4
+      },
+      {
+        "mode": "generic",
+        "run": 5
+      },
+      {
+        "mode": "institution",
+        "run": 5
+      },
+      {
+        "mode": "institution",
+        "run": 6
+      },
+      {
+        "mode": "generic",
+        "run": 6
+      },
+      {
+        "mode": "generic",
+        "run": 7
+      },
+      {
+        "mode": "institution",
+        "run": 7
+      },
+      {
+        "mode": "institution",
+        "run": 8
+      },
+      {
+        "mode": "generic",
+        "run": 8
+      },
+      {
+        "mode": "generic",
+        "run": 9
+      },
+      {
+        "mode": "institution",
+        "run": 9
+      },
+      {
+        "mode": "institution",
+        "run": 10
+      },
+      {
+        "mode": "generic",
+        "run": 10
+      }
+    ],
+    "percentile": "nearest-rank p95 with n=10 is the maximum observed sample; not a population estimate",
+    "limitations": "Small synthetic headless sample on this machine. Other unobserved background OS load may affect timings; actual site/network/native startup excluded."
+  },
+  "thresholds": {
+    "existingBenchmark": {
+      "analyzerP95Milliseconds": 300,
+      "overlayReadyP95Milliseconds": 1000
+    },
+    "additionalPipelineDiagnostic": {
+      "analysisPipelineP95Milliseconds": 300
+    }
+  },
+  "modes": {
+    "generic": {
+      "status": "PASS",
+      "validity": {
+        "exactlyTenRuns": true,
+        "allCandidatesCount1000": true,
+        "allClassifiedCount1000": true,
+        "allOverlaysReady": true,
+        "allBatchCurrent": true,
+        "activeBranch": true
+      },
+      "analyzerP95Milliseconds": 201.60000000149012,
+      "classifierP95Milliseconds": 49.100000001490116,
+      "rankP95Milliseconds": 1.1000000014901161,
+      "analysisPipelineP95Milliseconds": 251.80000000447035,
+      "currentnessBatchP95Milliseconds": 173.79999999701977,
+      "overlayReadyP95Milliseconds": 265.79999999701977,
+      "warmup": {
+        "mode": "generic",
+        "run": 0,
+        "candidateCount": 1000,
+        "classifiedCount": 1000,
+        "institutionEvidenceCount": 0,
+        "selectedCount": 6,
+        "overlayCardCount": 6,
+        "analyzerMilliseconds": 201.79999999701977,
+        "classifierMilliseconds": 51.100000001490116,
+        "rankMilliseconds": 1.5,
+        "analysisPipelineMilliseconds": 254.39999999850988,
+        "currentnessBatchMilliseconds": 172.89999999850988,
+        "allCurrent": true,
+        "overlayReadyMilliseconds": 261.20000000298023,
+        "ready": true
+      },
+      "measures": [
+        {
+          "mode": "generic",
+          "run": 1,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 198.5,
+          "classifierMilliseconds": 48.899999998509884,
+          "rankMilliseconds": 1,
+          "analysisPipelineMilliseconds": 248.39999999850988,
+          "currentnessBatchMilliseconds": 173,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 259.20000000298023,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 2,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.29999999701977,
+          "classifierMilliseconds": 48.80000000447035,
+          "rankMilliseconds": 0.7999999970197678,
+          "analysisPipelineMilliseconds": 248.89999999850988,
+          "currentnessBatchMilliseconds": 172.10000000149012,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 259.1000000014901,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 3,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 198.5,
+          "classifierMilliseconds": 46.80000000447035,
+          "rankMilliseconds": 0.7999999970197678,
+          "analysisPipelineMilliseconds": 246.10000000149012,
+          "currentnessBatchMilliseconds": 172.10000000149012,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 265.79999999701977,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 4,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 198.59999999403954,
+          "classifierMilliseconds": 47.80000000447035,
+          "rankMilliseconds": 1,
+          "analysisPipelineMilliseconds": 247.39999999850988,
+          "currentnessBatchMilliseconds": 172.89999999850988,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 259.79999999701977,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 5,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 198.70000000298023,
+          "classifierMilliseconds": 47.899999998509884,
+          "rankMilliseconds": 1,
+          "analysisPipelineMilliseconds": 247.60000000149012,
+          "currentnessBatchMilliseconds": 173.39999999850988,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 259.70000000298023,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 6,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 201.60000000149012,
+          "classifierMilliseconds": 49.100000001490116,
+          "rankMilliseconds": 1.1000000014901161,
+          "analysisPipelineMilliseconds": 251.80000000447035,
+          "currentnessBatchMilliseconds": 173.5,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 257.19999999552965,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 7,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 200.39999999850988,
+          "classifierMilliseconds": 47.20000000298023,
+          "rankMilliseconds": 1,
+          "analysisPipelineMilliseconds": 248.60000000149012,
+          "currentnessBatchMilliseconds": 173.79999999701977,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 261.5,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 8,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.10000000149012,
+          "classifierMilliseconds": 47.399999998509884,
+          "rankMilliseconds": 1,
+          "analysisPipelineMilliseconds": 247.5,
+          "currentnessBatchMilliseconds": 173.70000000298023,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 262.69999999552965,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 9,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.10000000149012,
+          "classifierMilliseconds": 48.399999998509884,
+          "rankMilliseconds": 1,
+          "analysisPipelineMilliseconds": 248.5,
+          "currentnessBatchMilliseconds": 173.60000000149012,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 261.79999999701977,
+          "ready": true
+        },
+        {
+          "mode": "generic",
+          "run": 10,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 0,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 200.5,
+          "classifierMilliseconds": 47,
+          "rankMilliseconds": 0.9000000059604645,
+          "analysisPipelineMilliseconds": 248.40000000596046,
+          "currentnessBatchMilliseconds": 173.39999999850988,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 261.69999999552965,
+          "ready": true
+        }
+      ],
+      "existingBenchmarkStatus": "PASS",
+      "additionalPipelineDiagnosticStatus": "PASS"
+    },
+    "institution": {
+      "status": "FAIL",
+      "validity": {
+        "exactlyTenRuns": true,
+        "allCandidatesCount1000": true,
+        "allClassifiedCount1000": true,
+        "allOverlaysReady": true,
+        "allBatchCurrent": true,
+        "activeBranch": true
+      },
+      "analyzerP95Milliseconds": 200,
+      "classifierP95Milliseconds": 216,
+      "rankP95Milliseconds": 4.399999998509884,
+      "analysisPipelineP95Milliseconds": 419.6000000014901,
+      "currentnessBatchP95Milliseconds": 384.5,
+      "overlayReadyP95Milliseconds": 443.5,
+      "warmup": {
+        "mode": "institution",
+        "run": 0,
+        "candidateCount": 1000,
+        "classifiedCount": 1000,
+        "institutionEvidenceCount": 1000,
+        "selectedCount": 6,
+        "overlayCardCount": 6,
+        "analyzerMilliseconds": 200.90000000596046,
+        "classifierMilliseconds": 207.59999999403954,
+        "rankMilliseconds": 3.9000000059604645,
+        "analysisPipelineMilliseconds": 412.40000000596046,
+        "currentnessBatchMilliseconds": 369.19999999552965,
+        "allCurrent": true,
+        "overlayReadyMilliseconds": 414.20000000298023,
+        "ready": true
+      },
+      "measures": [
+        {
+          "mode": "institution",
+          "run": 1,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.29999999701977,
+          "classifierMilliseconds": 207.30000000447035,
+          "rankMilliseconds": 3.5,
+          "analysisPipelineMilliseconds": 410.1000000014901,
+          "currentnessBatchMilliseconds": 370,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 422.1000000014901,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 2,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 198.5,
+          "classifierMilliseconds": 204.60000000149012,
+          "rankMilliseconds": 3.5999999940395355,
+          "analysisPipelineMilliseconds": 406.69999999552965,
+          "currentnessBatchMilliseconds": 367.6000000014901,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 424.3999999985099,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 3,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 198.79999999701977,
+          "classifierMilliseconds": 205.80000000447035,
+          "rankMilliseconds": 3.399999998509884,
+          "analysisPipelineMilliseconds": 408,
+          "currentnessBatchMilliseconds": 368.70000000298023,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 424.09999999403954,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 4,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.60000000149012,
+          "classifierMilliseconds": 206.39999999850988,
+          "rankMilliseconds": 2.7999999970197678,
+          "analysisPipelineMilliseconds": 408.79999999701977,
+          "currentnessBatchMilliseconds": 366.90000000596046,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 425.3999999985099,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 5,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.19999999552965,
+          "classifierMilliseconds": 204.30000000447035,
+          "rankMilliseconds": 4.299999997019768,
+          "analysisPipelineMilliseconds": 407.79999999701977,
+          "currentnessBatchMilliseconds": 368.70000000298023,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 422.29999999701977,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 6,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 200,
+          "classifierMilliseconds": 216,
+          "rankMilliseconds": 3.600000001490116,
+          "analysisPipelineMilliseconds": 419.6000000014901,
+          "currentnessBatchMilliseconds": 384.5,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 443.5,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 7,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.10000000149012,
+          "classifierMilliseconds": 205.19999999552965,
+          "rankMilliseconds": 4.399999998509884,
+          "analysisPipelineMilliseconds": 408.69999999552965,
+          "currentnessBatchMilliseconds": 367.40000000596046,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 421.8999999985099,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 8,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.40000000596046,
+          "classifierMilliseconds": 205.59999999403954,
+          "rankMilliseconds": 3.3000000044703484,
+          "analysisPipelineMilliseconds": 408.30000000447035,
+          "currentnessBatchMilliseconds": 370.5,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 422.8999999985099,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 9,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.19999999552965,
+          "classifierMilliseconds": 205.90000000596046,
+          "rankMilliseconds": 2.899999998509884,
+          "analysisPipelineMilliseconds": 408,
+          "currentnessBatchMilliseconds": 367.29999999701977,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 423,
+          "ready": true
+        },
+        {
+          "mode": "institution",
+          "run": 10,
+          "candidateCount": 1000,
+          "classifiedCount": 1000,
+          "institutionEvidenceCount": 1000,
+          "selectedCount": 6,
+          "overlayCardCount": 6,
+          "analyzerMilliseconds": 199.69999999552965,
+          "classifierMilliseconds": 207.39999999850988,
+          "rankMilliseconds": 3.100000001490116,
+          "analysisPipelineMilliseconds": 410.19999999552965,
+          "currentnessBatchMilliseconds": 366.3999999985099,
+          "allCurrent": true,
+          "overlayReadyMilliseconds": 423.70000000298023,
+          "ready": true
+        }
+      ],
+      "existingBenchmarkStatus": "PASS",
+      "additionalPipelineDiagnosticStatus": "FAIL"
+    }
+  },
+  "routing": {
+    "fulfilledSyntheticNavigations": 1,
+    "abortedRequests": 0
+  },
+  "validity": {
+    "sourceStable": true,
+    "sourceStableDuringBundle": true
+  },
+  "bundleSha256": "5a537a1076c46f5e608a9ac352926fd1b9740b1a69e873b7c01a76239a967620",
+  "sourceSha256Before": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/institution-evidence.ts": "418f4899d07528aba0aeeaa0bd5cdc6c9582527dfa89f96d25d6417f760d4ca0",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+    "src/ranker.ts": "e3459131d494e684cf28f2b73164cc0c16e0f422b89986e4e77c0791a854224d",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7"
+  },
+  "sourceSha256After": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/institution-evidence.ts": "418f4899d07528aba0aeeaa0bd5cdc6c9582527dfa89f96d25d6417f760d4ca0",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+    "src/ranker.ts": "e3459131d494e684cf28f2b73164cc0c16e0f422b89986e4e77c0791a854224d",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7"
+  },
+  "existingBenchmarkStatus": "PASS",
+  "additionalPipelineDiagnosticStatus": "FAIL",
+  "assessment": "Existing analyzePage-only and overlay-ready budget gates pass in both modes. The additional complete-pipeline 300ms diagnostic fails only in institution mode.",
+  "reportingClarification": {
+    "clarifiedAt": "2026-10-17T18:57:56.939140+00:00",
+    "rawReport": "performance-raw-before-gate-clarification.json",
+    "rawReportSha256": "fa8c27d564984836931a791227352ee8ac0dd02a63192255836b1fe8e84d5634",
+    "measuredSamplesUnchanged": true,
+    "measurementRerun": false,
+    "reason": "Separate original analyzePage-only/overlay gates from the requested additional complete-pipeline diagnostic; numeric thresholds and measured samples unchanged."
+  }
+}

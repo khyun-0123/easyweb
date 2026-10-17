@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-17T19:02:51.593906+00:00",
+  "adapterVersion": 2,
+  "scope": "Known semantic extensions from already exposed development structures only. No unseen holdout contents, new collection/network/CUA/native UI or product-quality evaluation performed by this worker.",
+  "ownedFiles": [
+    "src/institution-evidence.ts",
+    "tests/institution-evidence.spec.mjs",
+    "docs/evidence/run007/institution-module/v2/"
+  ],
+  "sourceHashes": {
+    "src/institution-evidence.ts": "4f0f8e337260b3d6870d4dd85a8eaa2e688b2c56f642c5b5f5de59ed0a7cb494",
+    "tests/institution-evidence.spec.mjs": "b69a2e7e8f389f00749716463921bf3d28037b73a6b49f59f034821cfac52977"
+  },
+  "API": "Unchanged institutionEvidence(candidate:Candidate,cache?:InstitutionEvidenceCache):InstitutionEvidence|undefined; ADAPTER_VERSION2. No persistent relationship cache.",
+  "newRules": [
+    {
+      "adapter": "smu-academic-documents",
+      "rule": "selected-topic-following-content",
+      "evidence": "Actual .contents-wrap>.tab-outer with ul.tab-ul, 2–12 fixed local-document peers, exactly1selected sibling whose safe title equals following section.content-wrap>.content>h4; majority educational topics. Source must be an educational document, not portal/SSO/application operation.",
+      "dependencies": "Outer region, tab container/list, following content region/title, selected sibling and educational peers; safe peer names participate in fingerprint.",
+      "taxonomy": "Academic document purpose may override bare issuance word for an informational tab; actual operation/portal source is not rewritten."
+    },
+    {
+      "adapter": "nl-reading-guides",
+      "rule": "editorial-guide-download",
+      "evidence": "Within exact official /NL/contents/ source region #sub_content, a button.download_btn directly inside h4.tit in .link_api_cont with equal safe own heading/name and explicit guide/manual download wording.",
+      "dependencies": "Source region, original download branch and actual heading node; same-text heading replacement changes refs."
+    },
+    {
+      "adapter": "nl-reading-guides",
+      "rule": "local-explanatory-guide-tabs",
+      "evidence": "Same #sub_content contains explicit editorial guide button and .content_info h3 search heading + depth4-menu__slider/swiper-wrapper direct role-group anchors to local document routes; source name is an informational search topic, not service entry.",
+      "selectedDecoration": "Only marked direct .sr-only selected state is removed for semantic comparison. Candidate label remains unchanged.",
+      "dependencies": "Source region, content/title/group structures, all peer anchors and actual guide/heading/branch nodes; private descendants excluded."
+    }
+  ],
+  "sharedSafety": "Root/classifier guards remain authoritative before module invocation. Module never changes action/href, executes controls, reads input values or makes requests. Source metadata uses safe analyzer helpers, and no eval IDs/opaque query values/document numbers/exact captured titles/expected positions determine meaning.",
+  "verification": {
+    "preservedPriorCases": 29,
+    "addedSyntheticCases": 16,
+    "firstTargeted": {
+      "path": "docs/evidence/run007/institution-module/v2/first-targeted.log",
+      "passed": 43,
+      "failed": 2,
+      "interpretation": "One real module gap: form-contained guide button could be used as dependency by adjacent tabs; helper now rejects editable/excluded ancestors. One negative fixture failed to establish separate region reliably; corrected with explicit sibling scope."
+    },
+    "finalTargeted": {
+      "command": "npx playwright test tests/institution-evidence.spec.mjs",
+      "path": "docs/evidence/run007/institution-module/v2/final-targeted.log",
+      "passed": 45,
+      "failed": 0,
+      "runnerDuration": "4.1s"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "path": "docs/evidence/run007/institution-module/v2/final-typecheck.log",
+      "exitCode": 0,
+      "scope": "Shared current tree at check time; root may continue other integrations."
+    }
+  },
+  "newSyntheticCoverage": [
+    "Unfamiliar educational document paths/title combinations/fragment IDs and reordered academic subjects; certificate document vs actual issuance/portal/SSO link.",
+    "Selected heading mismatch/missing/multiple selection, unrelated following region, editable title, same-text supporting-heading replacement.",
+    "Unknown guide/manual title and unrelated document route IDs; own download heading and explanatory search tab structure.",
+    "Non-guide binary download, real form control, editable heading, sibling unrelated source region, global search input/submit and reservation tabs.",
+    "Guide-heading identity replacement and guide semantics change invalidate related evidence; input/custom editing getters are never accessed."
+  ],
+  "knownLimits": [
+    "Existing ranking/equal-topic capacity issue and ambiguous header/login annotations are not modified.",
+    "No claim that45synthetic tests prove development metrics, independent generalization or S07 completion. Root owns whole-pipeline safety/currentness and mode evaluation.",
+    "Cache optimization remains deferred; current function recomputes dependency facts on rechecks."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "recordedAt": "2026-10-17T19:04:02.882Z",
+  "status": "TARGETED_PASS_SOURCE_READY",
+  "ownerScope": [
+    "src/ranker.ts",
+    "tests/filter-ordering.spec.mjs",
+    "docs/evidence/run007/filter-ordering"
+  ],
+  "rationale": "Equally supported explicit search filters in an authored semantic list should follow that source list, rather than promoting a shorter label and displacing a source peer from the first six cards. This is an explicit first-screen tie-policy change using generic structural evidence, not an evaluation-label rule.",
+  "policy": {
+    "eligible": "category search, pageTask control, supplementalDependent, and current supplementalEvidence.filter; nearest semantic ul/ol/role=list and same actual form owner are required",
+    "exactTies": [
+      "category",
+      "score",
+      "pagePriority",
+      "navigationPriority",
+      "context",
+      "pagePurpose"
+    ],
+    "ordering": "Sort by existing comparator first; replace only each tied form/list group's existing positions using source DOM order. Separate groups never borrow positions. The existing reading-group policy is preserved.",
+    "retained": [
+      "maximum six cards",
+      "thresholds and scores",
+      "source-backed-task selection",
+      "category diversity",
+      "destination/source deduplication",
+      "ordinary link/action semantics"
+    ],
+    "cache": "One fresh SupplementalCache within each ordered() pass; no retained rank or currentness cache. Filter metadata checks are local; no whole-form scan or input values are read.",
+    "complexity": "Push group indices, then sort tied groups; no additional per-candidate whole-form scans or growing filter-array copies."
+  },
+  "baseline": {
+    "command": "npx playwright test tests/filter-ordering.spec.mjs",
+    "tests": 7,
+    "passed": 3,
+    "failed": 4,
+    "log": "docs/evidence/run007/filter-ordering/baseline.log",
+    "source": "docs/evidence/run007/filter-ordering/ranker-before.ts",
+    "sourceSha256": "e3459131d494e684cf28f2b73164cc0c16e0f422b89986e4e77c0791a854224d",
+    "note": "The separate initial-one-character-fixture.log contains invalid one-character synthetic labels rejected by the existing classifier. Those labels were corrected to safe unknown two-character terms before the meaningful baseline above. No source patch preceded that meaningful baseline."
+  },
+  "final": {
+    "command": "npx playwright test tests/filter-ordering.spec.mjs tests/ranker-capacity.spec.mjs tests/classifier-ranking.spec.mjs",
+    "passed": 80,
+    "failed": 0,
+    "breakdown": {
+      "filterOrdering": 8,
+      "classifierRanking": 68,
+      "rankerCapacity": 4
+    },
+    "log": "docs/evidence/run007/filter-ordering/focused.log",
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": "docs/evidence/run007/filter-ordering/typecheck.log"
+    },
+    "diffCheck": {
+      "command": "git diff --check -- src/ranker.ts",
+      "exitCode": 0
+    }
+  },
+  "coverage": [
+    "unknown synthetic filter names preserve DOM order despite differing label lengths",
+    "different scores or purposes retain existing precedence",
+    "separate lists within one form keep existing group positions",
+    "separate forms and global search input do not mix",
+    "40 deterministic shuffled candidate arrays",
+    "first six and overflow retain source order and offer each original once",
+    "ordinary search menus without explicit filter evidence retain lexical/length policy",
+    "a later ordering batch sees changed form metadata and does not reuse old evidence"
+  ],
+  "hashes": {
+    "ranker": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+    "test": "58ce2c91bfdfd614c6929be96b6cde734eb3b83e9b0508032fd976434985346a",
+    "patch": "37ce0118c307bef10a14b420df9117193102440402cb16194dfbe34ec66ca28d",
+    "baseline": "fa14c4cc4ce355062b3805a79b38865925951bcda7ea8cc68c9d132d62ec91bd",
+    "focused": "037bc0381bcab283fcdde2143c28701fff260b6ec40bd3ea021785dafbbd27a1",
+    "typecheck": "a643f0dbef555ed63b7fb9a2b4cceda922106aba7da09ee8e5916d01e4844d6e"
+  },
+  "boundary": {
+    "sourceEditsStopped": true,
+    "fullVerifyRun": false,
+    "performanceRun": false,
+    "developmentEvaluationRun": false,
+    "realNetwork": false,
+    "CUA": false,
+    "nativeUI": false,
+    "blindV9Read": false,
+    "acceptanceClaim": false,
+    "notes": "Only routed/blocked headless local synthetic fixtures. Parent owns full integration, development metrics, source freeze, documentation and acceptance. Other source owners worked concurrently, so this report does not claim a global source freeze."
+  }
+}

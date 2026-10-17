@@ -1,0 +1,662 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "pages": [
+    {
+      "id": "smu-v9-01",
+      "url": "https://www.smu.ac.kr/kor/life/onlineGuide.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/onlineGuide.do",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v9-v2/smu.html",
+      "observation": {
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "capturedAt": "2026-10-17T18:57:45.497Z",
+        "baseURI": "https://www.smu.ac.kr/kor/life/onlineGuide.do",
+        "title": "상명대학교 국문 | 학사안내 | 학사 | 학사제도 및 강의시간표 | 온라인 학사안내",
+        "sourceCapture": "docs/evidence/run007/blind-v9-raw/smu-capture.json",
+        "sourceControls": "docs/evidence/run007/blind-v9-raw/smu-controls.json",
+        "visibleControlCount": 43,
+        "retainedControlCount": 348,
+        "notes": [
+          "문서 주제가 학사 안내이므로 academic이며 안내서라는 장르만으로 일반 help로 바꾸지 않았다.",
+          "다른 문서의 fragment 앵커는 navigate, 같은 문서 fragment는 locate로 구별했다.",
+          "원본 iframe은 외부 콘텐츠를 실행하지 않는 제약 때문에 fixture에서 원래 요소와 src 속성만 남기고 CSP로 차단한다. iframe 내부 문서는 이 평가의 주석 범위가 아니다."
+        ],
+        "annotationVersion": "blind-v9-v2",
+        "originalFrozenAnnotation": "evaluation/blind-v9/smu.json",
+        "annotationVersionProvenance": "docs/evidence/run007/blind-v9-v2-provenance.json",
+        "fixedMetadataNameLimit": "The original controls proof uses a fixed-metadata heuristic. Separately recorded browser ariaSnapshot evidence resolves substantive accessible-name differences without changing original node metadata."
+      },
+      "accepted": [
+        {
+          "sourceId": "smu-v9-0260",
+          "category": "login",
+          "action": "locate",
+          "label": "Login",
+          "evidence": {
+            "name": "Login",
+            "href": "javascript:loginPopupOpen();",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0276",
+          "category": "search",
+          "action": "locate",
+          "label": "검색",
+          "evidence": {
+            "name": "검색",
+            "href": "#a",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0258",
+          "category": "apply",
+          "action": "locate",
+          "label": "수강신청",
+          "evidence": {
+            "name": "수강신청",
+            "href": "https://www.smu.ac.kr/_custom/smu/_common/login/sso_sugang.jsp",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0181",
+          "category": "academic",
+          "action": "navigate",
+          "label": "대학 · 대학원",
+          "destinationUrl": "https://www.smu.ac.kr/kor/edu/seoul01.do",
+          "evidence": {
+            "name": "대학 · 대학원",
+            "href": "/kor/edu/seoul01.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0200",
+          "category": "academic",
+          "action": "navigate",
+          "label": "학사안내",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+          "evidence": {
+            "name": "학사안내",
+            "href": "/kor/life/academicCalendar.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0219",
+          "category": "academic",
+          "action": "navigate",
+          "label": "대학생활",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/notice.do",
+          "evidence": {
+            "name": "대학생활",
+            "href": "/kor/life/notice.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0296",
+          "category": "academic",
+          "action": "locate",
+          "label": "Calendar",
+          "evidence": {
+            "name": "Calendar",
+            "href": "#a",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0315",
+          "category": "academic",
+          "action": "locate",
+          "label": "학사제도 및 강의시간표",
+          "evidence": {
+            "name": "학사제도 및 강의시간표",
+            "href": "/kor/life/onlineGuide.do#tab18441_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0316",
+          "category": "academic",
+          "action": "navigate",
+          "label": "교육과정",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/curriculum_2026.do#tab18257_",
+          "evidence": {
+            "name": "교육과정",
+            "href": "/kor/life/curriculum_2026.do#tab18257_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0317",
+          "category": "academic",
+          "action": "navigate",
+          "label": "전공제도",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/multiMajor.do#tab18178_",
+          "evidence": {
+            "name": "전공제도",
+            "href": "/kor/life/multiMajor.do#tab18178_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0318",
+          "category": "academic",
+          "action": "navigate",
+          "label": "수업 및 수강신청",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/sugang.do#tab18754_",
+          "evidence": {
+            "name": "수업 및 수강신청",
+            "href": "/kor/life/sugang.do#tab18754_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0319",
+          "category": "academic",
+          "action": "navigate",
+          "label": "학적변동",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/leave.do#tab18177_",
+          "evidence": {
+            "name": "학적변동",
+            "href": "/kor/life/leave.do#tab18177_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0320",
+          "category": "academic",
+          "action": "navigate",
+          "label": "성적",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/evaluation.do#tab18179_",
+          "evidence": {
+            "name": "성적",
+            "href": "/kor/life/evaluation.do#tab18179_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0321",
+          "category": "academic",
+          "action": "navigate",
+          "label": "졸업",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/credits.do#tab18180_",
+          "evidence": {
+            "name": "졸업",
+            "href": "/kor/life/credits.do#tab18180_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0322",
+          "category": "academic",
+          "action": "navigate",
+          "label": "교직",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/union.do#tab18185_",
+          "evidence": {
+            "name": "교직",
+            "href": "/kor/life/union.do#tab18185_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0323",
+          "category": "academic",
+          "action": "navigate",
+          "label": "등록안내",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/enrollment.do#tab18181_",
+          "evidence": {
+            "name": "등록안내",
+            "href": "/kor/life/enrollment.do#tab18181_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0326",
+          "category": "academic",
+          "action": "locate",
+          "label": "온라인 학사안내",
+          "evidence": {
+            "name": "온라인 학사안내",
+            "href": "/kor/life/onlineGuide.do#tab18144_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0327",
+          "category": "academic",
+          "action": "navigate",
+          "label": "학사제도 안내서 \"유연하게 엄정하게\"",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/policyGuide.do#tab18145_",
+          "evidence": {
+            "name": "학사제도 안내서 \"유연하게 엄정하게\"",
+            "href": "/kor/life/policyGuide.do#tab18145_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0328",
+          "category": "academic",
+          "action": "navigate",
+          "label": "학사제도 및 강의시간표 안내책자",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/CourseRegistration.do#tab18556_",
+          "evidence": {
+            "name": "학사제도 및 강의시간표 안내책자",
+            "href": "/kor/life/CourseRegistration.do#tab18556_",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0342",
+          "category": "notice",
+          "action": "navigate",
+          "label": "예결산공고",
+          "destinationUrl": "https://www.smu.ac.kr/kor/intro/settlement.do",
+          "evidence": {
+            "name": "예결산공고",
+            "href": "/kor/intro/settlement.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "smu-v9-0341",
+          "category": "help",
+          "action": "navigate",
+          "label": "정보공개",
+          "destinationUrl": "https://www.smu.ac.kr/kor/intro/Information1.do",
+          "evidence": {
+            "name": "정보공개",
+            "href": "/kor/intro/Information1.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "smu-v9-0001",
+          "label": "본문 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "본문 바로가기",
+            "href": "#tab-wrap",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0130",
+          "label": "상명대학교",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "상명대학교",
+            "href": "/kor/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a",
+            "fixedMetadataName": "상명대학교 상명대학교",
+            "accessibleName": "상명대학교",
+            "accessibleNameProof": {
+              "report": "docs/evidence/run007/blind-v9-independent-static-qa.json",
+              "issueId": "NAME-04",
+              "ariaSnapshot": "- link \"상명대학교\":\n  - /url: /kor/index.do\n  - img \"상명대학교\""
+            }
+          }
+        },
+        {
+          "sourceId": "smu-v9-0131",
+          "label": "상명소개",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "상명소개",
+            "href": "/kor/intro/presidentOffice.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0172",
+          "label": "입학안내",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "입학안내",
+            "href": "/kor/intro/whySangmyung.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0190",
+          "label": "연구 · 산학",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "연구 · 산학",
+            "href": "/kor/research/status.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0259",
+          "label": "SMPOPUP",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "SMPOPUP",
+            "href": "#a",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0261",
+          "label": "자주 사용하는 메뉴",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "자주 사용하는 메뉴",
+            "href": "#a",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0297",
+          "label": "ENG",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "ENG",
+            "href": "/eng1/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0298",
+          "label": "CHN",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "CHN",
+            "href": "/ch/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0299",
+          "label": "VNM",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "VNM",
+            "href": "/tien/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0335",
+          "label": "02-2287-5012,02-2287-5472",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "02-2287-5012,02-2287-5472",
+            "href": "tel:02-2287-5012,02-2287-5472",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0336",
+          "label": "041-550-5015",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "041-550-5015",
+            "href": "tel:041-550-5015",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0337",
+          "label": "영상정보처리기기 운영관리방침",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "영상정보처리기기 운영관리방침",
+            "href": "/board/policy/cctv.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0338",
+          "label": "이메일주소무단수집거부",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "이메일주소무단수집거부",
+            "href": "/board/policy/email.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0339",
+          "label": "개인정보처리방침",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "개인정보처리방침",
+            "href": "/kor/intro/privacyPolicy.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0340",
+          "label": "취업규칙",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "취업규칙",
+            "href": "/board/policy/rule.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0343",
+          "label": "대학정보공시",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "대학정보공시",
+            "href": "http://www.academyinfo.go.kr/popup/pubinfo1690/list.do?schlId=0000117",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0344",
+          "label": "02-2287-5114",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "02-2287-5114",
+            "href": "tel:02-2287-5114",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0345",
+          "label": "02-2287-5251",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "02-2287-5251",
+            "href": "tel:02-2287-5251",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0346",
+          "label": "041-550-5114",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "041-550-5114",
+            "href": "tel:041-550-5114",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0347",
+          "label": "041-623-0112",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "041-623-0112",
+            "href": "tel:041-623-0112",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "smu-v9-0348",
+          "label": "과학기술정보통신부 WA WEB접근성 한국웹접근성인증평가원 2026.06.12~2027.06.11",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "과학기술정보통신부 WA WEB접근성 한국웹접근성인증평가원 2026.06.12~2027.06.11",
+            "href": "http://www.wa.or.kr/board/list.asp?BoardID=0006",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        }
+      ],
+      "expected": [
+        {
+          "id": "smu-v9-academic-policy-handbook",
+          "category": "academic",
+          "label": "학사제도 안내서 \"유연하게 엄정하게\"",
+          "action": "navigate",
+          "sourceIds": [
+            "smu-v9-0327"
+          ],
+          "reason": "학사 안내서로 가는 원본의 일반 앵커이며 현재 문서와 다른 경로의 fragment다.",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/policyGuide.do#tab18145_"
+        },
+        {
+          "id": "smu-v9-course-handbook",
+          "category": "academic",
+          "label": "학사제도 및 강의시간표 안내책자",
+          "action": "navigate",
+          "sourceIds": [
+            "smu-v9-0328"
+          ],
+          "reason": "학사제도·강의시간표 안내책자로 가는 별도 문서의 일반 앵커다.",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/CourseRegistration.do#tab18556_"
+        },
+        {
+          "id": "smu-v9-curriculum-information",
+          "category": "academic",
+          "label": "교육과정",
+          "action": "navigate",
+          "sourceIds": [
+            "smu-v9-0316"
+          ],
+          "reason": "같은 학사 영역의 교육과정 정보로 가는 별도 문서의 일반 앵커다.",
+          "destinationUrl": "https://www.smu.ac.kr/kor/life/curriculum_2026.do#tab18257_"
+        }
+      ],
+      "task": {
+        "instruction": "학교의 학사제도를 읽기 위해 학사제도 안내서 \"유연하게 엄정하게\"를 여는 공개 안내 메뉴를 찾으세요. 수강신청이나 로그인은 진행하지 마세요.",
+        "action": "navigate",
+        "expectedSourceIds": [
+          "smu-v9-0327"
+        ],
+        "destinationUrl": "https://www.smu.ac.kr/kor/life/policyGuide.do#tab18145_"
+      }
+    }
+  ]
+}

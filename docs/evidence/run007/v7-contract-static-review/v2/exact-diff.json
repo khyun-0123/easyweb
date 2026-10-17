@@ -1,0 +1,133 @@
+{
+  "status": "PASS",
+  "relativeTo": "development-v7-corrected",
+  "siteDiffs": [
+    {
+      "file": "evaluation/development-v7-corrected-v2/sites/city.json",
+      "parentPath": "evaluation/development-v7-corrected/sites/city.json",
+      "differences": [
+        {
+          "pointer": "/pages/0/accepted/5/action",
+          "before": "locate",
+          "after": "navigate"
+        },
+        {
+          "pointer": "/pages/0/fixture",
+          "before": "evaluation/blind-v7-v2/fixtures/city.html",
+          "after": "evaluation/development-v7-corrected-v2/fixtures/city.html"
+        }
+      ],
+      "matchesExactAllowedDifferences": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/sites/government.json",
+      "parentPath": "evaluation/development-v7-corrected/sites/government.json",
+      "differences": [
+        {
+          "pointer": "/pages/0/fixture",
+          "before": "evaluation/blind-v7-v2/fixtures/government.html",
+          "after": "evaluation/development-v7-corrected-v2/fixtures/government.html"
+        }
+      ],
+      "matchesExactAllowedDifferences": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/sites/library.json",
+      "parentPath": "evaluation/development-v7-corrected/sites/library.json",
+      "differences": [
+        {
+          "pointer": "/pages/0/fixture",
+          "before": "evaluation/blind-v7-v2/fixtures/library.html",
+          "after": "evaluation/development-v7-corrected-v2/fixtures/library.html"
+        }
+      ],
+      "matchesExactAllowedDifferences": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/sites/public-agency.json",
+      "parentPath": "evaluation/development-v7-corrected/sites/public-agency.json",
+      "differences": [
+        {
+          "pointer": "/pages/0/accepted/5/action",
+          "before": "locate",
+          "after": "navigate"
+        },
+        {
+          "pointer": "/pages/0/accepted/6",
+          "before": "ABSENT",
+          "after": {
+            "sourceId": "nps-search-input",
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "pointer": "/pages/0/fixture",
+          "before": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+          "after": "evaluation/development-v7-corrected-v2/fixtures/public-agency.html"
+        }
+      ],
+      "matchesExactAllowedDifferences": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/sites/smu.json",
+      "parentPath": "evaluation/development-v7-corrected/sites/smu.json",
+      "differences": [
+        {
+          "pointer": "/pages/0/fixture",
+          "before": "evaluation/blind-v7-v2/fixtures/smu.html",
+          "after": "evaluation/development-v7-corrected-v2/fixtures/smu.html"
+        }
+      ],
+      "matchesExactAllowedDifferences": true
+    }
+  ],
+  "fixtureDiffs": [
+    {
+      "file": "evaluation/development-v7-corrected-v2/fixtures/city.html",
+      "parentPath": "evaluation/development-v7-corrected/fixtures/city.html",
+      "operation": "none",
+      "byteIdenticalToParent": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/fixtures/government.html",
+      "parentPath": "evaluation/development-v7-corrected/fixtures/government.html",
+      "operation": "none",
+      "byteIdenticalToParent": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/fixtures/library.html",
+      "parentPath": "evaluation/development-v7-corrected/fixtures/library.html",
+      "operation": "none",
+      "byteIdenticalToParent": true
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/fixtures/public-agency.html",
+      "parentPath": "evaluation/development-v7-corrected/fixtures/public-agency.html",
+      "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+      "operation": "addAttribute",
+      "attribute": "data-eval-id",
+      "value": "nps-search-input",
+      "allOtherBytesIdentical": true,
+      "byteDelta": 32,
+      "findingId": "V7-C04",
+      "fixedIdentity": {
+        "tag": "input",
+        "id": "searchText",
+        "name": "searchText",
+        "title": "검색어 입력",
+        "type": "text"
+      }
+    },
+    {
+      "file": "evaluation/development-v7-corrected-v2/fixtures/smu.html",
+      "parentPath": "evaluation/development-v7-corrected/fixtures/smu.html",
+      "operation": "none",
+      "byteIdenticalToParent": true
+    }
+  ],
+  "semanticSiteOperations": 3,
+  "fixtureReferenceOperations": 5,
+  "fixtureMarkerAdditions": 1,
+  "otherChanges": 0
+}

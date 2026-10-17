@@ -1,0 +1,856 @@
+{
+  "siteId": "nl",
+  "name": "국립중앙도서관",
+  "pages": [
+    {
+      "id": "nl-v9-01",
+      "url": "https://www.nl.go.kr/NL/contents/N40601000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N40601000000.do",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v9-v2/nl.html",
+      "observation": {
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "capturedAt": "2026-10-17T18:58:05.459Z",
+        "baseURI": "https://www.nl.go.kr/NL/contents/N40601000000.do",
+        "title": "국립중앙도서관>도서관 이용>이용안내>자료복사·출력>관내복사",
+        "sourceCapture": "docs/evidence/run007/blind-v9-raw/nl-capture.json",
+        "sourceControls": "docs/evidence/run007/blind-v9-raw/nl-controls.json",
+        "visibleControlCount": 59,
+        "retainedControlCount": 9317,
+        "notes": [
+          "복사 요금·장소 표의 원래 th/td와 비제어 셀을 보존했다.",
+          "복사·출력 사이버머니 환급은 실제 신청 진입 apply이며 설명을 다루는 출력·우편복사 help와 구별했다.",
+          "ssoLoginPage 원문과 각 안내 앵커의 원래 onclick을 보존했으며 핸들러 내부 URL로 교체하지 않았다."
+        ],
+        "annotationVersion": "blind-v9-v2",
+        "originalFrozenAnnotation": "evaluation/blind-v9/nl.json",
+        "annotationVersionProvenance": "docs/evidence/run007/blind-v9-v2-provenance.json",
+        "fixedMetadataNameLimit": "The original controls proof uses a fixed-metadata heuristic. Separately recorded browser ariaSnapshot evidence resolves substantive accessible-name differences without changing original node metadata."
+      },
+      "accepted": [
+        {
+          "sourceId": "nl-v9-1121",
+          "category": "login",
+          "action": "locate",
+          "label": "로그인",
+          "evidence": {
+            "name": "로그인",
+            "href": "javascript:anyidAdaptor.ssoLoginPage('','');",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1120",
+          "category": "search",
+          "action": "locate",
+          "label": "통합검색",
+          "evidence": {
+            "name": "통합검색",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1125",
+          "category": "search",
+          "action": "locate",
+          "label": "자료검색 열기",
+          "evidence": {
+            "name": "자료검색 열기",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1122",
+          "category": "apply",
+          "action": "locate",
+          "label": "회원가입",
+          "evidence": {
+            "name": "회원가입",
+            "href": "#",
+            "onclick": "javascript:member.fn_memberWeb ('join','NL','/NL/contents/N60300000000.do','false');",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1467",
+          "category": "apply",
+          "action": "locate",
+          "label": "이용증 발급",
+          "evidence": {
+            "name": "이용증 발급",
+            "href": "/NL/contents/N41500000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내^이용증 발급\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1484",
+          "category": "apply",
+          "action": "locate",
+          "label": "신청·참여",
+          "evidence": {
+            "name": "신청·참여",
+            "href": "javascript:;",
+            "onclick": "fn_wiseTracker(\"^SNB^신청·참여\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1513",
+          "category": "apply",
+          "action": "navigate",
+          "label": "복사·출력 사이버머니 환급",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N60515000000.do",
+          "evidence": {
+            "name": "복사·출력 사이버머니 환급",
+            "href": "https://www.nl.go.kr/NL/contents/N60515000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1465",
+          "category": "help",
+          "action": "locate",
+          "label": "이용안내",
+          "evidence": {
+            "name": "이용안내",
+            "href": "javascript:;",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1466",
+          "category": "help",
+          "action": "locate",
+          "label": "이용시간",
+          "evidence": {
+            "name": "이용시간",
+            "href": "/NL/contents/N40101000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내^이용시간\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1468",
+          "category": "help",
+          "action": "locate",
+          "label": "물품보관함",
+          "evidence": {
+            "name": "물품보관함",
+            "href": "/NL/contents/N41401000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내^물품보관함\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1469",
+          "category": "help",
+          "action": "locate",
+          "label": "자료실 이용",
+          "evidence": {
+            "name": "자료실 이용",
+            "href": "/NL/contents/N40404000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내^자료실 이용\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1470",
+          "category": "help",
+          "action": "locate",
+          "label": "자료복사·출력",
+          "evidence": {
+            "name": "자료복사·출력",
+            "href": "/NL/contents/N40601000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내^자료복사·출력\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1471",
+          "category": "help",
+          "action": "locate",
+          "label": "견학",
+          "evidence": {
+            "name": "견학",
+            "href": "/NL/contents/N30701000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^이용안내^견학\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1472",
+          "category": "help",
+          "action": "locate",
+          "label": "자료상담·신청",
+          "evidence": {
+            "name": "자료상담·신청",
+            "href": "javascript:;",
+            "onclick": "fn_wiseTracker(\"^SNB^자료상담·신청\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1477",
+          "category": "help",
+          "action": "locate",
+          "label": "도서관 일정",
+          "evidence": {
+            "name": "도서관 일정",
+            "href": "/NL/contents/N41200000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^도서관 일정\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1478",
+          "category": "help",
+          "action": "locate",
+          "label": "편의시설",
+          "evidence": {
+            "name": "편의시설",
+            "href": "javascript:;",
+            "onclick": "fn_wiseTracker(\"^SNB^편의시설\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1490",
+          "category": "help",
+          "action": "locate",
+          "label": "자주하는 질문",
+          "evidence": {
+            "name": "자주하는 질문",
+            "href": "javascript:;",
+            "onclick": "fn_wiseTracker(\"^SNB^자주하는 질문\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1493",
+          "category": "help",
+          "action": "locate",
+          "label": "오류신고",
+          "evidence": {
+            "name": "오류신고",
+            "href": "/NL/contents/N41100000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^오류신고\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1494",
+          "category": "help",
+          "action": "locate",
+          "label": "분실물찾기",
+          "evidence": {
+            "name": "분실물찾기",
+            "href": "/NL/contents/N31500000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^분실물찾기\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1496",
+          "category": "help",
+          "action": "navigate",
+          "label": "도서관 이용",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N40000000000.do",
+          "evidence": {
+            "name": "도서관 이용",
+            "href": "/NL/contents/N40000000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1497",
+          "category": "help",
+          "action": "navigate",
+          "label": "이용안내",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N41400000000.do",
+          "evidence": {
+            "name": "이용안내",
+            "href": "/NL/contents/N41400000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1498",
+          "category": "help",
+          "action": "navigate",
+          "label": "자료복사·출력",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N40600000000.do",
+          "evidence": {
+            "name": "자료복사·출력",
+            "href": "/NL/contents/N40600000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1499",
+          "category": "help",
+          "action": "navigate",
+          "label": "관내복사",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N40601000000.do",
+          "evidence": {
+            "name": "관내복사",
+            "href": "/NL/contents/N40601000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1510",
+          "category": "help",
+          "action": "locate",
+          "label": "관내복사 선택됨",
+          "evidence": {
+            "name": "관내복사 선택됨",
+            "href": "/NL/contents/N40601000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^자료복사·출력^관내복사\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1511",
+          "category": "help",
+          "action": "locate",
+          "label": "출력",
+          "evidence": {
+            "name": "출력",
+            "href": "/NL/contents/N40602000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^자료복사·출력^출력\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-1512",
+          "category": "help",
+          "action": "locate",
+          "label": "우편복사",
+          "evidence": {
+            "name": "우편복사",
+            "href": "/NL/contents/N40603000000.do",
+            "onclick": "fn_wiseTracker(\"^SNB^자료복사·출력^우편복사\");",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-9293",
+          "category": "help",
+          "action": "navigate",
+          "label": "원격헬프데스크",
+          "destinationUrl": "http://help.nl.go.kr/",
+          "evidence": {
+            "name": "원격헬프데스크",
+            "href": "http://help.nl.go.kr/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-9294",
+          "category": "help",
+          "action": "navigate",
+          "label": "뷰어프로그램 안내",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+          "evidence": {
+            "name": "뷰어프로그램 안내",
+            "href": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-9295",
+          "category": "help",
+          "action": "navigate",
+          "label": "찾아오시는 길",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N50108000000.do",
+          "evidence": {
+            "name": "찾아오시는 길",
+            "href": "https://www.nl.go.kr/NL/contents/N50108000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "nl-v9-9296",
+          "category": "help",
+          "action": "navigate",
+          "label": "누리집안내지도",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N71100000000.do",
+          "evidence": {
+            "name": "누리집안내지도",
+            "href": "/NL/contents/N71100000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "nl-v9-0001",
+          "label": "본문 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "본문 바로가기",
+            "href": "#sub_content",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-0002",
+          "label": "주메뉴 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "주메뉴 바로가기",
+            "href": "#menu-gnb",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1115",
+          "label": "국립어린이청소년도서관",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "국립어린이청소년도서관",
+            "href": "https://nlcy.go.kr",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1116",
+          "label": "국립세종도서관",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "국립세종도서관",
+            "href": "https://sejong.nl.go.kr",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1117",
+          "label": "첫 화면",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "첫 화면",
+            "href": "/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1118",
+          "label": "English",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "English",
+            "href": "/EN/main/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1119",
+          "label": "국립중앙도서관",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "국립중앙도서관",
+            "href": "/NL",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1123",
+          "label": "바구니",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "바구니",
+            "href": "/NL/contents/N60503000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1145",
+          "label": "컬렉션 열기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "컬렉션 열기",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1177",
+          "label": "도서관 서비스 열기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "도서관 서비스 열기",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1193",
+          "label": "교육·문화행사 열기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "교육·문화행사 열기",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1205",
+          "label": "도서관 이용 열기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "도서관 이용 열기",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1236",
+          "label": "도서관 소개 열기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "도서관 소개 열기",
+            "href": "javascript:void(0);",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1454",
+          "label": "QUICK MENU",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "QUICK MENU",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "nl-v9-1495",
+          "label": "Home",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "Home",
+            "href": "/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9292",
+          "label": "관련단체",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "관련단체",
+            "href": "javascript:;",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9297",
+          "label": "유투브",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "유투브",
+            "href": "javascript:fn_goSns('https://www.youtube.com/channel/UCKjWKI1yRlzWfgnF98HZ_TA','유튜브')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9298",
+          "label": "인스타그램",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "인스타그램",
+            "href": "javascript:fn_goSns('https://www.instagram.com/nationallibraryofkorea/','인스타그램')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9299",
+          "label": "블로그",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "블로그",
+            "href": "javascript:fn_goSns('http://blog.naver.com/dibrary1004','블로그')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9300",
+          "label": "페이스북",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "페이스북",
+            "href": "javascript:fn_goSns('https://ko-kr.facebook.com/national.library.of.korea','페이스북')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9301",
+          "label": "X",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "X",
+            "href": "javascript:fn_goSns('https://twitter.com/library1004','트위터')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9302",
+          "label": "카카오톡 채널",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "카카오톡 채널",
+            "href": "javascript:fn_goSns('https://pf.kakao.com/_xlLdnC','카카오채널')",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9303",
+          "label": "개인정보처리방침",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "개인정보처리방침",
+            "href": "/NL/contents/N70100000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9304",
+          "label": "국립중앙도서관 윤리강령",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "국립중앙도서관 윤리강령",
+            "href": "/NL/contents/N70200000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9305",
+          "label": "도서관법령",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "도서관법령",
+            "href": "/NL/contents/N70300000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9306",
+          "label": "이용봉사헌장",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "이용봉사헌장",
+            "href": "/NL/contents/N70400000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9307",
+          "label": "저작권정책",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "저작권정책",
+            "href": "/NL/contents/N70600000000.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9308",
+          "label": "WA품질인증마크",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "WA품질인증마크",
+            "href": "#none",
+            "onclick": "waPopup2();",
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "nl-v9-9309",
+          "label": "open 공공누리|공공저작물 자유이용허락",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "open 공공누리|공공저작물 자유이용허락",
+            "href": "http://www.kogl.or.kr/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        }
+      ],
+      "expected": [
+        {
+          "id": "nl-v9-printing-instructions",
+          "category": "help",
+          "label": "출력",
+          "action": "locate",
+          "sourceIds": [
+            "nl-v9-1511"
+          ],
+          "reason": "자료복사·출력 영역의 출력 이용 안내다. 원본 onclick 문자열을 보존하며 별도 목적지로 치환하지 않는다."
+        },
+        {
+          "id": "nl-v9-postal-copy-instructions",
+          "category": "help",
+          "label": "우편복사",
+          "action": "locate",
+          "sourceIds": [
+            "nl-v9-1512"
+          ],
+          "reason": "자료복사·출력 영역의 우편복사 이용 안내다. 원본 JavaScript 이벤트가 명시돼 있다."
+        },
+        {
+          "id": "nl-v9-copy-refund-entry",
+          "category": "apply",
+          "label": "복사·출력 사이버머니 환급",
+          "action": "navigate",
+          "sourceIds": [
+            "nl-v9-1513"
+          ],
+          "reason": "본문이 대상자가 직접 신청하는 메뉴라고 설명하며, 제어 자체는 명시적 인증 이벤트 없는 일반 HTTPS 앵커다.",
+          "destinationUrl": "https://www.nl.go.kr/NL/contents/N60515000000.do"
+        }
+      ],
+      "task": {
+        "instruction": "도서관에 방문하기 어려워 우편복사 이용 방법을 읽으려 합니다. 우편복사 안내 제어의 원본 위치를 찾으세요. 복사나 환급을 신청하지 마세요.",
+        "action": "locate",
+        "expectedSourceIds": [
+          "nl-v9-1512"
+        ]
+      }
+    }
+  ]
+}

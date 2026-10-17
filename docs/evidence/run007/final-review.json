@@ -1,0 +1,516 @@
+{
+  "checkedAtUtc": "2026-10-17T19:17:50.162607+00:00",
+  "version": "0.8.0",
+  "reviewerTask": "v8_final_source_review",
+  "artifactStatus": "PASS",
+  "overallAcceptance": "NOT_MET",
+  "completedStages": 5,
+  "totalStages": 10,
+  "automaticSignoff": false,
+  "integrationOwner": "root",
+  "scope": "Independent read-only artifact and documentation audit; no product or network execution.",
+  "sourceStable": true,
+  "checks": [
+    {
+      "name": "freeze_v1_v2_same_15_product_files",
+      "passed": true
+    },
+    {
+      "name": "current_product_equals_v2_freeze",
+      "passed": true
+    },
+    {
+      "name": "archive_product_equals_v2_freeze",
+      "passed": true,
+      "count": 15
+    },
+    {
+      "name": "current_tools_equal_v2_freeze",
+      "passed": true
+    },
+    {
+      "name": "original_freeze_bytes_preserved",
+      "passed": true
+    },
+    {
+      "name": "only_evaluator_tool_changed_between_freezes",
+      "passed": true,
+      "changed": [
+        "scripts/evaluate.mjs"
+      ]
+    },
+    {
+      "name": "tool_before_archive_matches_v1",
+      "passed": true
+    },
+    {
+      "name": "tool_after_archive_matches_v2",
+      "passed": true
+    },
+    {
+      "name": "blind-v9-freeze.json_frozen_hashes",
+      "passed": true,
+      "entries": 113
+    },
+    {
+      "name": "blind-v9-freeze.json_readonly_bits",
+      "passed": true,
+      "entries": 113
+    },
+    {
+      "name": "blind-v9-v2-freeze.json_frozen_hashes",
+      "passed": true,
+      "entries": 130
+    },
+    {
+      "name": "blind-v9-v2-freeze.json_readonly_bits",
+      "passed": true,
+      "entries": 130
+    },
+    {
+      "name": "v7_original_parent_21_files_still_equal_before_after",
+      "passed": true
+    },
+    {
+      "name": "v7_v2_all_declared_hashes_match",
+      "passed": true,
+      "comparisons": 51
+    },
+    {
+      "name": "v7_v2_explicitly_development_not_fresh",
+      "passed": true
+    },
+    {
+      "name": "zip_size_and_expected_hash",
+      "passed": true
+    },
+    {
+      "name": "package_metadata_sources_match",
+      "passed": true
+    },
+    {
+      "name": "package_metadata_dist_match",
+      "passed": true
+    },
+    {
+      "name": "package_reproducibility_recorded",
+      "passed": true
+    },
+    {
+      "name": "zip_exact_5_dist_entries",
+      "passed": true,
+      "entries": [
+        {
+          "path": "EasyWeb-0.8.0-candidate/background.js",
+          "bytes": 979,
+          "sha256": "017628a140c6d96fe5b75939d3d0a0c06a51dbb88752fd21b727aa1853b97add",
+          "equalsDist": true
+        },
+        {
+          "path": "EasyWeb-0.8.0-candidate/background.js.map",
+          "bytes": 1530,
+          "sha256": "048bd5e534786482c22770e5c0ebd2dd42029e0c212c6246d1c6133422977617",
+          "equalsDist": true
+        },
+        {
+          "path": "EasyWeb-0.8.0-candidate/content.js",
+          "bytes": 135076,
+          "sha256": "7517366e69fbc8a90819fada6ff0eea6de7356541e7868d01d2e00b6c82228bd",
+          "equalsDist": true
+        },
+        {
+          "path": "EasyWeb-0.8.0-candidate/content.js.map",
+          "bytes": 236021,
+          "sha256": "ab76ea27169b994227f227e994b042ae5c150a211a51e4d6330664cc24c70b8f",
+          "equalsDist": true
+        },
+        {
+          "path": "EasyWeb-0.8.0-candidate/manifest.json",
+          "bytes": 648,
+          "sha256": "fae2e8a1a97b00914d1cf0b3c7e1c073069f49b2857f8f1408d6b70123dc545a",
+          "equalsDist": true
+        }
+      ]
+    },
+    {
+      "name": "minimal_manifest_identical_source_dist_zip",
+      "passed": true
+    },
+    {
+      "name": "sha256sums_final_zip_entry",
+      "passed": true
+    },
+    {
+      "name": "local_311_no_fail_flaky_skip",
+      "passed": true
+    },
+    {
+      "name": "playwright_raw_311_no_fail_flaky_skip",
+      "passed": true
+    },
+    {
+      "name": "core_summary_72_74_45_45_15",
+      "passed": true
+    },
+    {
+      "name": "a11y_21_error_violation_incomplete_zero",
+      "passed": true
+    },
+    {
+      "name": "a11y_source_hashes_current",
+      "passed": true
+    },
+    {
+      "name": "public_live_15_is_9_http_6_guidance",
+      "passed": true
+    },
+    {
+      "name": "live_source_hashes_current",
+      "passed": true
+    },
+    {
+      "name": "institution_performance_preserves_existing_PASS_extra_FAIL",
+      "passed": true
+    },
+    {
+      "name": "institution_performance_source_hashes_current",
+      "passed": true
+    },
+    {
+      "name": "manual_fixture_record_is_only_3_HTTP200_not_manual",
+      "passed": true
+    },
+    {
+      "name": "manual_fixture_recorded_local_bytes_match",
+      "passed": true
+    },
+    {
+      "name": "development_same_15_sources_before_after",
+      "passed": true
+    },
+    {
+      "name": "development_24_rows_50_unique",
+      "passed": true
+    },
+    {
+      "name": "run007_development_table_matches_all_12_suites",
+      "passed": true,
+      "rows": [
+        {
+          "suite": "core",
+          "reportLabel": "core",
+          "matches": true
+        },
+        {
+          "suite": "blind-v2",
+          "reportLabel": "v2",
+          "matches": true
+        },
+        {
+          "suite": "blind-v3",
+          "reportLabel": "v3",
+          "matches": true
+        },
+        {
+          "suite": "development-v4-corrected",
+          "reportLabel": "정정v4",
+          "matches": true
+        },
+        {
+          "suite": "blind-v5",
+          "reportLabel": "v5",
+          "matches": true
+        },
+        {
+          "suite": "blind-v6",
+          "reportLabel": "rawv6",
+          "matches": true
+        },
+        {
+          "suite": "development-v6-corrected",
+          "reportLabel": "정정v6-1",
+          "matches": true
+        },
+        {
+          "suite": "development-v6-corrected-v2",
+          "reportLabel": "정정v6-2",
+          "matches": true
+        },
+        {
+          "suite": "blind-v7-v2",
+          "reportLabel": "rawv7-v2",
+          "matches": true
+        },
+        {
+          "suite": "development-v7-corrected",
+          "reportLabel": "정정v7-1",
+          "matches": true
+        },
+        {
+          "suite": "development-v7-corrected-v2",
+          "reportLabel": "정정v7-2",
+          "matches": true
+        },
+        {
+          "suite": "blind-v8",
+          "reportLabel": "v8",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "name": "known50_aggregate_counts",
+      "passed": true
+    },
+    {
+      "name": "fresh_first_report_completion_hash",
+      "passed": true
+    },
+    {
+      "name": "fresh_first_26_30_2_15_0_fail_all_sites",
+      "passed": true
+    },
+    {
+      "name": "fresh_extra_60_73_5_15_2_no_unresolved_repeated",
+      "passed": true
+    },
+    {
+      "name": "first_execution_exit1_source_tools_stable",
+      "passed": true
+    },
+    {
+      "name": "first_completion_engineFreezeSha256",
+      "passed": true
+    },
+    {
+      "name": "first_completion_datasetFreezeSha256",
+      "passed": true
+    },
+    {
+      "name": "first_result_files_readonly",
+      "passed": true,
+      "count": 4
+    },
+    {
+      "name": "run-004-v0.5.0-dev_historical_artifacts_preserved",
+      "passed": true,
+      "count": 190
+    },
+    {
+      "name": "run-005-v0.6.0-dev_historical_artifacts_preserved",
+      "passed": true,
+      "count": 302
+    },
+    {
+      "name": "run-006-v0.7.0-dev_historical_artifacts_preserved",
+      "passed": true,
+      "count": 122
+    },
+    {
+      "name": "docs/evidence/run005/blind-v8-first/evaluation-current-blind-v8-holdout.json_first_fail_counts_unchanged",
+      "passed": true
+    },
+    {
+      "name": "docs/evidence/run004/blind-v7-v2-first/evaluation-current-blind-v7-v2-holdout.json_first_fail_counts_unchanged",
+      "passed": true
+    },
+    {
+      "name": "v0_7_source_snapshot_matches_tag",
+      "passed": true,
+      "count": 16
+    },
+    {
+      "name": "docs/evidence/run005/v0.6-engine-freeze-v2.json_archive_preserved",
+      "passed": true
+    },
+    {
+      "name": "docs/evidence/run004/v0.5-engine-freeze.json_archive_preserved",
+      "passed": true
+    },
+    {
+      "name": "README.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "AGENTS.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/WORK_SPEC.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/PROGRESS.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/RUN_007_REPORT.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/INSTALL.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/PRETEST.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/SUPPORT_MATRIX.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/ACCESSIBILITY.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "docs/VALIDATION.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "evaluation/README.md_current_v0_8_pointer",
+      "passed": true
+    },
+    {
+      "name": "release_acceptance_remains_5_of_10_NOT_MET",
+      "passed": true
+    },
+    {
+      "name": "markdown_relative_local_links_resolve",
+      "passed": true,
+      "filesScanned": 40,
+      "localReferencesChecked": 496,
+      "brokenCount": 0,
+      "skipped": {
+        "url_or_scheme": 21,
+        "absolute_path": 7
+      }
+    },
+    {
+      "name": "closing_product_and_tool_source_stable",
+      "passed": true
+    }
+  ],
+  "findings": [],
+  "sha256Comparisons": {
+    "count": 474,
+    "mismatches": 0,
+    "detail": "docs/evidence/run007/final-source-review/artifact-audit/hash-checks.json"
+  },
+  "historicalGitPreservation": [
+    {
+      "tag": "run-004-v0.5.0-dev",
+      "scopes": [
+        "docs/evidence/run004",
+        "evaluation/blind-v7",
+        "evaluation/blind-v7-v2",
+        "output/run004"
+      ],
+      "filesCompared": 190,
+      "allPreserved": true,
+      "mismatches": []
+    },
+    {
+      "tag": "run-005-v0.6.0-dev",
+      "scopes": [
+        "docs/evidence/run005",
+        "evaluation/blind-v8",
+        "output/run005"
+      ],
+      "filesCompared": 302,
+      "allPreserved": true,
+      "mismatches": []
+    },
+    {
+      "tag": "run-006-v0.7.0-dev",
+      "scopes": [
+        "docs/evidence/run006",
+        "output/run006"
+      ],
+      "filesCompared": 122,
+      "allPreserved": true,
+      "mismatches": []
+    }
+  ],
+  "datasetFreezeChecks": [
+    {
+      "path": "blind-v9-freeze.json",
+      "entries": 113,
+      "allMatch": true,
+      "counts": {
+        "annotationFiles": 5,
+        "fixtures": 5,
+        "pages": 5,
+        "expectedGroups": 15,
+        "readOnlyTasks": 5,
+        "visibleControls": 291,
+        "acceptedControls": 133,
+        "rejectedControls": 158,
+        "everyVisibleControlJudged": true,
+        "expectedAllIndependentlyMeaningful": true
+      }
+    },
+    {
+      "path": "blind-v9-v2-freeze.json",
+      "entries": 130,
+      "allMatch": true,
+      "counts": {
+        "annotationFiles": 5,
+        "fixtures": 5,
+        "pages": 5,
+        "expectedGroups": 15,
+        "readOnlyTasks": 5,
+        "visibleControls": 291,
+        "acceptedControls": 132,
+        "rejectedControls": 159,
+        "confirmedAccessibleNameCorrections": 3,
+        "confirmedCategoryErrors": 0,
+        "preFirstScopeAdjudications": 1,
+        "actionCorrections": 0,
+        "expectedGroupCorrections": 0,
+        "taskCorrections": 0,
+        "fixtureByteChanges": 0
+      }
+    }
+  ],
+  "markdownLinks": {
+    "filesScanned": 40,
+    "localReferencesChecked": 496,
+    "brokenCount": 0,
+    "broken": [],
+    "skipped": {
+      "url_or_scheme": 21,
+      "absolute_path": 7
+    },
+    "detail": "docs/evidence/run007/final-source-review/artifact-audit/markdown-links.json"
+  },
+  "auditedDocumentSHA256": {
+    "README.md": "75d94dcddeffbdbdcc0bf105354fdd515046fea08ccff54e5334fedf933940c0",
+    "AGENTS.md": "c2aa6479c46b5c47e23f3166cb57c665dc983f7ffeb7ab8517eed63371487470",
+    "docs/WORK_SPEC.md": "9d9b38e033f7fff3a06b4b7a3d7bf22660122462f279e1b875e2b85ed5a5a678",
+    "docs/PROGRESS.md": "625bc353a300daa8a4c6925713d6fc87d91f8e5a004b2d3abe1fd903a8bb5b07",
+    "docs/RUN_007_REPORT.md": "787c4b39f5ee1ded275dd2e95f3a94f4f37991e1de733dd7422bb6c2e00226f4",
+    "docs/INSTALL.md": "9f45ca086285e9fcf1826bd432de06ec7ba578bdf98b559a1e861e6986300ffc",
+    "docs/PRETEST.md": "6a7ffb3700ae418146de5a8c082c934c2d9c5101a11bea9d7f2615e181a2b208",
+    "docs/SUPPORT_MATRIX.md": "494620f3c1164e857f9dba825d5c3426d87e28a391854f0b210d9c2212306578",
+    "docs/ACCESSIBILITY.md": "c167a8c528de4688c4efec2d6c939a81a23367148c95b4dbdce5703e687bca48",
+    "docs/VALIDATION.md": "bc64f809990b21d2c6f1e86e281a9e03db9aa4451c8a43d20be17546a8f53f1d",
+    "evaluation/README.md": "91189608f0ef19c41db53e568577dbdea48195b2c885c847179736d944663f8e"
+  },
+  "resolvedDuringAudit": [
+    {
+      "finding": "Mixed current0.7/RUN006/50-page and unimplemented-plan pointers in WORK_SPEC/evaluation README",
+      "resolution": "Root updated current pointers to0.8/RUN007/55 and marked historical0.7 results; reread final bytes. No historical result counts changed."
+    }
+  ],
+  "limits": [
+    "Artifact consistency is separate from product acceptance. Fresh independent quality remains FAIL and acceptance remains NOT_MET.",
+    "No product, test, benchmark, native, CUA, browser or network execution was performed by this reviewer.",
+    "Fresh evaluation aggregates and freeze metadata were read; fresh data content was only binary-hashed, never used for source tuning.",
+    "Read-only bits are filesystem permission evidence, not proof against privileged future modification.",
+    "Packaging reproducibility is verified against saved metadata and exact ZIP/current dist bytes; the reviewer did not rebuild.",
+    "Markdown scan covers repository Markdown reported by rg, with file-existence checks only; external URLs and section anchors were not requested or tested.",
+    "Historical sources are compared with their explicit archives or named Git tags, not expected to equal current source.",
+    "No claim of native installation, VoiceOver speech, actual browser zoom, pretest, formal user study, business success, file download or execution is added."
+  ]
+}

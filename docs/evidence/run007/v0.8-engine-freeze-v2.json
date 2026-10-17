@@ -1,0 +1,62 @@
+{
+  "frozenAtUtc": "2026-10-17T19:11:30.420608+00:00",
+  "version": "0.8.0",
+  "adapterVersion": 2,
+  "scope": "Same final v0.8 product source, revised evaluator path support only. Original attempted command failed before browser/product because the independently frozen new dataset is flat. No labels/URLs/bodies inspected by root; no data or semantic changes. Original failed attempt preserved.",
+  "sourceFiles": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/institution-evidence.ts": "4f0f8e337260b3d6870d4dd85a8eaa2e688b2c56f642c5b5f5de59ed0a7cb494",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+    "src/ranker.ts": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7",
+    "extension/manifest.json": "fae2e8a1a97b00914d1cf0b3c7e1c073069f49b2857f8f1408d6b70123dc545a"
+  },
+  "toolFiles": {
+    "scripts/evaluate.mjs": "22c96707dc5d8f504e5d47e38d1de551bfbf16036a06865a18eb837b8371abad",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4",
+    "scripts/compare-development.mjs": "45f18b6fd1651c7e47ea1b00737d025444279accb3cc41e2b6e6b65473fb6969",
+    "scripts/benchmark-institution.mjs": "e6f9428af2799a2f284efefc06e80bc5badfbe5f0cfd3a1780107b6c2bdeeda4",
+    "scripts/verify.mjs": "f9e45e26cca3d1c86e1be6db0b8f0e9cb8b724b9f4ba79a7ca0d45e4aaa7a953",
+    "package.json": "fd63acd04e5176a365cc74e6fa11331e099a54442d529a6548c2140a99ee2274",
+    "package-lock.json": "3f66f59189c3422ab26c0675322ad9484620dec6ea3d910cb956caf0500c5202",
+    "tsconfig.json": "7bda7820be6fd2a8acf5f0b897f8846e40dcb09347f9ca69554f4f140b088817"
+  },
+  "archive": "docs/evidence/run007/v0.8-before-blind-v9-engine",
+  "blinding": {
+    "rootAndImplementationReadNewURLs": false,
+    "rootAndImplementationReadNewLabelsBodiesAnnotations": false,
+    "newDatasetProductExecutions": 0,
+    "independentCollectorAndStaticQAOnly": true
+  },
+  "originalDatasetPreserved": "docs/evidence/run007/blind-v9-freeze.json",
+  "trialPreserved": "docs/evidence/run007/guidance-trial-rejected/decision.json",
+  "previousFreeze": {
+    "path": "docs/evidence/run007/v0.8-engine-freeze.json",
+    "sha256": "f4ed31bb5f6a5b39e7adf89d8e3738f98d33b8012e88c93e85cab8b55c9ff9c0"
+  },
+  "revision": {
+    "reason": "Explicitly allow flat annotation/HTML directory for blind-v9 and blind-v9-v2; maintain bounded fixture path guard and bind actual annotation paths to freeze verification.",
+    "productSourceChanges": 0,
+    "changedTools": [
+      {
+        "path": "scripts/evaluate.mjs",
+        "beforeSha256": "5f551bc926d417af3ee2c5a2d58f5d1834ac14f4e36eda72c1088c169c228c2a",
+        "afterSha256": "22c96707dc5d8f504e5d47e38d1de551bfbf16036a06865a18eb837b8371abad"
+      }
+    ],
+    "priorAttempt": "docs/evidence/run007/blind-v9-v2-first/command-completion.json",
+    "priorProductExecutions": 0,
+    "semanticExposureBeforeRevision": false
+  }
+}

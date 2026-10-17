@@ -1,0 +1,82 @@
+{
+  "createdAt": "2026-10-17T18:51:09.086624+00:00",
+  "scope": "Institution semantic evidence module + synthetic tests only; no integration, network capture, new blind data, source action execution, CUA or native UI. Existing exposed data remains development only.",
+  "files": {
+    "src/institution-evidence.ts": "418f4899d07528aba0aeeaa0bd5cdc6c9582527dfa89f96d25d6417f760d4ca0",
+    "tests/institution-evidence.spec.mjs": "7af463c4beb74f1bbc1ca0b9a7dace52d483efc7099d877df70017ad6f813d40"
+  },
+  "API": {
+    "ClassificationMode": [
+      "generic",
+      "institution"
+    ],
+    "ADAPTER_VERSION": 1,
+    "InstitutionEvidenceCache": "WeakMap<Element, unknown>; optional, no retained DOM fact reuse implemented",
+    "institutionEvidence": "(candidate: Candidate, cache?: InstitutionEvidenceCache) => InstitutionEvidence | undefined",
+    "evidenceType": "Imported/re-exported from src/types.ts; root owns type/integration",
+    "shape": [
+      "adapter",
+      "version",
+      "rule",
+      "category",
+      "score:65|70",
+      "pageTask:reading",
+      "fingerprint",
+      "dependencies:readonly Element[]"
+    ]
+  },
+  "recognition": {
+    "safekorea": "Exact www.safekorea.go.kr + /safekorea-kor/edtr/; bounded #contents education heading with #lnbmenu local information links, or direct .tab-area expanded button / adjacent .tab-content pairs. Abstain for service-entry intent.",
+    "nps": "Exact www.nps.or.kr + /pnsinfo/ntpsklg/; .tabWrap.con-tab local fragment nav -> unique actual .tabContents/.tabPage target; safe fixed target heading equals source label; explanation subject; abstain for service entry. Hidden panel title may support visible tab, never promotes hidden source controls.",
+    "smu": "Exact www.smu.ac.kr + /kor/life/<named>.do; actual .common-board + board-thumb-wrap/dt title source structure, actual IT/service board heading dependency, same-path document-reference presence only. Distinguish incident notice from instruction; conflicting/ambiguous intent abstains. Subject badge does not determine category."
+  },
+  "safetyBoundary": [
+    "Caller must apply all common dangerous label/script/URL and source-kind guards first. Module cannot revive denied candidates.",
+    "Module never assigns action/href, executes controls, loads network data or expands permissions.",
+    "Safe source names use candidateLabel; inactive editorial headings use getSafeLabel with editable/external-label exclusion. No live input getters, innerText/textContent or whole-region prose.",
+    "No evaluation IDs, document-number values, opaque menu query values, captured full titles, indexes or expected positions used.",
+    "Root currentness compares adapter facts plus dependency element identity; optional cache must remain fresh per batch. Module itself currently recomputes relationships so even same-cache mutation rechecks remain correct."
+  ],
+  "staticReview": {
+    "independentAgent": true,
+    "findingsAddressed": [
+      "Include actual local board heading node among dependencies; same-text replacement alters references.",
+      "Explicit incident-solving/recovery/during-outage instructions conflict with incident genre and abstain.",
+      "Pension and education application/reservation/service-entry intent abstains instead of help override."
+    ]
+  },
+  "verification": {
+    "firstTargeted": {
+      "path": "docs/evidence/run007/institution-module/first-targeted.log",
+      "passed": 25,
+      "failed": 0
+    },
+    "finalTargeted": {
+      "command": "npx playwright test tests/institution-evidence.spec.mjs",
+      "path": "docs/evidence/run007/institution-module/final-targeted.log",
+      "passed": 29,
+      "failed": 0,
+      "duration": "2.7s reported by runner",
+      "environment": "headless Chromium; all page requests fulfilled with local synthetic HTML"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "path": "docs/evidence/run007/institution-module/typecheck.log",
+      "exitCode": 0,
+      "scope": "Current shared tree at check time; root integration may continue."
+    }
+  },
+  "remainingForRoot": [
+    "Classify integration inside shared safety gate, explicit generic/institution mode.",
+    "Candidate evidence type/currentness identity and fingerprint comparison.",
+    "UI/evaluator same mode, metadata and dependency serialization exclusion.",
+    "Post-exposure development comparison on all50 pages; quality outcomes not established by these29 synthetic tests.",
+    "New independently frozen pages only after engine freeze; preserve all prior raw first reports."
+  ],
+  "limitations": [
+    "Only3 institution semantic adapters implemented; city/library retain generic behavior in proposed integration. Five-institution pilot scope is unchanged.",
+    "Exact institutional DOM contracts may abstain on changed layouts.",
+    "No cached relationship-discovery optimization; unsupported domain/path exits before DOM scans.",
+    "Unit tests do not establish integrated safety, real-site navigation, extension installation, accessibility, user success or independent generalization."
+  ]
+}

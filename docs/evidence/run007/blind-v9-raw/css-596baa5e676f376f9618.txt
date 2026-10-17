@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+:root{
+	--popup-border-color:#ccc;
+	--popup-border-radius:10px;
+	--popup-content-padding:40px;
+	--popup-header-padding:15px 20px;
+	--popup-sm:300px;
+	--popup-md:500px;
+	--popup-lg:800px;
+	--popup-xl:1140px;
+	--m-popup-width:calc(100% - 20px);
+	--bg-outer:rgba(75 ,85, 99, 0.6);
+}
+
+/* 스크롤 고정 */
+body.fixed{position:relative;/*overflow:hidden;*/}
+
+/*메인비쥬얼 링크팝업*/
+/*.main-visual-box .vi-link-box{display:none;position:absolute;top:0;left:0;z-index:20;width:100%;height:100vh;background:rgba(0,0,0,0.7);}
+.main-visual-box .vi-link-box:active{display:block;}
+.main-visual-box .main-vi-swiper .swiper-slide .vi-link-box .vi-btn{position: absolute;top: 50%;left: 50%;display:inline-block;margin:-50px 0 0 -50px;padding:8px 16px;background-color:var(--bg-btn-primary);font-size:1.4rem;line-height:2.4rem;color:var(--color-main-btn-txt);}*/
+/* CMS 팝업 레이아웃 */
+.layer-popup-outer{display:none;position:fixed;top:0;left:0;z-index:1055;padding:100px 50px;width:100%;height:100%;background:var(--bg-outer);overflow:auto;text-align:center;box-sizing:border-box;}
+.layer-popup-outer.on{display:block;}
+.layer-popup-wrap{display:inline-block;position:relative;margin:0 20px 20px 0;width:auto;min-width:420px;max-width:100%;background:#fff;text-align:left;border-radius:var(--popup-border-radius);box-shadow:0 5px 21px 6px rgba(0,0,0,0.1);vertical-align:middle;}
+.layer-popup-wrap .layer-popup-box{position:relative;padding:65px 15px 15px;background:#fff;box-sizing:border-box;}
+.layer-popup-wrap .layer-popup-box.window-popup{padding:15px;}
+.layer-popup-wrap .layer-popup-box .btn-box{position:absolute;top:0;right:0;padding:10px 15px 5px;width:100%;text-align:right;box-sizing:border-box;}
+.layer-popup-wrap .layer-popup-box .btn-box .btn-layer-close{display:inline-block;margin:0 0 4px 8px;padding:5px 14px;border:1px solid #ccc;color:#666666;font-size:1rem;line-height:1.5rem;border-radius:5px;}
+.layer-popup-wrap .layer-popup-box .btn-box .btn-layer-close:first-of-type{margin-left:0;}
+.layer-popup-wrap .layer-popup-box.blue .btn-box{background:#1976d2;}
+.layer-popup-wrap .layer-popup-box.blue .btn-box .btn-layer-close{background:rgba(255,255,255,0.2);color:#fff;border:none;}
+.layer-popup-outer .btn-all-popup-close{display:none;position:fixed;top:30px;right:50px;z-index:1100;padding:8px 40px 7px 10px;width:auto;height:auto;background-image:url(/_res/team2/_share/img/common/ico-modal-close.png);background-repeat:no-repeat;background-position:right 10px center;background-size:20px;color:#fff;}
+.layer-popup-outer.on .btn-all-popup-close{display:block;}
+
+/* 일반 팝업 - 기본 레이아웃 (딤 배경이 있는 기본 유형) */
+.popup-outer-wrap{position:relative;}
+.popup-wrap{display:none;position:fixed;top:0;left:0;z-index:1055;width:100%;height:100%;background:var(--bg-outer);overflow:auto;text-align:center;}
+.popup-wrap:before{content:'';display:inline-block;height:100%;vertical-align:middle;margin-right:-0.05em;}
+.popup-wrap .popup-box{display:inline-block;position:relative;width:calc(100% - 20px);max-width:var(--popup-lg);background:#fff;text-align:left;border-radius:var(--popup-border-radius);box-shadow:0px 5px 21px 6px rgba(0,0,0,0.1);vertical-align:middle;}
+.popup-box .popup-header{display:flex;justify-content:space-between;padding:var(--popup-header-padding);border-bottom:1px solid #e4e4e4;}
+.popup-box .popup-header h4{color:#666;font-weight:500;}
+.popup-box .popup-body{padding:var(--popup-content-padding);max-height:70vh;height:70vh;overflow:auto;box-sizing:border-box;}
+.popup-box .popup-footer{display:flex;justify-content:center;padding:20px 40px;}
+
+/* 일반 팝업 - 툴팁 레이아웃 (딤 배경이 없는 유형) */
+.popup-wrap.tooltip{position:static;top:auto;left:auto;background:none;}
+.popup-wrap.tooltip:before{display:none;}
+.popup-wrap.tooltip .popup-box{position:absolute;top:100%;left:0;width:100%;max-width:var(--popup-md);z-index:500;border:1px solid #eee;border-radius:var(--popup-border-radius);box-shadow:rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;}
+.popup-wrap.tooltip .popup-body{min-height:auto;height:auto;}
+
+/* 일반 팝업 - 아이프레임, 레이아웃 크기별 팝업 사용자 지정 */
+.popup-wrap.layer-iframe .popup-body{padding:0;overflow:unset;}
+.popup-wrap.layer-large > .popup-box{max-width:var(--popup-xl);}
+.popup-wrap.layer-middle > .popup-box{max-width:var(--popup-lg);}
+.popup-wrap.layer-small > .popup-box{max-width:var(--popup-md);}
+
+/* 일반 팝업 - 팝업 열기 버튼 */
+.btn-popup-open{display:inline-block;position:relative;margin:9px;padding:15px 25px;border:0;border-radius:10px;background:#9abf7f;font-size:inherit;color:#fff;text-align:center;box-shadow:0px 4px 0px #87a86f;}
+.btn-popup-open:active{top:4px;background-color:#87a86f;box-shadow:0 0 #87a86f;}
+.btn-popup-open.blue{box-shadow:0px 4px #74a3b0;background-color:#7fb1bf;}
+.btn-popup-open.blue:active{box-shadow:0 0 #74a3b0;background-color:#709ca8;}
+.btn-popup-open.red{box-shadow:0px 4px 0px #e04342;background-color:#fa5a5a;}
+.btn-popup-open.red:active{box-shadow:0 0 #ff4c4b;background-color:#ff4c4b;}
+.btn-popup-open.purple{box-shadow:0px 4px 0px #ad83a8;background-color:#cb99c5;}
+.btn-popup-open.purple:active{box-shadow:0 0 #ba8cb5;background-color:#ba8cb5;}
+.btn-popup-open.cyan{box-shadow:0px 4px 0px #73b9c9;background-color:#7fccde;}
+.btn-popup-open.cyan:active{box-shadow:0 0 #73b9c9;background-color:#70b4c4;}
+.btn-popup-open.yellow{box-shadow:0px 4px 0px #d1b757;background-color:#f0d264;}
+.btn-popup-open.yellow:active{box-shadow:0 0 #ff4c4b;background-color:#d6bb59;}
+
+/* 일반 팝업 - 팝업 닫기 버튼(헤더) */
+.btn-popup-close{display:inline-block;position:relative;width:20px;height:20px;}
+.btn-popup-close:after,
+.btn-popup-close:before{content:'';position:absolute;top:50%;left:50%;width:calc(100% * 1.4142);height:2px;background-color:#ccc;transform-origin:center center;}
+.btn-popup-close:after{transform:translate(-50%, -50%) rotate(-45deg);}
+.btn-popup-close:before{transform:translate(-50%, -50%) rotate(45deg);}
+
+/* 일반 팝업 - 팝업 닫기 버튼(팝업 외부) */
+.popup-box > .btn-popup-close{position:absolute;top:-40px;right:0;z-index:10;}
+
+/* 일반 팝업 - 팝업 닫기 버튼(푸터) */
+.popup-footer > .btn-popup-close{padding:10px 20px;width:auto;height:auto;background:none;border:1px solid #e8ebed;border-radius:5px;background:#fff;color:#666;transition:all .2s;}
+.popup-footer > .btn-popup-close:hover{background:#101725;color:#fff;}
+.popup-footer > .btn-popup-close:before,
+.popup-footer > .btn-popup-close:after{display:none;}
+
+/* 일반 팝업 - 팝업 닫기 버튼(흰색) */
+.btn-popup-close.white:before,
+.btn-popup-close.white:after{background-color:#fff;}
+
+/* 일반 팝업 - 옵션(외부스크롤) */
+.outer-scroll .popup-wrap{padding:20px;box-sizing:border-box;}
+.outer-scroll .popup-wrap .popup-body{max-height:100%;height:auto;}
+
+
+@media screen and (max-width:1200px) {
+	/* CMS 팝업 레이아웃 */
+	.layer-popup-outer{padding:100px 30px;}
+
+	/* 일반 팝업 - 기본 레이아웃 (딤 배경이 있는 기본 유형) */
+	.popup-wrap .popup-box{width:var(--m-popup-width);}	
+
+	/* 일반 팝업 - 아이프레임, 레이아웃 크기별 팝업 사용자 지정 */
+	.popup-wrap.layer-large > .popup-box{width:var(--m-popup-width);}
+	.popup-wrap.layer-middle > .popup-box{width:var(--m-popup-width);}
+	.popup-wrap.layer-small > .popup-box{width:var(--m-popup-width);}
+}
+@media screen and (max-width:1024.98px) {
+	:root{
+		--popup-content-padding:20px;
+		--popup-header-padding:15px;
+	}
+
+	/* CMS 팝업 레이아웃 */
+	.layer-popup-outer{padding:55px 10px;}
+	.layer-popup-wrap .layer-popup-box{padding:45px 10px 10px;}
+	.layer-popup-wrap .layer-popup-box.window-popup{padding:10px;}
+	.layer-popup-wrap .layer-popup-box .btn-box{padding:10px 10px 5px;}
+	.layer-popup-wrap .layer-popup-box .btn-box .btn-layer-close{margin:0 0 4px 0;padding:2px 3px;font-size:0.857rem;line-height:1.214rem;}
+	.layer-popup-outer .btn-all-popup-close{top:20px;right:20px;padding:8px 40px 7px 10px;border-radius:5px;background-color:#212121;background-position:right 8px center;background-size:15px;}
+
+	/* 일반 팝업 - 기본 레이아웃 (딤 배경이 있는 기본 유형) */
+	.popup-box .popup-header{align-items:center;}
+	.popup-box .popup-footer{padding:20px;}
+	.popup-wrap .popup-body{min-height:60vh;}
+
+	/* 일반 팝업 - 팝업 닫기 버튼(헤더) */
+	.btn-popup-close{width:15px;height:15px;}
+
+	/* 일반 팝업 - 팝업 닫기 버튼(푸터) */
+	.popup-footer > .btn-popup-close{padding:8px 10px;}
+
+	/* 일반 팝업 - 옵션(외부스크롤) */
+	.outer-scroll .popup-wrap .popup-body{max-height:100%;min-height:100%;height:auto;}
+}
+@media screen and (max-width:480px) {
+	/* CMS 팝업 레이아웃 */
+	.layer-popup-wrap{min-width:100%;}
+
+}

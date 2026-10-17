@@ -6,13 +6,13 @@ import os from 'node:os';
 import path from 'node:path';
 
 if (process.argv.includes('--help')) {
-  console.log('node scripts/benchmark.mjs [--shape=mixed|flat|table] [--output-dir=docs/evidence/run006]\nEach shape has exactly 1,000 synthetic controls, one excluded warmup and ten measured runs. Reports remain separate; no native browser or real-site timing claim.');
+  console.log('node scripts/benchmark.mjs [--shape=mixed|flat|table] [--output-dir=docs/evidence/run007]\nEach shape has exactly 1,000 synthetic controls, one excluded warmup and ten measured runs. Reports remain separate; no native browser or real-site timing claim.');
   process.exit(0);
 }
 for (const arg of process.argv.slice(2)) if (!/^--(?:shape|output-dir)=.+$/.test(arg)) throw new Error(`Unknown or incomplete option: ${arg}`);
 const shape = process.argv.find(arg => arg.startsWith('--shape='))?.slice('--shape='.length) ?? 'mixed';
 if (!['mixed', 'flat', 'table'].includes(shape)) throw new Error('shape=mixed|flat|table');
-const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run006';
+const outputDir = process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run007';
 const outputName = shape === 'mixed' ? 'performance.json' : `performance-${shape}.json`;
 const sha256 = data => createHash('sha256').update(data).digest('hex');
 async function sourceHashes(dir = 'src') {

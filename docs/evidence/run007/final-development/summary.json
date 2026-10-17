@@ -1,0 +1,4809 @@
+{
+  "startedAt": "2026-10-17T19:09:09.736Z",
+  "checkedAt": "2026-10-17T19:09:29.001Z",
+  "classification": "EXPOSED_DEVELOPMENT_ONLY",
+  "uniqueExposedPages": 50,
+  "sourceFiles": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/institution-evidence.ts": "4f0f8e337260b3d6870d4dd85a8eaa2e688b2c56f642c5b5f5de59ed0a7cb494",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+    "src/ranker.ts": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7",
+    "extension/manifest.json": "fae2e8a1a97b00914d1cf0b3c7e1c073069f49b2857f8f1408d6b70123dc545a"
+  },
+  "sourceAfter": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "ea98b0c57bf42e4ebde1961b1f5229ec9a970062d387dd9f2e15f7982779fc69",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14",
+    "src/institution-evidence.ts": "4f0f8e337260b3d6870d4dd85a8eaa2e688b2c56f642c5b5f5de59ed0a7cb494",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+    "src/ranker.ts": "7b1719ffdcb524c76cd99bcc09bc5b36e769fcb668bc8ca9fbcb6d08798362d8",
+    "src/styles.css": "2b02534536e7bc565ab083f07f2ec072be718300c48280a2bee65baaa257f673",
+    "src/types.ts": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7",
+    "extension/manifest.json": "fae2e8a1a97b00914d1cf0b3c7e1c073069f49b2857f8f1408d6b70123dc545a"
+  },
+  "stableBeforeAndAfter": true,
+  "rows": [
+    {
+      "mode": "generic",
+      "suite": "core",
+      "exitCode": 0,
+      "summary": {
+        "pages": 15,
+        "correct": 72,
+        "recommended": 74,
+        "matched": 45,
+        "expected": 45,
+        "precision": 0.972972972972973,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.972972972972973,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 0.875,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 3,
+          "correct": 16,
+          "recommended": 16,
+          "matched": 10,
+          "expected": 10,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "government",
+          "pages": 3,
+          "correct": 10,
+          "recommended": 10,
+          "matched": 6,
+          "expected": 6,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "library",
+          "pages": 3,
+          "correct": 14,
+          "recommended": 16,
+          "matched": 9,
+          "expected": 9,
+          "precision": 0.875,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 3,
+          "correct": 14,
+          "recommended": 14,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "smu",
+          "pages": 3,
+          "correct": 18,
+          "recommended": 18,
+          "matched": 9,
+          "expected": 9,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 15,
+          "correct": 70,
+          "recommended": 75,
+          "matched": 43,
+          "expected": 45,
+          "precision": 0.9333333333333333,
+          "recall": 0.9555555555555556,
+          "tasksRecommended": 15
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 3,
+            "correct": 17,
+            "recommended": 17,
+            "matched": 10,
+            "expected": 10,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "government",
+            "pages": 3,
+            "correct": 10,
+            "recommended": 10,
+            "matched": 6,
+            "expected": 6,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "library",
+            "pages": 3,
+            "correct": 14,
+            "recommended": 16,
+            "matched": 9,
+            "expected": 9,
+            "precision": 0.875,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 3,
+            "correct": 14,
+            "recommended": 14,
+            "matched": 11,
+            "expected": 11,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "smu",
+            "pages": 3,
+            "correct": 15,
+            "recommended": 18,
+            "matched": 7,
+            "expected": 9,
+            "precision": 0.8333333333333334,
+            "recall": 0.7777777777777778,
+            "tasksRecommended": 3
+          }
+        ],
+        "unresolvedMappings": 6,
+        "repeatedCards": 3
+      },
+      "report": "docs/evidence/run007/final-development/generic/core/evaluation-current-generic-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "blind-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 22,
+        "recommended": 22,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 22,
+          "recommended": 22,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 6,
+            "recommended": 6,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/blind-v2/evaluation-current-generic-blind-v2-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "blind-v3",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 18,
+          "recommended": 18,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/blind-v3/evaluation-current-generic-blind-v3-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "development-v4-corrected",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 15,
+        "recommended": 15,
+        "matched": 13,
+        "expected": 13,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 15,
+          "recommended": 15,
+          "matched": 13,
+          "expected": 13,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/development-v4-corrected/evaluation-current-generic-development-v4-corrected-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "blind-v5",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 24,
+        "recommended": 25,
+        "matched": 13,
+        "expected": 15,
+        "precision": 0.96,
+        "recall": 0.8666666666666667,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.96,
+          "recall": 0.8666666666666667
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "passed": false
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 2,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 3,
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 26,
+          "recommended": 27,
+          "matched": 14,
+          "expected": 15,
+          "precision": 0.9629629629629629,
+          "recall": 0.9333333333333333,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 6,
+            "recommended": 6,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 8,
+            "recommended": 8,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 3,
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/blind-v5/evaluation-current-generic-blind-v5-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "blind-v6",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 25,
+        "recommended": 26,
+        "matched": 12,
+        "expected": 15,
+        "precision": 0.9615384615384616,
+        "recall": 0.8,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.9615384615384616,
+          "recall": 0.8
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 1,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 3,
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 35,
+          "recommended": 36,
+          "matched": 12,
+          "expected": 15,
+          "precision": 0.9722222222222222,
+          "recall": 0.8,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 10,
+            "recommended": 10,
+            "matched": 1,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "tasksRecommended": 0
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 3,
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/blind-v6/evaluation-current-generic-blind-v6-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "development-v6-corrected",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 26,
+        "recommended": 26,
+        "matched": 13,
+        "expected": 15,
+        "precision": 1,
+        "recall": 0.8666666666666667,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 0.8666666666666667
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 1,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 36,
+          "recommended": 36,
+          "matched": 13,
+          "expected": 15,
+          "precision": 1,
+          "recall": 0.8666666666666667,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 10,
+            "recommended": 10,
+            "matched": 1,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "tasksRecommended": 0
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/development-v6-corrected/evaluation-current-generic-development-v6-corrected-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "development-v6-corrected-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 26,
+        "recommended": 26,
+        "matched": 15,
+        "expected": 15,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 41,
+          "recommended": 41,
+          "matched": 15,
+          "expected": 15,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 15,
+            "recommended": 15,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/development-v6-corrected-v2/evaluation-current-generic-development-v6-corrected-v2-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "blind-v7-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 13,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 15,
+        "precision": 0.7222222222222222,
+        "recall": 0.7333333333333333,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.7222222222222222,
+          "recall": 0.7333333333333333
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 0.75,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 0,
+            "passed": false
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 3,
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 1,
+          "recommended": 1,
+          "matched": 0,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0,
+          "tasksRecommended": 0
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 13,
+          "recommended": 18,
+          "matched": 11,
+          "expected": 15,
+          "precision": 0.7222222222222222,
+          "recall": 0.7333333333333333,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 3,
+            "precision": 0.75,
+            "recall": 0.6666666666666666,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 1,
+            "recommended": 1,
+            "matched": 0,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0,
+            "tasksRecommended": 0
+          }
+        ],
+        "unresolvedMappings": 1,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/blind-v7-v2/evaluation-current-generic-blind-v7-v2-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "development-v7-corrected",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 13,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 15,
+        "precision": 0.7222222222222222,
+        "recall": 0.7333333333333333,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.7222222222222222,
+          "recall": 0.7333333333333333
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 0.75,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 0,
+            "passed": false
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 3,
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 1,
+          "recommended": 1,
+          "matched": 0,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0,
+          "tasksRecommended": 0
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 13,
+          "recommended": 18,
+          "matched": 11,
+          "expected": 15,
+          "precision": 0.7222222222222222,
+          "recall": 0.7333333333333333,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 3,
+            "precision": 0.75,
+            "recall": 0.6666666666666666,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 1,
+            "recommended": 1,
+            "matched": 0,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0,
+            "tasksRecommended": 0
+          }
+        ],
+        "unresolvedMappings": 1,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/development-v7-corrected/evaluation-current-generic-development-v7-corrected-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "development-v7-corrected-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 16,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 15,
+        "precision": 0.8888888888888888,
+        "recall": 0.7333333333333333,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.8888888888888888,
+          "recall": 0.7333333333333333
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 0.8,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 0.75,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 0,
+            "passed": false
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.8,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 3,
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 1,
+          "recommended": 1,
+          "matched": 0,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0,
+          "tasksRecommended": 0
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 16,
+          "recommended": 18,
+          "matched": 11,
+          "expected": 15,
+          "precision": 0.8888888888888888,
+          "recall": 0.7333333333333333,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.8,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 3,
+            "precision": 0.75,
+            "recall": 0.6666666666666666,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 1,
+            "recommended": 1,
+            "matched": 0,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0,
+            "tasksRecommended": 0
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/development-v7-corrected-v2/evaluation-current-generic-development-v7-corrected-v2-all.json"
+    },
+    {
+      "mode": "generic",
+      "suite": "blind-v8",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 13,
+        "recommended": 17,
+        "matched": 7,
+        "expected": 15,
+        "precision": 0.7647058823529411,
+        "recall": 0.4666666666666667,
+        "tasksRecommended": 2
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.7647058823529411,
+          "recall": 0.4666666666666667
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": null,
+            "recall": 0,
+            "passed": false
+          },
+          {
+            "siteId": "library",
+            "precision": 0.8333333333333334,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": null,
+            "recall": 0,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "passed": false
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 0,
+          "recommended": 0,
+          "matched": 0,
+          "expected": 3,
+          "precision": null,
+          "recall": 0,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.8333333333333334,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 0,
+          "recommended": 0,
+          "matched": 0,
+          "expected": 3,
+          "precision": null,
+          "recall": 0,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 6,
+          "matched": 1,
+          "expected": 3,
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 13,
+          "recommended": 19,
+          "matched": 7,
+          "expected": 15,
+          "precision": 0.6842105263157895,
+          "recall": 0.4666666666666667,
+          "tasksRecommended": 2
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 0,
+            "recommended": 0,
+            "matched": 0,
+            "expected": 3,
+            "precision": null,
+            "recall": 0,
+            "tasksRecommended": 0
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 7,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.7142857142857143,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 0,
+            "recommended": 0,
+            "matched": 0,
+            "expected": 3,
+            "precision": null,
+            "recall": 0,
+            "tasksRecommended": 0
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 7,
+            "matched": 1,
+            "expected": 3,
+            "precision": 0.42857142857142855,
+            "recall": 0.3333333333333333,
+            "tasksRecommended": 0
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/generic/blind-v8/evaluation-current-generic-blind-v8-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "core",
+      "exitCode": 0,
+      "summary": {
+        "pages": 15,
+        "correct": 72,
+        "recommended": 74,
+        "matched": 45,
+        "expected": 45,
+        "precision": 0.972972972972973,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.972972972972973,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 0.875,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 3,
+          "correct": 16,
+          "recommended": 16,
+          "matched": 10,
+          "expected": 10,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "government",
+          "pages": 3,
+          "correct": 10,
+          "recommended": 10,
+          "matched": 6,
+          "expected": 6,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "library",
+          "pages": 3,
+          "correct": 14,
+          "recommended": 16,
+          "matched": 9,
+          "expected": 9,
+          "precision": 0.875,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 3,
+          "correct": 14,
+          "recommended": 14,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        },
+        {
+          "siteId": "smu",
+          "pages": 3,
+          "correct": 18,
+          "recommended": 18,
+          "matched": 9,
+          "expected": 9,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 3
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 15,
+          "correct": 70,
+          "recommended": 75,
+          "matched": 43,
+          "expected": 45,
+          "precision": 0.9333333333333333,
+          "recall": 0.9555555555555556,
+          "tasksRecommended": 15
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 3,
+            "correct": 17,
+            "recommended": 17,
+            "matched": 10,
+            "expected": 10,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "government",
+            "pages": 3,
+            "correct": 10,
+            "recommended": 10,
+            "matched": 6,
+            "expected": 6,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "library",
+            "pages": 3,
+            "correct": 14,
+            "recommended": 16,
+            "matched": 9,
+            "expected": 9,
+            "precision": 0.875,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 3,
+            "correct": 14,
+            "recommended": 14,
+            "matched": 11,
+            "expected": 11,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 3
+          },
+          {
+            "siteId": "smu",
+            "pages": 3,
+            "correct": 15,
+            "recommended": 18,
+            "matched": 7,
+            "expected": 9,
+            "precision": 0.8333333333333334,
+            "recall": 0.7777777777777778,
+            "tasksRecommended": 3
+          }
+        ],
+        "unresolvedMappings": 6,
+        "repeatedCards": 3
+      },
+      "report": "docs/evidence/run007/final-development/institution/core/evaluation-current-institution-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "blind-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 22,
+        "recommended": 22,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 22,
+          "recommended": 22,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 6,
+            "recommended": 6,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/blind-v2/evaluation-current-institution-blind-v2-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "blind-v3",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 18,
+          "recommended": 18,
+          "matched": 11,
+          "expected": 11,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/blind-v3/evaluation-current-institution-blind-v3-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "development-v4-corrected",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 15,
+        "recommended": 15,
+        "matched": 13,
+        "expected": 13,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 2,
+          "expected": 2,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 15,
+          "recommended": 15,
+          "matched": 13,
+          "expected": 13,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 2,
+            "expected": 2,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/development-v4-corrected/evaluation-current-institution-development-v4-corrected-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "blind-v5",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 26,
+        "recommended": 26,
+        "matched": 14,
+        "expected": 15,
+        "precision": 1,
+        "recall": 0.9333333333333333,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 0.9333333333333333
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 2,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 28,
+          "recommended": 28,
+          "matched": 15,
+          "expected": 15,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 6,
+            "recommended": 6,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 8,
+            "recommended": 8,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 6,
+            "recommended": 6,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/blind-v5/evaluation-current-institution-blind-v5-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "blind-v6",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 25,
+        "recommended": 26,
+        "matched": 12,
+        "expected": 15,
+        "precision": 0.9615384615384616,
+        "recall": 0.8,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.9615384615384616,
+          "recall": 0.8
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 1,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 5,
+          "matched": 2,
+          "expected": 3,
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 35,
+          "recommended": 36,
+          "matched": 12,
+          "expected": 15,
+          "precision": 0.9722222222222222,
+          "recall": 0.8,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 10,
+            "recommended": 10,
+            "matched": 1,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "tasksRecommended": 0
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 5,
+            "matched": 2,
+            "expected": 3,
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/blind-v6/evaluation-current-institution-blind-v6-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "development-v6-corrected",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 26,
+        "recommended": 26,
+        "matched": 13,
+        "expected": 15,
+        "precision": 1,
+        "recall": 0.8666666666666667,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 0.8666666666666667
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 1,
+          "expected": 3,
+          "precision": 1,
+          "recall": 0.3333333333333333,
+          "tasksRecommended": 0
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 36,
+          "recommended": 36,
+          "matched": 13,
+          "expected": 15,
+          "precision": 1,
+          "recall": 0.8666666666666667,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 10,
+            "recommended": 10,
+            "matched": 1,
+            "expected": 3,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "tasksRecommended": 0
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/development-v6-corrected/evaluation-current-institution-development-v6-corrected-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "development-v6-corrected-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 26,
+        "recommended": 26,
+        "matched": 15,
+        "expected": 15,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 1,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 41,
+          "recommended": 41,
+          "matched": 15,
+          "expected": 15,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 15,
+            "recommended": 15,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/development-v6-corrected-v2/evaluation-current-institution-development-v6-corrected-v2-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "blind-v7-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 16,
+        "recommended": 24,
+        "matched": 12,
+        "expected": 15,
+        "precision": 0.6666666666666666,
+        "recall": 0.8,
+        "tasksRecommended": 4
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.6666666666666666,
+          "recall": 0.8
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 0.3333333333333333,
+            "recall": 0,
+            "passed": false
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 2,
+          "recommended": 6,
+          "matched": 0,
+          "expected": 3,
+          "precision": 0.3333333333333333,
+          "recall": 0,
+          "tasksRecommended": 0
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 16,
+          "recommended": 25,
+          "matched": 12,
+          "expected": 15,
+          "precision": 0.64,
+          "recall": 0.8,
+          "tasksRecommended": 4
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 2,
+            "recommended": 7,
+            "matched": 0,
+            "expected": 3,
+            "precision": 0.2857142857142857,
+            "recall": 0,
+            "tasksRecommended": 0
+          }
+        ],
+        "unresolvedMappings": 1,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/blind-v7-v2/evaluation-current-institution-blind-v7-v2-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "development-v7-corrected",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 20,
+        "recommended": 24,
+        "matched": 15,
+        "expected": 15,
+        "precision": 0.8333333333333334,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "FAIL",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.8333333333333334,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 0.6,
+            "recall": 1,
+            "passed": false
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.6,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 21,
+          "recommended": 25,
+          "matched": 15,
+          "expected": 15,
+          "precision": 0.84,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.6,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 7,
+            "recommended": 7,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 1,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/development-v7-corrected/evaluation-current-institution-development-v7-corrected-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "development-v7-corrected-v2",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 23,
+        "recommended": 24,
+        "matched": 15,
+        "expected": 15,
+        "precision": 0.9583333333333334,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.9583333333333334,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 0.8,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.8,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 3,
+          "recommended": 3,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 24,
+          "recommended": 25,
+          "matched": 15,
+          "expected": 15,
+          "precision": 0.96,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.8,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 3,
+            "recommended": 3,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 7,
+            "recommended": 7,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/development-v7-corrected-v2/evaluation-current-institution-development-v7-corrected-v2-all.json"
+    },
+    {
+      "mode": "institution",
+      "suite": "blind-v8",
+      "exitCode": 0,
+      "summary": {
+        "pages": 5,
+        "correct": 25,
+        "recommended": 26,
+        "matched": 15,
+        "expected": 15,
+        "precision": 0.9615384615384616,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        },
+        "overall": {
+          "precision": 0.9615384615384616,
+          "recall": 1
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "government",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "library",
+            "precision": 0.8333333333333334,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "public-agency",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          },
+          {
+            "siteId": "smu",
+            "precision": 1,
+            "recall": 1,
+            "passed": true
+          }
+        ],
+        "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 5,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 1,
+          "correct": 5,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 0.8333333333333334,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 1,
+          "correct": 4,
+          "recommended": 4,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        },
+        {
+          "siteId": "smu",
+          "pages": 1,
+          "correct": 6,
+          "recommended": 6,
+          "matched": 3,
+          "expected": 3,
+          "precision": 1,
+          "recall": 1,
+          "tasksRecommended": 1
+        }
+      ],
+      "menuFlow": {
+        "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+        "summary": {
+          "pages": 5,
+          "correct": 31,
+          "recommended": 33,
+          "matched": 15,
+          "expected": 15,
+          "precision": 0.9393939393939394,
+          "recall": 1,
+          "tasksRecommended": 5
+        },
+        "sites": [
+          {
+            "siteId": "city",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "government",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 5,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "library",
+            "pages": 1,
+            "correct": 5,
+            "recommended": 7,
+            "matched": 3,
+            "expected": 3,
+            "precision": 0.7142857142857143,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "public-agency",
+            "pages": 1,
+            "correct": 4,
+            "recommended": 4,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          },
+          {
+            "siteId": "smu",
+            "pages": 1,
+            "correct": 12,
+            "recommended": 12,
+            "matched": 3,
+            "expected": 3,
+            "precision": 1,
+            "recall": 1,
+            "tasksRecommended": 1
+          }
+        ],
+        "unresolvedMappings": 0,
+        "repeatedCards": 0
+      },
+      "report": "docs/evidence/run007/final-development/institution/blind-v8/evaluation-current-institution-blind-v8-all.json"
+    }
+  ],
+  "uniquePageAggregates": [
+    {
+      "mode": "generic",
+      "suites": [
+        "core",
+        "blind-v2",
+        "blind-v3",
+        "development-v4-corrected",
+        "blind-v5",
+        "development-v6-corrected-v2",
+        "development-v7-corrected-v2",
+        "blind-v8"
+      ],
+      "summary": {
+        "pages": 50,
+        "correct": 206,
+        "recommended": 215,
+        "matched": 126,
+        "expected": 140,
+        "tasksRecommended": 46,
+        "precision": 0.958139534883721,
+        "recall": 0.9
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 10,
+          "correct": 47,
+          "recommended": 48,
+          "matched": 31,
+          "expected": 31,
+          "tasksRecommended": 10,
+          "precision": 0.9791666666666666,
+          "recall": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 10,
+          "correct": 33,
+          "recommended": 33,
+          "matched": 22,
+          "expected": 25,
+          "tasksRecommended": 9,
+          "precision": 1,
+          "recall": 0.88
+        },
+        {
+          "siteId": "library",
+          "pages": 10,
+          "correct": 41,
+          "recommended": 45,
+          "matched": 26,
+          "expected": 27,
+          "tasksRecommended": 10,
+          "precision": 0.9111111111111111,
+          "recall": 0.9629629629629629
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 10,
+          "correct": 40,
+          "recommended": 40,
+          "matched": 25,
+          "expected": 29,
+          "tasksRecommended": 9,
+          "precision": 1,
+          "recall": 0.8620689655172413
+        },
+        {
+          "siteId": "smu",
+          "pages": 10,
+          "correct": 45,
+          "recommended": 49,
+          "matched": 22,
+          "expected": 28,
+          "tasksRecommended": 8,
+          "precision": 0.9183673469387755,
+          "recall": 0.7857142857142857
+        }
+      ],
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        }
+      },
+      "scope": "Exposed 50-source-page aggregate only; each source counted once. All individual/raw suite failures stay in rows. This aggregate does not replace first independent results, live task completion, or full S07 acceptance."
+    },
+    {
+      "mode": "institution",
+      "suites": [
+        "core",
+        "blind-v2",
+        "blind-v3",
+        "development-v4-corrected",
+        "blind-v5",
+        "development-v6-corrected-v2",
+        "development-v7-corrected-v2",
+        "blind-v8"
+      ],
+      "summary": {
+        "pages": 50,
+        "correct": 227,
+        "recommended": 231,
+        "matched": 139,
+        "expected": 140,
+        "tasksRecommended": 50,
+        "precision": 0.9826839826839827,
+        "recall": 0.9928571428571429
+      },
+      "sites": [
+        {
+          "siteId": "city",
+          "pages": 10,
+          "correct": 47,
+          "recommended": 48,
+          "matched": 31,
+          "expected": 31,
+          "tasksRecommended": 10,
+          "precision": 0.9791666666666666,
+          "recall": 1
+        },
+        {
+          "siteId": "government",
+          "pages": 10,
+          "correct": 38,
+          "recommended": 38,
+          "matched": 25,
+          "expected": 25,
+          "tasksRecommended": 10,
+          "precision": 1,
+          "recall": 1
+        },
+        {
+          "siteId": "library",
+          "pages": 10,
+          "correct": 43,
+          "recommended": 46,
+          "matched": 27,
+          "expected": 27,
+          "tasksRecommended": 10,
+          "precision": 0.9347826086956522,
+          "recall": 1
+        },
+        {
+          "siteId": "public-agency",
+          "pages": 10,
+          "correct": 44,
+          "recommended": 44,
+          "matched": 28,
+          "expected": 29,
+          "tasksRecommended": 10,
+          "precision": 1,
+          "recall": 0.9655172413793104
+        },
+        {
+          "siteId": "smu",
+          "pages": 10,
+          "correct": 55,
+          "recommended": 55,
+          "matched": 28,
+          "expected": 28,
+          "tasksRecommended": 10,
+          "precision": 1,
+          "recall": 1
+        }
+      ],
+      "quality": {
+        "status": "PASS",
+        "thresholds": {
+          "overallPrecision": 0.9,
+          "overallRecall": 0.85,
+          "sitePrecision": 0.8,
+          "siteRecall": 0.75
+        }
+      },
+      "scope": "Exposed 50-source-page aggregate only; each source counted once. All individual/raw suite failures stay in rows. This aggregate does not replace first independent results, live task completion, or full S07 acceptance."
+    }
+  ]
+}

@@ -1,0 +1,661 @@
+[
+  {
+    "sourceId": "city-login",
+    "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+    "sourceNodePath": "2.17.3.1.5.3.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+      "class": "util-btn",
+      "data-eval-id": "city-login"
+    },
+    "fixedText": "로그인",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "login",
+    "action": "navigate",
+    "categoryReason": "Operational sign-in entry; login category.",
+    "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "city-reservation-help",
+    "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+    "sourceNodePath": "2.17.5.3.3.15.3",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.cheonan.go.kr/yeyak/sub07_01.do",
+      "class": "depth1-btn has-depth",
+      "role": "button",
+      "aria-controls": "gnb-depth1-q6haupy",
+      "aria-expanded": "false",
+      "aria-haspopup": "true",
+      "data-eval-id": "city-reservation-help"
+    },
+    "fixedText": "예약안내",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Reservation guidance, rather than a reservation submission.",
+    "actionReason": "Explicit role=button, aria-controls and aria-haspopup override ordinary href navigation.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "city-service-search",
+    "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+    "sourceNodePath": "2.23.1.3.1.1.3.1",
+    "tag": "button",
+    "fixedAttributes": {
+      "type": "button",
+      "id": "searchBtn",
+      "class": "search-btn",
+      "data-eval-id": "city-service-search"
+    },
+    "fixedText": "검색",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Reservation-service search control.",
+    "actionReason": "Button has no ordinary navigable href; locate original control without activation.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "city-reset",
+    "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+    "sourceNodePath": "2.23.1.3.1.1.3.3",
+    "tag": "button",
+    "fixedAttributes": {
+      "type": "button",
+      "id": "resetBtn",
+      "class": "reset-btn",
+      "data-eval-id": "city-reset"
+    },
+    "fixedText": "초기화",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Reset belongs to the service-search controls.",
+    "actionReason": "Reset button mutates the original search controls; locate without activation.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "city-museum-guide",
+    "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+    "sourceNodePath": "2.23.3.1.3.3.0.0.41.0",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+      "class": "service-item",
+      "tabindex": "-1",
+      "data-eval-id": "city-museum-guide"
+    },
+    "fixedText": "체험/견학천안박물관 전시 해설 예약2026-02-01 ~ 2026-12-31천안박물관접수중",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "apply",
+    "action": "navigate",
+    "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+    "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "city-child-museum",
+    "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+    "sourceNodePath": "2.23.3.1.3.3.0.0.42.0",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+      "class": "service-item",
+      "tabindex": "-1",
+      "data-eval-id": "city-child-museum"
+    },
+    "fixedText": "체험/견학상설전시 <나는야 꼬마 왕건> 관람 예약2026-02-01 ~ 2026-12-31어린이박물관접수중",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "apply",
+    "action": "navigate",
+    "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+    "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-hospital",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.5.1.2.3.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "data-eval-id": "gov-hospital"
+    },
+    "fixedText": "병원",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-pharmacy",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.5.1.2.3.3",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "data-eval-id": "gov-pharmacy"
+    },
+    "fixedText": "약국",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-typhoon-status",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.5.1.4.3.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "data-eval-id": "gov-typhoon-status"
+    },
+    "fixedText": "태풍",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-wind-status",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.5.1.4.3.3",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "data-eval-id": "gov-wind-status"
+    },
+    "fixedText": "강풍",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-guide-pdf",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.5.1.6.3.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "data-eval-id": "gov-guide-pdf"
+    },
+    "fixedText": "행동요령 PDF다운로드",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "A downloadable action guide is guidance.",
+    "actionReason": "Explicit javascript URL and fixed download label; no download performed.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-before",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.16.3",
+    "tag": "button",
+    "fixedAttributes": {
+      "class": "tab-list active",
+      "name": "grp",
+      "onclick": "return false;",
+      "aria-expanded": "true",
+      "data-eval-id": "gov-before"
+    },
+    "fixedText": "태풍 예보시",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Stage-specific safety action guidance.",
+    "actionReason": "Button with explicit onclick marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-during",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.16.11",
+    "tag": "button",
+    "fixedAttributes": {
+      "class": "tab-list",
+      "name": "grp",
+      "onclick": "return false;",
+      "aria-expanded": "false",
+      "data-eval-id": "gov-during"
+    },
+    "fixedText": "태풍 특보 중",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Stage-specific safety action guidance.",
+    "actionReason": "Button with explicit onclick marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "gov-after",
+    "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+    "sourceNodePath": "1.8.13.1.5.3.16.19",
+    "tag": "button",
+    "fixedAttributes": {
+      "class": "tab-list",
+      "name": "grp",
+      "onclick": "return false;",
+      "aria-expanded": "false",
+      "data-eval-id": "gov-after"
+    },
+    "fixedText": "태풍 이후",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Stage-specific safety action guidance.",
+    "actionReason": "Button with explicit onclick marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "lib-login",
+    "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+    "sourceNodePath": "2.31.1.3.1.3.3.3.0",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "class": "login",
+      "data-eval-id": "lib-login"
+    },
+    "fixedText": "로그인",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "login",
+    "action": "locate",
+    "categoryReason": "Operational sign-in entry; login category.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "lib-search-guide",
+    "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+    "sourceNodePath": "2.45.3.3.1.1.14.1.1.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+      "onclick": "return false;",
+      "data-eval-id": "lib-search-guide"
+    },
+    "fixedText": "검색기능선택됨",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Page title and guide hierarchy identify instructions for the search function, not a search execution.",
+    "actionReason": "Explicit onclick marker, even though href is HTTPS.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "lib-result-guide",
+    "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+    "sourceNodePath": "2.45.3.3.1.1.14.1.3.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+      "onclick": "return false;",
+      "data-eval-id": "lib-result-guide"
+    },
+    "fixedText": "검색결과",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Page title and guide hierarchy identify instructions for using results, not a results query.",
+    "actionReason": "Explicit onclick marker, even though href is HTTPS.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "lib-detail-guide",
+    "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+    "sourceNodePath": "2.45.3.3.1.1.14.1.5.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.nl.go.kr/NL/contents/N71230300000.do",
+      "onclick": "return false;",
+      "data-eval-id": "lib-detail-guide"
+    },
+    "fixedText": "상세정보",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Page title and guide hierarchy identify instructions for detail information, not an individual record.",
+    "actionReason": "Explicit onclick marker, even though href is HTTPS.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "lib-full-guide",
+    "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+    "sourceNodePath": "2.45.3.3.5.1.3.1.1",
+    "tag": "button",
+    "fixedAttributes": {
+      "type": "button",
+      "onclick": "return false;",
+      "class": "download_btn",
+      "data-eval-id": "lib-full-guide"
+    },
+    "fixedText": "상세 가이드 다운로드",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "locate",
+    "categoryReason": "Detailed user guide download.",
+    "actionReason": "Download button with explicit onclick marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "nps-login",
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.1.9.1.1.1.3.9.16.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.nps.or.kr/lgn/loginForm.do",
+      "class": "btn-login",
+      "data-eval-id": "nps-login"
+    },
+    "fixedText": "로그인",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "login",
+    "action": "navigate",
+    "categoryReason": "Operational sign-in entry; login category.",
+    "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": null,
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+    "tag": "input",
+    "fixedAttributes": {
+      "type": "text",
+      "name": "searchText",
+      "id": "searchText",
+      "title": "검색어 입력",
+      "class": "keyword"
+    },
+    "fixedText": "",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Actual search text input, fixed title=검색어 입력, name/id=searchText, inside service-search form.",
+    "actionReason": "Locate the original search input using fixed metadata only; no editable value extraction, typing or submission.",
+    "annotationStatus": "missing-in-both-versions"
+  },
+  {
+    "sourceId": "nps-service-search",
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.9",
+    "tag": "input",
+    "fixedAttributes": {
+      "type": "button",
+      "name": "btnSearch",
+      "id": "btnSearch",
+      "class": "btn-search",
+      "data-eval-id": "nps-service-search",
+      "fixedButtonLabel": "검색"
+    },
+    "fixedText": "",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "search",
+    "action": "locate",
+    "categoryReason": "Service search button in service-search form.",
+    "actionReason": "Button-type input; locate original control without submitting the form.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "nps-history-help",
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.5.9.7.9.1.1.3.3",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+      "class": "btn white btn-go",
+      "title": "가입내역조회 상세보기",
+      "data-eval-id": "nps-history-help"
+    },
+    "fixedText": "상세보기",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "navigate",
+    "categoryReason": "Separate details link explains the personal-record service; it is not the adjacent record-query operation.",
+    "actionReason": "Ordinary HTTPS details destination; no explicit action marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "nps-history",
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.5.9.7.9.1.1.3.5",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "class": "btn btn-go loadingOnMenu",
+      "title": "가입내역조회 조회하기",
+      "data-eval-id": "nps-history"
+    },
+    "fixedText": "조회하기",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "apply",
+    "action": "locate",
+    "categoryReason": "Operational access to personal insurance/contribution records, with authentication-needed context.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "nps-consult-help",
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.5.9.7.9.1.99.3.3",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+      "class": "btn white btn-go",
+      "title": "연금업무 상담예약 신청 상세보기",
+      "data-eval-id": "nps-consult-help"
+    },
+    "fixedText": "상세보기",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "help",
+    "action": "navigate",
+    "categoryReason": "Separate details link explains consultation-reservation procedure; it is not the adjacent application operation.",
+    "actionReason": "Ordinary HTTPS details destination; no explicit action marker.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "nps-consult",
+    "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+    "sourceNodePath": "2.3.5.9.7.9.1.99.3.5",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "class": "btn btn-go ",
+      "title": "연금업무 상담예약 신청 신청하기",
+      "data-eval-id": "nps-consult"
+    },
+    "fixedText": "신청하기",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "apply",
+    "action": "locate",
+    "categoryReason": "Operational consultation-reservation application, with processing/authentication context.",
+    "actionReason": "Explicit javascript URL.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-login",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.1.5.1.9.1.5.1.1.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "javascript:void(0);",
+      "class": "login",
+      "title": "로그인 새창열림",
+      "data-eval-id": "smu-login"
+    },
+    "fixedText": "Login",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "login",
+    "action": "locate",
+    "categoryReason": "Operational sign-in entry; login category.",
+    "actionReason": "Explicit javascript URL and fixed new-window title.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-second",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.3.1.3.3.1.3.1.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.smu.ac.kr/kor/life/multiMajor.do#tab18283_",
+      "title": "다전공(제2전공) 선택됨",
+      "id": "tab18283",
+      "target": "",
+      "data-eval-id": "smu-second"
+    },
+    "fixedText": "다전공(제2전공)",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "academic",
+    "action": "locate",
+    "categoryReason": "Academic-program policy document, not personal application execution.",
+    "actionReason": "Same origin/path/query as the current page plus fragment; local same-document fragment.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-linked",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.3.1.3.3.1.3.3.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.smu.ac.kr/kor/life/multiMajor2.do#tab18284_",
+      "title": "다전공(연계/융합전공)",
+      "id": "tab18284",
+      "target": "",
+      "data-eval-id": "smu-linked"
+    },
+    "fixedText": "다전공(연계/융합전공)",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "academic",
+    "action": "navigate",
+    "categoryReason": "Academic-program policy document, not personal application execution.",
+    "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-self",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.3.1.3.3.1.3.5.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.smu.ac.kr/kor/life/multiMajor3.do#tab18285_",
+      "title": "다전공(자기설계융합전공)",
+      "id": "tab18285",
+      "target": "",
+      "data-eval-id": "smu-self"
+    },
+    "fixedText": "다전공(자기설계융합전공)",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "academic",
+    "action": "navigate",
+    "categoryReason": "Academic-program policy document, not personal application execution.",
+    "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-minor",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.3.1.3.3.1.3.7.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+      "title": "부전공",
+      "id": "tab18286",
+      "target": "",
+      "data-eval-id": "smu-minor"
+    },
+    "fixedText": "부전공",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "academic",
+    "action": "navigate",
+    "categoryReason": "Academic-program policy document, not personal application execution.",
+    "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-micro",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.3.1.3.3.1.3.9.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.smu.ac.kr/kor/life/microMajor.do#tab19085_",
+      "title": "마이크로전공",
+      "id": "tab19085",
+      "target": "",
+      "data-eval-id": "smu-micro"
+    },
+    "fixedText": "마이크로전공",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "academic",
+    "action": "navigate",
+    "categoryReason": "Academic-program policy document, not personal application execution.",
+    "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+    "annotationStatus": "present"
+  },
+  {
+    "sourceId": "smu-advanced",
+    "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+    "sourceNodePath": "2.3.3.1.3.3.1.3.11.1",
+    "tag": "a",
+    "fixedAttributes": {
+      "href": "https://www.smu.ac.kr/kor/life/advancedDegree.do#tab18287_",
+      "title": "심화전공",
+      "id": "tab18287",
+      "target": "",
+      "data-eval-id": "smu-advanced"
+    },
+    "fixedText": "심화전공",
+    "staticHiddenMarkers": [],
+    "auditDisposition": "accepted",
+    "category": "academic",
+    "action": "navigate",
+    "categoryReason": "Academic-program policy document, not personal application execution.",
+    "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+    "annotationStatus": "present"
+  }
+]

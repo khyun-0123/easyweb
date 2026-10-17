@@ -1,0 +1,1493 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ko" class="no-js">
+<head>
+	<!-- header -->
+    
+
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no, address=no, email=no">
+<title>국민안전24</title>
+<meta name="description" content="국민안전24 - 대한민국의 모든 재난 상황과 안전 정보를 한눈에 확인하세요.">
+<meta name="keywords" content="국민안전24, 재난안전, 재난문자, 안전지도, 기상특보, 국민행동요령">
+<link rel="canonical" href="https://www.safekorea.go.kr/">
+
+<!-- 네이버/카카오용 Open Graph 태그 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="국민안전24">
+<meta property="og:description" content="재난 상황 정보 및 안전 정보를 제공하는 국가 대표 포털">
+<meta property="og:url" content="https://www.safekorea.go.kr/">
+<meta property="og:image" content="https://www.safekorea.go.kr/images/common/logo.png">
+<meta property="og:site_name" content="국민안전24">
+
+<meta name="application-name" content="국민안전24">
+
+<!-- 구글 사이트 이름 구조화 데이터 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "국민안전24",
+  "url": "https://www.safekorea.go.kr/"
+}
+</script>
+
+
+
+<script>
+//https강제전환
+if (location.protocol === 'http:') {
+	location.href = location.href.replace('http://', 'https://');
+}
+	let contextPath = '/safekorea-kor';
+	let gblLang 	= 'ko';
+	let menuNm = '사유재산피해신고';
+	let actsTitle = '';
+	let mobileYn = '';
+</script>
+<link rel="shortcut icon" href='/safekorea-kor/images/common/icon/favicon.ico'>
+<link rel="stylesheet" href='/safekorea-kor/css/common.css?version=1792263408025'>
+<link rel="stylesheet" href='/safekorea-kor/css/main.css?version=1792263408025'>
+<link rel="stylesheet" href='/safekorea-kor/css/imsi.css?version=1792263408025'>
+<link rel="stylesheet" href='/safekorea-kor/js/datepicker/bootstrap-datepicker3.css?version=1792263408025'>
+
+
+<!-- content styles -->
+<script src='/safekorea-kor/js/jquery-3.7.1.min.js'></script>
+<script src='/safekorea-kor/js/lodash.min.js'></script>
+<script src='/safekorea-kor/em/js/moment.min.js'</script>
+<script src='/safekorea-kor/js/lnbmenu.js'></script>
+<script src='/safekorea-kor/js/modernizr-custom.min.js'></script>
+<script src='/safekorea-kor/js/datepicker/bootstrap-datepicker.js'></script>
+<script src='/safekorea-kor/js/datepicker/bootstrap-datepicker.ko.min.js'></script>
+
+
+<script src='/safekorea-kor/js/sfk-weather-v1.0.js'></script>
+<script src='/safekorea-kor/js/safekorea.utils.js'></script>
+<script src='/safekorea-kor/js/swiper/swiper-bundle.js'></script>
+
+<form id="globalForm" name="globalForm">
+	<input type="hidden" id="menuSn" name="menuSn" value="70">
+</form>
+<style>
+    .loca-listarea {display : block; }
+    .brd-listarea {display : none; }
+    .board-listarea {display : block; }
+    .nf-header {display : none; }
+    .header-pcarea {display : block; }
+    #korfooter {display : block; }
+    #privacy-modal{width:1024px;margin-top:0px !important}
+    #privacy-modal .pop-conts{height:420px}
+
+    @media(max-width:1023px){
+        .loca-listarea {display : none; }
+        .brd-listarea {display : block; }
+        .board-listarea {display : none; }
+        .nf-header {display : block; }
+        .header-pcarea {display : none; }
+        #korfooter {display : block; }
+        .mobile-none{display:none;}
+        .guide-categorylist li{width:12.5%}
+        .guide-categorylist li img {width:100px}
+        .guide-categorylist li .gimg-area {width: 90%;}
+    }
+    @media(max-width:780px){.guide-categorylist li{width:16.6%}}
+    @media(max-width:640px){.guide-categorylist li{width:20%}}
+    @media(max-width:480px){.guide-categorylist li{width:25%}}
+    @media(max-width:415px){.guide-categorylist li{width:33%}}
+</style>
+<script>
+
+$(document).ready(function(){
+	const deviceType = detectDeviceType();
+
+	$(".nav-slist li").on("click" , function(e){
+
+		if($(this).find("a").attr("alt") == "재난문자"){
+			 if(position_stroage.get() != null){
+				   e.preventDefault();
+			        sbLawArea1 = position_stroage.get()[0]["sido"] + '00000000' ;
+			        sbLawArea2 = position_stroage.get()[0]["sgg"] +  '00000';
+			        window.location.href = contextPath +  "/ctim/cmsg/calamitySms.do?menuSn=34&currentPage=1&readYn=Y&sbLawArea1=" + sbLawArea1 + "&sbLawArea2=" + sbLawArea2+"&firstYn=N";
+			 }
+		}
+	});
+
+
+
+});
+
+
+window.addEventListener('resize',function(){
+	/* window.location.reload();
+	detectDeviceType(); */
+})
+function detectDeviceType(){
+		if(''){
+
+			// 재난문자 일때 검색조건 (재해구분,기본검색) 숨김
+			if(location.pathname.indexOf('calamitySms') > -1){
+				$(".safety-sh01").hide();
+				$(".brd-num").hide();
+			}
+			// 교육훈련 > 교육일정 일때 검색조건 (교육시간,교육대상) 숨김
+			//if(location.pathname.indexOf('educationSchedule') > -1){
+			//	$("#searchEduTime").hide();
+			//	$("#searchEduTarget").hide();
+			//}
+		} else {
+			// 재난문자 일때 검색조건 (재해구분,기본검색) 보임
+			if(location.pathname.indexOf('calamitySms') > -1){
+				$("#searchMobile1").show();
+				$("#searchMobile2").show();
+			}
+			// 재난안전뉴스 일때 검색조건 (기본검색) 보임
+			if(location.pathname.indexOf('calamitySafetyNews') > -1){
+				$("#searchMobile1").show();
+			}
+			// 교육훈련 > 교육일정 일때 검색조건 (교육시간,교육대상) 숨김
+			//if(location.pathname.indexOf('educationSchedule') > -1){
+			//	$("#searchEduTime").show();
+			//	$("#searchEduTarget").show();
+			//}
+		}
+	}
+</script>
+</head>
+<body>
+	<ul class="skipnavi"> 
+	<!-- <li><a href="#gnb">대메뉴 바로가기</a></li>  -->
+		<li><a href="#main-menu">대메뉴 바로가기</a></li>
+		<li><a href="#content_area">본문내용으로 이동</a></li>
+	</ul>
+
+	<div id="wrap" class="main-bg">
+	    <!-- header -->
+	    
+           
+
+
+
+
+
+
+
+
+<!-- header_pc area -->
+<header class="header-pcarea">
+	<div class="brand-area">
+		<div class="gnb-inner">
+			<p>이 누리집은 대한민국 공식 전자정부 누리집입니다.</p>
+			<ul class="gnb-list">
+				<li><a href="javascript:pageUtils.position('cmmn-pos-modal');"><img src="/safekorea-kor/images/main/myloca-icon.gif" alt="" style="width:20px;vertical-align:middle;margin-right:5px">관심위치</a></li>
+				
+				<li><a href="https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do">ENG</a></li>
+			</ul>
+		</div>
+	</div>
+	<nav id="gnb">
+		<div class="logo-area" onclick="window.location.href='/safekorea-kor'">
+			<h1>
+				<a href="/safekorea-kor">국민안전24</a>
+			</h1>
+		</div>
+		<div class="nav-listarea" id ="main-menu">
+			<ul class="nav-list">
+				<li class="top-search">
+					<a href="/safekorea-kor/main/searchMain.do" title="검색">
+						<img src="/safekorea-kor/images/common/search-icon.gif" alt="검색">
+					</a>
+				</li>
+				<!-- 사이트맵 시작 -->
+				<li class="top-allmenu">
+					<!-- 사이트맵 열기 버튼 -->
+					<button onClick="modal('dialog')"><img src="/safekorea-kor/images/common/ham-icon.gif" alt="사이트맵" ></button>
+					<!-- 사이트맵 열기 버튼 -->
+					<!-- 사이트맵 영역 -->
+					<div id="dialog" class="dialog">
+						<div class="tb">
+							<div class="inner" style="max-width:1000px;">
+								<!-- 사이트맵 top영역 -->
+								<div class="stop">
+									<div class="title">사이트맵</div>
+									<a href="#" class="modal-close"><img src="/safekorea-kor/images/sub/sitemap-close.gif" alt="sitemap-close"></a>
+								</div>
+								<!-- 사이트맵 top영역 -->
+								<!-- 사이트맵 contents영역 -->
+								<div class="ct">
+									<div class="accordion">
+										
+									</div>
+								</div>
+								<!-- 사이트맵 contents영역 -->
+							</div>
+						</div>
+					</div>
+				</li>
+				<!-- 사이트맵 끝 -->
+			</ul>
+		</div>
+	</nav>
+</header>
+
+
+
+
+    <!-- header_mobile area -->
+<header class="nf-header">
+    <div class="brand-area">
+        <div class="gnb-inner">
+            <p>이 누리집은 대한민국 정부 전자정부 누리집입니다.</p>
+        </div>
+    </div>
+    <div class="nf-toolbar">
+        <h1 class="logo">
+            <a href="/safekorea-kor"><span>국민안전24</span></a>
+        </h1>
+        <div class="mobilemenu-open">
+            <div class="mobilemenu-area">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="sr-only">전체메뉴보기</span>
+        </div>
+        <div onclick="history.back();" class="page_cover"></div>
+        <div id="menu" style="overflow-y : auto;">
+            <div onclick="history.back();" class="mobilemenu-close"></div>
+
+    
+                <!-- side menu 시작 -->
+                <div class="side-toparea">
+                    <div class="side-toplist">
+                        <span><a href="javascript:history.back();pageUtils.position('cmmn-pos-modal');"><img src="/safekorea-kor/images/common/myloca-icon1.gif" alt="관심위치" style="width:20px;vertical-align:middle;margin-right:5px">관심위치</a></span>
+                        
+                        <span class="lang"><a href="https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do">ENG</a></span>
+                    </div>
+                    <!-- <div class="side-searcharea">
+                        <input type="text" placeholder="검색어를 입력해주세요."><button type="button" class="side-search">search</button>
+                    </div> -->
+                </div>
+                <div id='sidemenu'>             
+                    <ul>
+                       <li><a href='#'><span>시설안전지도</span></a></li>
+                       <li class='has-sub'><a href='#'><span>행동요령</span></a>
+                          <ul>
+                             <li class='has-sub'><a href='#'><span>국민행동요령</span></a></li>
+                             <li class='has-sub'><a href='#'><span>비상대처</span></a>
+                                <ul>
+                                   <li><a href='#'><span>- 비상대처요령</span></a></li>
+                                   <li><a href='#'><span>- 안전수칙</span></a></li>
+                                   <li><a href='#'><span>- 비상대비용품</span></a></li>
+                                   <li class='last'><a href='#'><span>- 안전관련단체</span></a></li>
+                                </ul>
+                             </li>
+                             <li class='has-sub'><a href='#'><span>자율안전점검</span></a>
+                                <ul>
+                                    <li><a href='#'><span>- 우리집안전점검</span></a></li>
+                                    <li><a href='#'><span>- 다중이용시설점검</span></a></li>
+                                    <li><a href='#'><span>- 재난대비안전점검</span></a></li>
+                                    <li class='last'><a href='#'><span>- 생활안전점검</span></a></li>
+                                 </ul>
+                            </li>
+                             <li class='linksite'><a href='#'><span>어린이안전놀이시설점검</span></a></li>
+                             <li class='last'><a href='#'><span>자치단체</span></a></li>
+                          </ul>
+                       </li>
+                       <li class='has-sub last'><a href='#'><span>재난정보</span></a>
+                            <ul>
+                                <li class='has-sub'><a href='#'><span>재난상황정보</span></a>
+                                    <ul>
+                                        <li class='has-sub'><a href='#'><span>- 기상특보(10종)</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 지진</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 산불</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 산사태</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 홍수</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 미세먼지</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 감염병</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 가축질병</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 적조</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 해파리</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 패류독소</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 가뭄예경보</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 낙뢰관측</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 전력</span></a></li>                                      
+                                        <li class='last has-sub'><a href='#'><span>- 방사선</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>재난문자</span></a>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>재난안전뉴스</span></a>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>위기경보발생현황</span></a>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>재해위험지구</span></a>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>기상정보</span></a>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>생활지수</span></a>
+                                    <ul>
+                                        <li><a href='#'><span>체감온도</span></a></li>
+                                        <li><a href='#'><span>동파가능 지수</span></a></li>
+                                        <li class='last'><a href='#'><span>식중독 지수</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>재난통계</span></a>
+                                    <ul>
+                                        <li><a href='#'><span>통계자료실</span></a></li>
+                                        <li><a href='#'><span>재해연보</span></a></li>
+                                        <li><a href='#'><span>재난연감</span></a></li>
+                                        <li><a href='#'><span>자연재난상황통계</span></a></li>
+                                        <li class='last'><a href='#'><span>자연재해통계지도</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>안전사고 주의보</span></a>
+                                </li>
+                                <li class='last'><a href='#'><span>안전기준</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'><span>교육훈련</span></a>
+                            <ul>
+                                <li class='has-sub'><a href='#'><span>민방위</span></a>
+                                    <ul>
+                                        <li class='has-sub'><a href='#'><span>- 민방위의 정의</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 도입배경</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 운영조직</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 민방위자료</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 민방위 경보</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 교육훈련</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 민방위 장비</span></a><li>                                           
+                                        <li class='last has-sub'><a href='#'><span>- 관련사이트</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub'><a href='#'><span>재난훈련 및 교육</span></a>
+                                    <ul>
+                                        <li class='has-sub'><a href='#'><span>- 훈련개요</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 훈련계획</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 훈련자료</span></a></li>
+                                        <li class='has-sub last'><a href='#'><span>- 종사자교육 개요 및 자료</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub linksite'><a href='#'><span>국민안전교육플랫폼</span></a>
+                                </li>
+                                <li class='has-sub last'><a href='#'><span>어린이안전교육관리</span></a>
+                                </li>                               
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'><span>재난지원</span></a>
+                            <ul>
+                                <li class='has-sub'><a href='#'><span>사유재산피해신고</span></a></li>
+                                <li class='has-sub'><a href='#'><span>복구진도 등록</span></a></li>
+                                <li class='has-sub'><a href='#'><span>안전감찰익명제보센터</span></a></li>
+                                <li class='has-sub'><a href='#'><span>침수흔적도</span></a></li>
+                                <li class='has-sub'><a href='#'><span>피해사실확인</span></a></li>
+                                <li class='has-sub'><a href='#'><span>풍수해시민안전보험</span></a>
+                                    <ul>
+                                        <li class='has-sub'><a href='#'><span>- 풍수해지진해보험</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 뉴스자료</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 고객의서비스</span></a></li>
+                                        <li class='has-sub last'><a href='#'><span>- 시민안전보험</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class='has-sub last'><a href='#'><span>재난심리상담</span></a>
+                                    <ul>
+                                        <li class='has-sub'><a href='#'><span>- 심리회복지원마당</span></a></li>
+                                        <li class='has-sub'><a href='#'><span>- 심리회복지원센터</span></a></li>
+                                        <li class='has-sub last'><a href='#'><span>- 자가진단</span></a></li>
+                                    </ul>
+                                </li>                               
+                            </ul>
+                        </li>
+                        <li class='has-sub last'><a href='#'><span>열린마당</span></a>
+                            <ul>
+                                <li class='linksite'><a href='#'><span>안전신문고</span></a></li>
+                                <li class='has-sub'><a href='#'><span>국민성금내역공개</span></a></li>
+                                <li class='has-sub'><a href='#'><span>공지사항</span></a></li>
+                                <li class='has-sub'><a href='#'><span>Q&A</span></a></li>
+                                <li class='has-sub'><a href='#'><span>FAQ</span></a></li>
+                                <li class='has-sub'><a href='#'><span>자료실</span></a></li>
+                                <li class='linksite last'><a href='#'><span>법령정보</span></a></li>                                
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                 <!-- side menu 끝 -->
+
+        </div>          
+    </div> 
+    <!--//nf-toolbar-->
+</header>
+<!-- header_mobile area -->
+
+   
+  
+
+
+
+
+
+        
+	    
+   		<div id="wrap">
+			<div id="contents" class="nf-content">
+				
+
+
+
+
+
+
+
+
+<div id='lnbmenu'>
+<!-- 	하단 메뉴일때 왼쪽메뉴 처리 -->
+	
+	<ul class="ko_portal_left">
+	</ul>
+</div>
+
+			    <!-- content -->
+		    	<div class="content-right" id="content_area">
+		    	<div class="location-area">
+<!-- 					<h3>재난문자</h3> -->
+<!-- 					<div class="loca-listarea"> -->
+<!-- 						<span class="home">홈으로</span><span>재난정보</span><span class="text-bold">재난문자</span> -->
+<!-- 					</div> -->
+				</div>
+
+		    	
+
+
+
+
+
+
+
+
+			<div class="cont-area sub-inner">
+			
+			<div class="page-comm">
+                    <ul class="page-commlist">
+                        <li>피해입력을 완료하신 경우 우측 하단의 접수 버튼을 누르셔야 피해정보가 자치단체로 접수됩니다.</li>
+                        <li>기존 시·군·구청에 직접 방문하여 신고하셨던 자연재난 피해신고 민원을 인터넷을 통해 접수하여 처리할 수 있습니다.</li>
+                        <li>처리상태가 접수완료일때 자치단체에서 국민이 접수한 사유재산피해신고서를 처리한 상태입니다.</li>
+                        <li>재난이 종료된 날로부터 10일 이내에 사유재산 피해신고를 해야 합니다.</li>
+                        <li><span>개인정보 제공에 대한 동의 : 본인으로부터 취득한 정보에 대해 중앙행정기관 등 공공기관에서 주생계수단 판단을 위한 자료 및 각종 지원혜택을 위한 자료로 활용할 수 있도록 개인정보 제공에 동의함.</span></li>
+                        <li><span>외국인</span>에 대한 사유재산 피해는 각 해당 행정복지센터 또는 주민센터,동/읍/면 사무소 에서 신고하시기 바랍니다.</li>
+                    </ul>
+                </div>
+                <div class="link-boxarea bg-qna">
+					<button class="btn-statute" onclick="window.open('https://old.safekorea.go.kr/idsiSFK/neo/sfk/cs/pan/cdr/cdreaiBefore.html');" title="새창열림">사유재산피해신고 바로가기</button>
+                </div>
+<!--                 <div class="sns-listarea"> -->
+<!--                     <a href="#" class="sns-x">x</a> -->
+<!-- 					<a href="#" class="facebook">facebook</a>					 -->
+<!-- 				</div> -->
+               <!--  <div class="page-comm">
+                    <ul class="page-commlist">
+                        <li>피해입력을 완료하신 경우 우측 하단의 접수 버튼을 누르셔야 피해정보가 자치단체로 접수됩니다.</li>
+                        <li>기존 시·군·구청에 직접 방문하여 신고하셨던 자연재난 피해신고 민원을 인터넷을 통해 접수하여 처리할 수 있습니다.</li>
+                        <li>처리상태가 접수완료일때 자치단체에서 국민이 접수한 사유재산피해신고서를 처리한 상태입니다.</li>
+                        <li>재난이 종료된 날로부터 10일 이내에 사유재산 피해신고를 해야 합니다.</li>
+                        <li><span>개인정보 제공에 대한 동의 : 본인으로부터 취득한 정보에 대해 중앙행정기관 등 공공기관에서 주생계수단 판단을 위한 자료 및 각종 지원혜택을 위한 자료로 활용할 수 있도록 개인정보 제공에 동의함.</span></li>
+                        <li><span>외국인</span>에 대한 사유재산 피해는 각 해당 행정복지센터 또는 주민센터,동/읍/면 사무소 에서 신고하시기 바랍니다.</li>
+                    </ul>
+                </div>
+                <div class="page-commbtn mb40">
+                    <span class="txt-blue">* 사유재산피해신고 전 팝업차단을 해제 해주세요.</span>
+                    <button type="button" title="팝업차단 해제 방법 새창으로 열림" class="pop-block" id="pop-block">팝업차단 해제 방법</button>
+                </div>
+				<div class="board-list">
+					<table>
+						<caption>재해 선택 목록</caption>
+						<colgroup>
+							<col class="w10p"/>
+							<col class="w10p"/>
+							<col class="w25p"/>
+							<col />
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">선택</th>
+								<th scope="col">년도</th>
+								<th scope="col">재해명</th>
+								<th scope="col">등록가능지역</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr>
+								<td><input aria-label="2026 5.26.~ 호우 체크박스" title="2026 5.26.~ 호우 체크박스" type="radio" id="check-id_0" name="check-id" onchange="fn_change('2026' , '5.26.~ 호우'  , '1001'  , '13'  ,  '서울,부산,대구,광주,대전,울산,세종,경기,강원,충북,충남,전남,경북,경남,제주');"></td>
+								<td>2026</td>
+								<td>5.26.~ 호우</td>
+								<td class="tal">서울,부산,대구,광주,대전,울산,세종,경기,강원,충북,충남,전남,경북,경남,제주</td>
+							</tr>
+							
+							<tr>
+								<td><input aria-label="2026 5.20.~ 호우 체크박스" title="2026 5.20.~ 호우 체크박스" type="radio" id="check-id_1" name="check-id" onchange="fn_change('2026' , '5.20.~ 호우'  , '1001'  , '12'  ,  '서울,부산,대구,광주,대전,울산,세종,경기,강원,충북,충남,전남,경북,경남,제주');"></td>
+								<td>2026</td>
+								<td>5.20.~ 호우</td>
+								<td class="tal">서울,부산,대구,광주,대전,울산,세종,경기,강원,충북,충남,전남,경북,경남,제주</td>
+							</tr>
+							
+							<tr>
+								<td><input aria-label="2022 3.25~26 강풍·풍랑·호우 체크박스" title="2022 3.25~26 강풍·풍랑·호우 체크박스" type="radio" id="check-id_2" name="check-id" onchange="fn_change('2022' , '3.25~26 강풍·풍랑·호우'  , '1001'  , '5'  ,  '서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주');"></td>
+								<td>2022</td>
+								<td>3.25~26 강풍·풍랑·호우</td>
+								<td class="tal">서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주</td>
+							</tr>
+							
+							<tr>
+								<td><input aria-label="2021 5.28 우박 체크박스" title="2021 5.28 우박 체크박스" type="radio" id="check-id_3" name="check-id" onchange="fn_change('2021' , '5.28 우박'  , '1021'  , '3'  ,  '서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주');"></td>
+								<td>2021</td>
+								<td>5.28 우박</td>
+								<td class="tal">서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주</td>
+							</tr>
+							
+							<tr>
+								<td><input aria-label="2021 5.7~9 강풍 체크박스" title="2021 5.7~9 강풍 체크박스" type="radio" id="check-id_4" name="check-id" onchange="fn_change('2021' , '5.7~9 강풍'  , '1004'  , '4'  ,  '서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주');"></td>
+								<td>2021</td>
+								<td>5.7~9 강풍</td>
+								<td class="tal">서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주</td>
+							</tr>
+							
+							<tr>
+								<td><input aria-label="2021 1.6 ~ 대.설 체크박스" title="2021 1.6 ~ 대.설 체크박스" type="radio" id="check-id_5" name="check-id" onchange="fn_change('2021' , '1.6 ~ 대.설'  , '1002'  , '5'  ,  '서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주');"></td>
+								<td>2021</td>
+								<td>1.6 ~ 대.설</td>
+								<td class="tal">서울,부산,대구,광주,대전,울산,세종,경기,충북,충남,전북,전남,경북,경남,제주</td>
+							</tr>
+							
+						
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="pagination">
+					<div class="nav">
+					   
+                          <button type="button" class="active" title="선택됨">1</button>
+
+                        
+					</div>
+				</div>
+<div class="priva-box">
+				<h3 class="page-title mb10 mt30">개인정보 수집, 이용 등에 대한 동의</h3>
+				<h4 class="page-stitle">개인정보의 수집, 이용 목적</h4>
+				<ul class="comm-list">
+					<li>「재난 및 안전관리 기본법 시행령」 제88조의2(고유식별정보의 처리) 및 「자연재난 구호 및 복구비용 부담기준 등에 관한 규정」 제15조에 따라 
+						자연재해 사유재산피해 신고, 재난지원금 지급, 의연금 배분 및 간접 지원을 위해 사용됩니다.
+					</li>
+				</ul>
+				<h4 class="page-stitle mt20">개인정보 보유 및 이용기간</h4>
+				<ul class="comm-list">
+					<li>재난지원금 지급 및 피해신고이력관리 등을 위해 신고 후 <span class="bold">30년간</span> 보관합니다.</li>
+				</ul>
+				<h4 class="page-stitle mt20">기본 개인정보 수집·활용</h4>
+				<ul class="comm-list">
+					<li>본인의 신고에 따라 취득한 개인정보를 특별자치시장 특별자치도지사·시장·군수·구청장이 주생계수단 및 각종 지원혜택의 확인을 위한 자료로 수집·이용하는 것에 동의합니다.</li>
+					<li>수집하는 기본 개인정보 항목<br />
+						<span class="s-list">(필수항목) 성명, 전화번호, 휴대폰번호, 지번주소, 세대주구분, 가족수, 고등학생수, 지급통장, 피해장소(지번주소), 신고자정보(성명, 피해자와의 관계, 전화번호, 지번주소)</span></li>
+					<li>개인정보 제공 동의 거부 권리 및 동의 거부 따른 불이익 내용 또는 제한사항<br />
+						<span class="s-list">: 귀하는 위 개인정보 수집에 대한 동의를 거부할 권리가 있으며, 동의 거부시에는 재난지원금 및 각종 혜택에서 제외될 수 있습니다.</span>
+					</li>
+				</ul>
+				<div class="degree-area mt10">
+					<input type="checkbox" class="check-large" id="agree1"><label for="agree1">필수항목 개인정보 수집 및 활용에 동의함</label>
+				</div>
+				<div class="comm-text mt30">
+					(선택항목) 도로명주소, 고등학생상세, 피해장소(도로명주소), 신고자정보(도로명주소)<br />
+					(간접지원 선택항목) 도시가스 사용 여부, 도시가스 가입자명, 공공주택 임대 신청 희망 여부, 위기가족 긴급지원 희망 여부, 건강보험료 체납 <br />
+					여부, 재해손실 공제 신청 희망 여부, 과태료 징수 유예 희망 여부, 자동차 소유 여부, 자동차 검사 유효기간 만료일<br /><br />
+					※ 선택항목* : 부가서비스 제공 등 정보주체의 의사에 따라 처리 여부를 선택할 수 있는 항목
+				</div>
+
+
+
+				<h4 class="page-stitle mt30">개인정보 제3자 제공</h4>
+				<ul class="comm-list">
+					<li>개인정보를 제공받는 자 : 중앙행정기관, 중소벤처기업진흥공단, 기술신용보증기금, 신용보증기금, 신용보증재단, 농업협동조합, 축산업협동조합, 수산업협동조합, 산림조합, 국민건강보험공단, 국민연금공단, 전기통신사업자, 한국전력공사, 가스도매업자ㆍ일반도시가스사업자, 한국자산관리공사, 건강가정지원센터, 한국농어촌공사, 한국토지주택공사, 한국방송공사, 그밖에 지방자치단체의 장이 간접지원을 위하여 필요하다고 인정되는 기관(지자체 상하수도부서ㆍ농업부서 등)<br />
+					<span class="s-list">※ 자연재난 구호 및 복구 비용 부담기준 등에 관한 규정 제12조(간접 지원 등)</span>
+					</li>
+					<li>개인정보를 제공받는 자의 개인정보 이용 목적 :
+						<ul class="comm-slist">
+							<li>자연재난 구호 및 복구 비용 부담기준 등에 관한 규정 제12조제2항에 따른 주 생계수단 확인 및 융자 등의 간접지원</li>
+							<li>재해구호법 제26조에 따른 의연금품의 배분 및 사용</li>
+						</ul>						
+					</li>
+					<li>제공하는 개인정보의 항목 :<br />
+						<span class="s-list">(간접지원 선택항목) 도시가스 사용 여부, 도시가스 가입자명, 공공주택 임대 신청 희망 여부, 위기가족 긴급지원 희망 여부, 건강보험료 체납 여부, 재해손실 공제 신청 희망 여부, 과태료 징수 유예 희망 여부, 자동차 소유 여부, 자동차 검사 유효기간 만료일</span>
+					</li>											
+					<li>개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 내용 또는 제한사항<br />
+						<span class="s-list">귀하의 개인정보는 재난지원금 지급, 의연금 배분, 간접지원을 위하여 상기 기재된 제3자에게 제공될수 있으며, 동의 거부시에는 재난지원금 및 각종 혜택에서 제외될 수 있습니다.</span></li>
+				</ul>
+				<div class="degree-area mt10">
+					<input type="checkbox" class="check-large" id="agree2"><label for="agree2">개인정보 제3자 제공에 동의함</label>
+				</div>
+
+				<div class="degree-area mt10">
+					<input type="checkbox" class="check-large" id="agree3"><label for="agree3">전체 동의함</label>
+				</div>
+</div>
+				<h4 class="page-stitle mt30">고유식별정보 수집·활용</h4>
+				<ul class="comm-list mb20">
+					<li>「주민등록번호(피해자), 주민등록번호(신고자)<br />
+						<span class="s-list">「재난 및 안전관리 기본법 시행령」 제88조의2(고유식별정보의 처리) 및 「자연재난 구호 및 복구비용 부담기준 등에 관한 규정」 제15조(고유식별정보의 처리)에 따라 피해자 및 신고자의 주민등록번호는 자연재해 사유재산피해 신고, 재난지원금 지급, 의연금 배분 및 간접 지원을 위해 사용됩니다.</span>
+					</li>
+				</ul>
+				<div class="button-area degree-check-btn">
+					<div class="btn-leftarea">
+						<button type="button" class="nf-btn" onclick="fn_movePageDetail();">전체신고서 조회</button>
+					</div>
+					<div class="btn-rightarea">
+						<button type="button" class="nf-btn nf-btn-primary" onclick="fn_movePage();">신규등록</button>
+					</div>
+				</div>
+				<div class="page-warning">
+					<ul>
+						<li>* 신규등록 전에 캐쉬 삭제 후 진행 부탁드립니다.</li>
+						<li>※ 사유재산 피해신고서 작성에 관한 사항은 해당 시/군/구청으로 문의( 비상연락망 바로가기)하여 주시기 바랍니다.</li>
+						<li>※ 기타 사유재산 피해신고에 관한 사항은 행정안전부 복구지원과(노정민 044-205-5317)로 문의하여 주시기 바랍니다.</li>
+						<li>※ 시스템 관련 사항은 044-205-8462로 문의하여 주시기 바랍니다.</li>
+					</ul>
+					<button type="button" class="nf-btn nf-btn-gray nf-btn-warning" id="cashDel">캐쉬삭제방법</button>
+				</div> -->
+
+			</div>
+
+<script>
+
+	var clmtyYr = "";
+	var clmtyNm = "";
+	var clmtyTypeCd = "";
+	var clmtySn = "";
+	
+     function fn_movePage(){
+   		var radioFlag = false;
+   		var checkFlag = true;
+    	 
+   		// 재연재난 선택
+	   	$("input[name='check-id']").each(function(idx,elem){
+   		 	if(elem.checked){
+   		 	radioFlag = elem.checked;
+	   			return;
+		 	}
+			 
+	   		if($("input[name='check-id']").length -1 == idx){
+	   			if(!radioFlag){
+	   				alert("자연재난을 선택해주세요.");
+	   				return false;
+	   			}
+	   		} 
+		 })
+   		
+		 // 자연재난이 선택되었을때 개인정보동의 체크
+		 if(radioFlag){
+	    	 $(".check-large").each(function(idx,elem){
+	    		 if(!elem.checked){
+	    			 checkFlag = false;
+	    			 var id = elem.id
+	    			 alert($('label[for='  + elem.id + ']').text() + "에 동의 해주세요.");
+	    			 return false;
+	    		 } 
+	    	 })
+		 }
+    	 
+   	     // 자연재난이 선택되었고 개인정보동의가 체크됬을때
+    	 if(radioFlag && checkFlag){
+    	 	//window.location.href = "/safekorea-kor/dspo/prdm/privatePropertyDamageReportForm.do?menuSn=70&";
+    	 	var data = {
+   	   			url : contextPath + "/dspo/prdm/privatePropertyDamageReportForm.do",
+   	   			clmtyYr,
+   	   			clmtyNm,
+   	   			clmtyTypeCd,
+   	   			clmtySn,
+   	   		    tabId : '1',
+   	   			readYn : 'N'
+   	   		}
+   	 		safeKorea.onSubmit(data);
+    	 	
+    	 }
+     }
+     
+     function fn_movePageDetail(){
+         window.location.href = "/safekorea-kor/dspo/prdm/privatePropertyDamageReportDetail.do?menuSn=70&";
+     }
+     
+     function fnPageSubmit(currentPage){
+   		var data = {
+   			url : contextPath + "/dspo/prdm/privatePropertyDamageReport.do",
+   			currentPage
+   		}
+ 		safeKorea.onSubmit(data);
+   	 }
+
+     function fn_change(dstrYrVal,dstrNmVal,clmtyTypeCdVal,clmtySnVal,conArmVal){
+    	 clmtyYr = dstrYrVal;
+    	 clmtyNm = dstrNmVal;
+    	 clmtyTypeCd = clmtyTypeCdVal;
+    	 clmtySn = clmtySnVal;
+    	 conArm = conArmVal;
+     }
+     
+     // 팝업차단 해제 방법 팝업
+     $("#pop-block").on("click" , function(){
+    	 window.open(contextPath + "/dspo/prdm/unblockPopup.do" ,"pop","width=700,height=600,top=200, scrollbars=yes, resizable=yes");
+     });
+
+     // 캐쉬삭제방법 팝업
+     $("#cashDel").on("click" , function(){
+    	 window.open(contextPath + "/dspo/prdm/cashDel.do" ,"pop","width=1100,height=600,top=200, scrollbars=yes, resizable=yes");
+     });
+     
+     // 전체 동의함 
+     $("#agree3").on("click" , function(){
+    	 if($("#agree3").is(":checked")){
+    		 $("#agree1 , #agree2").prop("checked", true);
+    	 } else {
+    		 $("#agree1 , #agree2").prop("checked", false);
+    	 }
+     });
+     
+</script>
+
+		    	</div>
+		    </div>
+		</div>
+    
+  	</div>
+</body>
+<!-- footer -->
+
+
+
+
+
+
+
+
+
+<footer id="korfooter">
+<div class="footer-menu">
+	<ul>
+		<li class="privacy"><a href="/safekorea-kor/footer/info/privacy.do?isFooter=Y&amp;menuSn=2501&amp;siteSeCd=COM000406"><span>개인정보처리방침</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/accessibility.do?isFooter=Y&amp;menuSn=2502&amp;siteSeCd=COM000406"><span>웹접근성안내</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/lawInfo.do?isFooter=Y&amp;menuSn=2503&amp;siteSeCd=COM000406"><span>법령정보</span></a></li>
+		<li class=""><a	href="https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardList.do?bbsId=BBSMSTR_000000000336" target="_blank" title="새창열림"><span>안전관리일일상황</span></a></li>
+		<li class=""><a	href="https://nsi.safemap.go.kr/idsiNSD/" target="_blank" title="새창열림"><span>집중안전점검</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/recoveryProgress.do?isFooter=Y&amp;menuSn=2505&amp;siteSeCd=COM000406" ><span>복구진도등록</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/traingCalamity.do?isFooter=Y&amp;menuSn=3087&amp;siteSeCd=COM000406"><span>재난훈련관리</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&amp;menuSn=2506&amp;siteSeCd=COM000406"><span>Q&amp;A</span></a></li>
+		<!-- 
+		<li class=""><a	href="/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&amp;menuSn=2506&amp;siteSeCd=COM000406"><span>정책브리핑</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&amp;menuSn=2506&amp;siteSeCd=COM000406"><span>국가승강기정보센터</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&amp;menuSn=2506&amp;siteSeCd=COM000406"><span>안전정보통합공개시스템</span></a></li>
+		<li class=""><a	href="/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&amp;menuSn=2506&amp;siteSeCd=COM000406"><span>소나무관리</span></a></li>
+	 -->
+		
+	</ul>
+</div>
+	<script>
+		/* $.getJSON(contextPath + "/cmmn/find/nas/FOOTERMENULIST.do", function(data) {
+			var html = "<ul>";
+			$(data).each(function(idx , elem){
+				if(this.menuExpsrYn == 'Y' && this.level == 2){
+					var classNm = this.menuSn == '2501' ? 'privacy' : '';
+					if(this.menuSn == '3072'){
+					html += '<li class="'+classNm+'"><a href="'+this.menuUrlAddr+'?isFooter=Y&menuSn='+this.menuSn+'&siteSeCd='+this.siteSeCd+((menu.cnvyVrbr)? '&'+menu.cnvyVrbr : '')+'"><span>'+this.menuNm+'</span></a></li>';
+					} else {
+						html += '<li class="'+classNm+'"><a href="'+contextPath+this.menuUrlAddr+'?isFooter=Y&menuSn='+this.menuSn+'&siteSeCd='+this.siteSeCd+((menu.cnvyVrbr)? '&'+menu.cnvyVrbr : '')+'"><span>'+this.menuNm+'</span></a></li>';
+					}
+				}
+			});
+			html += "</ul>";
+			$(".footer-menu").html(html);
+		}); */
+	</script>
+	<div class="footer-contain">
+		<div class="footer-leftarea">
+			<h3 class="f-logo">국민안전24</h3>
+			<address>30112 세종특별자치시 도움6로 42 (어진동)
+				<p>홈페이지운영/장애문의  <span>044-205-8461/044-205-8462</span> <br />
+					민방위문의 시군구청 담당자 <span><a href="/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113">바로가기</a></span></p>
+			</address>
+		</div>
+		<div class="footer-rightarea" >
+			<div class="side-logoarea">
+			<span class	="wa-icon"><a title="새창" href="http://www.wa.or.kr/board/list.asp?BoardID=0006" target="_blank" style="text-align:left !important;"> 
+			<img  alt="(사)한국장애인단체총연합회한국정보접근성인증평가원웹접근성우수사이트인증마크(WA인증마크)"
+					src="/safekorea-kor/images/common/wa-logo2026.png" style="text-align:left !important;" />
+			</a>웹접근성인증평가원 우수사이트 인증마크</span>
+				<span class="mois" style="margin-left:40px; margin-top:80px;">행정안전부</span>
+<!-- 				<span class="wa-icon">웹접근성인증평가원 우수사이트 인증마크</span> -->
+			</div>
+			<p class="copyright">© 2026 Ministry of the Interior and Safety. All rights reserved</p>
+		</div>
+	</div>
+</footer>
+<!--button class="scrollTop">▲</button-->
+
+
+
+
+
+
+
+
+
+
+<style>
+    select:focus{
+        outline : 2px solid red;}
+        .ctimpop ul li{padding:0px}
+   
+</style>
+<div id="cmmn-pos-modal" class="pop-layer ctimpop" tabindex="0">
+	<div class="pop-container">
+		<div class="pop-titlearea">
+			<h2>관심위치설정</h2>
+			<div class="pop-btnarea">
+				<a href="#" class="btn-layerClose"> <img
+					src="/safekorea-kor/images/common/pop-close.gif"
+					alt="pop-close">
+				</a>
+			</div>
+		</div>
+		<div class="pop-conts scroll" style="overflow: auto">
+		
+<!-- 		<p style="margin-bottom:20px;padding:10px;border-radius:5px;background:#f5f5f5">※ 관심위치를 지정하면 기상정보, 재난문자, 안전지도 정보를 해당위치 기준으로 <br/>&nbsp;&nbsp;&nbsp;&nbsp;제공받을 수 있습니다.</p> -->
+		<p id="guideText" style="margin-bottom:20px;padding:10px;border-radius:5px;background:#f5f5f5"></p>
+			<ul class="modal-content">
+				<li>
+					<div class="form-field">
+						<div class="board-topbtn1" style="border:none">
+							<div class="btn-leftarea">
+								<label for="gbl_sido_select"></label> 
+								<select class="select_basic" id="gbl_sido_select" onchange="gfn_onchangeSido(this);" title=시도>
+									<option disabled selected>시도</option>
+									<option value="11">서울특별시</option>
+									<option value="12">전남광주통합특별시</option>
+									<option value="26">부산광역시</option>
+									<option value="27">대구광역시</option>
+									<option value="28">인천광역시</option>
+									<option value="29">광주광역시</option>
+									<option value="30">대전광역시</option>
+									<option value="31">울산광역시</option>
+									<option value="36">세종특별자치시</option>
+									<option value="41">경기도</option>
+									<option value="43">충청북도</option>
+									<option value="44">충청남도</option>
+									<option value="46">전라남도</option>
+									<option value="47">경상북도</option>
+									<option value="48">경상남도</option>
+									<option value="50">제주특별자치도</option>
+									<option value="51">강원특별자치도</option>
+									<option value="52">전북특별자치도</option>
+								</select>
+								<label for="gbl_sgg_select"></label> 
+								<select class="select_basic" id="gbl_sgg_select" onchange="gfn_onchangeSgg(this);" title=시군구>
+									<option disabled selected>시군구</option>
+								</select>
+							</div>
+							<div class="btn-rightarea">
+								<button type="button" class="nf-btn norm nf-btn-primary " onclick="gfn_positionSave(this);">저장</button>
+							</div>								
+						</div>
+					</div>
+				</li>
+				<li class="positionBody">
+				
+				</li>
+			</ul>
+		</div>
+		<div class="pop-btnbottom">
+				<a href="#" class="btn-layerClose">
+					닫기
+				</a>
+	    </div>
+	</div>
+</div>
+
+<script>
+
+	$(document).ready(function(){
+		if(gblLang == 'ko')	$('#guideText').text('관심위치를 지정하면 기상정보, 재난문자, 안전지도 정보를 해당위치 기준으로 제공받을 수 있습니다.');
+		else $('#guideText').text(' By setting your locations of interest, you can receive weather updates, emergency alerts, and safety maps tailored to those specific areas.');
+		my_position();
+	});
+	
+	$("body").on("click" , ".position-remove" ,function(){
+		if(!confirm("삭제하시겠습니까?"))return;
+		var sido 	= $(this).data("sido");
+		var sgg 	= $(this).data("sgg");
+		position_stroage.remove(sido , sgg);
+		my_position();
+	});
+	
+	const my_position = function(){
+		var sidoStr = "" ;
+		var sggStr = "" ;
+		var myPosition = position_stroage.get();
+		
+		var unique = []
+		var seen = new Set();		
+		
+		$("#cmmn-pos-modal .positionBody").empty();
+		
+		if(myPosition != null){
+			localStorage.removeItem("MYPOSITION");
+	        
+	        myPosition.forEach(item => {
+	            var key = item.sgg;
+	            if(!seen.has(key)){
+	                seen.add(key);
+	                unique.push(item);
+	                position_stroage.set(item);
+	            }
+	        });
+	        
+	/*      $(myPosition).each(function(idx , elem){ */
+	        $(unique).each(function(idx , elem){
+	            if($(".gnb-kor").find("a").eq(0).text() === 'KOR'){
+	                sidoStr = sidoJSON[elem.sidoTxt];
+	                sggStr = sggJSON[elem.sggTxt.replace(/\s+/g,'')].replace(" "," , ");
+	                $("#cmmn-pos-modal .positionBody").append("<div class=\"board-topbtn2\"><span class=\"sido-title\">" + sggStr  + " , " + sidoStr + "</span><button class=\"nf-btn norm nf-btn-primary position-remove\" data-name='MYPOSITION' style='width:auto;' data-sido='"+elem.sido+"' data-sgg='"+elem.sgg+"' >삭제</button></div>");
+	            } else {
+	                sidoStr = elem.sidoTxt;
+	                sggStr = elem.sggTxt;
+	                $("#cmmn-pos-modal .positionBody").append("<div class=\"board-topbtn2\"><span class=\"sido-title\">" + sidoStr  + " , " + sggStr + "</span><button class=\"nf-btn norm nf-btn-primary position-remove\" data-name='MYPOSITION' style='width:auto;' data-sido='"+elem.sido+"' data-sgg='"+elem.sgg+"' >삭제</button></div>");
+	            }
+	            
+	        });	
+		}
+        
+	}
+
+	const gfn_positionSave = function(){
+		var sido = $("#gbl_sido_select").val();
+		var sidoTxt = $("#gbl_sido_select option:selected").text();
+		var sgg = $("#gbl_sgg_select").val();
+		var sggTxt = $("#gbl_sgg_select option:selected").text();
+		if(!sido){
+			alert("시도 정보를 입력하세요");
+			$("#gbl_sido_select").focus()
+			return;
+		}else if(!sgg){
+			alert("시군구 정보를 입력하세요");
+			$("#gbl_sgg_select").focus()
+			return;
+		}
+		
+		// 관심 지역 등록 개수 체크(1개 이상일 경우 등록 불가)
+		if($(".modal-content .board-topbtn2").length > 0) {
+			alert("관심위치는 1개만 등록가능합니다");
+			return;
+		}
+		
+		if(!confirm("관심위치를 저장하시겠습니까?"))return;
+		
+		$.getJSON(contextPath + "/data/map/sgg/" + sido + ".json", function(json) {
+			for (var i = 0; i < json.length; i++) {
+				if(sgg === json[i].code){
+					
+					if($(".gnb-kor").find("a").eq(0).text() === 'KOR'){
+						sidoTxt = sidoEnJSON[sidoTxt];
+					}
+					
+					
+					sggTxt  = json[i].codeNm;	
+					
+					weatherApi.un_address({address : sidoTxt+ " " +sggTxt , callback:function(result){
+						if(result.response.status == "OK"){
+							var currentPosition = {
+				                lat: result.response.result.point.y,
+				        		lng: result.response.result.point.x,
+				        		sido ,
+				        		sidoTxt ,
+				        		sgg ,
+				        		sggTxt
+				            };
+							position_stroage.set(currentPosition);
+							my_position();
+						}
+					}});
+					
+				}
+			}
+		});
+		
+	}
+	
+	function gfn_onchangeSido(st) {
+		$.getJSON(contextPath + "/data/map/sgg/" + st.value + ".json", function(json) {
+			$("#gbl_sgg_select").empty();
+			for (var i = 0; i < json.length; i++) {
+				var codeNmStr = "" ;
+				if($(".gnb-kor").find("a").eq(0).text() === 'KOR'){
+					codeNmStr = json[i].codeEnNm;
+				} else {
+					codeNmStr = json[i].codeNm;
+				}
+				var option = '';
+				option += '<option value="'+json[i].code+'">'
+						+ codeNmStr;
+				option += '</option>';
+				$("#gbl_sgg_select").append(option);
+			}
+		});
+	}
+
+	function gfn_onchangeSgg(st) {
+		//$.getJSON(contextPath + "/data/map/sgg/" + st.value + ".json",function(json) {
+		//});
+	}
+
+</script>
+<script>
+/**window.onscroll = function(){
+	if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+		$(".scrollTop").show();
+	} else {
+		$(".scrollTop").hide();
+	}
+}
+
+$(".scrollTop").on('click',function(){
+	window.scrollTo({top:0 , behavior : 'smooth'});
+});
+**/
+var menuFileNm = "MENULIST";
+if(location.hostname == "nmepv.safekorea.go.kr"){
+	if('ko' == 'en'){
+        menuFileNm = "MOBILEENGMENULIST";
+    }else{
+        menuFileNm = "MOBILEMENULIST";
+    }
+}else{
+	if('ko' == 'en'){
+        menuFileNm = "ENGMENULIST";
+    }else{
+        menuFileNm = "MENULIST";
+    }
+}
+$.getJSON(contextPath + "/cmmn/find/nas/"+menuFileNm+".do", function(data) {
+	
+	
+	var siteMapHTML = '';
+	var menuHTML = '';
+	var leftMenuHTML = '';
+	var locaMenuHTML = '<div class="loca-listarea"><span class="home">홈으로</span>';
+	var curLocaMenuHTML = '';
+	
+	var mobileMenuHTML = '<ul>';
+	
+// 				<ul class="sub-smenuList">
+// 					<li><a href="">통계자료실</a></li>
+// 					<li><a href="">자연재해통계지도<span class="link"></span></a></li>
+// 				</ul>
+	
+	$(data).each(function(idx , elem){
+	    /* if(elem.menuNm == "재난안전시설"){
+		   menuHTML+='    <li><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" alt="'+this.menuNm+'">&nbsp;'+this.menuNm+'</a>';
+	    }else{
+		   menuHTML+='   <li><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" aria-expanded="false" alt="'+this.menuNm+'">&nbsp;'+this.menuNm+'</a>';		   
+	    } */
+
+		var siteNum = 0;
+		if (this.menuNm == '재난정보') {
+			siteNum = 1;
+		} else if (this.menuNm == '행동요령') {
+			siteNum = 2;
+		} else if (this.menuNm == '교육훈련') {
+			siteNum = 4;
+		} else if (this.menuNm == '재난지원') {
+			siteNum = 8;
+		} else if (this.menuNm == '열린마당') {
+			siteNum = 6;
+		} else if (this.menuNm == '안전지도') {
+			siteNum = 3;						
+		} else if (this.menuNm == '민방위') {
+			siteNum = 7;	
+		}
+		
+	    menuHTML+='   <li><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" aria-expanded="false" alt="'+this.menuNm+'">&nbsp;'+this.menuNm+'</a>';
+		
+						siteMapHTML += '	<span class="accordion-btn sitemap0' + siteNum + '">' + this.menuNm + '</span>';
+		
+		mobileMenuHTML +='    <li '+(this.childCnt > 0 ? 'class="has-sub"':'')+'><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" alt="'+this.menuNm+'">&nbsp;'+this.menuNm+'</a>';    
+		if(this.childCnt == 0){
+			siteMapHTML+='	<div class="panel-content">';
+			siteMapHTML+='		<ul class="sub_menu_list">';
+			siteMapHTML+='			<li class="has-menu"><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" alt="'+this.menuNm+'">'+this.menuNm+'</a>';
+			siteMapHTML+='		</ul>';
+			siteMapHTML+='	</div>';
+		}
+
+		if(this.childCnt > 0){
+			siteMapHTML+='	<div class="panel-content">';
+			siteMapHTML+='		<ul class="sub_menu_list">';
+			menuHTML+='	<ul class="nav-item sub-menu">';
+			menuHTML+='		<div class="nav-inner">';
+			menuHTML+='			<li class="nav-bg"><h3>'+this.menuNm+'</h3>';
+			menuHTML+='				<div class="nav-imgarea">';
+			
+			var menuNm = "";
+			if (this.menuNm == '재난정보') {
+				menuNm = "/images/common/smenu-icon-ctim.gif";
+			} else if (this.menuNm == '행동요령') {
+				menuNm = "/images/common/smenu-icon-acts.gif";
+			} else if (this.menuNm == '교육훈련') {
+				menuNm = "/images/common/smenu-icon-edtr.gif";
+			} else if (this.menuNm == '재난지원') {
+				menuNm = "/images/common/smenu-icon-dspo.gif";
+			} else if (this.menuNm == '열린마당') {
+				menuNm = "/images/common/smenu-icon-opmd.gif";
+			} else if (this.menuNm == '안전지도') {
+				menuNm = "/images/common/smenu-icon-map.gif";							
+			} else if (this.menuNm == '민방위') {
+				menuNm = "/images/common/smenu-icon-minbw.png";
+			}
+			
+			menuHTML += '					<img src="/safekorea-kor' + menuNm + '" alt=""> ';
+
+			
+			menuHTML+='					<span>'+this.menuDc+'</span>';
+			menuHTML+='				</div>';
+			menuHTML+='			</li>';
+			menuHTML+='			<li class="nav-linkbg" herf="#">';
+			menuHTML+='				<ul class="nav-slist">';
+			mobileMenuHTML +='  <ul>';
+			$(this.child).each(function(){
+				siteMapHTML+='		<li class="has-menu"><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" alt="'+this.menuNm+'">'+this.menuNm+'</a>';
+				var url = ((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);');
+				if(this.childCnt > 0){
+					url = ((this.child[0].menuUrlAddr) ? contextPath + this.child[0].menuUrlAddr+'?menuSn='+this.child[0].menuSn+(this.child[0].cnvyVrbr ? '&'+this.child[0].cnvyVrbr : '' ): 'javascript:void(0);');
+				}
+				menuHTML+='					<li>';
+				menuHTML+='						<a href='+url+' class="nav-link" alt="'+this.menuNm+'">'+this.menuNm+'</a>';
+				menuHTML+='						<span class="nav-comment">'+this.menuDc+'</span> ';
+				
+				mobileMenuHTML+='                 <li '+(this.childCnt > 0 ? 'class="has-sub"':'')+'>';
+				mobileMenuHTML+='                     <a href='+url+'  alt="'+this.menuNm+'"><span>'+this.menuNm+'</span></a>';
+				
+				if(this.childCnt > 0){
+					siteMapHTML+='					<ul class="sub-smenuList">';
+					menuHTML+='					<div class="smenu-listarea">';
+					mobileMenuHTML+=' 			<ul>';
+					$(this.child).each(function(){
+						menuHTML+='						<a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' class="nav-link" alt="'+this.menuNm+'">'+this.menuNm+'</a>';
+						mobileMenuHTML+='						<li><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+'  alt="'+this.menuNm+'">'+this.menuNm+'</a></li>';
+						siteMapHTML+='						<li><a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+'  alt="'+this.menuNm+'">'+this.menuNm+'</a></li>';
+					});
+					siteMapHTML+=' 			</ul>';
+					mobileMenuHTML+=' 			</ul>';
+					menuHTML+='					</div>';
+				}
+				menuHTML+='					</li>';
+				mobileMenuHTML+='					</li>';
+				siteMapHTML+='					</li>';
+				
+			});
+			menuHTML+='				</ul>';
+			mobileMenuHTML+='				</ul>';
+			menuHTML+='			</li>';
+			menuHTML+='		</div>';
+			menuHTML+='	</ul>';
+			siteMapHTML+='	</ul>';
+			siteMapHTML+='	</div>';
+			
+			
+			
+		} 
+		menuHTML+='	</li>';
+		mobileMenuHTML+='	</li>';
+		
+		if(JSON.stringify(elem.child).includes('"menuSn":70,')){
+			$(".ko_portal_left").before('<h2>'+elem.menuNm+'</h2>');
+			locaMenuHTML+='<span>'+elem.menuNm+'</span>';
+			curLocaMenuHTML = this.menuNm;
+			leftMenuHTML+='';
+			$(this.child).each(function(){
+				leftMenuHTML+='		<li class="'+(this.childCnt > 1 ? 'has-sub ' : '')+(JSON.stringify(this.child).includes('"menuSn":70,') || this.menuSn == '70' ? 'open': '')+'">';
+				leftMenuHTML+='			<a href='+((this.menuUrlAddr && this.childCnt == 0)  ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+' style="text-shadow: rgba(255, 255, 255, 0.35) 0px 1px 0px;" alt="'+this.menuNm+'"><span style="border-color: rgba(255, 255, 255, 0.35);">'+this.menuNm+'</span></a>';
+				if(JSON.stringify(this.child).includes('"menuSn":70,') || this.menuSn == '70'){
+					locaMenuHTML+='<span>'+this.menuNm+'</span>';
+					curLocaMenuHTML = this.menuNm;
+				}
+				if(this.childCnt > 0){
+					leftMenuHTML+='			<span class="hold"></span>';
+	   			}
+	   			if(this.childCnt > 0){
+					leftMenuHTML+='			<ul '+(JSON.stringify(this.child).includes('"menuSn":70,') || this.menuSn == '70' ? 'style="display:block;"': '')+'>';
+					$(this.child).each(function(){
+						leftMenuHTML+='				<li class="'+(this.childCnt > 1 ? 'has-sub' : '')+' last-child '+(this.menuSn == '70' ? 'active': '')+'">';
+						leftMenuHTML+='					<a href='+((this.menuUrlAddr) ? contextPath + this.menuUrlAddr+'?menuSn='+this.menuSn+(this.cnvyVrbr ? '&'+this.cnvyVrbr : '' ): 'javascript:void(0);')+'  alt="'+this.menuNm+'">'+this.menuNm+'</a>';
+			   			leftMenuHTML+='				</li>';
+			   			if(this.menuSn == '70'){
+							locaMenuHTML+='<span>'+this.menuNm+'</span>';
+							curLocaMenuHTML = this.menuNm;
+						}
+					});
+					leftMenuHTML+='			</ul>';
+	   			}
+				leftMenuHTML+='		</li>';
+			});
+		}
+
+	});
+	
+	mobileMenuHTML += '</ul>';
+	$("#sidemenu").html(mobileMenuHTML);
+	$(".accordion").html(siteMapHTML);
+
+	if(''){
+		locaMenuHTML+='<span></span>';
+		
+		document.title = "국민안전24" + " | 행동요령 | " + '';
+	}else{
+		
+		const path = window.location.pathname ;
+	    const mainPagePath = '/main.do'
+	    const isMainPage = path.indexOf(mainPagePath);
+	    if(isMainPage > 0){
+	        document.title = "국민안전24";
+	    }else{
+	    	try{
+	    		
+	    		var regx = /<span>(.*?)<\/span><span>(.*?)<\/span><span>(.*?)<\/span>/;
+	            var _tempHtml = locaMenuHTML.match(regx);
+	            if(_tempHtml == null){
+	            	regx = /<span>(.*?)<\/span><span>(.*?)<\/span>/;
+	            	_tempHtml = locaMenuHTML.match(regx);
+	            	if(_tempHtml == null){
+	            		regx = /<span>(.*?)<\/span>/;
+	                    _tempHtml = locaMenuHTML.match(regx);
+	            	}
+	            }
+	            
+	            if(_tempHtml != null){
+	                if(path.includes("View.do")){
+	                	document.title = menuNm + " 상세보기";
+	                }else{
+	                	if($("#title_sub_temp").val() != undefined){
+	                        document.title = "국민안전24" + " | "+_tempHtml[1]+" | " + menuNm + " | " + $("#title_sub_temp").val(); 
+	                    }else{
+	                        document.title = "국민안전24" + " | "+_tempHtml[1]+" | " + menuNm   
+	                    }
+	                }
+	            }
+	    	}catch(e){
+	    		/* var regx = /<span>(.*?)<\/span><span>(.*?)<\/span>/;
+                var _tempHtml = locaMenuHTML.match(regx)[1];
+                document.title = "국민안전24" + " | "+_tempHtml+" | " + menuNm;  */
+	    	}
+	    		
+	    }
+		
+	}
+	locaMenuHTML+='</div>';
+	$(".top-search").before(menuHTML);
+	$(".ko_portal_left").html(leftMenuHTML);
+	var isFooter = '';
+	if(!isFooter){
+		if(curLocaMenuHTML == "국민행동요령"){
+			$(".location-area").html("<h3>"+''+"</h3>" + locaMenuHTML);	
+ 		   var $btnSlide = $(".btn-slideimg");
+ 		   var title = ''; 
+ 		   var button = '<button type="button" class="pdf-down">행동요령PDF 다운로드</button>';
+ 		   $btnSlide.html(button);
+		}else if(curLocaMenuHTML != "재난안전시설"){
+			if('' == "true"){
+				if(menuNm == "국민행동요령"){
+					$(".location-area").html("<h3>"+''+"</h3>");	
+				}else{
+					$(".location-area").html("<h3>"+menuNm+"</h3>");
+				}
+				
+			} else {
+				$(".location-area").html("<h3>"+curLocaMenuHTML+"</h3>" + locaMenuHTML);
+			}
+			
+			
+		}
+	}
+	const script = document.createElement('script');
+	script.src= "/safekorea-kor/js/ui.js";
+	$("body").append(script);
+	
+	
+	var li = $(".guide-listarea .guide-list li");
+    
+    $.each(li , function(i , _li){
+        var _a = $(_li).find("a");
+        
+        var h4 = $(_li).find("h4").text();
+        if(h4 == "주변 안전시설" || h4 == "내주변 대피소"){
+            var _check = 0;
+            $.each(_a, function(j , atr){
+                var text = $(atr).text();
+                if(text != ""){
+                    $(atr).attr("href" , "javascript:fn_moveEvacuationArea('"+text+"');");    
+                }else{
+                    $(atr).hide();
+                    _check += 1;
+                }
+            });
+            if(_check == 2){
+               $(_li).remove();
+            } 
+        }else if(h4 == "재난 현황"){
+            var _check = 0;
+            $.each(_a, function(j , atr){
+                var text = $(atr).text();
+                if(text != ""){
+                    $(atr).attr("href" , "javascript:fn_moveWeatherSpecial('"+text+"');");    
+                }else{
+                    $(atr).hide();
+                    _check += 1;
+                }
+            });
+            
+            if(_check == 2){
+              $(_li).remove();
+            } 
+        }else if(h4 == "관련 자료"){
+            $.each(_a, function(j , atr){
+                if(j == 1){
+                    $(atr).remove();
+                }else{
+                    //var text = $(".location-area > h3").text();
+                    $(atr).attr("href" , "javascript:safeKorea.guideFileDown('');");    
+                }
+            });
+        }
+
+    }); 
+    
+    if ('ko' == 'ko') {
+    	$.getJSON(contextPath + "/cmmn/find/nas/FOOTERMENULIST.do", function(data) {
+    		var siteMapAddHTML = '';
+    		// menuSn기준 정렬
+    		data.sort((a,b) => a.menuSn - b.menuSn);
+    		
+    		$(data).each(function(idx , elem){
+    			if(elem.level == 1) {
+    				siteMapAddHTML += '<span class="accordion-btn sitemap09">'+ elem.menuNm +'</span>';
+    				siteMapAddHTML += '<div class="panel-content">';
+    				siteMapAddHTML += '		<ul class="sub_menu_list">';
+    			} else {
+    				siteMapAddHTML += '			<li class="has-menu">';
+    				siteMapAddHTML += '				<a href='+((elem.menuUrlAddr) ? contextPath + elem.menuUrlAddr+'?isFooter=Y&siteSeCd='+elem.siteSeCd+'&menuSn='+elem.menuSn+(elem.cnvyVrbr ? '&'+elem.cnvyVrbr : '' ): 'javascript:void(0);')+'  alt="'+elem.menuNm+'">'+elem.menuNm+'</a>';
+    				siteMapAddHTML += '			</li>';
+    			}
+    		});
+    		siteMapAddHTML += '	</ul>';
+    		siteMapAddHTML += '</div>';
+    		$(".accordion").append(siteMapAddHTML);
+    	});
+    }
+    
+    $(".movcontent").each(function(i,v){
+    	$(v).find("a").attr("title" , "행정안전부 안전한티비로 새창 열림");
+    });
+	
+	script.src= "/safekorea-kor/js/actionGuide.js";
+    $("body").append(script);
+});
+
+
+
+ $("body").on("click",".pdf-down",function(){
+ 	safeKorea.guideFileDown('');
+ });
+
+ 
+/* $("input , select").each(function(){
+	var id = $(this).attr("id");
+	if(id){
+		if($(this).prev().prop("tagName") != 'LABEL' && $(this).next().prop("tagName") != 'LABEL' && $(this).parent().prop("tagName") != 'LABEL'){
+			$(this).before("<label for='"+id+"' class='sr-only'>" + $(this).attr("title") + "</label>") 
+		}
+	}
+}); */
+</script>
+
+
+<script>
+$(document).ready(function() {
+	if(''){
+		$("#korfooter").hide();
+	} else {
+		$("#korfooter").show();
+	}
+	
+	//aria-expanded 초기값 설정
+	 $(".tab-list").each(function(index){
+		if($(".tab-list.active").attr("aria-label") == undefined){
+			if(this.classList.contains("active")){
+	            $(this).attr("aria-expanded" , "true");
+	        }else{
+	            $(this).attr("aria-expanded" , "false");
+	        }	
+		}
+	});
+	
+	 $("#searchForm").on("submit" , function(e){
+		    e.preventDefault();
+	 });
+
+	$("#searchForm").on("keydown",'input', function(e){
+	    if(e.which === 13){
+	        if($(".icon-search").length > 0){
+	            $(".icon-search").trigger("click");
+	        }
+	    }
+	});
+	
+});
+
+function onclickButton(st){
+    document.title = document.title + " | " + $(st).text();
+    $(".tab-content").hide();
+    $(".tab-list").removeClass("active");
+    $(st).addClass("active");
+    //$(".tab-list").attr("aria-label" , "");
+    $(".tab-list").attr("aria-expanded" , "false");
+    //$(st).attr("aria-label" , $(st).text() + " 선택됨");
+    $(st).attr("aria-expanded" , "true");
+    var s = $(st).data("status");
+    $(".tab-content").eq(s).show();
+}
+
+//if($(".gnb-list").find("li").eq(1).find("a").text() === "ENG")(
+//	$(".nav").find(".active").attr("title",$(".nav").find(".active").text() + "페이지가 선택됨");
+	//$(".nav").find(".active").attr("title","선택됨");
+//) 
+window.onpageshow = function(e){
+	if(e.persisted || (window.performance && window.performance.navigation.type == 2)){
+		$(".form-field #keyword").val("");
+	}
+}
+
+</script>
+
+
+</html>

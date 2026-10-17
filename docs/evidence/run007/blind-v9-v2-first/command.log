@@ -1,0 +1,14 @@
+node:internal/fs/promises:1598
+  const result = await PromisePrototypeThen(
+                 ^
+
+Error: ENOENT: no such file or directory, scandir 'evaluation/blind-v9-v2/sites'
+    at async readdir (node:internal/fs/promises:1598:18)
+    at async file:///Users/khyun_03/easyweb/scripts/evaluate.mjs:58:20 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'evaluation/blind-v9-v2/sites'
+}
+
+Node.js v26.0.0

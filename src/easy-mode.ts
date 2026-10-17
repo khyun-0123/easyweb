@@ -1,6 +1,6 @@
 import styles from './styles.css';
 import { analyzePage } from './analyzer';
-import { classify } from './classifier';
+import { classify, type ClassificationOptions } from './classifier';
 import { hasMoreMenus, rank, remainingMenus } from './ranker';
 import { locateOriginal } from './action-bridge';
 import { showOriginalNotice } from './original-notice';
@@ -36,7 +36,7 @@ function el<K extends keyof HTMLElementTagNameMap>(tag: K, className = '', text?
   return element;
 }
 
-export function openEasyMode(host: HTMLElement): () => void {
+export function openEasyMode(host: HTMLElement, options: ClassificationOptions = {}): () => void {
   const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   const scroll = { x: window.scrollX, y: window.scrollY };
   const shadow = host.attachShadow({ mode: 'open' });
@@ -225,7 +225,7 @@ export function openEasyMode(host: HTMLElement): () => void {
     status.textContent = `${announce ? '다시 확인했어요. ' : ''}현재 페이지에서 ${items.length}개의 주요 기능을 찾았어요.${pageIndex ? ` ${pageIndex + 1}번째 메뉴 화면이에요.` : ''}${pageIndex < pages.length - 1 || hasRemaining ? ' 다른 메뉴도 볼 수 있어요.' : ''}`;
   }
   function update(announce = false) {
-    const candidates = classify(analyzePage());
+    const candidates = classify(analyzePage(), options);
     const initial = rank(candidates);
     pages = [initial];
     pageIndex = 0;

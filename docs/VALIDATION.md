@@ -1,3 +1,11 @@
+# 현재 검증: RUN-007 · v0.8.0
+
+**완료5/10 · 인수NOT_MET.** [현재 보고서](RUN_007_REPORT.md): 로컬311/311, 자동접근성21조건 미달0, 합성성능3종과 실제 공개과제15/15 PASS. 기관1000제어의 기존 분석/준비 기준도PASS지만 전체pipeline300ms 추가진단은413.8ms로FAIL이다.
+
+알려진50페이지 기관모드227/231정확·139/140재현은 개발 결과다. [새v9-v2 첫 평가](evidence/run007/blind-v9-v2-first-evaluated/evaluation-current-institution-blind-v9-v2-holdout.json)는26/30·2/15·0/5 FAIL, 추가60/73·5/15·2/5와 분리한다. 고유55페이지가 노출됐고 원본·정정판·첫FAIL을 모두 보존한다. 현재0.8 실제 설치·발화·확대NOT_RUN, 1인/정식실증 각0건. [패키지](../output/run007/EasyWeb-0.8.0-candidate.json) · [최종검토](evidence/run007/final-review.json)
+
+---
+
 # EasyWeb 검증 기록
 
 ## RUN-006 · v0.7.0 / 다운로드 안전 반례 해결
@@ -221,4 +229,4 @@ core 개발 정확72/74·재현45/45는 통과했으나 v8 개발 재평가11/16
 
 ## 현재 판정으로 돌아가기
 
-최신 상태는 [RUN-005 보고서](RUN_005_REPORT.md)와 [진행표](PROGRESS.md)를 따른다. 현재 완료4/10·NOT_MET(S05 재개), 최종222/222와 v8 첫10/17·4/15·1/5 모든사이트FAIL을 함께 기록한다. 알려진50페이지에서 v7정정본은 새 자료가 아니다. [RUN-004 인수 판정](evidence/run004/release-gate.json)·첫 raw FAIL·해석 한계와 수정전204/208·live14/15·ZIP·동결v1/v2를 보존한다. RUN-004의25분57초를 RUN-005 경과로 쓰지 않으며 전체 경과·계정 토큰·비용은 UNKNOWN이다.
+아래 RUN-005 당시 상태는 과거 기록이며 현재 상태는 [RUN-007](RUN_007_REPORT.md)과 [진행표](PROGRESS.md)를 따른다. RUN-005 당시 완료4/10·NOT_MET(S05 재개), 최종222/222와 v8 첫10/17·4/15·1/5 모든사이트FAIL을 함께 기록한다. 알려진50페이지에서 v7정정본은 새 자료가 아니다. [RUN-004 인수 판정](evidence/run004/release-gate.json)·첫 raw FAIL·해석 한계와 수정전204/208·live14/15·ZIP·동결v1/v2를 보존한다. RUN-004의25분57초를 RUN-005 경과로 쓰지 않으며 전체 경과·계정 토큰·비용은 UNKNOWN이다.

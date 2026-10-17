@@ -1,0 +1,32 @@
+
+Running 25 tests using 1 worker
+
+(node:97692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/institution-evidence.spec.mjs:34:1 › 교육 메뉴는 낯선 이름·경로·query에서도 로컬 읽기 근거만 분류한다 (89ms)
+  ✓   2 tests/institution-evidence.spec.mjs:43:1 › 교육 펼침 버튼과 인접 내용 패널의 읽기 관계를 보존한다 (95ms)
+  ✓   3 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 이웃 지역 제목에서 확장되지 않는다 (74ms)
+  ✓   4 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 펼침 상태 없는 버튼에서 확장되지 않는다 (79ms)
+  ✓   5 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 다른 패널 구조에서 확장되지 않는다 (75ms)
+  ✓   6 tests/institution-evidence.spec.mjs:54:3 › 교육 근거는 실제 폼에서 확장되지 않는다 (93ms)
+  ✓   7 tests/institution-evidence.spec.mjs:59:1 › 연금 fragment는 낯선 ID·역순 패널에서도 같은 지역의 고정 제목으로 연결된다 (79ms)
+  ✓   8 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 중복 target ID에서 중단된다 (76ms)
+  ✓   9 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 다른 지역 패널에서 중단된다 (75ms)
+  ✓  10 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 잘못된 fragment에서 중단된다 (76ms)
+  ✓  11 tests/institution-evidence.spec.mjs:71:3 › 연금 설명 연결은 본문 제목 불일치에서 중단된다 (78ms)
+  ✓  12 tests/institution-evidence.spec.mjs:76:1 › SMU 게시판은 공유 배지 대신 문서의 구체적인 목적을 분류한다 (78ms)
+  ✓  13 tests/institution-evidence.spec.mjs:84:1 › SMU 문서 번호·순서·배지 변경은 문서 목적을 바꾸지 않는다 (72ms)
+  ✓  14 tests/institution-evidence.spec.mjs:91:1 › 장문 사건 공지를 임의 길이 감점 없이 근거로 다룬다 (78ms)
+  ✓  15 tests/institution-evidence.spec.mjs:99:1 › 모호한 게시글·목적 충돌·실제 포털 링크는 강제 보정하지 않는다 (73ms)
+  ✓  16 tests/institution-evidence.spec.mjs:106:1 › SMU 문서 구조·고정 게시판 문맥이 없는 제목은 분류하지 않는다 (90ms)
+  ✓  17 tests/institution-evidence.spec.mjs:118:3 › 기관 경계: 위장 접미 호스트 (76ms)
+  ✓  18 tests/institution-evidence.spec.mjs:118:3 › 기관 경계: 미지원 하위 도메인 (72ms)
+  ✓  19 tests/institution-evidence.spec.mjs:118:3 › 기관 경계: SMU 다른 경로 (74ms)
+  ✓  20 tests/institution-evidence.spec.mjs:118:3 › 기관 경계: 정부 다른 기능 (75ms)
+  ✓  21 tests/institution-evidence.spec.mjs:118:3 › 기관 경계: 연금 다른 기능 (71ms)
+  ✓  22 tests/institution-evidence.spec.mjs:123:1 › 편집 제어·입력 값 getter·사적 문맥을 읽지 않는다 (76ms)
+  ✓  23 tests/institution-evidence.spec.mjs:132:1 › 사적 편집 제목은 설명 근거가 아니며 외부 aria-labelledby 제목도 빌리지 않는다 (76ms)
+  ✓  24 tests/institution-evidence.spec.mjs:139:1 › 같은 cache 인자에도 제목 변경·target 교체가 새 근거에 반영된다 (75ms)
+  ✓  25 tests/institution-evidence.spec.mjs:156:1 › 원본 액션·href·안전 snapshot을 모듈이 변경하지 않는다 (76ms)
+
+  25 passed (2.4s)

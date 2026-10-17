@@ -1,6 +1,6 @@
 {
   "name": "easyweb",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "type": "module",
   "description": "복잡한 웹페이지의 주요 기능을 찾아 쉬운 화면으로 안내하는 Chrome 확장 프로그램",
@@ -12,12 +12,13 @@
     "test:live": "npm run build && node scripts/check-live.mjs",
     "demo": "node scripts/serve-demo.mjs",
     "evaluate": "node scripts/evaluate.mjs",
+    "compare:development": "node scripts/compare-development.mjs",
     "benchmark": "node scripts/benchmark.mjs",
     "verify": "node scripts/verify.mjs --with-core",
     "test:a11y": "node scripts/a11y-check.mjs",
     "test:tasks": "node scripts/check-tasks-live.mjs",
     "study:analyze": "node scripts/analyze-study.mjs",
-    "package": "node scripts/package.mjs --output-dir=output/run006"
+    "package": "node scripts/package.mjs --output-dir=output/run007"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",

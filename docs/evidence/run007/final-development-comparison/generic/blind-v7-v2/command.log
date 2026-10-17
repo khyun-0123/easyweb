@@ -1,0 +1,116 @@
+{
+  "output": "/Users/khyun_03/easyweb/docs/evidence/run007/final-development-comparison/generic/blind-v7-v2/evaluation-current-generic-blind-v7-v2-all.json",
+  "summary": {
+    "pages": 5,
+    "correct": 13,
+    "recommended": 18,
+    "matched": 11,
+    "expected": 15,
+    "precision": 0.7222222222222222,
+    "recall": 0.7333333333333333,
+    "tasksRecommended": 4
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 4,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.75,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 5,
+      "matched": 3,
+      "expected": 3,
+      "precision": 0.6,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 0,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0,
+      "tasksRecommended": 0
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 0.7222222222222222,
+      "recall": 0.7333333333333333
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 0.6,
+        "recall": 1,
+        "passed": false
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "library",
+        "precision": 0.75,
+        "recall": 0.6666666666666666,
+        "passed": false
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 0.6,
+        "recall": 1,
+        "passed": false
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 0,
+        "passed": false
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  }
+}

@@ -1,0 +1,110 @@
+
+Running 5 tests using 1 worker
+
+(node:6398) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/application-guidance.spec.mjs:6:188 › 공개 menu의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 (91ms)
+(node:6404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/application-guidance.spec.mjs:6:188 › 공개 document의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 (93ms)
+(node:6419) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/application-guidance.spec.mjs:6:188 › 공개 help의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 (93ms)
+(node:6425) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/application-guidance.spec.mjs:11:1 › 명시적 실제 업무 endpoint·제출 form·기사에는 안내 문구만으로 읽기 분류를 붙이지 않는다 (115ms)
+  ✓  5 tests/application-guidance.spec.mjs:17:1 › 설명 이름도 위험 URL·handler를 되살리지 않으며 실제 예약 동작을 바꾸지 않는다 (81ms)
+
+
+  1) tests/application-guidance.spec.mjs:6:188 › 공개 menu의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 ───────────
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "action": "locate",
+    -   "category": "help",
+    +   "category": "apply",
+        "label": "실험실 예약 안내",
+      }
+
+       6 | for(const [name,label,extra,action] of [['menu','실험실 예약 안내','role="button" aria-haspopup="true"','locate'],['document','연구지원 신청 절차','','navigate'],['help','교류 프로그램 접수 방법','','navigate']])test(`공개 ${name}의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다`,async({page})=>{
+       7 |   const rows=await inspect(page,`<nav><a id="guidance" href="https://example.org/public/explanation.do" ${extra}>${label}</a></nav>`);
+    >  8 |   expect(rows.find(item=>item.id==='guidance')).toMatchObject({category:'help',action,label});
+         |                                                 ^
+       9 |   expect(rows.find(item=>item.id==='guidance').href).toBe(action==='navigate'?'https://example.org/public/explanation.do':undefined);
+      10 | });
+      11 | test('명시적 실제 업무 endpoint·제출 form·기사에는 안내 문구만으로 읽기 분류를 붙이지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/application-guidance.spec.mjs:8:49
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/application-guidance-공개-menu의-신청·예약·접수-설명은-도움말이며-원본-액션을-유지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/application-guidance-공개-menu의-신청·예약·접수-설명은-도움말이며-원본-액션을-유지한다/error-context.md
+
+  2) tests/application-guidance.spec.mjs:6:188 › 공개 document의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 ───────
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "action": "navigate",
+    -   "category": "help",
+    +   "category": "apply",
+        "label": "연구지원 신청 절차",
+      }
+
+       6 | for(const [name,label,extra,action] of [['menu','실험실 예약 안내','role="button" aria-haspopup="true"','locate'],['document','연구지원 신청 절차','','navigate'],['help','교류 프로그램 접수 방법','','navigate']])test(`공개 ${name}의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다`,async({page})=>{
+       7 |   const rows=await inspect(page,`<nav><a id="guidance" href="https://example.org/public/explanation.do" ${extra}>${label}</a></nav>`);
+    >  8 |   expect(rows.find(item=>item.id==='guidance')).toMatchObject({category:'help',action,label});
+         |                                                 ^
+       9 |   expect(rows.find(item=>item.id==='guidance').href).toBe(action==='navigate'?'https://example.org/public/explanation.do':undefined);
+      10 | });
+      11 | test('명시적 실제 업무 endpoint·제출 form·기사에는 안내 문구만으로 읽기 분류를 붙이지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/application-guidance.spec.mjs:8:49
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/application-guidance-공개-do-1378c-예약·접수-설명은-도움말이며-원본-액션을-유지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/application-guidance-공개-do-1378c-예약·접수-설명은-도움말이며-원본-액션을-유지한다/error-context.md
+
+  3) tests/application-guidance.spec.mjs:6:188 › 공개 help의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 ───────────
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "action": "navigate",
+    -   "category": "help",
+    +   "category": "apply",
+        "label": "교류 프로그램 접수 방법",
+      }
+
+       6 | for(const [name,label,extra,action] of [['menu','실험실 예약 안내','role="button" aria-haspopup="true"','locate'],['document','연구지원 신청 절차','','navigate'],['help','교류 프로그램 접수 방법','','navigate']])test(`공개 ${name}의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다`,async({page})=>{
+       7 |   const rows=await inspect(page,`<nav><a id="guidance" href="https://example.org/public/explanation.do" ${extra}>${label}</a></nav>`);
+    >  8 |   expect(rows.find(item=>item.id==='guidance')).toMatchObject({category:'help',action,label});
+         |                                                 ^
+       9 |   expect(rows.find(item=>item.id==='guidance').href).toBe(action==='navigate'?'https://example.org/public/explanation.do':undefined);
+      10 | });
+      11 | test('명시적 실제 업무 endpoint·제출 form·기사에는 안내 문구만으로 읽기 분류를 붙이지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/application-guidance.spec.mjs:8:49
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/application-guidance-공개-help의-신청·예약·접수-설명은-도움말이며-원본-액션을-유지한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/application-guidance-공개-help의-신청·예약·접수-설명은-도움말이며-원본-액션을-유지한다/error-context.md
+
+  3 failed
+    tests/application-guidance.spec.mjs:6:188 › 공개 menu의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 ────────────
+    tests/application-guidance.spec.mjs:6:188 › 공개 document의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 ────────
+    tests/application-guidance.spec.mjs:6:188 › 공개 help의 신청·예약·접수 설명은 도움말이며 원본 액션을 유지한다 ────────────
+  2 passed (1.8s)

@@ -1,5 +1,6 @@
 import { candidateLabel, contextLabels, documentPurpose, pagePurpose, sourceContext, sourceSnapshot, type CollectionCache, type SupplementalCache, type ContextCache } from './analyzer';
 import type { Candidate, PagePurpose } from './types';
+import { institutionEvidence } from './institution-evidence';
 
 export function isCandidateCurrent(candidate: Candidate, collectionCache?: CollectionCache, supplementalCache?: SupplementalCache, contextCache?: ContextCache, commonPurpose?: PagePurpose | null): boolean {
   const label = candidateLabel(candidate.element);
@@ -8,6 +9,14 @@ export function isCandidateCurrent(candidate: Candidate, collectionCache?: Colle
   const labels = contextLabels(candidate.element, contextCache);
   if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
   if (pagePurpose(candidate.element, labels, commonPurpose) !== candidate.pagePurpose) return false;
+  if (candidate.institutionEvidence) {
+    const previous = candidate.institutionEvidence;
+    const evidence = institutionEvidence(candidate);
+    if (!evidence || evidence.adapter !== previous.adapter || evidence.version !== previous.version
+      || evidence.rule !== previous.rule || evidence.category !== previous.category || evidence.score !== previous.score
+      || evidence.fingerprint !== previous.fingerprint || evidence.dependencies.length !== previous.dependencies.length
+      || evidence.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+  }
   const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache);
   return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl &&
     current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;

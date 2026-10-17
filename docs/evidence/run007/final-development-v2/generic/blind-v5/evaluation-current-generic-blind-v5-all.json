@@ -1,0 +1,1525 @@
+{
+  "checkedAt": "2026-10-17T19:06:38.522Z",
+  "engine": "current",
+  "suite": "blind-v5",
+  "split": "all",
+  "classificationMode": "generic",
+  "adapterVersion": 2,
+  "evaluationPhase": "post-holdout-development",
+  "adjudication": null,
+  "freezeVerification": null,
+  "toolHashes": {
+    "scripts/evaluate.mjs": "d0385d2815e5db1b499403418b2d8a2fe09ad8e679de7a54ef08cffe7ad9d227",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "56b92d25b9ae89a990f6c668c493649e47800034b1f60f097648306a9e73b1b4"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "3bef4d417707a744668b997b1459c1cc9eff4d2ed422e44765fcda79ac52c650",
+  "datasetHash": "bf0494d96b48942a266f7ef6a0504c325fe3a1c6318d0cd2ecf60430b941c8a9",
+  "fixtureHashes": {
+    "city-blind-v5": "536c40ea3b44774701b52485844c0253eb9a78dc54c9bfc932b4b0d8a3b97ef8",
+    "government-blind-v5": "a03d2a162810fb397c7d0330499aebaf215b9eb22731093dffe8aea2e97d45c6",
+    "library-blind-v5": "822276e06cd37926c9c62a53f46bd5fd66b7f029f0e019724a8863c13ebbd023",
+    "public-agency-blind-v5": "d0c88637ab3cdb796cf2f51a8d83667dd17d91973132931c4665b429b8d9e4f8",
+    "smu-blind-v5": "25f320ba8b2d5aee0350f2a3e1978c20e1543fe40fb50359e3e65037226307f6"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 24,
+    "recommended": 25,
+    "matched": 13,
+    "expected": 15,
+    "precision": 0.96,
+    "recall": 0.8666666666666667,
+    "tasksRecommended": 5
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 6,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 4,
+      "recommended": 5,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.8,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v5",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+      "classificationMode": "generic",
+      "adapterVersion": 2,
+      "candidateCount": 4,
+      "classifiedCount": 4,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "정부24",
+          "href": "https://plus.gov.kr/",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "plus.gov.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "발급 서비스 진입",
+            "명시적 발급 시스템 제목과 원본 목록 제어"
+          ],
+          "sectionLabel": "온라인 발급 시스템",
+          "contextLabels": [
+            "온라인 발급 시스템",
+            "무인민원발급기 이용안내"
+          ],
+          "pagePurpose": "help",
+          "category": "apply",
+          "pageTask": "control",
+          "collectionDependent": true,
+          "sourceId": "city-blind-v5-control-1"
+        },
+        {
+          "label": "대법원 인터넷등기소",
+          "href": "https://www.iros.go.kr/",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.iros.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "발급 서비스 진입",
+            "명시적 발급 시스템 제목과 원본 목록 제어"
+          ],
+          "sectionLabel": "온라인 발급 시스템",
+          "contextLabels": [
+            "온라인 발급 시스템",
+            "무인민원발급기 이용안내"
+          ],
+          "pagePurpose": "help",
+          "category": "apply",
+          "pageTask": "control",
+          "collectionDependent": true,
+          "sourceId": "city-blind-v5-control-3"
+        },
+        {
+          "label": "국민건강보험 사이버민원센터",
+          "href": "http://minwon.nhis.or.kr/",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "minwon.nhis.or.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "발급 서비스 진입",
+            "명시적 발급 시스템 제목과 원본 목록 제어"
+          ],
+          "sectionLabel": "온라인 발급 시스템",
+          "contextLabels": [
+            "온라인 발급 시스템",
+            "무인민원발급기 이용안내"
+          ],
+          "pagePurpose": "help",
+          "category": "apply",
+          "pageTask": "control",
+          "collectionDependent": true,
+          "sourceId": "city-blind-v5-control-4"
+        },
+        {
+          "label": "대법원 전자가족관계등록시스템",
+          "href": "http://efamily.scourt.go.kr/",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "efamily.scourt.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "발급 서비스 진입",
+            "명시적 발급 시스템 제목과 원본 목록 제어"
+          ],
+          "sectionLabel": "온라인 발급 시스템",
+          "contextLabels": [
+            "온라인 발급 시스템",
+            "무인민원발급기 이용안내"
+          ],
+          "pagePurpose": "help",
+          "category": "apply",
+          "pageTask": "control",
+          "collectionDependent": true,
+          "sourceId": "city-blind-v5-control-2"
+        }
+      ],
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c837ea20825f33226fe2123753e853a0edf254f9d2e533e6aafdeff0adf30807",
+        "classificationMode": "generic",
+        "adapterVersion": 2,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "정부24",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://plus.gov.kr/",
+                "target": "_blank",
+                "sourceId": "city-blind-v5-control-1",
+                "sourceMatches": 1
+              },
+              {
+                "label": "대법원 인터넷등기소",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.iros.go.kr/",
+                "target": "_blank",
+                "sourceId": "city-blind-v5-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "국민건강보험 사이버민원센터",
+                "category": "apply",
+                "action": "navigate",
+                "href": "http://minwon.nhis.or.kr/",
+                "target": "_blank",
+                "sourceId": "city-blind-v5-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "대법원 전자가족관계등록시스템",
+                "category": "apply",
+                "action": "navigate",
+                "href": "http://efamily.scourt.go.kr/",
+                "target": "_blank",
+                "sourceId": "city-blind-v5-control-2",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 2,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "city-blind-v5-feature-1": 1,
+          "city-blind-v5-feature-2": 1,
+          "city-blind-v5-feature-4": 1
+        },
+        "selected": [
+          {
+            "label": "정부24",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://plus.gov.kr/",
+            "target": "_blank",
+            "sourceId": "city-blind-v5-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "대법원 인터넷등기소",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.iros.go.kr/",
+            "target": "_blank",
+            "sourceId": "city-blind-v5-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "국민건강보험 사이버민원센터",
+            "category": "apply",
+            "action": "navigate",
+            "href": "http://minwon.nhis.or.kr/",
+            "target": "_blank",
+            "sourceId": "city-blind-v5-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "대법원 전자가족관계등록시스템",
+            "category": "apply",
+            "action": "navigate",
+            "href": "http://efamily.scourt.go.kr/",
+            "target": "_blank",
+            "sourceId": "city-blind-v5-control-2",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v5",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/nationalActionTips.do?menuSn=4",
+      "classificationMode": "generic",
+      "adapterVersion": 2,
+      "candidateCount": 6,
+      "classifiedCount": 6,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "태풍",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "도움말·행동요령 목적과 원본 주제 목록"
+          ],
+          "sectionLabel": "가을철 주요재난",
+          "contextLabels": [
+            "가을철 주요재난"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "government-blind-v5-control-1"
+        },
+        {
+          "label": "호우",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "도움말·행동요령 목적과 원본 주제 목록"
+          ],
+          "sectionLabel": "가을철 주요재난",
+          "contextLabels": [
+            "가을철 주요재난"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "government-blind-v5-control-2"
+        },
+        {
+          "label": "산사태",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "도움말·행동요령 목적과 원본 주제 목록"
+          ],
+          "sectionLabel": "가을철 주요재난",
+          "contextLabels": [
+            "가을철 주요재난"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "government-blind-v5-control-3"
+        },
+        {
+          "label": "지진",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "도움말·행동요령 목적과 원본 주제 목록"
+          ],
+          "sectionLabel": "가을철 주요재난",
+          "contextLabels": [
+            "가을철 주요재난"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "government-blind-v5-control-4"
+        },
+        {
+          "label": "산불",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "도움말·행동요령 목적과 원본 주제 목록"
+          ],
+          "sectionLabel": "가을철 주요재난",
+          "contextLabels": [
+            "가을철 주요재난"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "government-blind-v5-control-5"
+        },
+        {
+          "label": "산행안전사고",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "도움말·행동요령 목적과 원본 주제 목록"
+          ],
+          "sectionLabel": "가을철 주요재난",
+          "contextLabels": [
+            "가을철 주요재난"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "government-blind-v5-control-6"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c837ea20825f33226fe2123753e853a0edf254f9d2e533e6aafdeff0adf30807",
+        "classificationMode": "generic",
+        "adapterVersion": 2,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "태풍",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v5-control-1",
+                "sourceMatches": 1
+              },
+              {
+                "label": "호우",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v5-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "산사태",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v5-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "지진",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v5-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "산불",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v5-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "산행안전사고",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v5-control-6",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 2,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "government-blind-v5-feature-1": 1,
+          "government-blind-v5-feature-4": 1,
+          "government-blind-v5-feature-6": 1
+        },
+        "selected": [
+          {
+            "label": "태풍",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v5-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "호우",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v5-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "산사태",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v5-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "지진",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v5-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "산불",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v5-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "산행안전사고",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v5-control-6",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 6,
+        "recommended": 6,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v5",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N30701000000.do",
+      "classificationMode": "generic",
+      "adapterVersion": 2,
+      "candidateCount": 6,
+      "classifiedCount": 4,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "도서관 견학 신청",
+          "href": "https://www.nl.go.kr/NL/contents/N30702000000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "sourceId": "library-blind-v5-control-5"
+        },
+        {
+          "label": "신청확인 및 취소",
+          "href": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "apply",
+          "sourceId": "library-blind-v5-control-6"
+        },
+        {
+          "label": "본관자료실 안내",
+          "href": "https://nl.go.kr/NL/contents/N40404000000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "help",
+          "sourceId": "library-blind-v5-control-2"
+        },
+        {
+          "label": "디지털도서관 시설 안내",
+          "href": "https://nl.go.kr/NL/contents/N40403000000.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "nl.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "sectionLabel": "견학",
+          "contextLabels": [
+            "견학"
+          ],
+          "category": "help",
+          "sourceId": "library-blind-v5-control-3"
+        }
+      ],
+      "correct": 4,
+      "recommended": 4,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c837ea20825f33226fe2123753e853a0edf254f9d2e533e6aafdeff0adf30807",
+        "classificationMode": "generic",
+        "adapterVersion": 2,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "도서관 견학 신청",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N30702000000.do",
+                "target": "_self",
+                "sourceId": "library-blind-v5-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "신청확인 및 취소",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+                "target": "_self",
+                "sourceId": "library-blind-v5-control-6",
+                "sourceMatches": 1
+              },
+              {
+                "label": "본관자료실 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://nl.go.kr/NL/contents/N40404000000.do",
+                "target": "_self",
+                "sourceId": "library-blind-v5-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "디지털도서관 시설 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://nl.go.kr/NL/contents/N40403000000.do",
+                "target": "_self",
+                "sourceId": "library-blind-v5-control-3",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 2,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "library-blind-v5-feature-2": 1,
+          "library-blind-v5-feature-5": 1,
+          "library-blind-v5-feature-6": 1
+        },
+        "selected": [
+          {
+            "label": "도서관 견학 신청",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N30702000000.do",
+            "target": "_self",
+            "sourceId": "library-blind-v5-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "신청확인 및 취소",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N60501050000.do",
+            "target": "_self",
+            "sourceId": "library-blind-v5-control-6",
+            "sourceMatches": 1
+          },
+          {
+            "label": "본관자료실 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://nl.go.kr/NL/contents/N40404000000.do",
+            "target": "_self",
+            "sourceId": "library-blind-v5-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "디지털도서관 시설 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://nl.go.kr/NL/contents/N40403000000.do",
+            "target": "_self",
+            "sourceId": "library-blind-v5-control-3",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v5",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0048M0.do?menuId=MN24001117",
+      "classificationMode": "generic",
+      "adapterVersion": 2,
+      "candidateCount": 8,
+      "classifiedCount": 8,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "급여의 특징",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "연금급여",
+          "contextLabels": [
+            "연금급여"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "public-agency-blind-v5-control-1"
+        },
+        {
+          "label": "급여의 종류",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "연금급여",
+          "contextLabels": [
+            "연금급여"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "public-agency-blind-v5-control-2"
+        },
+        {
+          "label": "급여의 산정",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "연금급여",
+          "contextLabels": [
+            "연금급여"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "public-agency-blind-v5-control-3"
+        },
+        {
+          "label": "급여 지급기간 및 지급일",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "연금급여",
+          "contextLabels": [
+            "연금급여"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "public-agency-blind-v5-control-4"
+        },
+        {
+          "label": "급여의 조정",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "연금급여",
+          "contextLabels": [
+            "연금급여"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "public-agency-blind-v5-control-5"
+        },
+        {
+          "label": "급여의 청구",
+          "action": "locate",
+          "context": "body",
+          "score": 65,
+          "reasons": [
+            "정보 주제 읽기",
+            "원본 목록·탭과 동료의 명시적 정보 개념"
+          ],
+          "sectionLabel": "연금급여",
+          "contextLabels": [
+            "연금급여"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "collectionDependent": true,
+          "sourceId": "public-agency-blind-v5-control-6"
+        }
+      ],
+      "correct": 6,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "public-agency-blind-v5-feature-8"
+      ],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c837ea20825f33226fe2123753e853a0edf254f9d2e533e6aafdeff0adf30807",
+        "classificationMode": "generic",
+        "adapterVersion": 2,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "급여의 특징",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-1",
+                "sourceMatches": 1
+              },
+              {
+                "label": "급여의 종류",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "급여의 산정",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "급여 지급기간 및 지급일",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "급여의 조정",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "급여의 청구",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-6",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 2,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 메뉴도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "청구서 처리절차 및 장애·유족심사 절차",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-7",
+                "sourceMatches": 1
+              },
+              {
+                "label": "크레딧 제도",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v5-control-8",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 2,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 2개의 주요 기능을 찾았어요. 2번째 메뉴 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "public-agency-blind-v5-feature-2": 1,
+          "public-agency-blind-v5-feature-4": 1,
+          "public-agency-blind-v5-feature-8": 2
+        },
+        "selected": [
+          {
+            "label": "급여의 특징",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-1",
+            "sourceMatches": 1
+          },
+          {
+            "label": "급여의 종류",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "급여의 산정",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "급여 지급기간 및 지급일",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "급여의 조정",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "급여의 청구",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-6",
+            "sourceMatches": 1
+          },
+          {
+            "label": "청구서 처리절차 및 장애·유족심사 절차",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-7",
+            "sourceMatches": 1
+          },
+          {
+            "label": "크레딧 제도",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v5-control-8",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 8,
+        "recommended": 8,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v5",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/leave.do",
+      "classificationMode": "generic",
+      "adapterVersion": 2,
+      "candidateCount": 6,
+      "classifiedCount": 5,
+      "institutionApplied": 0,
+      "selected": [
+        {
+          "label": "복학",
+          "href": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-2"
+        },
+        {
+          "label": "자퇴 및 제적",
+          "href": "https://www.smu.ac.kr/kor/life/dropOff.do#tab18280_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-3"
+        },
+        {
+          "label": "재입학",
+          "href": "https://www.smu.ac.kr/kor/life/readmission.do#tab18281_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-4"
+        },
+        {
+          "label": "전과",
+          "href": "https://www.smu.ac.kr/kor/life/previousConviction.do#tab18282_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v5-control-5"
+        },
+        {
+          "label": "증명서발급",
+          "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "apply",
+          "sourceId": "smu-blind-v5-control-6"
+        }
+      ],
+      "correct": 4,
+      "recommended": 5,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.8,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "smu-blind-v5-feature-6"
+      ],
+      "incorrect": [
+        {
+          "label": "증명서발급",
+          "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "apply",
+          "sourceId": "smu-blind-v5-control-6"
+        }
+      ],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "c837ea20825f33226fe2123753e853a0edf254f9d2e533e6aafdeff0adf30807",
+        "classificationMode": "generic",
+        "adapterVersion": 2,
+        "scope": "Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "복학",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_",
+                "target": "_self",
+                "sourceId": "smu-blind-v5-control-2",
+                "sourceMatches": 1
+              },
+              {
+                "label": "자퇴 및 제적",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/dropOff.do#tab18280_",
+                "target": "_self",
+                "sourceId": "smu-blind-v5-control-3",
+                "sourceMatches": 1
+              },
+              {
+                "label": "재입학",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/readmission.do#tab18281_",
+                "target": "_self",
+                "sourceId": "smu-blind-v5-control-4",
+                "sourceMatches": 1
+              },
+              {
+                "label": "전과",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/previousConviction.do#tab18282_",
+                "target": "_self",
+                "sourceId": "smu-blind-v5-control-5",
+                "sourceMatches": 1
+              },
+              {
+                "label": "증명서발급",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+                "target": "_self",
+                "sourceId": "smu-blind-v5-control-6",
+                "sourceMatches": 1
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 2,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "smu-blind-v5-feature-2": 1,
+          "smu-blind-v5-feature-5": 1,
+          "smu-blind-v5-feature-6": null
+        },
+        "selected": [
+          {
+            "label": "복학",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/reinstatement.do#tab18279_",
+            "target": "_self",
+            "sourceId": "smu-blind-v5-control-2",
+            "sourceMatches": 1
+          },
+          {
+            "label": "자퇴 및 제적",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/dropOff.do#tab18280_",
+            "target": "_self",
+            "sourceId": "smu-blind-v5-control-3",
+            "sourceMatches": 1
+          },
+          {
+            "label": "재입학",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/readmission.do#tab18281_",
+            "target": "_self",
+            "sourceId": "smu-blind-v5-control-4",
+            "sourceMatches": 1
+          },
+          {
+            "label": "전과",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/previousConviction.do#tab18282_",
+            "target": "_self",
+            "sourceId": "smu-blind-v5-control-5",
+            "sourceMatches": 1
+          },
+          {
+            "label": "증명서발급",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+            "target": "_self",
+            "sourceId": "smu-blind-v5-control-6",
+            "sourceMatches": 1
+          }
+        ],
+        "correct": 4,
+        "recommended": 5,
+        "matched": 2,
+        "expected": 3,
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "missed": [
+          "smu-blind-v5-feature-6"
+        ],
+        "incorrect": [
+          {
+            "label": "증명서발급",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/certificatetype.do#tab18184_",
+            "target": "_self",
+            "sourceId": "smu-blind-v5-control-6",
+            "sourceMatches": 1
+          }
+        ],
+        "taskRecommended": true
+      }
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 0.96,
+      "recall": 0.8666666666666667
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "library",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 1,
+        "recall": 0.6666666666666666,
+        "passed": false
+      },
+      {
+        "siteId": "smu",
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "passed": false
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 26,
+      "recommended": 27,
+      "matched": 14,
+      "expected": 15,
+      "precision": 0.9629629629629629,
+      "recall": 0.9333333333333333,
+      "tasksRecommended": 5
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 6,
+        "recommended": 6,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 8,
+        "recommended": 8,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 5,
+        "matched": 2,
+        "expected": 3,
+        "precision": 0.8,
+        "recall": 0.6666666666666666,
+        "tasksRecommended": 1
+      }
+    ],
+    "unresolvedMappings": 0,
+    "repeatedCards": 0
+  }
+}

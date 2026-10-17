@@ -1,0 +1,97 @@
+
+Running 5 tests using 1 worker
+
+(node:98883) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/preparation-and-status.spec.mjs:16:1 › 신청 준비 목록의 명시적 서식 다운로드는 기능 실행과 구별한 준비 문서다 (109ms)
+(node:98889) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/preparation-and-status.spec.mjs:21:1 › 기사나 무관한 목록의 문서명은 신청 준비로 승격하지 않는다 (104ms)
+  ✘  3 tests/preparation-and-status.spec.mjs:31:1 › 본문의 신청·예약 내역 확인은 설명 제목과 구분한 직접 과제다 (103ms)
+(node:98911) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/preparation-and-status.spec.mjs:38:1 › 상태 확인 과제는 많은 설명 메뉴 사이에서도 첫 화면에 도달 경로가 있다 (112ms)
+(node:98918) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/preparation-and-status.spec.mjs:45:1 › 폼 제출과 위험 명령은 상태 확인이라는 이름으로 직접 과제가 되지 않는다 (83ms)
+
+
+  1) tests/preparation-and-status.spec.mjs:16:1 › 신청 준비 목록의 명시적 서식 다운로드는 기능 실행과 구별한 준비 문서다 ─────────
+
+    Error: expect(received).toMatchObject(expected)
+
+    Matcher error: received value must be a non-null object
+
+    Received has value: undefined
+
+      16 | test('신청 준비 목록의 명시적 서식 다운로드는 기능 실행과 구별한 준비 문서다', async ({page}) => {
+      17 |   await setup(page, '<main><h1>공공 서비스 안내</h1><section><h2>신청서 및 구비서류</h2><ul><li><a id="form" href="/files/FileDown.do?document=random"><i class="icon-download" aria-hidden="true"></i>동의서</a></li></ul></section></main>');
+    > 18 |   expect((await classify(page)).find(c=>c.id==='form')).toMatchObject({category:'apply',action:'locate',pageTask:'reading'});
+         |                                                         ^
+      19 | });
+      20 |
+      21 | test('기사나 무관한 목록의 문서명은 신청 준비로 승격하지 않는다', async ({page}) => {
+        at /Users/khyun_03/easyweb/tests/preparation-and-status.spec.mjs:18:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-and-status-신청--2a5fd--서식-다운로드는-기능-실행과-구별한-준비-문서다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-and-status-신청--2a5fd--서식-다운로드는-기능-실행과-구별한-준비-문서다/error-context.md
+
+  2) tests/preparation-and-status.spec.mjs:31:1 › 본문의 신청·예약 내역 확인은 설명 제목과 구분한 직접 과제다 ───────────────
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+        "action": "navigate",
+        "category": "apply",
+    -   "pageTask": "control",
+    +   "pageTask": undefined,
+      }
+
+      32 |   await setup(page, '<nav><a href="/old">신청</a></nav><main><h1>이용 안내</h1><a id="status" href="/records">예약 내역 확인 바로가기</a><a id="guide" href="/explanation">예약 방법 안내</a></main>');
+      33 |   const items=await classify(page);
+    > 34 |   expect(items.find(c=>c.id==='status')).toMatchObject({category:'apply',pageTask:'control',action:'navigate'});
+         |                                          ^
+      35 |   expect(items.find(c=>c.id==='guide')?.pageTask).not.toBe('control');
+      36 | });
+      37 |
+        at /Users/khyun_03/easyweb/tests/preparation-and-status.spec.mjs:34:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-and-status-본문의-신청·예약-내역-확인은-설명-제목과-구분한-직접-과제다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-and-status-본문의-신청·예약-내역-확인은-설명-제목과-구분한-직접-과제다/error-context.md
+
+  3) tests/preparation-and-status.spec.mjs:38:1 › 상태 확인 과제는 많은 설명 메뉴 사이에서도 첫 화면에 도달 경로가 있다 ─────────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected value: "status"
+    Received array: ["", "", "", "", "", ""]
+
+      39 |   await setup(page, '<nav><a href="/requests">신청</a><a href="/bookings">예약</a></nav><main><h1>이용 안내</h1><ul>'+Array.from({length:3},(_,i)=>`<li><a href="/guide-${i}">이용 방법 안내 ${i}</a></li>`).join('')+'</ul><a href="/search">자료 검색</a><a id="status" href="/records">신청 확인 바로가기</a></main>');
+      40 |   const ids=await page.evaluate(()=>Tasks.rank(Tasks.classify(Tasks.analyzePage(),{mode:'generic'})).map(c=>c.element.id));
+    > 41 |   expect(ids).toContain('status');
+         |               ^
+      42 |   expect(ids.length).toBeLessThanOrEqual(6);
+      43 | });
+      44 |
+        at /Users/khyun_03/easyweb/tests/preparation-and-status.spec.mjs:41:15
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/preparation-and-status-상태--95bb4-설명-메뉴-사이에서도-첫-화면에-도달-경로가-있다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/preparation-and-status-상태--95bb4-설명-메뉴-사이에서도-첫-화면에-도달-경로가-있다/error-context.md
+
+  3 failed
+    tests/preparation-and-status.spec.mjs:16:1 › 신청 준비 목록의 명시적 서식 다운로드는 기능 실행과 구별한 준비 문서다 ──────────
+    tests/preparation-and-status.spec.mjs:31:1 › 본문의 신청·예약 내역 확인은 설명 제목과 구분한 직접 과제다 ────────────────
+    tests/preparation-and-status.spec.mjs:38:1 › 상태 확인 과제는 많은 설명 메뉴 사이에서도 첫 화면에 도달 경로가 있다 ──────────
+  2 passed (1.8s)

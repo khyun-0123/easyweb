@@ -1,4 +1,5 @@
 import type { Candidate, Category } from './types';
+import { supplementalEvidence, type SupplementalCache } from './analyzer';
 
 const MAX_CARDS = 6;
 // A focused page can offer a help index, a question and a reading control.
@@ -66,22 +67,48 @@ function compare(a: Candidate, b: Candidate): number {
 function ordered(candidates: Candidate[]): Candidate[] {
   const sorted = [...candidates].sort(compare);
   const groups = new Map<Element, Map<string, number[]>>();
+  const filterGroups = new Map<Element, Map<Element, Map<string, number[]>>>();
+  // Reuse local evidence within this ordering pass only. A later rank or menu
+  // traversal must observe current source metadata instead of a retained cache.
+  const supplementalCache: SupplementalCache = new WeakMap();
   sorted.forEach((candidate, index) => {
-    if (candidate.pageTask !== 'reading') return;
-    const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
-    if (!container) return;
-    const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
-    const peers = groups.get(container) ?? new Map<string, number[]>();
-    peers.set(key, [...(peers.get(key) ?? []), index]);
-    groups.set(container, peers);
+    if (candidate.pageTask === 'reading') {
+      const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
+      if (!container) return;
+      const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
+      const peers = groups.get(container) ?? new Map<string, number[]>();
+      peers.set(key, [...(peers.get(key) ?? []), index]);
+      groups.set(container, peers);
+    } else if (candidate.category === 'search' && candidate.pageTask === 'control' && candidate.supplementalDependent) {
+      const element = candidate.element;
+      const container = element.closest('ul, ol, [role~="list" i]');
+      const form = element.closest('form, [role~="form" i]')
+        ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
+      if (!container || !form || !supplementalEvidence(element, supplementalCache).filter) return;
+      // Equally supported filters inherit their author's list order rather than
+      // favouring a short name. Keep every preceding rank policy tied, and never
+      // borrow positions from another form, list, page purpose or score.
+      const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.context}:${candidate.pagePurpose ?? ''}`;
+      const lists = filterGroups.get(form) ?? new Map<Element, Map<string, number[]>>();
+      const peers = lists.get(container) ?? new Map<string, number[]>();
+      const positions = peers.get(key) ?? [];
+      positions.push(index);
+      peers.set(key, positions);
+      lists.set(container, peers);
+      filterGroups.set(form, lists);
+    }
   });
   // Apply source order only to a tied group's existing positions. Putting a
   // conditional DOM comparison inside the general comparator creates cycles
   // when another list's lexical order falls between two items in this list.
-  for (const peers of groups.values()) for (const positions of peers.values()) {
-    const readings = positions.map(index => sorted[index]).sort(sourceOrder);
-    positions.forEach((index, offset) => { sorted[index] = readings[offset]; });
-  }
+  const applySourceOrder = (peers: Map<string, number[]>) => {
+    for (const positions of peers.values()) {
+      const controls = positions.map(index => sorted[index]).sort(sourceOrder);
+      positions.forEach((index, offset) => { sorted[index] = controls[offset]; });
+    }
+  };
+  for (const peers of groups.values()) applySourceOrder(peers);
+  for (const lists of filterGroups.values()) for (const peers of lists.values()) applySourceOrder(peers);
   return sorted;
 }
 

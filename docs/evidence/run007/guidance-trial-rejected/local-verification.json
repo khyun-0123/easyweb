@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-10-17T19:06:56.965Z",
+  "completedAt": "2026-10-17T19:07:40.412Z",
+  "localRegressionStatus": "FAIL",
+  "requestedChecksStatus": "FAIL",
+  "requestedMode": "local-with-core",
+  "scope": "Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.",
+  "excluded": [
+    "live public-site observations and task completion",
+    "fresh blind evaluation",
+    "native extension installation and activeTab gesture",
+    "actual VoiceOver speech",
+    "real user study"
+  ],
+  "stages": [
+    {
+      "name": "typecheck",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 154.80874999999997,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run007/verify-typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/build.mjs"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 68.93841599999999,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run007/verify-build.log"
+    },
+    {
+      "name": "playwright",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--reporter=list,json"
+      ],
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedMilliseconds": 43219.651083,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run007/verify-playwright.log"
+    }
+  ],
+  "tests": {
+    "expected": 313,
+    "unexpected": 3,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMilliseconds": 42956.034999999996,
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run007/playwright-local.json"
+  },
+  "coreQuality": null,
+  "performance": null,
+  "structuralPerformance": null
+}

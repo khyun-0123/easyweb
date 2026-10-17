@@ -3,11 +3,11 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 if (process.argv.includes('--help')) {
-  console.log('node scripts/verify.mjs [--with-core] [--output-dir=docs/evidence/run006]\nRuns typecheck, build, and local Playwright regression tests. --with-core also runs the post-development core fixture suite and mixed, flat and table synthetic performance benchmarks. Never runs live sites, blind evaluation, native UI checks, or a user study.');
+  console.log('node scripts/verify.mjs [--with-core] [--output-dir=docs/evidence/run007]\nRuns typecheck, build, and local Playwright regression tests. --with-core also runs the post-development core fixture suite and mixed, flat and table synthetic performance benchmarks. Never runs live sites, blind evaluation, native UI checks, or a user study.');
   process.exit(0);
 }
 const withCore = process.argv.includes('--with-core');
-const outputDir = path.resolve(process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run006');
+const outputDir = path.resolve(process.argv.find(arg => arg.startsWith('--output-dir='))?.slice('--output-dir='.length) ?? 'docs/evidence/run007');
 await mkdir(outputDir, { recursive: true });
 const startedAt = new Date().toISOString();
 const stages = [];
@@ -53,17 +53,17 @@ let performanceSummary = null;
 let structuralPerformance = null;
 if (withCore && ok) {
   const coreDir = path.join(outputDir, 'core-regression');
-  const coreFile = path.join(coreDir, 'evaluation-current-all.json');
+  const coreFile = path.join(coreDir, 'evaluation-current-institution-all.json');
   const performanceFile = path.join(outputDir, 'performance.json');
   await mkdir(coreDir, { recursive: true });
   await Promise.all([coreFile, performanceFile].map(file => rm(file, { force: true })));
-  const coreRan = await run('core-evaluation', ['scripts/evaluate.mjs', '--engine=current', '--suite=core', '--split=all', `--output-dir=${coreDir}`]);
+  const coreRan = await run('core-evaluation', ['scripts/evaluate.mjs', '--engine=current', '--classification-mode=institution', '--suite=core', '--split=all', `--output-dir=${coreDir}`]);
   // Keep the independent synthetic timing check available even when core quality fails.
   const performanceRan = await run('performance', ['scripts/benchmark.mjs', `--output-dir=${outputDir}`]);
   try {
     if (!coreRan) throw new Error('Core evaluation command failed');
     const quality = JSON.parse(await readFile(coreFile, 'utf8'));
-    if (quality.engine !== 'current' || quality.suite !== 'core' || quality.split !== 'all' || quality.evaluationPhase !== 'post-holdout-development') throw new Error('Expected current core post-development evaluation, not an independent holdout result');
+    if (quality.engine !== 'current' || quality.classificationMode !== 'institution' || quality.suite !== 'core' || quality.split !== 'all' || quality.evaluationPhase !== 'post-holdout-development') throw new Error('Expected current core post-development evaluation, not an independent holdout result');
     const validCounts = row => !!row && ['pages', 'correct', 'recommended', 'matched', 'expected', 'tasksRecommended'].every(key => Number.isInteger(row[key]) && row[key] >= 0) && row.correct <= row.recommended && row.matched <= row.expected && row.expected > 0 && row.tasksRecommended <= row.pages;
     if (!validCounts(quality.summary) || quality.summary.pages !== 15 || quality.summary.expected < 30 || !Array.isArray(quality.sites) || quality.sites.length !== 5 || new Set(quality.sites.map(site => site.siteId)).size !== 5 || !quality.sites.every(site => validCounts(site) && site.pages === 3)) throw new Error('Incomplete or invalid core quality counts');
     const rates = row => ({ ...row, precision: row.recommended ? row.correct / row.recommended : null, recall: row.matched / row.expected });

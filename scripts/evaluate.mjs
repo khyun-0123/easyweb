@@ -8,22 +8,28 @@ import { buildMenuFlowHarness, observeMenuFlow } from './menu-flow-evaluation.mj
 
 const args = process.argv.slice(2);
 if (args.includes('--help')) {
-  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|blind-v8|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2|development-v7-corrected] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run006] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
+  console.log('node scripts/evaluate.mjs [--engine=current|baseline] [--classification-mode=generic|institution] [--suite=core|blind-v2|blind-v3|blind-v4|blind-v5|blind-v6|blind-v7|blind-v7-v2|blind-v8|blind-v9|blind-v9-v2|development-v4-corrected|development-v6-corrected|development-v6-corrected-v2|development-v7-corrected|development-v7-corrected-v2] [--split=calibration|holdout|all] [--output-dir=docs/evidence/run007] [--phase=post-holdout-development|fresh-blind-validation|frozen-baseline] [--engine-freeze=FILE] [--dataset-freeze=FILE] [--require-quality] [--with-menu-flow]\nFresh blind mode requires explicit frozen inputs and a new output file. A version suffix does not add source pages or prove blinding. Corrected annotations are development only. Menu-flow coverage is separate from initial-screen quality.');
   process.exit(0);
 }
 for (const arg of args) {
-  if (!/^--(?:engine|suite|split|output-dir|phase|engine-freeze|dataset-freeze)=.+$/.test(arg)
+  if (!/^--(?:engine|suite|split|classification-mode|output-dir|phase|engine-freeze|dataset-freeze)=.+$/.test(arg)
     && !['--require-quality', '--with-menu-flow'].includes(arg)) throw new Error(`Unknown or incomplete option: ${arg}`);
 }
 const value = (name, fallback) => args.find(arg => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
 const engine = value('engine', 'current');
+const classificationMode = value('classification-mode', engine === 'baseline' ? 'generic' : 'institution');
+if (!['generic', 'institution'].includes(classificationMode) || engine === 'baseline' && classificationMode !== 'generic') throw new Error('classification-mode=generic|institution; baseline supports generic only');
 const split = value('split', 'calibration');
-const outputDir = value('output-dir', 'docs/evidence/run006');
+const outputDir = value('output-dir', 'docs/evidence/run007');
 const suite = value('suite', 'core');
 const withMenuFlow = args.includes('--with-menu-flow');
 if (withMenuFlow && engine !== 'current') throw new Error('Menu flow is supported for the current engine only');
-if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'blind-v5', 'blind-v6', 'blind-v7', 'blind-v7-v2', 'blind-v8', 'development-v4-corrected', 'development-v6-corrected', 'development-v6-corrected-v2', 'development-v7-corrected'].includes(suite)) throw new Error('Unknown evaluation suite');
+if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'blind-v5', 'blind-v6', 'blind-v7', 'blind-v7-v2', 'blind-v8', 'blind-v9', 'blind-v9-v2', 'development-v4-corrected', 'development-v6-corrected', 'development-v6-corrected-v2', 'development-v7-corrected', 'development-v7-corrected-v2'].includes(suite)) throw new Error('Unknown evaluation suite');
 const dataRoot = suite === 'core' ? 'evaluation' : `evaluation/${suite}`;
+// The independent v9 observer froze a flat directory before seeing this tool.
+// Adapt paths only; never rewrite the frozen annotations or source HTML.
+const flatDataset = suite === 'blind-v9' || suite === 'blind-v9-v2';
+const siteRoot = flatDataset ? dataRoot : `${dataRoot}/sites`;
 // Corrected suites retain original fixture references as provenance. Bind each
 // suite explicitly to its source version; v7 uses the structure-faithful v2.
 const correctedBaseSuite = {
@@ -31,29 +37,30 @@ const correctedBaseSuite = {
   'development-v6-corrected': 'blind-v6',
   'development-v6-corrected-v2': 'blind-v6',
   'development-v7-corrected': 'blind-v7-v2',
+  'development-v7-corrected-v2': 'blind-v7-v2',
 }[suite];
 const correctedVersion = correctedBaseSuite !== undefined;
 const fixtureRoots = correctedVersion ? [`evaluation/${correctedBaseSuite}`, dataRoot] : [dataRoot];
 const phase = value('phase', engine === 'baseline' ? 'frozen-baseline' : 'post-holdout-development');
 if (!['frozen-baseline', 'fresh-blind-validation', 'post-holdout-development'].includes(phase)) throw new Error('Invalid evaluation phase');
 if (correctedVersion && phase !== 'post-holdout-development') throw new Error('Adjudicated data is development only');
-const output = `${outputDir}/evaluation-${engine}-${suite === 'core' ? '' : `${suite}-`}${split}.json`;
+const output = `${outputDir}/evaluation-${engine}${engine === 'current' ? `-${classificationMode}` : ''}-${suite === 'core' ? '' : `${suite}-`}${split}.json`;
 let freezeVerification = null;
 if (phase === 'fresh-blind-validation') {
   validateFreshMode({ engine, suite, split, outputDir,
     explicitOutput: args.some(arg => arg.startsWith('--output-dir=')),
     engineFreeze: value('engine-freeze'), datasetFreeze: value('dataset-freeze') });
   try {
-    await readFile(output);
-    throw new Error('First independent evaluation already exists; preserve it and use development phase after exposure');
+    const previous = (await readdir(outputDir)).filter(name => /^evaluation-.*\.json$/.test(name));
+    if (previous.length) throw new Error('First independent evaluation already exists; preserve it and use development phase after exposure');
   } catch (error) { if (error.code !== 'ENOENT') throw error; }
 }
 const requiredPagesPerSite = suite === 'core' ? 3 : 1;
 const requiredPageCount = suite === 'core' ? 15 : 5;
 const minimumExpected = suite === 'core' ? 30 : 10;
 if (!['current', 'baseline'].includes(engine) || !['all', 'calibration', 'holdout'].includes(split)) throw new Error('engine=current|baseline, split=calibration|holdout|all');
-const siteFiles = (await readdir(`${dataRoot}/sites`)).filter(file => file.endsWith('.json')).sort();
-const sites = await Promise.all(siteFiles.map(async file => JSON.parse(await readFile(`${dataRoot}/sites/${file}`, 'utf8'))));
+const siteFiles = (await readdir(siteRoot)).filter(file => file.endsWith('.json')).sort();
+const sites = await Promise.all(siteFiles.map(async file => JSON.parse(await readFile(`${siteRoot}/${file}`, 'utf8'))));
 const ids = new Set();
 const categories = new Set(['login', 'search', 'notice', 'academic', 'apply', 'help']);
 let expectedCount = 0;
@@ -66,7 +73,10 @@ for (const site of sites) {
     if (page.expected.length < 2 || !page.task?.expectedSourceIds?.length) throw new Error(`정답/과제 부족: ${page.id}`);
     if (!page.expected.every(x => categories.has(x.category) && x.sourceIds?.length)) throw new Error(`정답 분류/소스 누락: ${page.id}`);
     if (!page.accepted.every(x => categories.has(x.category) && x.sourceId)) throw new Error(`허용 추천 형식 오류: ${page.id}`);
-    if (page.fixture.includes('..') || !fixtureRoots.some(root => page.fixture.startsWith(`${root}/fixtures/`))) throw new Error('fixture 경로 오류');
+    const fixtureAllowed = flatDataset
+      ? page.fixture.startsWith(`${dataRoot}/`) && /^[a-z0-9_-]+\.html$/i.test(page.fixture.slice(dataRoot.length + 1))
+      : fixtureRoots.some(root => page.fixture.startsWith(`${root}/fixtures/`));
+    if (page.fixture.includes('..') || !fixtureAllowed) throw new Error('fixture 경로 오류');
     expectedCount += page.expected.length;
   }
 }
@@ -76,7 +86,7 @@ const adjudication = correctedVersion
   : null;
 if (phase === 'fresh-blind-validation') {
   const productFiles = (await readdir('src')).map(file => `src/${file}`).concat('extension/manifest.json');
-  const datasetFiles = siteFiles.map(file => `${dataRoot}/sites/${file}`).concat(sites.flatMap(site => site.pages.map(page => page.fixture)));
+  const datasetFiles = siteFiles.map(file => `${siteRoot}/${file}`).concat(sites.flatMap(site => site.pages.map(page => page.fixture)));
   freezeVerification = {
     engine: await verifyFrozenFiles(value('engine-freeze'), productFiles),
     dataset: await verifyFrozenFiles(value('dataset-freeze'), datasetFiles),
@@ -88,11 +98,11 @@ const sha = input => createHash('sha256').update(input).digest('hex');
 const toolPaths = ['scripts/evaluate.mjs', 'scripts/evaluation-metrics.mjs', 'scripts/evaluation-protocol.mjs', 'scripts/menu-flow-evaluation.mjs'];
 const toolHashes = Object.fromEntries(await Promise.all(toolPaths.map(async path => [path, sha(await readFile(path))])));
 const bundle = await build({ stdin: {
-  contents: `import {analyzePage} from '${root}/analyzer'; import {classify} from '${root}/classifier'; import {rank} from '${root}/ranker'; window.evaluateEasyWeb=()=>{const raw=analyzePage();const classified=classify(raw);return {candidateCount:raw.length,classifiedCount:classified.length,selected:rank(classified).map(({element,snapshot,...item})=>({...item,sourceId:element.dataset.evalId??null}))};};`,
+  contents: `import {analyzePage} from '${root}/analyzer'; import {classify} from '${root}/classifier'; import {rank} from '${root}/ranker'; ${engine === 'current' ? "import {ADAPTER_VERSION} from './src/institution-evidence';" : 'const ADAPTER_VERSION=null;'} window.evaluateEasyWeb=()=>{const raw=analyzePage();const classified=classify(raw,{mode:${JSON.stringify(classificationMode)}});return {classificationMode:${JSON.stringify(classificationMode)},adapterVersion:ADAPTER_VERSION,candidateCount:raw.length,classifiedCount:classified.length,institutionApplied:classified.filter(c=>c.institutionEvidence).length,selected:rank(classified).map(({element,snapshot,institutionEvidence,...item})=>({...item,institutionEvidence:institutionEvidence?{adapter:institutionEvidence.adapter,version:institutionEvidence.version,rule:institutionEvidence.rule,fingerprint:institutionEvidence.fingerprint,dependencyCount:institutionEvidence.dependencies.length}:undefined,sourceId:element.dataset.evalId??null}))};};`,
   resolveDir: process.cwd(), loader: 'ts',
 }, bundle: true, write: false, format: 'iife' });
 const fixtureHashes = {};
-const menuFlowBundle = withMenuFlow ? await buildMenuFlowHarness() : null;
+const menuFlowBundle = withMenuFlow ? await buildMenuFlowHarness({ mode: classificationMode }) : null;
 const browser = await chromium.launch({ headless: true });
 const environment = { node: process.version, platform: process.platform, architecture: process.arch,
   chromium: browser.version(), playwright: JSON.parse(await readFile('node_modules/@playwright/test/package.json', 'utf8')).version };
@@ -141,7 +151,7 @@ function summarize(rows) {
     tasksRecommended: rows.filter(row => row.taskRecommended).length,
   };
 }
-const report = { checkedAt: new Date().toISOString(), engine, suite, split,
+const report = { checkedAt: new Date().toISOString(), engine, suite, split, classificationMode, adapterVersion: results[0]?.adapterVersion ?? null,
   evaluationPhase: phase,
   adjudication,
   freezeVerification,

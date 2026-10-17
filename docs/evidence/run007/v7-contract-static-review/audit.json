@@ -1,0 +1,2473 @@
+{
+  "status": "COMPLETED_STATIC_AUDIT",
+  "createdAt": "2026-10-17T19:06:44.964817+00:00",
+  "classification": "EXPOSED_V7_STATIC_CONTRACT_AUDIT_NOT_EVALUATION",
+  "contract": {
+    "ordinaryHttpIncludingPlainLogin": "navigate",
+    "explicitJsHandlerDownloadPopupSsoRolebutton": "locate",
+    "localSameDocumentFragment": "locate",
+    "crossDocumentFragment": "navigate",
+    "category": "Document/control purpose, not subject keywords; operational sign-in is login.",
+    "coverage": "Every retained meaningful input/button/anchor receives an explicit audit disposition and reason."
+  },
+  "independence": {
+    "productSourceRead": false,
+    "productDistRead": false,
+    "productEvaluationOutputRead": false,
+    "remainingKnownFailuresRead": false,
+    "newV9Read": false,
+    "broaderRepositoryRead": false,
+    "priorAuditAndRootReviewRead": false,
+    "productExecution": false,
+    "networkAccess": false,
+    "visibleUIAutomation": false,
+    "nativeUIAutomation": false,
+    "browserExecution": false,
+    "readScope": [
+      "evaluation/blind-v7-v2/fixtures/city.html",
+      "evaluation/blind-v7-v2/fixtures/government.html",
+      "evaluation/blind-v7-v2/fixtures/library.html",
+      "evaluation/blind-v7-v2/fixtures/public-agency.html",
+      "evaluation/blind-v7-v2/fixtures/smu.html",
+      "evaluation/blind-v7-v2/sites/city.json",
+      "evaluation/blind-v7-v2/sites/government.json",
+      "evaluation/blind-v7-v2/sites/library.json",
+      "evaluation/blind-v7-v2/sites/public-agency.json",
+      "evaluation/blind-v7-v2/sites/smu.json",
+      "evaluation/development-v7-corrected/VERSION.json",
+      "evaluation/development-v7-corrected/fixtures/city.html",
+      "evaluation/development-v7-corrected/fixtures/government.html",
+      "evaluation/development-v7-corrected/fixtures/library.html",
+      "evaluation/development-v7-corrected/fixtures/public-agency.html",
+      "evaluation/development-v7-corrected/fixtures/smu.html",
+      "evaluation/development-v7-corrected/sites/city.json",
+      "evaluation/development-v7-corrected/sites/government.json",
+      "evaluation/development-v7-corrected/sites/library.json",
+      "evaluation/development-v7-corrected/sites/public-agency.json",
+      "evaluation/development-v7-corrected/sites/smu.json"
+    ],
+    "inheritedContextCaveat": "Historical product facts present in user/task context were not used to decide source annotations. No product output files were opened.",
+    "versionUse": "Read only permitted VERSION provenance; external paths named by VERSION were not followed."
+  },
+  "method": {
+    "parser": "Python standard-library HTMLParser; static only.",
+    "visibilityBoundary": "Retained controls with no explicit hidden attribute/style/aria-hidden ancestor were audited. Original CSS, pixel visibility, offscreen/carousel state and runtime behavior were not observed.",
+    "inputBoundary": "Editable values were excluded from extracted metadata and decisions. Only fixed button-type input labels and fixed title/name/id were used.",
+    "sourceIdentityBoundary": "data-eval-id and data-source-node-path are audit bookkeeping; no product mapping is proposed.",
+    "coverageChecks": [
+      "All labeled retained controls resolve to one accepted entry per version.",
+      "No rejected entries exist in either version.",
+      "Expected and task source references resolve.",
+      "All retained anchors/buttons/inputs/selects/textareas/editable roles were inventoried."
+    ],
+    "limitations": [
+      "Five reduced fixtures, not complete live pages.",
+      "No destination fetch, click, authentication, submission, download or installation.",
+      "Hidden event listeners and opaque runtime behavior are outside static evidence.",
+      "Audit counts are raw coverage/change counts; no product accuracy, recall, recommendation or task-success metrics were computed."
+    ]
+  },
+  "counts": {
+    "uniqueSourcePages": 5,
+    "newIndependentPages": 0,
+    "fixtureFilesInspected": 10,
+    "siteAnnotationFilesInspected": 10,
+    "provenanceFilesInspected": 1,
+    "uniqueRetainedControls": 33,
+    "labeledUniqueControls": 32,
+    "unlabeledUniqueControls": 1,
+    "fixtureControlInstances": 66,
+    "acceptedAnnotationEntriesInspected": 64,
+    "rejectedAnnotationEntriesInspected": 0,
+    "expectedEntriesInspected": 30,
+    "taskEntriesInspected": 10,
+    "findingGroups": 4,
+    "sourceCoverageFindingGroups": 1,
+    "actionFindingGroups": 3,
+    "proposedFieldOperationsByDataset": {
+      "blind-v7-v2": 14,
+      "development-v7-corrected": 3
+    },
+    "proposedActionFieldOperationsByDataset": {
+      "blind-v7-v2": 12,
+      "development-v7-corrected": 2
+    },
+    "categoryCorrectionsProposed": 0,
+    "rejectedControlsInAudit": 0
+  },
+  "findings": [
+    {
+      "id": "V7-C01",
+      "kind": "action-contract",
+      "sourceIds": [
+        "city-reservation-help"
+      ],
+      "finding": "Original annotation says navigate despite explicit rolebutton/popup markers. Development corrected copy already uses locate.",
+      "statusByDataset": {
+        "blind-v7-v2": "CORRECTION_PROPOSED",
+        "development-v7-corrected": "ALREADY_CORRECTED"
+      }
+    },
+    {
+      "id": "V7-C02",
+      "kind": "action-contract",
+      "sourceIds": [
+        "smu-linked",
+        "smu-self",
+        "smu-minor",
+        "smu-micro",
+        "smu-advanced"
+      ],
+      "finding": "Five original same-origin links have destination pathnames different from the current document; their fragments do not make them local controls. Corresponding expected/task actions and task wording follow navigation. Development copy already has these action/instruction corrections.",
+      "statusByDataset": {
+        "blind-v7-v2": "CORRECTION_PROPOSED",
+        "development-v7-corrected": "ALREADY_CORRECTED"
+      },
+      "historicalNote": {
+        "pointer": "/pages/0/notes/3",
+        "assessment": "SMU historical note says all fragments imply locate. Development VERSION explicitly preserves and supersedes that statement. It is historical provenance, not a new action correction."
+      }
+    },
+    {
+      "id": "V7-C03",
+      "kind": "action-contract",
+      "sourceIds": [
+        "city-login",
+        "nps-login"
+      ],
+      "finding": "Both versions mark two plain HTTPS login-form links locate. Under the supplied contract, their action is navigate and category remains login. No explicit SSO, handler, popup, download, rolebutton or same-document fragment marker is present.",
+      "statusByDataset": {
+        "blind-v7-v2": "CORRECTION_PROPOSED",
+        "development-v7-corrected": "CORRECTION_PROPOSED"
+      },
+      "provenanceNote": "VERSION lists these as unresolved under a prior ambiguity. The task contract now explicitly covers plain login links; no hidden behavior is invented."
+    },
+    {
+      "id": "V7-C04",
+      "kind": "source-coverage",
+      "sourceIds": [],
+      "proposedSourceId": "nps-search-input",
+      "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+      "finding": "Both faithful fixture copies retain an actual text input titled 검색어 입력 with id/name searchText inside the service-search form. It has neither data-eval-id nor accepted/rejected annotation. This is an annotation coverage omission, not evidence of a product recommendation or input leakage.",
+      "statusByDataset": {
+        "blind-v7-v2": "ANNOTATION_COVERAGE_PROPOSED",
+        "development-v7-corrected": "ANNOTATION_COVERAGE_PROPOSED"
+      },
+      "proposedDisposition": "accepted",
+      "proposedCategory": "search",
+      "proposedAction": "locate",
+      "reason": "A fixed-metadata locator can identify the actual search field without reading or submitting its contents. No change to expected membership is proposed.",
+      "historicalCountCaveat": "The observation sourceControlCount=6 describes the historical selected labeled controls. This audit finds seven retained controls on that page; do not rewrite the historical observation as a fresh observation."
+    }
+  ],
+  "uniqueControlAudit": {
+    "city": [
+      {
+        "sourceId": "city-login",
+        "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+        "sourceNodePath": "2.17.3.1.5.3.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.cheonan.go.kr/yeyak/login.do?returnUrl=/yeyak.do",
+          "class": "util-btn",
+          "data-eval-id": "city-login"
+        },
+        "fixedText": "로그인",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "login",
+        "action": "navigate",
+        "categoryReason": "Operational sign-in entry; login category.",
+        "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "city-reservation-help",
+        "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+        "sourceNodePath": "2.17.5.3.3.15.3",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.cheonan.go.kr/yeyak/sub07_01.do",
+          "class": "depth1-btn has-depth",
+          "role": "button",
+          "aria-controls": "gnb-depth1-q6haupy",
+          "aria-expanded": "false",
+          "aria-haspopup": "true",
+          "data-eval-id": "city-reservation-help"
+        },
+        "fixedText": "예약안내",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Reservation guidance, rather than a reservation submission.",
+        "actionReason": "Explicit role=button, aria-controls and aria-haspopup override ordinary href navigation.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "city-service-search",
+        "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+        "sourceNodePath": "2.23.1.3.1.1.3.1",
+        "tag": "button",
+        "fixedAttributes": {
+          "type": "button",
+          "id": "searchBtn",
+          "class": "search-btn",
+          "data-eval-id": "city-service-search"
+        },
+        "fixedText": "검색",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Reservation-service search control.",
+        "actionReason": "Button has no ordinary navigable href; locate original control without activation.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "city-reset",
+        "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+        "sourceNodePath": "2.23.1.3.1.1.3.3",
+        "tag": "button",
+        "fixedAttributes": {
+          "type": "button",
+          "id": "resetBtn",
+          "class": "reset-btn",
+          "data-eval-id": "city-reset"
+        },
+        "fixedText": "초기화",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Reset belongs to the service-search controls.",
+        "actionReason": "Reset button mutates the original search controls; locate without activation.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "city-museum-guide",
+        "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+        "sourceNodePath": "2.23.3.1.3.3.0.0.41.0",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=522",
+          "class": "service-item",
+          "tabindex": "-1",
+          "data-eval-id": "city-museum-guide"
+        },
+        "fixedText": "체험/견학천안박물관 전시 해설 예약2026-02-01 ~ 2026-12-31천안박물관접수중",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "apply",
+        "action": "navigate",
+        "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+        "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "city-child-museum",
+        "fixture": "evaluation/blind-v7-v2/fixtures/city.html",
+        "sourceNodePath": "2.23.3.1.3.3.0.0.42.0",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.cheonan.go.kr/prog/yeyakExprn/yeyak/sub03_01/view.do?exprnNo=516",
+          "class": "service-item",
+          "tabindex": "-1",
+          "data-eval-id": "city-child-museum"
+        },
+        "fixedText": "체험/견학상설전시 <나는야 꼬마 왕건> 관람 예약2026-02-01 ~ 2026-12-31어린이박물관접수중",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "apply",
+        "action": "navigate",
+        "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+        "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker.",
+        "annotationStatus": "present"
+      }
+    ],
+    "government": [
+      {
+        "sourceId": "gov-hospital",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.5.1.2.3.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "data-eval-id": "gov-hospital"
+        },
+        "fixedText": "병원",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-pharmacy",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.5.1.2.3.3",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "data-eval-id": "gov-pharmacy"
+        },
+        "fixedText": "약국",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-typhoon-status",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.5.1.4.3.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "data-eval-id": "gov-typhoon-status"
+        },
+        "fixedText": "태풍",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-wind-status",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.5.1.4.3.3",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "data-eval-id": "gov-wind-status"
+        },
+        "fixedText": "강풍",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-guide-pdf",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.5.1.6.3.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "data-eval-id": "gov-guide-pdf"
+        },
+        "fixedText": "행동요령 PDF다운로드",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "A downloadable action guide is guidance.",
+        "actionReason": "Explicit javascript URL and fixed download label; no download performed.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-before",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.16.3",
+        "tag": "button",
+        "fixedAttributes": {
+          "class": "tab-list active",
+          "name": "grp",
+          "onclick": "return false;",
+          "aria-expanded": "true",
+          "data-eval-id": "gov-before"
+        },
+        "fixedText": "태풍 예보시",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Stage-specific safety action guidance.",
+        "actionReason": "Button with explicit onclick marker.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-during",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.16.11",
+        "tag": "button",
+        "fixedAttributes": {
+          "class": "tab-list",
+          "name": "grp",
+          "onclick": "return false;",
+          "aria-expanded": "false",
+          "data-eval-id": "gov-during"
+        },
+        "fixedText": "태풍 특보 중",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Stage-specific safety action guidance.",
+        "actionReason": "Button with explicit onclick marker.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "gov-after",
+        "fixture": "evaluation/blind-v7-v2/fixtures/government.html",
+        "sourceNodePath": "1.8.13.1.5.3.16.19",
+        "tag": "button",
+        "fixedAttributes": {
+          "class": "tab-list",
+          "name": "grp",
+          "onclick": "return false;",
+          "aria-expanded": "false",
+          "data-eval-id": "gov-after"
+        },
+        "fixedText": "태풍 이후",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Stage-specific safety action guidance.",
+        "actionReason": "Button with explicit onclick marker.",
+        "annotationStatus": "present"
+      }
+    ],
+    "library": [
+      {
+        "sourceId": "lib-login",
+        "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+        "sourceNodePath": "2.31.1.3.1.3.3.3.0",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "class": "login",
+          "data-eval-id": "lib-login"
+        },
+        "fixedText": "로그인",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "login",
+        "action": "locate",
+        "categoryReason": "Operational sign-in entry; login category.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "lib-search-guide",
+        "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+        "sourceNodePath": "2.45.3.3.1.1.14.1.1.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.nl.go.kr/NL/contents/N71230100000.do",
+          "onclick": "return false;",
+          "data-eval-id": "lib-search-guide"
+        },
+        "fixedText": "검색기능선택됨",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Page title and guide hierarchy identify instructions for the search function, not a search execution.",
+        "actionReason": "Explicit onclick marker, even though href is HTTPS.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "lib-result-guide",
+        "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+        "sourceNodePath": "2.45.3.3.1.1.14.1.3.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.nl.go.kr/NL/contents/N71230200000.do",
+          "onclick": "return false;",
+          "data-eval-id": "lib-result-guide"
+        },
+        "fixedText": "검색결과",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Page title and guide hierarchy identify instructions for using results, not a results query.",
+        "actionReason": "Explicit onclick marker, even though href is HTTPS.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "lib-detail-guide",
+        "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+        "sourceNodePath": "2.45.3.3.1.1.14.1.5.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.nl.go.kr/NL/contents/N71230300000.do",
+          "onclick": "return false;",
+          "data-eval-id": "lib-detail-guide"
+        },
+        "fixedText": "상세정보",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Page title and guide hierarchy identify instructions for detail information, not an individual record.",
+        "actionReason": "Explicit onclick marker, even though href is HTTPS.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "lib-full-guide",
+        "fixture": "evaluation/blind-v7-v2/fixtures/library.html",
+        "sourceNodePath": "2.45.3.3.5.1.3.1.1",
+        "tag": "button",
+        "fixedAttributes": {
+          "type": "button",
+          "onclick": "return false;",
+          "class": "download_btn",
+          "data-eval-id": "lib-full-guide"
+        },
+        "fixedText": "상세 가이드 다운로드",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "locate",
+        "categoryReason": "Detailed user guide download.",
+        "actionReason": "Download button with explicit onclick marker.",
+        "annotationStatus": "present"
+      }
+    ],
+    "public-agency": [
+      {
+        "sourceId": "nps-login",
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.1.9.1.1.1.3.9.16.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "class": "btn-login",
+          "data-eval-id": "nps-login"
+        },
+        "fixedText": "로그인",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "login",
+        "action": "navigate",
+        "categoryReason": "Operational sign-in entry; login category.",
+        "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": null,
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+        "tag": "input",
+        "fixedAttributes": {
+          "type": "text",
+          "name": "searchText",
+          "id": "searchText",
+          "title": "검색어 입력",
+          "class": "keyword"
+        },
+        "fixedText": "",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Actual search text input, fixed title=검색어 입력, name/id=searchText, inside service-search form.",
+        "actionReason": "Locate the original search input using fixed metadata only; no editable value extraction, typing or submission.",
+        "annotationStatus": "missing-in-both-versions"
+      },
+      {
+        "sourceId": "nps-service-search",
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.9",
+        "tag": "input",
+        "fixedAttributes": {
+          "type": "button",
+          "name": "btnSearch",
+          "id": "btnSearch",
+          "class": "btn-search",
+          "data-eval-id": "nps-service-search",
+          "fixedButtonLabel": "검색"
+        },
+        "fixedText": "",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "search",
+        "action": "locate",
+        "categoryReason": "Service search button in service-search form.",
+        "actionReason": "Button-type input; locate original control without submitting the form.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "nps-history-help",
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.9.1.1.3.3",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001035",
+          "class": "btn white btn-go",
+          "title": "가입내역조회 상세보기",
+          "data-eval-id": "nps-history-help"
+        },
+        "fixedText": "상세보기",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "navigate",
+        "categoryReason": "Separate details link explains the personal-record service; it is not the adjacent record-query operation.",
+        "actionReason": "Ordinary HTTPS details destination; no explicit action marker.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "nps-history",
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.9.1.1.3.5",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "class": "btn btn-go loadingOnMenu",
+          "title": "가입내역조회 조회하기",
+          "data-eval-id": "nps-history"
+        },
+        "fixedText": "조회하기",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "apply",
+        "action": "locate",
+        "categoryReason": "Operational access to personal insurance/contribution records, with authentication-needed context.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "nps-consult-help",
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.9.1.99.3.3",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001076",
+          "class": "btn white btn-go",
+          "title": "연금업무 상담예약 신청 상세보기",
+          "data-eval-id": "nps-consult-help"
+        },
+        "fixedText": "상세보기",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "help",
+        "action": "navigate",
+        "categoryReason": "Separate details link explains consultation-reservation procedure; it is not the adjacent application operation.",
+        "actionReason": "Ordinary HTTPS details destination; no explicit action marker.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "nps-consult",
+        "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "sourceNodePath": "2.3.5.9.7.9.1.99.3.5",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "class": "btn btn-go ",
+          "title": "연금업무 상담예약 신청 신청하기",
+          "data-eval-id": "nps-consult"
+        },
+        "fixedText": "신청하기",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "apply",
+        "action": "locate",
+        "categoryReason": "Operational consultation-reservation application, with processing/authentication context.",
+        "actionReason": "Explicit javascript URL.",
+        "annotationStatus": "present"
+      }
+    ],
+    "smu": [
+      {
+        "sourceId": "smu-login",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.1.5.1.9.1.5.1.1.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "javascript:void(0);",
+          "class": "login",
+          "title": "로그인 새창열림",
+          "data-eval-id": "smu-login"
+        },
+        "fixedText": "Login",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "login",
+        "action": "locate",
+        "categoryReason": "Operational sign-in entry; login category.",
+        "actionReason": "Explicit javascript URL and fixed new-window title.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "smu-second",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.3.1.3.3.1.3.1.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor.do#tab18283_",
+          "title": "다전공(제2전공) 선택됨",
+          "id": "tab18283",
+          "target": "",
+          "data-eval-id": "smu-second"
+        },
+        "fixedText": "다전공(제2전공)",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "academic",
+        "action": "locate",
+        "categoryReason": "Academic-program policy document, not personal application execution.",
+        "actionReason": "Same origin/path/query as the current page plus fragment; local same-document fragment.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "smu-linked",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.3.1.3.3.1.3.3.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor2.do#tab18284_",
+          "title": "다전공(연계/융합전공)",
+          "id": "tab18284",
+          "target": "",
+          "data-eval-id": "smu-linked"
+        },
+        "fixedText": "다전공(연계/융합전공)",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "academic",
+        "action": "navigate",
+        "categoryReason": "Academic-program policy document, not personal application execution.",
+        "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "smu-self",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.3.1.3.3.1.3.5.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/multiMajor3.do#tab18285_",
+          "title": "다전공(자기설계융합전공)",
+          "id": "tab18285",
+          "target": "",
+          "data-eval-id": "smu-self"
+        },
+        "fixedText": "다전공(자기설계융합전공)",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "academic",
+        "action": "navigate",
+        "categoryReason": "Academic-program policy document, not personal application execution.",
+        "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "smu-minor",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.3.1.3.3.1.3.7.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/minor.do#tab18286_",
+          "title": "부전공",
+          "id": "tab18286",
+          "target": "",
+          "data-eval-id": "smu-minor"
+        },
+        "fixedText": "부전공",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "academic",
+        "action": "navigate",
+        "categoryReason": "Academic-program policy document, not personal application execution.",
+        "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "smu-micro",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.3.1.3.3.1.3.9.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/microMajor.do#tab19085_",
+          "title": "마이크로전공",
+          "id": "tab19085",
+          "target": "",
+          "data-eval-id": "smu-micro"
+        },
+        "fixedText": "마이크로전공",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "academic",
+        "action": "navigate",
+        "categoryReason": "Academic-program policy document, not personal application execution.",
+        "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+        "annotationStatus": "present"
+      },
+      {
+        "sourceId": "smu-advanced",
+        "fixture": "evaluation/blind-v7-v2/fixtures/smu.html",
+        "sourceNodePath": "2.3.3.1.3.3.1.3.11.1",
+        "tag": "a",
+        "fixedAttributes": {
+          "href": "https://www.smu.ac.kr/kor/life/advancedDegree.do#tab18287_",
+          "title": "심화전공",
+          "id": "tab18287",
+          "target": "",
+          "data-eval-id": "smu-advanced"
+        },
+        "fixedText": "심화전공",
+        "staticHiddenMarkers": [],
+        "auditDisposition": "accepted",
+        "category": "academic",
+        "action": "navigate",
+        "categoryReason": "Academic-program policy document, not personal application execution.",
+        "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+        "annotationStatus": "present"
+      }
+    ]
+  },
+  "annotationAudit": {
+    "blind-v7-v2": [
+      {
+        "siteId": "city",
+        "file": "evaluation/blind-v7-v2/sites/city.json",
+        "counts": {
+          "accepted": 6,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 6,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "city-service-search",
+            "annotation": {
+              "sourceId": "city-service-search",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Reservation-service search control.",
+            "actionReason": "Button has no ordinary navigable href; locate original control without activation."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "city-reset",
+            "annotation": {
+              "sourceId": "city-reset",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Reset belongs to the service-search controls.",
+            "actionReason": "Reset button mutates the original search controls; locate without activation."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "city-museum-guide",
+            "annotation": {
+              "sourceId": "city-museum-guide",
+              "category": "apply",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+            "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "city-child-museum",
+            "annotation": {
+              "sourceId": "city-child-museum",
+              "category": "apply",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+            "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "city-reservation-help",
+            "annotation": {
+              "sourceId": "city-reservation-help",
+              "category": "help",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Reservation guidance, rather than a reservation submission.",
+            "actionReason": "Explicit role=button, aria-controls and aria-haspopup override ordinary href navigation."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "city-login",
+            "annotation": {
+              "sourceId": "city-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "login",
+            "auditAction": "navigate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "city-v7-search",
+            "sourceIds": [
+              "city-service-search"
+            ],
+            "annotationCategory": "search",
+            "annotationAction": "locate",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "city-v7-museum",
+            "sourceIds": [
+              "city-museum-guide"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "navigate",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "city-v7-children",
+            "sourceIds": [
+              "city-child-museum"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "navigate",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "city-museum-guide"
+          ],
+          "annotationAction": "navigate",
+          "auditAction": "navigate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      },
+      {
+        "siteId": "government",
+        "file": "evaluation/blind-v7-v2/sites/government.json",
+        "counts": {
+          "accepted": 8,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 8,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "gov-hospital",
+            "annotation": {
+              "sourceId": "gov-hospital",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "gov-pharmacy",
+            "annotation": {
+              "sourceId": "gov-pharmacy",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "gov-typhoon-status",
+            "annotation": {
+              "sourceId": "gov-typhoon-status",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "gov-wind-status",
+            "annotation": {
+              "sourceId": "gov-wind-status",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "gov-guide-pdf",
+            "annotation": {
+              "sourceId": "gov-guide-pdf",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "A downloadable action guide is guidance.",
+            "actionReason": "Explicit javascript URL and fixed download label; no download performed."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "gov-before",
+            "annotation": {
+              "sourceId": "gov-before",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Stage-specific safety action guidance.",
+            "actionReason": "Button with explicit onclick marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/6",
+            "sourceId": "gov-during",
+            "annotation": {
+              "sourceId": "gov-during",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Stage-specific safety action guidance.",
+            "actionReason": "Button with explicit onclick marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/7",
+            "sourceId": "gov-after",
+            "annotation": {
+              "sourceId": "gov-after",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Stage-specific safety action guidance.",
+            "actionReason": "Button with explicit onclick marker."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "government-v7-before",
+            "sourceIds": [
+              "gov-before"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "government-v7-during",
+            "sourceIds": [
+              "gov-during"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "government-v7-after",
+            "sourceIds": [
+              "gov-after"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "gov-after"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "locate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      },
+      {
+        "siteId": "library",
+        "file": "evaluation/blind-v7-v2/sites/library.json",
+        "counts": {
+          "accepted": 5,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 5,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "lib-search-guide",
+            "annotation": {
+              "sourceId": "lib-search-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Page title and guide hierarchy identify instructions for the search function, not a search execution.",
+            "actionReason": "Explicit onclick marker, even though href is HTTPS."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "lib-result-guide",
+            "annotation": {
+              "sourceId": "lib-result-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Page title and guide hierarchy identify instructions for using results, not a results query.",
+            "actionReason": "Explicit onclick marker, even though href is HTTPS."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "lib-detail-guide",
+            "annotation": {
+              "sourceId": "lib-detail-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Page title and guide hierarchy identify instructions for detail information, not an individual record.",
+            "actionReason": "Explicit onclick marker, even though href is HTTPS."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "lib-full-guide",
+            "annotation": {
+              "sourceId": "lib-full-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Detailed user guide download.",
+            "actionReason": "Download button with explicit onclick marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "lib-login",
+            "annotation": {
+              "sourceId": "lib-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "login",
+            "auditAction": "locate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Explicit javascript URL."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "library-v7-result",
+            "sourceIds": [
+              "lib-result-guide"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "library-v7-detail",
+            "sourceIds": [
+              "lib-detail-guide"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "library-v7-full",
+            "sourceIds": [
+              "lib-full-guide"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "lib-result-guide"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "locate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      },
+      {
+        "siteId": "public-agency",
+        "file": "evaluation/blind-v7-v2/sites/public-agency.json",
+        "counts": {
+          "accepted": 6,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 7,
+          "unannotatedRetainedControls": 1
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "nps-service-search",
+            "annotation": {
+              "sourceId": "nps-service-search",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Service search button in service-search form.",
+            "actionReason": "Button-type input; locate original control without submitting the form."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "nps-history-help",
+            "annotation": {
+              "sourceId": "nps-history-help",
+              "category": "help",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "navigate",
+            "categoryReason": "Separate details link explains the personal-record service; it is not the adjacent record-query operation.",
+            "actionReason": "Ordinary HTTPS details destination; no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "nps-history",
+            "annotation": {
+              "sourceId": "nps-history",
+              "category": "apply",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "categoryReason": "Operational access to personal insurance/contribution records, with authentication-needed context.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "nps-consult-help",
+            "annotation": {
+              "sourceId": "nps-consult-help",
+              "category": "help",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "navigate",
+            "categoryReason": "Separate details link explains consultation-reservation procedure; it is not the adjacent application operation.",
+            "actionReason": "Ordinary HTTPS details destination; no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "nps-consult",
+            "annotation": {
+              "sourceId": "nps-consult",
+              "category": "apply",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "categoryReason": "Operational consultation-reservation application, with processing/authentication context.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "nps-login",
+            "annotation": {
+              "sourceId": "nps-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "login",
+            "auditAction": "navigate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "public-agency-v7-search",
+            "sourceIds": [
+              "nps-service-search"
+            ],
+            "annotationCategory": "search",
+            "annotationAction": "locate",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "public-agency-v7-history",
+            "sourceIds": [
+              "nps-history"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "locate",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "public-agency-v7-consult",
+            "sourceIds": [
+              "nps-consult"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "locate",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "nps-history"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "locate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": [
+          {
+            "sourceId": null,
+            "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+            "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+            "tag": "input",
+            "fixedAttributes": {
+              "type": "text",
+              "name": "searchText",
+              "id": "searchText",
+              "title": "검색어 입력",
+              "class": "keyword"
+            },
+            "fixedText": "",
+            "staticHiddenMarkers": [],
+            "auditDisposition": "accepted",
+            "category": "search",
+            "action": "locate",
+            "categoryReason": "Actual search text input, fixed title=검색어 입력, name/id=searchText, inside service-search form.",
+            "actionReason": "Locate the original search input using fixed metadata only; no editable value extraction, typing or submission.",
+            "annotationStatus": "missing-in-both-versions"
+          }
+        ]
+      },
+      {
+        "siteId": "smu",
+        "file": "evaluation/blind-v7-v2/sites/smu.json",
+        "counts": {
+          "accepted": 7,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 7,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "smu-second",
+            "annotation": {
+              "sourceId": "smu-second",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "locate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Same origin/path/query as the current page plus fragment; local same-document fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "smu-linked",
+            "annotation": {
+              "sourceId": "smu-linked",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "smu-self",
+            "annotation": {
+              "sourceId": "smu-self",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "smu-minor",
+            "annotation": {
+              "sourceId": "smu-minor",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "smu-micro",
+            "annotation": {
+              "sourceId": "smu-micro",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "smu-advanced",
+            "annotation": {
+              "sourceId": "smu-advanced",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/6",
+            "sourceId": "smu-login",
+            "annotation": {
+              "sourceId": "smu-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "login",
+            "auditAction": "locate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Explicit javascript URL and fixed new-window title."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "smu-v7-linked",
+            "sourceIds": [
+              "smu-linked"
+            ],
+            "annotationCategory": "academic",
+            "annotationAction": "locate",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "smu-v7-self",
+            "sourceIds": [
+              "smu-self"
+            ],
+            "annotationCategory": "academic",
+            "annotationAction": "locate",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "smu-v7-minor",
+            "sourceIds": [
+              "smu-minor"
+            ],
+            "annotationCategory": "academic",
+            "annotationAction": "locate",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "smu-minor"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "navigate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      }
+    ],
+    "development-v7-corrected": [
+      {
+        "siteId": "city",
+        "file": "evaluation/development-v7-corrected/sites/city.json",
+        "counts": {
+          "accepted": 6,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 6,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "city-service-search",
+            "annotation": {
+              "sourceId": "city-service-search",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Reservation-service search control.",
+            "actionReason": "Button has no ordinary navigable href; locate original control without activation."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "city-reset",
+            "annotation": {
+              "sourceId": "city-reset",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Reset belongs to the service-search controls.",
+            "actionReason": "Reset button mutates the original search controls; locate without activation."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "city-museum-guide",
+            "annotation": {
+              "sourceId": "city-museum-guide",
+              "category": "apply",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+            "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "city-child-museum",
+            "annotation": {
+              "sourceId": "city-child-museum",
+              "category": "apply",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "categoryReason": "The main reservation-services card, reservation title and receiving-applications status support a reservation-service entry. This is not evidence of completed reservation.",
+            "actionReason": "Ordinary HTTPS service-detail destination, with no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "city-reservation-help",
+            "annotation": {
+              "sourceId": "city-reservation-help",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Reservation guidance, rather than a reservation submission.",
+            "actionReason": "Explicit role=button, aria-controls and aria-haspopup override ordinary href navigation."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "city-login",
+            "annotation": {
+              "sourceId": "city-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "login",
+            "auditAction": "navigate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "city-v7-search",
+            "sourceIds": [
+              "city-service-search"
+            ],
+            "annotationCategory": "search",
+            "annotationAction": "locate",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "city-v7-museum",
+            "sourceIds": [
+              "city-museum-guide"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "navigate",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "city-v7-children",
+            "sourceIds": [
+              "city-child-museum"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "navigate",
+            "auditCategory": "apply",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "city-museum-guide"
+          ],
+          "annotationAction": "navigate",
+          "auditAction": "navigate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      },
+      {
+        "siteId": "government",
+        "file": "evaluation/development-v7-corrected/sites/government.json",
+        "counts": {
+          "accepted": 8,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 8,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "gov-hospital",
+            "annotation": {
+              "sourceId": "gov-hospital",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "gov-pharmacy",
+            "annotation": {
+              "sourceId": "gov-pharmacy",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find nearby safety facilities; not a guide merely because the enclosing page is an action guide.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "gov-typhoon-status",
+            "annotation": {
+              "sourceId": "gov-typhoon-status",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "gov-wind-status",
+            "annotation": {
+              "sourceId": "gov-wind-status",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Find disaster status, rather than read the adjacent stage-by-stage guidance.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "gov-guide-pdf",
+            "annotation": {
+              "sourceId": "gov-guide-pdf",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "A downloadable action guide is guidance.",
+            "actionReason": "Explicit javascript URL and fixed download label; no download performed."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "gov-before",
+            "annotation": {
+              "sourceId": "gov-before",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Stage-specific safety action guidance.",
+            "actionReason": "Button with explicit onclick marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/6",
+            "sourceId": "gov-during",
+            "annotation": {
+              "sourceId": "gov-during",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Stage-specific safety action guidance.",
+            "actionReason": "Button with explicit onclick marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/7",
+            "sourceId": "gov-after",
+            "annotation": {
+              "sourceId": "gov-after",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Stage-specific safety action guidance.",
+            "actionReason": "Button with explicit onclick marker."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "government-v7-before",
+            "sourceIds": [
+              "gov-before"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "government-v7-during",
+            "sourceIds": [
+              "gov-during"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "government-v7-after",
+            "sourceIds": [
+              "gov-after"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "gov-after"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "locate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      },
+      {
+        "siteId": "library",
+        "file": "evaluation/development-v7-corrected/sites/library.json",
+        "counts": {
+          "accepted": 5,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 5,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "lib-search-guide",
+            "annotation": {
+              "sourceId": "lib-search-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Page title and guide hierarchy identify instructions for the search function, not a search execution.",
+            "actionReason": "Explicit onclick marker, even though href is HTTPS."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "lib-result-guide",
+            "annotation": {
+              "sourceId": "lib-result-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Page title and guide hierarchy identify instructions for using results, not a results query.",
+            "actionReason": "Explicit onclick marker, even though href is HTTPS."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "lib-detail-guide",
+            "annotation": {
+              "sourceId": "lib-detail-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Page title and guide hierarchy identify instructions for detail information, not an individual record.",
+            "actionReason": "Explicit onclick marker, even though href is HTTPS."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "lib-full-guide",
+            "annotation": {
+              "sourceId": "lib-full-guide",
+              "category": "help",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "categoryReason": "Detailed user guide download.",
+            "actionReason": "Download button with explicit onclick marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "lib-login",
+            "annotation": {
+              "sourceId": "lib-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "login",
+            "auditAction": "locate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Explicit javascript URL."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "library-v7-result",
+            "sourceIds": [
+              "lib-result-guide"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "library-v7-detail",
+            "sourceIds": [
+              "lib-detail-guide"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "library-v7-full",
+            "sourceIds": [
+              "lib-full-guide"
+            ],
+            "annotationCategory": "help",
+            "annotationAction": "locate",
+            "auditCategory": "help",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "lib-result-guide"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "locate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      },
+      {
+        "siteId": "public-agency",
+        "file": "evaluation/development-v7-corrected/sites/public-agency.json",
+        "counts": {
+          "accepted": 6,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 7,
+          "unannotatedRetainedControls": 1
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "nps-service-search",
+            "annotation": {
+              "sourceId": "nps-service-search",
+              "category": "search",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "categoryReason": "Service search button in service-search form.",
+            "actionReason": "Button-type input; locate original control without submitting the form."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "nps-history-help",
+            "annotation": {
+              "sourceId": "nps-history-help",
+              "category": "help",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "navigate",
+            "categoryReason": "Separate details link explains the personal-record service; it is not the adjacent record-query operation.",
+            "actionReason": "Ordinary HTTPS details destination; no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "nps-history",
+            "annotation": {
+              "sourceId": "nps-history",
+              "category": "apply",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "categoryReason": "Operational access to personal insurance/contribution records, with authentication-needed context.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "nps-consult-help",
+            "annotation": {
+              "sourceId": "nps-consult-help",
+              "category": "help",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "help",
+            "auditAction": "navigate",
+            "categoryReason": "Separate details link explains consultation-reservation procedure; it is not the adjacent application operation.",
+            "actionReason": "Ordinary HTTPS details destination; no explicit action marker."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "nps-consult",
+            "annotation": {
+              "sourceId": "nps-consult",
+              "category": "apply",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "categoryReason": "Operational consultation-reservation application, with processing/authentication context.",
+            "actionReason": "Explicit javascript URL."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "nps-login",
+            "annotation": {
+              "sourceId": "nps-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "correction-proposed",
+            "auditCategory": "login",
+            "auditAction": "navigate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "public-agency-v7-search",
+            "sourceIds": [
+              "nps-service-search"
+            ],
+            "annotationCategory": "search",
+            "annotationAction": "locate",
+            "auditCategory": "search",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "public-agency-v7-history",
+            "sourceIds": [
+              "nps-history"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "locate",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "public-agency-v7-consult",
+            "sourceIds": [
+              "nps-consult"
+            ],
+            "annotationCategory": "apply",
+            "annotationAction": "locate",
+            "auditCategory": "apply",
+            "auditAction": "locate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "nps-history"
+          ],
+          "annotationAction": "locate",
+          "auditAction": "locate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": [
+          {
+            "sourceId": null,
+            "fixture": "evaluation/blind-v7-v2/fixtures/public-agency.html",
+            "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+            "tag": "input",
+            "fixedAttributes": {
+              "type": "text",
+              "name": "searchText",
+              "id": "searchText",
+              "title": "검색어 입력",
+              "class": "keyword"
+            },
+            "fixedText": "",
+            "staticHiddenMarkers": [],
+            "auditDisposition": "accepted",
+            "category": "search",
+            "action": "locate",
+            "categoryReason": "Actual search text input, fixed title=검색어 입력, name/id=searchText, inside service-search form.",
+            "actionReason": "Locate the original search input using fixed metadata only; no editable value extraction, typing or submission.",
+            "annotationStatus": "missing-in-both-versions"
+          }
+        ]
+      },
+      {
+        "siteId": "smu",
+        "file": "evaluation/development-v7-corrected/sites/smu.json",
+        "counts": {
+          "accepted": 7,
+          "rejected": 0,
+          "expected": 3,
+          "retainedControls": 7,
+          "unannotatedRetainedControls": 0
+        },
+        "acceptedAudits": [
+          {
+            "pointer": "/pages/0/accepted/0",
+            "sourceId": "smu-second",
+            "annotation": {
+              "sourceId": "smu-second",
+              "category": "academic",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "locate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Same origin/path/query as the current page plus fragment; local same-document fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/1",
+            "sourceId": "smu-linked",
+            "annotation": {
+              "sourceId": "smu-linked",
+              "category": "academic",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/2",
+            "sourceId": "smu-self",
+            "annotation": {
+              "sourceId": "smu-self",
+              "category": "academic",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/3",
+            "sourceId": "smu-minor",
+            "annotation": {
+              "sourceId": "smu-minor",
+              "category": "academic",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/4",
+            "sourceId": "smu-micro",
+            "annotation": {
+              "sourceId": "smu-micro",
+              "category": "academic",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/5",
+            "sourceId": "smu-advanced",
+            "annotation": {
+              "sourceId": "smu-advanced",
+              "category": "academic",
+              "action": "navigate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "categoryReason": "Academic-program policy document, not personal application execution.",
+            "actionReason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment."
+          },
+          {
+            "pointer": "/pages/0/accepted/6",
+            "sourceId": "smu-login",
+            "annotation": {
+              "sourceId": "smu-login",
+              "category": "login",
+              "action": "locate"
+            },
+            "categoryAssessment": "supported",
+            "actionAssessment": "supported",
+            "auditCategory": "login",
+            "auditAction": "locate",
+            "categoryReason": "Operational sign-in entry; login category.",
+            "actionReason": "Explicit javascript URL and fixed new-window title."
+          }
+        ],
+        "rejectedAudits": [],
+        "expectedAudits": [
+          {
+            "pointer": "/pages/0/expected/0",
+            "id": "smu-v7-linked",
+            "sourceIds": [
+              "smu-linked"
+            ],
+            "annotationCategory": "academic",
+            "annotationAction": "navigate",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/1",
+            "id": "smu-v7-self",
+            "sourceIds": [
+              "smu-self"
+            ],
+            "annotationCategory": "academic",
+            "annotationAction": "navigate",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          },
+          {
+            "pointer": "/pages/0/expected/2",
+            "id": "smu-v7-minor",
+            "sourceIds": [
+              "smu-minor"
+            ],
+            "annotationCategory": "academic",
+            "annotationAction": "navigate",
+            "auditCategory": "academic",
+            "auditAction": "navigate",
+            "reason": "Follows the independently audited source purpose and action markers."
+          }
+        ],
+        "taskAudit": {
+          "pointer": "/pages/0/task",
+          "sourceIds": [
+            "smu-minor"
+          ],
+          "annotationAction": "navigate",
+          "auditAction": "navigate",
+          "reason": "Follows source-control action; no task execution was performed."
+        },
+        "unannotatedControls": []
+      }
+    ]
+  },
+  "proposals": "corrections-proposed.json",
+  "preservation": {
+    "inputFilesModified": 0,
+    "correctedDatasetCreated": false,
+    "evaluatorModified": false,
+    "originalsMustRemainHistorical": true,
+    "sourceHashBefore": "source-hashes-before.json",
+    "sourceHashAfter": "source-hashes-after.json"
+  }
+}

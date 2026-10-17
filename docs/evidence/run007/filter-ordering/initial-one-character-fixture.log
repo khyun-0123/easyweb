@@ -1,0 +1,177 @@
+
+Running 7 tests using 1 worker
+
+(node:3612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/filter-ordering.spec.mjs:18:1 › 명시적 검색 필터의 동률은 짧은 문구·철자보다 원본 목록 순서를 보존한다 (90ms)
+(node:3621) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/filter-ordering.spec.mjs:24:1 › 점수나 페이지 목적이 다른 필터를 새 동률 그룹으로 합치지 않는다 (94ms)
+(node:3635) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/filter-ordering.spec.mjs:36:1 › 같은 form의 서로 다른 목록은 각자 기존 정렬 위치 안에서만 source 순서를 적용한다 (93ms)
+(node:3641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/filter-ordering.spec.mjs:41:1 › 서로 다른 form의 필터와 전역 검색 입력의 선택 정책을 섞지 않는다 (95ms)
+(node:3649) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/filter-ordering.spec.mjs:48:1 › 입력 배열을 반복 섞어도 동률 필터와 독립 그룹의 결과가 결정적이다 (82ms)
+  ✘  6 tests/filter-ordering.spec.mjs:62:1 › 첫 여섯 필터와 추가 메뉴는 원본 순서를 유지하고 중복 원본을 한 번만 제공한다 (96ms)
+(node:3662) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/filter-ordering.spec.mjs:72:1 › 명시적 필터 근거 없는 검색 메뉴는 기존 문구 정렬을 유지한다 (84ms)
+
+
+  1) tests/filter-ordering.spec.mjs:18:1 › 명시적 검색 필터의 동률은 짧은 문구·철자보다 원본 목록 순서를 보존한다 ────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 6
+    + Received  + 0
+
+    @@ -9,12 +9,6 @@
+          "search",
+          70,
+          "control",
+          true,
+        ],
+    -   Array [
+    -     "search",
+    -     70,
+    -     "control",
+    -     true,
+    -   ],
+      ]
+
+      18 | test('명시적 검색 필터의 동률은 짧은 문구·철자보다 원본 목록 순서를 보존한다',async({page})=>{
+      19 |   await setup(page,form('nebula',labels.slice(0,3)));
+    > 20 |   expect(await page.evaluate(()=>candidates.map(i=>[i.category,i.score,i.pageTask,i.supplementalDependent]))).toEqual(Array.from({length:3},()=>['search',70,'control',true]));
+         |                                                                                                               ^
+      21 |   expect(await selected(page)).toEqual(['nebula-0','nebula-1','nebula-2']);
+      22 | });
+      23 |
+        at /Users/khyun_03/easyweb/tests/filter-ordering.spec.mjs:20:111
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/filter-ordering-명시적-검색-필터의-동률은-짧은-문구·철자보다-원본-목록-순서를-보존한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/filter-ordering-명시적-검색-필터의-동률은-짧은-문구·철자보다-원본-목록-순서를-보존한다/error-context.md
+
+  2) tests/filter-ordering.spec.mjs:24:1 › 점수나 페이지 목적이 다른 필터를 새 동률 그룹으로 합치지 않는다 ────────────────────
+
+    Error: page.evaluate: TypeError: Cannot set properties of undefined (setting 'score')
+        at eval (eval at evaluate (:370:30), <anonymous>:2:87)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at evaluate (:370:30), <anonymous>:2:87)
+        at UtilityScript.evaluate (<anonymous>:372:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /Users/khyun_03/easyweb/tests/filter-ordering.spec.mjs:27:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/filter-ordering-점수나-페이지-목적이-다른-필터를-새-동률-그룹으로-합치지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/filter-ordering-점수나-페이지-목적이-다른-필터를-새-동률-그룹으로-합치지-않는다/error-context.md
+
+  3) tests/filter-ordering.spec.mjs:36:1 › 같은 form의 서로 다른 목록은 각자 기존 정렬 위치 안에서만 source 순서를 적용한다 ─────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 0
+
+      Array [
+        "north-0",
+        "south-0",
+    -   "north-1",
+    -   "south-1",
+      ]
+
+      36 | test('같은 form의 서로 다른 목록은 각자 기존 정렬 위치 안에서만 source 순서를 적용한다',async({page})=>{
+      37 |   await setup(page,`<form id="paired-search-form">${list('north',['나무 기록자료','가'])}${list('south',['바다 지도자료','나'])}</form>`);
+    > 38 |   expect(await selected(page)).toEqual(['north-0','south-0','north-1','south-1']);
+         |                                ^
+      39 | });
+      40 |
+      41 | test('서로 다른 form의 필터와 전역 검색 입력의 선택 정책을 섞지 않는다',async({page})=>{
+        at /Users/khyun_03/easyweb/tests/filter-ordering.spec.mjs:38:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/filter-ordering-같은-form의-서-149f9--정렬-위치-안에서만-source-순서를-적용한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/filter-ordering-같은-form의-서-149f9--정렬-위치-안에서만-source-순서를-적용한다/error-context.md
+
+  4) tests/filter-ordering.spec.mjs:41:1 › 서로 다른 form의 필터와 전역 검색 입력의 선택 정책을 섞지 않는다 ─────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 0
+
+      Array [
+        "first-0",
+        "second-0",
+    -   "first-1",
+    -   "second-1",
+        "global-query",
+      ]
+
+      42 |   await setup(page,`<header><input id="global-query" type="search" aria-label="통합 검색"></header>${form('first',['나무 기록자료','가'])}${form('second',['바다 지도자료','나'])}`);
+      43 |   const actual=await selected(page);
+    > 44 |   expect(actual).toEqual(['first-0','second-0','first-1','second-1','global-query']);
+         |                  ^
+      45 |   expect(await page.evaluate(()=>{const input=candidates.find(i=>i.element.id==='global-query');return {category:input.category,action:input.action,filterEvidence:!!input.supplementalDependent};})).toEqual({category:'search',action:'locate',filterEvidence:false});
+      46 | });
+      47 |
+        at /Users/khyun_03/easyweb/tests/filter-ordering.spec.mjs:44:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/filter-ordering-서로-다른-form의-필터와-전역-검색-입력의-선택-정책을-섞지-않는다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/filter-ordering-서로-다른-form의-필터와-전역-검색-입력의-선택-정책을-섞지-않는다/error-context.md
+
+  5) tests/filter-ordering.spec.mjs:62:1 › 첫 여섯 필터와 추가 메뉴는 원본 순서를 유지하고 중복 원본을 한 번만 제공한다 ────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 4
+    + Received  + 3
+
+      Array [
+    -   "overflow-0",
+    -   "overflow-1",
+    +   "overflow-6",
+    +   "overflow-8",
+        "overflow-2",
+    -   "overflow-3",
+    +   "overflow-0",
+        "overflow-4",
+    -   "overflow-5",
+      ]
+
+      66 |     return {first:first.map(i=>i.element.id),all:[...first,...rest].map(i=>i.element.id),sameSources:[...first,...rest].every(item=>candidates.includes(item))};
+      67 |   });
+    > 68 |   expect(actual.first).toEqual(Array.from({length:6},(_,i)=>`overflow-${i}`));
+         |                        ^
+      69 |   expect(actual.all).toEqual(Array.from({length:10},(_,i)=>`overflow-${i}`));expect(actual.sameSources).toBe(true);
+      70 | });
+      71 |
+        at /Users/khyun_03/easyweb/tests/filter-ordering.spec.mjs:68:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/filter-ordering-첫-여섯-필터와-추가-메뉴는-원본-순서를-유지하고-중복-원본을-한-번만-제공한다/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/filter-ordering-첫-여섯-필터와-추가-메뉴는-원본-순서를-유지하고-중복-원본을-한-번만-제공한다/error-context.md
+
+  5 failed
+    tests/filter-ordering.spec.mjs:18:1 › 명시적 검색 필터의 동률은 짧은 문구·철자보다 원본 목록 순서를 보존한다 ─────────────────
+    tests/filter-ordering.spec.mjs:24:1 › 점수나 페이지 목적이 다른 필터를 새 동률 그룹으로 합치지 않는다 ─────────────────────
+    tests/filter-ordering.spec.mjs:36:1 › 같은 form의 서로 다른 목록은 각자 기존 정렬 위치 안에서만 source 순서를 적용한다 ──────
+    tests/filter-ordering.spec.mjs:41:1 › 서로 다른 form의 필터와 전역 검색 입력의 선택 정책을 섞지 않는다 ──────────────────
+    tests/filter-ordering.spec.mjs:62:1 › 첫 여섯 필터와 추가 메뉴는 원본 순서를 유지하고 중복 원본을 한 번만 제공한다 ─────────────
+  2 passed (2.6s)

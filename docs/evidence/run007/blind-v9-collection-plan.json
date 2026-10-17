@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "role": "independent-original-public-page-observer",
+  "fixedBeforeBrowsing": true,
+  "allowedPriorInput": "docs/evidence/run007/prior-exposed-url-exclusions.json",
+  "forbiddenInputs": ["src", "dist", "README", "AGENTS", "prior evaluation fixtures and annotations", "product outputs", "implementation plans"],
+  "sites": ["www.cheonan.go.kr", "www.safekorea.go.kr", "www.nl.go.kr", "www.nps.or.kr", "www.smu.ac.kr"],
+  "selection": {
+    "pagesPerSite": 1,
+    "policy": "From original public navigation, choose a previously unexposed substantive public service or information page with at least three meaningful retained public controls or feature groups. Prefer an internally coherent content page, service index, or document list that supports a read-only information-finding task. Do not select by classifier route coverage, release dates, or news recency.",
+    "exclusion": "Exclude all 50 supplied URLs and equivalent same-content aliases; do not create novelty by query variation.",
+    "expectedGroupsPerPage": 3,
+    "taskPerPage": "At least one read-only task tied to retained original controls and evidence; no login, form submission, downloads, or source service execution."
+  },
+  "observation": {
+    "transport": "read-only HTTP and separate headless Chromium only",
+    "viewport": {"width": 1365, "height": 1000},
+    "capture": "Save original HTTP text when available, full live document DOM, source URL/final URL/base, visible control properties, rendered text/ARIA and referenced nodes, fixed attributes, full ancestor hierarchy and sibling order. Preserve non-control table cells, headings and form roles in fixtures.",
+    "inputs": "Never collect private input values. Fresh public browser context only. Clear value/defaultValue from text input, textarea and editable controls in exported fixture; annotate each retained visible search input.",
+    "execution": "Do not click source controls or submit forms; inspect fixed metadata and already-observed DOM only."
+  },
+  "annotation": {
+    "categories": ["login", "search", "notice", "academic", "apply", "help"],
+    "definitions": {"notice": "announcement document genre", "help": "explanation or instructions", "apply": "actual application or status entry and explicit preparation forms", "academic": "academic or campus-life information"},
+    "actions": "Ordinary cross-document HTTP(S) anchors navigate, including plain login links. Explicit JavaScript, popup, SSO/OAuth/auth-event, local-fragment, or download signals locate. Preserve actual source handlers; never invent replacement handlers.",
+    "coverage": "Record accepted or rejected judgment for every visible retained actionable control, with source id and reason. data-eval-id is correspondence only."
+  },
+  "fixture": {
+    "form": "Static original DOM with full structural hierarchy and sibling order; remove executable script nodes and event execution risk using restrictive CSP while preserving original event attribute strings as inert source metadata. Do not add semantic wrappers, translate labels, or insert handler stubs.",
+    "limits": "Record effects of scripts, animation, external resources, frames and responsive viewport; fixture replay is structural evidence, not proof of source service completion."
+  },
+  "qualityAndFreeze": "Statically check every annotated source id, accessible name, href/action, visibility, original ancestor chain, heading/form roles and table content. Correct only against original evidence, never product output. Freeze exactly five site JSON files, five HTML fixtures and observation JSON in a SHA-256 manifest before product evaluation. Preserve first evaluation outputs and stop dataset writes once frozen.",
+  "disclosure": "Report paths, hashes and counts only until parent confirms final engine freeze; withhold fresh URLs, labels and body content."
+}

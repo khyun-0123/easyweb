@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-17T18:54:15.956143+00:00",
+  "status": "FOCUSED_BEHAVIOURAL_REVIEW_PASS",
+  "sourceEditedByReviewer": false,
+  "newTest": "tests/institution-integration.spec.mjs",
+  "testSha256": "7deeee2c54ab7d404e8464c77d9dda06e569681e7aa988dfc35fa670b08b6501",
+  "sourceHashes": {
+    "src/institution-evidence.ts": "418f4899d07528aba0aeeaa0bd5cdc6c9582527dfa89f96d25d6417f760d4ca0",
+    "src/classifier.ts": "1bcf145bdf4acb3977754cf0d449a2c548aa127ee56ddd094c07dbdb7843e33e",
+    "src/types.ts": "d5fef2795ace590901f54638e0a244a3f5e1d5b2aea8515c561688c49008d4f7",
+    "src/page-session.ts": "9b0736e14e23412b7410ad2bf3c77f3fb3b38234344516c6ec78b38d7acb45dd",
+    "src/easy-mode.ts": "75c8f01962d001d80c6efc062bdde9fde883ed4730fdf029a0a302cbf05fcf14"
+  },
+  "sourceStableDuringReview": true,
+  "command": "npx playwright test tests/institution-integration.spec.mjs",
+  "log": "docs/evidence/run007/integration-review/first.log",
+  "tests": 14,
+  "passed": 14,
+  "failed": 0,
+  "coverage": [
+    "Same source generic and institution modes, including academic-topic badge versus incident/instruction document genre.",
+    "Ordinary navigate and explicit-handler locate metadata unchanged; no Candidate.href promotion from raw source HTTP inspection.",
+    "Original HTTP dangerous command/query, encoded dangerous path, dangerous onclick and javascript do not return candidates.",
+    "Known login task conflict, non-HTTP, malformed source URL do not acquire institutionEvidence.",
+    "No institutional evidence on external-owned form buttons/submit, form descendants, actual search inputs or editable roles; generic search remains available.",
+    "Article, hidden, disabled and unsupported institutional path cases do not gain adapter evidence.",
+    "Unfamiliar fragment IDs and reversed panels retain locate semantics.",
+    "Identical heading/board/panel node replacement invalidates candidates even when generic sourceSnapshot is unchanged.",
+    "Duplicate fragment target or changed panel title invalidates institutional candidates.",
+    "Same-frame dependency replacement blocks navigation before browser default action; original activation remains zero.",
+    "Focus-time panel replacement produces changed guidance and zero original activation.",
+    "Explicit generic/institution UI mode persists through next, previous and refresh.",
+    "Input/editor getters are not called and private canaries are absent from source labels, snapshots and evidence fingerprints."
+  ],
+  "materialSourceFindings": [],
+  "limits": [
+    "Purposeful synthetic integration cases are not exhaustive proof of safety or new independent site quality.",
+    "This reviewer did not run real site tasks, native installation, CUA, accessibility or the full suite."
+  ],
+  "networkScope": "Every headless navigation was fulfilled with synthetic HTML via Playwright routing; non-navigation requests aborted. No real institutional response or external destination activation.",
+  "rootRemaining": "Full integrated regression, generic/institution development comparisons, performance/accessibility/live/package validation and fresh independent quality evidence."
+}

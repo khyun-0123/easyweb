@@ -1,0 +1,220 @@
+{
+  "status": "PROPOSAL_ONLY_NOT_APPLIED",
+  "jsonPointerOperations": [
+    {
+      "findingId": "V7-C01",
+      "file": "evaluation/blind-v7-v2/sites/city.json",
+      "pointer": "/pages/0/accepted/4/action",
+      "operation": "replace",
+      "before": "navigate",
+      "proposedValue": "locate",
+      "sourceId": "city-reservation-help",
+      "reason": "Explicit role=button, aria-controls and aria-haspopup override ordinary href navigation.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C03",
+      "file": "evaluation/blind-v7-v2/sites/city.json",
+      "pointer": "/pages/0/accepted/5/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "city-login",
+      "reason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C03",
+      "file": "evaluation/blind-v7-v2/sites/public-agency.json",
+      "pointer": "/pages/0/accepted/5/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "nps-login",
+      "reason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C04",
+      "file": "evaluation/blind-v7-v2/sites/public-agency.json",
+      "pointer": "/pages/0/accepted/-",
+      "operation": "add",
+      "before": "ABSENT",
+      "proposedValue": {
+        "sourceId": "nps-search-input",
+        "category": "search",
+        "action": "locate"
+      },
+      "reason": "Explicitly cover the retained actual search field using fixed title/id/name; retain existing three expected entries.",
+      "prerequisite": "Assign an annotation-only data-eval-id=nps-search-input to the retained source node at sourceNodePath 2.3.5.9.7.5.1.3.3.1.7 in a future separately authorized dataset copy. Do not modify either audited original fixture.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/accepted/1/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "smu-linked",
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/accepted/2/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "smu-self",
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/accepted/3/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "smu-minor",
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/accepted/4/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "smu-micro",
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/accepted/5/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "smu-advanced",
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/expected/0/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceIds": [
+        "smu-linked"
+      ],
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/expected/1/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceIds": [
+        "smu-self"
+      ],
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/expected/2/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceIds": [
+        "smu-minor"
+      ],
+      "reason": "Different destination pathname makes this ordinary cross-document HTTPS navigation despite its fragment.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/task/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "reason": "Task source is a cross-document HTTPS link.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C02",
+      "file": "evaluation/blind-v7-v2/sites/smu.json",
+      "pointer": "/pages/0/task/instruction",
+      "operation": "replace",
+      "before": "부전공 제도 안내로 가는 원본 탭을 찾으세요. 본인 신청은 수행하지 마세요.",
+      "proposedValue": "부전공 제도 안내 문서로 바로 이동하는 링크를 찾으세요. 본인 신청은 수행하지 마세요.",
+      "reason": "Describe direct cross-document navigation while retaining the prohibition on personal applications.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C03",
+      "file": "evaluation/development-v7-corrected/sites/city.json",
+      "pointer": "/pages/0/accepted/5/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "city-login",
+      "reason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C03",
+      "file": "evaluation/development-v7-corrected/sites/public-agency.json",
+      "pointer": "/pages/0/accepted/5/action",
+      "operation": "replace",
+      "before": "locate",
+      "proposedValue": "navigate",
+      "sourceId": "nps-login",
+      "reason": "Ordinary HTTPS login-form destination; no explicit handler, SSO, popup, rolebutton or download marker. A login label alone does not initiate authentication.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    },
+    {
+      "findingId": "V7-C04",
+      "file": "evaluation/development-v7-corrected/sites/public-agency.json",
+      "pointer": "/pages/0/accepted/-",
+      "operation": "add",
+      "before": "ABSENT",
+      "proposedValue": {
+        "sourceId": "nps-search-input",
+        "category": "search",
+        "action": "locate"
+      },
+      "reason": "Explicitly cover the retained actual search field using fixed title/id/name; retain existing three expected entries.",
+      "prerequisite": "Assign an annotation-only data-eval-id=nps-search-input to the retained source node at sourceNodePath 2.3.5.9.7.5.1.3.3.1.7 in a future separately authorized dataset copy. Do not modify either audited original fixture.",
+      "applicationPolicy": "PROPOSAL_ONLY_PRESERVE_INPUT"
+    }
+  ],
+  "htmlIdentityPrerequisites": [
+    {
+      "findingId": "V7-C04",
+      "files": [
+        "evaluation/blind-v7-v2/fixtures/public-agency.html",
+        "evaluation/development-v7-corrected/fixtures/public-agency.html"
+      ],
+      "sourceNodePath": "2.3.5.9.7.5.1.3.3.1.7",
+      "selector": "input#searchText[name=\"searchText\"][title=\"검색어 입력\"]",
+      "proposedAttribute": {
+        "data-eval-id": "nps-search-input"
+      },
+      "policy": "Describe a future copied dataset only; do not mutate audited originals. HTML has no JSON pointer; exact source-node path is supplied."
+    }
+  ],
+  "inputPreservationPolicy": "No patch is applied. Preserve all original/versioned input files and historical first-result evidence."
+}

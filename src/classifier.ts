@@ -1,6 +1,9 @@
 import type { Candidate, Category } from './types';
 import { collectionEvidence, supplementalEvidence, isInformationTopicLabel, isQuestionCollection, isSearchControl, isVisible, sourceSnapshot, type CollectionCache, type SupplementalCache } from './analyzer';
 import { isDocumentDownload } from './action-policy';
+import { institutionEvidence, type ClassificationMode } from './institution-evidence';
+
+export interface ClassificationOptions { mode?: ClassificationMode }
 
 const rules: { category: Category; label: RegExp; section: RegExp; endpoints: ReadonlySet<string> }[] = [
   { category: 'login', label: /로그인|\b(?:log[\s-]*in|sign[\s-]*in)\b/i, section: /^(?:로그인|log[\s-]*in|sign[\s-]*in)$/i, endpoints: new Set(['login', 'signin']) },
@@ -33,6 +36,7 @@ const hoursHelp = /^(?:(?:이용|운영|개관|업무)\s*시간(?:\s*안내)?|�
 const formTitle = /(?:신청서|신고서|위임장|동의서|청구서|\b(?:application|declaration|authorization|consent|claim)\s+form)$/i;
 const formDownload = /(?:(?:신청서|신고서|위임장|동의서|청구서)\s*(?:다운로드|다운\s*받기)|\bdownload\s+(?:application|declaration|authorization|consent|claim)\s+form)$/i;
 const formsHeading = /^(?:(?:민원|신청)?\s*서식(?:\s*(?:자료|목록|안내))?|forms?(?:\s+(?:library|downloads?))?)$/i;
+const preparationHeading = /^(?:(?:신청서|신고서|청구서|서식)\s*(?:및|[·/&])\s*)?(?:구비|제출|준비)\s*서류(?:\s*(?:목록|안내))?$/;
 const procedureHeading = /^(?:.{1,24})?(?:발급|신청|신고)(?:\s*(?:안내|절차))?$|^(?:application|issuance|registration)(?:\s+(?:guide|procedure|steps))?$/i;
 const issuanceIntent = /^(?=.{2,36}$).*(?:재\s*)?발급(?:\s*(?:신청|안내|방법|절차))?(?:\s*바로\s*가기)?$/;
 const branchDirectory = /^(?:(?:지사|지점|센터|본부|부서|사업소|사무소)(?:\s*[/·&]\s*(?:지사|지점|센터|본부|부서|사업소|사무소))*\s*(?:전체\s*보기|목록|찾기|안내)|(?:branch(?:es)?|offices?|service\s+centers?)\s+(?:directory|locations?))$/i;
@@ -45,7 +49,7 @@ const legalDocument = /(?:조례|규정|법령)(?:\s*(?:안내|해설|집))?(?:\
 const noticeListHeading = /^(?:공지\s*공고|(?:채용|입찰|모집)\s*공고)(?:\s*(?:목록|게시판))?$/;
 const studentContextHeading = /^(?:학생지원|대학생활|학교생활|student\s+(?:support|life)|campus\s+life)$/i;
 const counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대면)\s*)?상담\s*(?:운영|안내)$/;
-const applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
+const applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:(?:내역|결과|현황)\s*)?(?:확인|조회))?(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
 const issuanceServiceHeading = /^(?=.{2,48}$)(?:(?:온라인|인터넷|전자)\s*)?(?:(?:증명(?:서)?|민원|서류)\s*)?발급\s*(?:시스템|서비스)(?:\s*(?:바로\s*가기|목록))?$/;
 
 function hasDangerousScript(element: HTMLElement): boolean {
@@ -104,7 +108,10 @@ function formReading(candidate: Candidate, label: string, target: string, url?: 
     && listed && formTitle.test(label) && contexts.some(value => formsHeading.test(value));
   const download = candidate.action === 'locate' && candidate.element.matches('a, button, [role~="button"]')
     && !!candidate.element.closest('ol') && listed && formDownload.test(label) && contexts.some(value => value.length <= 40 && procedureHeading.test(value));
-  if (!document && !download) return;
+  const preparation = candidate.action === 'locate' && candidate.element.matches('a[href]') && listed
+    && isDocumentDownload(candidate.element, candidate.label) && formTitle.test(label)
+    && contexts.some(value => formsHeading.test(value) || preparationHeading.test(value));
+  if (!document && !download && !preparation) return;
   if (rules.some(rule => rule.category !== 'apply' && rule.endpoints.has(target))) return 'conflict';
   return document ? 'document' : 'download';
 }
@@ -368,7 +375,8 @@ function readonlyHelpDocument(candidate: Candidate, label: string, target: strin
   return { ...candidate, category: 'help', score: 72, reasons: ['도움말 안내 문서 읽기', '도움말 목적과 목록의 명시적 읽기 문서'], pageTask: 'reading' };
 }
 
-export function classify(candidates: Candidate[]): Candidate[] {
+export function classify(candidates: Candidate[], options: ClassificationOptions = {}): Candidate[] {
+  const mode = options.mode ?? 'institution';
   const collectionCache: CollectionCache = new WeakMap();
   const supplementalCache: SupplementalCache = new WeakMap();
   return candidates.flatMap(candidate => {
@@ -391,6 +399,7 @@ export function classify(candidates: Candidate[]): Candidate[] {
     }
     const parts = url ? pathParts(url) : [];
     if (url && isDangerousURL(url, parts)) return [];
+    let inspectionURL = url;
     if (!url) {
       // A locate action intentionally omits href from Candidate, but an
       // explicit source HTTP command is still safety evidence. Read only the
@@ -399,7 +408,10 @@ export function classify(candidates: Candidate[]): Candidate[] {
       if (raw && !/^(?:#|javascript:)/i.test(raw)) {
         try {
           const sourceURL = new URL(raw, document.baseURI);
-          if (/^https?:$/.test(sourceURL.protocol) && isDangerousURL(sourceURL, pathParts(sourceURL))) return [];
+          if (/^https?:$/.test(sourceURL.protocol)) {
+            if (isDangerousURL(sourceURL, pathParts(sourceURL))) return [];
+            inspectionURL = sourceURL;
+          }
         } catch { /* An unresolved source stays a locate action. */ }
       }
     }
@@ -408,6 +420,28 @@ export function classify(candidates: Candidate[]): Candidate[] {
     // command guard runs first; the narrow reading/card branches retain the
     // source action and cannot execute a payment, delete, or final submission.
     const academicInfo = academicInformation(candidate, label, target, url);
+    // Institution evidence cannot revive unsafe source commands, private input,
+    // form submission or an unrelated article. It supplies semantics only;
+    // source action/href/target and the ordinary-link policy remain untouched.
+    const element = candidate.element;
+    if (mode === 'institution' && candidate.context !== 'footer' && !dangerous.test(label) && isVisible(element)
+      && element.matches('a[href], button, [role~="button" i], [role~="tab" i]')
+      && !element.closest('form, [role~="form" i], input, textarea, select, [contenteditable]:not([contenteditable="false" i]), [role~="textbox" i], [role~="searchbox" i], [role~="combobox" i], [role~="spinbutton" i], [role~="slider" i]')
+      && !(element instanceof HTMLButtonElement && element.form)) {
+      const inspectionParts = inspectionURL ? pathParts(inspectionURL) : [];
+      const inspectionTarget = endpoint(inspectionParts);
+      const notice = noticeDocumentEvidence(candidate, label, normalize(candidate.sectionLabel ?? ''), inspectionTarget, inspectionURL);
+      const supportedAnchor = !(element instanceof HTMLAnchorElement)
+        || !!inspectionURL || (element.getAttribute('href') ?? '').trim().startsWith('#');
+      const article = !!element.closest('article, [role~="article" i]') || isArticle(candidate, inspectionParts, inspectionURL);
+      if (supportedAnchor && notice !== 'conflict' && (!article || !!notice || corroboratedArticleService(candidate, label, inspectionTarget, inspectionParts, inspectionURL))) {
+        const evidence = institutionEvidence(candidate);
+        const conflict = evidence && rules.some(rule => rule.category !== evidence.category && rule.endpoints.has(inspectionTarget));
+        if (evidence && !conflict) return [{ ...candidate, category: evidence.category, score: evidence.score,
+          pageTask: evidence.pageTask, institutionEvidence: evidence,
+          reasons: ['원본 메뉴와 안내 내용의 관계', '기관 페이지의 명시적 읽기 목적'] }];
+      }
+    }
     const readonlyHelp = readonlyHelpDocument(candidate, label, target, url);
     if (readonlyHelp) return [readonlyHelp];
     const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
@@ -432,7 +466,7 @@ export function classify(candidates: Candidate[]): Candidate[] {
     }
     if (isArticle(candidate, parts, url) && !corroboratedArticleService(candidate, label, target, parts, url)) return [];
     if (academicInfo) return [{ ...candidate, category: 'academic' as const, score: 70, reasons: ['학사 납부 정보 읽기', '학사 제목과 안내 목적의 일반 링크'], pageTask: 'reading' as const }];
-    const form = formReading(candidate, label, target, url);
+    const form = formReading(candidate, label, inspectionURL ? endpoint(pathParts(inspectionURL)) : target, url);
     if (form === 'conflict') return [];
     if (form) return [{ ...candidate, category: 'apply' as const, score: 70, reasons: ['신청 준비 문서 읽기', form === 'document' ? '서식 목록과 명시적 문서명' : '발급·신청 절차의 명시적 서식 다운로드'], pageTask: 'reading' as const }];
     if (documentDownload && candidate.context !== 'footer') {

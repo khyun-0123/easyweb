@@ -2,13 +2,15 @@ import { build } from 'esbuild';
 import { createHash } from 'node:crypto';
 import { scorePage } from './evaluation-metrics.mjs';
 
-export async function buildMenuFlowHarness() {
+export async function buildMenuFlowHarness({ mode = 'institution' } = {}) {
+  if (!['generic', 'institution'].includes(mode)) throw new Error('Unknown classification mode');
   const result = await build({ stdin: { contents: `
 import {analyzePage} from './src/analyzer'; import {classify} from './src/classifier';
 import {openEasyMode} from './src/easy-mode';
+import {ADAPTER_VERSION} from './src/institution-evidence';
 window.openEasyWebMenuFlow=()=>{
-  window.easyWebFlowSources=classify(analyzePage());
-  const host=document.createElement('div');host.dataset.easywebHost='true';document.body.append(host);openEasyMode(host);
+  window.easyWebFlowSources=classify(analyzePage(),{mode:${JSON.stringify(mode)}});
+  const host=document.createElement('div');host.dataset.easywebHost='true';document.body.append(host);openEasyMode(host,{mode:${JSON.stringify(mode)}});
 };
 window.inspectEasyWebMenuFlow=()=>{
   const root=document.querySelector('[data-easyweb-host]')?.shadowRoot;
@@ -22,10 +24,10 @@ window.inspectEasyWebMenuFlow=()=>{
     return {label,relatedLabel,category,action,href,target:card.getAttribute('target'),sourceId:sources.length===1?sources[0].element.dataset.evalId??null:null,sourceMatches:sources.length};
   });
   const next=[...root.querySelectorAll('button')].find(button=>button.textContent.trim()==='다른 메뉴 보기');
-  return {cards,nextAvailable:!!next&&!next.disabled&&next.getAttribute('aria-disabled')!=='true'&&!!next.getClientRects().length,stale:root.querySelector('.change-notice')?.hidden===false,status:root.querySelector('.status')?.textContent??null};
+  return {cards,classificationMode:${JSON.stringify(mode)},adapterVersion:ADAPTER_VERSION,nextAvailable:!!next&&!next.disabled&&next.getAttribute('aria-disabled')!=='true'&&!!next.getClientRects().length,stale:root.querySelector('.change-notice')?.hidden===false,status:root.querySelector('.status')?.textContent??null};
 };`, resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife', loader: { '.css': 'text' } });
   const text = result.outputFiles[0].text;
-  return { text, sha256: createHash('sha256').update(text).digest('hex') };
+  return { text, classificationMode: mode, sha256: createHash('sha256').update(text).digest('hex') };
 }
 
 export async function observeMenuFlow(page, cdp, contextId, bundle, target, sourceDestinations, maxPages) {
@@ -56,7 +58,7 @@ export async function observeMenuFlow(page, cdp, contextId, bundle, target, sour
   if (!complete) throw new Error('Menu flow did not terminate within the source-control bound');
   const firstReachedPage = Object.fromEntries(target.expected.map(truth => [truth.id,
     pages.find(view => scorePage({ selected: view.cards }, { ...target, expected: [truth] }, sourceDestinations).matched === 1)?.page ?? null]));
-  return { bundleSha256: bundle.sha256,
+  return { bundleSha256: bundle.sha256, classificationMode: bundle.classificationMode, adapterVersion: pages[0]?.adapterVersion ?? null,
     scope: 'Actual headless UI page transitions and uniquely source-matched card display. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.',
     completed: complete, pages, unresolvedMappings: unresolved, repeatedCards: repeated,
     firstReachedPage, selected, ...scorePage({ selected }, target, sourceDestinations) };

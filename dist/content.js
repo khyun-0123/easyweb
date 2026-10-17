@@ -157,12 +157,12 @@
     };
     let parent = element.parentElement;
     for (let level = 0; parent && parent !== document.body && level < 10; level++, parent = parent.parentElement) {
-      let headings = cache?.get(parent);
-      if (!headings) {
-        headings = [...parent.querySelectorAll(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)].map((heading) => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) }));
-        cache?.set(parent, headings);
+      let headings2 = cache?.get(parent);
+      if (!headings2) {
+        headings2 = [...parent.querySelectorAll(`:scope > ${headingSelector}, :scope > :is(div,section) > ${headingSelector}, :scope > :is(div,section) > :is(div,section) > ${headingSelector}`)].map((heading) => ({ element: heading, label: clean(getSafeLabel(heading)), visible: isVisible(heading) }));
+        cache?.set(parent, headings2);
       }
-      const preceding = headings.filter(({ element: heading, visible }) => {
+      const preceding = headings2.filter(({ element: heading, visible }) => {
         let branch = heading;
         while (branch.parentElement && branch.parentElement !== parent) branch = branch.parentElement;
         if (branch !== heading && branch.contains(element)) return false;
@@ -186,8 +186,8 @@
     if (/(?:^|[\/_.-])(?:faq|qna|qa|help|answerquestions)(?:[\/_.-]|$)/i.test(location.pathname)) return "help";
     const words = (location.pathname.split("/").at(-1) ?? "").replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2").replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase().split(/[^a-z]+/).filter(Boolean);
     if (words.some((word) => /^(?:instruction|instructions)$/.test(word)) || words.some((word, index) => word === "action" && /^tips?$/.test(words[index + 1] ?? ""))) return "help";
-    const headings = document.querySelectorAll(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
-    for (const heading of headings) {
+    const headings2 = document.querySelectorAll(`main > ${headingSelector}, [role~="main"] > ${headingSelector}, .page-title > ${headingSelector}`);
+    for (const heading of headings2) {
       if (!isVisible(heading)) continue;
       const text = clean(getSafeLabel(heading));
       if (text.length > 60) continue;
@@ -347,8 +347,8 @@
     const controls = summary.topicControls;
     if (controls.length < 2 || controls.length > 12 || !controls.includes(element)) return empty;
     if (!summary.followingHeadings) {
-      const headings = followingContentHeadings(container, cache);
-      summary = { ...summary, followingHeadings: headings };
+      const headings2 = followingContentHeadings(container, cache);
+      summary = { ...summary, followingHeadings: headings2 };
       cache?.set(container, summary);
     }
     const associatedHeadings = [...summary.followingHeadings];
@@ -539,6 +539,243 @@
     return candidates;
   }
 
+  // src/institution-evidence.ts
+  var ADAPTER_VERSION = 2;
+  var editable = 'input,textarea,select,[contenteditable]:not([contenteditable="false" i]),[role~="textbox" i],[role~="searchbox" i],[role~="combobox" i],[role~="spinbutton" i],[role~="slider" i]';
+  var excluded = 'header,footer,article,aside,form,[role~="banner" i],[role~="contentinfo" i],[role~="article" i],[role~="complementary" i],[role~="form" i]';
+  var headingSelector2 = 'h1,h2,h3,h4,h5,h6,[role~="heading" i]';
+  var normalize = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var serviceEntry = /신청|예약|접수|발급|조회|로그인|인증|제출|청구/;
+  function headingName(element, hidden = false) {
+    if (!element.matches(headingSelector2) || element.closest(editable) || element.hasAttribute("aria-labelledby")) return "";
+    const name = normalize(hidden ? getSafeLabel(element) : candidateLabel(element));
+    return name.length >= 2 && name.length <= 100 ? name : "";
+  }
+  function headings(container, hidden = false) {
+    const nodes = [...container.querySelectorAll(headingSelector2)];
+    if (nodes.length > 40) return [];
+    return nodes.filter((node) => !node.closest(excluded) && !!headingName(node, hidden));
+  }
+  function sourceURL(element) {
+    const raw = element.getAttribute("href");
+    if (!raw) return;
+    try {
+      const url = new URL(raw, document.baseURI);
+      if (url.origin === location.origin) return url;
+    } catch {
+    }
+  }
+  function evidence(candidate, adapter, rule, category, dependencies, score = 70) {
+    const unique = [.../* @__PURE__ */ new Set([candidate.element, ...dependencies])];
+    return {
+      adapter,
+      version: ADAPTER_VERSION,
+      rule,
+      category,
+      score,
+      pageTask: "reading",
+      dependencies: unique,
+      // Raw URL queries, original scripts, input values and whole-region text are
+      // deliberately absent. The generic source snapshot owns action/href checks.
+      fingerprint: JSON.stringify([
+        ADAPTER_VERSION,
+        adapter,
+        rule,
+        location.origin,
+        location.pathname,
+        candidate.label,
+        candidate.action,
+        unique.map((node) => [
+          node.tagName,
+          ...["id", "class", "role", "aria-controls", "aria-expanded", "aria-hidden", "hidden"].map((name) => node.getAttribute(name)),
+          node.matches(headingSelector2) ? headingName(node, true) : node.matches("a[href],button") ? candidateLabel(node) : ""
+        ])
+      ])
+    };
+  }
+  function education(candidate, name) {
+    if (serviceEntry.test(name)) return;
+    const element = candidate.element;
+    const root = element.closest("#contents");
+    if (!root) return;
+    const titles = headings(root).filter((node) => /교육|훈련/.test(headingName(node)));
+    if (!titles.length) return;
+    const menu = element.closest("#lnbmenu");
+    if (menu && element.matches("a[href]") && element.closest("li") && /(?:교육|훈련)/.test(name) && /(?:개요|계획|자료|안내|소개)$/.test(name)) {
+      const destination2 = sourceURL(element);
+      if (destination2 && /^(?:\/safekorea-kor\/edtr\/|\/safekorea-kor\/cmmn\/bbs\/)/.test(destination2.pathname)) {
+        return evidence(candidate, "safekorea-education", "local-reading-menu", "help", [root, menu, ...titles], 65);
+      }
+    }
+    const tabs = element.closest(".tab-area");
+    if (!tabs || element.parentElement !== tabs || !element.matches("button.tab-list") || !/^(?:true|false)$/i.test(element.getAttribute("aria-expanded") ?? "") || !/(?:교육|훈련)/.test(name) || !/(?:개요|개념|안내|소개)$/.test(name)) return;
+    const peers = [...tabs.children].filter((node) => node instanceof HTMLElement && node.matches("button.tab-list[aria-expanded]") && !!candidateLabel(node));
+    if (peers.length < 2 || peers.length > 8 || !peers.includes(element) || peers.some((peer) => !/^(?:true|false)$/i.test(peer.getAttribute("aria-expanded") ?? ""))) return;
+    const panels = peers.map((peer) => peer.nextElementSibling);
+    if (panels.some((panel2) => !(panel2 instanceof HTMLElement) || !panel2.matches("div.tab-content") || !!panel2.closest(editable))) return;
+    const panel = element.nextElementSibling;
+    const panelHeadings = headings(panel, true);
+    if (!panelHeadings.length) return;
+    return evidence(
+      candidate,
+      "safekorea-education",
+      "local-overview-panels",
+      "help",
+      [root, tabs, ...titles, ...peers, ...panels, ...panelHeadings]
+    );
+  }
+  function pension(candidate, name) {
+    const element = candidate.element;
+    if (!element.matches("a[href]") || serviceEntry.test(name) || !/(?:국민\s*연금|사회\s*보장|노후)/.test(name)) return;
+    const wrap = element.closest(".tabWrap.con-tab");
+    const nav = element.closest("ul.tabNav");
+    if (!wrap || !nav || nav.parentElement !== wrap || !element.closest("li")) return;
+    const raw = element.getAttribute("href")?.trim() ?? "";
+    if (!raw.startsWith("#") || raw.length < 2) return;
+    let id;
+    try {
+      id = decodeURIComponent(raw.slice(1));
+    } catch {
+      return;
+    }
+    const targets = document.querySelectorAll(`#${CSS.escape(id)}`);
+    if (targets.length !== 1) return;
+    const panel = targets[0];
+    if (!panel.matches("div.tabPage") || panel.closest(".tabWrap.con-tab") !== wrap || !panel.parentElement?.matches("div.tabContents") || panel.parentElement.parentElement !== wrap || panel.closest(editable)) return;
+    const peers = [...nav.querySelectorAll(":scope > li > a[href]")];
+    if (peers.length < 2 || peers.length > 12 || !peers.includes(element)) return;
+    const titles = headings(panel, true).filter((node) => headingName(node, true) === name);
+    if (!titles.length) return;
+    return evidence(
+      candidate,
+      "nps-explanation",
+      "named-local-explanation-panel",
+      "help",
+      [wrap, nav, panel.parentElement, panel, ...titles]
+    );
+  }
+  function university(candidate, name) {
+    const academic = academicTabs(candidate, name);
+    if (academic) return academic;
+    const element = candidate.element;
+    const board = element.closest(".common-board");
+    const title = element.closest("dt.board-thumb-content-title");
+    const list = element.closest("ul.board-thumb-wrap");
+    if (!board || !title || !list || !board.contains(list) || !element.matches("a[href]")) return;
+    const destination2 = sourceURL(element);
+    if (!destination2 || destination2.pathname !== location.pathname) return;
+    if (!["articleNo", "articleId", "article_no", "article_id"].some((key) => destination2.searchParams.has(key))) return;
+    const boardTitles = headings(board).filter((node) => /(?:IT|전산|정보화|서비스).*게시판/i.test(headingName(node)));
+    if (!boardTitles.length) return;
+    const label = name.replace(/^\[[^\]]{1,30}\]\s*/, "");
+    const incident = /일시\s*(?:중지|중단|장애|순단)|(?:서비스|시스템|네트워크|서버|접속|운영).{0,24}(?:중지|중단|장애|순단)|(?:점검|이관|패치|업그레이드).{0,24}(?:작업|일정)|(?:운영\s*방법|정책|서비스).{0,12}변경/.test(label);
+    const instruction = /(?:설치|설정|사용|이용|활용|추가|해결|복구|대처|대응).{0,24}(?:방법|절차|매뉴얼|설명서|가이드|안내)/.test(label);
+    if (incident === instruction) return;
+    return evidence(
+      candidate,
+      "smu-it-documents",
+      incident ? "incident-document" : "instruction-document",
+      incident ? "notice" : "help",
+      [board, list, title, ...boardTitles]
+    );
+  }
+  var academicTopic = /학사|학적|학위|학점|전공|교양|휴학|복학|재입학|자퇴|제적|전과|증명서/;
+  var academicOperation = /신청|예약|접수|조회|로그인|인증|제출|청구|포털|시스템|바로\s*가기|발급\s*하기/;
+  function academicDocument(element) {
+    const destination2 = sourceURL(element);
+    return !!destination2 && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(destination2.pathname) && !/\/(?:apply|application|reserve|reservation|login|signin|sso|portal|issue)\.do$/i.test(destination2.pathname) && !["articleNo", "articleId", "article_no", "article_id"].some((key) => destination2.searchParams.has(key));
+  }
+  function academicTabs(candidate, name) {
+    const element = candidate.element;
+    if (!element.matches("a[href]") || !academicTopic.test(name) || academicOperation.test(name)) return;
+    const list = element.closest("ul.tab-ul");
+    const outer = element.closest(".tab-outer");
+    if (!list || !outer || !outer.contains(list) || !outer.parentElement?.matches(".contents-wrap")) return;
+    const section = outer.nextElementSibling;
+    if (!(section instanceof HTMLElement) || !section.matches("section.content-wrap")) return;
+    const content = section.querySelector(":scope > .content");
+    if (!content) return;
+    const titles = [...content.querySelectorAll(":scope > h4")].filter((node) => !!headingName(node));
+    if (titles.length !== 1) return;
+    const peers = [...list.querySelectorAll(":scope > li > a[href]")];
+    if (peers.length < 2 || peers.length > 12 || !peers.includes(element) || !academicDocument(element)) return;
+    const selected = peers.filter((peer) => peer.parentElement?.matches(".active,.swiper-slide-active") || /^(?:page|true)$/i.test(peer.getAttribute("aria-current") ?? ""));
+    if (selected.length !== 1 || normalize(candidateLabel(selected[0])) !== headingName(titles[0]) || !academicTopic.test(headingName(titles[0]))) return;
+    const educational = peers.filter((peer) => {
+      const label = normalize(candidateLabel(peer));
+      return !!label && academicTopic.test(label) && !academicOperation.test(label) && academicDocument(peer);
+    });
+    if (educational.length < 2 || educational.length <= peers.length / 2) return;
+    return evidence(
+      candidate,
+      "smu-academic-documents",
+      "selected-topic-following-content",
+      "academic",
+      [outer.parentElement, outer, list, section, content, ...titles, ...selected, ...educational]
+    );
+  }
+  var guideDownloadName = /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)(?:\s*하기)?$/i;
+  function libraryGuideButton(element) {
+    if (!element.matches("button.download_btn") || element.closest(`${editable},${excluded}`) || !candidateLabel(element)) return;
+    const heading = element.parentElement;
+    const branch = element.closest(".link_api_cont");
+    const name = normalize(candidateLabel(element));
+    if (!heading?.matches("h4.tit") || !branch || heading.parentElement !== branch || !guideDownloadName.test(name) || headingName(heading) !== name) return;
+    return { heading, branch };
+  }
+  function semanticTabName(element) {
+    const name = normalize(candidateLabel(element));
+    const state = [...element.querySelectorAll(":scope > .sr-only")].some((node) => /^(?:선택됨|selected)$/i.test(normalize(candidateLabel(node))));
+    return state ? name.replace(/\s*(?:선택됨|selected)$/i, "").trim() : name;
+  }
+  function library(candidate, name) {
+    const element = candidate.element;
+    const region = element.closest("#sub_content");
+    if (!region) return;
+    const ownGuide = libraryGuideButton(element);
+    if (ownGuide) return evidence(
+      candidate,
+      "nl-reading-guides",
+      "editorial-guide-download",
+      "help",
+      [region, ownGuide.branch, ownGuide.heading]
+    );
+    if (!element.matches("a[href]") || serviceEntry.test(name)) return;
+    const group = element.parentElement;
+    const wrapper = group?.parentElement;
+    const slider = wrapper?.parentElement;
+    const info = slider?.parentElement;
+    if (!group?.matches('[role~="group"]') || !wrapper?.matches(".swiper-wrapper") || !slider?.matches(".depth4-menu__slider") || !info?.matches(".content_info") || info.closest("#sub_content") !== region) return;
+    const titles = [...info.querySelectorAll(":scope > h3")].filter((node) => /검색/.test(headingName(node)));
+    if (!titles.length) return;
+    const peers = [...wrapper.querySelectorAll(':scope > [role~="group"] > a[href]')];
+    if (peers.length < 2 || peers.length > 8 || !peers.includes(element)) return;
+    const semanticName = semanticTabName(element);
+    if (!/(?:검색|결과|정보|기능|정렬|색인|서지)/.test(semanticName) || peers.some((peer) => {
+      const destination2 = sourceURL(peer);
+      return !destination2 || !/^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(destination2.pathname) || !candidateLabel(peer) || serviceEntry.test(semanticTabName(peer));
+    })) return;
+    const guides = [...region.querySelectorAll(".link_api_cont > h4.tit > button.download_btn")];
+    if (guides.length !== 1 || !libraryGuideButton(guides[0]) || !isVisible(guides[0])) return;
+    const guide = libraryGuideButton(guides[0]);
+    return evidence(
+      candidate,
+      "nl-reading-guides",
+      "local-explanatory-guide-tabs",
+      "help",
+      [region, info, slider, wrapper, group, ...titles, ...peers, guides[0], guide.branch, guide.heading]
+    );
+  }
+  function institutionEvidence(candidate, _cache) {
+    const handler = location.hostname === "www.safekorea.go.kr" && /^\/safekorea-kor\/edtr\//.test(location.pathname) ? education : location.hostname === "www.nps.or.kr" && /^\/pnsinfo\/ntpsklg\//.test(location.pathname) ? pension : location.hostname === "www.smu.ac.kr" && /^\/kor\/life\/[a-z][a-z0-9_-]*\.do$/i.test(location.pathname) ? university : location.hostname === "www.nl.go.kr" && /^\/NL\/contents\/[a-z0-9_-]+\.do$/i.test(location.pathname) ? library : void 0;
+    if (!handler) return;
+    const element = candidate.element;
+    if (location.protocol !== "https:" || location.port || candidate.context === "footer" || !isVisible(element) || element.closest(`${editable},${excluded}`) || !element.matches("a[href],button") || candidateLabel(element) !== candidate.label) return;
+    const name = normalize(candidate.label);
+    if (!name || name.length > 100) return;
+    return handler(candidate, name);
+  }
+
   // src/classifier.ts
   var rules = [
     { category: "login", label: /로그인|\b(?:log[\s-]*in|sign[\s-]*in)\b/i, section: /^(?:로그인|log[\s-]*in|sign[\s-]*in)$/i, endpoints: /* @__PURE__ */ new Set(["login", "signin"]) },
@@ -548,7 +785,7 @@
     { category: "help", label: /이용\s*안내|도움말|자주\s*(?:묻는|하는|찾는)\s*질문|검색\s*(?:방법|안내)|뷰어\s*(?:설치\s*)?(?:다운로드|프로그램\s*안내)|(?:민원실|상담)\s*(?:안내|운영)|\b(?:faq|help)\b|\bq\s*&\s*a\b|\bcontact\s+us\b|\buser\s+guide\b|\bsearch\s+(?:help|guide|tips?|instructions)\b|\bviewer\s+(?:install\s+)?download\b/i, section: /^(?:이용\s*안내|도움말|자주\s*(?:묻는|하는|찾는)\s*질문(?:\s*\(FAQ\))?|문의|검색\s*(?:방법|안내)|뷰어\s*(?:설치\s*)?(?:다운로드|프로그램\s*안내)|(?:민원실|상담)\s*(?:안내|운영)|faq|help|q\s*&\s*a|contact\s+us|user\s+guide|search\s+(?:help|guide|tips?|instructions)|viewer\s+(?:install\s+)?download)$/i, endpoints: /* @__PURE__ */ new Set(["help", "faq"]) },
     { category: "apply", label: /신청|접수|예약|조회|\b(?:apply|applications?|reservations?|booking)\b/i, section: /^(?:신청(?:\s*[·/]\s*조회)?|접수|예약|조회|apply|applications?|reservations?|booking)$/i, endpoints: /* @__PURE__ */ new Set(["apply", "application", "reservation", "booking"]) }
   ];
-  var normalize = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var normalize2 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
   var dangerous = /로그아웃|탈퇴|삭제|결제|납부|구매|최종\s*제출|\b(?:log[\s_-]*out|sign[\s_-]*out|delete|remove|unregister|withdraw|pay|payment|checkout|purchase|final[\s_-]*submit|submit[\s_-]*final)\b/i;
   var actionKeys = ["action", "cmd", "command", "mode", "task", "event", "method", "operation", "do"];
   var riskyFlagKeys = /* @__PURE__ */ new Set(["logout", "signout", "delete", "remove", "payment", "checkout", "final_submit"]);
@@ -570,6 +807,7 @@
   var formTitle = /(?:신청서|신고서|위임장|동의서|청구서|\b(?:application|declaration|authorization|consent|claim)\s+form)$/i;
   var formDownload = /(?:(?:신청서|신고서|위임장|동의서|청구서)\s*(?:다운로드|다운\s*받기)|\bdownload\s+(?:application|declaration|authorization|consent|claim)\s+form)$/i;
   var formsHeading = /^(?:(?:민원|신청)?\s*서식(?:\s*(?:자료|목록|안내))?|forms?(?:\s+(?:library|downloads?))?)$/i;
+  var preparationHeading = /^(?:(?:신청서|신고서|청구서|서식)\s*(?:및|[·/&])\s*)?(?:구비|제출|준비)\s*서류(?:\s*(?:목록|안내))?$/;
   var procedureHeading = /^(?:.{1,24})?(?:발급|신청|신고)(?:\s*(?:안내|절차))?$|^(?:application|issuance|registration)(?:\s+(?:guide|procedure|steps))?$/i;
   var issuanceIntent = /^(?=.{2,36}$).*(?:재\s*)?발급(?:\s*(?:신청|안내|방법|절차))?(?:\s*바로\s*가기)?$/;
   var branchDirectory = /^(?:(?:지사|지점|센터|본부|부서|사업소|사무소)(?:\s*[/·&]\s*(?:지사|지점|센터|본부|부서|사업소|사무소))*\s*(?:전체\s*보기|목록|찾기|안내)|(?:branch(?:es)?|offices?|service\s+centers?)\s+(?:directory|locations?))$/i;
@@ -582,7 +820,7 @@
   var noticeListHeading = /^(?:공지\s*공고|(?:채용|입찰|모집)\s*공고)(?:\s*(?:목록|게시판))?$/;
   var studentContextHeading = /^(?:학생지원|대학생활|학교생활|student\s+(?:support|life)|campus\s+life)$/i;
   var counselingControl = /^(?:(?:무료|온라인|전화|방문|대면|비대면)\s*)?상담\s*(?:운영|안내)$/;
-  var applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
+  var applicationControlLabel = /^(?=.{2,36}$)[^.!?。？]{0,28}(?:신청|예약|접수)(?:\s*(?:(?:내역|결과|현황)\s*)?(?:확인|조회))?(?:\s*(?:하기|하러\s*가기|바로\s*가기))?$|^(?:apply(?:\s+now)?|reservations?|booking)$/i;
   var issuanceServiceHeading = /^(?=.{2,48}$)(?:(?:온라인|인터넷|전자)\s*)?(?:(?:증명(?:서)?|민원|서류)\s*)?발급\s*(?:시스템|서비스)(?:\s*(?:바로\s*가기|목록))?$/;
   function hasDangerousScript(element) {
     const raw = element.getAttribute("href")?.trim() ?? "";
@@ -590,7 +828,7 @@
     return dangerous.test(script);
   }
   function contextsFor(candidate, label) {
-    return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize).filter((value) => value !== label);
+    return [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize2).filter((value) => value !== label);
   }
   function hasAcademicContext(candidate, label) {
     const academic = rules.find((rule) => rule.category === "academic");
@@ -616,14 +854,15 @@
     const listed = !!candidate.element.closest('tr, li, [role~="row"], [role~="listitem"]');
     const document2 = !!url && candidate.action === "navigate" && candidate.element.matches("a[href]") && listed && formTitle.test(label) && contexts.some((value) => formsHeading.test(value));
     const download = candidate.action === "locate" && candidate.element.matches('a, button, [role~="button"]') && !!candidate.element.closest("ol") && listed && formDownload.test(label) && contexts.some((value) => value.length <= 40 && procedureHeading.test(value));
-    if (!document2 && !download) return;
+    const preparation = candidate.action === "locate" && candidate.element.matches("a[href]") && listed && isDocumentDownload(candidate.element, candidate.label) && formTitle.test(label) && contexts.some((value) => formsHeading.test(value) || preparationHeading.test(value));
+    if (!document2 && !download && !preparation) return;
     if (rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return "conflict";
     return document2 ? "document" : "download";
   }
   function pathParts(url) {
     return url.pathname.split("/").filter(Boolean).map((part) => {
       try {
-        return normalize(decodeURIComponent(part)).toLowerCase();
+        return normalize2(decodeURIComponent(part)).toLowerCase();
       } catch {
         return part.toLowerCase();
       }
@@ -635,7 +874,7 @@
       const folded = key.replace(/[A-Z]/g, (letter) => letter.toLowerCase());
       if (riskyFlagKeys.has(folded)) return true;
       if (actionKeys.includes(folded) && url.searchParams.getAll(key).some((value) => {
-        const command = normalize(value);
+        const command = normalize2(value);
         return dangerous.test(command) || /^(?:submit|final[\s_-]*submit|submit[\s_-]*final)$/i.test(command);
       })) return true;
     }
@@ -655,7 +894,7 @@
     if (url && notice.endpoints.has(target) && hasDocumentReference(url)) return "endpoint";
     if (candidate.element.closest('article, [role~="article"]')) return;
     const listedLink = candidate.element.matches("a[href]") && !!candidate.element.closest('tr, li, [role~="row"], [role~="listitem"]');
-    if (!listedLink || ![section, ...candidate.contextLabels ?? []].some((value) => notice.section.test(normalize(value)) || noticeListHeading.test(normalize(value)))) return;
+    if (!listedLink || ![section, ...candidate.contextLabels ?? []].some((value) => notice.section.test(normalize2(value)) || noticeListHeading.test(normalize2(value)))) return;
     if (rules.some((rule) => rule.category !== "notice" && rule.endpoints.has(target))) return "conflict";
     return "collection";
   }
@@ -711,15 +950,15 @@
   }
   function contextualReading(candidate, label) {
     if (candidate.context === "footer" || candidate.element.closest('article, [role~="article"]')) return;
-    const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize);
+    const contexts = [candidate.sectionLabel, ...candidate.contextLabels ?? []].filter((value) => !!value).map(normalize2);
     const helpContext = candidate.pagePurpose === "help" || contexts.some((value) => rules.find((rule) => rule.category === "help").section.test(value)) || isQuestionCollection(candidate.element);
     const term = candidate.element.closest("dt");
-    const definitionQuestion = !!term?.closest("dl") && isVisible(term) && isVisible(candidate.element) && [candidate.element, term].some((element) => answerToggle.test(normalize(element.getAttribute("title") ?? "")));
+    const definitionQuestion = !!term?.closest("dl") && isVisible(term) && isVisible(candidate.element) && [candidate.element, term].some((element) => answerToggle.test(normalize2(element.getAttribute("title") ?? "")));
     if (definitionQuestion && label.length >= 4 && candidate.element.matches('a, button, [role~="button"]')) {
       return { category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC9C8\uBB38 \uC77D\uAE30", "\uC815\uC758 \uBAA9\uB85D\uACFC \uBA85\uC2DC\uC801 \uB2F5\uBCC0 \uC5F4\uAE30 \uD45C\uC2DC"], pageTask: "reading" };
     }
     if (helpContext) {
-      const questionMarker = [...candidate.element.querySelectorAll(":scope > abbr[title]")].some((marker) => marker instanceof HTMLElement && isVisible(marker) && /^(?:질문|question)$/i.test(normalize(marker.getAttribute("title") ?? "")));
+      const questionMarker = [...candidate.element.querySelectorAll(":scope > abbr[title]")].some((marker) => marker instanceof HTMLElement && isVisible(marker) && /^(?:질문|question)$/i.test(normalize2(marker.getAttribute("title") ?? "")));
       if (label.length >= 4 && (questionMarker || interrogative.test(label)) && candidate.element.matches('a, button, [role~="button"]') && candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]')) {
         return { category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC9C8\uBB38 \uC77D\uAE30", "\uBA85\uC2DC\uC801 \uC9C8\uBB38 \uD45C\uC2DC\uC640 \uB3C4\uC6C0\uB9D0 \uBB38\uB9E5"], pageTask: "reading" };
       }
@@ -736,7 +975,7 @@
   function supplementalClassification(candidate, label, target, supplementalCache, url) {
     const element = candidate.element;
     if (candidate.context !== "body" || !element.matches('a[href], button, [role~="button" i]') || element.closest('article, [role~="article" i]')) return;
-    const evidence = supplementalEvidence(element, supplementalCache);
+    const evidence2 = supplementalEvidence(element, supplementalCache);
     const raw = element.getAttribute("href")?.trim() ?? "";
     if (hasDangerousScript(element)) return;
     let destination2 = url;
@@ -758,15 +997,15 @@
       reasons: [reason, "\uACE0\uC815 \uC6D0\uBCF8 \uC81C\uC5B4 \uAD6C\uC870"],
       pageTask: task,
       supplementalDependent: true,
-      relatedLabel: evidence.relatedLabel,
+      relatedLabel: evidence2.relatedLabel,
       snapshot: sourceSnapshot(element, candidate.label, void 0, false, true, supplementalCache)
     });
-    if (!dangerous.test(label) && evidence.filter && isInformationTopicLabel(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uAC80\uC0C9 \uC591\uC2DD\uC758 \uBD84\uC57C \uD544\uD130", "control");
+    if (!dangerous.test(label) && evidence2.filter && isInformationTopicLabel(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uAC80\uC0C9 \uC591\uC2DD\uC758 \uBD84\uC57C \uD544\uD130", "control");
     const contexts = contextsFor(candidate, label);
-    if (!dangerous.test(label) && evidence.materialRow && label.length >= 2 && label.length <= 60 && !rules.some((rule) => !["apply", "academic"].includes(rule.category) && rule.label.test(label)) && contexts.some((text) => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uC2E0\uCCAD \uC900\uBE44 \uD3B8\uB78C\uC758 \uC6D0\uBCF8 \uC11C\uC2DD \uC790\uB8CC", "reading");
+    if (!dangerous.test(label) && evidence2.materialRow && label.length >= 2 && label.length <= 60 && !rules.some((rule) => !["apply", "academic"].includes(rule.category) && rule.label.test(label)) && contexts.some((text) => /^(?=.{2,40}$).*(?:민원|신청|신고).*(?:편람|서식|준비\s*자료)$/.test(text)) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uC2E0\uCCAD \uC900\uBE44 \uD3B8\uB78C\uC758 \uC6D0\uBCF8 \uC11C\uC2DD \uC790\uB8CC", "reading");
     if (contextualReading(candidate, label)?.category === "academic" || issuanceIntent.test(label) && contexts.some((text) => procedureHeading.test(text))) return;
     const guideContext = contexts.some((text) => text.length <= 60 && /안내$/.test(text));
-    const readingContexts = [...contexts, ...evidence.associatedHeadings];
+    const readingContexts = [...contexts, ...evidence2.associatedHeadings];
     const guideReading = candidate.pagePurpose === "help" || readingContexts.some((text) => text.length <= 60 && (/(?:안내|설명서|도움말|사용\s*법|이용\s*법|가이드|요령|수칙|매뉴얼|\b(?:instructions?|guide|manual|help))$/i.test(text) || /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|download)$/i.test(text)));
     const academicPeer = (peer) => {
       if (!peer.isLink || peer.action !== "navigate" || !peer.href || !isInformationTopicLabel(peer.label) || !academicConcept.test(peer.label) || !academicGuideEnd.test(peer.label) || dangerous.test(peer.label)) return false;
@@ -778,26 +1017,26 @@
         return false;
       }
     };
-    const educationPeers = evidence.collectionPeers.filter(academicPeer);
-    if (candidate.action === "navigate" && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches("a[href]") }) && educationPeers.length >= 2 && educationPeers.length > evidence.collectionPeers.length / 2) {
+    const educationPeers = evidence2.collectionPeers.filter(academicPeer);
+    if (candidate.action === "navigate" && academicPeer({ label: candidate.label, action: candidate.action, href: candidate.href, isLink: element.matches("a[href]") }) && educationPeers.length >= 2 && educationPeers.length > evidence2.collectionPeers.length / 2) {
       return candidate.pagePurpose === "help" ? result("help", 70, "\uBA85\uC2DC\uC801 \uB3C4\uC6C0\uB9D0 \uBAA9\uC801\uACFC \uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150 \uBAA9\uB85D", "reading") : result("academic", 70, "\uAC19\uC740 \uCD9C\uCC98 \uC77D\uAE30 \uB9C1\uD06C\uC640 \uB2E4\uC218\uC758 \uACE0\uC815 \uAD50\uC721 \uAC1C\uB150", "reading");
     }
-    const readingTopic = evidence.topicPeers >= 2 && (evidence.controlledTopic || evidence.associatedHeadings.length > 0) && !(destination2 && hasDocumentReference(destination2));
+    const readingTopic = evidence2.topicPeers >= 2 && (evidence2.controlledTopic || evidence2.associatedHeadings.length > 0) && !(destination2 && hasDocumentReference(destination2));
     const competingTask = rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label)));
-    const readingSubject = evidence.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
-    const academicTopic = !dangerous.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label) && readingContexts.some((text) => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text)) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target));
-    if (academicTopic && candidate.pagePurpose !== "help") return result("academic", 70, "\uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150\uACFC \uC5F0\uACB0\uB41C \uB0B4\uC6A9 \uC81C\uBAA9", "reading");
+    const readingSubject = evidence2.linkedTopic || /(?:결과|기능|조건|절차|방법|안내|단계|항목|구성|개요)$/.test(label);
+    const academicTopic2 = !dangerous.test(label) && readingTopic && academicConcept.test(label) && !explicitApplication.test(label) && readingContexts.some((text) => text.length <= 60 && /학사|학적|교육\s*과정|학위|이수|전공|교양|졸업/.test(text)) && !rules.some((rule) => rule.category !== "academic" && rule.endpoints.has(target));
+    if (academicTopic2 && candidate.pagePurpose !== "help") return result("academic", 70, "\uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150\uACFC \uC5F0\uACB0\uB41C \uB0B4\uC6A9 \uC81C\uBAA9", "reading");
     if (!dangerous.test(label) && readingTopic && isInformationTopicLabel(label) && !isSearchControl(element, candidate.label) && !element.closest('form, [role~="form" i]') && !isDocumentDownload(element, candidate.label) && (!competingTask || readingSubject) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target)) && guideReading) {
       return result("help", 70, "\uC6D0\uBCF8 \uC548\uB0B4 \uC8FC\uC81C\uC640 \uC5F0\uACB0\uB41C \uC77D\uAE30 \uC81C\uC5B4", "reading");
     }
-    if (academicTopic) {
+    if (academicTopic2) {
       return result("academic", 70, "\uC6D0\uBCF8 \uAD50\uC721 \uAC1C\uB150\uACFC \uC5F0\uACB0\uB41C \uB0B4\uC6A9 \uC81C\uBAA9", "reading");
     }
     if (!dangerous.test(label) && guideReading && candidate.action === "locate" && label.length <= 60 && element.matches('button, [role~="button" i]') && !element.closest('form, [role~="form" i]') && /(?:안내서|설명서|매뉴얼|가이드|\b(?:guide|manual))\s*(?:다운로드|내려\s*받기|받기|download)$/i.test(label)) {
       return result("help", 70, "\uC548\uB0B4 \uBB38\uB9E5\uC758 \uBA85\uC2DC\uC801 \uAC00\uC774\uB4DC \uC790\uB8CC \uC81C\uC5B4", "reading");
     }
-    if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === "locate" && (evidence.informationPanels || guideContext && evidence.grouped) && !rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label))) && !isDocumentDownload(element, candidate.label) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return result("help", 65, "\uACF5\uAC1C \uC815\uBCF4 \uD328\uB110\xB7\uC548\uB0B4 \uC8FC\uC81C \uC77D\uAE30", "reading");
-    const title = evidence.title;
+    if (!dangerous.test(label) && isInformationTopicLabel(label) && candidate.action === "locate" && (evidence2.informationPanels || guideContext && evidence2.grouped) && !rules.some((rule) => rule.category !== "help" && rule.label.test(label) && !(rule.category === "search" && searchGuidanceLabel.test(label))) && !isDocumentDownload(element, candidate.label) && !rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return result("help", 65, "\uACF5\uAC1C \uC815\uBCF4 \uD328\uB110\xB7\uC548\uB0B4 \uC8FC\uC81C \uC77D\uAE30", "reading");
+    const title = evidence2.title;
     if (!title || dangerous.test(title.replace(/납부(?=\s*(?:내역|기록))/, "")) || isDocumentDownload(element, candidate.label) || destination2 && hasDocumentReference(destination2) || element.closest('form, [role~="form" i]')) return;
     if (/^(?=.{2,36}$).*(?:모의\s*계산|간단\s*계산|simulation|calculator)$/i.test(title) && !dangerous.test(label) && !rules.some((rule) => rule.category !== "search" && rule.endpoints.has(target))) return result("search", 70, "\uBA85\uC2DC\uC801 \uBAA8\uC758\xB7\uAC04\uB2E8 \uACC4\uC0B0 \uCE74\uB4DC", "control");
     if (/^(?=.{2,36}$).*(?:내역|기록)\s*(?:조회|확인)(?:하기)?$/.test(title) && !dangerous.test(label.replace(/납부(?=\s*(?:내역|기록))/g, "")) && !rules.some((rule) => rule.category !== "apply" && rule.endpoints.has(target))) return result("apply", 70, "\uAC1C\uC778 \uB0B4\uC5ED\xB7\uAE30\uB85D \uD655\uC778 \uCE74\uB4DC", "control");
@@ -807,11 +1046,12 @@
     if (!url || candidate.context !== "body" || candidate.action !== "navigate" || !candidate.element.matches("a[href]") || !candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]') || candidate.element.closest('article, [role~="article"]') || !hasDocumentReference(url) || candidate.pagePurpose !== "help" || label.length < 4 || label.length > 100 || pathParts(url).some((part) => /^(?:news|articles?|stories|story|press)$/.test(part)) || !(/(?:안내|방법|절차)$/.test(label) || interrogative.test(label)) || rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return;
     return { ...candidate, category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC548\uB0B4 \uBB38\uC11C \uC77D\uAE30", "\uB3C4\uC6C0\uB9D0 \uBAA9\uC801\uACFC \uBAA9\uB85D\uC758 \uBA85\uC2DC\uC801 \uC77D\uAE30 \uBB38\uC11C"], pageTask: "reading" };
   }
-  function classify(candidates) {
+  function classify(candidates, options = {}) {
+    const mode = options.mode ?? "institution";
     const collectionCache = /* @__PURE__ */ new WeakMap();
     const supplementalCache = /* @__PURE__ */ new WeakMap();
     return candidates.flatMap((candidate) => {
-      const sourceLabel = normalize(candidate.label).replace(/[_-]+/g, " ");
+      const sourceLabel = normalize2(candidate.label).replace(/[_-]+/g, " ");
       const documentDownload = candidate.action === "locate" && isDocumentDownload(candidate.element, candidate.label);
       const label = documentDownload ? sourceLabel.replace(documentExtension, "").trim() : sourceLabel;
       if (orderingLabel.test(label)) return [];
@@ -827,18 +1067,42 @@
       }
       const parts = url ? pathParts(url) : [];
       if (url && isDangerousURL(url, parts)) return [];
+      let inspectionURL = url;
       if (!url) {
         const raw = candidate.element.getAttribute("href")?.trim() ?? "";
         if (raw && !/^(?:#|javascript:)/i.test(raw)) {
           try {
-            const sourceURL = new URL(raw, document.baseURI);
-            if (/^https?:$/.test(sourceURL.protocol) && isDangerousURL(sourceURL, pathParts(sourceURL))) return [];
+            const sourceURL2 = new URL(raw, document.baseURI);
+            if (/^https?:$/.test(sourceURL2.protocol)) {
+              if (isDangerousURL(sourceURL2, pathParts(sourceURL2))) return [];
+              inspectionURL = sourceURL2;
+            }
           } catch {
           }
         }
       }
       const target = endpoint(parts);
       const academicInfo = academicInformation(candidate, label, target, url);
+      const element = candidate.element;
+      if (mode === "institution" && candidate.context !== "footer" && !dangerous.test(label) && isVisible(element) && element.matches('a[href], button, [role~="button" i], [role~="tab" i]') && !element.closest('form, [role~="form" i], input, textarea, select, [contenteditable]:not([contenteditable="false" i]), [role~="textbox" i], [role~="searchbox" i], [role~="combobox" i], [role~="spinbutton" i], [role~="slider" i]') && !(element instanceof HTMLButtonElement && element.form)) {
+        const inspectionParts = inspectionURL ? pathParts(inspectionURL) : [];
+        const inspectionTarget = endpoint(inspectionParts);
+        const notice = noticeDocumentEvidence(candidate, label, normalize2(candidate.sectionLabel ?? ""), inspectionTarget, inspectionURL);
+        const supportedAnchor = !(element instanceof HTMLAnchorElement) || !!inspectionURL || (element.getAttribute("href") ?? "").trim().startsWith("#");
+        const article = !!element.closest('article, [role~="article" i]') || isArticle(candidate, inspectionParts, inspectionURL);
+        if (supportedAnchor && notice !== "conflict" && (!article || !!notice || corroboratedArticleService(candidate, label, inspectionTarget, inspectionParts, inspectionURL))) {
+          const evidence2 = institutionEvidence(candidate);
+          const conflict = evidence2 && rules.some((rule) => rule.category !== evidence2.category && rule.endpoints.has(inspectionTarget));
+          if (evidence2 && !conflict) return [{
+            ...candidate,
+            category: evidence2.category,
+            score: evidence2.score,
+            pageTask: evidence2.pageTask,
+            institutionEvidence: evidence2,
+            reasons: ["\uC6D0\uBCF8 \uBA54\uB274\uC640 \uC548\uB0B4 \uB0B4\uC6A9\uC758 \uAD00\uACC4", "\uAE30\uAD00 \uD398\uC774\uC9C0\uC758 \uBA85\uC2DC\uC801 \uC77D\uAE30 \uBAA9\uC801"]
+          }];
+        }
+      }
       const readonlyHelp = readonlyHelpDocument(candidate, label, target, url);
       if (readonlyHelp) return [readonlyHelp];
       const supplemental = supplementalClassification(candidate, label, target, supplementalCache, url);
@@ -847,7 +1111,7 @@
       const searchControl = isSearchControl(candidate.element, label);
       const searchGuidance = !searchControl && searchGuidanceLabel.test(label);
       const inquiry = label.split(/[\s\p{P}\p{S}]+/u).some((word) => inquiryWord.test(word));
-      const section = normalize(candidate.sectionLabel ?? "");
+      const section = normalize2(candidate.sectionLabel ?? "");
       const knownEndpoint = rules.some((rule) => rule.endpoints.has(target));
       const documentEvidence = noticeDocumentEvidence(candidate, label, section, target, url);
       if (documentEvidence === "conflict") return [];
@@ -862,7 +1126,7 @@
       }
       if (isArticle(candidate, parts, url) && !corroboratedArticleService(candidate, label, target, parts, url)) return [];
       if (academicInfo) return [{ ...candidate, category: "academic", score: 70, reasons: ["\uD559\uC0AC \uB0A9\uBD80 \uC815\uBCF4 \uC77D\uAE30", "\uD559\uC0AC \uC81C\uBAA9\uACFC \uC548\uB0B4 \uBAA9\uC801\uC758 \uC77C\uBC18 \uB9C1\uD06C"], pageTask: "reading" }];
-      const form = formReading(candidate, label, target, url);
+      const form = formReading(candidate, label, inspectionURL ? endpoint(pathParts(inspectionURL)) : target, url);
       if (form === "conflict") return [];
       if (form) return [{ ...candidate, category: "apply", score: 70, reasons: ["\uC2E0\uCCAD \uC900\uBE44 \uBB38\uC11C \uC77D\uAE30", form === "document" ? "\uC11C\uC2DD \uBAA9\uB85D\uACFC \uBA85\uC2DC\uC801 \uBB38\uC11C\uBA85" : "\uBC1C\uAE09\xB7\uC2E0\uCCAD \uC808\uCC28\uC758 \uBA85\uC2DC\uC801 \uC11C\uC2DD \uB2E4\uC6B4\uB85C\uB4DC"], pageTask: "reading" }];
       if (documentDownload && candidate.context !== "footer") {
@@ -982,21 +1246,41 @@
   function ordered(candidates) {
     const sorted = [...candidates].sort(compare);
     const groups = /* @__PURE__ */ new Map();
+    const filterGroups = /* @__PURE__ */ new Map();
+    const supplementalCache = /* @__PURE__ */ new WeakMap();
     sorted.forEach((candidate, index) => {
-      if (candidate.pageTask !== "reading") return;
-      const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
-      if (!container) return;
-      const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
-      const peers = groups.get(container) ?? /* @__PURE__ */ new Map();
-      peers.set(key, [...peers.get(key) ?? [], index]);
-      groups.set(container, peers);
+      if (candidate.pageTask === "reading") {
+        const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
+        if (!container) return;
+        const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
+        const peers = groups.get(container) ?? /* @__PURE__ */ new Map();
+        peers.set(key, [...peers.get(key) ?? [], index]);
+        groups.set(container, peers);
+      } else if (candidate.category === "search" && candidate.pageTask === "control" && candidate.supplementalDependent) {
+        const element = candidate.element;
+        const container = element.closest('ul, ol, [role~="list" i]');
+        const form = element.closest('form, [role~="form" i]') ?? (element instanceof HTMLButtonElement || element instanceof HTMLInputElement ? element.form : null);
+        if (!container || !form || !supplementalEvidence(element, supplementalCache).filter) return;
+        const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}:${navigationPriority(candidate)}:${candidate.context}:${candidate.pagePurpose ?? ""}`;
+        const lists = filterGroups.get(form) ?? /* @__PURE__ */ new Map();
+        const peers = lists.get(container) ?? /* @__PURE__ */ new Map();
+        const positions = peers.get(key) ?? [];
+        positions.push(index);
+        peers.set(key, positions);
+        lists.set(container, peers);
+        filterGroups.set(form, lists);
+      }
     });
-    for (const peers of groups.values()) for (const positions of peers.values()) {
-      const readings = positions.map((index) => sorted[index]).sort(sourceOrder);
-      positions.forEach((index, offset) => {
-        sorted[index] = readings[offset];
-      });
-    }
+    const applySourceOrder = (peers) => {
+      for (const positions of peers.values()) {
+        const controls = positions.map((index) => sorted[index]).sort(sourceOrder);
+        positions.forEach((index, offset) => {
+          sorted[index] = controls[offset];
+        });
+      }
+    };
+    for (const peers of groups.values()) applySourceOrder(peers);
+    for (const lists of filterGroups.values()) for (const peers of lists.values()) applySourceOrder(peers);
     return sorted;
   }
   function rank(candidates) {
@@ -1081,6 +1365,11 @@
     const labels = contextLabels(candidate.element, contextCache);
     if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
     if (pagePurpose(candidate.element, labels, commonPurpose) !== candidate.pagePurpose) return false;
+    if (candidate.institutionEvidence) {
+      const previous = candidate.institutionEvidence;
+      const evidence2 = institutionEvidence(candidate);
+      if (!evidence2 || evidence2.adapter !== previous.adapter || evidence2.version !== previous.version || evidence2.rule !== previous.rule || evidence2.category !== previous.category || evidence2.score !== previous.score || evidence2.fingerprint !== previous.fingerprint || evidence2.dependencies.length !== previous.dependencies.length || evidence2.dependencies.some((node, index) => node !== previous.dependencies[index])) return false;
+    }
     const current = sourceSnapshot(candidate.element, label, collectionCache, !!candidate.collectionDependent, !!candidate.supplementalDependent, supplementalCache);
     return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl && current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
   }
@@ -1282,7 +1571,7 @@
     if (text !== void 0) element.textContent = text;
     return element;
   }
-  function openEasyMode(host) {
+  function openEasyMode(host, options = {}) {
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const scroll = { x: window.scrollX, y: window.scrollY };
     const shadow = host.attachShadow({ mode: "open" });
@@ -1473,7 +1762,7 @@
       status.textContent = `${announce ? "\uB2E4\uC2DC \uD655\uC778\uD588\uC5B4\uC694. " : ""}\uD604\uC7AC \uD398\uC774\uC9C0\uC5D0\uC11C ${items.length}\uAC1C\uC758 \uC8FC\uC694 \uAE30\uB2A5\uC744 \uCC3E\uC558\uC5B4\uC694.${pageIndex ? ` ${pageIndex + 1}\uBC88\uC9F8 \uBA54\uB274 \uD654\uBA74\uC774\uC5D0\uC694.` : ""}${pageIndex < pages.length - 1 || hasRemaining ? " \uB2E4\uB978 \uBA54\uB274\uB3C4 \uBCFC \uC218 \uC788\uC5B4\uC694." : ""}`;
     }
     function update(announce = false) {
-      const candidates = classify(analyzePage());
+      const candidates = classify(analyzePage(), options);
       const initial = rank(candidates);
       pages = [initial];
       pageIndex = 0;

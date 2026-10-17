@@ -1,0 +1,1165 @@
+{
+  "siteId": "cheonan",
+  "name": "천안시청",
+  "pages": [
+    {
+      "id": "cheonan-v9-01",
+      "url": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000020/list.do",
+      "finalUrl": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000020/list.do",
+      "split": "holdout",
+      "fixture": "evaluation/blind-v9-v2/cheonan.html",
+      "observation": {
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "capturedAt": "2026-10-17T18:57:48.542Z",
+        "baseURI": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000020/list.do",
+        "title": "민원서식 작성예시 QR코드 < 민원안내 < 민원안내 < 천안시청",
+        "sourceCapture": "docs/evidence/run007/blind-v9-raw/cheonan-capture.json",
+        "sourceControls": "docs/evidence/run007/blind-v9-raw/cheonan-controls.json",
+        "visibleControlCount": 81,
+        "retainedControlCount": 1015,
+        "notes": [
+          "이 목록의 개별 문서는 신청 준비 서식이므로 apply로 주석했다. 게시판 형태만으로 notice로 분류하지 않았다.",
+          "검색 조건 선택과 검색어 입력을 함께 기록했고 실제 입력값은 사용하지 않았다.",
+          "첨부 ZIP의 이름이 반복되더라도 원본 표 행의 서식 제목과 연결해 구분했다."
+        ],
+        "annotationVersion": "blind-v9-v2",
+        "originalFrozenAnnotation": "evaluation/blind-v9/cheonan.json",
+        "annotationVersionProvenance": "docs/evidence/run007/blind-v9-v2-provenance.json",
+        "fixedMetadataNameLimit": "The original controls proof uses a fixed-metadata heuristic. Separately recorded browser ariaSnapshot evidence resolves substantive accessible-name differences without changing original node metadata."
+      },
+      "accepted": [
+        {
+          "sourceId": "cheonan-v9-0010",
+          "category": "search",
+          "action": "navigate",
+          "label": "통합검색",
+          "destinationUrl": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+          "evidence": {
+            "name": "통합검색",
+            "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0822",
+          "category": "search",
+          "action": "locate",
+          "label": "검색 조회조건 선택",
+          "evidence": {
+            "name": "검색 조회조건 선택",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "select",
+            "fixedMetadataName": ":::전체::: 제목 팀명 내용",
+            "accessibleName": "검색 조회조건 선택",
+            "accessibleNameProof": {
+              "report": "docs/evidence/run007/blind-v9-independent-static-qa.json",
+              "issueId": "NAME-01",
+              "ariaSnapshot": "- combobox \"검색 조회조건 선택\":\n  - option \":::전체:::\" [selected]\n  - option \"제목\"\n  - option \"팀명\"\n  - option \"내용\""
+            }
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0823",
+          "category": "search",
+          "action": "locate",
+          "label": "검색어를 입력해 주세요",
+          "evidence": {
+            "name": "검색어를 입력해 주세요",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0825",
+          "category": "search",
+          "action": "locate",
+          "label": "검색",
+          "evidence": {
+            "name": "검색",
+            "href": null,
+            "onclick": "fn_search_list();",
+            "role": null,
+            "originalTag": "input"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0019",
+          "category": "login",
+          "action": "navigate",
+          "label": "로그인",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+          "evidence": {
+            "name": "로그인",
+            "href": "/kor/login.do?returnUrl=/kor.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0022",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "evidence": {
+            "name": "민원안내",
+            "href": "/kor/sub01_01_01.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0776",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "evidence": {
+            "name": "민원안내",
+            "href": "/kor/sub01_01_01.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0777",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원 신청안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "evidence": {
+            "name": "민원 신청안내",
+            "href": "/kor/sub01_01_01.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0778",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원실 안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_03.do",
+          "evidence": {
+            "name": "민원실 안내",
+            "href": "/kor/sub01_01_03.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0779",
+          "category": "help",
+          "action": "navigate",
+          "label": "여권 신청안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+          "evidence": {
+            "name": "여권 신청안내",
+            "href": "/kor/sub01_01_06.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0781",
+          "category": "help",
+          "action": "navigate",
+          "label": "무인민원발급기 이용안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_04.do",
+          "evidence": {
+            "name": "무인민원발급기 이용안내",
+            "href": "/kor/sub01_01_04.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0782",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원사무편람",
+          "destinationUrl": "https://www.cheonan.go.kr/prog/caCffdn/kor/sub01_01_07/list.do",
+          "evidence": {
+            "name": "민원사무편람",
+            "href": "/prog/caCffdn/kor/sub01_01_07/list.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0783",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원서식 작성예시 QR코드",
+          "destinationUrl": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000020/list.do",
+          "evidence": {
+            "name": "민원서식 작성예시 QR코드",
+            "href": "/bbs/BBSMSTR_000000000020/list.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0793",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원시책",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_02_02.do",
+          "evidence": {
+            "name": "민원시책",
+            "href": "/kor/sub01_02_02.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0799",
+          "category": "help",
+          "action": "navigate",
+          "label": "기타 민원서비스",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_03_02.do",
+          "evidence": {
+            "name": "기타 민원서비스",
+            "href": "/kor/sub01_03_02.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0809",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "evidence": {
+            "name": "민원안내",
+            "href": "/kor/sub01_01_01.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0810",
+          "category": "help",
+          "action": "navigate",
+          "label": "민원안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "evidence": {
+            "name": "민원안내",
+            "href": "/kor/sub01_01_01.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-1012",
+          "category": "help",
+          "action": "navigate",
+          "label": "전화번호안내",
+          "destinationUrl": "https://www.cheonan.go.kr/prog/caDept/kor/sub04_03_01/list.do",
+          "evidence": {
+            "name": "전화번호안내",
+            "href": "/prog/caDept/kor/sub04_03_01/list.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-1013",
+          "category": "help",
+          "action": "navigate",
+          "label": "팩스번호안내",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub04_03_02.do",
+          "evidence": {
+            "name": "팩스번호안내",
+            "href": "/kor/sub04_03_02.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-1014",
+          "category": "help",
+          "action": "navigate",
+          "label": "찾아오시는길",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub04_03_04.do",
+          "evidence": {
+            "name": "찾아오시는길",
+            "href": "/kor/sub04_03_04.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0054",
+          "category": "notice",
+          "action": "navigate",
+          "label": "소식알림",
+          "destinationUrl": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000450/list.do",
+          "evidence": {
+            "name": "소식알림",
+            "href": "/bbs/BBSMSTR_000000000450/list.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0807",
+          "category": "notice",
+          "action": "navigate",
+          "label": "공고/고시 바로가기",
+          "destinationUrl": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+          "evidence": {
+            "name": "공고/고시 바로가기",
+            "href": "/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0007",
+          "category": "apply",
+          "action": "navigate",
+          "label": "통합예약시스템",
+          "destinationUrl": "https://www.cheonan.go.kr/yeyak/index.do",
+          "evidence": {
+            "name": "통합예약시스템",
+            "href": "/yeyak/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0784",
+          "category": "apply",
+          "action": "navigate",
+          "label": "민원신청",
+          "destinationUrl": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+          "evidence": {
+            "name": "민원신청",
+            "href": "/kor/sub01_05_01_01.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0833",
+          "category": "apply",
+          "action": "locate",
+          "label": "여권신청서",
+          "evidence": {
+            "name": "여권신청서",
+            "href": null,
+            "onclick": "fn_search_detail('B000003215486VhspbM5'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0834",
+          "category": "apply",
+          "action": "locate",
+          "label": "첨부파일 다운로드 [별지 제1호서식] 여권발급신청서&#40;여권법 시행규칙&#41;.hwp",
+          "evidence": {
+            "name": "첨부파일 다운로드 [별지 제1호서식] 여권발급신청서&#40;여권법 시행규칙&#41;.hwp",
+            "href": "/cmm/fms/FileDown.do?atchFileId=FILE_000000000475920&fileSn=0",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0835",
+          "category": "apply",
+          "action": "locate",
+          "label": "전입세대열람신청서 및 주민등록증재발급신청서",
+          "evidence": {
+            "name": "전입세대열람신청서 및 주민등록증재발급신청서",
+            "href": null,
+            "onclick": "fn_search_detail('B00000321547szGqhrhf'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0836",
+          "category": "apply",
+          "action": "locate",
+          "label": "ZIP 파일다운로드",
+          "evidence": {
+            "name": "ZIP 파일다운로드",
+            "href": "#zipDownload",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475919'); return false;",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0837",
+          "category": "apply",
+          "action": "locate",
+          "label": "전입신고서 (세대전부 및 세대합가(편입))",
+          "evidence": {
+            "name": "전입신고서 (세대전부 및 세대합가(편입))",
+            "href": null,
+            "onclick": "fn_search_detail('B000003215468Qkq9TZH'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0838",
+          "category": "apply",
+          "action": "locate",
+          "label": "ZIP 파일다운로드",
+          "evidence": {
+            "name": "ZIP 파일다운로드",
+            "href": "#zipDownload",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475918'); return false;",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0839",
+          "category": "apply",
+          "action": "locate",
+          "label": "주민등록등초본신청서(7호서식) 및 인감증명서",
+          "evidence": {
+            "name": "주민등록등초본신청서(7호서식) 및 인감증명서",
+            "href": null,
+            "onclick": "fn_search_detail('B000003215453sTMIXci'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0840",
+          "category": "apply",
+          "action": "locate",
+          "label": "ZIP 파일다운로드",
+          "evidence": {
+            "name": "ZIP 파일다운로드",
+            "href": "#zipDownload",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475917'); return false;",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0841",
+          "category": "apply",
+          "action": "locate",
+          "label": "가족관계증명서 신청서, 개명신고서",
+          "evidence": {
+            "name": "가족관계증명서 신청서, 개명신고서",
+            "href": null,
+            "onclick": "fn_search_detail('B00000321543aepMxjV3'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0842",
+          "category": "apply",
+          "action": "locate",
+          "label": "ZIP 파일다운로드",
+          "evidence": {
+            "name": "ZIP 파일다운로드",
+            "href": "#zipDownload",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475915'); return false;",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0843",
+          "category": "apply",
+          "action": "locate",
+          "label": "출생신고서 및 사망신고서",
+          "evidence": {
+            "name": "출생신고서 및 사망신고서",
+            "href": null,
+            "onclick": "fn_search_detail('B00000321541StTsk2FV'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0844",
+          "category": "apply",
+          "action": "locate",
+          "label": "ZIP 파일다운로드",
+          "evidence": {
+            "name": "ZIP 파일다운로드",
+            "href": "#zipDownload",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475913'); return false;",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0845",
+          "category": "apply",
+          "action": "locate",
+          "label": "혼인신고서 및 이혼신고서",
+          "evidence": {
+            "name": "혼인신고서 및 이혼신고서",
+            "href": null,
+            "onclick": "fn_search_detail('B00000321539UhEQQiuF'); return false;",
+            "role": null,
+            "originalTag": "button"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        },
+        {
+          "sourceId": "cheonan-v9-0846",
+          "category": "apply",
+          "action": "locate",
+          "label": "ZIP 파일다운로드",
+          "evidence": {
+            "name": "ZIP 파일다운로드",
+            "href": "#zipDownload",
+            "onclick": "javascript: fn_zipDownload('FILE_000000000475911'); return false;",
+            "role": null,
+            "originalTag": "a"
+          },
+          "reason": "원본의 고정 이름·속성 및 주변 원래 문서 구조에서 이 기능 의미를 확인했다."
+        }
+      ],
+      "rejected": [
+        {
+          "sourceId": "cheonan-v9-0001",
+          "label": "대메뉴 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "대메뉴 바로가기",
+            "href": "#gnb",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0002",
+          "label": "본문 바로가기",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "본문 바로가기",
+            "href": "#txt",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0003",
+          "label": "천안시청",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "천안시청",
+            "href": "/kor/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0004",
+          "label": "2025-2026 천안방문의 해",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "2025-2026 천안방문의 해",
+            "href": "https://tour.chungnam.go.kr/kor.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0005",
+          "label": "천안시의회",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "천안시의회",
+            "href": "https://www.cheonancouncil.go.kr/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0006",
+          "label": "문화관광",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "문화관광",
+            "href": "/tour/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0008",
+          "label": "Language",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "Language",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0011",
+          "label": "화면크기",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "화면크기",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0018",
+          "label": "누리집 모아보기",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "누리집 모아보기",
+            "href": "/tmpl/common/family_site.jsp",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0021",
+          "label": "전체메뉴",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "전체메뉴",
+            "href": "/kor/sitemap.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0084",
+          "label": "행정정보",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "행정정보",
+            "href": "/kor/sub03_01_01_01.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0167",
+          "label": "천안소개",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "천안소개",
+            "href": "/kor/sub04_01_01.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0207",
+          "label": "시민참여",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "시민참여",
+            "href": "/kor/sub05_01_01.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0228",
+          "label": "분야별정보",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "분야별정보",
+            "href": "/bbs/BBSMSTR_000000000075/list.do",
+            "onclick": null,
+            "role": "button",
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0780",
+          "label": "민원대기현황",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "민원대기현황",
+            "href": "/kor/sub01_01_05.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0808",
+          "label": "홈",
+          "reason": "건너뛰기·홈·문서 위치 이동 또는 일반 연결로, 지정된 여섯 기능의 독립 의미가 없다.",
+          "evidence": {
+            "name": "홈",
+            "href": "/kor/index.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0811",
+          "label": "URL 복사",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "URL 복사",
+            "href": null,
+            "onclick": "CopyUrl(); return false;",
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0812",
+          "label": "공유하기",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "공유하기",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0817",
+          "label": "프린트",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "프린트",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0824",
+          "label": "초기화",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "초기화",
+            "href": null,
+            "onclick": "fn_search_reset();",
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0826",
+          "label": "출력갯수 선택",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "출력갯수 선택",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "select",
+            "fixedMetadataName": "10 20 30 50",
+            "accessibleName": "출력갯수 선택",
+            "accessibleNameProof": {
+              "report": "docs/evidence/run007/blind-v9-independent-static-qa.json",
+              "issueId": "NAME-02",
+              "ariaSnapshot": "- combobox \"출력갯수 선택\":\n  - option \"10\" [selected]\n  - option \"20\"\n  - option \"30\"\n  - option \"50\""
+            }
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0827",
+          "label": "적용",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "적용",
+            "href": null,
+            "onclick": "fn_search_list();",
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0852",
+          "label": "매우만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "매우만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0853",
+          "label": "만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0854",
+          "label": "보통",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "보통",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0855",
+          "label": "불만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "불만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0856",
+          "label": "매우불만족",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "매우불만족",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0857",
+          "label": "여러분들의 의견을 남겨주세요.",
+          "reason": "실제 입력·선택 또는 제출/보기 설정 제어로, 독립 기능 추천 대신 원본에서 직접 다뤄야 한다.",
+          "evidence": {
+            "name": "여러분들의 의견을 남겨주세요.",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "input"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0858",
+          "label": "의견남기기",
+          "reason": "원본의 일반 기관 소개·포괄 메뉴·홍보/외부 연결로, 문맥에서 여섯 기능 중 하나의 구체적인 공개 기능을 확인할 수 없다.",
+          "evidence": {
+            "name": "의견남기기",
+            "href": null,
+            "onclick": "javascript: fn_egov_research()",
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0861",
+          "label": "시 본청",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "시 본청",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0908",
+          "label": "구청/사업소",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "구청/사업소",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0922",
+          "label": "읍면동",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "읍면동",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0955",
+          "label": "특화누리집",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "특화누리집",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-0979",
+          "label": "관련누리집",
+          "reason": "언어·표시·공유·인쇄 또는 메뉴 펼침 등 구조/환경 제어로, 독립적인 지정 기능이 아니다.",
+          "evidence": {
+            "name": "관련누리집",
+            "href": null,
+            "onclick": null,
+            "role": null,
+            "originalTag": "button"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1004",
+          "label": "1422-36",
+          "reason": "전화 연결은 이 공개 정보 탐색 평가의 기능 범위 밖이다.",
+          "evidence": {
+            "name": "1422-36",
+            "href": "tel:1422-36",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1005",
+          "label": "천안시청 인스타그램",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "천안시청 인스타그램",
+            "href": "https://www.instagram.com/cheonancity/",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1006",
+          "label": "천안시청 유튜브",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "천안시청 유튜브",
+            "href": "https://www.youtube.com/channel/UCS9Hk665uj6anEose2quMdw",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1007",
+          "label": "천안시청 페이스북",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "천안시청 페이스북",
+            "href": "https://www.facebook.com/cheonancity",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1008",
+          "label": "천안시청 네이버 블로그",
+          "reason": "사회관계망 및 홍보 채널 연결로, 지정 기능 범주 밖이다.",
+          "evidence": {
+            "name": "천안시청 네이버 블로그",
+            "href": "https://blog.naver.com/cheonan_official",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1009",
+          "label": "개인정보처리방침",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "개인정보처리방침",
+            "href": "/kor/sitemap02_01.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1010",
+          "label": "저작권정책",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "저작권정책",
+            "href": "/kor/sitemap03.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1011",
+          "label": "이메일무단수집거부",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "이메일무단수집거부",
+            "href": "/kor/sitemap04.do",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        },
+        {
+          "sourceId": "cheonan-v9-1015",
+          "label": "과학기술정보통신부 WebWatch 웹 접근성 품질인증 2026.04.16 ~ 2027.04.15",
+          "reason": "정책·법령·품질표시 정보로, 이 평가에서 정의한 기능 범주에 해당하지 않는다.",
+          "evidence": {
+            "name": "과학기술정보통신부 WebWatch 웹 접근성 품질인증 2026.04.16 ~ 2027.04.15",
+            "href": "https://webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110",
+            "onclick": null,
+            "role": null,
+            "originalTag": "a"
+          }
+        }
+      ],
+      "expected": [
+        {
+          "id": "cheonan-v9-passport-preparation-form",
+          "category": "apply",
+          "label": "여권신청서",
+          "action": "locate",
+          "sourceIds": [
+            "cheonan-v9-0833",
+            "cheonan-v9-0834"
+          ],
+          "reason": "원본 민원서식 작성예시 목록의 여권신청서 상세 제어와 명시적 HWP 첨부파일은 신청 준비 서식이다."
+        },
+        {
+          "id": "cheonan-v9-moving-preparation-form",
+          "category": "apply",
+          "label": "전입신고서",
+          "action": "locate",
+          "sourceIds": [
+            "cheonan-v9-0837",
+            "cheonan-v9-0838"
+          ],
+          "reason": "표 행의 전입신고서 제목과 첨부 ZIP이 신청 준비 서식임을 직접 보여준다."
+        },
+        {
+          "id": "cheonan-v9-marriage-preparation-form",
+          "category": "apply",
+          "label": "혼인신고서 및 이혼신고서",
+          "action": "locate",
+          "sourceIds": [
+            "cheonan-v9-0845",
+            "cheonan-v9-0846"
+          ],
+          "reason": "표 행의 명시적인 신고서 제목과 첨부 ZIP을 원본에서 찾는 기능이다."
+        }
+      ],
+      "task": {
+        "instruction": "여권 신청을 준비하며 여권신청서가 있는 원본 위치를 찾으세요. 상세 제어를 자동으로 누르거나 첨부파일을 내려받지는 마세요.",
+        "action": "locate",
+        "expectedSourceIds": [
+          "cheonan-v9-0833",
+          "cheonan-v9-0834"
+        ]
+      }
+    }
+  ]
+}

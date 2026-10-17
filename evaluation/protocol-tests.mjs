@@ -27,7 +27,7 @@ test('fresh mode requires current blind holdout and explicit frozen inputs', () 
   assert.doesNotThrow(() => validateFreshMode(valid));
   assert.doesNotThrow(() => validateFreshMode({ ...valid, suite: 'blind-v7-v2' }));
   assert.doesNotThrow(() => validateFreshMode({ ...valid, suite: 'blind-v8' }));
-  for (const override of [{ engine: 'baseline' }, { suite: 'core' }, { suite: 'development-v4-corrected' }, { suite: 'development-v6-corrected' }, { suite: 'development-v6-corrected-v2' }, { suite: 'development-v7-corrected' }, { split: 'all' }, { explicitOutput: false }, { engineFreeze: undefined }, { datasetFreeze: undefined }]) {
+  for (const override of [{ suite: 'development-v7-corrected-v2' }, { engine: 'baseline' }, { suite: 'core' }, { suite: 'development-v4-corrected' }, { suite: 'development-v6-corrected' }, { suite: 'development-v6-corrected-v2' }, { suite: 'development-v7-corrected' }, { split: 'all' }, { explicitOutput: false }, { engineFreeze: undefined }, { datasetFreeze: undefined }]) {
     assert.throws(() => validateFreshMode({ ...valid, ...override }));
   }
 });
@@ -100,9 +100,11 @@ test('real evaluator refuses to overwrite a first independent result before laun
     const report = join(root, 'first', 'evaluation-current-blind-v5-holdout.json');
     await writeFile(report, 'preserved first failure\n');
     const script = fileURLToPath(new URL('../scripts/evaluate.mjs', import.meta.url));
-    const result = spawnSync(process.execPath, [script, '--suite=blind-v5', '--engine=current', '--split=holdout', '--phase=fresh-blind-validation', '--output-dir=first', '--engine-freeze=engine.json', '--dataset-freeze=data.json'], { cwd: root, encoding: 'utf8', timeout: 15_000 });
-    assert.notEqual(result.status, 0);
-    assert.match(result.stderr, /First independent evaluation already exists/);
+    for (const mode of ['generic', 'institution']) {
+      const result = spawnSync(process.execPath, [script, '--suite=blind-v5', '--engine=current', `--classification-mode=${mode}`, '--split=holdout', '--phase=fresh-blind-validation', '--output-dir=first', '--engine-freeze=engine.json', '--dataset-freeze=data.json'], { cwd: root, encoding: 'utf8', timeout: 15_000 });
+      assert.notEqual(result.status, 0);
+      assert.match(result.stderr, /First independent evaluation already exists/);
+    }
     assert.equal(await readFile(report, 'utf8'), 'preserved first failure\n');
   } finally { await rm(root, { recursive: true, force: true }); }
 });
@@ -111,7 +113,7 @@ test('new suite names are recognized and reject invalid inputs before reading da
   const root = await mkdtemp(join(tmpdir(), 'easyweb-v7-corrected-options-'));
   try {
     const script = fileURLToPath(new URL('../scripts/evaluate.mjs', import.meta.url));
-    for (const suite of ['development-v7-corrected', 'blind-v8']) {
+    for (const suite of ['development-v7-corrected', 'development-v7-corrected-v2', 'blind-v8', 'blind-v9', 'blind-v9-v2']) {
       const result = spawnSync(process.execPath, [script, `--suite=${suite}`, '--split=invalid'], { cwd: root, encoding: 'utf8', timeout: 15_000 });
       assert.notEqual(result.status, 0);
       assert.match(result.stderr, /engine=current\|baseline, split=calibration\|holdout\|all/);
