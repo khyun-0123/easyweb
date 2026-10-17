@@ -12,9 +12,9 @@ svg { display: block; width: 28px; height: 28px; fill: none; stroke: currentColo
 .brand-mark { background: #0a7b70; color: white; border-radius: 12px; padding: 8px; }
 .brand-mark svg { width: 25px; height: 25px; }
 .brand small { display: block; font-size: 12px; line-height: 1.4; font-weight: 500; letter-spacing: 0; color: #697887; }
-.close { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 10px 18px; background: #fff; color: #34465a; border: 1px solid #ccd6df; border-radius: 10px; font-size: 16px; font-weight: 650; }
+.close { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 10px 18px; background: #fff; color: #34465a; border: 1px solid #7f8c99; border-radius: 10px; font-size: 16px; font-weight: 650; }
 .close svg { width: 18px; height: 18px; }
-.close:hover { background: #f0f5f6; border-color: #769c96; }
+.close:hover { background: #f0f5f6; border-color: #3e8c81; }
 .shell { max-width: 1088px; margin: 0 auto; padding: 40px 36px 24px; }
 .site { display: flex; gap: 9px; align-items: center; color: #5c6b7b; font-size: 14px; flex-wrap: wrap; }
 .site .dot { width: 7px; height: 7px; border-radius: 50%; background: #0a7b70; }
@@ -25,11 +25,11 @@ h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 760; letter-spacing: -1.8px
 .intro p { color: #5e6e7e; margin: 0; font-size: 18px; word-break: keep-all; }
 .section-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; color: #4d6071; font-size: 14px; }
 .section-label h2 { font-size: 15px; font-weight: 650; margin: 0; }
-.refresh { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; background: none; color: #476173; border: 0; padding: 7px; font-size: 14px; }
+.refresh { min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; gap: 6px; background: none; color: #476173; border: 0; padding: 7px; font-size: 14px; }
 .refresh svg { width: 15px; height: 15px; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.card { display: flex; flex-direction: column; align-items: start; min-height: 224px; padding: 24px; background: white; color: #172739; text-decoration: none; border: 1px solid #dce3ea; border-radius: 18px; text-align: left; transition: border-color .15s, box-shadow .15s; overflow-wrap: anywhere; }
-.card:hover { border-color: #65a99e; box-shadow: 0 8px 24px #263d4d0b; }
+.card { display: flex; flex-direction: column; align-items: start; min-height: 224px; padding: 24px; background: white; color: #172739; text-decoration: none; border: 1px solid #7f8c99; border-radius: 18px; text-align: left; transition: border-color .15s, box-shadow .15s; overflow-wrap: anywhere; }
+.card:hover { border-color: #3e8c81; box-shadow: 0 8px 24px #263d4d0b; }
 .card[aria-disabled='true'] { background: #edf1f5; border-color: #c2cbd4; cursor: not-allowed; }
 .change-notice { padding: 15px 18px; background: #fff0d8; color: #704709; border: 1px solid #e6cc9f; border-radius: 10px; font-size: 16px; }
 .change-notice[hidden] { display: none; }
@@ -48,8 +48,14 @@ h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 760; letter-spacing: -1.8px
 .hint svg { width: 20px; height: 20px; margin-top: 2px; }
 .hint p { margin: 0; }
 .hint strong { color: #344f65; }
-.bottom { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 8px; color: #71808d; font-size: 13px; }
+.bottom { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 8px; color: #526476; font-size: 13px; }
 .status { min-height: 24px; }
+@media (forced-colors: active) {
+  .card, .close, .refresh { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }
+  .card[aria-disabled='true'] { border-color: GrayText; color: GrayText; }
+  button:focus-visible, a:focus-visible { outline: 3px solid Highlight; }
+  .card-icon { border: 1px solid CanvasText; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .shell { padding-top: 28px; } }
 @media (max-width: 520px) {

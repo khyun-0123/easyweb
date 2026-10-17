@@ -1,0 +1,372 @@
+{
+  "checkedAt": "2026-10-17T16:09:52.845Z",
+  "engine": "current",
+  "split": "holdout",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "c5485888ebe7b9ddef0d1ac96edb3ece8eb3fb92b33fb3e754a5b4bc3ab4c6f2",
+  "datasetHash": "54e528f6fa0f0fb6623c123643857c95779fe383378b36190952ea961a4db427",
+  "fixtureHashes": {
+    "city-counseling": "28488f841ca86361115618aa6d3f0dfcf9b45165794661288c4c8161bf95df3f",
+    "gov-help": "308976d2c88634933a859080dadfbe394119fe879ff395664eea16749eeb408b",
+    "library-help": "2ade4062d80decef195b08f9572368ba6d9250b754734c4970bd219c29993f76",
+    "agency-faq": "1d1bfcd381690af1d90ad7334bc60da2eb92a1fb97ff2f97ac6609c5b0415788",
+    "smu-calendar": "07807d390ccdd474a7cb6b0678574109b2134149f2164f46e6cb34f1590cbbf4"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 12,
+    "recommended": 12,
+    "matched": 8,
+    "expected": 15,
+    "precision": 1,
+    "recall": 0.5333333333333333,
+    "tasksRecommended": 0
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 4,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-counseling",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_02.do",
+      "candidateCount": 10,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "로그인",
+          "href": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "천안시청 2025-2026 천안방문의 해",
+          "category": "login",
+          "sourceId": "city-counseling-login"
+        },
+        {
+          "label": "통합검색",
+          "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "search.cheonan.go.kr",
+          "opensNewWindow": true,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "천안시청 2025-2026 천안방문의 해",
+          "category": "search",
+          "sourceId": "city-counseling-search-link"
+        },
+        {
+          "label": "대형폐기물 처리신청",
+          "href": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "apply",
+          "sourceId": "city-counseling-waste-guide"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "public-notices"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "government",
+      "pageId": "gov-help",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "candidateCount": 6,
+      "classifiedCount": 2,
+      "selected": [
+        {
+          "label": "검색",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "search",
+          "sourceId": "gov-help-search-link"
+        },
+        {
+          "label": "Q&A",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "footer",
+          "score": 55,
+          "reasons": [
+            "고정 문구 일치",
+            "하단의 명확한 도움말 링크",
+            "하단 영역 감점"
+          ],
+          "category": "help",
+          "sourceId": "gov-help-qa"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "missed": [
+        "gov-help-help"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-help",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "candidateCount": 7,
+      "classifiedCount": 2,
+      "selected": [
+        {
+          "label": "로그인",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "category": "login",
+          "sourceId": "library-help-login"
+        },
+        {
+          "label": "통합검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "category": "search",
+          "sourceId": "library-help-global-search"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 2,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "library-help-download"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "agency-faq",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "candidateCount": 7,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "search",
+          "sourceId": "agency-faq-global-search"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "login",
+          "sourceId": "agency-faq-login"
+        },
+        {
+          "label": "자주찾는 질문(FAQ)",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "sectionLabel": "국민참여",
+          "category": "help",
+          "sourceId": "agency-faq-faq-menu"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 4,
+      "precision": 1,
+      "recall": 0.5,
+      "missed": [
+        "agency-faq-question",
+        "agency-faq-ebook"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-calendar",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+      "candidateCount": 9,
+      "classifiedCount": 2,
+      "selected": [
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "search",
+          "sourceId": "smu-calendar-search-popup"
+        },
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "category": "login",
+          "sourceId": "smu-calendar-login"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "list-view",
+        "midterm-event"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    }
+  ]
+}

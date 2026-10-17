@@ -1,0 +1,97 @@
+{
+  "siteId": "city",
+  "name": "천안시청",
+  "type": "municipality",
+  "observedAt": "2026-10-17T16:47:13.903Z",
+  "pages": [
+    {
+      "id": "city-blind-v4",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "title": "대형폐기물 처리신청 < 기타 민원서비스 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v4/fixtures/city.html",
+      "observation": {
+        "method": "Fresh independent anonymous Playwright Chromium public-page observation, actual ariaSnapshot and original DOM ancestry. Library DOM read through a CDP isolated world. No product source, tests or product output read or run.",
+        "observedAt": "2026-10-17T16:47:13.903Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; selected controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, editable values, text entry, selection, submission, download or original task event execution.",
+          "Readonly task focus/hit-test and three public destination GET checks appear separately in docs/evidence/run002/blind-v4-observations.json."
+        ],
+        "limitations": [
+          "Small selected public-control reconstructions only; no full site copy, CSS/media, application scripts, authenticated state or actual extension execution.",
+          "Original ancestor tags, IDs, classes, fixed accessible labels and hrefs are retained; omitted unrelated context and original geometry can affect live behavior.",
+          "Inline onclick presence uses an inert return-false marker; original JavaScript href text is retained but handlers are not copied. Offline fixtures use script-src none; object-src none CSP metadata.",
+          "Readonly focus and center hit tests are limited source reach checks, not a full keyboard or assistive-technology audit.",
+          "File links are locate-only; no requested download or actual application/submission action was executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "city-blind-v4-waste-application-entry",
+          "category": "apply",
+          "label": "대형폐기물 신청하기",
+          "sourceIds": [
+            "city-blind-v4-apply"
+          ],
+          "action": "navigate",
+          "href": "http://cheonan.storyweb.co.kr/apply.php"
+        },
+        {
+          "id": "city-blind-v4-waste-application-result",
+          "category": "search",
+          "label": "대형폐기물 신청 결과 조회",
+          "sourceIds": [
+            "city-blind-v4-result"
+          ],
+          "action": "navigate",
+          "href": "http://cheonan.storyweb.co.kr/apply_search_form.html"
+        },
+        {
+          "id": "city-blind-v4-waste-ordinance",
+          "category": "help",
+          "label": "천안시 폐기물관리에 관한 조례 [별표6]",
+          "sourceIds": [
+            "city-blind-v4-ordinance"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-blind-v4-apply",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v4-result",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v4-ordinance",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-blind-v4-task",
+        "instruction": "천안시 폐기물관리에 관한 조례 [별표6] 원본 링크 위치를 찾으세요. 다운로드·폐기물 신청·결제·조회 정보 입력은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "city-blind-v4-ordinance"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "신청하기와 결과 조회는 실제 관찰한 일반 HTTP 링크이므로 공개 진입 위치로 navigate를 주석했다. 접수 완료·결제·조회 정보 제출을 뜻하지 않는다.",
+        "조례 별표의 직접 FileDown 링크는 다운로드를 실행하지 않고 원본 위치로 안내하는 locate이다. 입력 폼·사용자 값·신청 결과는 수집하지 않았다."
+      ]
+    }
+  ]
+}

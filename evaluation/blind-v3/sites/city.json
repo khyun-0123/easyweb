@@ -1,0 +1,96 @@
+{
+  "siteId": "city",
+  "name": "천안시청",
+  "type": "municipality",
+  "observedAt": "2026-10-17T16:42:10.748Z",
+  "pages": [
+    {
+      "id": "city-blind-v3",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "title": "여권 신청안내 < 민원안내 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v3/fixtures/city.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only observation, actual control ariaSnapshot and public DOM ancestry review. Prior inventories were read only for schema and URL exclusion; no product source or evaluation result was read or run.",
+        "observedAt": "2026-10-17T16:42:10.748Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, user input reads, text entry, selection, submission, download or original task event execution.",
+          "Task-source readonly focus/hit-test and public destination GETs are recorded separately in docs/evidence/run002/blind-v3-observations.json."
+        ],
+        "limitations": [
+          "Small public-control reconstructions only; no full site copy, page scripts, CSS/media, authenticated state or actual extension execution.",
+          "Layout-box visibility, readonly focus and center hit tests do not prove a complete keyboard traversal or assistive-technology experience.",
+          "Inline handler presence is represented with inert return-false attributes; script URL strings are preserved but handler implementations are not copied."
+        ]
+      },
+      "expected": [
+        {
+          "id": "city-blind-v3-passport-photo-guide",
+          "category": "help",
+          "label": "여권 사진 규격 안내 바로가기",
+          "sourceIds": [
+            "city-blind-v3-photo"
+          ],
+          "action": "navigate",
+          "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32"
+        },
+        {
+          "id": "city-blind-v3-passport-reissue-guide",
+          "category": "apply",
+          "label": "온라인 재발급 안내 바로가기",
+          "sourceIds": [
+            "city-blind-v3-reissue"
+          ],
+          "action": "navigate",
+          "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11"
+        },
+        {
+          "id": "city-blind-v3-passport-form-guide",
+          "category": "apply",
+          "label": "신청서 및 서식 모음 바로가기",
+          "sourceIds": [
+            "city-blind-v3-forms"
+          ],
+          "action": "navigate",
+          "href": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-blind-v3-photo",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v3-reissue",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v3-forms",
+          "category": "apply",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "city-blind-v3-task",
+        "instruction": "여권 신청안내에서 여권 사진 규격 안내 공개 페이지로 이동하세요. 사진 업로드나 여권 신청은 하지 않습니다.",
+        "expectedSourceIds": [
+          "city-blind-v3-photo"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "외교부 여권안내의 공개 안내 페이지로 가는 원래 링크이며 실제 여권 접수·본인확인·결제를 자동 수행하는 제어가 아니다.",
+        "신청서 및 서식 모음은 공개 목록 진입 링크로 주석했다. 파일 다운로드는 수행하지 않았다."
+      ]
+    }
+  ]
+}

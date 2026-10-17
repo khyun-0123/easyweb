@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-10-17T16:49:14.264Z",
+  "evaluationPhase": "post-holdout-development",
+  "freeze": "No further source changes after this report without a newly authorized concrete regression. blind-v4 contents were never opened or evaluated by this worker.",
+  "files": {
+    "src/classifier.ts": "bf197e20752b28a9df5b12655d5554124fd7097d9e5a41c07df8c1d631c4c033",
+    "src/ranker.ts": "6c4c77dd9a438bff0226428e4dce13192c1c076cf0b4d0b339704526cb9ccdd4",
+    "tests/classifier-ranking.spec.mjs": "08ba3c888af54b7fcf7cbb47b602529f49fe29dfeed86832e90b28f21682a24c"
+  },
+  "validation": {
+    "synthetic": {
+      "previousFullSuite": 43,
+      "previousFullPassed": 43,
+      "newV3TestsBefore": {
+        "executed": 6,
+        "passed": 0,
+        "failed": 6
+      },
+      "currentFull": {
+        "executed": 49,
+        "passed": 49,
+        "failed": 0,
+        "durationSeconds": 3.9
+      },
+      "newV2TestsBefore": {
+        "executed": 4,
+        "passed": 0,
+        "failed": 4
+      },
+      "v2QuerySafetyRegression": {
+        "unsafeQueries": 11,
+        "beforeAllowed": 9,
+        "afterAllowed": 0,
+        "safeUnknownSearchQueriesPreserved": 2
+      },
+      "suite": "tests/classifier-ranking.spec.mjs",
+      "command": "npx playwright test tests/classifier-ranking.spec.mjs --reporter=dot --output=/tmp/easyweb-v3-final49"
+    },
+    "typecheck": "PASS strict targeted classifier.ts/ranker.ts",
+    "coreDevelopment": {
+      "pages": 15,
+      "correct": 69,
+      "recommended": 69,
+      "matched": 45,
+      "expected": 45,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 15
+    },
+    "v2": {
+      "firstIndependentFailure": {
+        "pages": 5,
+        "correct": 14,
+        "recommended": 14,
+        "matched": 5,
+        "expected": 11,
+        "precision": 1,
+        "recall": 0.45454545454545453,
+        "tasksRecommended": 2
+      },
+      "exposedDevelopment": {
+        "pages": 5,
+        "correct": 21,
+        "recommended": 21,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "unchangedDataset": true,
+      "unchangedFixtures": true
+    },
+    "v3": {
+      "firstIndependentFailure": {
+        "pages": 5,
+        "correct": 10,
+        "recommended": 10,
+        "matched": 4,
+        "expected": 11,
+        "precision": 1,
+        "recall": 0.36363636363636365,
+        "tasksRecommended": 0
+      },
+      "exposedDevelopment": {
+        "pages": 5,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "unchangedDataset": true,
+      "unchangedFixtures": true
+    }
+  },
+  "policies": [
+    "Anchored contact/hours/institution-directory function-name grammar; article and narrative counterexamples excluded.",
+    "Issuance/reissuance function-name endings; formal educational concepts under exact academic context plus local navigation/list links.",
+    "Form artifact reading requires forms collection+listed ordinary link, or artifact download+ordered issuance/application procedure. Generic download is not an application task.",
+    "Tuition payment information exception requires academic context, ordinary anchor navigation, guidance ending, and no other dangerous label or URL evidence.",
+    "Fixed known command query keys use ASCII case folding and all duplicate values. Risky flag keys are case folded. submit/finalSubmit/submitFinal are rejected; unknown search/query values are not read for classification.",
+    "FAQ interrogative rows require explicit help context; semantic dl/dt controls require answer-open title markers. Article/non-question/unmarked controls are excluded.",
+    "Short guide fallback is after specific categories and requires a plain HTTP anchor, no known contrary endpoint, no recognized document reference/numeric document leaf/article/risk.",
+    "Source labels, hrefs, action, target and snapshot metadata remain preserved. Ranker unchanged from prior freeze."
+  ],
+  "limitations": "All original core, v2 and v3 data are now exposed development material. Their improved scores are not independent validation and cannot replace the preserved failed first evaluations. General guide/article distinction still depends on available fixed semantics; unstructured source pages can remain ambiguous."
+}

@@ -1,0 +1,96 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "type": "university",
+  "observedAt": "2026-10-17T16:42:07.942Z",
+  "pages": [
+    {
+      "id": "smu-blind-v3",
+      "url": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "title": "상명대학교 국문 | 학사안내 | 학사 | 수업 및 수강신청 | 수강신청 안내",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v3/fixtures/smu.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only observation, actual control ariaSnapshot and public DOM ancestry review. Prior inventories were read only for schema and URL exclusion; no product source or evaluation result was read or run.",
+        "observedAt": "2026-10-17T16:42:07.942Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, user input reads, text entry, selection, submission, download or original task event execution.",
+          "Task-source readonly focus/hit-test and public destination GETs are recorded separately in docs/evidence/run002/blind-v3-observations.json."
+        ],
+        "limitations": [
+          "Small public-control reconstructions only; no full site copy, page scripts, CSS/media, authenticated state or actual extension execution.",
+          "Layout-box visibility, readonly focus and center hit tests do not prove a complete keyboard traversal or assistive-technology experience.",
+          "Inline handler presence is represented with inert return-false attributes; script URL strings are preserved but handler implementations are not copied."
+        ]
+      },
+      "expected": [
+        {
+          "id": "smu-blind-v3-seasonal-course-guide",
+          "category": "academic",
+          "label": "계절수업",
+          "sourceIds": [
+            "smu-blind-v3-seasonal"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/seasonal.do#tab18182_"
+        },
+        {
+          "id": "smu-blind-v3-attendance-guide",
+          "category": "academic",
+          "label": "출결 지침 안내",
+          "sourceIds": [
+            "smu-blind-v3-attendance"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-blind-v3-seasonal",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v3-attendance",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v3-guide",
+          "category": "academic",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "smu-blind-v3-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-blind-v3-search",
+          "category": "search",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "smu-blind-v3-task",
+        "instruction": "수강신청 안내에서 출결 지침 안내 공개 페이지로 이동하세요. 로그인하거나 수강신청을 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "smu-blind-v3-attendance"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "실제 관찰한 두 학사 안내 탭을 별개의 핵심 기능으로 정했다. 학생별 신청내역이나 사용자 입력은 수집하지 않았다.",
+        "다른 문서의 fragment가 붙은 공개 링크는 navigate이고 팝업을 여는 JavaScript Login 및 검색 fragment 제어는 locate이다."
+      ]
+    }
+  ]
+}

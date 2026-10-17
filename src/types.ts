@@ -1,5 +1,6 @@
 export type Category = 'login' | 'search' | 'notice' | 'academic' | 'apply' | 'help';
 export type ActionType = 'navigate' | 'locate';
+export type PagePurpose = 'academic-calendar' | 'help';
 
 export interface SourceSnapshot {
   pageUrl: string;
@@ -19,6 +20,11 @@ export interface Candidate {
   snapshot?: SourceSnapshot;
   sectionLabel?: string;
   target?: string;
+  destinationHost?: string;
+  opensNewWindow?: boolean;
+  contextLabels?: string[];
+  pagePurpose?: PagePurpose;
+  pageTask?: 'control' | 'collection' | 'reading';
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

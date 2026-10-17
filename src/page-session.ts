@@ -1,9 +1,12 @@
-import { candidateLabel, sectionLabel, sourceSnapshot } from './analyzer';
+import { candidateLabel, contextLabels, pagePurpose, sourceContext, sourceSnapshot } from './analyzer';
 import type { Candidate } from './types';
 
 export function isCandidateCurrent(candidate: Candidate): boolean {
   if (candidateLabel(candidate.element) !== candidate.label) return false;
-  if (sectionLabel(candidate.element) !== candidate.sectionLabel) return false;
+  if (sourceContext(candidate.element) !== candidate.context) return false;
+  const labels = contextLabels(candidate.element);
+  if (labels[0] !== candidate.sectionLabel || JSON.stringify(labels) !== JSON.stringify(candidate.contextLabels ?? [])) return false;
+  if (pagePurpose(candidate.element, labels) !== candidate.pagePurpose) return false;
   const current = sourceSnapshot(candidate.element);
   return !!candidate.snapshot && current.pageUrl === candidate.snapshot.pageUrl &&
     current.baseUrl === candidate.snapshot.baseUrl && current.attributes === candidate.snapshot.attributes;
@@ -21,7 +24,7 @@ export function watchCandidates(getCandidates: () => Candidate[], onStale: () =>
   });
   observer.observe(document.documentElement, {
     subtree: true, childList: true, characterData: true, attributes: true,
-    attributeFilter: ['href', 'target', 'onclick', 'aria-controls', 'download', 'type', 'role', 'disabled', 'aria-disabled', 'aria-hidden', 'hidden', 'class', 'style', 'aria-label', 'aria-labelledby', 'title', 'placeholder', 'contenteditable'],
+    attributeFilter: ['href', 'target', 'onclick', 'aria-controls', 'aria-current', 'aria-expanded', 'download', 'type', 'form', 'id', 'role', 'disabled', 'aria-disabled', 'aria-hidden', 'hidden', 'class', 'style', 'aria-label', 'aria-labelledby', 'title', 'placeholder', 'contenteditable'],
   });
   // 원본 history를 교체하지 않고 쉬운 화면이 열린 동안만 URL을 감시합니다.
   const interval = window.setInterval(check, 300);

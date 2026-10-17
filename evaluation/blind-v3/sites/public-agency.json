@@ -1,0 +1,86 @@
+{
+  "siteId": "public-agency",
+  "name": "국민연금공단",
+  "type": "public-agency",
+  "observedAt": "2026-10-17T16:42:16.024Z",
+  "pages": [
+    {
+      "id": "public-agency-blind-v3",
+      "url": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "finalUrl": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "title": "공단소개 > 조직 > 지사 - 지사찾기 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v3/fixtures/public-agency.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only observation, actual control ariaSnapshot and public DOM ancestry review. Prior inventories were read only for schema and URL exclusion; no product source or evaluation result was read or run.",
+        "observedAt": "2026-10-17T16:42:16.024Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, user input reads, text entry, selection, submission, download or original task event execution.",
+          "Task-source readonly focus/hit-test and public destination GETs are recorded separately in docs/evidence/run002/blind-v3-observations.json."
+        ],
+        "limitations": [
+          "Small public-control reconstructions only; no full site copy, page scripts, CSS/media, authenticated state or actual extension execution.",
+          "Layout-box visibility, readonly focus and center hit tests do not prove a complete keyboard traversal or assistive-technology experience.",
+          "Inline handler presence is represented with inert return-false attributes; script URL strings are preserved but handler implementations are not copied."
+        ]
+      },
+      "expected": [
+        {
+          "id": "public-agency-blind-v3-branch-search",
+          "category": "search",
+          "label": "지사찾기",
+          "sourceIds": [
+            "public-agency-blind-v3-input",
+            "public-agency-blind-v3-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "public-agency-blind-v3-all-branch-directory",
+          "category": "help",
+          "label": "지사/센터 전체보기",
+          "sourceIds": [
+            "public-agency-blind-v3-all-branches"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "public-agency-blind-v3-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v3-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v3-all-branches",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "public-agency-blind-v3-task",
+        "instruction": "지사찾기에서 지사/센터 전체보기 공개 페이지로 이동하세요. 검색어나 주소를 입력하지 않습니다.",
+        "expectedSourceIds": [
+          "public-agency-blind-v3-all-branches"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "지역·주소·이름 등 사용자 입력과 검색 결과는 수집하지 않았다. 지사/센터 전체보기는 로그인 없는 공개 조직 안내 경로이다.",
+        "input[type=button]의 고정 value=검색은 편집 입력값과 구별하여 공개 버튼 이름으로 보존했다."
+      ]
+    }
+  ]
+}

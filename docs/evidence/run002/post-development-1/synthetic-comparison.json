@@ -1,0 +1,49 @@
+{
+  "evaluationPhase": "post-holdout-development",
+  "scope": "Same synthetic suite with verified first-frozen classifier/ranker versus current source. Original core15 already exposed; blind-v2 not inspected or evaluated.",
+  "frozenSourceReconstruction": {
+    "directory": "/tmp/easyweb-post-holdout-frozen/src",
+    "method": "Reverse only this post-holdout patch; verify exact SHA256 against permanent engine-freeze.json before use",
+    "classifierSha256": "8e4eba18e47cb6dc2096f8ec23c275130e730874294e6140ddf3609326785013",
+    "rankerSha256": "42828bcc1908958246321985715053bab75b84fcb5616002a2335ec07b1342be"
+  },
+  "suite": {
+    "file": "tests/classifier-ranking.spec.mjs",
+    "sha256": "20a9e1426d0e7210f798818894c9a83003b6fd6095b9c166b5356afbeaf4d953",
+    "total": 31,
+    "before": {
+      "passed": 23,
+      "failed": 8
+    },
+    "after": {
+      "passed": 31,
+      "failed": 0
+    },
+    "beforeFailureInterpretation": "Six new classification-policy tests, one new cap3 test, and one existing search-order test with cap3 capacity expectation. Search input still ranks before submit in both engines.",
+    "newNegativeTest": {
+      "cases": 12,
+      "beforeClassified": 0,
+      "afterClassified": 0,
+      "includes": [
+        "article exclusions",
+        "FAQish boundary",
+        "query-only FAQ text ignored",
+        "weak help headings",
+        "contrary search endpoint",
+        "footer handoff",
+        "wrong question marker",
+        "unscoped calendar modes",
+        "dangerous final submission"
+      ]
+    },
+    "beforeCommand": "EASYWEB_ENGINE_ROOT=/tmp/easyweb-post-holdout-frozen/src npx playwright test tests/classifier-ranking.spec.mjs --reporter=dot --output=/tmp/easyweb-run002-frozen-synthetic-31",
+    "afterCommand": "npx playwright test tests/classifier-ranking.spec.mjs --reporter=dot --output=/tmp/easyweb-run002-current-synthetic-31"
+  },
+  "typecheck": "PASS targeted strict TypeScript for classifier.ts/ranker.ts",
+  "currentSource": {
+    "src/classifier.ts": "666ff7573409d64270654f6efcf777110d8edb67b456612c4a96448ef7a106ec",
+    "src/ranker.ts": "ab29d439be20e99256c8c64b5beeeb3d36088f99d9cddcb6df0666a588d33be7",
+    "tests/classifier-ranking.spec.mjs": "20a9e1426d0e7210f798818894c9a83003b6fd6095b9c166b5356afbeaf4d953"
+  },
+  "remainingCoreDevelopmentFailure": "library-help-download classified help but sourceAction navigate differs from fixed locate expectation; parent owns action-policy correction."
+}

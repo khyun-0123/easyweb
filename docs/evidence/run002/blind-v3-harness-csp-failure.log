@@ -1,0 +1,15 @@
+
+> easyweb@0.3.0 evaluate
+> node scripts/evaluate.mjs --suite=blind-v3 --engine=current --split=holdout --phase=fresh-blind-validation --output-dir=docs/evidence/run002/blind-v3-first
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.addScriptTag: Executing inline script violates the following Content Security Policy directive 'script-src 'none''. Either the 'unsafe-inline' keyword, a hash ('sha256-pcxXDPM9aOm+q8RwiiZmE19UDhh68c7xByT+7Q8rmb8='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.
+    at /Users/khyun_03/easyweb/scripts/evaluate.mjs:67:20 {
+  log: [],
+  name: 'Error'
+}
+
+Node.js v26.0.0

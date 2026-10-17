@@ -1,0 +1,90 @@
+{
+  "siteId": "government",
+  "name": "국민안전24",
+  "type": "government-service",
+  "observedAt": "2026-10-17T16:42:13.525Z",
+  "pages": [
+    {
+      "id": "government-blind-v3",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "title": "국민안전24 | 열린마당 | 자주 묻는 질문 |",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v3/fixtures/government.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only observation, actual control ariaSnapshot and public DOM ancestry review. Prior inventories were read only for schema and URL exclusion; no product source or evaluation result was read or run.",
+        "observedAt": "2026-10-17T16:42:13.525Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, user input reads, text entry, selection, submission, download or original task event execution.",
+          "Task-source readonly focus/hit-test and public destination GETs are recorded separately in docs/evidence/run002/blind-v3-observations.json."
+        ],
+        "limitations": [
+          "Small public-control reconstructions only; no full site copy, page scripts, CSS/media, authenticated state or actual extension execution.",
+          "Layout-box visibility, readonly focus and center hit tests do not prove a complete keyboard traversal or assistive-technology experience.",
+          "Inline handler presence is represented with inert return-false attributes; script URL strings are preserved but handler implementations are not copied."
+        ]
+      },
+      "expected": [
+        {
+          "id": "government-blind-v3-faq-search",
+          "category": "search",
+          "label": "검색어",
+          "sourceIds": [
+            "government-blind-v3-input",
+            "government-blind-v3-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v3-website-support-question",
+          "category": "help",
+          "label": "홈페이지 이용중 나타나는 장애문의는 어디에서 하나요?",
+          "sourceIds": [
+            "government-blind-v3-support-question"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "government-blind-v3-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v3-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v3-support-question",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v3-civil-defense-faq",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "government-blind-v3-task",
+        "instruction": "홈페이지 이용중 나타나는 장애문의는 어디에서 하나요? 질문의 원본 링크 위치를 찾으세요. 질문 열기나 검색은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "government-blind-v3-support-question"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "FAQ 질문 원본은 HTTP href가 아닌 javascript:onSubmit 링크이므로 공개 내용이어도 locate로 정했다.",
+        "검색 입력 내용은 읽거나 복사하지 않았다. 원본의 고정 title=검색어와 버튼 텍스트만 보존했다."
+      ]
+    }
+  ]
+}

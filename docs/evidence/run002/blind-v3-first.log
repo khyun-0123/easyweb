@@ -1,0 +1,74 @@
+
+> easyweb@0.3.0 evaluate
+> node scripts/evaluate.mjs --suite=blind-v3 --engine=current --split=holdout --phase=fresh-blind-validation --output-dir=docs/evidence/run002/blind-v3-first
+
+{
+  "output": "docs/evidence/run002/blind-v3-first/evaluation-current-blind-v3-holdout.json",
+  "summary": {
+    "pages": 5,
+    "correct": 10,
+    "recommended": 10,
+    "matched": 4,
+    "expected": 11,
+    "precision": 1,
+    "recall": 0.36363636363636365,
+    "tasksRecommended": 0
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 0,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0,
+      "tasksRecommended": 0
+    }
+  ]
+}

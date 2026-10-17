@@ -130,3 +130,10 @@ test('일반 제어의 고정 문구와 접근성 이름을 보조 title보다 �
   expect(candidates.find(x => x.id === 'image-label')?.label).toBe('이용 안내');
   expect(candidates.find(x => x.id === 'tooltip-only')?.label).toBe('공지사항');
 });
+
+test('작은 기능 상자의 짧은 문맥을 읽을 때 편집 내용을 건너뛴다', async ({ page }) => {
+  await page.setContent('<div><p>이용 안내 <span role="textbox">PRIVATE_SENTINEL</span></p><p>설명 문장</p><a id="context-link" href="https://example.test/faq">바로가기</a></div>');
+  const candidates = await inspect(page);
+  expect(candidates.find(x => x.id === 'context-link')?.sectionLabel).toBe('이용 안내');
+  expect(JSON.stringify(candidates)).not.toContain('PRIVATE_SENTINEL');
+});

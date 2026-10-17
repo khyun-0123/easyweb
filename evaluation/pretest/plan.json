@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "pretestId": "PRETEST-001",
+  "preparedAt": "2026-10-17T16:33:09.799Z",
+  "status": "NOT_RUN",
+  "participantId": "PILOT01",
+  "plannedParticipants": 1,
+  "purpose": "functional_and_instruction_comprehension_check",
+  "estimatedDurationMinutes": {
+    "minimum": 5,
+    "maximum": 10,
+    "installationIncluded": false
+  },
+  "requiresStableBuildHandoff": true,
+  "candidateManifestVersion": "0.3.0",
+  "installedBuildVersion": null,
+  "installedPackageSha256": null,
+  "formalStudy": {
+    "studyId": "easyweb-public-reach-study-v1",
+    "status": "NOT_RUN",
+    "includeParticipantCount": false,
+    "includePairedObservations": false,
+    "includeSuccessRate": false,
+    "includeTiming": false,
+    "includeSurvey": false,
+    "mayRunFormalAnalysis": false
+  },
+  "quantitativeComparison": false,
+  "productAcceptance": "NOT_EVALUATED",
+  "actualObservedTasks": 0,
+  "sourceDatasetSha256": {
+    "evaluation/sites/city.json": "a66bdbab81b1923a9fa4c492f1166bfa9b88dcba3ca0af9f49fb21e1478f2d12",
+    "evaluation/sites/government.json": "bf70687c41c7721d7ed532438816e0681238c9b82553a40c7b88e3297f73948b",
+    "evaluation/sites/library.json": "41ebe745dfd2cc9b1bfb3dd89ad787fba0446f778f18a2928db2a28db114b8ed",
+    "evaluation/sites/public-agency.json": "cdfb2d428d103ed4b2659123f2586db491f5309ca3062cd446239231ad97ffda",
+    "evaluation/sites/smu.json": "94e64e336e17c8ebb127222f0c7507ecfcd08d15ae638f730c5daa43a755d290"
+  },
+  "tasks": [
+    {
+      "taskId": "PRE01",
+      "sourceTaskId": "city-home-open-counseling",
+      "siteId": "city",
+      "siteName": "천안시청",
+      "startUrl": "https://www.cheonan.go.kr/kor.do",
+      "instruction": "자주 찾는 서비스에서 무료상담운영 안내 페이지에 도달하세요.",
+      "expectedEndpoint": "public_page",
+      "expectedTargets": [
+        {
+          "sourceId": "city-home-counseling",
+          "label": "무료상담운영",
+          "action": "navigate",
+          "category": "help",
+          "href": "https://www.cheonan.go.kr/kor/sub01_03_02.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/city.json",
+      "boundary": "Public destination or original control reach only. No account/private input, Enter/search execution, original JS activation, form submit, application, payment, deletion, file download or software installation."
+    },
+    {
+      "taskId": "PRE02",
+      "sourceTaskId": "gov-home-task",
+      "siteId": "government",
+      "siteName": "국민안전24",
+      "startUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "instruction": "국민안전24 홈에서 검색 페이지로 이동하세요. 검색어는 입력하지 않습니다.",
+      "expectedEndpoint": "public_page",
+      "expectedTargets": [
+        {
+          "sourceId": "gov-home-search-link",
+          "label": "검색",
+          "action": "navigate",
+          "category": "search",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/government.json",
+      "boundary": "Public destination or original control reach only. No account/private input, Enter/search execution, original JS activation, form submit, application, payment, deletion, file download or software installation."
+    },
+    {
+      "taskId": "PRE03",
+      "sourceTaskId": "library-home-task",
+      "siteId": "library",
+      "siteName": "국립중앙도서관",
+      "startUrl": "https://www.nl.go.kr/",
+      "instruction": "첫 화면의 검색어 입력 제어를 찾아 원본 위치로 안내받으세요. 입력하거나 검색하지 않습니다.",
+      "expectedEndpoint": "original_control",
+      "expectedTargets": [
+        {
+          "sourceId": "library-home-input",
+          "label": "검색어 입력",
+          "action": "locate",
+          "category": "search"
+        }
+      ],
+      "sourceFile": "evaluation/sites/library.json",
+      "boundary": "Public destination or original control reach only. No account/private input, Enter/search execution, original JS activation, form submit, application, payment, deletion, file download or software installation."
+    },
+    {
+      "taskId": "PRE04",
+      "sourceTaskId": "agency-home-task",
+      "siteId": "public-agency",
+      "siteName": "국민연금공단",
+      "startUrl": "https://www.nps.or.kr/main.do",
+      "instruction": "새소식 전체 목록으로 이동하세요.",
+      "expectedEndpoint": "public_page",
+      "expectedTargets": [
+        {
+          "sourceId": "agency-home-notice",
+          "label": "새소식 더보기",
+          "action": "navigate",
+          "category": "notice",
+          "href": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897"
+        }
+      ],
+      "sourceFile": "evaluation/sites/public-agency.json",
+      "boundary": "Public destination or original control reach only. No account/private input, Enter/search execution, original JS activation, form submit, application, payment, deletion, file download or software installation."
+    },
+    {
+      "taskId": "PRE05",
+      "sourceTaskId": "smu-home-open-academic-calendar",
+      "siteId": "smu",
+      "siteName": "상명대학교",
+      "startUrl": "https://www.smu.ac.kr/kor/index.do",
+      "instruction": "학사안내를 통해 공개 학사일정 페이지에 도달하세요.",
+      "expectedEndpoint": "public_page",
+      "expectedTargets": [
+        {
+          "sourceId": "smu-home-academic",
+          "label": "학사안내",
+          "action": "navigate",
+          "category": "academic",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/smu.json",
+      "boundary": "Public destination or original control reach only. No account/private input, Enter/search execution, original JS activation, form submit, application, payment, deletion, file download or software installation."
+    }
+  ],
+  "recording": {
+    "observationsTemplate": "evaluation/pretest/observations.blank.csv",
+    "userResultTemplate": "evaluation/pretest/result-form.blank.md",
+    "sessionTemplate": "evaluation/pretest/run-record.blank.json",
+    "outcome": [
+      "reached",
+      "not_reached",
+      "blocked",
+      "stopped"
+    ],
+    "observedAction": [
+      "direct_navigation",
+      "original_guidance",
+      "no_card",
+      "no_ui",
+      "not_attempted"
+    ],
+    "instructionUnderstood": [
+      "yes",
+      "no",
+      "unsure"
+    ],
+    "returnToStart": [
+      "yes",
+      "no",
+      "not_attempted"
+    ],
+    "participantId": "PILOT01",
+    "unobserved": "Do not add an observation row; leave the user form blank or mark not run. Blank is not zero or success."
+  },
+  "limitations": [
+    "Prepared task instructions do not establish current live-site reach or package installation acceptance. Root final live validation is separate and was not imported here.",
+    "Single-person pretest has no original/EasyWeb paired timing or control condition and makes no efficacy or representative usability claim.",
+    "Pretest records and survey answers remain in evaluation/pretest; never relabel them as P01 or feed them into scripts/analyze-study.mjs.",
+    "Source task labels, URLs and fixture ground truth are unchanged. Site changes/blocks and incomplete destinations are reported rather than corrected after observing outcomes."
+  ]
+}

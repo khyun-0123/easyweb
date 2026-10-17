@@ -1,0 +1,111 @@
+{
+  "siteId": "city",
+  "name": "천안시청",
+  "type": "municipality",
+  "observedAt": "2026-10-17T16:13:56.707Z",
+  "pages": [
+    {
+      "id": "city-blind-v2",
+      "url": "https://www.cheonan.go.kr/dhealth.do",
+      "finalUrl": "https://www.cheonan.go.kr/dhealth.do",
+      "title": "동남구 보건소",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v2/fixtures/city.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+          "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+          "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+        ],
+        "limitations": [
+          "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+          "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+          "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+          "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "city-blind-v2-task-feature-1",
+          "category": "help",
+          "label": "조직 및 전화번호 안내",
+          "sourceIds": [
+            "city-blind-v2-directory"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do"
+        },
+        {
+          "id": "city-blind-v2-task-feature-2",
+          "category": "apply",
+          "label": "골다공증 검사예약",
+          "sourceIds": [
+            "city-blind-v2-booking"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/dhealth/sub02_07_01_01.do"
+        },
+        {
+          "id": "city-blind-v2-task-feature-3",
+          "category": "notice",
+          "label": "공지사항 더보기",
+          "sourceIds": [
+            "city-blind-v2-notice"
+          ],
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000153/list.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "city-blind-v2-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v2-search",
+          "category": "search",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v2-directory",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v2-booking",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v2-notice",
+          "category": "notice",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "city-blind-v2-notice-tab",
+          "category": "notice",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "city-blind-v2-task",
+        "instruction": "조직 및 전화번호 안내 공개 페이지로 이동하세요. 전화 발신이나 예약 신청은 하지 않습니다.",
+        "expectedSourceIds": [
+          "city-blind-v2-directory"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "천안시의 공식 보건소 하위 영역으로 기존 시청 홈·민원 신청안내·무료상담 페이지와 구분된다.",
+        "예약 명칭의 링크는 공개 안내 진입 경로로만 정답을 정했다. 실제 예약·의료정보 입력·진단은 수행하지 않는다."
+      ]
+    }
+  ]
+}

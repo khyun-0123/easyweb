@@ -1,7 +1,10 @@
 import type { Candidate, Category } from './types';
 
 const MAX_CARDS = 6;
-const MAX_PER_CATEGORY = 2;
+// A focused page can offer a help index, a question and a reading control.
+// Category diversity still gets first choice; the total remains six cards.
+const MAX_PER_CATEGORY = 3;
+const MAX_PAGE_TASKS = 3;
 const contextOrder = { primary: 0, body: 1, footer: 2 };
 const compareText = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 const normalizedLabel = (candidate: Candidate) => candidate.label.normalize('NFKC').replace(/\s+/g, ' ').trim().toLowerCase();
@@ -12,11 +15,74 @@ function destination(candidate: Candidate): string {
   catch { return candidate.href; }
 }
 
+function isPageTask(candidate: Candidate): boolean {
+  return !!candidate.pageTask && candidate.context !== 'footer' && !candidate.element.closest('header, [role~="banner"]');
+}
+
+function isLocalNavigation(candidate: Candidate): boolean {
+  return candidate.context === 'primary' && !!candidate.element.closest('nav, [role~="navigation"]')
+    && !candidate.element.closest('header, [role~="banner"]');
+}
+
+function navigationPriority(candidate: Candidate): number {
+  if (!isLocalNavigation(candidate) || isPageTask(candidate)) return 0;
+  const current = candidate.element.getAttribute('aria-current');
+  if (current && current.toLowerCase() !== 'false') return 0;
+  if (candidate.href) {
+    try {
+      const url = new URL(candidate.href);
+      if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search) return 0;
+    } catch { /* A malformed destination cannot add navigation evidence. */ }
+  }
+  const item = candidate.element.closest('li, [role~="listitem"]');
+  const submenu = item?.querySelector(':scope > ul, :scope > ol, :scope > [role~="group"], :scope > [role~="menu"]');
+  return submenu || candidate.element.hasAttribute('aria-expanded') ? 1 : 2;
+}
+
+function pagePriority(candidate: Candidate): number {
+  if (candidate.context === 'footer') return -1;
+  if (isPageTask(candidate)) {
+    const purposeMatch = candidate.pagePurpose === 'academic-calendar' && candidate.category === 'academic'
+      || candidate.pagePurpose === 'help' && candidate.category === 'help';
+    return purposeMatch ? 3 : 2;
+  }
+  // A local contents menu remains distinct from the site's global header.
+  return isLocalNavigation(candidate) ? 1 : 0;
+}
+
+function sourceOrder(a: Candidate, b: Candidate): number {
+  const position = a.element.compareDocumentPosition(b.element);
+  return position & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : position & Node.DOCUMENT_POSITION_PRECEDING ? 1 : 0;
+}
+
 function compare(a: Candidate, b: Candidate): number {
-  return b.score - a.score || contextOrder[a.context] - contextOrder[b.context]
+  return pagePriority(b) - pagePriority(a) || navigationPriority(b) - navigationPriority(a) || b.score - a.score
+    || contextOrder[a.context] - contextOrder[b.context]
     || a.label.length - b.label.length || compareText(normalizedLabel(a), normalizedLabel(b))
     || compareText(destination(a), destination(b)) || compareText(a.category ?? '', b.category ?? '')
     || compareText(a.action, b.action) || compareText(a.element.id, b.element.id);
+}
+
+function ordered(candidates: Candidate[]): Candidate[] {
+  const sorted = [...candidates].sort(compare);
+  const groups = new Map<Element, Map<string, number[]>>();
+  sorted.forEach((candidate, index) => {
+    if (candidate.pageTask !== 'reading') return;
+    const container = candidate.element.closest('ul, ol, table, [role~="list"], [role~="grid"]');
+    if (!container) return;
+    const key = `${candidate.category}:${candidate.score}:${pagePriority(candidate)}`;
+    const peers = groups.get(container) ?? new Map<string, number[]>();
+    peers.set(key, [...(peers.get(key) ?? []), index]);
+    groups.set(container, peers);
+  });
+  // Apply source order only to a tied group's existing positions. Putting a
+  // conditional DOM comparison inside the general comparator creates cycles
+  // when another list's lexical order falls between two items in this list.
+  for (const peers of groups.values()) for (const positions of peers.values()) {
+    const readings = positions.map(index => sorted[index]).sort(sourceOrder);
+    positions.forEach((index, offset) => { sorted[index] = readings[offset]; });
+  }
+  return sorted;
 }
 
 export function rank(candidates: Candidate[]): Candidate[] {
@@ -24,7 +90,7 @@ export function rank(candidates: Candidate[]): Candidate[] {
   // Separate locate controls with the same label can perform different tasks.
   const destinations = new Set<string>();
   const controls = new Set<HTMLElement>();
-  const unique = [...candidates].filter(candidate => candidate.category).sort(compare).filter(candidate => {
+  const unique = ordered(candidates.filter(candidate => candidate.category)).filter(candidate => {
     const href = destination(candidate);
     if (href) {
       if (destinations.has(href)) return false;
@@ -37,11 +103,19 @@ export function rank(candidates: Candidate[]): Candidate[] {
   });
   const counts = new Map<Category, number>();
   const selected: Candidate[] = [];
+  // Reserve bounded space for source-backed tasks on the current page. A mere
+  // body keyword does not acquire this evidence. Then retain category diversity.
+  for (const candidate of unique) {
+    if (!candidate.category || !isPageTask(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
+    counts.set(candidate.category, (counts.get(candidate.category) ?? 0) + 1);
+    selected.push(candidate);
+    if (selected.length === MAX_PAGE_TASKS) break;
+  }
   for (const candidate of unique) {
     if (!candidate.category || counts.has(candidate.category)) continue;
     counts.set(candidate.category, 1);
     selected.push(candidate);
-    if (selected.length === MAX_CARDS) return selected;
+    if (selected.length === MAX_CARDS) return ordered(selected);
   }
   for (const candidate of unique) {
     if (!candidate.category || selected.includes(candidate) || (counts.get(candidate.category) ?? 0) >= MAX_PER_CATEGORY) continue;
@@ -49,5 +123,5 @@ export function rank(candidates: Candidate[]): Candidate[] {
     selected.push(candidate);
     if (selected.length === MAX_CARDS) break;
   }
-  return selected.sort(compare);
+  return ordered(selected);
 }

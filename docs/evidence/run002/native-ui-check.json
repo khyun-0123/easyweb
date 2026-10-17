@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-17T16:15:02.356Z",
+  "scope": "Preliminary native CUA interaction on isolated Google Chrome for Testing, no CDP simulated toolbar event; final installed build must be reloaded after source freeze.",
+  "environment": {
+    "browser": "Google Chrome for Testing 156.0.8078.4",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "profile": "/tmp/easyweb-chrome-run002.2B8T31-cft",
+    "extensionId": "majgcponpecckppcaljhbfddekgahmcj"
+  },
+  "preliminaryContentHash": "6ab86d0b61222c95b07c6ac3502b68ad593dadf9b01f51c94cd1be1d5aa536c2",
+  "checks": {
+    "unpackedInstall": {
+      "status": "PASS",
+      "observed": "Extension loaded, version 0.3.0, enabled. Original dist Manifest with activeTab/scripting and no host_permissions."
+    },
+    "restrictedPage": {
+      "status": "PASS",
+      "url": "chrome://extensions/",
+      "observed": "Toolbar title changed to unavailable/general-page recovery instruction."
+    },
+    "actualToolbarAndActiveTab": {
+      "status": "PASS",
+      "url": "http://127.0.0.1:4173/",
+      "before": "이 사이트의 액세스 권한이 필요합니다.",
+      "after": "이 사이트의 액세스 권한이 있습니다.",
+      "observed": "Clicked native toolbar EasyWeb button; 6 cards appeared. Did not use demo launch button."
+    },
+    "zoom200": {
+      "status": "PASS",
+      "method": "Five native Cmd+= shortcuts; browser zoom control reported 200%. Visual 2-column reflow and native Tab focused refresh."
+    },
+    "zoom400": {
+      "status": "PASS",
+      "method": "Three additional Cmd+= shortcuts; browser control reported 400%. Visual 1-column reflow with full card inside width; Tab scrolled/focused login card. Native screenshot window width 1200px."
+    },
+    "restoreZoom": {
+      "status": "PASS",
+      "method": "Native Cmd+0, zoom control removed and original size restored."
+    },
+    "voiceOver": {
+      "status": "PARTIAL_UNVERIFIED_SPEECH",
+      "initialSetting": "off",
+      "testSetting": "on",
+      "observed": "Accepted built-in VoiceOver start dialog. Native Chrome focus moved through cards. Caption-panel setting was already on; no setting changed there. VoiceOver native UI lookup timed out twice, so actual spoken/caption name/status announcements were not independently captured.",
+      "restoredSetting": "off",
+      "acceptancePassed": false
+    }
+  },
+  "notes": [
+    "Native AX observations/screenshots are in the CUA conversation transcript; this JSON records observed task-specific assertions only.",
+    "This is not user efficacy data or full S06/S08 acceptance."
+  ]
+}

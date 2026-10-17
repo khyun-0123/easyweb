@@ -1,6 +1,8 @@
 import { openEasyMode } from './easy-mode';
+import { clearOriginalNotice } from './original-notice';
 
 (() => {
+  clearOriginalNotice();
   // 같은 파일이 다시 주입되면 이벤트로 기존 인스턴스를 정상 종료합니다.
   const existing = document.querySelector<HTMLElement>('[data-easyweb-host]');
   if (existing) {

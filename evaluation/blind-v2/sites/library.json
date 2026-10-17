@@ -1,0 +1,90 @@
+{
+  "siteId": "library",
+  "name": "국립중앙도서관",
+  "type": "library",
+  "observedAt": "2026-10-17T16:13:57.337Z",
+  "pages": [
+    {
+      "id": "library-blind-v2",
+      "url": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+      "title": "국립중앙도서관>도서관 이용>이용안내>이용증 발급",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v2/fixtures/library.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+          "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+          "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+        ],
+        "limitations": [
+          "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+          "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+          "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+          "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-blind-v2-task-feature-1",
+          "category": "apply",
+          "label": "이용증 대리 수령 위임장 다운받기",
+          "sourceIds": [
+            "library-blind-v2-delegation"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-blind-v2-task-feature-2",
+          "category": "help",
+          "label": "이용시간",
+          "sourceIds": [
+            "library-blind-v2-hours"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-blind-v2-login",
+          "category": "login",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v2-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v2-hours",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v2-delegation",
+          "category": "apply",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-blind-v2-task",
+        "instruction": "이용증 대리 수령 위임장 다운받기 원본 링크 위치를 찾으세요. 다운로드·회원가입·본인인증·이용증 신청은 하지 않습니다.",
+        "expectedSourceIds": [
+          "library-blind-v2-delegation"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "위임장 원본 링크는 확장자가 없는 직접 fileDownload 엔드포인트이므로 자동 이동/다운로드 대신 locate로 정했다.",
+        "이용시간 링크에는 원본 inline onclick이 존재하므로 구현을 복사하지 않고 존재만 inert 표식으로 보존하며 원본 위치 안내로 정했다.",
+        "도서관의 div 기반 header/footer를 semantic landmark로 바꾸지 않았다."
+      ]
+    }
+  ]
+}

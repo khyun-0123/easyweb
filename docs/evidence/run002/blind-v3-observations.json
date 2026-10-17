@@ -1,0 +1,1987 @@
+{
+  "dataset": "blind-v3",
+  "createdAt": "2026-10-17T16:42:05.910Z",
+  "product": "NOT_RUN",
+  "independence": {
+    "readOnlyInputs": [
+      "evaluation/sites/*.json: schema and 15 URL inventory",
+      "evaluation/blind-v2/sites/*.json: schema and 5 URL inventory"
+    ],
+    "implementationRead": false,
+    "evaluationResultsRead": false,
+    "engineRun": false,
+    "selectionBasis": "Fresh public-page tasks chosen from actual official link/control observations before seeing any engine output; page URLs differ from both prior inventories."
+  },
+  "privacy": {
+    "userValuesRead": false,
+    "userDataCopied": false,
+    "authentication": false,
+    "formSubmission": false,
+    "download": false,
+    "applicationExecution": false,
+    "publicMetadataOnly": true
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 1080
+  },
+  "discovery": {
+    "method": "Anonymous Playwright DOM links from official public landing pages; no menu activation or task action.",
+    "landingHttpStatus": {
+      "smu": 200,
+      "city": 200,
+      "government": 200,
+      "public-agency": 200,
+      "library": 200
+    },
+    "notes": [
+      "The library root search entrance had an observed 대표 누리집 바로가기 link; /NL/pubMain.do was used to discover public menu URLs."
+    ]
+  },
+  "pages": [
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v3",
+      "url": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "title": "상명대학교 국문 | 학사안내 | 학사 | 수업 및 수강신청 | 수강신청 안내",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:42:07.942Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "seasonal",
+          "sourceId": "smu-blind-v3-seasonal",
+          "selector": "#tab18182",
+          "matchIndex": 0,
+          "category": "academic",
+          "action": "navigate",
+          "tag": "a",
+          "text": "계절수업",
+          "attributes": {
+            "href": "/kor/life/seasonal.do#tab18182_",
+            "title": "계절수업",
+            "id": "tab18182",
+            "target": ""
+          },
+          "rawHref": "/kor/life/seasonal.do#tab18182_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/seasonal.do#tab18182_",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 325.421875,
+            "y": 224,
+            "width": 104.53125,
+            "height": 80
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": "swiper-slide swiper-slide-next",
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "tab-ul swiper-wrapper",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "double-tab-wrap pc",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tab-outer",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"계절수업\":\n  - /url: /kor/life/seasonal.do#tab18182_"
+        },
+        {
+          "key": "attendance",
+          "sourceId": "smu-blind-v3-attendance",
+          "selector": "#tab19948",
+          "matchIndex": 0,
+          "category": "academic",
+          "action": "navigate",
+          "tag": "a",
+          "text": "출결 지침 안내",
+          "attributes": {
+            "href": "/kor/life/attendance_guide.do#tab19948_",
+            "title": "출결 지침 안내",
+            "id": "tab19948",
+            "target": ""
+          },
+          "rawHref": "/kor/life/attendance_guide.do#tab19948_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 429.953125,
+            "y": 224,
+            "width": 136.5625,
+            "height": 80
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": "swiper-slide last",
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "tab-ul swiper-wrapper",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "double-tab-wrap pc",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tab-outer",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"출결 지침 안내\":\n  - /url: /kor/life/attendance_guide.do#tab19948_"
+        },
+        {
+          "key": "guide",
+          "sourceId": "smu-blind-v3-guide",
+          "selector": "#tab18441",
+          "matchIndex": 0,
+          "category": "academic",
+          "action": "navigate",
+          "tag": "a",
+          "text": "학사제도 및 강의시간표",
+          "attributes": {
+            "href": "/kor/life/onlineGuide.do#tab18441_",
+            "title": "학사제도 및 강의시간표",
+            "id": "tab18441",
+            "target": ""
+          },
+          "rawHref": "/kor/life/onlineGuide.do#tab18441_",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/onlineGuide.do#tab18441_",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 180,
+            "y": 176,
+            "width": 211.1875,
+            "height": 48
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": "swiper-slide first swiper-slide-active",
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "tab-ul swiper-wrapper",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "tab-wrap",
+              "class": "tab-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tab-outer",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"학사제도 및 강의시간표\":\n  - /url: /kor/life/onlineGuide.do#tab18441_"
+        },
+        {
+          "key": "login",
+          "sourceId": "smu-blind-v3-login",
+          "selector": "a.login",
+          "matchIndex": 1,
+          "category": "login",
+          "action": "locate",
+          "tag": "a",
+          "text": "Login",
+          "attributes": {
+            "href": "javascript:loginPopupOpen();",
+            "class": "login",
+            "title": "로그인 새창열림"
+          },
+          "rawHref": "javascript:loginPopupOpen();",
+          "resolvedHref": "javascript:loginPopupOpen();",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 0,
+            "y": 778,
+            "width": 120,
+            "height": 48
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "login-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "util-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "bottom-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "bottom-header-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "bottom-header-wrap",
+              "role": null
+            },
+            {
+              "tag": "header",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"Login\":\n  - /url: javascript:loginPopupOpen();"
+        },
+        {
+          "key": "search",
+          "sourceId": "smu-blind-v3-search",
+          "selector": "a.btn-srch",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "a",
+          "text": "검색",
+          "attributes": {
+            "class": "btn-srch js-popup-open",
+            "href": "#a",
+            "title": "검색 열기"
+          },
+          "rawHref": "#a",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/sugang.do#a",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 36,
+            "y": 874,
+            "width": 48,
+            "height": 48
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "util-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "bottom-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "bottom-header-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "bottom-header-wrap",
+              "role": null
+            },
+            {
+              "tag": "header",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"검색\":\n  - /url: \"#a\""
+        }
+      ],
+      "taskSourceId": "smu-blind-v3-attendance",
+      "taskReach": {
+        "at": "2026-10-17T16:42:08.055Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 429.953125,
+          "y": 224,
+          "width": 136.5625,
+          "height": 80
+        },
+        "center": {
+          "x": 498.234375,
+          "y": 264
+        },
+        "hitTag": "a"
+      }
+    },
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v3",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "title": "여권 신청안내 < 민원안내 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:42:10.748Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "photo",
+          "sourceId": "city-blind-v3-photo",
+          "selector": "a[href=\"https://www.passport.go.kr/home/kor/contents.do?menuPos=32\"]",
+          "matchIndex": 0,
+          "category": "help",
+          "action": "navigate",
+          "tag": "a",
+          "text": "여권 사진 규격 안내 바로가기",
+          "attributes": {
+            "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+            "class": "item link",
+            "target": "_blank",
+            "title": "새창열림",
+            "rel": "noopener noreferrer"
+          },
+          "rawHref": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+          "resolvedHref": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 370,
+            "y": 1163.6875,
+            "width": 492.5,
+            "height": 59.5
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ui-banner__box mt_10",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "txt",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contens",
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "body-wrap layout",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "body_layout",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub01_01_06 pretendard  kor-sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"여권 사진 규격 안내 바로가기\":\n  - /url: https://www.passport.go.kr/home/kor/contents.do?menuPos=32\n  - strong: 여권 사진 규격 안내\n  - text: 바로가기"
+        },
+        {
+          "key": "reissue",
+          "sourceId": "city-blind-v3-reissue",
+          "selector": "a[href=\"https://www.passport.go.kr/home/kor/contents.do?menuPos=11\"]",
+          "matchIndex": 0,
+          "category": "apply",
+          "action": "navigate",
+          "tag": "a",
+          "text": "온라인 재발급 안내 바로가기",
+          "attributes": {
+            "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11",
+            "class": "item link",
+            "target": "_blank",
+            "title": "새창열림",
+            "rel": "noopener noreferrer"
+          },
+          "rawHref": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11",
+          "resolvedHref": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 370,
+            "y": 1243.1875,
+            "width": 492.5,
+            "height": 59.5
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ui-banner__box mt_10",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "txt",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contens",
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "body-wrap layout",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "body_layout",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub01_01_06 pretendard  kor-sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"온라인 재발급 안내 바로가기\":\n  - /url: https://www.passport.go.kr/home/kor/contents.do?menuPos=11\n  - strong: 온라인 재발급 안내\n  - text: 바로가기"
+        },
+        {
+          "key": "forms",
+          "sourceId": "city-blind-v3-forms",
+          "selector": "a[href=\"https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42\"]",
+          "matchIndex": 0,
+          "category": "apply",
+          "action": "navigate",
+          "tag": "a",
+          "text": "신청서 및 서식 모음 바로가기",
+          "attributes": {
+            "href": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+            "class": "item link",
+            "target": "_blank",
+            "title": "새창열림",
+            "rel": "noopener noreferrer"
+          },
+          "rawHref": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+          "resolvedHref": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 370,
+            "y": 1322.6875,
+            "width": 492.5,
+            "height": 59.5
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ui-banner__box mt_10",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "txt",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contens",
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "body-wrap layout",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "body_layout",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub01_01_06 pretendard  kor-sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"신청서 및 서식 모음 바로가기\":\n  - /url: https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42\n  - strong: 신청서 및 서식 모음\n  - text: 바로가기"
+        }
+      ],
+      "taskSourceId": "city-blind-v3-photo",
+      "taskReach": {
+        "at": "2026-10-17T16:42:10.822Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 370,
+          "y": 510.6875,
+          "width": 492.5,
+          "height": 59.5
+        },
+        "center": {
+          "x": 616.25,
+          "y": 540.4375
+        },
+        "hitTag": "strong"
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v3",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "title": "국민안전24 | 열린마당 | 자주 묻는 질문 |",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:42:13.525Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "input",
+          "sourceId": "government-blind-v3-input",
+          "selector": "#keyword",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "text",
+            "class": "form-input",
+            "id": "keyword",
+            "name": "keyword",
+            "title": "검색어"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 708.5,
+            "y": 395.1875,
+            "width": 592.046875,
+            "height": 40
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "form-field",
+              "role": null
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "board-toplist",
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": "searchForm",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "board-toparea",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "cont-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- textbox \"검색어\""
+        },
+        {
+          "key": "search",
+          "sourceId": "government-blind-v3-search",
+          "selector": "#btnSearch",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "button",
+          "text": "검색",
+          "attributes": {
+            "type": "button",
+            "id": "btnSearch",
+            "class": "nf-btn norm nf-btn-primary icon-search"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 1310.546875,
+            "y": 395.1875,
+            "width": 69.65625,
+            "height": 38
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "btn-rightarea",
+              "role": null
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "board-toplist",
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": "searchForm",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "board-toparea",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "cont-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"검색\""
+        },
+        {
+          "key": "support-question",
+          "sourceId": "government-blind-v3-support-question",
+          "selector": "a[href=\"javascript:onSubmit('2318');\"]",
+          "matchIndex": 1,
+          "category": "help",
+          "action": "locate",
+          "tag": "a",
+          "text": "홈페이지 이용중 나타나는 장애문의는 어디에서 하나요?",
+          "attributes": {
+            "href": "javascript:onSubmit('2318');"
+          },
+          "rawHref": "javascript:onSubmit('2318');",
+          "resolvedHref": "javascript:onSubmit('2318');",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 512.671875,
+            "y": 922.140625,
+            "width": 473.1875,
+            "height": 23.390625
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flow-root",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "td",
+              "id": null,
+              "class": "tit",
+              "role": null
+            },
+            {
+              "tag": "tr",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "tbody",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "table",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "board-list",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "board-listarea",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "cont-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"홈페이지 이용중 나타나는 장애문의는 어디에서 하나요?\":\n  - /url: javascript:onSubmit('2318');"
+        },
+        {
+          "key": "civil-defense-faq",
+          "sourceId": "government-blind-v3-civil-defense-faq",
+          "selector": "#tab-24",
+          "matchIndex": 0,
+          "category": "help",
+          "action": "locate",
+          "tag": "button",
+          "text": "자주묻는질문(민방위)",
+          "attributes": {
+            "id": "tab-24",
+            "name": "grp",
+            "class": "tab-list"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": true,
+          "initialRect": {
+            "x": 661.75,
+            "y": 298.796875,
+            "width": 324.96875,
+            "height": 55.390625
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tab-area mb20",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"자주묻는질문(민방위)\""
+        }
+      ],
+      "taskSourceId": "government-blind-v3-support-question",
+      "taskReach": {
+        "at": "2026-10-17T16:42:13.613Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 512.671875,
+          "y": 922.140625,
+          "width": 473.1875,
+          "height": 23.390625
+        },
+        "center": {
+          "x": 749.265625,
+          "y": 933.8359375
+        },
+        "hitTag": "a"
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v3",
+      "url": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "finalUrl": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "title": "공단소개 > 조직 > 지사 - 지사찾기 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:42:16.024Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "input",
+          "sourceId": "public-agency-blind-v3-input",
+          "selector": "#searchWord",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "text",
+            "id": "searchWord",
+            "class": "keyword ime_active",
+            "name": "searchWord",
+            "title": "지사찾기",
+            "placeholder": "검색어를 입력하세요."
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 526,
+            "y": 514,
+            "width": 618,
+            "height": 44
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-input",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-form",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tabContents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "page-contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "section-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- textbox \"지사찾기\":\n  - /placeholder: 검색어를 입력하세요."
+        },
+        {
+          "key": "search",
+          "sourceId": "public-agency-blind-v3-search",
+          "selector": "input.btn-search",
+          "matchIndex": 2,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "button",
+            "class": "btn-search",
+            "title": "검색"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": true,
+          "initialRect": {
+            "x": 1144,
+            "y": 514,
+            "width": 120,
+            "height": 44
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-input",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-form",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tabContents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "page-contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "section-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"검색\""
+        },
+        {
+          "key": "all-branches",
+          "sourceId": "public-agency-blind-v3-all-branches",
+          "selector": "a[href=\"/pbcpgdnc/ognzprsn/getOHAG0012M0.do\"]",
+          "matchIndex": 0,
+          "category": "help",
+          "action": "navigate",
+          "tag": "a",
+          "text": "지사/센터 전체보기",
+          "attributes": {
+            "href": "/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+            "class": "btn white"
+          },
+          "rawHref": "/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+          "resolvedHref": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 899,
+            "y": 394,
+            "width": 521,
+            "height": 54
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "con-tab-nav docuTitle",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "page-contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "section-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"지사/센터 전체보기\":\n  - /url: /pbcpgdnc/ognzprsn/getOHAG0012M0.do"
+        }
+      ],
+      "taskSourceId": "public-agency-blind-v3-all-branches",
+      "taskReach": {
+        "at": "2026-10-17T16:42:16.102Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 899,
+          "y": 394,
+          "width": 521,
+          "height": 54
+        },
+        "center": {
+          "x": 1159.5,
+          "y": 421
+        },
+        "hitTag": "a"
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v3",
+      "url": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "title": "국립중앙도서관>도서관 이용>자주하는 질문>본관목록",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:42:19.144Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "input",
+          "sourceId": "library-blind-v3-input",
+          "selector": "#schStr",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "text",
+            "name": "schStr",
+            "id": "schStr",
+            "class": "input_text",
+            "aria-label": "검색어 입력"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 1022,
+            "y": 965.75,
+            "width": 278,
+            "height": 32
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "input_text_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "search_info",
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "faq_search_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "main_faq_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "main_library_faq",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub_content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "content_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content",
+              "class": "contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "container",
+              "class": "container",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- textbox \"검색어 입력\""
+        },
+        {
+          "key": "search",
+          "sourceId": "library-blind-v3-search",
+          "selector": "button.btn_search",
+          "matchIndex": 1,
+          "category": "search",
+          "action": "locate",
+          "tag": "button",
+          "text": "검색하기",
+          "attributes": {
+            "class": "btn_search"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 1301,
+            "y": 964.75,
+            "width": 38,
+            "height": 34
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "search_info",
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "faq_search_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "main_faq_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "main_library_faq",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub_content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "content_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content",
+              "class": "contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "container",
+              "class": "container",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"검색하기\""
+        },
+        {
+          "key": "first-use-question",
+          "sourceId": "library-blind-v3-first-use-question",
+          "selector": "a.question_title",
+          "matchIndex": 0,
+          "category": "help",
+          "action": "locate",
+          "tag": "a",
+          "text": "질문 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?",
+          "attributes": {
+            "href": "#",
+            "class": "question_title",
+            "title": "답변 열기"
+          },
+          "rawHref": "#",
+          "resolvedHref": "https://www.nl.go.kr/NL/contents/N40901000000.do#",
+          "inlineHandlerPresent": true,
+          "initialRect": {
+            "x": 385,
+            "y": 549.796875,
+            "width": 975,
+            "height": 67.390625
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "dt",
+              "id": null,
+              "class": "faq_question",
+              "role": null
+            },
+            {
+              "tag": "dl",
+              "id": null,
+              "class": "faq_item",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "faq_list",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ucfaq1_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "main_faq_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "main_library_faq",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub_content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "content_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content",
+              "class": "contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "container",
+              "class": "container",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"질문 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?\":\n  - /url: \"#\"\n  - text: 질문\n  - strong: 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?"
+        }
+      ],
+      "taskSourceId": "library-blind-v3-first-use-question",
+      "taskReach": {
+        "at": "2026-10-17T16:42:19.264Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 385,
+          "y": 549.796875,
+          "width": 975,
+          "height": 67.390625
+        },
+        "center": {
+          "x": 872.5,
+          "y": 583.4921875
+        },
+        "hitTag": "strong"
+      }
+    }
+  ],
+  "publicDestinations": [
+    {
+      "siteId": "smu",
+      "sourceId": "smu-blind-v3-attendance",
+      "url": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_",
+      "httpStatus": 200,
+      "title": "상명대학교 국문 | 학사안내 | 학사 | 수업 및 수강신청 | 출결 지침 안내",
+      "observedAt": "2026-10-17T16:42:08.202Z",
+      "method": "Direct GET of observed public information link in a separate anonymous page; no original click or form execution."
+    },
+    {
+      "siteId": "city",
+      "sourceId": "city-blind-v3-photo",
+      "url": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+      "finalUrl": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+      "httpStatus": 200,
+      "title": "외교부 여권안내 홈페이지 [여권기본사항 > 여권 사진 > 여권 사진 ]",
+      "observedAt": "2026-10-17T16:42:11.593Z",
+      "method": "Direct GET of observed public information link in a separate anonymous page; no original click or form execution."
+    },
+    {
+      "siteId": "public-agency",
+      "sourceId": "public-agency-blind-v3-all-branches",
+      "url": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+      "finalUrl": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+      "httpStatus": 200,
+      "title": "- 지사/센터 전체보기 - 국민을 튼튼하게 연금을 튼튼하게",
+      "observedAt": "2026-10-17T16:42:16.377Z",
+      "method": "Direct GET of observed public information link in a separate anonymous page; no original click or form execution."
+    }
+  ],
+  "limitations": [
+    "Small public-control reconstructions only; no full site copy, page scripts, CSS/media, authenticated state or actual extension execution.",
+    "Layout-box visibility, readonly focus and center hit tests do not prove a complete keyboard traversal or assistive-technology experience.",
+    "Inline handler presence is represented with inert return-false attributes; script URL strings are preserved but handler implementations are not copied.",
+    "On the library page, Playwright object-argument evaluation serialization failed (refs.set is not a function); the same read-only DOM reconstruction succeeded with a primitive JSON string argument and array bookkeeping. No security/certificate settings or page behavior was altered."
+  ],
+  "completedAt": "2026-10-17T16:42:19.285Z",
+  "annotationValidation": {
+    "at": "2026-10-17T16:42:40.482Z",
+    "method": "Offline fixture DOM and ariaSnapshot comparison against independently observed live-source metadata; product detector/ranker/evaluator not imported or run.",
+    "checks": [
+      {
+        "sourceId": "smu-blind-v3-seasonal",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "smu-blind-v3-attendance",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "smu-blind-v3-guide",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "smu-blind-v3-login",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "smu-blind-v3-search",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "city-blind-v3-photo",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "city-blind-v3-reissue",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "city-blind-v3-forms",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v3-input",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v3-search",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v3-support-question",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v3-civil-defense-faq",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "public-agency-blind-v3-input",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "public-agency-blind-v3-search",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "public-agency-blind-v3-all-branches",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "library-blind-v3-input",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "library-blind-v3-search",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "library-blind-v3-first-use-question",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      }
+    ],
+    "existingUrlOverlap": 0,
+    "siteCount": 5,
+    "pageCount": 5,
+    "holdoutCount": 5,
+    "expectedFeatureGroups": 11,
+    "taskCount": 5,
+    "readOnlyTaskFocusCenterHit": 5,
+    "publicDestinationHttp200": 3
+  }
+}

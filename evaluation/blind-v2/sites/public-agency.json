@@ -1,0 +1,102 @@
+{
+  "siteId": "public-agency",
+  "name": "국민연금공단",
+  "type": "public-agency",
+  "observedAt": "2026-10-17T16:13:57.389Z",
+  "pages": [
+    {
+      "id": "public-agency-blind-v2",
+      "url": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+      "finalUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+      "title": "연금정보 > 자료실 > 서식자료 - 전체 - 목록 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v2/fixtures/public-agency.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+          "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+          "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+        ],
+        "limitations": [
+          "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+          "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+          "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+          "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "public-agency-blind-v2-task-feature-1",
+          "category": "search",
+          "label": "검색어",
+          "sourceIds": [
+            "public-agency-blind-v2-input",
+            "public-agency-blind-v2-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "public-agency-blind-v2-task-feature-2",
+          "category": "apply",
+          "label": "사업장가입자 내용변경신고서",
+          "sourceIds": [
+            "public-agency-blind-v2-form"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu="
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "public-agency-blind-v2-login",
+          "category": "login",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "public-agency-blind-v2-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v2-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v2-form",
+          "category": "apply",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "public-agency-blind-v2-download",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v2-sample",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "public-agency-blind-v2-task",
+        "instruction": "사업장가입자 내용변경신고서의 공개 상세 안내 페이지로 이동하세요. 작성·다운로드·팩스·메일·신고 제출은 하지 않습니다.",
+        "expectedSourceIds": [
+          "public-agency-blind-v2-form"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "서식 상세 진입은 신청·신고를 돕는 공개 경로이므로 apply로 주석했다. 서식 작성·신고 완료를 의미하지 않는다.",
+        "다운로드와 작성예시는 JavaScript 원본 제어 위치만 안내하는 locate이며 실제 파일·팝업 실행은 하지 않았다.",
+        "검색 input[type=button]의 value=검색은 편집 입력값이 아닌 공개 고정 버튼 이름으로 보존했다."
+      ]
+    }
+  ]
+}

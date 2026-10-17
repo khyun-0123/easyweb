@@ -37,7 +37,7 @@ test('Esc 종료 시 원본 초점·스크롤과 DOM 유지, 재주입 시 중�
   await expect(page.getByRole('dialog')).toHaveCount(1);
 });
 
-test('일반 링크가 정확한 원본 주소로 이동', async ({ page }) => {
+test('일반 링크 카드는 정확한 원본 주소로 직접 이동', async ({ page }) => {
   await launch(page);
   await page.locator('.card[data-category="notice"]').click();
   await expect(page).toHaveURL('http://127.0.0.1:4173/destination?task=notice');
@@ -45,6 +45,11 @@ test('일반 링크가 정확한 원본 주소로 이동', async ({ page }) => {
 });
 
 test('동작형 버튼은 자동 실행 없이 원본 위치를 안내', async ({ page }) => {
+  // 검색창이 원래 버튼으로 열리는 경우를 고정해 순위의 입력창 우선 정책과 분리합니다.
+  await page.evaluate(() => {
+    document.querySelector('#query').hidden = true;
+    document.querySelector('#site-search').addEventListener('click', () => { document.querySelector('#query').hidden = false; }, { capture: true });
+  });
   await launch(page);
   await page.locator('.card[data-category="search"]').click();
   await expect(page.locator('[data-easyweb-host]')).toHaveCount(0);
@@ -53,6 +58,14 @@ test('동작형 버튼은 자동 실행 없이 원본 위치를 안내', async (
   await page.keyboard.press('Enter');
   await expect(page.locator('#query')).toBeFocused();
   await expect(page.locator('#search-state')).toHaveText('원본 검색 기능을 실행했어요.');
+});
+
+test('이미 보이는 실제 검색창은 원본 검색 버튼 실행 없이 바로 초점을 안내한다', async ({ page }) => {
+  await launch(page);
+  await page.locator('.card[data-category="search"]').click();
+  await expect(page.locator('#query')).toBeFocused();
+  await expect(page.locator('#search-state')).toBeEmpty();
+  await expect(page.locator('[data-easyweb-notice] [role="status"]')).toBeVisible();
 });
 
 test('다시 찾기와 원본 화면 복귀', async ({ page }) => {

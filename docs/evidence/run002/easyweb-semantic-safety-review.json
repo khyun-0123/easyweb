@@ -1,0 +1,57 @@
+{
+  "before": {
+    "analyzer": "18fe9cee91ba08a10896a66f361b409a1fa720a2f47a2a2bd8839c9a3625c176",
+    "page-session": "651533a6ba8149c120cbd4a2dd8ea5ee98bfe151c5cea48a27e7638be784dba2",
+    "classifier": "477a90c7ae5a29496de2cf3fb896a5e05d4a40510d9cd800da05e97ad3ccb32e",
+    "action-policy": "9a57744bf7d137c8d8708d950cac4a218480e03c4cfeb2e2ec8fd294dac35dd3",
+    "easy-mode": "8c906ac774164cccfb64d35366e1c78033075b82f6182d35182ed89737481cf8"
+  },
+  "cases": {
+    "infoUrlMatrix": [
+      {
+        "label": "등록금 납부 안내",
+        "href": "https://review.example.test/academic/tuition-guide",
+        "action": "navigate",
+        "category": "academic",
+        "score": 70
+      }
+    ],
+    "formPrivacy": {
+      "reads": [],
+      "exception": null,
+      "before": [
+        {
+          "id": "forms",
+          "label": "동의서",
+          "href": "https://review.example.test/public/forms/consent",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "review.example.test",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "신청 준비 문서 읽기",
+            "서식 목록과 명시적 문서명"
+          ],
+          "sectionLabel": "민원서식",
+          "contextLabels": [
+            "민원서식"
+          ],
+          "category": "apply",
+          "pageTask": "reading"
+        }
+      ],
+      "formsCurrent": false,
+      "after": []
+    }
+  },
+  "after": {
+    "analyzer": "18fe9cee91ba08a10896a66f361b409a1fa720a2f47a2a2bd8839c9a3625c176",
+    "page-session": "651533a6ba8149c120cbd4a2dd8ea5ee98bfe151c5cea48a27e7638be784dba2",
+    "classifier": "477a90c7ae5a29496de2cf3fb896a5e05d4a40510d9cd800da05e97ad3ccb32e",
+    "action-policy": "9a57744bf7d137c8d8708d950cac4a218480e03c4cfeb2e2ec8fd294dac35dd3",
+    "easy-mode": "8c906ac774164cccfb64d35366e1c78033075b82f6182d35182ed89737481cf8"
+  },
+  "stable": true
+}

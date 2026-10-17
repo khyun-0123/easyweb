@@ -1,0 +1,95 @@
+{
+  "reviewedAt": "2026-10-17T17:07:44.399957+00:00",
+  "version": "0.3.0",
+  "classification": "DEVELOPMENT_CANDIDATE",
+  "completedStages": 5,
+  "totalStages": 10,
+  "finalAcceptance": "NOT_MET",
+  "stages": {
+    "S01": {
+      "status": "DONE",
+      "evidence": "docs/WORK_SPEC.md"
+    },
+    "S02": {
+      "status": "DONE",
+      "evidence": "evaluation/README.md"
+    },
+    "S03": {
+      "status": "DONE",
+      "evidence": "docs/evidence/run002/local-verification.json"
+    },
+    "S04": {
+      "status": "DONE",
+      "scope": "Implementation and development regression; independent quality acceptance remains S07.",
+      "evidence": "docs/evidence/run002/final55-development/final55-summary.json"
+    },
+    "S05": {
+      "status": "DONE",
+      "scope": "User selected direct ordinary-link navigation; documented property/delegated handler limitation.",
+      "evidence": "docs/ACTION_POLICY.md"
+    },
+    "S06": {
+      "status": "NEEDS_MANUAL",
+      "remaining": [
+        "Actual VoiceOver speech and state announcements",
+        "Final-build native zoom and focus confirmation"
+      ],
+      "evidence": "docs/ACCESSIBILITY.md"
+    },
+    "S07": {
+      "status": "IN_PROGRESS",
+      "remaining": [
+        "Fresh independent quality goals not met by any preserved first evaluation"
+      ],
+      "evidence": "docs/RUN_002_REPORT.md"
+    },
+    "S08": {
+      "status": "PARTIAL_NEEDS_MANUAL",
+      "remaining": [
+        "Keyboard shortcut",
+        "Repeat/reload recovery",
+        "Reactivation after navigation"
+      ],
+      "evidence": "docs/evidence/run002/native-ui-final.json"
+    },
+    "S09": {
+      "status": "NOT_RUN_NEEDS_USER",
+      "actualObservations": 0,
+      "pretestObservations": 0,
+      "evidence": "docs/evidence/run002/study-not-run.json"
+    },
+    "S10": {
+      "status": "IN_PROGRESS",
+      "remaining": [
+        "S06/S07/S08/S09 acceptance evidence"
+      ],
+      "evidence": "output/run002/EasyWeb-0.3.0-candidate.json"
+    }
+  },
+  "validated": {
+    "localTests": {
+      "passed": 128,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0
+    },
+    "automatedAccessibilityConditions": 17,
+    "livePublicTasks": {
+      "passed": 15,
+      "total": 15,
+      "scope": "9 public HTTP destinations and 6 original-control guidance tasks, headless isolated-world harness; no business completion or real participant claim."
+    },
+    "packageSha256": "bd29be8907b998ed73b00bcdc7c6df36a10a89ca21a962175546f2ea8196d021",
+    "finalReview": {
+      "localMarkdownLinks": 158,
+      "brokenLinks": 0,
+      "sourceFixtureAndPackageHashes": 70,
+      "hashMismatches": 0,
+      "zipIntegrity": "PASS"
+    }
+  },
+  "uiAutomation": "STOPPED_AT_USER_REQUEST; do not resume focus-changing native/browser control without later user direction.",
+  "billingUsage": "UNKNOWN; goal aggregate counter is not account billing.",
+  "checkpointTag": "run-002-v0.3.0-dev",
+  "publication": "NONE"
+}

@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-17T17:04:05Z",
+  "status": "PARTIAL_NEEDS_MANUAL",
+  "acceptancePassed": false,
+  "computerUseStopped": "At user request: user needs to work on the computer; no further CUA actions.",
+  "environment": {
+    "os": "macOS arm64",
+    "browser": "Google Chrome for Testing 156.0.8078.4",
+    "profile": "/tmp/easyweb-chrome-run002.2B8T31-cft",
+    "extensionId": "majgcponpecckppcaljhbfddekgahmcj",
+    "userExistingChromeProfileChanged": false
+  },
+  "finalContentSHA256": "232c4bdc17a109d85b9b6a76586b4573e449a4c65276016930ac0993f87b1c7b",
+  "manifest": {
+    "version": "0.3.0",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "hostPermissions": [],
+    "reloadObserved": "Native extension UI displayed version 0.3.0 and reload complete."
+  },
+  "nativeSiteObservations": [
+    {
+      "site": "city",
+      "url": "https://www.cheonan.go.kr/kor.do",
+      "cards": 6,
+      "activation": "Native toolbar clicked; EasyWeb names/cards and permission granted state observed in AX.",
+      "escapeObservation": "Following Escape, EasyWeb heading absent in AX. This does not establish all keyboard/recovery acceptance."
+    },
+    {
+      "site": "government",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "cards": 2,
+      "activation": "Native toolbar clicked; EasyWeb names/cards and permission granted state observed in AX.",
+      "escapeObservation": "Following Escape, EasyWeb heading absent in AX. This does not establish all keyboard/recovery acceptance."
+    },
+    {
+      "site": "library",
+      "url": "https://www.nl.go.kr/",
+      "cards": 5,
+      "activation": "Native toolbar clicked; EasyWeb names/cards and permission granted state observed in AX.",
+      "escapeObservation": "Following Escape, EasyWeb heading absent in AX. This does not establish all keyboard/recovery acceptance."
+    },
+    {
+      "site": "public-agency",
+      "url": "https://www.nps.or.kr/main.do",
+      "cards": 6,
+      "activation": "Native toolbar clicked; EasyWeb names/cards and permission granted state observed in AX.",
+      "escapeObservation": "Following Escape, EasyWeb heading absent in AX. This does not establish all keyboard/recovery acceptance."
+    },
+    {
+      "site": "smu",
+      "url": "https://www.smu.ac.kr/kor/index.do",
+      "cards": 6,
+      "activation": "Native toolbar clicked; EasyWeb names/cards and permission granted state observed in AX.",
+      "escapeObservation": "Following Escape, EasyWeb heading absent in AX. This does not establish all keyboard/recovery acceptance."
+    }
+  ],
+  "restrictedPage": {
+    "url": "chrome://extensions/",
+    "observed": "Native toolbar action title changed to unavailable/general website instruction. Subsequent city toolbar activation displayed overlay and permission granted."
+  },
+  "remaining": {
+    "keyboardShortcut": "INCONCLUSIVE: one positive AX observation followed by failed/inconsistent attempts; not accepted.",
+    "repeatReloadAndNavigation": "INCONCLUSIVE: public academic card changed address correctly, but later AX/web areas were empty and reopen was not confirmed.",
+    "actualFinalZoom": "NOT_VERIFIED_ON_FINAL_HASH; preliminary old-build 200/400 percent observations are in native-ui-check.json.",
+    "voiceOverSpeech": "UNVERIFIED"
+  },
+  "limitations": [
+    "Five native site openings do not establish the full S08 gate or actual business task completion.",
+    "During follow-up, two separate CFT profile processes were present and some AX/web areas were empty. The cause was not established; no product or environment attribution is asserted.",
+    "All first-run failures and source freezes are preserved. No real user-study data was collected.",
+    "Native AX/screenshots are in the CUA transcript; this file records only task-specific observations."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "siteId": "library",
+  "name": "국립중앙도서관",
+  "type": "library",
+  "observedAt": "2026-10-17T16:42:19.144Z",
+  "pages": [
+    {
+      "id": "library-blind-v3",
+      "url": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "title": "국립중앙도서관>도서관 이용>자주하는 질문>본관목록",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v3/fixtures/library.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only observation, actual control ariaSnapshot and public DOM ancestry review. Prior inventories were read only for schema and URL exclusion; no product source or evaluation result was read or run.",
+        "observedAt": "2026-10-17T16:42:19.144Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, user input reads, text entry, selection, submission, download or original task event execution.",
+          "Task-source readonly focus/hit-test and public destination GETs are recorded separately in docs/evidence/run002/blind-v3-observations.json."
+        ],
+        "limitations": [
+          "Small public-control reconstructions only; no full site copy, page scripts, CSS/media, authenticated state or actual extension execution.",
+          "Layout-box visibility, readonly focus and center hit tests do not prove a complete keyboard traversal or assistive-technology experience.",
+          "Inline handler presence is represented with inert return-false attributes; script URL strings are preserved but handler implementations are not copied."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-blind-v3-faq-search",
+          "category": "search",
+          "label": "검색어 입력",
+          "sourceIds": [
+            "library-blind-v3-input",
+            "library-blind-v3-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-blind-v3-first-visit-guide",
+          "category": "help",
+          "label": "질문 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?",
+          "sourceIds": [
+            "library-blind-v3-first-use-question"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-blind-v3-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v3-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v3-first-use-question",
+          "category": "help",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-blind-v3-task",
+        "instruction": "도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까? 질문의 원본 링크 위치를 찾으세요. 답변 열기·검색·회원가입은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "library-blind-v3-first-use-question"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "FAQ 원본은 href=# 및 inline onclick이 있는 확장 제어이므로 locate이다. 실제 답변 열기 이벤트는 실행하지 않았다.",
+        "div 기반 원본 컨테이너와 dl/dt 질문 구조를 보존하고 인위적인 main/nav 랜드마크를 추가하지 않았다."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1740 @@
+{
+  "dataset": "blind-v4",
+  "createdAt": "2026-10-17T16:47:08.795Z",
+  "product": "NOT_RUN",
+  "independence": {
+    "readOnlyInputs": [
+      "evaluation/sites/*.json schema and URL inventory",
+      "evaluation/blind-v2/sites/*.json URL inventory",
+      "evaluation/blind-v3/sites/*.json URL inventory"
+    ],
+    "implementationRead": false,
+    "testsRead": false,
+    "evaluationResultsRead": false,
+    "engineRun": false,
+    "selectionBasis": "Public tasks selected from actual official-page DOM before any product output for this dataset. All 25 prior page URLs are excluded. Previous datasets remain unchanged.",
+    "receivedAggregateContext": "Parent requested a final fresh set after earlier exposed sets; no per-page, per-feature, per-source or implementation failure details were shared."
+  },
+  "privacy": {
+    "userValuesRead": false,
+    "userDataCopied": false,
+    "authentication": false,
+    "formSubmission": false,
+    "download": false,
+    "applicationExecution": false,
+    "publicMetadataOnly": true
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 1080
+  },
+  "discovery": {
+    "method": "Anonymous public-document GETs and visible control metadata only; no original control activation. URLs had been observed in official public link inventories.",
+    "httpStatuses": [
+      {
+        "siteId": "smu",
+        "httpStatus": 200
+      },
+      {
+        "siteId": "city",
+        "httpStatus": 200
+      },
+      {
+        "siteId": "government",
+        "httpStatus": 200
+      },
+      {
+        "siteId": "public-agency",
+        "httpStatus": 200
+      },
+      {
+        "siteId": "library",
+        "httpStatus": 200
+      }
+    ],
+    "notes": [
+      "The NPS public recruitment guide had one main notice-entry function, so its observed 채용공고 link was followed by direct GET to choose a list page with meaningful public search and announcement functions."
+    ]
+  },
+  "pages": [
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v4",
+      "url": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "title": "상명대학교 국문 | 대학생활 | 학생지원 | 학생증발급 | 서울캠퍼스",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:47:11.082Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "domMethod": "Playwright read-only DOM evaluation of fixed public attributes and ancestry",
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, input values, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "card-manual",
+          "sourceId": "smu-blind-v4-card-manual",
+          "selector": "a[title=\"카드 학생증 발급방법 pdf 다운로드\"]",
+          "matchIndex": 0,
+          "category": "apply",
+          "action": "locate",
+          "tag": "a",
+          "text": "카드 학생증 발급방법.pdf",
+          "attributes": {
+            "class": "btn-down",
+            "href": "/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F1._student_id_card_manual.pdf",
+            "title": "카드 학생증 발급방법 pdf 다운로드"
+          },
+          "rawHref": "/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F1._student_id_card_manual.pdf",
+          "resolvedHref": "https://www.smu.ac.kr/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F1._student_id_card_manual.pdf",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 268,
+            "y": 797.5,
+            "width": 248.90625,
+            "height": 50
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "jwxe_main_content",
+              "class": "content",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "content-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "new pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"카드 학생증 발급방법.pdf\":\n  - /url: /cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F1._student_id_card_manual.pdf"
+        },
+        {
+          "key": "mobile-manual",
+          "sourceId": "smu-blind-v4-mobile-manual",
+          "selector": "a[title=\"모바일 학생증 설치 및 사용안내 pdf 다운로드\"]",
+          "matchIndex": 0,
+          "category": "help",
+          "action": "locate",
+          "tag": "a",
+          "text": "모바일 학생증 설치 및 사용안내.pdf",
+          "attributes": {
+            "class": "btn-down",
+            "href": "/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F2._student_mobile_id_card_manual.pdf",
+            "title": "모바일 학생증 설치 및 사용안내 pdf 다운로드"
+          },
+          "rawHref": "/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F2._student_mobile_id_card_manual.pdf",
+          "resolvedHref": "https://www.smu.ac.kr/cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F2._student_mobile_id_card_manual.pdf",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 268,
+            "y": 1471.5,
+            "width": 319.078125,
+            "height": 50
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "jwxe_main_content",
+              "class": "content",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "content-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "new pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"모바일 학생증 설치 및 사용안내.pdf\":\n  - /url: /cms/fileDownload.do?path=%2F_res%2Fkor%2Fetc%2F2._student_mobile_id_card_manual.pdf"
+        },
+        {
+          "key": "cheonan",
+          "sourceId": "smu-blind-v4-cheonan",
+          "selector": "a[href=\"/kor/life/studentIdCard2.do\"]",
+          "matchIndex": 0,
+          "category": "academic",
+          "action": "navigate",
+          "tag": "a",
+          "text": "천안캠퍼스",
+          "attributes": {
+            "href": "/kor/life/studentIdCard2.do",
+            "title": "천안캠퍼스 바로가기",
+            "class": "jwxe_ "
+          },
+          "rawHref": "/kor/life/studentIdCard2.do",
+          "resolvedHref": "https://www.smu.ac.kr/kor/life/studentIdCard2.do",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 288,
+            "y": 304,
+            "width": 64.40625,
+            "height": 24
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "lnb-depth04",
+              "role": null
+            },
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "lnb-depth03",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "lnb-menu",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "lnb depth4",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "lnb-wrap",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "content-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": "item_body",
+              "class": "new pc depthOnSide leftGnb",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"천안캠퍼스\":\n  - /url: /kor/life/studentIdCard2.do"
+        }
+      ],
+      "taskSourceId": "smu-blind-v4-card-manual",
+      "taskReach": {
+        "at": "2026-10-17T16:47:11.172Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 268,
+          "y": 797.5,
+          "width": 248.90625,
+          "height": 50
+        },
+        "center": {
+          "x": 392.453125,
+          "y": 822.5
+        },
+        "hitTag": "a"
+      }
+    },
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v4",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "finalUrl": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "title": "대형폐기물 처리신청 < 기타 민원서비스 < 민원안내 < 천안시청",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:47:13.903Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "domMethod": "Playwright read-only DOM evaluation of fixed public attributes and ancestry",
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, input values, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "apply",
+          "sourceId": "city-blind-v4-apply",
+          "selector": "a[href=\"http://cheonan.storyweb.co.kr/apply.php\"]",
+          "matchIndex": 0,
+          "category": "apply",
+          "action": "navigate",
+          "tag": "a",
+          "text": "대형폐기물 신청하기",
+          "attributes": {
+            "href": "http://cheonan.storyweb.co.kr/apply.php",
+            "target": "_blank",
+            "title": "새창열림",
+            "class": "btn secondary medium",
+            "rel": "noopener noreferrer"
+          },
+          "rawHref": "http://cheonan.storyweb.co.kr/apply.php",
+          "resolvedHref": "http://cheonan.storyweb.co.kr/apply.php",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 599,
+            "y": 588,
+            "width": 195.140625,
+            "height": 48
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "link",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "con-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "txtwrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ui ui-topbox type2",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "txt",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contens",
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "body-wrap layout",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "body_layout",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub01_03_06 pretendard  kor-sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"대형폐기물 신청하기\":\n  - /url: http://cheonan.storyweb.co.kr/apply.php"
+        },
+        {
+          "key": "result",
+          "sourceId": "city-blind-v4-result",
+          "selector": "a[href=\"http://cheonan.storyweb.co.kr/apply_search_form.html\"]",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "navigate",
+          "tag": "a",
+          "text": "대형폐기물 신청 결과 조회",
+          "attributes": {
+            "href": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+            "target": "_blank",
+            "title": "새창열림",
+            "class": "btn secondary medium",
+            "rel": "noopener noreferrer"
+          },
+          "rawHref": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+          "resolvedHref": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 804.140625,
+            "y": 588,
+            "width": 234.3125,
+            "height": 48
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "link",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "con-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "txtwrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ui ui-topbox type2",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "txt",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contens",
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "body-wrap layout",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "body_layout",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub01_03_06 pretendard  kor-sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"대형폐기물 신청 결과 조회\":\n  - /url: http://cheonan.storyweb.co.kr/apply_search_form.html"
+        },
+        {
+          "key": "ordinance",
+          "sourceId": "city-blind-v4-ordinance",
+          "selector": "a[href*=\"FILE_000000001795Qy8\"]",
+          "matchIndex": 0,
+          "category": "help",
+          "action": "locate",
+          "tag": "a",
+          "text": "천안시 폐기물관리에 관한 조례 [별표6]",
+          "attributes": {
+            "href": "/cmm/fms/FileDown.do?atchFileId=FILE_000000001795Qy8&fileSn=0",
+            "class": "btn tertiary medium",
+            "title": "다운로드"
+          },
+          "rawHref": "/cmm/fms/FileDown.do?atchFileId=FILE_000000001795Qy8&fileSn=0",
+          "resolvedHref": "https://www.cheonan.go.kr/cmm/fms/FileDown.do?atchFileId=FILE_000000001795Qy8&fileSn=0",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 599,
+            "y": 646,
+            "width": 317.578125,
+            "height": 48
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "link",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "con-box",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "txtwrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "ui ui-topbox type2",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "txt",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contens",
+              "class": "contents-wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "body-wrap layout",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "body_layout",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub01_03_06 pretendard  kor-sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"천안시 폐기물관리에 관한 조례 [별표6]\":\n  - /url: /cmm/fms/FileDown.do?atchFileId=FILE_000000001795Qy8&fileSn=0"
+        }
+      ],
+      "taskSourceId": "city-blind-v4-ordinance",
+      "taskReach": {
+        "at": "2026-10-17T16:47:13.959Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 599,
+          "y": 646,
+          "width": 317.578125,
+          "height": 48
+        },
+        "center": {
+          "x": 757.7890625,
+          "y": 670
+        },
+        "hitTag": "a"
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v4",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "title": "국민안전24 | 민방위 | 교육안내",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:47:15.934Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "domMethod": "Playwright read-only DOM evaluation of fixed public attributes and ancestry",
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, input values, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "policy",
+          "sourceId": "government-blind-v4-policy",
+          "selector": "button.tab-list",
+          "matchIndex": 1,
+          "category": "help",
+          "action": "locate",
+          "tag": "button",
+          "text": "편의시책 및 과태료",
+          "attributes": {
+            "class": "tab-list",
+            "name": "grp",
+            "aria-expanded": "false"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": true,
+          "initialRect": {
+            "x": 580.265625,
+            "y": 298.796875,
+            "width": 290.140625,
+            "height": 55.390625
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tab-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "cont-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"편의시책 및 과태료\""
+        },
+        {
+          "key": "voluntary",
+          "sourceId": "government-blind-v4-voluntary",
+          "selector": "button.tab-list",
+          "matchIndex": 3,
+          "category": "help",
+          "action": "locate",
+          "tag": "button",
+          "text": "자율참여형 민방위 교육",
+          "attributes": {
+            "class": "tab-list",
+            "name": "grp",
+            "aria-expanded": "false"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": true,
+          "initialRect": {
+            "x": 1089.953125,
+            "y": 298.796875,
+            "width": 321.25,
+            "height": 55.390625
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "tab-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "cont-area",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"자율참여형 민방위 교육\""
+        },
+        {
+          "key": "contact",
+          "sourceId": "government-blind-v4-contact",
+          "selector": "a[href=\"/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113\"]",
+          "matchIndex": 3,
+          "category": "help",
+          "action": "navigate",
+          "tag": "a",
+          "text": "담당부서연락처",
+          "attributes": {
+            "href": "/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113"
+          },
+          "rawHref": "/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+          "resolvedHref": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 28.796875,
+            "y": 545.984375,
+            "width": 296.40625,
+            "height": 61.796875
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "ko_portal_left",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "lnbmenu",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"담당부서연락처\":\n  - /url: /safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113"
+        }
+      ],
+      "taskSourceId": "government-blind-v4-voluntary",
+      "taskReach": {
+        "at": "2026-10-17T16:47:16.014Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 1089.953125,
+          "y": 298.796875,
+          "width": 321.25,
+          "height": 55.390625
+        },
+        "center": {
+          "x": 1250.578125,
+          "y": 326.4921875
+        },
+        "hitTag": "button"
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v4",
+      "url": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "title": "연금소식 > 채용정보 > 채용공고 - 목록 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:47:20.324Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "domMethod": "Playwright read-only DOM evaluation of fixed public attributes and ancestry",
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, input values, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "input",
+          "sourceId": "public-agency-blind-v4-input",
+          "selector": "#searchText",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "text",
+            "name": "searchText",
+            "id": "searchText",
+            "title": "검색어 입력",
+            "class": "keyword"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 873.6875,
+            "y": 1007,
+            "width": 270.3125,
+            "height": 44
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-input",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-form",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-wrap type-board",
+              "role": null
+            },
+            {
+              "tag": "fieldset",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": "searchForm",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "page-contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "section-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- textbox \"검색어 입력\""
+        },
+        {
+          "key": "search",
+          "sourceId": "public-agency-blind-v4-search",
+          "selector": "#btnSearch",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "button",
+            "id": "btnSearch",
+            "class": "btn-search"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 1144,
+            "y": 1007,
+            "width": 120,
+            "height": 44
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "flex",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-input",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-form",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-search-wrap type-board",
+              "role": null
+            },
+            {
+              "tag": "fieldset",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": "searchForm",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "page-contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "section-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"검색\""
+        },
+        {
+          "key": "recruitment-notice",
+          "sourceId": "public-agency-blind-v4-recruitment-notice",
+          "selector": "a[href*=\"pstId=ZZ202600000000001110\"]:not(.btn)",
+          "matchIndex": 0,
+          "category": "notice",
+          "action": "navigate",
+          "tag": "a",
+          "text": "2026년 치매안심재산관리지원서비스 시범사업 수행인력(연구원) 추가채용 공고",
+          "attributes": {
+            "href": "/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd="
+          },
+          "rawHref": "/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd=",
+          "resolvedHref": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd=",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 462,
+            "y": 1205.8125,
+            "width": 329,
+            "height": 25.5
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "td",
+              "id": null,
+              "class": "title",
+              "role": null
+            },
+            {
+              "tag": "tr",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "tbody",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "table",
+              "id": null,
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "data-list m-data-list type-flex",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "page-contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null
+            },
+            {
+              "tag": "section",
+              "id": null,
+              "class": "section-container",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "wrap",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": null,
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"2026년 치매안심재산관리지원서비스 시범사업 수행인력(연구원) 추가채용 공고\":\n  - /url: /pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd="
+        }
+      ],
+      "taskSourceId": "public-agency-blind-v4-recruitment-notice",
+      "taskReach": {
+        "at": "2026-10-17T16:47:20.399Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 462,
+          "y": 526.8125,
+          "width": 329,
+          "height": 25.5
+        },
+        "center": {
+          "x": 626.5,
+          "y": 539.5625
+        },
+        "hitTag": "a"
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v4",
+      "url": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "title": "국립중앙도서관>도서관 소개>도서관 소식>공지공고목록",
+      "httpStatus": 200,
+      "observedAt": "2026-10-17T16:47:23.728Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "domMethod": "CDP Page.createIsolatedWorld and Runtime.evaluate of read-only DOM JSON strings; no security setting changes",
+      "conditions": "Fresh anonymous Chromium desktop context; DOMContentLoaded plus 1600ms; no login, input values, text entry, menu activation, selection, submission, download or task action.",
+      "sources": [
+        {
+          "key": "notice-category",
+          "sourceId": "library-blind-v4-notice-category",
+          "selector": "a[href=\"javascript:fn_goCategoryList('_normal020201','공지사항')\"]",
+          "matchIndex": 0,
+          "category": "notice",
+          "action": "locate",
+          "tag": "a",
+          "text": "공지사항",
+          "attributes": {
+            "href": "javascript:fn_goCategoryList('_normal020201','공지사항')",
+            "title": ""
+          },
+          "rawHref": "javascript:fn_goCategoryList('_normal020201','공지사항')",
+          "resolvedHref": "javascript:fn_goCategoryList('_normal020201','%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD')",
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 629.75,
+            "y": 517.5,
+            "width": 242.75,
+            "height": 22.09375
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "li",
+              "id": null,
+              "class": "category_form_item ",
+              "role": null
+            },
+            {
+              "tag": "ul",
+              "id": null,
+              "class": "category_form_link",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "category_form_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub_content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "content_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content",
+              "class": "contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "container",
+              "class": "container",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- link \"공지사항\":\n  - /url: javascript:fn_goCategoryList('_normal020201','공지사항')"
+        },
+        {
+          "key": "input",
+          "sourceId": "library-blind-v4-input",
+          "selector": "#schStr",
+          "matchIndex": 0,
+          "category": "search",
+          "action": "locate",
+          "tag": "input",
+          "text": "",
+          "attributes": {
+            "type": "text",
+            "name": "schStr",
+            "id": "schStr",
+            "class": "input_text",
+            "aria-label": "검색어 입력",
+            "placeholder": "검색어를 입력해주세요.",
+            "title": "검색어"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 1043,
+            "y": 605.59375,
+            "width": 279,
+            "height": 32
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "input_text_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "search_info",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "search_wrap",
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": "listForm",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "tab_all",
+              "class": "category_tabpanel",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "category_tabpanel_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub_content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "content_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content",
+              "class": "contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "container",
+              "class": "container",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- textbox \"검색어 입력\":\n  - /placeholder: 검색어를 입력해주세요."
+        },
+        {
+          "key": "search",
+          "sourceId": "library-blind-v4-search",
+          "selector": "button.btn_search",
+          "matchIndex": 1,
+          "category": "search",
+          "action": "locate",
+          "tag": "button",
+          "text": "검색하기",
+          "attributes": {
+            "class": "btn_search"
+          },
+          "rawHref": null,
+          "resolvedHref": null,
+          "inlineHandlerPresent": false,
+          "initialRect": {
+            "x": 1322,
+            "y": 604.59375,
+            "width": 38,
+            "height": 34
+          },
+          "visibility": {
+            "layoutBox": true,
+            "display": "inline-block",
+            "visibility": "visible",
+            "ariaHidden": false,
+            "inert": false
+          },
+          "ancestors": [
+            {
+              "tag": "div",
+              "id": null,
+              "class": "search_info",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "inner",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "search_wrap",
+              "role": null
+            },
+            {
+              "tag": "form",
+              "id": "listForm",
+              "class": null,
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "tab_all",
+              "class": "category_tabpanel",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "category_tabpanel_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "sub_content",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": null,
+              "class": "content_wrap",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "sub_content",
+              "class": "sub_contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "content",
+              "class": "contents",
+              "role": null
+            },
+            {
+              "tag": "div",
+              "id": "container",
+              "class": "container",
+              "role": null
+            },
+            {
+              "tag": "body",
+              "id": null,
+              "class": "sub",
+              "role": null
+            }
+          ],
+          "ariaSnapshot": "- button \"검색하기\""
+        }
+      ],
+      "taskSourceId": "library-blind-v4-notice-category",
+      "taskReach": {
+        "at": "2026-10-17T16:47:23.833Z",
+        "method": "Readonly scrollIntoViewIfNeeded, focus and center hit-test; no click, keypress or handler execution.",
+        "focused": true,
+        "centerHit": true,
+        "rect": {
+          "x": 629.75,
+          "y": 517.5,
+          "width": 242.75,
+          "height": 22.09375
+        },
+        "center": {
+          "x": 751.125,
+          "y": 528.546875
+        },
+        "hitTag": "a"
+      }
+    }
+  ],
+  "publicDestinations": [
+    {
+      "siteId": "smu",
+      "sourceId": "smu-blind-v4-cheonan",
+      "url": "https://www.smu.ac.kr/kor/life/studentIdCard2.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/studentIdCard2.do",
+      "httpStatus": 200,
+      "title": "상명대학교 국문 | 대학생활 | 학생지원 | 학생증발급 | 천안캠퍼스",
+      "observedAt": "2026-10-17T16:47:11.310Z",
+      "method": "Direct GET of the observed public information link in a separate anonymous page; no original click or form execution."
+    },
+    {
+      "siteId": "government",
+      "sourceId": "government-blind-v4-contact",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+      "httpStatus": 200,
+      "title": "국민안전24",
+      "observedAt": "2026-10-17T16:47:16.496Z",
+      "method": "Direct GET of the observed public information link in a separate anonymous page; no original click or form execution."
+    },
+    {
+      "siteId": "public-agency",
+      "sourceId": "public-agency-blind-v4-recruitment-notice",
+      "url": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd=",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd=",
+      "httpStatus": 200,
+      "title": "연금소식 > 채용정보 > 채용공고 - 상세 - 국민을 튼튼하게 연금을 튼튼하게",
+      "observedAt": "2026-10-17T16:47:20.757Z",
+      "method": "Direct GET of the observed public information link in a separate anonymous page; no original click or form execution."
+    }
+  ],
+  "limitations": [
+    "Small selected public-control reconstructions only; no full site copy, CSS/media, application scripts, authenticated state or actual extension execution.",
+    "Original ancestor tags, IDs, classes, fixed accessible labels and hrefs are retained; omitted unrelated context and original geometry can affect live behavior.",
+    "Inline onclick presence uses an inert return-false marker; original JavaScript href text is retained but handlers are not copied. Offline fixtures use script-src none; object-src none CSP metadata.",
+    "Readonly focus and center hit tests are limited source reach checks, not a full keyboard or assistive-technology audit.",
+    "File links are locate-only; no requested download or actual application/submission action was executed."
+  ],
+  "completedAt": "2026-10-17T16:47:23.849Z",
+  "annotationValidation": {
+    "at": "2026-10-17T16:47:38.916Z",
+    "method": "Offline fixture DOM and ariaSnapshot comparison against independently observed live-source metadata; product source/tests/detector/ranker/evaluator not imported or run.",
+    "checks": [
+      {
+        "sourceId": "smu-blind-v4-card-manual",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "smu-blind-v4-mobile-manual",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "smu-blind-v4-cheonan",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "city-blind-v4-apply",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "city-blind-v4-result",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "city-blind-v4-ordinance",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v4-policy",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v4-voluntary",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "government-blind-v4-contact",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "public-agency-blind-v4-input",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "public-agency-blind-v4-search",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "public-agency-blind-v4-recruitment-notice",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "library-blind-v4-notice-category",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "library-blind-v4-input",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      },
+      {
+        "sourceId": "library-blind-v4-search",
+        "count": 1,
+        "visible": true,
+        "sameAriaSnapshot": true
+      }
+    ],
+    "existingUrlOverlap": 0,
+    "siteCount": 5,
+    "pageCount": 5,
+    "holdoutCount": 5,
+    "expectedFeatureGroups": 13,
+    "taskCount": 5,
+    "sourceCount": 15,
+    "readOnlyTaskFocusCenterHit": 5,
+    "publicDestinationHttp200": 3
+  }
+}

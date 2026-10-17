@@ -1,0 +1,370 @@
+{
+  "checkedAt": "2026-10-17T16:49:12.270Z",
+  "engine": "current",
+  "suite": "blind-v4",
+  "split": "holdout",
+  "evaluationPhase": "fresh-blind-validation",
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "c4164162a3a212b0ad2a7133f9cccc593dcdfc2dc0767c1d313ebf1434fcc7b2",
+  "datasetHash": "4d323e54d0cdb20fabdca05cff2fd935adb64eced0f29e80a3b2981cdb478941",
+  "fixtureHashes": {
+    "city-blind-v4": "6a62fcac87101326725c6a7bd07b4d7183676da63a242575686adbaa19436837",
+    "government-blind-v4": "2de41352bf9ecbca639d6d9b75ff71052a572fe5cddca2d5e5c09c25feed95ae",
+    "library-blind-v4": "af6fe67a3b974c6b118abf037986ce7411d469cf18f98556c5a9d4a4a1a1b016",
+    "public-agency-blind-v4": "07790738d9028ed4c3ef2ad741369fc91c89de314a430607faed6bd0e1977094",
+    "smu-blind-v4": "af846fc687c914a812a4c3271472809dbc9dee56aa0da657811cd6616ee2df3e"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 7,
+    "recommended": 8,
+    "matched": 5,
+    "expected": 13,
+    "precision": 0.875,
+    "recall": 0.38461538461538464,
+    "tasksRecommended": 1
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 3,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "tasksRecommended": 0
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v4",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "candidateCount": 5,
+      "classifiedCount": 2,
+      "selected": [
+        {
+          "label": "대형폐기물 신청하기",
+          "href": "http://cheonan.storyweb.co.kr/apply.php",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "cheonan.storyweb.co.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "본문 영역"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v4-apply"
+        },
+        {
+          "label": "대형폐기물 신청 결과 조회",
+          "href": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "cheonan.storyweb.co.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v4-result"
+        }
+      ],
+      "correct": 1,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 3,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "city-blind-v4-waste-application-result",
+        "city-blind-v4-waste-ordinance"
+      ],
+      "incorrect": [
+        {
+          "label": "대형폐기물 신청 결과 조회",
+          "href": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "cheonan.storyweb.co.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v4-result"
+        }
+      ],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v4",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "candidateCount": 4,
+      "classifiedCount": 1,
+      "selected": [
+        {
+          "label": "담당부서연락처",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "민방위",
+          "contextLabels": [
+            "민방위"
+          ],
+          "category": "help",
+          "sourceId": "government-blind-v4-contact"
+        }
+      ],
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "government-blind-v4-civil-defense-education-policy",
+        "government-blind-v4-voluntary-civil-defense-education"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v4",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "candidateCount": 4,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "공지공고",
+          "contextLabels": [
+            "공지공고"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "library-blind-v4-input"
+        },
+        {
+          "label": "검색하기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "공지공고",
+          "contextLabels": [
+            "공지공고",
+            "도서관 소개"
+          ],
+          "category": "search",
+          "sourceId": "library-blind-v4-search"
+        },
+        {
+          "label": "공지사항",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "공지공고",
+          "contextLabels": [
+            "공지공고",
+            "도서관 소개"
+          ],
+          "category": "notice",
+          "sourceId": "library-blind-v4-notice-category"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v4",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "candidateCount": 3,
+      "classifiedCount": 2,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "채용공고",
+          "contextLabels": [
+            "채용공고",
+            "연금소식"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "public-agency-blind-v4-input"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "채용공고",
+          "contextLabels": [
+            "채용공고",
+            "연금소식"
+          ],
+          "category": "search",
+          "sourceId": "public-agency-blind-v4-search"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "missed": [
+        "public-agency-blind-v4-public-recruitment-notice"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v4",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "candidateCount": 3,
+      "classifiedCount": 0,
+      "selected": [],
+      "correct": 0,
+      "recommended": 0,
+      "matched": 0,
+      "expected": 3,
+      "precision": null,
+      "recall": 0,
+      "missed": [
+        "smu-blind-v4-card-issuance-manual",
+        "smu-blind-v4-mobile-student-card-guide",
+        "smu-blind-v4-cheonan-student-card-guide"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    }
+  ]
+}

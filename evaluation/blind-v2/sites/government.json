@@ -1,0 +1,100 @@
+{
+  "siteId": "government",
+  "name": "국민안전24",
+  "type": "government-service",
+  "observedAt": "2026-10-17T16:13:55.748Z",
+  "pages": [
+    {
+      "id": "government-blind-v2",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+      "title": "국민안전24 | 민방위 | 교육일정",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v2/fixtures/government.html",
+      "observation": {
+        "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+          "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+          "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+        ],
+        "limitations": [
+          "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+          "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+          "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+          "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "government-blind-v2-task-feature-1",
+          "category": "search",
+          "label": "검색",
+          "sourceIds": [
+            "government-blind-v2-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v2-task-feature-2",
+          "category": "help",
+          "label": "담당부서연락처",
+          "sourceIds": [
+            "government-blind-v2-contact"
+          ],
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "government-blind-v2-guide",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "government-blind-v2-contact",
+          "category": "help",
+          "action": "navigate"
+        },
+        {
+          "sourceId": "government-blind-v2-province",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v2-start",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v2-end",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v2-search",
+          "category": "search",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "government-blind-v2-task",
+        "instruction": "교육일정의 검색 원본 버튼 위치를 찾으세요. 날짜·지역 선택이나 검색 실행은 하지 않습니다.",
+        "expectedSourceIds": [
+          "government-blind-v2-search"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "일정 조회의 원본 검색 제어와 담당부서 안내를 별개의 핵심 목적 기능으로 정했다.",
+        "입력값은 관찰·복사하지 않았다. 공개 고정 aria-label/title/placeholder만 보존하고 지역 select는 관찰된 첫 기본 option만 축약 재현했다."
+      ]
+    }
+  ]
+}

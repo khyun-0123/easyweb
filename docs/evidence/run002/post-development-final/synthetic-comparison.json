@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-10-17T16:37:38.763Z",
+  "evaluationPhase": "post-holdout-development",
+  "freeze": "Classifier/ranker/synthetic suite frozen before any blind-v2 evaluation. No blind-v2 file contents were opened or evaluated by this worker.",
+  "sourceHashes": {
+    "src/classifier.ts": "523e74f22ab9205f26b51e3e2ccbd3455192a53c8008a43550b5d96b842496fc",
+    "src/ranker.ts": "6c4c77dd9a438bff0226428e4dce13192c1c076cf0b4d0b339704526cb9ccdd4",
+    "tests/classifier-ranking.spec.mjs": "136b6e8da8186f1853b8be7b76cb7510fa30a410c8db6a079de9f1531465bec3"
+  },
+  "ownership": [
+    "src/classifier.ts",
+    "src/ranker.ts",
+    "tests/classifier-ranking.spec.mjs"
+  ],
+  "comparison": {
+    "suite": "tests/classifier-ranking.spec.mjs",
+    "total": 38,
+    "before": {
+      "engine": "docs/evidence/run002/prototype2-src",
+      "expected": 34,
+      "unexpected": 4,
+      "skipped": 0,
+      "flaky": 0,
+      "failures": [
+        "별개 항목의 안전하고 보이는 질문 표시 두 개는 FAQ 문맥이며 숨김·유사표시·편집·기사·단일항목은 아니다",
+        "조회순·검색순 같은 정렬 기준을 업무 조회로 오인하지 않고 실제 조회는 보존한다",
+        "지역 목차의 별개 leaf 목적지는 현재 페이지 재진입·상위 그룹 토글보다 우선한다",
+        "여러 읽기 목록을 섞어도 비교 순환 없이 모든 입력 순열에서 같은 결과를 낸다"
+      ],
+      "command": "EASYWEB_ENGINE_ROOT=./docs/evidence/run002/prototype2-src npx playwright test tests/classifier-ranking.spec.mjs --reporter=json --output=/tmp/easyweb-run002-prototype2-same-38"
+    },
+    "after": {
+      "expected": 38,
+      "unexpected": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "durationSeconds": 3.2,
+      "command": "npx playwright test tests/classifier-ranking.spec.mjs --reporter=dot --output=/tmp/easyweb-run002-final-38"
+    },
+    "negativeControls": {
+      "newScopeNegativeCases": 12,
+      "beforeClassified": 0,
+      "afterClassified": 0,
+      "faqNegativeShapes": [
+        "hidden peer",
+        "Questionnaire lookalike",
+        "editable peer",
+        "two controls in one listitem",
+        "article ancestor",
+        "single unscoped marker"
+      ],
+      "lookupSorting": {
+        "beforeFalsePositives": 5,
+        "afterFalsePositives": 0,
+        "preservedLookupLabels": 4
+      }
+    },
+    "typecheck": "PASS: strict targeted TypeScript src/classifier.ts src/ranker.ts"
+  },
+  "policies": {
+    "capacity": {
+      "maxCards": 6,
+      "maxPerCategory": 3,
+      "maxReservedPageTasks": 3
+    },
+    "pageTasks": "Only explicit source-backed reading, search/viewer controls, calendar purpose+controls/events, exact collection labels or exact section+more evidence. Plain body keywords do not reserve slots.",
+    "navigation": "Local navigation outside header before global menu. Within local navigation: distinct leaf destinations before group toggles before current URL/aria-current re-entry.",
+    "readingOrder": "Stable metadata sort, then source order only within tied reading groups sharing list/table/grid, category, score and page priority. Six input permutations yield one result.",
+    "safety": "Article subject cannot create academic/application services; destructive labels/URLs excluded; body account->login URL-only stays excluded; source labels/hrefs/action/target/snapshot metadata spread unchanged."
+  },
+  "dataScope": "Original core15 are exposed development data. Fixtures, expected, accepted, task definitions and baseline/first-holdout reports were not edited.",
+  "coreDevelopmentReport": "post-development-final/evaluation-current-all.json records prior development source evaluation 69/69 precision,45/45 recall,15/15 task recommendation. Parent performs final integrated source evaluation and independent unseen validation."
+}

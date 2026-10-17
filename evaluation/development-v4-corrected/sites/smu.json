@@ -1,0 +1,96 @@
+{
+  "siteId": "smu",
+  "name": "상명대학교",
+  "type": "university",
+  "observedAt": "2026-10-17T16:47:11.082Z",
+  "pages": [
+    {
+      "id": "smu-blind-v4",
+      "url": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "finalUrl": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "title": "상명대학교 국문 | 대학생활 | 학생지원 | 학생증발급 | 서울캠퍼스",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v4/fixtures/smu.html",
+      "observation": {
+        "method": "Fresh independent anonymous Playwright Chromium public-page observation, actual ariaSnapshot and original DOM ancestry. Library DOM read through a CDP isolated world. No product source, tests or product output read or run.",
+        "observedAt": "2026-10-17T16:47:11.082Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; selected controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, editable values, text entry, selection, submission, download or original task event execution.",
+          "Readonly task focus/hit-test and three public destination GET checks appear separately in docs/evidence/run002/blind-v4-observations.json."
+        ],
+        "limitations": [
+          "Small selected public-control reconstructions only; no full site copy, CSS/media, application scripts, authenticated state or actual extension execution.",
+          "Original ancestor tags, IDs, classes, fixed accessible labels and hrefs are retained; omitted unrelated context and original geometry can affect live behavior.",
+          "Inline onclick presence uses an inert return-false marker; original JavaScript href text is retained but handlers are not copied. Offline fixtures use script-src none; object-src none CSP metadata.",
+          "Readonly focus and center hit tests are limited source reach checks, not a full keyboard or assistive-technology audit.",
+          "File links are locate-only; no requested download or actual application/submission action was executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "smu-blind-v4-card-issuance-manual",
+          "category": "apply",
+          "label": "카드 학생증 발급방법.pdf",
+          "sourceIds": [
+            "smu-blind-v4-card-manual"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "smu-blind-v4-mobile-student-card-guide",
+          "category": "help",
+          "label": "모바일 학생증 설치 및 사용안내.pdf",
+          "sourceIds": [
+            "smu-blind-v4-mobile-manual"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "smu-blind-v4-cheonan-student-card-guide",
+          "category": "academic",
+          "label": "천안캠퍼스",
+          "sourceIds": [
+            "smu-blind-v4-cheonan"
+          ],
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/life/studentIdCard2.do"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "smu-blind-v4-card-manual",
+          "category": "apply",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-blind-v4-mobile-manual",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "smu-blind-v4-cheonan",
+          "category": "academic",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "smu-blind-v4-task",
+        "instruction": "카드 학생증 발급방법.pdf 원본 링크 위치를 찾으세요. 파일 다운로드·학생증 신청·로그인은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "smu-blind-v4-card-manual"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "학생증 발급방법과 모바일 학생증 설치·사용 안내를 각각 신청 지원과 도움말 기능으로 주석했다.",
+        "fileDownload 엔드포인트는 원본 링크 위치만 안내하는 locate이다. 다른 캠퍼스의 공개 안내 문서 링크는 navigate이다. 이메일·전화 제어와 학생별 정보는 수집하지 않았다."
+      ]
+    }
+  ]
+}

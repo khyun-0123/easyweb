@@ -3,6 +3,7 @@ import { analyzePage } from './analyzer';
 import { classify } from './classifier';
 import { rank } from './ranker';
 import { locateOriginal } from './action-bridge';
+import { showOriginalNotice } from './original-notice';
 import { isCandidateCurrent, watchCandidates } from './page-session';
 import { CATEGORY_INFO, type Candidate } from './types';
 
@@ -71,7 +72,7 @@ export function openEasyMode(host: HTMLElement): () => void {
     }
   });
 
-  const topbar = el('header', 'topbar');
+  const topbar = el('div', 'topbar');
   const topInner = el('div', 'top-inner');
   const brand = el('div', 'brand');
   const mark = el('span', 'brand-mark');
@@ -86,13 +87,13 @@ export function openEasyMode(host: HTMLElement): () => void {
   topInner.append(brand, closeButton);
   topbar.append(topInner);
 
-  const shell = el('main', 'shell');
+  const shell = el('div', 'shell');
   const site = el('div', 'site');
   site.append(el('span', 'dot'), el('span', '', '지금 보고 있는 사이트'), el('strong', '', location.hostname), el('span', 'site-tag', '쉬운 화면'));
   const intro = el('div', 'intro');
   const title = el('h1', '', '무엇을 하시겠어요?');
   title.id = 'easyweb-title';
-  const description = el('p', '', '이 페이지에서 찾은 주요 기능을 한곳에 모았어요.');
+  const description = el('p', '', '원하는 기능을 선택하세요. 원본에서 확인이 필요한 메뉴는 위치를 표시해요.');
   description.id = 'easyweb-description';
   intro.append(title, description);
   const label = el('div', 'section-label');
@@ -111,7 +112,7 @@ export function openEasyMode(host: HTMLElement): () => void {
   const hintText = el('p');
   hintText.append(el('strong', '', '로그인·인증·신청은 원래 사이트에서 진행해요.'), el('br'), document.createTextNode('원하는 기능이 없으면 ‘원본 화면 보기’를 눌러주세요.'));
   hint.append(icon('help'), hintText);
-  const bottom = el('footer', 'bottom');
+  const bottom = el('div', 'bottom');
   const status = el('span', 'status');
   status.setAttribute('role', 'status');
   bottom.append(status, el('span', '', '언제든 Esc 키로 원본 화면에 돌아갈 수 있어요'));
@@ -126,7 +127,6 @@ export function openEasyMode(host: HTMLElement): () => void {
     changeNotice.hidden = false;
     for (const item of grid.querySelectorAll('.card')) {
       item.setAttribute('aria-disabled', 'true');
-      // 브라우저의 우클릭·주소 복사 경로에도 생성 당시의 URL을 남기지 않습니다.
       if (item instanceof HTMLAnchorElement) {
         item.removeAttribute('href');
         item.setAttribute('role', 'link');
@@ -148,30 +148,34 @@ export function openEasyMode(host: HTMLElement): () => void {
     if (item instanceof HTMLAnchorElement) {
       item.href = candidate.href!;
       item.target = candidate.target ?? '_self';
+      if (item.target === '_blank') item.rel = 'noopener noreferrer';
       item.addEventListener('click', guard);
       item.addEventListener('auxclick', guard);
-      item.addEventListener('contextmenu', guard);
-      item.addEventListener('dragstart', guard);
-      // 새 창 동작은 사용자에게 표시하고 opener를 차단합니다.
-      if (item.target === '_blank') {
-        item.rel = 'noopener noreferrer';
-      }
-    } else if (item instanceof HTMLButtonElement) {
+    } else {
       item.type = 'button';
       item.addEventListener('click', event => {
         if (!guard(event)) return;
-        locateOriginal(candidate, close);
+        const result = locateOriginal(candidate, close);
+        showOriginalNotice(result, candidate.label, candidate.element);
       });
     }
+    item.addEventListener('contextmenu', guard);
+    item.addEventListener('dragstart', guard);
     const image = el('span', 'card-icon');
     image.append(icon(info.icon));
-    const actionText = candidate.action === 'navigate' ? item instanceof HTMLAnchorElement && item.target === '_blank' ? '원본 페이지 새 창으로 이동' : '원본 페이지로 이동' : '원본에서 위치 보기';
-    const action = el('span', 'card-action', actionText);
+    const action = el('span', 'card-action', candidate.action === 'navigate' ? candidate.target === '_blank' ? '원본 페이지 새 창으로 이동' : '원본 페이지로 이동' : '원본에서 계속하기');
     action.append(icon(candidate.action === 'navigate' ? 'external' : 'arrow'));
     const cardTitle = items.filter(other => other.category === candidate.category).length > 1 ? candidate.label : info.title;
-    item.append(image, el('span', 'card-title', cardTitle), el('span', 'card-description', info.description), el('span', 'card-source', `찾은 메뉴 · ${candidate.label}`));
-    if (candidate.href && new URL(candidate.href).origin !== location.origin) {
-      item.append(el('span', 'card-source', `이동할 사이트 · ${new URL(candidate.href).hostname}`));
+    const titleNode = el('span', 'card-title', cardTitle);
+    const sourceNode = el('span', 'card-source', `찾은 메뉴 · ${candidate.label}`);
+    item.append(image, titleNode, el('span', 'card-description', info.description), sourceNode);
+    if (candidate.destinationHost && candidate.destinationHost !== location.hostname) {
+      const destination = el('span', 'card-source', `연결된 사이트 · ${candidate.destinationHost}`);
+      item.append(destination);
+    }
+    if (candidate.opensNewWindow) {
+      const target = el('span', 'card-source', '새 창·다른 창으로 연결되는 메뉴');
+      item.append(target);
     }
     item.append(action);
     return item;

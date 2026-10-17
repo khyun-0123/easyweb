@@ -1,0 +1,88 @@
+{
+  "siteId": "public-agency",
+  "name": "국민연금공단",
+  "type": "public-agency",
+  "observedAt": "2026-10-17T16:47:20.324Z",
+  "pages": [
+    {
+      "id": "public-agency-blind-v4",
+      "url": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "finalUrl": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "title": "연금소식 > 채용정보 > 채용공고 - 목록 - 국민을 튼튼하게 연금을 튼튼하게",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v4/fixtures/public-agency.html",
+      "observation": {
+        "method": "Fresh independent anonymous Playwright Chromium public-page observation, actual ariaSnapshot and original DOM ancestry. Library DOM read through a CDP isolated world. No product source, tests or product output read or run.",
+        "observedAt": "2026-10-17T16:47:20.324Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; selected controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, editable values, text entry, selection, submission, download or original task event execution.",
+          "Readonly task focus/hit-test and three public destination GET checks appear separately in docs/evidence/run002/blind-v4-observations.json."
+        ],
+        "limitations": [
+          "Small selected public-control reconstructions only; no full site copy, CSS/media, application scripts, authenticated state or actual extension execution.",
+          "Original ancestor tags, IDs, classes, fixed accessible labels and hrefs are retained; omitted unrelated context and original geometry can affect live behavior.",
+          "Inline onclick presence uses an inert return-false marker; original JavaScript href text is retained but handlers are not copied. Offline fixtures use script-src none; object-src none CSP metadata.",
+          "Readonly focus and center hit tests are limited source reach checks, not a full keyboard or assistive-technology audit.",
+          "File links are locate-only; no requested download or actual application/submission action was executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "public-agency-blind-v4-recruitment-search",
+          "category": "search",
+          "label": "검색어 입력",
+          "sourceIds": [
+            "public-agency-blind-v4-input",
+            "public-agency-blind-v4-search"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "public-agency-blind-v4-public-recruitment-notice",
+          "category": "notice",
+          "label": "2026년 치매안심재산관리지원서비스 시범사업 수행인력(연구원) 추가채용 공고",
+          "sourceIds": [
+            "public-agency-blind-v4-recruitment-notice"
+          ],
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd="
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "public-agency-blind-v4-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v4-search",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "public-agency-blind-v4-recruitment-notice",
+          "category": "notice",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "public-agency-blind-v4-task",
+        "instruction": "2026년 치매안심재산관리지원서비스 시범사업 수행인력(연구원) 추가채용 공고의 공개 상세 페이지로 이동하세요. 첨부파일 다운로드·지원서 작성·지원 제출은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "public-agency-blind-v4-recruitment-notice"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "공개 채용공고 목록에서 실제 관찰한 기관 공고 제목과 상세 링크를 보존했다. 개인 이름·연락처·지원 정보는 수집하지 않았다.",
+        "공고 열람은 notice이며 지원서 제출이나 신청 완료가 아니다. 검색 버튼의 고정 value는 공개 제어 이름으로만 보존하고 검색 입력값은 읽지 않았다."
+      ]
+    }
+  ]
+}

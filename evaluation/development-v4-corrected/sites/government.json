@@ -1,0 +1,96 @@
+{
+  "siteId": "government",
+  "name": "국민안전24",
+  "type": "government-service",
+  "observedAt": "2026-10-17T16:47:15.934Z",
+  "pages": [
+    {
+      "id": "government-blind-v4",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "title": "국민안전24 | 민방위 | 교육안내",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v4/fixtures/government.html",
+      "observation": {
+        "method": "Fresh independent anonymous Playwright Chromium public-page observation, actual ariaSnapshot and original DOM ancestry. Library DOM read through a CDP isolated world. No product source, tests or product output read or run.",
+        "observedAt": "2026-10-17T16:47:15.934Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; selected controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, editable values, text entry, selection, submission, download or original task event execution.",
+          "Readonly task focus/hit-test and three public destination GET checks appear separately in docs/evidence/run002/blind-v4-observations.json."
+        ],
+        "limitations": [
+          "Small selected public-control reconstructions only; no full site copy, CSS/media, application scripts, authenticated state or actual extension execution.",
+          "Original ancestor tags, IDs, classes, fixed accessible labels and hrefs are retained; omitted unrelated context and original geometry can affect live behavior.",
+          "Inline onclick presence uses an inert return-false marker; original JavaScript href text is retained but handlers are not copied. Offline fixtures use script-src none; object-src none CSP metadata.",
+          "Readonly focus and center hit tests are limited source reach checks, not a full keyboard or assistive-technology audit.",
+          "File links are locate-only; no requested download or actual application/submission action was executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "government-blind-v4-civil-defense-education-policy",
+          "category": "help",
+          "label": "편의시책 및 과태료",
+          "sourceIds": [
+            "government-blind-v4-policy"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v4-voluntary-civil-defense-education",
+          "category": "help",
+          "label": "자율참여형 민방위 교육",
+          "sourceIds": [
+            "government-blind-v4-voluntary"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "government-blind-v4-civil-defense-department-contact",
+          "category": "help",
+          "label": "담당부서연락처",
+          "sourceIds": [
+            "government-blind-v4-contact"
+          ],
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "government-blind-v4-policy",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v4-voluntary",
+          "category": "help",
+          "action": "locate"
+        },
+        {
+          "sourceId": "government-blind-v4-contact",
+          "category": "help",
+          "action": "navigate"
+        }
+      ],
+      "task": {
+        "id": "government-blind-v4-task",
+        "instruction": "자율참여형 민방위 교육 원본 탭 버튼 위치를 찾으세요. 탭 활성화·교육 신청·본인확인은 실행하지 않습니다.",
+        "expectedSourceIds": [
+          "government-blind-v4-voluntary"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "민방위 교육의 서로 다른 안내 주제 탭과 담당부서 안내를 핵심 기능으로 주석했다. 대학 학사 기능으로 취급하지 않았다.",
+        "탭은 href가 없는 inline onclick 버튼이므로 locate이다. 담당부서연락처는 실제 HTTP 문서 링크로 navigate이다."
+      ]
+    }
+  ]
+}

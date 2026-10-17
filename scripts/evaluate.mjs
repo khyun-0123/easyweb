@@ -8,14 +8,25 @@ const args = process.argv.slice(2);
 const value = (name, fallback) => args.find(arg => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
 const engine = value('engine', 'current');
 const split = value('split', 'calibration');
+const outputDir = value('output-dir', 'docs/evidence/run002');
+const suite = value('suite', 'core');
+if (!['core', 'blind-v2', 'blind-v3', 'blind-v4', 'development-v4-corrected'].includes(suite)) throw new Error('suite=core|blind-v2|blind-v3|blind-v4|development-v4-corrected');
+const dataRoot = suite === 'core' ? 'evaluation' : `evaluation/${suite}`;
+const fixtureRoot = suite === 'development-v4-corrected' ? 'evaluation/blind-v4' : dataRoot;
+const phase = value('phase', engine === 'baseline' ? 'frozen-baseline' : 'post-holdout-development');
+if (!['frozen-baseline', 'fresh-blind-validation', 'post-holdout-development'].includes(phase)) throw new Error('Invalid evaluation phase');
+if (suite === 'development-v4-corrected' && phase !== 'post-holdout-development') throw new Error('Adjudicated v4 data is development only');
+const requiredPagesPerSite = suite === 'core' ? 3 : 1;
+const requiredPageCount = suite === 'core' ? 15 : 5;
+const minimumExpected = suite === 'core' ? 30 : 10;
 if (!['current', 'baseline'].includes(engine) || !['all', 'calibration', 'holdout'].includes(split)) throw new Error('engine=current|baseline, split=calibration|holdout|all');
-const siteFiles = (await readdir('evaluation/sites')).filter(file => file.endsWith('.json')).sort();
-const sites = await Promise.all(siteFiles.map(async file => JSON.parse(await readFile(`evaluation/sites/${file}`, 'utf8'))));
+const siteFiles = (await readdir(`${dataRoot}/sites`)).filter(file => file.endsWith('.json')).sort();
+const sites = await Promise.all(siteFiles.map(async file => JSON.parse(await readFile(`${dataRoot}/sites/${file}`, 'utf8'))));
 const ids = new Set();
 const categories = new Set(['login', 'search', 'notice', 'academic', 'apply', 'help']);
 let expectedCount = 0;
 for (const site of sites) {
-  if (!site.siteId || site.pages.length !== 3) throw new Error(`사이트당 3개 페이지 필요: ${site.siteId}`);
+  if (!site.siteId || site.pages.length !== requiredPagesPerSite) throw new Error(`사이트당 ${requiredPagesPerSite}개 페이지 필요: ${site.siteId}`);
   if (site.pages.filter(p => p.split === 'holdout').length !== 1) throw new Error(`사이트당 보류 페이지 1개 필요: ${site.siteId}`);
   for (const page of site.pages) {
     if (ids.has(page.id)) throw new Error(`페이지 ID 중복: ${page.id}`);
@@ -23,11 +34,11 @@ for (const site of sites) {
     if (page.expected.length < 2 || !page.task?.expectedSourceIds?.length) throw new Error(`정답/과제 부족: ${page.id}`);
     if (!page.expected.every(x => categories.has(x.category) && x.sourceIds?.length)) throw new Error(`정답 분류/소스 누락: ${page.id}`);
     if (!page.accepted.every(x => categories.has(x.category) && x.sourceId)) throw new Error(`허용 추천 형식 오류: ${page.id}`);
-    if (page.fixture.includes('..') || !page.fixture.startsWith('evaluation/fixtures/')) throw new Error('fixture 경로 오류');
+    if (page.fixture.includes('..') || !page.fixture.startsWith(`${fixtureRoot}/fixtures/`)) throw new Error('fixture 경로 오류');
     expectedCount += page.expected.length;
   }
 }
-if (sites.length !== 5 || ids.size !== 15 || expectedCount < 30) throw new Error('5개 사이트·15개 페이지·30개 이상 기대 기능이 필요합니다.');
+if (sites.length !== 5 || ids.size !== requiredPageCount || expectedCount < minimumExpected) throw new Error(`5개 사이트·${requiredPageCount}개 페이지·${minimumExpected}개 이상 기대 기능이 필요합니다.`);
 const root = engine === 'baseline' ? './docs/evidence/run001/baseline/src' : './src';
 const bundle = await build({ stdin: {
   contents: `import {analyzePage} from '${root}/analyzer'; import {classify} from '${root}/classifier'; import {rank} from '${root}/ranker'; window.evaluateEasyWeb=()=>{const raw=analyzePage();const classified=classify(raw);return {candidateCount:raw.length,classifiedCount:classified.length,selected:rank(classified).map(({element,snapshot,...item})=>({...item,sourceId:element.dataset.evalId??null}))};};`,
@@ -55,8 +66,17 @@ try {
         if (new Set(sourceIds).size !== sourceIds.length) throw new Error(`${target.id}: fixture 소스 ID 중복`);
         for (const expected of target.expected) for (const id of expected.sourceIds) if (!sourceIds.includes(id)) throw new Error(`${target.id}: 소스 ID 없음 ${id}`);
         for (const accepted of target.accepted) if (!sourceIds.includes(accepted.sourceId)) throw new Error(`${target.id}: 허용 소스 ID 없음 ${accepted.sourceId}`);
-        await page.addScriptTag({ content: bundle.outputFiles[0].text });
-        const actual = await page.evaluate(() => window.evaluateEasyWeb());
+        // 확장의 isolated world처럼 실행합니다. 원본 CSP·동결 fixture는 변경하지 않습니다.
+        const cdp = await page.context().newCDPSession(page);
+        await cdp.send('Page.enable');
+        const { frameTree } = await cdp.send('Page.getFrameTree');
+        const { executionContextId } = await cdp.send('Page.createIsolatedWorld', { frameId: frameTree.frame.id, worldName: 'easyweb-offline-evaluation' });
+        const injected = await cdp.send('Runtime.evaluate', { expression: bundle.outputFiles[0].text, contextId: executionContextId });
+        if (injected.exceptionDetails) throw new Error(`Engine injection failed: ${injected.exceptionDetails.text}`);
+        const observed = await cdp.send('Runtime.evaluate', { expression: 'JSON.stringify(window.evaluateEasyWeb())', contextId: executionContextId, returnByValue: true });
+        if (observed.exceptionDetails || typeof observed.result.value !== 'string') throw new Error('Engine result serialization failed');
+        const actual = JSON.parse(observed.result.value);
+        await cdp.detach();
         const destinations = await page.locator('a[data-eval-id][href]').evaluateAll(elements => Object.fromEntries(elements.map(el => [el.dataset.evalId, el.href])));
         results.push({ siteId: site.siteId, pageId: target.id, split: target.split, url: target.finalUrl || target.url, ...actual,
           ...scorePage(actual, target, destinations),
@@ -72,12 +92,14 @@ function summarize(rows) {
     tasksRecommended: rows.filter(row => row.taskRecommended).length,
   };
 }
-const report = { checkedAt: new Date().toISOString(), engine, split,
+const report = { checkedAt: new Date().toISOString(), engine, suite, split,
+  evaluationPhase: phase,
+  evaluationWorld: 'CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.',
   environment,
   scope: '독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.',
   engineHash: sha(bundle.outputFiles[0].text), datasetHash: sha(JSON.stringify(sites)), fixtureHashes,
   summary: summarize(results), sites: sites.map(site => ({ siteId: site.siteId, ...summarize(results.filter(row => row.siteId === site.siteId)) })), results };
-await mkdir('docs/evidence/run001', { recursive: true });
-const output = `docs/evidence/run001/evaluation-${engine}-${split}.json`;
+await mkdir(outputDir, { recursive: true });
+const output = `${outputDir}/evaluation-${engine}-${suite === 'core' ? '' : `${suite}-`}${split}.json`;
 await writeFile(output, JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({ output, summary: report.summary, sites: report.sites }, null, 2));

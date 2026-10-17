@@ -1,0 +1,376 @@
+{
+  "checkedAt": "2026-10-17T16:44:03.252Z",
+  "engine": "current",
+  "suite": "blind-v3",
+  "split": "holdout",
+  "evaluationPhase": "fresh-blind-validation",
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "a5cc570cf33d68e9beabc4708a2666135f540e187af1cef10724feed0f2b99bf",
+  "datasetHash": "926a4abf36e4b6f706f490a8486fb7f3cbb8c1a9f52431206da3fe7d3038ba16",
+  "fixtureHashes": {
+    "city-blind-v3": "0a330456fd8f9acde0d91fbf5d27553215be6321b81b087a469a1d6a1c61e6c3",
+    "government-blind-v3": "0159debe45dc5edb99ac9921f9a48c3d699b7fc154e6856bef6f2e19eaa38525",
+    "library-blind-v3": "88a7bcd8424c767f3191a9b36b91a087e88d1f08f8c202d8f2e02553b2a8a5a7",
+    "public-agency-blind-v3": "82d1644d5e4305e8d8039b15e4d7e065256181a1df095ccde837b232ddac3751",
+    "smu-blind-v3": "abe512cf13408c52eab611cde7c1ef6a2ac1e5844263eb61c727cd8aa0be9b96"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 10,
+    "recommended": 10,
+    "matched": 4,
+    "expected": 11,
+    "precision": 1,
+    "recall": 0.36363636363636365,
+    "tasksRecommended": 0
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "tasksRecommended": 0
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 0,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0,
+      "tasksRecommended": 0
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v3",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "candidateCount": 5,
+      "classifiedCount": 1,
+      "selected": [
+        {
+          "label": "신청서 및 서식 모음 바로가기",
+          "href": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.passport.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "여권 신청 안내",
+          "contextLabels": [
+            "여권 신청 안내",
+            "여권 신청안내"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v3-forms"
+        }
+      ],
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 3,
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "missed": [
+        "city-blind-v3-passport-photo-guide",
+        "city-blind-v3-passport-reissue-guide"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v3",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "candidateCount": 5,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "검색어",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주 묻는 질문",
+          "contextLabels": [
+            "자주 묻는 질문",
+            "열린마당"
+          ],
+          "pagePurpose": "help",
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "government-blind-v3-input"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주 묻는 질문",
+          "contextLabels": [
+            "자주 묻는 질문",
+            "열린마당"
+          ],
+          "pagePurpose": "help",
+          "category": "search",
+          "sourceId": "government-blind-v3-search"
+        },
+        {
+          "label": "자주묻는질문(민방위)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주 묻는 질문",
+          "contextLabels": [
+            "자주 묻는 질문",
+            "열린마당"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "sourceId": "government-blind-v3-civil-defense-faq"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "missed": [
+        "government-blind-v3-website-support-question"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v3",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "candidateCount": 4,
+      "classifiedCount": 2,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "본관",
+          "contextLabels": [
+            "본관"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "library-blind-v3-input"
+        },
+        {
+          "label": "검색하기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "본관",
+          "contextLabels": [
+            "본관",
+            "도서관 이용"
+          ],
+          "category": "search",
+          "sourceId": "library-blind-v3-search"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "missed": [
+        "library-blind-v3-first-visit-guide"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v3",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "candidateCount": 2,
+      "classifiedCount": 1,
+      "selected": [
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "지사",
+          "contextLabels": [
+            "지사",
+            "공단소개"
+          ],
+          "category": "search",
+          "sourceId": "public-agency-blind-v3-search"
+        }
+      ],
+      "correct": 1,
+      "recommended": 1,
+      "matched": 1,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0.5,
+      "missed": [
+        "public-agency-blind-v3-all-branch-directory"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v3",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "candidateCount": 5,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "smu-blind-v3-search"
+        },
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "smu-blind-v3-login"
+        },
+        {
+          "label": "학사제도 및 강의시간표",
+          "href": "https://www.smu.ac.kr/kor/life/onlineGuide.do#tab18441_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "sourceId": "smu-blind-v3-guide"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 0,
+      "expected": 2,
+      "precision": 1,
+      "recall": 0,
+      "missed": [
+        "smu-blind-v3-seasonal-course-guide",
+        "smu-blind-v3-attendance-guide"
+      ],
+      "incorrect": [],
+      "taskRecommended": false
+    }
+  ]
+}

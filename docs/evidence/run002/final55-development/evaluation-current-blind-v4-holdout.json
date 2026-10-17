@@ -1,0 +1,501 @@
+{
+  "checkedAt": "2026-10-17T16:56:42.686Z",
+  "engine": "current",
+  "suite": "blind-v4",
+  "split": "holdout",
+  "evaluationPhase": "post-holdout-development",
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+  "datasetHash": "4d323e54d0cdb20fabdca05cff2fd935adb64eced0f29e80a3b2981cdb478941",
+  "fixtureHashes": {
+    "city-blind-v4": "6a62fcac87101326725c6a7bd07b4d7183676da63a242575686adbaa19436837",
+    "government-blind-v4": "2de41352bf9ecbca639d6d9b75ff71052a572fe5cddca2d5e5c09c25feed95ae",
+    "library-blind-v4": "af6fe67a3b974c6b118abf037986ce7411d469cf18f98556c5a9d4a4a1a1b016",
+    "public-agency-blind-v4": "07790738d9028ed4c3ef2ad741369fc91c89de314a430607faed6bd0e1977094",
+    "smu-blind-v4": "af846fc687c914a812a4c3271472809dbc9dee56aa0da657811cd6616ee2df3e"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 14,
+    "recommended": 15,
+    "matched": 12,
+    "expected": 13,
+    "precision": 0.9333333333333333,
+    "recall": 0.9230769230769231,
+    "tasksRecommended": 5
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v4",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_03_06.do",
+      "candidateCount": 5,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "천안시 폐기물관리에 관한 조례 [별표6]",
+          "action": "locate",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "안내·법령 문서 읽기",
+            "명시적 문서 다운로드"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "city-blind-v4-ordinance"
+        },
+        {
+          "label": "대형폐기물 신청하기",
+          "href": "http://cheonan.storyweb.co.kr/apply.php",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "cheonan.storyweb.co.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "본문 영역"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v4-apply"
+        },
+        {
+          "label": "대형폐기물 신청 결과 조회",
+          "href": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "cheonan.storyweb.co.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v4-result"
+        }
+      ],
+      "correct": 2,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "city-blind-v4-waste-application-result"
+      ],
+      "incorrect": [
+        {
+          "label": "대형폐기물 신청 결과 조회",
+          "href": "http://cheonan.storyweb.co.kr/apply_search_form.html",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "cheonan.storyweb.co.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "대형폐기물 처리신청",
+          "contextLabels": [
+            "대형폐기물 처리신청"
+          ],
+          "category": "apply",
+          "sourceId": "city-blind-v4-result"
+        }
+      ],
+      "taskRecommended": true
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v4",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+      "candidateCount": 4,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "담당부서연락처",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.safekorea.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "민방위",
+          "contextLabels": [
+            "민방위"
+          ],
+          "category": "help",
+          "pageTask": "control",
+          "sourceId": "government-blind-v4-contact"
+        },
+        {
+          "label": "편의시책 및 과태료",
+          "action": "locate",
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "안내 정보 패널 읽기",
+            "안내 제목과 명시적 펼침 제어"
+          ],
+          "sectionLabel": "중앙교육계획",
+          "contextLabels": [
+            "중앙교육계획",
+            "교육안내",
+            "민방위"
+          ],
+          "category": "help",
+          "pageTask": "control",
+          "sourceId": "government-blind-v4-policy"
+        },
+        {
+          "label": "자율참여형 민방위 교육",
+          "action": "locate",
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "안내 정보 패널 읽기",
+            "안내 제목과 명시적 펼침 제어"
+          ],
+          "sectionLabel": "중앙교육계획",
+          "contextLabels": [
+            "중앙교육계획",
+            "교육안내",
+            "민방위"
+          ],
+          "category": "help",
+          "pageTask": "control",
+          "sourceId": "government-blind-v4-voluntary"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v4",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "candidateCount": 4,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "공지공고",
+          "contextLabels": [
+            "공지공고"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "library-blind-v4-input"
+        },
+        {
+          "label": "공지사항",
+          "action": "locate",
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공지 문서 읽기",
+            "공지 제목과 목록 항목"
+          ],
+          "sectionLabel": "공지공고",
+          "contextLabels": [
+            "공지공고",
+            "도서관 소개"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "sourceId": "library-blind-v4-notice-category"
+        },
+        {
+          "label": "검색하기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "공지공고",
+          "contextLabels": [
+            "공지공고",
+            "도서관 소개"
+          ],
+          "category": "search",
+          "sourceId": "library-blind-v4-search"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v4",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M0List.do?menuId=MN24000969",
+      "candidateCount": 3,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "채용공고",
+          "contextLabels": [
+            "채용공고",
+            "연금소식"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "public-agency-blind-v4-input"
+        },
+        {
+          "label": "2026년 치매안심재산관리지원서비스 시범사업 수행인력(연구원) 추가채용 공고",
+          "href": "https://www.nps.or.kr/pnsgdnc/hiregdnc/getOHAE0004M1.do?menuId=MN24000969&pstId=ZZ202600000000001110&hmpgCd=01&hmpgBbsCd=BS20240138&sortSe=FR&pageIndex=1&searchText=&searchGbu=&pstSeCd=",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "공지 문서 읽기",
+            "공지 제목과 목록 항목"
+          ],
+          "sectionLabel": "채용공고",
+          "contextLabels": [
+            "채용공고",
+            "연금소식"
+          ],
+          "category": "notice",
+          "pageTask": "reading",
+          "sourceId": "public-agency-blind-v4-recruitment-notice"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "채용공고",
+          "contextLabels": [
+            "채용공고",
+            "연금소식"
+          ],
+          "category": "search",
+          "sourceId": "public-agency-blind-v4-search"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v4",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/studentIdCard.do",
+      "candidateCount": 3,
+      "classifiedCount": 3,
+      "selected": [
+        {
+          "label": "천안캠퍼스",
+          "href": "https://www.smu.ac.kr/kor/life/studentIdCard2.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학생지원 대학생활",
+          "contextLabels": [
+            "학생지원 대학생활"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v4-cheonan"
+        },
+        {
+          "label": "카드 학생증 발급방법.pdf",
+          "action": "locate",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "발급 안내 문서 읽기",
+            "명시적 다운로드와 발급 목적"
+          ],
+          "sectionLabel": "학생지원 대학생활",
+          "contextLabels": [
+            "학생지원 대학생활"
+          ],
+          "category": "apply",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v4-card-manual"
+        },
+        {
+          "label": "모바일 학생증 설치 및 사용안내.pdf",
+          "action": "locate",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "안내·법령 문서 읽기",
+            "명시적 문서 다운로드"
+          ],
+          "sectionLabel": "학생지원 대학생활",
+          "contextLabels": [
+            "학생지원 대학생활"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v4-mobile-manual"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true
+    }
+  ]
+}

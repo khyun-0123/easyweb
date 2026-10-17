@@ -1,0 +1,20 @@
+
+Running 13 tests using 1 worker
+
+(node:35110) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/dynamic-page.spec.mjs:6:1 › 원본 href 변경 직후에도 낡은 URL로 이동하지 않고 재탐지한다 (170ms)
+  ✓   2 tests/dynamic-page.spec.mjs:19:1 › 후보 제거·숨김·메뉴명 변경과 SPA URL 변경을 감지한다 (996ms)
+  ✓   3 tests/dynamic-page.spec.mjs:40:1 › 동일 프레임의 우클릭·드래그와 변경 감지 후에도 이전 링크 주소를 노출하지 않는다 (118ms)
+  ✓   4 tests/dynamic-page.spec.mjs:55:1 › 관계없는 본문 갱신은 정상 링크를 막지 않고 종료 시 감시 타이머를 정리한다 (270ms)
+  ✓   5 tests/easyweb.spec.mjs:7:1 › 주요 기능 6개, 주요 메뉴 우선, 중복·숨김 제외 (102ms)
+  ✓   6 tests/easyweb.spec.mjs:18:1 › Esc 종료 시 원본 초점·스크롤과 DOM 유지, 재주입 시 중복 방지 (138ms)
+  ✓   7 tests/easyweb.spec.mjs:40:1 › 일반 링크 카드는 정확한 원본 주소로 직접 이동 (137ms)
+  ✓   8 tests/easyweb.spec.mjs:47:1 › 동작형 버튼은 자동 실행 없이 원본 위치를 안내 (126ms)
+  ✓   9 tests/easyweb.spec.mjs:58:1 › 다시 찾기와 원본 화면 복귀 (163ms)
+  ✓  10 tests/easyweb.spec.mjs:69:1 › 탐지 실패 시 기능을 지어내지 않고 원본 복귀 제공 (150ms)
+  ✓  11 tests/easyweb.spec.mjs:78:1 › 분석기는 입력값을 읽지 않고 위험 동작을 추천하지 않음 (133ms)
+  ✓  12 tests/easyweb.spec.mjs:96:1 › 모달 키보드 초점이 원본 페이지로 빠져나가지 않음 (101ms)
+  ✓  13 tests/easyweb.spec.mjs:106:1 › 데스크톱·모바일에서 가로 스크롤이 생기지 않음 (126ms)
+
+  13 passed (3.1s)

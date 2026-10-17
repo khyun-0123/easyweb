@@ -1,0 +1,87 @@
+{
+  "siteId": "library",
+  "name": "국립중앙도서관",
+  "type": "library",
+  "observedAt": "2026-10-17T16:47:23.728Z",
+  "pages": [
+    {
+      "id": "library-blind-v4",
+      "url": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "finalUrl": "https://www.nl.go.kr/NL/contents/N50601000000.do",
+      "title": "국립중앙도서관>도서관 소개>도서관 소식>공지공고목록",
+      "httpStatus": 200,
+      "split": "holdout",
+      "fixture": "evaluation/blind-v4/fixtures/library.html",
+      "observation": {
+        "method": "Fresh independent anonymous Playwright Chromium public-page observation, actual ariaSnapshot and original DOM ancestry. Library DOM read through a CDP isolated world. No product source, tests or product output read or run.",
+        "observedAt": "2026-10-17T16:47:23.728Z",
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "conditions": [
+          "DOMContentLoaded plus 1600ms; selected controls had layout boxes and were not CSS-hidden, inert or aria-hidden.",
+          "No authentication, editable values, text entry, selection, submission, download or original task event execution.",
+          "Readonly task focus/hit-test and three public destination GET checks appear separately in docs/evidence/run002/blind-v4-observations.json."
+        ],
+        "limitations": [
+          "Small selected public-control reconstructions only; no full site copy, CSS/media, application scripts, authenticated state or actual extension execution.",
+          "Original ancestor tags, IDs, classes, fixed accessible labels and hrefs are retained; omitted unrelated context and original geometry can affect live behavior.",
+          "Inline onclick presence uses an inert return-false marker; original JavaScript href text is retained but handlers are not copied. Offline fixtures use script-src none; object-src none CSP metadata.",
+          "Readonly focus and center hit tests are limited source reach checks, not a full keyboard or assistive-technology audit.",
+          "File links are locate-only; no requested download or actual application/submission action was executed."
+        ]
+      },
+      "expected": [
+        {
+          "id": "library-blind-v4-notice-category-filter",
+          "category": "notice",
+          "label": "공지사항",
+          "sourceIds": [
+            "library-blind-v4-notice-category"
+          ],
+          "action": "locate"
+        },
+        {
+          "id": "library-blind-v4-notice-search",
+          "category": "search",
+          "label": "검색어 입력",
+          "sourceIds": [
+            "library-blind-v4-input",
+            "library-blind-v4-search"
+          ],
+          "action": "locate"
+        }
+      ],
+      "accepted": [
+        {
+          "sourceId": "library-blind-v4-notice-category",
+          "category": "notice",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v4-input",
+          "category": "search",
+          "action": "locate"
+        },
+        {
+          "sourceId": "library-blind-v4-search",
+          "category": "search",
+          "action": "locate"
+        }
+      ],
+      "task": {
+        "id": "library-blind-v4-task",
+        "instruction": "공지사항 분류의 원본 링크 위치를 찾으세요. 분류 변경·검색어 입력·검색 실행은 하지 않습니다.",
+        "expectedSourceIds": [
+          "library-blind-v4-notice-category"
+        ],
+        "boundary": "public link or original control reach only; no form submit"
+      },
+      "notes": [
+        "공지공고 목록의 공지사항 분류는 JavaScript URL 제어로 관찰했으므로 locate로 주석했다. 공지 게시물 본문·첨부파일·개인 정보는 복사하지 않았다.",
+        "CDP isolated world에서 원본 공개 DOM을 읽었다. 페이지의 보안·인증·인증서 설정은 변경하지 않았다. div 기반 컨테이너는 인위적인 랜드마크로 바꾸지 않았다."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "checkedAt": "2026-10-17T16:54:55.343Z",
+  "evaluationPhase": "post-holdout-development",
+  "releaseDecision": "S07 remains IN_PROGRESS. The fresh independent quality requirement was not passed; exposed development success does not supersede preserved first failures. No further fresh resampling for this candidate.",
+  "sourceFreeze": {
+    "files": {
+      "src/classifier.ts": "b2538f931a49e2679bf4015198751ed934c88c02e4d1118b67f7163bdcf55db8",
+      "src/ranker.ts": "6c4c77dd9a438bff0226428e4dce13192c1c076cf0b4d0b339704526cb9ccdd4",
+      "tests/classifier-ranking.spec.mjs": "a4491de4ab56e1c13a5083fc984296710b46bb3359eade6140772846e96c8738"
+    },
+    "rankerChangedInV2V3V4": false,
+    "rule": "No further source changes without a separately authorized concrete regression."
+  },
+  "synthetic": {
+    "suite": "tests/classifier-ranking.spec.mjs",
+    "executed": 54,
+    "passed": 54,
+    "failed": 0,
+    "durationSeconds": 4.2,
+    "command": "npx playwright test tests/classifier-ranking.spec.mjs --reporter=dot --output=/tmp/easyweb-final54",
+    "newV4Families": {
+      "beforeExecuted": 4,
+      "beforePassed": 0,
+      "beforeFailed": 4,
+      "afterPassed": 4
+    },
+    "weakGuideDisplacement": {
+      "before": "FAILED: three weak generic guide links displace the stronger exact counseling help feature from six cards.",
+      "after": "PASS: generic guide fallback has no reserved pageTask evidence; explicit reading/controls retain it."
+    },
+    "retainedCounterexamples": [
+      "dangerous labels and URLs",
+      "case/encoded/duplicate command parameters including submit",
+      "unknown search values excluded from decisions",
+      "article/announcement subject versus service intent",
+      "private/hidden/unscoped FAQ lookalikes",
+      "sort criteria versus actual lookup",
+      "unrelated DOM/input order and multiple-list ordering",
+      "form submit versus informational panel",
+      "academic report/topic versus short local destination"
+    ]
+  },
+  "typecheck": {
+    "result": "PASS",
+    "command": "npx tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --lib ES2022,DOM,DOM.Iterable --strict --skipLibCheck src/classifier.ts src/ranker.ts"
+  },
+  "developmentResults": {
+    "core": {
+      "report": "docs/evidence/run002/v4-post-development/evaluation-current-all.json",
+      "summary": {
+        "pages": 15,
+        "correct": 69,
+        "recommended": 69,
+        "matched": 45,
+        "expected": 45,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "engineHash": "910a364f02557a0a80ab6b9e574aefb602b5be5cd1d7c56d20f896f0afc0cef5",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "v2": {
+      "report": "docs/evidence/run002/v4-post-development/evaluation-current-blind-v2-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 22,
+        "recommended": 22,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "engineHash": "910a364f02557a0a80ab6b9e574aefb602b5be5cd1d7c56d20f896f0afc0cef5",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "v3": {
+      "report": "docs/evidence/run002/v4-post-development/evaluation-current-blind-v3-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "engineHash": "910a364f02557a0a80ab6b9e574aefb602b5be5cd1d7c56d20f896f0afc0cef5",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "v4Raw": {
+      "report": "docs/evidence/run002/v4-post-development/evaluation-current-blind-v4-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 14,
+        "recommended": 15,
+        "matched": 12,
+        "expected": 13,
+        "precision": 0.9333333333333333,
+        "recall": 0.9230769230769231,
+        "tasksRecommended": 5
+      },
+      "engineHash": "910a364f02557a0a80ab6b9e574aefb602b5be5cd1d7c56d20f896f0afc0cef5",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "v4Corrected": {
+      "report": "docs/evidence/run002/v4-post-development/evaluation-current-development-v4-corrected-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 15,
+        "recommended": 15,
+        "matched": 13,
+        "expected": 13,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "engineHash": "910a364f02557a0a80ab6b9e574aefb602b5be5cd1d7c56d20f896f0afc0cef5",
+      "evaluationPhase": "post-holdout-development"
+    }
+  },
+  "v4AnnotationReview": {
+    "originalIndependentFailure": {
+      "pages": 5,
+      "correct": 7,
+      "recommended": 8,
+      "matched": 5,
+      "expected": 13,
+      "precision": 0.875,
+      "recall": 0.38461538461538464,
+      "tasksRecommended": 1
+    },
+    "rawCurrentResult": {
+      "pages": 5,
+      "correct": 14,
+      "recommended": 15,
+      "matched": 12,
+      "expected": 13,
+      "precision": 0.9333333333333333,
+      "recall": 0.9230769230769231,
+      "tasksRecommended": 5
+    },
+    "correctedDevelopmentResult": {
+      "pages": 5,
+      "correct": 15,
+      "recommended": 15,
+      "matched": 13,
+      "expected": 13,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 5
+    },
+    "note": "Independent annotation audit corrected expected+accepted category for application-result lookup from search to apply in a separate development-v4-corrected dataset. The classifier remains apply, matching its existing application/history-lookup taxonomy. This worker did not edit either truth dataset.",
+    "sameReplayedFixtures": true
+  },
+  "finalBoundaries": [
+    "Explicit document downloads share sourceAction evidence; extension removal affects only the local lexical view, not source labels or href metadata. Issuance guides remain apply; use guides/legal documents become help, with original locate action preserved.",
+    "Informational panel fallback requires a guide heading, explicit aria-expanded button, no effective form-submit association and no stronger/risky intent.",
+    "Hiring/tender/recruitment headings supply notice document evidence only with list/table source structure; article-contained collections do not acquire that evidence.",
+    "Student-support/life headings admit short source-backed list/local-navigation links as academic; no campus proper names are hardcoded; article/document/news-title counterexamples remain excluded.",
+    "Ordinary short guide names are weak help fallback and do not reserve current-page slots. Total cards six, per-category cap three, reserved explicit page tasks at most three remain unchanged."
+  ],
+  "handoff": "Parent performs final integrated verification, original 15 live task regression, native/install/package checks and user pretest. No real-user trial was invented or performed by this worker."
+}

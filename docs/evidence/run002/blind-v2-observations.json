@@ -1,0 +1,4004 @@
+{
+  "datasetId": "easyweb-independent-blind-v2",
+  "annotationPolicy": "Five new official public pages, one per existing institution, selected by service purpose before annotating. During this collection no product classifier/ranker code or evaluation results were inspected or run. No labels or page choices were tuned to scores. All five are held out until the parent freezes the engine.",
+  "originalDatasetUnchanged": true,
+  "originalPageUrlsDistinct": true,
+  "collectedAt": "2026-10-17T16:14:07.479Z",
+  "annotationFrozenAt": "2026-10-17T16:17:01.519Z",
+  "environment": {
+    "browser": "156.0.8078.4",
+    "viewport": {
+      "width": 1440,
+      "height": 1080
+    },
+    "context": "Fresh anonymous headless Chromium; official public URLs only. CSS-visible control inspection and screenshot review, no form values or authentication state."
+  },
+  "pages": [
+    {
+      "siteId": "smu",
+      "name": "상명대학교",
+      "selectionBasis": "기존 홈·공지·학사일정과 다른 학사 등록 안내 영역을 선택. 제품 성능을 확인하기 전에 업무 목적을 기준으로 고정.",
+      "page": {
+        "id": "smu-blind-v2",
+        "url": "https://www.smu.ac.kr/kor/life/enrollment.do",
+        "finalUrl": "https://www.smu.ac.kr/kor/life/enrollment.do",
+        "title": "상명대학교 국문 | 학사안내 | 학사 | 등록안내 | 등록금납부안내 | 서울캠퍼스",
+        "httpStatus": 200,
+        "split": "holdout",
+        "fixture": "evaluation/blind-v2/fixtures/smu.html",
+        "observation": {
+          "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          },
+          "conditions": [
+            "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+            "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+            "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+          ],
+          "limitations": [
+            "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+            "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+            "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+            "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+          ]
+        },
+        "expected": [
+          {
+            "id": "smu-blind-v2-task-feature-1",
+            "category": "academic",
+            "label": "분할납부안내",
+            "sourceIds": [
+              "smu-blind-v2-installment"
+            ],
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/enrollment2.do#tab18297_"
+          },
+          {
+            "id": "smu-blind-v2-task-feature-2",
+            "category": "help",
+            "label": "등록관련 FAQ",
+            "sourceIds": [
+              "smu-blind-v2-faq"
+            ],
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/enrollment3.do#tab18298_"
+          }
+        ],
+        "accepted": [
+          {
+            "sourceId": "smu-blind-v2-login",
+            "category": "login",
+            "action": "locate"
+          },
+          {
+            "sourceId": "smu-blind-v2-search",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "smu-blind-v2-installment",
+            "category": "academic",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "smu-blind-v2-faq",
+            "category": "help",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "smu-blind-v2-campus",
+            "category": "academic",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "smu-blind-v2-current",
+            "category": "academic",
+            "action": "locate"
+          }
+        ],
+        "task": {
+          "id": "smu-blind-v2-task",
+          "instruction": "현재 안내에서 등록관련 FAQ 공개 페이지로 이동하세요. 로그인하거나 납부 절차를 실행하지 않습니다.",
+          "expectedSourceIds": [
+            "smu-blind-v2-faq"
+          ],
+          "boundary": "public link or original control reach only; no form submit"
+        },
+        "notes": [
+          "등록 관련 학사 안내와 질문 경로가 이번 페이지의 핵심 목적이다. 금액 계산·개인 등록내역·납부 실행은 평가하지 않는다.",
+          "같은 문서의 선택 탭 fragment는 locate, 다른 공개 안내 문서의 fragment 링크는 관찰된 공개 페이지 이동으로 구별했다."
+        ]
+      },
+      "observedAt": "2026-10-17T16:14:07.479Z",
+      "browser": "156.0.8078.4",
+      "sourceCaptureSha256": "511e62bd89a12b86844dcf79824f8a8af0d8c78476341040fe30a3a78325988b",
+      "selectedControls": [
+        {
+          "sourceId": "smu-blind-v2-login",
+          "tag": "A",
+          "fixedText": "Login",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "javascript:loginPopupOpen();",
+            "title": "로그인 새창열림",
+            "class": "login"
+          },
+          "absoluteHref": "javascript:loginPopupOpen();",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "login-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "util-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-header-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "login",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-search",
+          "tag": "A",
+          "fixedText": "검색",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "#a",
+            "title": "검색 열기",
+            "class": "btn-srch js-popup-open",
+            "data-popup-type": "search-popup"
+          },
+          "absoluteHref": "https://www.smu.ac.kr/kor/life/enrollment.do#a",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "util-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-header-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-language",
+          "tag": "A",
+          "fixedText": "ENG",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/eng1/index.do",
+            "title": "새창열림",
+            "target": "_blank"
+          },
+          "absoluteHref": "https://www.smu.ac.kr/eng1/index.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "lang-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "util-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-header-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom-header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-privacy",
+          "tag": "A",
+          "fixedText": "개인정보처리방침",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/kor/intro/privacyPolicy.do",
+            "title": "바로가기",
+            "class": "privacy"
+          },
+          "absoluteHref": "https://www.smu.ac.kr/kor/intro/privacyPolicy.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "main-quick-list",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "main-quick-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-footer-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-footer-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "FOOTER",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-installment",
+          "tag": "A",
+          "fixedText": "분할납부안내",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/kor/life/enrollment2.do#tab18297_",
+            "title": "분할납부안내",
+            "target": "",
+            "id": "tab18297"
+          },
+          "absoluteHref": "https://www.smu.ac.kr/kor/life/enrollment2.do#tab18297_",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "swiper-slide swiper-slide-next",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "tab-ul swiper-wrapper",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "double-tab-wrap pc",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tab-outer",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "contents-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "academic",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-faq",
+          "tag": "A",
+          "fixedText": "등록관련 FAQ",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/kor/life/enrollment3.do#tab18298_",
+            "title": "등록관련 FAQ",
+            "target": "",
+            "id": "tab18298"
+          },
+          "absoluteHref": "https://www.smu.ac.kr/kor/life/enrollment3.do#tab18298_",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "swiper-slide last",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "tab-ul swiper-wrapper",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "double-tab-wrap pc",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tab-outer",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "contents-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "help",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-campus",
+          "tag": "A",
+          "fixedText": "천안캠퍼스",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/kor/life/enrollment4.do",
+            "title": "천안캠퍼스 바로가기",
+            "class": "jwxe_ "
+          },
+          "absoluteHref": "https://www.smu.ac.kr/kor/life/enrollment4.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "lnb-depth05",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "lnb-depth04",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "lnb-depth03",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "lnb-menu",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "lnb depth5",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "lnb-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "content-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "academic",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "smu-blind-v2-current",
+          "tag": "A",
+          "fixedText": "등록금납부안내",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/kor/life/enrollment.do#tab18296_",
+            "title": "등록금납부안내 선택됨",
+            "target": "",
+            "id": "tab18296"
+          },
+          "absoluteHref": "https://www.smu.ac.kr/kor/life/enrollment.do#tab18296_",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "swiper-slide active first swiper-slide-active",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "tab-ul swiper-wrapper",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "swiper-tab-box swiper-container tab-swiper tab-swiper1 swiper-container-initialized swiper-container-horizontal",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "double-tab-wrap pc",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tab-outer",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "contents-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "academic",
+            "action": "locate"
+          }
+        }
+      ]
+    },
+    {
+      "siteId": "city",
+      "name": "천안시청",
+      "selectionBasis": "시청의 일반 민원 영역 대신 시민 보건서비스 하위 영역을 선택. 의료 정보의 정확성·의학적 효과를 평가하는 자료가 아니다.",
+      "page": {
+        "id": "city-blind-v2",
+        "url": "https://www.cheonan.go.kr/dhealth.do",
+        "finalUrl": "https://www.cheonan.go.kr/dhealth.do",
+        "title": "동남구 보건소",
+        "httpStatus": 200,
+        "split": "holdout",
+        "fixture": "evaluation/blind-v2/fixtures/city.html",
+        "observation": {
+          "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          },
+          "conditions": [
+            "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+            "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+            "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+          ],
+          "limitations": [
+            "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+            "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+            "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+            "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+          ]
+        },
+        "expected": [
+          {
+            "id": "city-blind-v2-task-feature-1",
+            "category": "help",
+            "label": "조직 및 전화번호 안내",
+            "sourceIds": [
+              "city-blind-v2-directory"
+            ],
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do"
+          },
+          {
+            "id": "city-blind-v2-task-feature-2",
+            "category": "apply",
+            "label": "골다공증 검사예약",
+            "sourceIds": [
+              "city-blind-v2-booking"
+            ],
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/dhealth/sub02_07_01_01.do"
+          },
+          {
+            "id": "city-blind-v2-task-feature-3",
+            "category": "notice",
+            "label": "공지사항 더보기",
+            "sourceIds": [
+              "city-blind-v2-notice"
+            ],
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000153/list.do"
+          }
+        ],
+        "accepted": [
+          {
+            "sourceId": "city-blind-v2-login",
+            "category": "login",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "city-blind-v2-search",
+            "category": "search",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "city-blind-v2-directory",
+            "category": "help",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "city-blind-v2-booking",
+            "category": "apply",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "city-blind-v2-notice",
+            "category": "notice",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "city-blind-v2-notice-tab",
+            "category": "notice",
+            "action": "locate"
+          }
+        ],
+        "task": {
+          "id": "city-blind-v2-task",
+          "instruction": "조직 및 전화번호 안내 공개 페이지로 이동하세요. 전화 발신이나 예약 신청은 하지 않습니다.",
+          "expectedSourceIds": [
+            "city-blind-v2-directory"
+          ],
+          "boundary": "public link or original control reach only; no form submit"
+        },
+        "notes": [
+          "천안시의 공식 보건소 하위 영역으로 기존 시청 홈·민원 신청안내·무료상담 페이지와 구분된다.",
+          "예약 명칭의 링크는 공개 안내 진입 경로로만 정답을 정했다. 실제 예약·의료정보 입력·진단은 수행하지 않는다."
+        ]
+      },
+      "observedAt": "2026-10-17T16:13:56.707Z",
+      "browser": "156.0.8078.4",
+      "sourceCaptureSha256": "99c57507887ac5cb1f1e3b2ea3144310aaa9a2ca7cbf5944f34311f6c222b6c3",
+      "selectedControls": [
+        {
+          "sourceId": "city-blind-v2-login",
+          "tag": "A",
+          "fixedText": "로그인",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/dhealth/login.do?returnUrl=/dhealth.do",
+            "class": "util-btn"
+          },
+          "absoluteHref": "https://www.cheonan.go.kr/dhealth/login.do?returnUrl=/dhealth.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "util-login",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "util-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "layout",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H1:천안시청 동남구 보건소"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "top_layout",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "login",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-search",
+          "tag": "A",
+          "fixedText": "통합검색",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+            "title": "새창",
+            "target": "_blank",
+            "class": "util-btn"
+          },
+          "absoluteHref": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "util-search",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "util-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "layout",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H1:천안시청 동남구 보건소"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "top_layout",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-display",
+          "tag": "BUTTON",
+          "fixedText": "화면크기",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "button",
+            "aria-expanded": "false",
+            "aria-haspopup": "true",
+            "class": "util-btn drop-btn"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "top-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "layout",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H1:천안시청 동남구 보건소"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "top_layout",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-privacy",
+          "tag": "A",
+          "fixedText": "개인정보처리방침",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/kor/sitemap02_01.do",
+            "title": "새 창 열림",
+            "target": "_blank",
+            "class": "item  privacy"
+          },
+          "absoluteHref": "https://www.cheonan.go.kr/kor/sitemap02_01.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "menu-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "left-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-bottom",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "layout",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "FOOTER",
+              "id": "foot_layout",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-directory",
+          "tag": "A",
+          "fixedText": "조직 및 전화번호 안내",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do",
+            "class": "visual-button"
+          },
+          "absoluteHref": "https://www.cheonan.go.kr/prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "info-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "visual type1 ver1",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "component-box aos-init aos-animate",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "module-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "body_layout",
+              "class": "has-module-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "help",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-booking",
+          "tag": "A",
+          "fixedText": "골다공증 검사예약",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/dhealth/sub02_07_01_01.do",
+            "class": "link"
+          },
+          "absoluteHref": "https://www.cheonan.go.kr/dhealth/sub02_07_01_01.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "link-item",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "link-column col5",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "right",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "qlink type1",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "component-box aos-init aos-animate",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "module-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "body_layout",
+              "class": "has-module-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "apply",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-notice",
+          "tag": "A",
+          "fixedText": "공지사항 더보기",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/bbs/BBSMSTR_000000000153/list.do",
+            "class": "md-more"
+          },
+          "absoluteHref": "https://www.cheonan.go.kr/bbs/BBSMSTR_000000000153/list.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "board1",
+              "class": "tab-panel",
+              "role": "tabpanel",
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "panel-box",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "bottom",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "left",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "board-module type1 ver2",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "component-box aos-init aos-animate",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "module-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "body_layout",
+              "class": "has-module-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "notice",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "city-blind-v2-notice-tab",
+          "tag": "BUTTON",
+          "fixedText": "공지사항",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "role": "tab",
+            "aria-controls": "board1",
+            "id": "-tab-select-instance-0-tab-0-tab-item-0",
+            "data-target": "board1",
+            "aria-selected": "true"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "on",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "tab-ul",
+              "role": "tablist",
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "tab-select",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "md-title small",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "left",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "board-module type1 ver2",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "notice",
+            "action": "locate"
+          }
+        }
+      ]
+    },
+    {
+      "siteId": "government",
+      "name": "국민안전24",
+      "selectionBasis": "기존 홈·통합검색·Q&A와 다른 민방위 일정 조회 업무 영역을 선택. 기본 결과가 0건인 상태도 그대로 관찰했다.",
+      "page": {
+        "id": "government-blind-v2",
+        "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+        "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+        "title": "국민안전24 | 민방위 | 교육일정",
+        "httpStatus": 200,
+        "split": "holdout",
+        "fixture": "evaluation/blind-v2/fixtures/government.html",
+        "observation": {
+          "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          },
+          "conditions": [
+            "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+            "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+            "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+          ],
+          "limitations": [
+            "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+            "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+            "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+            "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+          ]
+        },
+        "expected": [
+          {
+            "id": "government-blind-v2-task-feature-1",
+            "category": "search",
+            "label": "검색",
+            "sourceIds": [
+              "government-blind-v2-search"
+            ],
+            "action": "locate"
+          },
+          {
+            "id": "government-blind-v2-task-feature-2",
+            "category": "help",
+            "label": "담당부서연락처",
+            "sourceIds": [
+              "government-blind-v2-contact"
+            ],
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113"
+          }
+        ],
+        "accepted": [
+          {
+            "sourceId": "government-blind-v2-guide",
+            "category": "help",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "government-blind-v2-contact",
+            "category": "help",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "government-blind-v2-province",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "government-blind-v2-start",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "government-blind-v2-end",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "government-blind-v2-search",
+            "category": "search",
+            "action": "locate"
+          }
+        ],
+        "task": {
+          "id": "government-blind-v2-task",
+          "instruction": "교육일정의 검색 원본 버튼 위치를 찾으세요. 날짜·지역 선택이나 검색 실행은 하지 않습니다.",
+          "expectedSourceIds": [
+            "government-blind-v2-search"
+          ],
+          "boundary": "public link or original control reach only; no form submit"
+        },
+        "notes": [
+          "일정 조회의 원본 검색 제어와 담당부서 안내를 별개의 핵심 목적 기능으로 정했다.",
+          "입력값은 관찰·복사하지 않았다. 공개 고정 aria-label/title/placeholder만 보존하고 지역 select는 관찰된 첫 기본 option만 축약 재현했다."
+        ]
+      },
+      "observedAt": "2026-10-17T16:13:55.748Z",
+      "browser": "156.0.8078.4",
+      "sourceCaptureSha256": "be2018265ad3dfb8d28a7470b502529ddc305eef913198860848f0aa21c4db99",
+      "selectedControls": [
+        {
+          "sourceId": "government-blind-v2-language",
+          "tag": "A",
+          "fixedText": "ENG",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do"
+          },
+          "absoluteHref": "https://eng.safekorea.go.kr/safekorea-eng/cmmn/chg2Locale.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "gnb-list",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "gnb-inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "brand-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-brand",
+          "tag": "A",
+          "fixedText": "국민안전24",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "H1",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "logo-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H1:국민안전24"
+            },
+            {
+              "tag": "NAV",
+              "id": "gnb",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "header-pcarea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-privacy",
+          "tag": "A",
+          "fixedText": "개인정보처리방침",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/footer/info/privacy.do?isFooter=Y&menuSn=2501&siteSeCd=COM000406",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "privacy",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-menu",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "FOOTER",
+              "id": "korfooter",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-guide",
+          "tag": "A",
+          "fixedText": "교육안내",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/edgu/educationGuide.do?menuSn=59",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "ko_portal_left",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "lnbmenu",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H2:민방위"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "help",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-contact",
+          "tag": "A",
+          "fixedText": "담당부서연락처",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113"
+          },
+          "absoluteHref": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/dcif/departmentContactInformation.do?menuSn=113",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "ko_portal_left",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "lnbmenu",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H2:민방위"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "help",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-province",
+          "tag": "SELECT",
+          "fixedText": "시도선택 서울특별시 전남광주통합특별시 부산광역시 대구광역시 인천광역시 대전광역시 울산광역시 세종특별자치시 경기도 충청북도 충청남도 경상북도 경상남도 제주특별자치도 강원특별자치도 전북특별자치도",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "title": "행정동시도",
+            "id": "sbLawArea1",
+            "name": "sbLawArea1",
+            "class": "toggle-icon2"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "form-field",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "eduSch",
+              "class": "board-toplist",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "board-toparea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-start",
+          "tag": "INPUT",
+          "fixedText": "",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "text",
+            "title": "등록일의 시작일 예시)2025-08-05",
+            "placeholder": "2026-10-18",
+            "aria-label": "등록일의 시작일",
+            "id": "startDate",
+            "class": "form-control datepicker mr0"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "input-group",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "datepicker-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "form-field",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "eduSch",
+              "class": "board-toplist",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "board-toparea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-end",
+          "tag": "INPUT",
+          "fixedText": "",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "text",
+            "title": "등록일의 종료일 예시)2025-08-07",
+            "placeholder": "2026-11-18",
+            "aria-label": "등록일의 종료일",
+            "id": "endDate",
+            "class": "form-control datepicker"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "input-group",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "datepicker-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "form-field",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "eduSch",
+              "class": "board-toplist",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "board-toparea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "government-blind-v2-search",
+          "tag": "BUTTON",
+          "fixedText": "검색",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "button",
+            "class": "nf-btn norm nf-btn-primary icon-search"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "btn-rightarea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "eduSch",
+              "class": "board-toplist",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "board-toparea",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "cont-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "content_area",
+              "class": "content-right",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "nf-content",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "main-bg",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        }
+      ]
+    },
+    {
+      "siteId": "public-agency",
+      "name": "국민연금공단",
+      "selectionBasis": "기존 기관 홈·새소식·FAQ와 다른 신청/신고용 서식자료 영역을 선택. 문서 목록의 첫 공개 서식을 순서 그대로 사용했으며 분류 결과를 확인해 항목을 교체하지 않았다.",
+      "page": {
+        "id": "public-agency-blind-v2",
+        "url": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+        "finalUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+        "title": "연금정보 > 자료실 > 서식자료 - 전체 - 목록 - 국민을 튼튼하게 연금을 튼튼하게",
+        "httpStatus": 200,
+        "split": "holdout",
+        "fixture": "evaluation/blind-v2/fixtures/public-agency.html",
+        "observation": {
+          "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          },
+          "conditions": [
+            "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+            "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+            "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+          ],
+          "limitations": [
+            "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+            "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+            "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+            "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+          ]
+        },
+        "expected": [
+          {
+            "id": "public-agency-blind-v2-task-feature-1",
+            "category": "search",
+            "label": "검색어",
+            "sourceIds": [
+              "public-agency-blind-v2-input",
+              "public-agency-blind-v2-search"
+            ],
+            "action": "locate"
+          },
+          {
+            "id": "public-agency-blind-v2-task-feature-2",
+            "category": "apply",
+            "label": "사업장가입자 내용변경신고서",
+            "sourceIds": [
+              "public-agency-blind-v2-form"
+            ],
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu="
+          }
+        ],
+        "accepted": [
+          {
+            "sourceId": "public-agency-blind-v2-login",
+            "category": "login",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "public-agency-blind-v2-input",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "public-agency-blind-v2-search",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "public-agency-blind-v2-form",
+            "category": "apply",
+            "action": "navigate"
+          },
+          {
+            "sourceId": "public-agency-blind-v2-download",
+            "category": "apply",
+            "action": "locate"
+          },
+          {
+            "sourceId": "public-agency-blind-v2-sample",
+            "category": "help",
+            "action": "locate"
+          }
+        ],
+        "task": {
+          "id": "public-agency-blind-v2-task",
+          "instruction": "사업장가입자 내용변경신고서의 공개 상세 안내 페이지로 이동하세요. 작성·다운로드·팩스·메일·신고 제출은 하지 않습니다.",
+          "expectedSourceIds": [
+            "public-agency-blind-v2-form"
+          ],
+          "boundary": "public link or original control reach only; no form submit"
+        },
+        "notes": [
+          "서식 상세 진입은 신청·신고를 돕는 공개 경로이므로 apply로 주석했다. 서식 작성·신고 완료를 의미하지 않는다.",
+          "다운로드와 작성예시는 JavaScript 원본 제어 위치만 안내하는 locate이며 실제 파일·팝업 실행은 하지 않았다.",
+          "검색 input[type=button]의 value=검색은 편집 입력값이 아닌 공개 고정 버튼 이름으로 보존했다."
+        ]
+      },
+      "observedAt": "2026-10-17T16:13:57.389Z",
+      "browser": "156.0.8078.4",
+      "sourceCaptureSha256": "0b0f0b288c835e6b53ab8d953dd38fc7175c2153ff930fbd9ec4e3b56e0f6bb1",
+      "selectedControls": [
+        {
+          "sourceId": "public-agency-blind-v2-language",
+          "tag": "BUTTON",
+          "fixedText": "Language",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "button",
+            "aria-label": "Language 목록 접힘",
+            "aria-expanded": "false",
+            "class": "select-label"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "userSelect select-lang",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top-navi",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "header",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-login",
+          "tag": "A",
+          "fixedText": "로그인",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/lgn/loginForm.do",
+            "class": "btn-login"
+          },
+          "absoluteHref": "https://www.nps.or.kr/lgn/loginForm.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu-login",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-menu",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-util-area",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "top-inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header-inner",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-top-navi",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "HEADER",
+              "id": "header",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "login",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-privacy",
+          "tag": "A",
+          "fixedText": "개인정보처리방침",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/comm/footer/getOHAH0003M0.do",
+            "class": "txt-primary"
+          },
+          "absoluteHref": "https://www.nps.or.kr/comm/footer/getOHAH0003M0.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "footer-guide",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "row2",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "FOOTER",
+              "id": "footer",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-input",
+          "tag": "INPUT",
+          "fixedText": "",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "text",
+            "title": "검색어",
+            "placeholder": "검색어를 입력하세요.",
+            "id": "searchText",
+            "name": "searchText",
+            "class": "keyword"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-input",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-form",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-wrap is-guide",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "FORM",
+              "id": "searchForm",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H4:전체"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-search",
+          "tag": "INPUT",
+          "fixedText": "",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "type": "button",
+            "title": "검색",
+            "id": "btnSearch",
+            "class": "btn-search",
+            "value": "검색"
+          },
+          "absoluteHref": null,
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-input",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-form",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-search-wrap is-guide",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "FORM",
+              "id": "searchForm",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H4:전체"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-form",
+          "tag": "A",
+          "fixedText": "사업장가입자 내용변경신고서",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu="
+          },
+          "absoluteHref": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu=",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "TD",
+              "id": "",
+              "class": "title",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TR",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TBODY",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TABLE",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-list data-list-form pc-data-list",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H4:전체"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "apply",
+            "action": "navigate"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-download",
+          "tag": "A",
+          "fixedText": "다운로드",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "javascript:fncAtchFileDownload('PD23000134', '141845','N');",
+            "title": "파일다운로드(새창열림)",
+            "class": "btn-form-down"
+          },
+          "absoluteHref": "javascript:fncAtchFileDownload('PD23000134', '141845','N');",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "TD",
+              "id": "",
+              "class": "td-form",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TR",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TBODY",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TABLE",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-list data-list-form pc-data-list",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H4:전체"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "apply",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "public-agency-blind-v2-sample",
+          "tag": "A",
+          "fixedText": "작성예시",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "javascript:fncOpenZoomModal(this, 'PD23000134', '113134', '[별지 제13호서식] 국민연금 사업장가입자 내용변경 신고서 작성예시001.jpg');",
+            "title": "작성예시(새창열림)",
+            "class": "btn-form-ex"
+          },
+          "absoluteHref": "javascript:fncOpenZoomModal(this, 'PD23000134', '113134', '[%EB%B3%84%EC%A7%80 %EC%A0%9C13%ED%98%B8%EC%84%9C%EC%8B%9D] %EA%B5%AD%EB%AF%BC%EC%97%B0%EA%B8%88 %EC%82%AC%EC%97%85%EC%9E%A5%EA%B0%80%EC%9E%85%EC%9E%90 %EB%82%B4%EC%9A%A9%EB%B3%80%EA%B2%BD %EC%8B%A0%EA%B3%A0%EC%84%9C %EC%9E%91%EC%84%B1%EC%98%88%EC%8B%9C001.jpg');",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "TD",
+              "id": "",
+              "class": "td-form",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TR",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TBODY",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "TABLE",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "data-list data-list-form pc-data-list",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "page-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H4:전체"
+            },
+            {
+              "tag": "DIV",
+              "id": "contents",
+              "class": "section-contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SECTION",
+              "id": "",
+              "class": "section-container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "wrap",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "help",
+            "action": "locate"
+          }
+        }
+      ]
+    },
+    {
+      "siteId": "library",
+      "name": "국립중앙도서관",
+      "selectionBasis": "기존 첫 화면·소장자료·뷰어 프로그램 영역과 다른 방문 이용증 발급 절차 영역을 선택. 공개 안내·서식 위치를 찾는 목적만 평가한다.",
+      "page": {
+        "id": "library-blind-v2",
+        "url": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+        "finalUrl": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+        "title": "국립중앙도서관>도서관 이용>이용안내>이용증 발급",
+        "httpStatus": 200,
+        "split": "holdout",
+        "fixture": "evaluation/blind-v2/fixtures/library.html",
+        "observation": {
+          "method": "Fresh anonymous Playwright Chromium read-only navigation; human review of visible public control text, safe fixed attributes, raw/resolved hrefs, inline onclick presence, ancestor/landmark context and original-page screenshot. No classifier, ranker or evaluation result was read or executed during blind-v2 collection.",
+          "viewport": {
+            "width": 1440,
+            "height": 1080
+          },
+          "conditions": [
+            "1440x1080 desktop viewport; source controls had layout boxes and were not CSS-hidden, inert or aria-hidden. Below-fold visible controls remain eligible.",
+            "No login, text entry, option selection, search submission, download, authentication or application event was executed.",
+            "Task-source focus/hit-testing and public destination checks, when performed, are recorded separately in docs/evidence/run002/blind-v2-observations.json."
+          ],
+          "limitations": [
+            "Small reconstructed public-menu subset; not the complete live DOM, layout, application events, browser-extension execution, full accessibility audit or user study.",
+            "Original raw href attributes, including fragments and JavaScript URL text, are retained without script implementations. Inline onclick presence is represented only by an inert local onclick=\"return false\" marker.",
+            "Only observed real semantic ancestors/headings are reconstructed; omitted unrelated ancestors, images and option contents may still affect live-page detection. Original div-based regions are not upgraded to artificial landmarks.",
+            "Readonly focus/hit-testing is not a screen-reader test or a complete keyboard-Tab-path audit. No original task action is automatically executed."
+          ]
+        },
+        "expected": [
+          {
+            "id": "library-blind-v2-task-feature-1",
+            "category": "apply",
+            "label": "이용증 대리 수령 위임장 다운받기",
+            "sourceIds": [
+              "library-blind-v2-delegation"
+            ],
+            "action": "locate"
+          },
+          {
+            "id": "library-blind-v2-task-feature-2",
+            "category": "help",
+            "label": "이용시간",
+            "sourceIds": [
+              "library-blind-v2-hours"
+            ],
+            "action": "locate"
+          }
+        ],
+        "accepted": [
+          {
+            "sourceId": "library-blind-v2-login",
+            "category": "login",
+            "action": "locate"
+          },
+          {
+            "sourceId": "library-blind-v2-search",
+            "category": "search",
+            "action": "locate"
+          },
+          {
+            "sourceId": "library-blind-v2-hours",
+            "category": "help",
+            "action": "locate"
+          },
+          {
+            "sourceId": "library-blind-v2-delegation",
+            "category": "apply",
+            "action": "locate"
+          }
+        ],
+        "task": {
+          "id": "library-blind-v2-task",
+          "instruction": "이용증 대리 수령 위임장 다운받기 원본 링크 위치를 찾으세요. 다운로드·회원가입·본인인증·이용증 신청은 하지 않습니다.",
+          "expectedSourceIds": [
+            "library-blind-v2-delegation"
+          ],
+          "boundary": "public link or original control reach only; no form submit"
+        },
+        "notes": [
+          "위임장 원본 링크는 확장자가 없는 직접 fileDownload 엔드포인트이므로 자동 이동/다운로드 대신 locate로 정했다.",
+          "이용시간 링크에는 원본 inline onclick이 존재하므로 구현을 복사하지 않고 존재만 inert 표식으로 보존하며 원본 위치 안내로 정했다.",
+          "도서관의 div 기반 header/footer를 semantic landmark로 바꾸지 않았다."
+        ]
+      },
+      "observedAt": "2026-10-17T16:13:57.337Z",
+      "browser": "156.0.8078.4",
+      "sourceCaptureSha256": "5aeb2b057873777c60abf1ea55cdf0f9bc34d0d8feb67e9870c4c6ed67808b57",
+      "selectedControls": [
+        {
+          "sourceId": "library-blind-v2-language",
+          "tag": "A",
+          "fixedText": "English",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/EN/main/index.do",
+            "title": "새창 열림",
+            "target": "_blank",
+            "class": "none_sub"
+          },
+          "absoluteHref": "https://www.nl.go.kr/EN/main/index.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "nl_header_utils",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "library-blind-v2-login",
+          "tag": "A",
+          "fixedText": "로그인",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "javascript:anyidAdaptor.ssoLoginPage('','');",
+            "class": "login"
+          },
+          "absoluteHref": "javascript:anyidAdaptor.ssoLoginPage('','');",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "login",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H1:국립중앙도서관"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "login",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "library-blind-v2-search",
+          "tag": "A",
+          "fixedText": "통합검색",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "javascript:;"
+          },
+          "absoluteHref": "javascript:;",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "total_search",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "prv_menus",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H1:국립중앙도서관"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header__inner-top",
+              "class": "nl_header_top",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "header",
+              "class": "header",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "header-wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "search",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "library-blind-v2-privacy",
+          "tag": "A",
+          "fixedText": "개인정보처리방침",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/NL/contents/N70100000000.do"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL/contents/N70100000000.do",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "prv",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "policy_links",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_copyright",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "footer_cont_wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "footer",
+              "class": "nl_new_footer",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "distractor": "language, display setting, general institutional branding or privacy policy outside the six core task categories"
+          }
+        },
+        {
+          "sourceId": "library-blind-v2-hours",
+          "tag": "A",
+          "fixedText": "이용시간",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/NL/contents/N40101000000.do"
+          },
+          "absoluteHref": "https://www.nl.go.kr/NL/contents/N40101000000.do",
+          "onclickPresent": true,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "LI",
+              "id": "SNB2_N40100000000",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "SNB2_N41400000000",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "NAV",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_lnb_wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": "H2:도서관 이용"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "sub_cont_wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "content",
+              "class": "contents",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "container",
+              "class": "container",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "help",
+            "action": "locate"
+          }
+        },
+        {
+          "sourceId": "library-blind-v2-delegation",
+          "tag": "A",
+          "fixedText": "이용증 대리 수령 위임장 다운받기",
+          "linkedLabel": "",
+          "labelledByText": "",
+          "imageAlt": "",
+          "safeAttributes": {
+            "href": "/afile/fileDownload/pVmmn"
+          },
+          "absoluteHref": "https://www.nl.go.kr/afile/fileDownload/pVmmn",
+          "onclickPresent": false,
+          "displayed": true,
+          "originalAncestors": [
+            {
+              "tag": "P",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "item2 item3",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "procedure procedure2",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "OL",
+              "id": "",
+              "class": "procedure_inner",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "procedure_wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "new_lssuer",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "class": "new_lssuer_wrap step_wrap",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "LI",
+              "id": "",
+              "class": "dot_no",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            },
+            {
+              "tag": "UL",
+              "id": "",
+              "class": "dot_list txt",
+              "role": null,
+              "ariaLabel": null,
+              "directHeadings": ""
+            }
+          ],
+          "manualJudgment": {
+            "category": "apply",
+            "action": "locate"
+          }
+        }
+      ]
+    }
+  ],
+  "explorationLimitations": [
+    {
+      "url": "https://www.cheonan.go.kr/kor.do",
+      "httpStatus": null,
+      "result": "Initial discovery refresh timed out before DOMContentLoaded at 30 seconds; no usable body controls in that attempt. No security bypass, certificate change or alternate hostname was used. The independently selected canonical public-health subarea on the same www.cheonan.go.kr host returned HTTP 200."
+    }
+  ],
+  "reconstructionPolicy": "Retain selected real control tags, raw hrefs (including fragments), target, safe fixed labels and semantic attributes. Inline onclick presence uses only onclick=\"return false\"; no third-party handler implementation, external script or full site HTML is copied. Candidate controls contain no editable input values. Other public control/option content and visual geometry are intentionally omitted.",
+  "taskReachAndAccessibilityChecks": {
+    "status": "READONLY_SOURCE_CONTROL_CHECKS_COMPLETE",
+    "checks": [
+      {
+        "pageId": "smu-blind-v2",
+        "sourceId": "smu-blind-v2-faq",
+        "observedAt": "2026-10-17T16:16:20.460Z",
+        "sourcePage": {
+          "url": "https://www.smu.ac.kr/kor/life/enrollment.do",
+          "finalUrl": "https://www.smu.ac.kr/kor/life/enrollment.do",
+          "httpStatus": 200,
+          "title": "상명대학교 국문 | 학사안내 | 학사 | 등록안내 | 등록금납부안내 | 서울캠퍼스"
+        },
+        "originalControl": {
+          "visible": true,
+          "programmaticallyFocused": true,
+          "centerUnobscured": true,
+          "accessibilitySnapshot": "- link \"등록관련 FAQ\":\n  - /url: /kor/life/enrollment3.do#tab18298_"
+        },
+        "method": "Read-only public-page navigation, native focus, scroll-into-view and DOM hit-test. No click, input, selection or original task event was executed.",
+        "limitations": "This does not verify the whole keyboard Tab sequence, screen-reader behavior, an extension interaction or a complete accessibility audit.",
+        "error": null,
+        "publicDestination": {
+          "requestedUrl": "https://www.smu.ac.kr/kor/life/enrollment3.do#tab18298_",
+          "finalUrl": "https://www.smu.ac.kr/kor/life/enrollment3.do#tab18298_",
+          "httpStatus": 200,
+          "title": "상명대학교 국문 | 학사안내 | 학사 | 등록안내 | 등록관련 FAQ | 서울캠퍼스",
+          "error": null,
+          "method": "Direct read-only navigation to the observed ordinary public link destination; no authentication or submission.",
+          "extensionReachVerified": false
+        }
+      },
+      {
+        "pageId": "city-blind-v2",
+        "sourceId": "city-blind-v2-directory",
+        "observedAt": "2026-10-17T16:16:25.095Z",
+        "sourcePage": {
+          "url": "https://www.cheonan.go.kr/dhealth.do",
+          "finalUrl": "https://www.cheonan.go.kr/dhealth.do",
+          "httpStatus": 200,
+          "title": "동남구 보건소"
+        },
+        "originalControl": {
+          "visible": true,
+          "programmaticallyFocused": true,
+          "centerUnobscured": true,
+          "accessibilitySnapshot": "- link \"조직 및 전화번호 안내\":\n  - /url: /prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do"
+        },
+        "method": "Read-only public-page navigation, native focus, scroll-into-view and DOM hit-test. No click, input, selection or original task event was executed.",
+        "limitations": "This does not verify the whole keyboard Tab sequence, screen-reader behavior, an extension interaction or a complete accessibility audit.",
+        "error": null,
+        "publicDestination": {
+          "requestedUrl": "https://www.cheonan.go.kr/prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do",
+          "finalUrl": "https://www.cheonan.go.kr/prog/caDeptPerson/dhealth/sub06_04_02/4490260/list.do",
+          "httpStatus": 200,
+          "title": "직원안내 < 업무/직원안내 < 보건소소개 < 동남구 보건소",
+          "error": null,
+          "method": "Direct read-only navigation to the observed ordinary public link destination; no authentication or submission.",
+          "extensionReachVerified": false
+        }
+      },
+      {
+        "pageId": "government-blind-v2",
+        "sourceId": "government-blind-v2-search",
+        "observedAt": "2026-10-17T16:16:28.631Z",
+        "sourcePage": {
+          "url": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+          "finalUrl": "https://www.safekorea.go.kr/safekorea-kor/edtr/clns/escd/educationSchedule.do?menuSn=58",
+          "httpStatus": 200,
+          "title": "국민안전24 | 민방위 | 교육일정"
+        },
+        "originalControl": {
+          "visible": true,
+          "programmaticallyFocused": true,
+          "centerUnobscured": true,
+          "accessibilitySnapshot": "- button \"검색\""
+        },
+        "method": "Read-only public-page navigation, native focus, scroll-into-view and DOM hit-test. No click, input, selection or original task event was executed.",
+        "limitations": "This does not verify the whole keyboard Tab sequence, screen-reader behavior, an extension interaction or a complete accessibility audit.",
+        "error": null,
+        "publicDestination": {
+          "status": "NOT_EXECUTED",
+          "reason": "The predefined task stops at the original control. Its event/download/submission was intentionally not executed.",
+          "extensionReachVerified": false
+        }
+      },
+      {
+        "pageId": "public-agency-blind-v2",
+        "sourceId": "public-agency-blind-v2-form",
+        "observedAt": "2026-10-17T16:16:30.382Z",
+        "sourcePage": {
+          "url": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+          "finalUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M0List.do?menuId=MN24000998",
+          "httpStatus": 200,
+          "title": "연금정보 > 자료실 > 서식자료 - 전체 - 목록 - 국민을 튼튼하게 연금을 튼튼하게"
+        },
+        "originalControl": {
+          "visible": true,
+          "programmaticallyFocused": true,
+          "centerUnobscured": true,
+          "accessibilitySnapshot": "- link \"사업장가입자 내용변경신고서\":\n  - /url: /pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu="
+        },
+        "method": "Read-only public-page navigation, native focus, scroll-into-view and DOM hit-test. No click, input, selection or original task event was executed.",
+        "limitations": "This does not verify the whole keyboard Tab sequence, screen-reader behavior, an extension interaction or a complete accessibility audit.",
+        "error": null,
+        "publicDestination": {
+          "requestedUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu=",
+          "finalUrl": "https://www.nps.or.kr/pnsinfo/databbs/getOHAF0279M1.do?menuId=MN24000998&tmpltDataSn=134&tmpltDataClsfCd=&recordCountPerPage=10&sortSe=LV&pageIndex=1&searchText=&searchGbu=",
+          "httpStatus": 200,
+          "title": "연금정보 > 자료실 > 서식자료 - 전체 - 상세 - 국민을 튼튼하게 연금을 튼튼하게",
+          "error": null,
+          "method": "Direct read-only navigation to the observed ordinary public link destination; no authentication or submission.",
+          "extensionReachVerified": false
+        }
+      },
+      {
+        "pageId": "library-blind-v2",
+        "sourceId": "library-blind-v2-delegation",
+        "observedAt": "2026-10-17T16:16:33.504Z",
+        "sourcePage": {
+          "url": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+          "finalUrl": "https://www.nl.go.kr/NL/contents/N41500000000.do",
+          "httpStatus": 200,
+          "title": "국립중앙도서관>도서관 이용>이용안내>이용증 발급"
+        },
+        "originalControl": {
+          "visible": true,
+          "programmaticallyFocused": true,
+          "centerUnobscured": true,
+          "accessibilitySnapshot": "- link \"이용증 대리 수령 위임장 다운받기\":\n  - /url: /afile/fileDownload/pVmmn"
+        },
+        "method": "Read-only public-page navigation, native focus, scroll-into-view and DOM hit-test. No click, input, selection or original task event was executed.",
+        "limitations": "This does not verify the whole keyboard Tab sequence, screen-reader behavior, an extension interaction or a complete accessibility audit.",
+        "error": null,
+        "publicDestination": {
+          "status": "NOT_EXECUTED",
+          "reason": "The predefined task stops at the original control. Its event/download/submission was intentionally not executed.",
+          "extensionReachVerified": false
+        }
+      }
+    ],
+    "limitation": "Original public page/control checks only; not product/extension task completion, actual keyboard-Tab or screen-reader validation, original event execution, complete accessibility conformance, or user usability evidence."
+  },
+  "actualTokens": "UNKNOWN",
+  "actualElapsedTime": "UNKNOWN",
+  "validation": {
+    "status": "PASS",
+    "checkedAt": "2026-10-17T16:17:01.519Z",
+    "scope": "Annotation/fixture consistency only; product analyzer/classifier/ranker and evaluation scripts were not imported or run.",
+    "checks": [
+      "Five institution sites, one new URL/subarea each, each split=holdout",
+      "At least two expected function groups and one public task per page",
+      "All fixture control tags, raw hrefs, resolved hrefs, semantic safe attributes and onclick presence match source annotation",
+      "Only local inert return false markers replace inline onclick implementations",
+      "All fixture controls CSS-visible; task and expected/accepted mappings exist",
+      "No script implementations, external network assets or editable input values copied"
+    ],
+    "counts": {
+      "sites": 5,
+      "pages": 5,
+      "expectedGroups": 11,
+      "tasks": 5,
+      "acceptedControls": 28,
+      "selectedControls": 39
+    },
+    "hashes": {
+      "city": {
+        "jsonFile": "evaluation/blind-v2/sites/city.json",
+        "jsonSha256": "7face371d3b48cfecdd4d376f01310f13720979f03551674472993a309052f82",
+        "fixture": "evaluation/blind-v2/fixtures/city.html",
+        "fixtureSha256": "0669bc8b405e12bc7d588aecdcce36a17cf7ead39d22057f287f9ee2b8d462c2"
+      },
+      "government": {
+        "jsonFile": "evaluation/blind-v2/sites/government.json",
+        "jsonSha256": "d5a113fa911a575ba4df29bcadc50826f18f46347796be8f51bce0bd4c26de35",
+        "fixture": "evaluation/blind-v2/fixtures/government.html",
+        "fixtureSha256": "b7533484315f950d909b600b5547b0a1bf0f8879f35090b5391f31637511f913"
+      },
+      "library": {
+        "jsonFile": "evaluation/blind-v2/sites/library.json",
+        "jsonSha256": "e0000e6e44058b4f9d1578b2a64212d13dde8476844076bcf52ac519fb20d284",
+        "fixture": "evaluation/blind-v2/fixtures/library.html",
+        "fixtureSha256": "1cd8bfc73c5bc0d636a774b8da44228069759fb8995ef7471fe7e9b84f217696"
+      },
+      "public-agency": {
+        "jsonFile": "evaluation/blind-v2/sites/public-agency.json",
+        "jsonSha256": "c6e93acfd977822ac2529da682adae2d3fbc67cfc967ee22730086fa56d98a41",
+        "fixture": "evaluation/blind-v2/fixtures/public-agency.html",
+        "fixtureSha256": "d50098f459dab9ddb771ec09faac87ed39849895ff7a9d6d01b52bee44ca9024"
+      },
+      "smu": {
+        "jsonFile": "evaluation/blind-v2/sites/smu.json",
+        "jsonSha256": "205ff20c22be198479f6bd9ec30ffaf40b346951392553aa4aca1fb30a2ad00f",
+        "fixture": "evaluation/blind-v2/fixtures/smu.html",
+        "fixtureSha256": "4ec52de411d87714c7e21e8027f0706bab355487115efd5bd4c1e30d9d64ac46"
+      }
+    }
+  }
+}

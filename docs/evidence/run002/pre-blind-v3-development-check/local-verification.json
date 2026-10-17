@@ -1,0 +1,191 @@
+{
+  "startedAt": "2026-10-17T16:43:44.319Z",
+  "completedAt": "2026-10-17T16:44:07.100Z",
+  "localRegressionStatus": "PASS",
+  "requestedChecksStatus": "PASS",
+  "requestedMode": "local-with-core",
+  "scope": "Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.",
+  "excluded": [
+    "live public-site observations and task completion",
+    "fresh blind evaluation",
+    "native extension installation and activeTab gesture",
+    "actual VoiceOver speech",
+    "real user study"
+  ],
+  "stages": [
+    {
+      "name": "typecheck",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 118.63787499999998,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run002/verify-typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/build.mjs"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 74.51962500000002,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run002/verify-build.log"
+    },
+    {
+      "name": "playwright",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--reporter=list,json"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 18028.812709,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run002/verify-playwright.log"
+    },
+    {
+      "name": "core-evaluation",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/evaluate.mjs",
+        "--engine=current",
+        "--suite=core",
+        "--split=all",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run002/core-regression"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 1145.2277919999979,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run002/verify-core-evaluation.log"
+    },
+    {
+      "name": "performance",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run002"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 3410.1316670000015,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run002/verify-performance.log"
+    }
+  ],
+  "tests": {
+    "expected": 112,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMilliseconds": 17741.267,
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run002/playwright-local.json"
+  },
+  "coreQuality": {
+    "status": "PASS",
+    "suite": "core",
+    "evaluationPhase": "post-holdout-development",
+    "summary": {
+      "pages": 15,
+      "correct": 69,
+      "recommended": 69,
+      "matched": 45,
+      "expected": 45,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 15
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 3,
+        "correct": 16,
+        "recommended": 16,
+        "matched": 10,
+        "expected": 10,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "government",
+        "pages": 3,
+        "correct": 9,
+        "recommended": 9,
+        "matched": 6,
+        "expected": 6,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "library",
+        "pages": 3,
+        "correct": 13,
+        "recommended": 13,
+        "matched": 9,
+        "expected": 9,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 3,
+        "correct": 14,
+        "recommended": 14,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "smu",
+        "pages": 3,
+        "correct": 17,
+        "recommended": 17,
+        "matched": 9,
+        "expected": 9,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      }
+    ],
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75,
+      "offlineTasksRecommended": 15
+    },
+    "scope": "Offline fixtures already used during development. Tasks recommended are not live task completion. This is not independent blind validation.",
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run002/core-regression/evaluation-current-all.json"
+  },
+  "performance": {
+    "status": "PASS",
+    "runs": 10,
+    "analyzerP95Milliseconds": 123.19999999552965,
+    "overlayReadyP95Milliseconds": 148.39999999850988,
+    "thresholds": {
+      "analyzerP95Milliseconds": 300,
+      "overlayReadyP95Milliseconds": 1000
+    },
+    "scope": "Synthetic mixed 1,000-control page; headless Chromium; excludes real site loading and native toolbar activation.",
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run002/performance.json"
+  }
+}

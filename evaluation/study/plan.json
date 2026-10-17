@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "studyId": "easyweb-public-reach-study-v1",
+  "preparedAt": "2026-10-17T16:07:19.780Z",
+  "status": "PREPARED_NOT_RUN",
+  "sourceDatasetSha256": {
+    "city.json": "a66bdbab81b1923a9fa4c492f1166bfa9b88dcba3ca0af9f49fb21e1478f2d12",
+    "government.json": "bf70687c41c7721d7ed532438816e0681238c9b82553a40c7b88e3297f73948b",
+    "library.json": "41ebe745dfd2cc9b1bfb3dd89ad787fba0446f778f18a2928db2a28db114b8ed",
+    "public-agency.json": "cdfb2d428d103ed4b2659123f2586db491f5309ca3062cd446239231ad97ffda",
+    "smu.json": "94e64e336e17c8ebb127222f0c7507ecfcd08d15ae638f730c5daa43a755d290"
+  },
+  "minimumParticipants": 6,
+  "maximumParticipants": 8,
+  "minimumPairedObservationsPerSite": 6,
+  "minimumMedianTimeReduction": 0.2,
+  "trialTimeLimitMs": 180000,
+  "siteOrder": [
+    "city",
+    "government",
+    "library",
+    "public-agency",
+    "smu"
+  ],
+  "conditions": [
+    "original",
+    "easyweb"
+  ],
+  "primaryTimeMetric": "1 - median(easyweb elapsed_ms) / median(original elapsed_ms), using exactly the same identical participant/task pairs successful in both conditions",
+  "counterbalance": "Each participant performs one task per site in both conditions. Task index is participant index modulo 3. Site order rotates by participant index; condition order alternates by participant index + site index. P01-P08 are planned anonymous labels, not enrolled people.",
+  "tasks": [
+    {
+      "taskId": "city-home-open-counseling",
+      "pageId": "city-home",
+      "siteId": "city",
+      "siteName": "천안시청",
+      "startUrl": "https://www.cheonan.go.kr/kor.do",
+      "instruction": "자주 찾는 서비스에서 무료상담운영 안내 페이지에 도달하세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "city-home-counseling",
+          "label": "무료상담운영",
+          "action": "navigate",
+          "category": "help",
+          "href": "https://www.cheonan.go.kr/kor/sub01_03_02.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/city.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "city-civil-guide-open-passport-guide",
+      "pageId": "city-civil-guide",
+      "siteId": "city",
+      "siteName": "천안시청",
+      "startUrl": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+      "instruction": "민원 신청안내 페이지의 왼쪽 메뉴에서 여권 신청안내 페이지에 도달하세요. 실제 신청은 하지 마세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "city-civil-guide-passport-guide",
+          "label": "여권 신청안내",
+          "action": "navigate",
+          "category": "apply",
+          "href": "https://www.cheonan.go.kr/kor/sub01_01_06.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/city.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "city-counseling-open-public-notices",
+      "pageId": "city-counseling",
+      "siteId": "city",
+      "siteName": "천안시청",
+      "startUrl": "https://www.cheonan.go.kr/kor/sub01_03_02.do",
+      "instruction": "무료상담운영 페이지의 공고/고시 바로가기 링크에 도달하세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "city-counseling-public-notices",
+          "label": "공고/고시 바로가기",
+          "action": "navigate",
+          "category": "notice",
+          "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/city.json",
+      "sourceSplit": "holdout"
+    },
+    {
+      "taskId": "gov-home-task",
+      "pageId": "gov-home",
+      "siteId": "government",
+      "siteName": "국민안전24",
+      "startUrl": "https://www.safekorea.go.kr/safekorea-kor/main/main.do",
+      "instruction": "국민안전24 홈에서 검색 페이지로 이동하세요. 검색어는 입력하지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "gov-home-search-link",
+          "label": "검색",
+          "action": "navigate",
+          "category": "search",
+          "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/government.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "gov-search-task",
+      "pageId": "gov-search",
+      "siteId": "government",
+      "siteName": "국민안전24",
+      "startUrl": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+      "instruction": "검색어 입력 제어를 찾아 원본 위치로 안내받으세요. 입력과 검색 실행은 하지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "gov-search-input",
+          "label": "검색어을 입력하세요.",
+          "action": "locate",
+          "category": "search"
+        }
+      ],
+      "sourceFile": "evaluation/sites/government.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "gov-help-task",
+      "pageId": "gov-help",
+      "siteId": "government",
+      "siteName": "국민안전24",
+      "startUrl": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+      "instruction": "국민신문고 홈페이지 바로가기 원본 버튼을 찾으세요. 버튼을 누르거나 민원을 접수하지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "gov-help-epeople",
+          "label": "국민신문고 홈페이지 바로가기",
+          "action": "locate",
+          "category": "help"
+        }
+      ],
+      "sourceFile": "evaluation/sites/government.json",
+      "sourceSplit": "holdout"
+    },
+    {
+      "taskId": "library-home-task",
+      "pageId": "library-home",
+      "siteId": "library",
+      "siteName": "국립중앙도서관",
+      "startUrl": "https://www.nl.go.kr/",
+      "instruction": "첫 화면의 검색어 입력 제어를 찾아 원본 위치로 안내받으세요. 입력하거나 검색하지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "library-home-input",
+          "label": "검색어 입력",
+          "action": "locate",
+          "category": "search"
+        }
+      ],
+      "sourceFile": "evaluation/sites/library.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "library-search-task",
+      "pageId": "library-search",
+      "siteId": "library",
+      "siteName": "국립중앙도서관",
+      "startUrl": "https://www.nl.go.kr/NL/contents/N10100000000.do",
+      "instruction": "뷰어프로그램 안내 공개 페이지의 링크로 이동하세요. 프로그램을 내려받지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "library-search-viewer",
+          "label": "뷰어프로그램 안내",
+          "action": "navigate",
+          "category": "help",
+          "href": "https://www.nl.go.kr/NL/contents/N71300000000.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/library.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "library-help-task",
+      "pageId": "library-help",
+      "siteId": "library",
+      "siteName": "국립중앙도서관",
+      "startUrl": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+      "instruction": "통합뷰어 설치 다운로드 원본 링크를 찾으세요. 다운로드하거나 프로그램을 설치하지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "library-help-download",
+          "label": "통합뷰어 설치 다운로드",
+          "action": "locate",
+          "category": "help"
+        }
+      ],
+      "sourceFile": "evaluation/sites/library.json",
+      "sourceSplit": "holdout"
+    },
+    {
+      "taskId": "agency-home-task",
+      "pageId": "agency-home",
+      "siteId": "public-agency",
+      "siteName": "국민연금공단",
+      "startUrl": "https://www.nps.or.kr/main.do",
+      "instruction": "새소식 전체 목록으로 이동하세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "agency-home-notice",
+          "label": "새소식 더보기",
+          "action": "navigate",
+          "category": "notice",
+          "href": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897"
+        }
+      ],
+      "sourceFile": "evaluation/sites/public-agency.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "agency-notice-task",
+      "pageId": "agency-notice",
+      "siteId": "public-agency",
+      "siteName": "국민연금공단",
+      "startUrl": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M0List.do?menuId=MN24000897",
+      "instruction": "국민연금 「점심시간 휴무제」 실시 안내 공개 게시글의 링크로 이동하세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "agency-notice-article",
+          "label": "국민연금 「점심시간 휴무제」 실시 안내",
+          "action": "navigate",
+          "category": "notice",
+          "href": "https://www.nps.or.kr/pnsgdnc/newgdnc/getOHAE0001M1.do?menuId=MN24000897&pstId=ZZ202600000000001125&hmpgCd=01&hmpgBbsCd=BS20240137&sortSe=FR&pageIndex=1&searchText=&searchGbu="
+        }
+      ],
+      "sourceFile": "evaluation/sites/public-agency.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "agency-faq-task",
+      "pageId": "agency-faq",
+      "siteId": "public-agency",
+      "siteName": "국민연금공단",
+      "startUrl": "https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do?menuId=MN24001131",
+      "instruction": "“국민연금제도는 무엇이고, 도입 배경에 대해 알려주세요.” 질문의 원본 제어를 찾으세요. 자동 펼침은 하지 않습니다.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "agency-faq-question",
+          "label": "Q국민연금제도는 무엇이고, 도입 배경에 대해 알려주세요.",
+          "action": "locate",
+          "category": "help"
+        }
+      ],
+      "sourceFile": "evaluation/sites/public-agency.json",
+      "sourceSplit": "holdout"
+    },
+    {
+      "taskId": "smu-home-open-academic-calendar",
+      "pageId": "smu-home",
+      "siteId": "smu",
+      "siteName": "상명대학교",
+      "startUrl": "https://www.smu.ac.kr/kor/index.do",
+      "instruction": "학사안내를 통해 공개 학사일정 페이지에 도달하세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "smu-home-academic",
+          "label": "학사안내",
+          "action": "navigate",
+          "category": "academic",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do"
+        }
+      ],
+      "sourceFile": "evaluation/sites/smu.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "smu-notices-reach-notice-search",
+      "pageId": "smu-notices",
+      "siteId": "smu",
+      "siteName": "상명대학교",
+      "startUrl": "https://www.smu.ac.kr/kor/life/notice.do",
+      "instruction": "통합공지에서 검색어 입력 위치를 찾으세요. 검색어 입력이나 제출은 하지 마세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "smu-notices-board-search",
+          "label": "검색어를 입력해 주세요",
+          "action": "locate",
+          "category": "search"
+        }
+      ],
+      "sourceFile": "evaluation/sites/smu.json",
+      "sourceSplit": "calibration"
+    },
+    {
+      "taskId": "smu-calendar-open-calendar-list",
+      "pageId": "smu-calendar",
+      "siteId": "smu",
+      "siteName": "상명대학교",
+      "startUrl": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+      "instruction": "학사일정의 리스트로 일정 보기 링크에 도달하세요.",
+      "boundary": "public link or original control reach only; no form submit",
+      "expectedTargets": [
+        {
+          "sourceId": "smu-calendar-list-view",
+          "label": "리스트로 일정 보기",
+          "action": "navigate",
+          "category": "academic",
+          "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do?mode=list"
+        }
+      ],
+      "sourceFile": "evaluation/sites/smu.json",
+      "sourceSplit": "holdout"
+    }
+  ]
+}

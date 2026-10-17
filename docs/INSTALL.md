@@ -1,0 +1,85 @@
+# EasyWeb 설치·업데이트·제거·되돌리기
+
+이 문서는 데스크톱 Chrome 개발 후보의 로컬 설치 인계 절차다. 최신 버전·패키지·필수 인수 상태는 [PROGRESS](PROGRESS.md)와 해당 실행 보고서를 따른다. **절차 작성·ZIP 생성은 S08 실제 설치 경로 통과나 v1.0 인수 통과를 뜻하지 않는다.** 실제 사용자 실증은 [USER_STUDY](USER_STUDY.md)의 별도 조건이다.
+
+현재 작성 기준 Manifest 버전은 **0.3.0 개발 후보**다. 이 표시는 15개 공개 과제·배포본 설치·사용성 인수의 최종 통과 판정이 아니다. 사용자가 먼저 해 보는 [1인 사전 시험](PRETEST.md)도 별도 준비 자료이며 정식 실증은 계속 NOT_RUN이다. 실제 시험은 진행자가 안정된 후보 빌드·설치 경로·알려진 한계를 전달한 뒤 시작한다.
+
+## 받을 파일과 권한
+
+현재 제공 파일은 [EasyWeb-0.3.0-candidate.zip](../output/run002/EasyWeb-0.3.0-candidate.zip), [SHA256SUMS](../output/run002/SHA256SUMS), [빌드·재현성 보고서](../output/run002/EasyWeb-0.3.0-candidate.json)다. ZIP을 풀면 `EasyWeb-0.3.0-candidate/manifest.json`이 있다. 프로젝트에서 바로 설치하려면 `/Users/khyun_03/easyweb/dist`를 선택한다. **개발 후보**이며 S06~S10의 필수 인수 조건을 모두 통과한 상태가 아니다.
+
+제공 ZIP을 풀어 `manifest.json`이 바로 들어 있는 확장 폴더를 선택한다. ZIP 자체나 그 상위 폴더를 선택하지 않는다. 개발 저장소에서는 `npm ci` 후 `npm run build`로 만든 `dist/`가 해당 폴더다. 개발용 원본·소스맵·검증 자료와 최종 배포 패키지의 범위는 해당 패키지 보고서를 확인한다.
+
+현재 Manifest의 권한은 `activeTab`, `scripting`이다. `activeTab`은 사용자가 확장을 호출한 현재 탭에 임시 접근을 부여하고, `scripting`은 그 접근이 있는 페이지에 EasyWeb 코드를 주입하는 데 쓴다. 사이트가 다른 출처로 이동하면 접근이 해제될 수 있으므로 새 페이지에서 확장 버튼을 다시 누른다. `chrome://` 등 제한 페이지에서는 실행할 수 없다. [Chrome activeTab 문서](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab), [scripting 문서](https://developer.chrome.com/docs/extensions/reference/api/scripting)
+
+설치 폴더의 `manifest.json`에서 버전과 권한을 확인하고 제공된 SHA256을 비교한다. 테스트용 `host_permissions`·`<all_urls>`를 추가한 복사본은 동일 배포본 설치 검증 자료로 쓰지 않는다. 권한 확대가 필요하면 원인과 대안을 먼저 기록한다.
+
+```bash
+# 실제 받은 ZIP 경로를 넣고 제공된 SHA256SUMS의 같은 파일 항목과 비교한다.
+EASYWEB_ZIP="/실제로/받은/EasyWeb.zip"
+shasum -a 256 "$EASYWEB_ZIP"
+```
+
+위 경로는 사용자가 실제 받은 파일로 바꾸는 예시다. 현재 ZIP의 SHA256은 `bd29be8907b998ed73b00bcdc7c6df36a10a89ca21a962175546f2ea8196d021`이다. 최신 패키지의 실제 파일명·Manifest 버전·제공 해시를 사용하며, RUN-001의 v0.2.0 해시를 새 빌드에 적용하지 않는다.
+
+## 기존 프로필과 분리해 설치하기
+
+검증에는 새 임시 Chrome 프로필을 사용한다. 기존 사용자의 로그인·확장 설정을 바꿀 필요가 없다. macOS에서 별도 Chrome 창을 여는 예시는 다음과 같다. 이 명령은 절차 예시이며 실행 성공을 기록한 결과가 아니다.
+
+```bash
+EASYWEB_TEST_PROFILE="$(mktemp -d "${TMPDIR:-/tmp}/easyweb-chrome.XXXXXX")"
+printf '%s\n' "$EASYWEB_TEST_PROFILE"
+open -na "Google Chrome" --args --user-data-dir="$EASYWEB_TEST_PROFILE" --no-first-run --no-default-browser-check
+```
+
+임시 경로를 기록하고 이 창에서 Chrome 동기화·개인 계정 로그인을 하지 않는다. macOS 이외 환경은 별도 빈 Chrome 프로필을 만들고 같은 설치 절차를 따른다. 절차가 있다는 사실을 Windows 실기기 확인 완료로 표현하지 않는다.
+
+1. 새 프로필에서 주소창에 `chrome://extensions`를 입력한다.
+2. 개발자 모드를 켠다.
+3. **압축해제된 확장 프로그램을 로드**를 눌러 `manifest.json`이 들어 있는 폴더를 선택한다.
+4. 확장 카드의 이름·버전·오류 표시·로드 경로를 확인하고, 확장 메뉴에서 EasyWeb을 도구 모음에 고정한다.
+5. 공개 HTTP(S) 페이지를 열고 사용자가 도구 모음의 EasyWeb을 누른다. 로컬 도구·DevTools API로 주입한 결과와 이 실제 클릭 경로를 구별한다.
+6. 쉬운 화면 표시, 닫기/Esc, 재실행, 원본으로 복귀, 페이지 이동 후 재실행, 제한 페이지에서 오류 표시 후 일반 페이지 복구를 확인한다. 사이트의 원본 인증·신청·검색 제출은 실행하지 않는다.
+
+Chrome의 개발자 모드 로드·도구 모음 고정·확장 새로고침 절차는 [Chrome 공식 안내](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)를 따른다. 확인일: 2026-10-18 한국 시간.
+
+## 사용과 제한
+
+- 현재 페이지에서 필요한 메뉴를 찾으려 할 때 EasyWeb을 실행한다. 일반 링크 카드는 공개 목적지로 바로 이동한다. JavaScript·SSO·다운로드 등 동작을 대신 실행하기 어려운 제어는 원본 위치로 안내하며 사용자가 원본에서 계속할지 결정한다. [원본 연결 정책](ACTION_POLICY.md)을 따른다.
+- 같은 탭에서 직접 이동했다면 Chrome 뒤로 가기로 시작 페이지에 돌아온다. 새 탭/창이 열렸다면 해당 탭/창을 닫고 시작 탭으로 돌아온다. 원본 위치 안내는 `안내 닫기` 또는 Esc로 닫으며, 쉬운 화면의 `원본 화면 보기`·Esc와 구별한다. 동적 원본 스크립트의 모든 동작 보존은 보장하지 않으며 가려짐·변경·초점 실패 안내가 나오면 새로 찾는다.
+- 원본 입력값을 EasyWeb에 복사하거나 실제 인증·결제·삭제·최종 제출을 대신 실행하는 과제로 사용하지 않는다.
+- 페이지가 바뀌거나 대상이 사라졌다는 안내가 나오면 원본으로 돌아가 새로 찾는다. 카드 표시만으로 실제 목적지 도달을 기록하지 않는다.
+- 브라우저 내부 페이지, 다른 출처 iframe, 닫힌 Shadow DOM 등 제약은 현재 지원표·실행 보고서를 따른다. 메뉴 축약 예시·API 모형·테스트 권한을 추가한 통합 검사·실제 배포본 클릭·사용자 실증은 각각 다른 증거다.
+
+## 업데이트
+
+1. 사용 중인 버전·ZIP·SHA256·설치 폴더 경로를 기록하고 이전 압축 파일을 별도로 보관한다.
+2. 새 ZIP을 **다른 빈 폴더**에 풀고 새 Manifest·제공 SHA256을 확인한다. 실행 중인 구버전 폴더에 무작정 섞어 덮어쓰지 않는다.
+3. 저장소의 같은 `dist/` 경로를 개발 중 갱신하는 경우에는 빌드 후 `chrome://extensions`에서 해당 확장의 새로고침을 누른다. 새 버전의 별도 폴더로 바꾸려면 기존 후보를 끄고 새 폴더를 로드한다. 동시에 두 후보를 켜지 않는다.
+4. 대상 웹페이지도 새로고침한 다음 도구 모음에서 다시 실행한다. 확장/서비스 워커와 이미 열린 페이지의 content script 갱신을 구별한다. [Chrome 새로고침 안내](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#reload-the-extension)
+5. 새 카드의 버전·로드 경로·오류와 실제 클릭 경로를 다시 기록한다. 폴더가 달라지면 개발 확장 ID가 바뀔 수 있으므로 이전 ID만으로 버전을 판단하지 않는다.
+
+## 제거
+
+`chrome://extensions`에서 해당 버전 EasyWeb의 **삭제**를 누른다. 이미 주입된 화면이 남으면 해당 탭을 새로고침하거나 닫는다. 임시 Chrome 창을 완전히 종료한 뒤 기록한 임시 프로필 폴더만 Finder에서 휴지통으로 옮길 수 있다. 기존 사용자 프로필 경로나 상위 임시 디렉터리를 지우지 않는다.
+
+## 되돌리기
+
+새 버전에서 문제가 생기면 해당 후보를 끄고, 보관한 이전 ZIP의 SHA256·Manifest를 확인해 이전 버전 폴더를 다시 로드한다. 같은 경로 개발 설치라면 해당 경로를 보관한 이전 빌드의 **전체 파일 집합**으로 복원한 뒤 확장과 대상 페이지를 각각 새로고침한다. 임의 소스 일부만 섞어 복원하지 않는다. 이전 개발 후보로 되돌렸다는 사실은 그 버전의 미해결 결함이나 인수 미달을 해소하지 않는다.
+
+## 설치 확인 기록과 인계 판정
+
+아래는 **빈 기록 형식**이다. 실제 확인 전 값은 `UNKNOWN/NOT_RUN`으로 두며 체크 표시나 통과 날짜를 미리 채우지 않는다.
+
+| 기록 | 실제로 채울 값 |
+| --- | --- |
+| 패키지 파일·버전·ZIP SHA256·빌드 해시 | UNKNOWN |
+| OS·Chrome 버전·실행 일시 | UNKNOWN |
+| 임시 프로필 경로·확장 ID·로드 경로 | UNKNOWN |
+| Manifest 동일성·activeTab/scripting·추가 host 권한 없음 | NOT_RUN |
+| 도구 모음 사용자 클릭 → 주입 → 쉬운 화면 → 원본 복귀 | NOT_RUN |
+| 5개 고정 사이트별 실행·닫기·재실행·이동 복구 | NOT_RUN |
+| 제한 페이지 오류 → 일반 페이지 복구 | NOT_RUN |
+| 근거 파일·검토자·잔여 결함 | UNKNOWN |
+
+기술 인계 통과에는 S01~S08 필수 조건을 실제 증거로 충족해야 한다. 그중 하나라도 미달이면 개발 후보/조건부 후보로 남긴다. S01~S08을 통과했으나 S09가 미실시인 경우에만 **기술 검증된 파일럿 후보 / 사용자 실증 대기**라고 적는다. 실제 실증이 목표 미달이면 **조건부 후보 / 사용성 개선 필요**다. S10 최종 DONE은 기술·실제 사용성 인수 조건을 모두 충족한 뒤 판정한다. Chrome 웹 스토어 게시·기관 배포는 별도 사용자 지시 범위다.

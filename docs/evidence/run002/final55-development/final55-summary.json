@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-10-17T16:57:15.814Z",
+  "evaluationPhase": "post-holdout-development",
+  "sourceHashes": {
+    "src/classifier.ts": "2815c540b4a08e5b5d1ddd9191c662bfe731015d718c78bd0b91dbc244b916d1",
+    "src/ranker.ts": "6c4c77dd9a438bff0226428e4dce13192c1c076cf0b4d0b339704526cb9ccdd4",
+    "tests/classifier-ranking.spec.mjs": "1c2469689246e9c24419f48e82eb49e8d7e34ca967c896b10e0295ff4fb20999"
+  },
+  "sourceFrozen": true,
+  "change": "Only existing correctly classified, anchored body help functions receive explicit control evidence: contacts, hours, institution branch directory, and optional free/online/telephone/visit/in-person/remote counseling operation/guidance. Native anchor/button semantics required. No adoption score, category or action changes; generic guide fallback remains weak and receives no pageTask.",
+  "regression": {
+    "file": "tests/classifier-ranking.spec.mjs",
+    "newCase": "본문의 명확한 부서·상담 운영 기능은 전역 검색 중복보다 먼저 두 경로를 보존한다",
+    "before": "FAIL: directory survives but counseling is excluded; duplicate global search consumes capacity.",
+    "after": "PASS: body search input plus both distinct canonical help functions reserved, then category diversity fills the remaining slots; generic weak guide is not reserved.",
+    "total": 55,
+    "passed": 55,
+    "failed": 0,
+    "durationSeconds": 4.4,
+    "command": "npx playwright test tests/classifier-ranking.spec.mjs --reporter=dot --output=/tmp/easyweb-final55-after"
+  },
+  "typecheck": "PASS strict targeted classifier.ts/ranker.ts",
+  "reports": {
+    "all": {
+      "path": "docs/evidence/run002/final55-development/evaluation-current-all.json",
+      "summary": {
+        "pages": 15,
+        "correct": 69,
+        "recommended": 69,
+        "matched": 45,
+        "expected": 45,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 15
+      },
+      "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "blind-v2-holdout": {
+      "path": "docs/evidence/run002/final55-development/evaluation-current-blind-v2-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 22,
+        "recommended": 22,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "blind-v3-holdout": {
+      "path": "docs/evidence/run002/final55-development/evaluation-current-blind-v3-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 18,
+        "recommended": 18,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "blind-v4-holdout": {
+      "path": "docs/evidence/run002/final55-development/evaluation-current-blind-v4-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 14,
+        "recommended": 15,
+        "matched": 12,
+        "expected": 13,
+        "precision": 0.9333333333333333,
+        "recall": 0.9230769230769231,
+        "tasksRecommended": 5
+      },
+      "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+      "evaluationPhase": "post-holdout-development"
+    },
+    "development-v4-corrected-holdout": {
+      "path": "docs/evidence/run002/final55-development/evaluation-current-development-v4-corrected-holdout.json",
+      "summary": {
+        "pages": 5,
+        "correct": 15,
+        "recommended": 15,
+        "matched": 13,
+        "expected": 13,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 5
+      },
+      "engineHash": "6c3730411e95ff3c072355660317de9e50d203f4f38ff61ecc2366858d5dd732",
+      "evaluationPhase": "post-holdout-development"
+    }
+  },
+  "unchangedBoundaries": {
+    "maxCards": 6,
+    "maxPerCategory": 3,
+    "maxReservedPageTasks": 3,
+    "rankerUnchanged": true,
+    "sourceLabelsActionsMetadataPreserved": true,
+    "noSitePathOrExactCounselingLabelException": true
+  },
+  "limitations": "These are exposed development datasets, including separately corrected v4 annotations. Preserved first independent failures remain failures. S07 stays IN_PROGRESS. Final original live tasks, native installation/package validation and real user pretest are parent-owned and are not claimed complete here."
+}
