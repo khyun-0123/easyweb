@@ -1,0 +1,176 @@
+{
+  "pageId": "smu-notices",
+  "purpose": "상명대학교 통합공지 게시판 목록 페이지로, 캠퍼스·분류별로 학교 공지를 찾아보는 곳이다.",
+  "top": [
+    {
+      "rank": 1,
+      "i": 33,
+      "label": "검색어를 입력해 주세요",
+      "kind": "search",
+      "reason": "게시판 내 공지 검색"
+    },
+    {
+      "rank": 2,
+      "i": 21,
+      "label": "학사",
+      "kind": "notice",
+      "reason": "가장 중요한 학사 공지 분류 필터"
+    },
+    {
+      "rank": 3,
+      "i": 24,
+      "label": "등록/장학",
+      "kind": "notice",
+      "reason": "등록금·장학금 공지 분류, 학부모 관심 높음"
+    },
+    {
+      "rank": 4,
+      "i": 18,
+      "label": "서울캠퍼스",
+      "kind": "other:캠퍼스선택",
+      "reason": "캠퍼스별 공지 거르기(천안은 19)"
+    },
+    {
+      "rank": 5,
+      "i": 8,
+      "label": "수강신청",
+      "kind": "apply",
+      "reason": "재학생 핵심 서비스"
+    },
+    {
+      "rank": 6,
+      "i": 6,
+      "label": "학사안내",
+      "kind": "academic",
+      "reason": "학사일정 바로가기"
+    }
+  ],
+  "alsoFine": [
+    {
+      "rank": 7,
+      "i": 27,
+      "label": "진로취업",
+      "kind": "notice",
+      "reason": "취업 공지 분류"
+    },
+    {
+      "rank": 8,
+      "i": 25,
+      "label": "학생생활",
+      "kind": "notice",
+      "reason": "학생생활 공지 분류"
+    },
+    {
+      "rank": 9,
+      "i": 10,
+      "label": "Login",
+      "kind": "login",
+      "reason": "포털 로그인"
+    },
+    {
+      "rank": 10,
+      "i": 19,
+      "label": "천안캠퍼스",
+      "kind": "other:캠퍼스선택",
+      "reason": "천안캠퍼스 공지 거르기"
+    }
+  ],
+  "duplicatesOfTop": [
+    {
+      "of": 1,
+      "i": [
+        34
+      ]
+    },
+    {
+      "of": 6,
+      "i": [
+        13
+      ]
+    }
+  ],
+  "noise": [
+    {
+      "pattern": "개별 공지 제목",
+      "examples": [
+        36,
+        39,
+        53,
+        56,
+        120
+      ]
+    },
+    {
+      "pattern": "공지 앞 캠퍼스/분류 라벨 링크(같은 글로 이동)",
+      "examples": [
+        35,
+        38,
+        44,
+        52,
+        55
+      ]
+    },
+    {
+      "pattern": "파일첨부 링크(fontPx 0, 숨김)",
+      "examples": [
+        37,
+        40,
+        43,
+        46,
+        49
+      ]
+    },
+    {
+      "pattern": "페이지 번호/다음/마지막",
+      "examples": [
+        183,
+        184,
+        192,
+        193,
+        194
+      ]
+    },
+    {
+      "pattern": "전체/현재 상태 분류(자기 자신)",
+      "examples": [
+        20,
+        7,
+        17
+      ]
+    },
+    {
+      "pattern": "상단공지 해지 체크박스·검색 범위 드롭다운 링크",
+      "examples": [
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "pattern": "코로나19 등 오래된 분류",
+      "examples": [
+        29
+      ]
+    },
+    {
+      "pattern": "푸터 정책·전화·인증마크",
+      "examples": [
+        195,
+        197,
+        201,
+        206
+      ]
+    },
+    {
+      "pattern": "언어 전환·SMPOPUP5",
+      "examples": [
+        14,
+        15,
+        16,
+        9
+      ]
+    }
+  ],
+  "reviewer": "independent-blind-agent-C",
+  "note": "labels only, no engine output seen"
+}

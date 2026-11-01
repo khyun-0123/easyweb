@@ -24,7 +24,7 @@ window.inspectEasyWebMenuFlow=()=>{
     const matched=!!source&&source.label===label&&source.category===category&&source.action===action&&(action!=='navigate'||source.href===href)&&(source.relatedLabel&&source.relatedLabel!==source.label?source.relatedLabel:undefined)===relatedLabel;
     return {label,relatedLabel,category,action,href,target:card.getAttribute('target'),sourceId:matched?source.element.dataset.evalId??null:null,sourceMatches:matched?1:0,bindingMethod:'actual-rendered-card-source'};
   });
-  const next=[...root.querySelectorAll('button')].find(button=>button.textContent.trim()==='다른 메뉴 보기');
+  const next=[...root.querySelectorAll('button')].find(button=>button.classList.contains('menu-page')&&button.textContent.replace(/[←→]/g,'').trim()==='다른 기능 보기');
   return {cards,classificationMode:${JSON.stringify(mode)},adapterVersion:ADAPTER_VERSION,nextAvailable:!!next&&!next.disabled&&next.getAttribute('aria-disabled')!=='true'&&!!next.getClientRects().length,stale:root.querySelector('.change-notice')?.hidden===false,status:root.querySelector('.status')?.textContent??null};
 };`, resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife', loader: { '.css': 'text' } });
   const text = result.outputFiles[0].text;
@@ -54,7 +54,7 @@ export async function observeMenuFlow(page, cdp, contextId, bundle, target, sour
     }
     pages.push({ page: index + 1, ...view });
     if (!view.nextAvailable) { complete = true; break; }
-    await page.locator('[data-easyweb-host]').getByRole('button', { name: '다른 메뉴 보기', exact: true }).click();
+    await page.locator('[data-easyweb-host]').getByRole('button', { name: '다른 기능 보기', exact: true }).last().click();
   }
   if (!complete) throw new Error('Menu flow did not terminate within the source-control bound');
   const firstReachedPage = Object.fromEntries(target.expected.map(truth => [truth.id,

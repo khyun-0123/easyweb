@@ -1,0 +1,304 @@
+{
+  "classification": "EXPOSED_DEVELOPMENT_ONLY",
+  "protocol": "leave-one-site-out over 5 normalized institutions; features: label/context/href-path char n-grams + control metadata",
+  "caveat": "Rule baseline was developed on these same 60 pages, so its numbers are optimistic. Model numbers are cross-site held out.",
+  "labelSemantics": "gold = human accepted category; none = annotated but not accepted; accepted is permissive, so rule \"none\" on an accepted control is not counted as a rule error",
+  "datasetSha256": "22ce454388c39cd77ce3a323d95246feb080e487cbacd663a0304eda0450d310",
+  "synthetic": {
+    "path": "docs/evidence/local-ai/synthetic-qwen3-14b/synthetic.jsonl",
+    "rows": 280,
+    "weight": 0.3,
+    "sha256": "c67d569643e31acec1246100ac9a1b66eca16a58fae91ef65d8c023c188a6d44"
+  },
+  "n": 954,
+  "goldDistribution": {
+    "none": 298,
+    "search": 98,
+    "login": 31,
+    "help": 314,
+    "notice": 41,
+    "apply": 115,
+    "academic": 57
+  },
+  "ruleClaims": {
+    "rule": {
+      "n": 435,
+      "correct": 422,
+      "accuracy": 0.9701
+    },
+    "model7": {
+      "n": 435,
+      "correct": 264,
+      "accuracy": 0.6069
+    }
+  },
+  "expectedCategory": {
+    "rule": {
+      "n": 189,
+      "correct": 187,
+      "accuracy": 0.9894
+    },
+    "categoryModel": {
+      "n": 189,
+      "correct": 128,
+      "accuracy": 0.6772
+    }
+  },
+  "allLabeled7Class": {
+    "model7": {
+      "n": 954,
+      "correct": 570,
+      "accuracy": 0.5975
+    },
+    "macroF1": 0.537
+  },
+  "bySite": {
+    "city": {
+      "ruleClaims": {
+        "n": 99,
+        "correct": 95,
+        "accuracy": 0.9596
+      },
+      "modelOnRuleClaims": {
+        "n": 99,
+        "correct": 56,
+        "accuracy": 0.5657
+      },
+      "expectedCategoryModel": {
+        "n": 42,
+        "correct": 22,
+        "accuracy": 0.5238
+      }
+    },
+    "government": {
+      "ruleClaims": {
+        "n": 55,
+        "correct": 54,
+        "accuracy": 0.9818
+      },
+      "modelOnRuleClaims": {
+        "n": 55,
+        "correct": 36,
+        "accuracy": 0.6545
+      },
+      "expectedCategoryModel": {
+        "n": 34,
+        "correct": 23,
+        "accuracy": 0.6765
+      }
+    },
+    "library": {
+      "ruleClaims": {
+        "n": 82,
+        "correct": 76,
+        "accuracy": 0.9268
+      },
+      "modelOnRuleClaims": {
+        "n": 82,
+        "correct": 59,
+        "accuracy": 0.7195
+      },
+      "expectedCategoryModel": {
+        "n": 37,
+        "correct": 33,
+        "accuracy": 0.8919
+      }
+    },
+    "public-agency": {
+      "ruleClaims": {
+        "n": 99,
+        "correct": 99,
+        "accuracy": 1.0
+      },
+      "modelOnRuleClaims": {
+        "n": 99,
+        "correct": 78,
+        "accuracy": 0.7879
+      },
+      "expectedCategoryModel": {
+        "n": 39,
+        "correct": 35,
+        "accuracy": 0.8974
+      }
+    },
+    "smu": {
+      "ruleClaims": {
+        "n": 100,
+        "correct": 98,
+        "accuracy": 0.98
+      },
+      "modelOnRuleClaims": {
+        "n": 100,
+        "correct": 35,
+        "accuracy": 0.35
+      },
+      "expectedCategoryModel": {
+        "n": 37,
+        "correct": 15,
+        "accuracy": 0.4054
+      }
+    }
+  },
+  "ruleErrors": [
+    {
+      "pageId": "library-help",
+      "label": "English",
+      "section": null,
+      "gold": "none",
+      "rule": "help",
+      "ruleSelected": true,
+      "model7": "none",
+      "model7Confidence": 0.632,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.35
+    },
+    {
+      "pageId": "library-help",
+      "label": "국립중앙도서관",
+      "section": null,
+      "gold": "none",
+      "rule": "help",
+      "ruleSelected": true,
+      "model7": "help",
+      "model7Confidence": 0.304,
+      "categoryModel": "help",
+      "categoryConfidence": 0.295
+    },
+    {
+      "pageId": "city-blind-v7",
+      "label": "예약안내",
+      "section": null,
+      "gold": "help",
+      "rule": "apply",
+      "ruleSelected": true,
+      "model7": "help",
+      "model7Confidence": 0.411,
+      "categoryModel": "help",
+      "categoryConfidence": 0.422
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "label": "민원 신청안내",
+      "section": null,
+      "gold": "help",
+      "rule": "apply",
+      "ruleSelected": false,
+      "model7": "apply",
+      "model7Confidence": 0.687,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.665
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "label": "여권 신청안내",
+      "section": null,
+      "gold": "help",
+      "rule": "apply",
+      "ruleSelected": false,
+      "model7": "apply",
+      "model7Confidence": 0.327,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.338
+    },
+    {
+      "pageId": "cheonan-v9-01",
+      "label": "민원대기현황",
+      "section": null,
+      "gold": "none",
+      "rule": "help",
+      "ruleSelected": false,
+      "model7": "notice",
+      "model7Confidence": 0.41,
+      "categoryModel": "notice",
+      "categoryConfidence": 0.457
+    },
+    {
+      "pageId": "nl-v9-01",
+      "label": "자료상담·신청",
+      "section": "도서관 이용",
+      "gold": "help",
+      "rule": "apply",
+      "ruleSelected": false,
+      "model7": "apply",
+      "model7Confidence": 0.451,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.508
+    },
+    {
+      "pageId": "smu-v9-01",
+      "label": "입학안내",
+      "section": null,
+      "gold": "none",
+      "rule": "help",
+      "ruleSelected": false,
+      "model7": "help",
+      "model7Confidence": 0.372,
+      "categoryModel": "help",
+      "categoryConfidence": 0.324
+    },
+    {
+      "pageId": "smu-v9-01",
+      "label": "대학생활",
+      "section": null,
+      "gold": "academic",
+      "rule": "notice",
+      "ruleSelected": false,
+      "model7": "notice",
+      "model7Confidence": 0.315,
+      "categoryModel": "notice",
+      "categoryConfidence": 0.391
+    },
+    {
+      "pageId": "v10-government-02",
+      "label": "센터소식 선택됨",
+      "section": "심리회복지원센터",
+      "gold": "notice",
+      "rule": "help",
+      "ruleSelected": true,
+      "model7": "none",
+      "model7Confidence": 0.358,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.307
+    },
+    {
+      "pageId": "v10-library-01",
+      "label": "이용증 발급",
+      "section": "도서관 이용",
+      "gold": "help",
+      "rule": "apply",
+      "ruleSelected": false,
+      "model7": "apply",
+      "model7Confidence": 0.706,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.727
+    },
+    {
+      "pageId": "v10-library-01",
+      "label": "자료상담·신청",
+      "section": "도서관 이용",
+      "gold": "help",
+      "rule": "apply",
+      "ruleSelected": false,
+      "model7": "apply",
+      "model7Confidence": 0.451,
+      "categoryModel": "apply",
+      "categoryConfidence": 0.508
+    },
+    {
+      "pageId": "v10-library-01",
+      "label": "도서관 일정",
+      "section": "도서관 이용",
+      "gold": "notice",
+      "rule": "help",
+      "ruleSelected": false,
+      "model7": "none",
+      "model7Confidence": 0.37,
+      "categoryModel": "help",
+      "categoryConfidence": 0.229
+    }
+  ],
+  "ruleErrorsModelRight": {
+    "model7": 2,
+    "categoryModel": 1
+  }
+}

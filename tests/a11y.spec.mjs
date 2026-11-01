@@ -30,10 +30,10 @@ test('숨긴 페이지 제어는 접근성 트리에서도 제외하고 실제 �
   expect(normal.hiddenControls.filter(control => control.className === 'menu-page')).toHaveLength(2);
   expect(normal.hiddenControls.every(control => control.axExposed === false)).toBe(true);
   const initial = report.cases.find(record => record.id === 'desktop-overflow');
-  expect(initial.controls.some(control => control.name === '다른 메뉴 보기' && control.role === 'button')).toBe(true);
-  expect(initial.hiddenControls.some(control => control.name === '이전 메뉴' && !control.axExposed)).toBe(true);
+  expect(initial.controls.some(control => control.name === '다른 기능 보기' && control.role === 'button')).toBe(true);
+  expect(initial.hiddenControls.some(control => control.name === '이전 기능' && !control.axExposed)).toBe(true);
   const next = report.cases.find(record => record.id === 'desktop-overflow-next');
-  expect(next.controls.some(control => control.name === '이전 메뉴' && control.role === 'button')).toBe(true);
+  expect(next.controls.some(control => control.name === '이전 기능' && control.role === 'button')).toBe(true);
 });
 
 test('키보드 초점은 양방향 순환·재탐지 유지·종료 복귀하고 표시 대비가 3대1 이상이다', () => {
@@ -49,9 +49,13 @@ test('키보드 초점은 양방향 순환·재탐지 유지·종료 복귀하�
 
 test('카드의 native 이름은 보이는 제목·원본문구·실행·외부 사이트·새창을 보존한다', () => {
   const normal = report.cases.find(record => record.id === 'desktop-normal');
-  expect(normal.cardCount).toBe(6);
+  // 2026-10-31: the fixture is not a home page, so its 로그인 left the cards
+  // for the common row (docs/07_todo.md D13). Six cards became five plus one.
+  expect(normal.cardCount).toBe(5);
   const cards = normal.controls.filter(control => control.className.split(/\s+/).includes('card'));
-  expect(cards).toHaveLength(6);
+  expect(cards).toHaveLength(5);
+  const common = normal.controls.filter(control => control.className.split(/\s+/).includes('common-action'));
+  expect(common.map(control => control.name)).toEqual(['로그인']);
   expect(cards.every(control => control.nameSource === 'Chromium Accessibility.getFullAXTree' && control.name.includes('찾은 메뉴') && (control.name.includes('원본에서 계속하기') || control.name.includes('원본 페이지') && control.name.includes('이동')))).toBe(true);
   expect(cards.some(control => control.role === 'link')).toBe(true);
   expect(cards.some(control => control.role === 'button')).toBe(true);

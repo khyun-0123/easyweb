@@ -279,8 +279,11 @@ test('안전한 이름의 text·기본 입력 검색창은 submit보다 의미 �
     ], `<header><button id="header-search">검색 열기</button></header><form><input id="query" ${type} aria-label="검색어 입력"><button id="submit" type="submit">검색</button></form>`);
     expect(classified.find(item => item.id === 'query').score).toBeGreaterThan(classified.find(item => item.id === 'submit').score);
     // Current-page input comes before the global opener under the bounded
-    // page-task policy; both remain available and submit stays below input.
-    expect(ranked.map(item => item.id)).toEqual(['query', 'header-search', 'submit']);
+    // page-task policy. Since v0.11 the form's own submit button is the same
+    // function as its field and leaves the first screen (developer live review
+    // 2026-10-31, docs/reviews/live_first6_review_20261031.md P3); it stays in
+    // additional menus (tests/first-screen-duplicates.spec.mjs).
+    expect(ranked.map(item => item.id)).toEqual(['query', 'header-search']);
   }
 });
 

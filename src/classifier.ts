@@ -148,7 +148,25 @@ function endpoint(parts: string[]): string {
   return /^(?:index|list|main)$/.test(last) ? names.at(-2) ?? '' : last;
 }
 
-function hasDocumentReference(url: URL): boolean {
+/** A plain http(s) link without a dangerous script or command URL. Used for
+ * fixed site-wide controls (home, sign-up) that carry no task category. */
+export function isSafeNavigation(candidate: Candidate): boolean {
+  if (candidate.action !== 'navigate' || !candidate.href || !candidate.element.matches('a[href]') || hasDangerousScript(candidate.element)) return false;
+  try {
+    const url = new URL(candidate.href);
+    return /^https?:$/.test(url.protocol) && !isDangerousURL(url, pathParts(url));
+  } catch { return false; }
+}
+
+/** A real link or button that a page-type slot may show: no dangerous script,
+ * no command URL, no dangerous visible name, never an editable control. */
+export function isSafeSource(candidate: Candidate): boolean {
+  if (!candidate.element.matches('a[href], button, [role~="button" i]') || hasDangerousScript(candidate.element)) return false;
+  if (dangerous.test(normalize(candidate.label))) return false;
+  return candidate.action !== 'navigate' || isSafeNavigation(candidate);
+}
+
+export function hasDocumentReference(url: URL): boolean {
   return actionKeys.some(key => /^(?:view|detail|read)$/i.test(url.searchParams.get(key) ?? ''))
     || ['articleNo', 'articleId', 'article_no', 'article_id', 'postNo', 'postId', 'post_no', 'post_id'].some(key => url.searchParams.has(key));
 }

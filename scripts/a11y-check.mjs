@@ -6,7 +6,8 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const reportFile = 'docs/evidence/run009/a11y-automated.json';
+// RUN-009 results are preserved evidence; the current run writes run010.
+const reportFile = 'docs/evidence/run010/a11y-automated.json';
 const modalHost = '[data-easyweb-host]';
 const noticeHost = '[data-easyweb-notice]';
 
@@ -80,7 +81,7 @@ async function prepare(page, bundle, state) {
   });
   await page.addScriptTag({ content: bundle });
   await page.locator(`${modalHost} dialog`).waitFor({ state: 'visible' });
-  if (state === 'overflow-next') await page.locator(modalHost).getByRole('button', { name: '다른 메뉴 보기', exact: true }).click();
+  if (state === 'overflow-next') await page.locator(modalHost).getByRole('button', { name: '다른 기능 보기', exact: true }).last().click();
   if (state === 'stale') {
     await page.evaluate(() => document.getElementById('source-login').setAttribute('href', 'https://source.test/login?changed=1'));
     await page.locator(`${modalHost} .change-notice`).waitFor({ state: 'visible' });
@@ -115,8 +116,11 @@ async function metrics(page, selector) {
     const controls = [...root.querySelectorAll('button, a[href], summary')].map(element => {
       const rect = element.getBoundingClientRect(), style = getComputedStyle(element);
       const referenceText = attribute => (element.getAttribute(attribute) ?? '').split(/\s+/).filter(Boolean).map(id => root.getElementById(id)?.textContent ?? '').join(' ');
+      // Text marked aria-hidden (decorative arrows) is not part of the accessible name.
+      const spoken = node => node.nodeType === Node.TEXT_NODE ? node.nodeValue
+        : node.nodeType === Node.ELEMENT_NODE && node.getAttribute('aria-hidden') === 'true' ? '' : [...node.childNodes].map(spoken).join('');
       return {
-        name: referenceText('aria-labelledby') || element.getAttribute('aria-label') || element.textContent.trim(), className: element.className,
+        name: referenceText('aria-labelledby') || element.getAttribute('aria-label') || spoken(element).trim(), className: element.className,
         description: referenceText('aria-describedby'),
         width: rect.width, height: rect.height, disabled: element.getAttribute('aria-disabled') === 'true' || element.disabled,
         rendered: !!element.getClientRects().length && style.display !== 'none' && style.visibility !== 'hidden',
@@ -194,7 +198,9 @@ async function focusedMetric(page, selector) {
       }
       return 'rgb(255, 255, 255)';
     };
-    return { inside: true, className: element.className, name: element.textContent.trim(), focusVisible: element.matches(':focus-visible'), outlineWidth: parseFloat(style.outlineWidth), outlineStyle: style.outlineStyle, outlineColor: style.outlineColor, background: opaque(element), surroundingBackground: opaque(element.parentElement) };
+    const spoken = node => node.nodeType === Node.TEXT_NODE ? node.nodeValue
+      : node.nodeType === Node.ELEMENT_NODE && node.getAttribute('aria-hidden') === 'true' ? '' : [...node.childNodes].map(spoken).join('');
+    return { inside: true, className: element.className, name: spoken(element).trim(), focusVisible: element.matches(':focus-visible'), outlineWidth: parseFloat(style.outlineWidth), outlineStyle: style.outlineStyle, outlineColor: style.outlineColor, background: opaque(element), surroundingBackground: opaque(element.parentElement) };
   }, selector);
 }
 

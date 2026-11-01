@@ -21,8 +21,8 @@ async function setup(page, markup, controlledClock = false) {
   });
 }
 const current = page => page.locator('.card-source').filter({ hasText: /^찾은 메뉴 ·/ }).allTextContents();
-const next = page => page.getByRole('button', { name: '다른 메뉴 보기', exact: true });
-const previous = page => page.getByRole('button', { name: '이전 메뉴', exact: true });
+const next = page => page.getByRole('button', { name: '다른 기능 보기', exact: true }).last();
+const previous = page => page.getByRole('button', { name: '이전 기능', exact: true });
 
 // The overflow path was introduced in v0.4. From v0.6, category diversity gets
 // first choice, then focused pages fill unused capacity before showing overflow.
@@ -136,7 +136,7 @@ test('이전 화면의 바뀐 후보와 같은 프레임에서 바뀐 현재 후
   await setup(page, links(8));
   await page.evaluate(() => {
     document.getElementById('help-1').href = '/delete';
-    [...document.querySelector('[data-easyweb-host]').shadowRoot.querySelectorAll('.menu-page')].find(button => button.textContent === '다른 메뉴 보기').click();
+    [...document.querySelector('[data-easyweb-host]').shadowRoot.querySelectorAll('.menu-page')].find(button => button.textContent.replace(/[←→]/g, '').trim() === '다른 기능 보기').click();
   });
   await expect(page.locator('.change-notice')).toBeVisible();
   await expect(next(page)).toBeDisabled();
@@ -148,7 +148,7 @@ test('페이지 전환은 첫 카드 초점·상태를 갱신하고 키보드 �
   await setup(page, links(8));
   await next(page).click();
   await expect(page.locator('.card').first()).toBeFocused();
-  await expect(page.locator('[data-easyweb-host] .status')).toContainText('2번째 메뉴 화면');
+  await expect(page.locator('[data-easyweb-host] .status')).toContainText('2번째 화면');
   await page.locator('.card').last().focus();
   await page.keyboard.press('Tab');
   await expect(previous(page)).toBeFocused();
@@ -219,4 +219,37 @@ test('남은 후보 순회는 같은 locate 요소를 중복하지 않고 원래
   expect(new Set(result.ids).size).toBe(7);
   expect(result.ids).toContain('locate-a');
   expect(result.ids).toContain('locate-b');
+});
+
+// 2026-10-31 developer feedback: the bottom paging button was missed below the
+// cards. The same action sits above the cards with the refresh button.
+test('카드 위의 다른 기능 보기는 아래 버튼과 같은 화면 이동·화면 번호·숨김 상태를 따른다', async ({ page }) => {
+  await setup(page, links(14));
+  const shortcut = page.locator('[data-easyweb-host] .menu-shortcut');
+  const indicator = page.locator('[data-easyweb-host] .page-indicator');
+  const first = await current(page);
+  await expect(shortcut).toBeVisible();
+  await expect(shortcut).toHaveAccessibleName('다른 기능 보기');
+  await expect(indicator).toHaveText('1번째 화면');
+  const box = await shortcut.boundingBox(), cardBox = await page.locator('.card').first().boundingBox();
+  expect(box.y).toBeLessThan(cardBox.y);
+  await shortcut.click();
+  const second = await current(page);
+  expect(second.some(item => first.includes(item))).toBe(false);
+  await expect(indicator).toHaveText('2번째 화면');
+  await expect(page.locator('.card').first()).toBeFocused();
+  await shortcut.click();
+  await expect(indicator).toHaveText('3번째 화면');
+  await expect(shortcut).toBeHidden();
+  await expect(next(page)).toBeHidden();
+  await previous(page).click();
+  expect(await current(page)).toEqual(second);
+  await expect(shortcut).toBeVisible();
+});
+
+test('다른 기능이 없으면 위쪽 버튼과 화면 번호를 보이지 않는다', async ({ page }) => {
+  await setup(page, links(3));
+  await expect(page.locator('[data-easyweb-host] .menu-shortcut')).toBeHidden();
+  await expect(page.locator('[data-easyweb-host] .page-indicator')).toBeHidden();
+  await expect(page.getByRole('button', { name: '다시 찾기' })).toBeVisible();
 });

@@ -1,0 +1,66 @@
+{
+  "pageId": "smu-service",
+  "pageType": "form",
+  "purpose": "수강신청 사이트에 들어가기 위한 통합로그인",
+  "essential": [
+    {
+      "i": 9,
+      "label": "학번/교직원번호",
+      "kind": "login",
+      "reason": "학번/교직원번호 입력"
+    },
+    {
+      "i": 10,
+      "label": "비밀번호",
+      "kind": "login",
+      "reason": "비밀번호 입력"
+    },
+    {
+      "i": 14,
+      "label": "로그인",
+      "kind": "login",
+      "reason": "로그인 버튼"
+    },
+    {
+      "i": 12,
+      "label": "비밀번호 초기화",
+      "kind": "other:비밀번호 초기화",
+      "reason": "비밀번호 잊었을 때"
+    },
+    {
+      "i": 13,
+      "label": "학번/교직원번호 조회",
+      "kind": "other:아이디 찾기",
+      "reason": "학번 잊었을 때"
+    }
+  ],
+  "useful": [
+    {
+      "i": 15,
+      "label": "신입생 관련 공지사항 바로가기",
+      "kind": "board-list"
+    },
+    {
+      "i": 8,
+      "label": "원격지원원격지원",
+      "kind": "contact"
+    },
+    {
+      "i": 0,
+      "label": "수강신청",
+      "kind": "service"
+    }
+  ],
+  "common": [
+    {
+      "i": 0,
+      "kind": "home"
+    },
+    {
+      "i": 14,
+      "kind": "login"
+    }
+  ],
+  "idealSlots": 4,
+  "notes": "입력칸 9·10과 로그인 버튼 14는 한 카드(로그인 묶음)로 보이는 게 가장 좋음. 그러면 실제 카드 3~4개. 팝업 안 '[로그인]', '[로그아웃]' 등(2~6)은 도움말 팝업 링크로 보이며 제외. 비밀번호 칸 값은 절대 읽지 않음. 비밀번호 초기화·학번 조회는 javascript 링크라 원본 위치 안내가 됨."
+}

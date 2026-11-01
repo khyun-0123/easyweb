@@ -64,6 +64,9 @@ export interface Candidate {
   institutionEvidence?: InstitutionEvidence;
   contentEvidence?: ContentEvidence;
   relationEvidence?: RelationEvidence;
+  /** Fixed card wording set by a page-type slot (e.g. 목록으로, 이전 글). */
+  title?: string;
+  description?: string;
 }
 
 export const CATEGORY_INFO: Record<Category, { title: string; description: string; icon: string }> = {

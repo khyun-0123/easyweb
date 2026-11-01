@@ -3,10 +3,12 @@ import { build } from 'esbuild';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 let engine;
-const evidenceDir = 'docs/evidence/run009/service-relations';
+// RUN-009 evidence is preserved; later runs write their own copy.
+const evidenceDir = 'docs/evidence/run010/service-relations';
 test.beforeAll(async () => {
   const result = await build({stdin:{contents:`export { analyzePage } from './src/analyzer';export { serviceRelation } from './src/service-relations';`,resolveDir:process.cwd()},bundle:true,write:false,format:'iife',globalName:'ServiceRelations'});
   engine=result.outputFiles[0].text;
+  fs.mkdirSync(evidenceDir,{recursive:true});
   fs.writeFileSync(`${evidenceDir}/last-test-bundle.json`,JSON.stringify({sha256:crypto.createHash('sha256').update(engine).digest('hex'),scope:'Direct serviceRelation module + current analyzer bundle; no classifier/ranker/integration/quality/native claims.',headless:true,externalRequests:0},null,2));
 });
 const tabs = `<div id="local"><div><ul id="tasks"><li class="current"><a id="selected" href="/fresh">시설이용 신청</a></li><li><a id="own" href="/jasmine">나의 시설이용 보기</a></li><li><a id="public" href="/violet">시설이용 공개</a></li></ul></div><div id="description"><strong id="task-title"><span>시설이용 신청</span></strong><div><p>공개 서비스 설명</p><a id="entry" target="_blank" href="https://entry.other.test/new">시설이용 신청(시민 창구) 바로가기</a></div></div></div>`;

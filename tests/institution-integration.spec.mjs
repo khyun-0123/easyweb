@@ -136,8 +136,8 @@ test('UI의 모드는 다른 메뉴·이전 메뉴·다시 찾기에서 계속 �
     await setup(page,urls.university,board(8).replace('실습 네트워크 일시중단 안내','도구 칠 설치 절차 안내'));await open(page,mode);const category=mode==='generic'?'academic':'help';
     const categories=()=>page.locator('.card').evaluateAll(cards=>cards.map(c=>c.dataset.category));
     expect(await categories()).toEqual(Array(6).fill(category));
-    await page.getByRole('button',{name:'다른 메뉴 보기',exact:true}).click();expect(await categories()).toEqual(Array(2).fill(category));
-    await page.getByRole('button',{name:'이전 메뉴',exact:true}).click();expect(await categories()).toEqual(Array(6).fill(category));
+    await page.getByRole('button',{name:'다른 기능 보기',exact:true}).last().click();expect(await categories()).toEqual(Array(2).fill(category));
+    await page.getByRole('button',{name:'이전 기능',exact:true}).click();expect(await categories()).toEqual(Array(6).fill(category));
     await page.getByRole('button',{name:'다시 찾기',exact:true}).click();expect(await categories()).toEqual(Array(6).fill(category));
   }
 });

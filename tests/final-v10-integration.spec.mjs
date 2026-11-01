@@ -3,7 +3,8 @@ import { build } from 'esbuild';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 
-const evidenceDir='docs/evidence/run009/final-integration-review';
+// RUN-009 bundles are preserved evidence; later runs write their own copy.
+const evidenceDir='docs/evidence/run010/final-integration-review';
 const sourceFiles=['src/types.ts','src/classifier.ts','src/page-session.ts','src/content-evidence.ts','src/institution-evidence.ts','src/easy-mode.ts','src/relations.ts','src/service-relations.ts','src/document-relations.ts','src/navigation-utility.ts','src/analyzer.ts','src/action-bridge.ts','src/action-policy.ts','src/evidence-nodes.ts'];
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 let engine;
@@ -11,6 +12,7 @@ test.beforeAll(async()=>{
   const sourceHashes=Object.fromEntries(sourceFiles.map(path=>[path,hash(fs.readFileSync(path))]));
   const built=await build({stdin:{contents:`export {analyzePage} from './src/analyzer';export {classify} from './src/classifier';export {isCandidateCurrent,areCandidatesCurrent} from './src/page-session';export {openEasyMode,cardSource} from './src/easy-mode';export {locateOriginal} from './src/action-bridge';`,resolveDir:process.cwd()},bundle:true,write:false,format:'iife',globalName:'FinalIntegration',loader:{'.css':'text'}});
   engine=built.outputFiles[0].text;
+  fs.mkdirSync(evidenceDir,{recursive:true});
   fs.writeFileSync(`${evidenceDir}/test-bundle.js`,engine);
   fs.writeFileSync(`${evidenceDir}/test-bundle.json`,JSON.stringify({createdAtUtc:new Date().toISOString(),sha256:hash(engine),sourceHashes,scope:'Focused integrated synthetic headless safety/currentness checks, no live/native/quality/performance claim.'},null,2));
 });

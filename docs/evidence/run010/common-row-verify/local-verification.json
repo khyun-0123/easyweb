@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-10-31T15:00:02.803Z",
+  "completedAt": "2026-10-31T15:01:12.947Z",
+  "localRegressionStatus": "FAIL",
+  "requestedChecksStatus": "FAIL",
+  "requestedMode": "local-with-core",
+  "scope": "Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.",
+  "excluded": [
+    "live public-site observations and task completion",
+    "fresh blind evaluation",
+    "native extension installation and activeTab gesture",
+    "actual VoiceOver speech",
+    "real user study"
+  ],
+  "stages": [
+    {
+      "name": "typecheck",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 128.59216700000002,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/common-row-verify/verify-typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/build.mjs"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 70.158625,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/common-row-verify/verify-build.log"
+    },
+    {
+      "name": "playwright",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--reporter=list,json"
+      ],
+      "status": "FAIL",
+      "exitCode": 1,
+      "signal": null,
+      "elapsedMilliseconds": 69940.468375,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/common-row-verify/verify-playwright.log"
+    }
+  ],
+  "tests": {
+    "expected": 507,
+    "unexpected": 1,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMilliseconds": 69691.186,
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run010/common-row-verify/playwright-local.json"
+  },
+  "coreQuality": null,
+  "performance": null,
+  "structuralPerformance": null
+}

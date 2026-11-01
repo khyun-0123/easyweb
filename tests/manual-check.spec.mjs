@@ -23,7 +23,7 @@ test('수동 확인실의 추가 메뉴에서 같은 자료 버튼을 관련 서
   const contexts = new Set();
   for (let index = 0; index < 4; index++) {
     for (const text of await page.locator('.card-context').allTextContents()) contexts.add(text);
-    const next = page.getByRole('button', { name: '다른 메뉴 보기', exact: true });
+    const next = page.getByRole('button', { name: '다른 기능 보기', exact: true }).last();
     if (!await next.isVisible()) break;
     await next.click();
   }

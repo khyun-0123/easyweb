@@ -1,10 +1,12 @@
 import styles from './styles.css';
 import { analyzePage } from './analyzer';
 import { classify, type ClassificationOptions } from './classifier';
-import { hasMoreMenus, rank, remainingMenus } from './ranker';
+import { hasMoreMenus, remainingMenus } from './ranker';
 import { locateOriginal } from './action-bridge';
 import { showOriginalNotice } from './original-notice';
 import { areCandidatesCurrent, isCandidateCurrent, watchCandidates } from './page-session';
+import { COMMON_TITLES, phoneNumber, type CommonAction, type CommonKind } from './common-actions';
+import { composeFirstScreen } from './page-types';
 import { CATEGORY_INFO, type Candidate } from './types';
 
 // Keep the rendered control's source identity off the page attributes. This
@@ -24,6 +26,9 @@ const paths: Record<string, string> = {
   arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
   external: '<path d="M14 3h7v7m0-7L11 13M10 3H3v18h18v-7"/>',
   refresh: '<path d="M20 7a9 9 0 1 0 1 9M20 2v6h-6"/>',
+  home: '<path d="M3 11 12 3l9 8M5 9v12h14V9"/>',
+  phone: '<path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 5a2 2 0 0 1 2-2Z"/>',
+  signup: '<circle cx="10" cy="8" r="4"/><path d="M2 21v-2a8 8 0 0 1 13-6M19 14v6M16 17h6"/>',
 };
 
 function icon(name: string): SVGElement {
@@ -101,21 +106,46 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
   const description = el('p', '', '원하는 기능을 선택하세요. 원본에서 확인이 필요한 메뉴는 위치를 표시해요.');
   description.id = 'easyweb-description';
   intro.append(title, description);
+  // Home, log in and sign up exist on every page; outside the home page they
+  // are not the page's main task, so they stay reachable in their own row.
+  const commonRow = el('nav', 'common');
+  commonRow.setAttribute('aria-label', '자주 쓰는 버튼');
+  const commonList = el('div', 'common-list');
+  commonRow.append(el('span', 'common-label', '자주 쓰는 버튼'), commonList);
   const label = el('div', 'section-label');
   const sectionTitle = el('h2', '', '바로 이용하기');
   sectionTitle.id = 'easyweb-actions';
+  // Arrows are visual only; the accessible names stay plain words.
+  const arrow = (symbol: string) => {
+    const mark = el('span', 'arrow', symbol);
+    mark.setAttribute('aria-hidden', 'true');
+    return mark;
+  };
+  const pageIndicator = el('span', 'page-indicator');
+  pageIndicator.setAttribute('aria-hidden', 'true');
   const refresh = el('button', 'refresh');
   refresh.type = 'button';
   refresh.append(icon('refresh'), document.createTextNode('다시 찾기'));
-  label.append(sectionTitle, refresh);
+  // The live review showed the bottom paging button was easy to miss below the
+  // cards, so the same next action also sits beside 다시 찾기 above them.
+  const shortcut = el('button', 'menu-shortcut');
+  shortcut.type = 'button';
+  shortcut.append(document.createTextNode('다른 기능 보기'), arrow('→'));
+  const sectionActions = el('div', 'section-actions');
+  sectionActions.append(refresh, shortcut);
+  const heading = el('div', 'section-heading');
+  heading.append(sectionTitle, pageIndicator);
+  label.append(heading, sectionActions);
   const grid = el('section', 'grid');
   grid.setAttribute('aria-labelledby', sectionTitle.id);
   const pagesNavigation = el('nav', 'menu-pages');
   pagesNavigation.setAttribute('aria-label', '다른 기능 찾아보기');
-  const previous = el('button', 'menu-page', '이전 메뉴');
+  const previous = el('button', 'menu-page');
   previous.type = 'button';
-  const next = el('button', 'menu-page', '다른 메뉴 보기');
+  previous.append(arrow('←'), document.createTextNode('이전 기능'));
+  const next = el('button', 'menu-page');
   next.type = 'button';
+  next.append(document.createTextNode('다른 기능 보기'), arrow('→'));
   pagesNavigation.append(previous, next);
   const changeNotice = el('p', 'change-notice');
   changeNotice.hidden = true;
@@ -128,9 +158,10 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
   const status = el('span', 'status');
   status.setAttribute('role', 'status');
   bottom.append(status, el('span', '', '언제든 Esc 키로 원본 화면에 돌아갈 수 있어요'));
-  shell.append(site, intro, changeNotice, label, grid, pagesNavigation, hint, bottom);
+  shell.append(site, commonRow, intro, changeNotice, label, grid, pagesNavigation, hint, bottom);
   dialog.append(topbar, shell);
   let items: Candidate[] = [];
+  let common: CommonAction[] = [];
   let pages: Candidate[][] = [];
   let pageIndex = 0;
   let remainder: Generator<Candidate>;
@@ -147,13 +178,18 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
     next.disabled = stale || !hasNext;
     previous.setAttribute('aria-disabled', String(previous.disabled));
     next.setAttribute('aria-disabled', String(next.disabled));
+    shortcut.hidden = next.hidden;
+    shortcut.disabled = next.disabled;
+    shortcut.setAttribute('aria-disabled', String(shortcut.disabled));
+    pageIndicator.hidden = pagesNavigation.hidden;
+    pageIndicator.textContent = `${pageIndex + 1}번째 화면`;
   }
   function markStale() {
     if (stale || closed) return;
     stale = true;
     changeNotice.textContent = '원본 페이지가 바뀌었어요. 다시 찾기를 눌러주세요.';
     changeNotice.hidden = false;
-    for (const item of grid.querySelectorAll('.card')) {
+    for (const item of shell.querySelectorAll('.card, .common-action')) {
       item.setAttribute('aria-disabled', 'true');
       if (item instanceof HTMLAnchorElement) {
         item.removeAttribute('href');
@@ -161,15 +197,13 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
         item.tabIndex = 0;
       }
     }
-    const pagingHadFocus = shadow.activeElement === previous || shadow.activeElement === next;
+    const pagingHadFocus = shadow.activeElement === previous || shadow.activeElement === next || shadow.activeElement === shortcut;
     updatePageControls();
     if (pagingHadFocus) refresh.focus({ preventScroll: true });
   }
 
-  function card(candidate: Candidate): HTMLElement {
-    const info = CATEGORY_INFO[candidate.category!];
-    const item = candidate.action === 'navigate' ? el('a', 'card') : el('button', 'card');
-    item.dataset.category = candidate.category;
+  function sourceControl(candidate: Candidate, className: string): HTMLAnchorElement | HTMLButtonElement {
+    const item = candidate.action === 'navigate' ? el('a', className) : el('button', className);
     renderedSources.set(item, candidate);
     const guard = (event: Event) => {
       if (!stale && isCandidateCurrent(candidate)) return true;
@@ -193,14 +227,29 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
     }
     item.addEventListener('contextmenu', guard);
     item.addEventListener('dragstart', guard);
+    return item;
+  }
+
+  function commonButton({ kind, candidate }: CommonAction): HTMLElement {
+    const item = sourceControl(candidate, 'common-action');
+    item.dataset.kind = kind;
+    const names: Record<CommonKind, string> = { home: 'home', login: 'user', signup: 'signup', phone: 'phone' };
+    item.append(icon(names[kind]), document.createTextNode(kind === 'phone' ? `전화 ${phoneNumber(candidate)}` : COMMON_TITLES[kind]));
+    return item;
+  }
+
+  function card(candidate: Candidate): HTMLElement {
+    const info = CATEGORY_INFO[candidate.category!];
+    const item = sourceControl(candidate, 'card');
+    item.dataset.category = candidate.category;
     const image = el('span', 'card-icon');
     image.append(icon(info.icon));
     const action = el('span', 'card-action', candidate.action === 'navigate' ? candidate.target === '_blank' ? '원본 페이지 새 창으로 이동' : '원본 페이지로 이동' : '원본에서 계속하기');
     action.append(icon(candidate.action === 'navigate' ? 'external' : 'arrow'));
-    const cardTitle = items.filter(other => other.category === candidate.category).length > 1 ? candidate.label : info.title;
+    const cardTitle = candidate.title ?? (items.filter(other => other.category === candidate.category).length > 1 ? candidate.label : info.title);
     const titleNode = el('span', 'card-title', cardTitle);
     const sourceNode = el('span', 'card-source', `찾은 메뉴 · ${candidate.label}`);
-    item.append(image, titleNode, el('span', 'card-description', info.description), sourceNode);
+    item.append(image, titleNode, el('span', 'card-description', candidate.description ?? info.description), sourceNode);
     if (candidate.relatedLabel && candidate.relatedLabel !== candidate.label) {
       item.append(el('span', 'card-context card-source', `관련 항목 · ${candidate.relatedLabel}`));
     }
@@ -228,11 +277,17 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
       grid.append(empty);
     }
     updatePageControls();
-    status.textContent = `${announce ? '다시 확인했어요. ' : ''}현재 페이지에서 ${items.length}개의 주요 기능을 찾았어요.${pageIndex ? ` ${pageIndex + 1}번째 메뉴 화면이에요.` : ''}${pageIndex < pages.length - 1 || hasRemaining ? ' 다른 메뉴도 볼 수 있어요.' : ''}`;
+    status.textContent = `${announce ? '다시 확인했어요. ' : ''}현재 페이지에서 ${items.length}개의 주요 기능을 찾았어요.${pageIndex ? ` ${pageIndex + 1}번째 화면이에요.` : ''}${pageIndex < pages.length - 1 || hasRemaining ? ' 다른 기능도 볼 수 있어요.' : ''}`;
   }
   function update(announce = false) {
-    const candidates = classify(analyzePage(), options);
-    const initial = rank(candidates);
+    const raw = analyzePage();
+    const classified = classify(raw, options);
+    const screen = composeFirstScreen(raw, classified);
+    common = screen.common;
+    commonList.replaceChildren(...common.map(commonButton));
+    commonRow.hidden = !common.length;
+    const candidates = screen.pool;
+    const initial = screen.cards;
     pages = [initial];
     pageIndex = 0;
     remainder = remainingMenus(candidates, initial);
@@ -279,11 +334,12 @@ export function openEasyMode(host: HTMLElement, options: ClassificationOptions =
   }
   previous.addEventListener('click', () => changePage(-1));
   next.addEventListener('click', () => changePage(1));
+  shortcut.addEventListener('click', () => changePage(1));
   refresh.addEventListener('click', () => update(true));
   // 첫 분석을 끝낸 뒤 모달을 표시하여 초기 화면의 깜빡임을 줄입니다.
   update();
   dialog.showModal();
   closeButton.focus();
-  stopWatching = watchCandidates(() => stale ? [] : items, markStale);
+  stopWatching = watchCandidates(() => stale ? [] : [...common.map(item => item.candidate), ...items], markStale);
   return close;
 }

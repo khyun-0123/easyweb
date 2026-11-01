@@ -23,13 +23,32 @@ svg { display: block; width: 28px; height: 28px; fill: none; stroke: currentColo
 .intro { margin: 29px 0 30px; }
 h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 760; letter-spacing: -1.8px; line-height: 1.35; margin: 0 0 12px; }
 .intro p { color: #5e6e7e; margin: 0; font-size: 18px; word-break: keep-all; }
-.section-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; color: #4d6071; font-size: 14px; }
+.section-label { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; color: #4d6071; font-size: 14px; }
 .section-label h2 { font-size: 15px; font-weight: 650; margin: 0; }
-.refresh { min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; gap: 6px; background: none; color: #476173; border: 0; padding: 7px; font-size: 14px; }
-.refresh svg { width: 15px; height: 15px; }
+.section-heading { display: flex; align-items: baseline; gap: 12px; }
+.page-indicator { color: #3f5568; font-size: 15px; font-weight: 600; }
+.page-indicator[hidden] { display: none; }
+.section-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.refresh, .menu-shortcut { min-height: 52px; min-width: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border-radius: 10px; font-size: 17px; font-weight: 650; }
+.refresh { background: #fff; color: #34465a; border: 1px solid #7f8c99; }
+.refresh:hover { background: #f0f5f6; border-color: #3e8c81; }
+.refresh svg { width: 18px; height: 18px; }
+.menu-shortcut { background: #e6f2ef; color: #064f47; border: 2px solid #08665c; }
+.common { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 18px; }
+.common[hidden] { display: none; }
+.common-label { font-size: 16px; font-weight: 650; color: #34465a; }
+.common-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.common-action { min-height: 52px; min-width: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; background: #fff; color: #172b3a; border: 1px solid #7f8c99; font-size: 17px; font-weight: 650; text-decoration: none; cursor: pointer; }
+.common-action:hover { background: #f0f5f6; border-color: #3e8c81; }
+.common-action svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.common-action[aria-disabled='true'] { color: #5f6b76; border-style: dashed; cursor: not-allowed; }
+.menu-shortcut:enabled:hover { background: #d3e9e3; }
+.menu-shortcut:disabled { background: #edf1f5; color: #526476; border-color: #7f8c99; cursor: not-allowed; }
+.menu-shortcut[hidden] { display: none; }
+.arrow { font-weight: 700; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .menu-pages { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-.menu-page { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 48px; max-width: 100%; padding: 10px 18px; border: 1px solid #7f8c99; border-radius: 10px; color: #34465a; background: #fff; font-size: 16px; font-weight: 650; overflow-wrap: anywhere; }
+.menu-page { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; min-width: 48px; max-width: 100%; padding: 10px 18px; border: 1px solid #7f8c99; border-radius: 10px; color: #34465a; background: #fff; font-size: 16px; font-weight: 650; overflow-wrap: anywhere; }
 .menu-page:enabled:hover { background: #f0f5f6; border-color: #3e8c81; }
 .menu-page:disabled { background: #edf1f5; color: #526476; cursor: not-allowed; }
 .menu-pages[hidden], .menu-page[hidden] { display: none; }
@@ -56,9 +75,9 @@ h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 760; letter-spacing: -1.8px
 .bottom { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 8px; color: #526476; font-size: 13px; }
 .status { min-height: 24px; }
 @media (forced-colors: active) {
-  .card, .close, .refresh, .menu-page { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }
-  .card[aria-disabled='true'] { border-color: GrayText; color: GrayText; }
-  .menu-page:disabled { border-color: GrayText; color: GrayText; }
+  .card, .close, .refresh, .menu-page, .menu-shortcut, .common-action { border: 1px solid ButtonText; background: ButtonFace; color: ButtonText; }
+  .card[aria-disabled='true'], .common-action[aria-disabled='true'] { border-color: GrayText; color: GrayText; }
+  .menu-page:disabled, .menu-shortcut:disabled { border-color: GrayText; color: GrayText; }
   button:focus-visible, a:focus-visible { outline: 3px solid Highlight; }
   .card-icon { border: 1px solid CanvasText; }
 }

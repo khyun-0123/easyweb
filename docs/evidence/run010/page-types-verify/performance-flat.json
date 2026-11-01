@@ -1,0 +1,167 @@
+{
+  "checkedAt": "2026-10-31T18:51:14.598Z",
+  "status": "PASS",
+  "scope": "Synthetic flat 1,000-control benchmark; 10 measured runs after one excluded warmup. No real site loading or user data. Headless Chromium is recorded and is separate from native extension installation checks.",
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "27.0.0",
+    "node": "v26.0.0",
+    "cpuModel": "Apple M4 Pro",
+    "logicalCpus": 12,
+    "memoryBytes": 25769803776,
+    "chromium": "156.0.8078.4",
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 1080
+    },
+    "deviceScaleFactor": 1
+  },
+  "fixture": {
+    "shape": "flat",
+    "controls": 1000,
+    "distinctControlKinds": 1,
+    "regions": {
+      "primary": 0,
+      "body": 1000,
+      "footer": 0
+    },
+    "structure": "One parent containing 1,000 information-panel buttons.",
+    "sha256": "c196695732f0c735d1ead69b362276f1c685085c5a3fd62139a8a51dec665df5"
+  },
+  "measurement": {
+    "analysis": "analyzePage() only; includes visibility, safe label, context, action, and source snapshot work",
+    "overlayReady": "append host, openEasyMode() (including analysis/classification/ranking/render/focus/watchers), then two requestAnimationFrame callbacks and layout/readiness check",
+    "percentile": "nearest-rank p95; with n=10 this is the maximum observed sample, not a population estimate",
+    "limitations": "Synthetic local page, headless browser, small sample. Native browser startup, toolbar user gesture, third-party loading, and slow-device variation are excluded.",
+    "warmupExcluded": true
+  },
+  "validity": {
+    "sourceStable": true,
+    "exactlyTenRuns": true,
+    "allCandidatesCount1000": true,
+    "allOverlaysReady": true
+  },
+  "thresholds": {
+    "analyzerP95Milliseconds": 300,
+    "overlayReadyP95Milliseconds": 1000
+  },
+  "analyzerP95Milliseconds": 29,
+  "overlayReadyP95Milliseconds": 139.20000004768372,
+  "warmup": {
+    "run": 0,
+    "candidateCount": 1000,
+    "selectedCount": 6,
+    "analyzerMilliseconds": 30.899999976158142,
+    "overlayReadyMilliseconds": 143.60000002384186,
+    "ready": true
+  },
+  "measures": [
+    {
+      "run": 1,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 29,
+      "overlayReadyMilliseconds": 137.69999998807907,
+      "ready": true
+    },
+    {
+      "run": 2,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 28,
+      "overlayReadyMilliseconds": 138.69999998807907,
+      "ready": true
+    },
+    {
+      "run": 3,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 28.100000023841858,
+      "overlayReadyMilliseconds": 136.5,
+      "ready": true
+    },
+    {
+      "run": 4,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 27.69999998807907,
+      "overlayReadyMilliseconds": 139,
+      "ready": true
+    },
+    {
+      "run": 5,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 28.5,
+      "overlayReadyMilliseconds": 138.19999998807907,
+      "ready": true
+    },
+    {
+      "run": 6,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 27.69999998807907,
+      "overlayReadyMilliseconds": 139.0999999642372,
+      "ready": true
+    },
+    {
+      "run": 7,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 28.19999998807907,
+      "overlayReadyMilliseconds": 136.30000001192093,
+      "ready": true
+    },
+    {
+      "run": 8,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 27.5,
+      "overlayReadyMilliseconds": 139.10000002384186,
+      "ready": true
+    },
+    {
+      "run": 9,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 28.200000047683716,
+      "overlayReadyMilliseconds": 136.19999998807907,
+      "ready": true
+    },
+    {
+      "run": 10,
+      "candidateCount": 1000,
+      "selectedCount": 6,
+      "analyzerMilliseconds": 27.399999976158142,
+      "overlayReadyMilliseconds": 139.20000004768372,
+      "ready": true
+    }
+  ],
+  "bundleSha256": "6e23d2afb5836d0de25f036277fb1804be953c1f8b003900da81317105aaec86",
+  "sourceSha256": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "2c2e725e4505d43b42482af4d0af3e2ef2e0a67b802581c474f9ecaa7fdf6468",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "7f90fd1e28f81edf83a77a903672c41d624caa8ee7d8be526701781cc98cf61a",
+    "src/common-actions.ts": "e12dbacd5c423bdb1f6fce4b95155115276416ad4d3d4512d942197022080efb",
+    "src/content-evidence.ts": "b21f3f5908f6960d57b2c723c1a3ab4b38b9d16f8af5e9e133c92f081f9bf5a3",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/document-relations.ts": "0f53a7c9c73d264a458532fed1158bccde66d0744deda74b616826ab60fc6018",
+    "src/easy-mode.ts": "0c1704d9002d5c4cda1af4ae7960d751200946837196e86b52a658124becf659",
+    "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+    "src/institution-evidence.ts": "c9d6850624f51fe02730704b2e7852cb33bb3a886b8de933f1d4f6715999a4f6",
+    "src/navigation-utility.ts": "4dcfe6281aab9b986e2cee6447b65c9d263804476389f2f9c7947be19b2fac2b",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "7c24b92805b0f207a3a4d9f44ad5fbbb29d6f2f48d8679ca51b361e8f9dc98b1",
+    "src/page-types.ts": "2b54946b9a25e3db8a9eb1ba750563be13031a9a56c43ae17d73f81dcfde8f64",
+    "src/ranker.ts": "0bd880fdf79ba52bebb030483f05f7c8f760da38a5608db124f158ec621a63dd",
+    "src/relations.ts": "cd03dc861833d0ef2b10f243c10ab746969555ca0623fb9e9ed170d644315a2c",
+    "src/service-relations.ts": "c99b7f55bb1416e07dcf0f6f84b7e194145f9106e5923f01e67f36329719a084",
+    "src/styles.css": "3c404b8b202f76edbeeaa4cfe927d592a99e32ae2da8fccfa16be7b863422efc",
+    "src/types.ts": "53200279f32d6693a3221d531edfed4f87edfe98d61726d48d77eaa946576b82"
+  }
+}

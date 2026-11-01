@@ -20,7 +20,7 @@ async function setup(page, markup=table(), controlledClock=false) {
     const host=document.createElement('div');host.dataset.easywebHost='true';document.body.append(host);MaterialEngine.openEasyMode(host);
   });
 }
-const next = page=>page.getByRole('button',{name:'다른 메뉴 보기',exact:true});
+const next = page=>page.getByRole('button',{name:'다른 기능 보기',exact:true}).last();
 async function findMaterial(page, title) {
   for(let index=0;index<3;index++){
     const card=page.locator('button.card').filter({has:page.locator('.card-context',{hasText:`관련 항목 · ${title}`})});
