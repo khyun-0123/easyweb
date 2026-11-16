@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-11-15T09:42:28.070Z",
+  "model": "gemma4:e2b",
+  "cpuThreads": null,
+  "limitLines": 300,
+  "scope": "Diagnostic only. Exposed development pages (site survey 2026-11-01). Reference is an engine-blind Claude review, not human users.",
+  "system": "당신은 고령자를 위한 \"쉬운 화면\"을 설계합니다. 사용자는 홈페이지 메뉴 찾기가 어려운 할머니입니다.\n웹페이지의 누를 수 있는 요소 목록을 보고, 이 사용자가 \"이 페이지에 와서\" 가장 하려고 할 일에 필요한 요소를 최대 6개 고르세요. 중요한 순서대로 고릅니다.\n- 게시판 목록이면 검색과 최신 글, 글 보기 페이지면 첨부파일·목록·이전/다음 글, 홈이면 검색·대표 업무·전화 문의처럼 페이지 목적에 맞게 고릅니다.\n- 고르지 않는 것: 처음 화면(로고)·로그인·회원가입(따로 표시됨), 본문 바로가기, 배너 넘김, SNS, 개인정보처리방침·저작권 같은 바닥글 정책, 글자 크기·언어, 페이지 번호.\n- 목록에 있는 번호(i)만 씁니다.\nJSON으로만 답합니다: {\"picks\":[번호,...]}",
+  "pages": [
+    {
+      "pageId": "busan-board",
+      "picks": [
+        14,
+        10,
+        19,
+        46,
+        47,
+        48
+      ],
+      "invalid": [],
+      "parseError": null,
+      "truncated": false,
+      "wallMs": 5228,
+      "promptTokens": 2630,
+      "outputTokens": 22,
+      "loadMs": 2356,
+      "promptMs": 2577,
+      "outputMs": 228,
+      "error": null
+    },
+    {
+      "pageId": "busan-home",
+      "picks": [
+        9,
+        10,
+        14,
+        30,
+        31,
+        32
+      ],
+      "invalid": [],
+      "parseError": null,
+      "truncated": false,
+      "wallMs": 4150,
+      "promptTokens": 4401,
+      "outputTokens": 21,
+      "loadMs": 2,
+      "promptMs": 3910,
+      "outputMs": 226,
+      "error": null
+    }
+  ]
+}
