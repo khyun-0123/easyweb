@@ -17,6 +17,16 @@ test('명시된 breadcrumb navigation과 정확한 구조 표식은 위치 경�
   expect(await inspect(page,[['semantic','문서 입구'],['structured','첫 화면'],['korean','공개 문서함']])).toEqual(['position','position','position']);
 });
 
+test('KRDS 브레드크럼 이름과 class는 위치 경로다',async({page})=>{
+  await setup(page,`<nav class="krds-breadcrumb-wrap" aria-label="브레드크럼"><ol class="breadcrumb"><li><a id="named" href="/public/start">처음</a></li><li><a href="/public/help">고객센터</a></li></ol></nav><nav aria-label="현재 경로"><ol><li><a id="path" href="/public/lobby">첫 화면</a></li><li><a href="/public/guide">이용안내</a></li></ol></nav><nav class="krds-breadcrumb-wrap"><ol><li><a id="classOnly" href="/public/archives">공개 문서함</a></li><li><a href="/public/forms">서식</a></li></ol></nav>`);
+  expect(await inspect(page,[['named','처음'],['path','첫 화면'],['classOnly','공개 문서함']])).toEqual(['position','position','position']);
+});
+
+test('KRDS 유사 이름·class와 nav 밖 표식은 위치 경로로 바꾸지 않는다',async({page})=>{
+  await setup(page,`<nav aria-label="브레드크럼 안내 문서"><ol><li><a id="longName" href="/public/manual">사용 안내</a></li><li><a href="/public/support">지원</a></li></ol></nav><section class="krds-breadcrumb-wrap"><ul><li><a id="notNav" href="/public/policy">정책 안내</a></li><li><a href="/public/forms2">신청서식</a></li></ul></section><nav class="krds-breadcrumb-wrapper"><ol><li><a id="nearClass" href="/public/news">소식</a></li><li><a href="/public/notice">공지</a></li></ol></nav>`);
+  expect(await inspect(page,[['longName','사용 안내'],['notNav','정책 안내'],['nearClass','소식']])).toEqual([null,null,null]);
+});
+
 test('breadcrumb 유사 class·일반 navigation 목록·본문 설명 링크는 보존한다',async({page})=>{
   await setup(page,`<nav class="breadcrumbish not-breadcrumb breadcrumb-guide" aria-label="문서 안내"><ol><li><a id="guide" href="/public/manual">장비 사용안내</a></li><li><a href="/public/support">지원 안내</a></li></ol></nav><section class="breadcrumbs"><ul><li><a id="content" href="/public/policy">정책 안내</a></li><li><a href="/public/forms">신청서식</a></li></ul></section>`);
   expect(await inspect(page,[['guide','장비 사용안내'],['content','정책 안내']])).toEqual([null,null]);

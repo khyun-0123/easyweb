@@ -93,8 +93,8 @@ var FinalIntegration = (() => {
   var itemSelector = 'li,[role~="listitem" i],[role~="menuitem" i]';
   var regionSelector = 'main,section,article,aside,header,footer,nav,[role~="main" i],[role~="region" i],[role~="navigation" i]';
   var headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
-  var breadcrumbName = /^(?:breadcrumbs?(?:\s+(?:trail|navigation))?|현재\s*위치(?:\s*안내)?|사이트\s*경로)$/i;
-  var breadcrumbClass = /^(?:breadcrumbs?|breadcrumb[-_]nav(?:igation)?|breadcrumb[-_]trail)$/i;
+  var breadcrumbName = /^(?:breadcrumbs?(?:\s+(?:trail|navigation))?|브레드\s*크럼|현재\s*(?:위치(?:\s*안내)?|경로)|사이트\s*경로)$/i;
+  var breadcrumbClass = /^(?:breadcrumbs?|breadcrumb[-_]nav(?:igation)?|breadcrumb[-_]trail|krds-breadcrumb-wrap)$/i;
   var noOpScript = /^javascript:\s*(?:;|void\s*\(\s*0\s*\)\s*;?)?$/i;
   function createNavigationCache() {
     return { controls: /* @__PURE__ */ new WeakMap(), items: /* @__PURE__ */ new WeakMap(), menus: /* @__PURE__ */ new WeakMap(), breadcrumbs: /* @__PURE__ */ new WeakMap(), targets: /* @__PURE__ */ new Map(), visibility: /* @__PURE__ */ new WeakMap() };
@@ -2046,7 +2046,10 @@ var FinalIntegration = (() => {
   var noticeCollection = /^(?:(?:공지(?:사항)?|새\s*소식)\s*더\s*보기|(?:notices?|announcements?)\s+(?:read\s*)?more)$/i;
   var viewerControl = /뷰어\s*(?:설치\s*)?다운로드|\bviewer\s+(?:install\s+)?download\b/i;
   var orderingLabel = /^(?:조회|검색|신청|예약|등록)(?:\s*수)?\s*순$/;
+  var pageToolLabel = /^(?:(?:url|주소)\s*복사(?:하기)?|(?:프린트|인쇄)(?:하기)?|(?:전자\s*)?점자\s*(?:솔루션|다운로드|뷰어\s*보기)(?:\s*\(새\s*창\s*열림\))?|(?:주|서브|사이드|전체)?\s*메뉴\s*바로\s*가기|(?:상단\s*)?배너\s*모두\s*보기|(?:sns\s*)?공유(?:하기)?)$/i;
   var contactHelp = /^(?:(?:조직(?:도)?\s*(?:및|[·/&])\s*)?(?:(?:담당\s*)?(?:부서|직원|담당자)\s*)?(?:전화번호|연락처)\s*(?:안내|찾기)?|조직도(?:\s*안내)?|(?:staff|department|contact)\s+(?:directory|contacts?))$/i;
+  var locationAction = /^(?:(?:찾아\s*)?오시는\s*길(?:\s*안내)?|캠퍼스\s*(?:맵|지도)|지도\s*보기|(?:kakao|카카오|naver|네이버)\s*(?:맵|지도)\s*(?:으로|로)?\s*(?:이동|보기)(?:\s*\(새\s*창\s*(?:열림)?\))?|(?:담당자|직원|부서)\s*(?:찾기|검색)|(?:교내\s*)?전화번호\s*(?:검색|찾기)|directions|campus\s+map)$/i;
+  var locationGuide = /^(?:청사|층별|주차|캠퍼스)\s*안내$/;
   var hoursHelp = /^(?:(?:이용|운영|개관|업무)\s*시간(?:\s*안내)?|휴관일(?:\s*안내)?|(?:opening|business|service)\s+hours)$/i;
   var formTitle = /(?:신청서|신고서|위임장|동의서|청구서|\b(?:application|declaration|authorization|consent|claim)\s+form)$/i;
   var formDownload = /(?:(?:신청서|신고서|위임장|동의서|청구서)\s*(?:다운로드|다운\s*받기)|\bdownload\s+(?:application|declaration|authorization|consent|claim)\s+form)$/i;
@@ -2324,6 +2327,7 @@ var FinalIntegration = (() => {
       const utility2 = navigationUtility(candidate.element, candidate.label, navigationCache);
       if (utility2 === "position") return [];
       if (orderingLabel.test(label)) return [];
+      if (pageToolLabel.test(label.replace(/^\S+\s+(?=(?:전자\s*)?점자)/, ""))) return [];
       if (hasDangerousScript(candidate.element)) return [];
       let url;
       if (candidate.href) {
@@ -2430,7 +2434,7 @@ var FinalIntegration = (() => {
       let best;
       let bestIntent = 0;
       for (const rule of rules) {
-        const textMatch = (rule.label.test(label) || rule.category === "help" && (inquiry || contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label)) || rule.category === "apply" && issuanceIntent.test(label) || rule.category === "notice" && publicNoticeList.test(label)) && !(rule.category === "search" && searchGuidance);
+        const textMatch = (rule.label.test(label) || rule.category === "help" && (inquiry || contactHelp.test(label) || locationAction.test(label) || locationGuide.test(label) || hoursHelp.test(label) || branchDirectory.test(label)) || rule.category === "apply" && issuanceIntent.test(label) || rule.category === "notice" && publicNoticeList.test(label)) && !(rule.category === "search" && searchGuidance);
         const semanticMatch = rule.category === "search" && searchControl;
         const urlMatch = !!url && rule.endpoints.has(target);
         const sectionLabel = ambiguousLabel.test(label) || label.length <= 24 && decoratedMoreLabel.test(label) && urlMatch;
@@ -2449,7 +2453,7 @@ var FinalIntegration = (() => {
           candidate.context === "primary" ? "\uC8FC\uC694 \uBA54\uB274 \uC601\uC5ED" : candidate.context === "footer" ? "\uD558\uB2E8 \uC601\uC5ED \uAC10\uC810" : "\uBCF8\uBB38 \uC601\uC5ED"
         ];
         if (!best || score > best.score || score === best.score && intent > bestIntent) {
-          const pageTask = candidate.context === "body" ? semanticMatch || rule.category === "apply" && applicationPageControl(candidate, label, target, url) || rule.category === "help" && (viewerControl.test(label) || candidate.element.matches('a[href], button, [role~="button"]') && (contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? "control" : sectionMatch || rule.category === "notice" && noticeCollection.test(label) ? "collection" : void 0 : void 0;
+          const pageTask = candidate.context === "body" ? semanticMatch || rule.category === "apply" && applicationPageControl(candidate, label, target, url) || rule.category === "help" && (viewerControl.test(label) || candidate.element.matches('a[href], button, [role~="button"]') && (contactHelp.test(label) || locationAction.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? "control" : sectionMatch || rule.category === "notice" && noticeCollection.test(label) ? "collection" : void 0 : void 0;
           best = { ...candidate, category: rule.category, score, reasons, pageTask };
           bestIntent = intent;
         }
@@ -2558,6 +2562,7 @@ var FinalIntegration = (() => {
   var MAX_CARDS = 6;
   var MAX_PER_CATEGORY = 3;
   var MAX_PAGE_TASKS = 3;
+  var incidentalLabel = /^(?:개인\s*정보\s*처리\s*방침|웹\s*접근성\s*(?:안내|정책)?|법령\s*정보|이용\s*약관|저작권\s*(?:정책|보호\s*정책)?|이메일\s*(?:주소\s*)?무단\s*수집\s*거부|영상\s*정보\s*처리\s*기기\s*운영\s*(?:관리\s*)?방침)$/;
   var contextOrder = { primary: 0, body: 1, footer: 2 };
   var compareText = (a, b) => a < b ? -1 : a > b ? 1 : 0;
   var normalizedLabel = (candidate) => candidate.label.normalize("NFKC").replace(/\s+/g, " ").trim().toLowerCase();
@@ -2712,7 +2717,9 @@ var FinalIntegration = (() => {
       return true;
     });
     const repeats = firstScreenRepeats(distinct);
-    const unique = distinct.filter((candidate) => !repeats.has(candidate));
+    const kept = distinct.filter((candidate) => !repeats.has(candidate));
+    const incidental = kept.filter((candidate) => incidentalLabel.test(normalizedLabel(candidate).normalize("NFKC")));
+    const unique = kept.filter((candidate) => !incidental.includes(candidate));
     const counts = /* @__PURE__ */ new Map();
     const selected4 = [];
     for (const level of [2, 1]) {
@@ -2753,7 +2760,7 @@ var FinalIntegration = (() => {
       selected4.push(candidate);
       if (selected4.length === MAX_CARDS) break;
     }
-    if (selected4.length < MAX_CARDS) for (const candidate of unique) {
+    if (selected4.length < MAX_CARDS) for (const candidate of [...unique, ...incidental]) {
       if (selected4.includes(candidate)) continue;
       selected4.push(candidate);
       if (selected4.length === MAX_CARDS) break;
@@ -2983,6 +2990,8 @@ var FinalIntegration = (() => {
   var POST_CARDS = 4;
   var outside = 'header, nav, footer, aside, [role~="banner" i], [role~="navigation" i], [role~="contentinfo" i], [role~="complementary" i]';
   var text2 = (value) => value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  var attachmentLink = /^(?:첨부\s*파일|파일\s*첨부|첨부)(?:\s*(?:다운로드|내려\s*받기|보기))?(?:\s|$)/;
+  var searchPeriod = /(?:시작|종료|마지막|끝)\s*일|기간|날짜|\bdate\b/i;
   var titleBadges = /(?:\s*(?:새\s*글|new|n|첨부\s*파일(?:\s*있음)?|파일\s*첨부|hot|조회\s*수?\s*\d+))+$/i;
   var pinnedMark = /^\[?(?:공지|고정|필독|notice)\]?$/i;
   var backToList = /^(?:목록|목록\s*보기|목록으로(?:\s*가기)?|리스트|list)$/i;
@@ -3005,7 +3014,8 @@ var FinalIntegration = (() => {
       if (!row?.parentElement || row.closest(outside)) continue;
       const rows = groups.get(row.parentElement) ?? /* @__PURE__ */ new Map();
       const known = rows.get(row);
-      if (!known || text2(known.label).length < text2(candidate.label).length) rows.set(row, candidate);
+      const attachment = (item) => attachmentLink.test(text2(item.label));
+      if (!known || attachment(known) && !attachment(candidate) || attachment(known) === attachment(candidate) && text2(known.label).length < text2(candidate.label).length) rows.set(row, candidate);
       groups.set(row.parentElement, rows);
     }
     let best;
@@ -3039,7 +3049,7 @@ var FinalIntegration = (() => {
   }
   function listSlots(raw, rest, rows) {
     const searches = rest.filter((candidate) => candidate.category === "search");
-    const field = (candidate) => candidate.element.matches('input, [role~="searchbox" i], [role~="textbox" i]');
+    const field = (candidate) => candidate.element.matches('input, [role~="searchbox" i], [role~="textbox" i]') && !searchPeriod.test(text2(candidate.label)) && !candidate.element.matches('input[type="date" i]');
     const search = searches.find((candidate) => inBody(candidate) && field(candidate)) ?? searches.find(inBody) ?? searches.find(field) ?? searches[0];
     const ordered2 = [...rows.filter((row) => !row.pinned), ...rows.filter((row) => row.pinned)];
     const seen = /* @__PURE__ */ new Set();
@@ -3063,12 +3073,32 @@ var FinalIntegration = (() => {
       const container = candidate.element.closest("li, tr, dl, dd, p, div");
       const lead = text2(container?.textContent ?? "").slice(0, 120);
       const match = lead.match(neighbour);
-      if (!match || candidate === back || text2(candidate.label).length < 4) continue;
+      if (!match || candidate === back || text2(candidate.label).length < 4 || !candidate.element.matches("a[href]")) continue;
       const name2 = /다음|아랫/.test(match[0]) ? "\uB2E4\uC74C \uAE00" : "\uC774\uC804 \uAE00";
       if (neighbours.some((item) => item.title === name2)) continue;
       neighbours.push(slot(candidate, "notice", name2, text2(candidate.label).replace(titleBadges, "")));
     }
     return [...downloads, slot(back, "notice", "\uBAA9\uB85D\uC73C\uB85C", "\uAE00 \uBAA9\uB85D\uC73C\uB85C \uB3CC\uC544\uAC00\uAE30"), ...neighbours];
+  }
+  var featuredHeading = /^(?:자주\s*(?:찾는|이용하는|쓰는)|주요|빠른|대표|인기)\s*(?:서비스|메뉴|민원)(?:\s*바로\s*가기)?$|^(?:서비스|민원)\s*바로\s*가기$|^(?:빠른|퀵)\s*메뉴(?:\s*서비스)?$|^quick\s*menu$/i;
+  var featuredHelp = /안내|상담|문의|전화|찾기|센터|콜/;
+  var featuredControl = /^(?:설정|편집|메뉴\s*(?:설정|편집)|닫기|열기|이전|다음|정지|재생|멈춤)$/;
+  function featuredServices(raw, known) {
+    const seen = /* @__PURE__ */ new Set();
+    return raw.filter((candidate) => {
+      const label = text2(candidate.label);
+      if (known.has(candidate.element) || candidate.context === "footer" || candidate.action !== "navigate" || !candidate.element.matches("a[href]") || !isSafeSource(candidate) || featuredControl.test(label) || label.length < 2 || label.length > 30 || !featuredHeading.test(text2(candidate.sectionLabel ?? ""))) return false;
+      const key = destination2(candidate) || label;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).map((candidate) => ({
+      ...candidate,
+      category: featuredHelp.test(candidate.label) ? "help" : "apply",
+      score: 72,
+      pageTask: "control",
+      reasons: ["\uD648\uC758 \uC790\uC8FC \uCC3E\uB294 \uC11C\uBE44\uC2A4 \uBB36\uC74C", "\uBB36\uC74C \uC81C\uBAA9\uACFC \uC77C\uBC18 \uB9C1\uD06C"]
+    }));
   }
   function gateSlots(raw) {
     if (raw.length > 40) return;
@@ -3081,16 +3111,19 @@ var FinalIntegration = (() => {
     });
   }
   function composeFirstScreen(raw, classified) {
+    const home = isHomePage();
+    const featured = home ? featuredServices(raw, new Set(classified.map((candidate) => candidate.element))) : [];
     const common = commonActions(raw, classified);
-    const rest = withoutCommon(classified, common);
+    const homeTasks = (candidate) => home && candidate.category === "help" && candidate.pageTask === "control" && locationAction.test(text2(candidate.label)) ? { ...candidate, pageTask: void 0 } : candidate;
+    const rest = [...withoutCommon(classified, common).map(homeTasks), ...featured];
     classifiedBy = new Map(classified.map((candidate) => [candidate.element, candidate]));
     let type = "default";
     let slots = [];
     let extra = [];
     let target = MAX_CARDS2;
     const gate = gateSlots(raw);
-    const rows = gate || isHomePage() ? [] : documentList(raw);
-    const post = gate || rows.length ? void 0 : isHomePage() ? void 0 : postSlots(raw);
+    const rows = gate || home ? [] : documentList(raw);
+    const post = gate || rows.length ? void 0 : home ? void 0 : postSlots(raw);
     if (gate) {
       type = "gate";
       slots = gate;

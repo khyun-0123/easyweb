@@ -1,0 +1,1195 @@
+{
+  "checkedAt": "2026-11-12T03:43:19.274Z",
+  "engine": "current",
+  "suite": "blind-v3",
+  "split": "all",
+  "classificationMode": "generic",
+  "adapterVersion": 3,
+  "evaluationPhase": "post-holdout-development",
+  "adjudication": null,
+  "freezeVerification": null,
+  "toolHashes": {
+    "scripts/evaluate.mjs": "1fb5bb816a3ca5aa7c8864a89c8390b98c5c581e7642f085520412fed01ef20b",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "3442fcd63db1a9f8e4038441c20979a4761ef7c66eec108c62f726d81173eecd"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "9a70faaea3f7353073183b0893f467f90c7d04ac09c82cf38ff902a4d8f6a749",
+  "datasetHash": "926a4abf36e4b6f706f490a8486fb7f3cbb8c1a9f52431206da3fe7d3038ba16",
+  "fixtureHashes": {
+    "city-blind-v3": "0a330456fd8f9acde0d91fbf5d27553215be6321b81b087a469a1d6a1c61e6c3",
+    "government-blind-v3": "0159debe45dc5edb99ac9921f9a48c3d699b7fc154e6856bef6f2e19eaa38525",
+    "library-blind-v3": "88a7bcd8424c767f3191a9b36b91a087e88d1f08f8c202d8f2e02553b2a8a5a7",
+    "public-agency-blind-v3": "82d1644d5e4305e8d8039b15e4d7e065256181a1df095ccde837b232ddac3751",
+    "smu-blind-v3": "abe512cf13408c52eab611cde7c1ef6a2ac1e5844263eb61c727cd8aa0be9b96"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 15,
+    "recommended": 15,
+    "matched": 11,
+    "expected": 11,
+    "precision": 1,
+    "recall": 1,
+    "tasksRecommended": 5
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 2,
+      "recommended": 2,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 5,
+      "recommended": 5,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "city-blind-v3",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_01_06.do",
+      "pageType": "gate",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 5,
+      "classifiedCount": 3,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "천안시청",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/index.do",
+          "sourceId": null
+        }
+      ],
+      "selected": [
+        {
+          "label": "여권 사진 규격 안내 바로가기",
+          "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.passport.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "원본 안내 주제와 연결된 읽기 제어",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "여권 신청 안내",
+          "contextLabels": [
+            "여권 신청 안내",
+            "여권 신청안내"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "title": "여권 사진 규격 안내",
+          "description": "이 사이트로 이동",
+          "sourceId": "city-blind-v3-photo"
+        },
+        {
+          "label": "온라인 재발급 안내 바로가기",
+          "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.passport.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "여권 신청 안내",
+          "contextLabels": [
+            "여권 신청 안내",
+            "여권 신청안내"
+          ],
+          "category": "apply",
+          "title": "온라인 재발급 안내",
+          "description": "이 사이트로 이동",
+          "sourceId": "city-blind-v3-reissue"
+        },
+        {
+          "label": "신청서 및 서식 모음 바로가기",
+          "href": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.passport.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 60,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "여권 신청 안내",
+          "contextLabels": [
+            "여권 신청 안내",
+            "여권 신청안내"
+          ],
+          "category": "apply",
+          "title": "신청서 및 서식 모음",
+          "description": "이 사이트로 이동",
+          "sourceId": "city-blind-v3-forms"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "253b42e5f1fc1d7309aeb6626d87289786ccbc9ebab416c488dbc639155f978d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "여권 사진 규격 안내 바로가기",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+                "target": "_blank",
+                "sourceId": "city-blind-v3-photo",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "온라인 재발급 안내 바로가기",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11",
+                "target": "_blank",
+                "sourceId": "city-blind-v3-reissue",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "신청서 및 서식 모음 바로가기",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+                "target": "_blank",
+                "sourceId": "city-blind-v3-forms",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 3개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "city-blind-v3-passport-photo-guide": 1,
+          "city-blind-v3-passport-reissue-guide": 1,
+          "city-blind-v3-passport-form-guide": 1
+        },
+        "selected": [
+          {
+            "label": "여권 사진 규격 안내 바로가기",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=32",
+            "target": "_blank",
+            "sourceId": "city-blind-v3-photo",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "온라인 재발급 안내 바로가기",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.passport.go.kr/home/kor/contents.do?menuPos=11",
+            "target": "_blank",
+            "sourceId": "city-blind-v3-reissue",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "신청서 및 서식 모음 바로가기",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.passport.go.kr/home/kor/applicationForm/index.do?menuPos=42",
+            "target": "_blank",
+            "sourceId": "city-blind-v3-forms",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 3,
+        "recommended": 3,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "government-blind-v3",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=89&bbsSn=39",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 5,
+      "classifiedCount": 4,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "국민안전24",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor",
+          "sourceId": null
+        }
+      ],
+      "selected": [
+        {
+          "label": "홈페이지 이용중 나타나는 장애문의는 어디에서 하나요?",
+          "action": "locate",
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "도움말 질문 읽기",
+            "명시적 질문 표시와 도움말 문맥"
+          ],
+          "sectionLabel": "자주 묻는 질문",
+          "contextLabels": [
+            "자주 묻는 질문",
+            "열린마당"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "government-blind-v3-support-question"
+        },
+        {
+          "label": "검색어",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주 묻는 질문",
+          "contextLabels": [
+            "자주 묻는 질문",
+            "열린마당"
+          ],
+          "pagePurpose": "help",
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "government-blind-v3-input"
+        },
+        {
+          "label": "자주묻는질문(민방위)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "자주 묻는 질문",
+          "contextLabels": [
+            "자주 묻는 질문",
+            "열린마당"
+          ],
+          "pagePurpose": "help",
+          "category": "help",
+          "sourceId": "government-blind-v3-civil-defense-faq"
+        }
+      ],
+      "correct": 3,
+      "recommended": 3,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "253b42e5f1fc1d7309aeb6626d87289786ccbc9ebab416c488dbc639155f978d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "홈페이지 이용중 나타나는 장애문의는 어디에서 하나요?",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v3-support-question",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색어",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v3-input",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "자주묻는질문(민방위)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v3-civil-defense-faq",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 3개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-blind-v3-search",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 1개의 주요 기능을 찾았어요. 2번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "government-blind-v3-faq-search": 1,
+          "government-blind-v3-website-support-question": 1
+        },
+        "selected": [
+          {
+            "label": "홈페이지 이용중 나타나는 장애문의는 어디에서 하나요?",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v3-support-question",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색어",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v3-input",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "자주묻는질문(민방위)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v3-civil-defense-faq",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-blind-v3-search",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "library-blind-v3",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N40901000000.do",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 4,
+      "classifiedCount": 3,
+      "institutionApplied": 0,
+      "common": [],
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "본관",
+          "contextLabels": [
+            "본관"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "library-blind-v3-input"
+        },
+        {
+          "label": "질문 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?",
+          "action": "locate",
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "도움말 질문 읽기",
+            "정의 목록과 명시적 답변 열기 표시"
+          ],
+          "sectionLabel": "본관",
+          "contextLabels": [
+            "본관",
+            "도서관 이용"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "sourceId": "library-blind-v3-first-use-question"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "253b42e5f1fc1d7309aeb6626d87289786ccbc9ebab416c488dbc639155f978d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색어 입력",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-blind-v3-input",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "질문 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-blind-v3-first-use-question",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 2개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "검색하기",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-blind-v3-search",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 1개의 주요 기능을 찾았어요. 2번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "library-blind-v3-faq-search": 1,
+          "library-blind-v3-first-visit-guide": 1
+        },
+        "selected": [
+          {
+            "label": "검색어 입력",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-blind-v3-input",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "질문 도서관을 처음 이용하려고 합니다. 어떤 절차로 이용하여야 합니까?",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-blind-v3-first-use-question",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색하기",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-blind-v3-search",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 3,
+        "recommended": 3,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "public-agency-blind-v3",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 3,
+      "classifiedCount": 3,
+      "institutionApplied": 0,
+      "common": [],
+      "selected": [
+        {
+          "label": "지사찾기",
+          "action": "locate",
+          "context": "body",
+          "score": 72,
+          "reasons": [
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "지사",
+          "contextLabels": [
+            "지사",
+            "공단소개"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "public-agency-blind-v3-input"
+        },
+        {
+          "label": "지사/센터 전체보기",
+          "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "지사",
+          "contextLabels": [
+            "지사",
+            "공단소개"
+          ],
+          "category": "help",
+          "pageTask": "control",
+          "sourceId": "public-agency-blind-v3-all-branches"
+        }
+      ],
+      "correct": 2,
+      "recommended": 2,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "253b42e5f1fc1d7309aeb6626d87289786ccbc9ebab416c488dbc639155f978d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "지사찾기",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v3-input",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "지사/센터 전체보기",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+                "target": "_self",
+                "sourceId": "public-agency-blind-v3-all-branches",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 2개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-blind-v3-search",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 1개의 주요 기능을 찾았어요. 2번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "public-agency-blind-v3-branch-search": 1,
+          "public-agency-blind-v3-all-branch-directory": 1
+        },
+        "selected": [
+          {
+            "label": "지사찾기",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v3-input",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "지사/센터 전체보기",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0012M0.do",
+            "target": "_self",
+            "sourceId": "public-agency-blind-v3-all-branches",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-blind-v3-search",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 3,
+        "recommended": 3,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "smu-blind-v3",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/sugang.do",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 5,
+      "classifiedCount": 5,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "login",
+          "label": "Login",
+          "category": "login",
+          "action": "locate",
+          "href": null,
+          "sourceId": "smu-blind-v3-login"
+        }
+      ],
+      "selected": [
+        {
+          "label": "계절수업",
+          "href": "https://www.smu.ac.kr/kor/life/seasonal.do#tab18182_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "같은 출처 읽기 링크와 다수의 고정 교육 개념",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "smu-blind-v3-seasonal"
+        },
+        {
+          "label": "출결 지침 안내",
+          "href": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "같은 출처 읽기 링크와 다수의 고정 교육 개념",
+            "고정 원본 제어 구조"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "supplementalDependent": true,
+          "sourceId": "smu-blind-v3-attendance"
+        },
+        {
+          "label": "학사제도 및 강의시간표",
+          "href": "https://www.smu.ac.kr/kor/life/onlineGuide.do#tab18441_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "학사 안내 문서 읽기",
+            "학사 제목과 목록의 교육 개념·지침"
+          ],
+          "sectionLabel": "학사 학사안내",
+          "contextLabels": [
+            "학사 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "sourceId": "smu-blind-v3-guide"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "smu-blind-v3-search"
+        },
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "smu-blind-v3-login"
+        }
+      ],
+      "correct": 5,
+      "recommended": 5,
+      "matched": 2,
+      "expected": 2,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "253b42e5f1fc1d7309aeb6626d87289786ccbc9ebab416c488dbc639155f978d",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "계절수업",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/seasonal.do#tab18182_",
+                "target": "_self",
+                "sourceId": "smu-blind-v3-seasonal",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "출결 지침 안내",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_",
+                "target": "_self",
+                "sourceId": "smu-blind-v3-attendance",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "학사제도 및 강의시간표",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/onlineGuide.do#tab18441_",
+                "target": "_self",
+                "sourceId": "smu-blind-v3-guide",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-blind-v3-search",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "smu-blind-v3-seasonal-course-guide": 1,
+          "smu-blind-v3-attendance-guide": 1
+        },
+        "selected": [
+          {
+            "label": "계절수업",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/seasonal.do#tab18182_",
+            "target": "_self",
+            "sourceId": "smu-blind-v3-seasonal",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "출결 지침 안내",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/attendance_guide.do#tab19948_",
+            "target": "_self",
+            "sourceId": "smu-blind-v3-attendance",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "학사제도 및 강의시간표",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/onlineGuide.do#tab18441_",
+            "target": "_self",
+            "sourceId": "smu-blind-v3-guide",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-blind-v3-search",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 4,
+        "recommended": 4,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    }
+  ],
+  "quality": {
+    "status": "PASS",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 1,
+      "recall": 1
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "government",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "library",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 17,
+      "recommended": 17,
+      "matched": 11,
+      "expected": 11,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 5
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 3,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 3,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 3,
+        "recommended": 3,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 4,
+        "recommended": 4,
+        "matched": 2,
+        "expected": 2,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      }
+    ],
+    "unresolvedMappings": 0,
+    "repeatedCards": 0
+  }
+}

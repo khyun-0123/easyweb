@@ -25,7 +25,7 @@ const engine = await build({ stdin: {
   contents: `import {analyzePage} from './src/analyzer'; import {classify} from './src/classifier'; import {rank, remainingMenus} from './src/ranker'; import {isHomePage, commonActions, withoutCommon} from './src/common-actions';
 const commonOnly=(raw,classified)=>{const common=commonActions(raw,classified);const pool=withoutCommon(classified,common);return {type:'default',common,cards:rank(pool),pool};}; import {composeFirstScreen} from './src/page-types';
 window.easywebSurvey=()=>{const els=window.__surveyEls??[];const raw=analyzePage();const classified=classify(raw);const screen=${value('composition') === 'common-only' ? 'commonOnly' : 'composeFirstScreen'}(raw,classified);const common=screen.common;const rest=screen.pool;const cards=screen.cards;
-const show=c=>({i:els.indexOf(c.element),category:c.category??null,label:c.label,title:c.title??null,action:c.action,section:c.sectionLabel??null});
+const show=c=>({i:els.indexOf(c.element),category:c.category??null,label:c.label,title:c.title??null,action:c.action,section:c.sectionLabel??null,context:c.context,score:c.score??null,pageTask:c.pageTask??null,reason:(c.reasons??[])[0]??null});
 return {pageType:screen.type,homePage:isHomePage(),candidateCount:raw.length,classifiedCount:classified.length,common:common.map(({kind,candidate})=>({kind,...show(candidate)})),cards:cards.map(show),more:[...remainingMenus(rest,cards)].slice(0,40).map(show)};};`,
   resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife' });
 

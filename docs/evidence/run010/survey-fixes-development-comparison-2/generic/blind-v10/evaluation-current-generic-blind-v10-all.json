@@ -1,0 +1,3775 @@
+{
+  "checkedAt": "2026-11-12T03:59:49.005Z",
+  "engine": "current",
+  "suite": "blind-v10",
+  "split": "all",
+  "classificationMode": "generic",
+  "adapterVersion": 3,
+  "evaluationPhase": "post-holdout-development",
+  "adjudication": null,
+  "freezeVerification": null,
+  "toolHashes": {
+    "scripts/evaluate.mjs": "1fb5bb816a3ca5aa7c8864a89c8390b98c5c581e7642f085520412fed01ef20b",
+    "scripts/evaluation-metrics.mjs": "2203185b27438194e6cc7a5fb682dde58ed6615b53a6f9e23018e97050ce091d",
+    "scripts/evaluation-protocol.mjs": "13b894758f91f1d51b89aa4896ea6b54e85485ebb008374386dcbdc506cb75fb",
+    "scripts/menu-flow-evaluation.mjs": "3442fcd63db1a9f8e4038441c20979a4761ef7c66eec108c62f726d81173eecd"
+  },
+  "evaluationWorld": "CDP isolated world on offline routed fixtures. CSP and frozen data remain unchanged; no browser security bypass or native extension user gesture.",
+  "environment": {
+    "node": "v26.0.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "chromium": "156.0.8078.4",
+    "playwright": "1.64.1"
+  },
+  "scope": "독립적으로 작성한 공개 메뉴 재구성 fixture의 오프라인 평가. 실제 전체 페이지·실제 Chrome 실행·과제 완료 결과가 아님.",
+  "engineHash": "04064289c2b71e9d59fefd9fa84e9be59a14b84a463b0fc334d7eda18a798a34",
+  "datasetHash": "2f26ebbc2a2e25095bfa04210c8ced997dfd039d29d1f4fd6171d2ade10ff35e",
+  "fixtureHashes": {
+    "v10-city-01": "91768407ea877eaf3d0a5c7b6cb308a16fc8fb9fb72c122fab65b7ff15240337",
+    "v10-government-02": "ecab15864e8fb1488ecdd2c4a648dd15a8b72d10aae310486face329a1059a55",
+    "v10-library-01": "9d7d3bc60c495ce225fd1ea52efaaa534ddc57afa34deea74b356df28f84b4d7",
+    "v10-public-agency-01": "52741e587c6ae25e90937aa50a660507787d0b0f4e30b5a691db22c83a3e289f",
+    "v10-smu-01": "25b99ae5165abf82877cfcb91520d6e143e8d298cb63ddebe1526ed9c274d287"
+  },
+  "summary": {
+    "pages": 5,
+    "correct": 31,
+    "recommended": 34,
+    "matched": 14,
+    "expected": 15,
+    "precision": 0.9117647058823529,
+    "recall": 0.9333333333333333,
+    "tasksRecommended": 5
+  },
+  "sites": [
+    {
+      "siteId": "city",
+      "pages": 1,
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "government",
+      "pages": 1,
+      "correct": 3,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "library",
+      "pages": 1,
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "public-agency",
+      "pages": 1,
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    },
+    {
+      "siteId": "smu",
+      "pages": 1,
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "tasksRecommended": 1
+    }
+  ],
+  "results": [
+    {
+      "siteId": "city",
+      "pageId": "v10-city-01",
+      "split": "holdout",
+      "url": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 61,
+      "classifiedCount": 14,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "천안시청",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/index.do",
+          "sourceId": "city-c0003"
+        },
+        {
+          "kind": "login",
+          "label": "로그인",
+          "category": "login",
+          "action": "navigate",
+          "href": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+          "sourceId": "city-c0019"
+        },
+        {
+          "kind": "phone",
+          "label": "1422-36",
+          "category": null,
+          "action": "locate",
+          "href": null,
+          "sourceId": "city-c0981"
+        }
+      ],
+      "selected": [
+        {
+          "label": "민원공개",
+          "href": "https://www.cheonan.go.kr/kor/sub01_05_01_03.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "민원신청",
+          "contextLabels": [
+            "민원신청"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relatedLabel": "민원신청",
+          "relationEvidence": {
+            "rule": "current-local-task-roles",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "민원신청",
+            "fingerprint": "[\"current-local-task-roles\",\"help\",\"reading\",\"민원공개\",\"navigate\",\"민원신청\",\"https://www.cheonan.go.kr\",\"/kor/sub01_05_01_01.do\",[[\"A\",null,null,null,null,null,null,null,null,\"민원공개\",false],[\"DIV\",null,null,null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul type2 col3 select\",null,null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"선택됨\",\"민원신청\",true],[\"A\",null,null,null,null,null,null,null,null,\"나의민원보기\",false],[\"STRONG\",\"h-box\",null,null,null,null,null,null,null,\"민원신청\",null],[\"LI\",\"on\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 9
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.cheonan.go.kr\",\"/kor/sub01_05_01_01.do\",\"민원공개\",\"navigate\",[\"current-local-task-roles\",\"help\",\"reading\"],[[\"A\",null,null,null,null,null,null,null,\"민원공개\",false],[\"DIV\",null,null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul type2 col3 select\",null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"민원신청\",true],[\"A\",null,null,null,null,null,null,null,\"나의민원보기\",false],[\"STRONG\",\"h-box\",null,null,null,null,null,null,\"\",null],[\"LI\",\"on\",null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 9
+          },
+          "sourceId": "city-c0823"
+        },
+        {
+          "label": "나의민원보기",
+          "href": "https://www.cheonan.go.kr/kor/sub01_05_01_02.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "민원신청",
+          "contextLabels": [
+            "민원신청"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "relatedLabel": "민원신청",
+          "relationEvidence": {
+            "rule": "current-local-task-roles",
+            "category": "apply",
+            "score": 70,
+            "pageTask": "control",
+            "relatedLabel": "민원신청",
+            "fingerprint": "[\"current-local-task-roles\",\"apply\",\"control\",\"나의민원보기\",\"navigate\",\"민원신청\",\"https://www.cheonan.go.kr\",\"/kor/sub01_05_01_01.do\",[[\"A\",null,null,null,null,null,null,null,null,\"나의민원보기\",false],[\"DIV\",null,null,null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul type2 col3 select\",null,null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"선택됨\",\"민원신청\",true],[\"A\",null,null,null,null,null,null,null,null,\"민원공개\",false],[\"STRONG\",\"h-box\",null,null,null,null,null,null,null,\"민원신청\",null],[\"LI\",\"on\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 9
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.cheonan.go.kr\",\"/kor/sub01_05_01_01.do\",\"나의민원보기\",\"navigate\",[\"current-local-task-roles\",\"apply\",\"control\"],[[\"A\",null,null,null,null,null,null,null,\"나의민원보기\",false],[\"DIV\",null,null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul type2 col3 select\",null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"민원신청\",true],[\"A\",null,null,null,null,null,null,null,\"민원공개\",false],[\"STRONG\",\"h-box\",null,null,null,null,null,null,\"\",null],[\"LI\",\"on\",null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 9
+          },
+          "sourceId": "city-c0822"
+        },
+        {
+          "label": "민원신청(국민신문고) 바로가기",
+          "href": "https://www.epeople.go.kr/frm/pttn/pttnRqstInfo.npaid?frmMenuMngNo=WBF-2107-000002",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "www.epeople.go.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "민원신청",
+          "contextLabels": [
+            "민원신청"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "relatedLabel": "민원신청",
+          "relationEvidence": {
+            "rule": "current-local-task-roles",
+            "category": "apply",
+            "score": 70,
+            "pageTask": "control",
+            "relatedLabel": "민원신청",
+            "fingerprint": "[\"current-local-task-roles\",\"apply\",\"control\",\"민원신청(국민신문고) 바로가기\",\"navigate\",\"민원신청\",\"https://www.cheonan.go.kr\",\"/kor/sub01_05_01_01.do\",[[\"A\",\"btn tertiary medium\",null,null,null,null,null,null,\"새창열림\",\"민원신청(국민신문고) 바로가기\",false],[\"DIV\",null,null,null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul type2 col3 select\",null,null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"선택됨\",\"민원신청\",true],[\"A\",null,null,null,null,null,null,null,null,\"나의민원보기\",false],[\"A\",null,null,null,null,null,null,null,null,\"민원공개\",false],[\"STRONG\",\"h-box\",null,null,null,null,null,null,null,\"민원신청\",null],[\"LI\",\"on\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"link\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 11
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.cheonan.go.kr\",\"/kor/sub01_05_01_01.do\",\"민원신청(국민신문고) 바로가기\",\"navigate\",[\"current-local-task-roles\",\"apply\",\"control\"],[[\"A\",\"btn tertiary medium\",null,null,null,null,null,null,\"민원신청(국민신문고) 바로가기\",false],[\"DIV\",null,null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul type2 col3 select\",null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"민원신청\",true],[\"A\",null,null,null,null,null,null,null,\"나의민원보기\",false],[\"A\",null,null,null,null,null,null,null,\"민원공개\",false],[\"STRONG\",\"h-box\",null,null,null,null,null,null,\"\",null],[\"LI\",\"on\",null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"link\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 11
+          },
+          "sourceId": "city-c0824"
+        },
+        {
+          "label": "공고/고시 바로가기",
+          "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "notice",
+          "sourceId": "city-c0808"
+        },
+        {
+          "label": "민원안내",
+          "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 60,
+          "reasons": [
+            "공개 안내 문서 읽기",
+            "짧은 안내 목적의 일반 링크"
+          ],
+          "contextLabels": [],
+          "category": "help",
+          "sourceId": "city-c0810"
+        },
+        {
+          "label": "통합검색",
+          "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+          "action": "navigate",
+          "target": "_blank",
+          "destinationHost": "search.cheonan.go.kr",
+          "opensNewWindow": true,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "city-c0010"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.cheonan.go.kr/kor/login.do?returnUrl=/kor.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.cheonan.go.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 97,
+          "reasons": [
+            "고정 문구 일치",
+            "완전한 URL 기능 경로",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "city-c0019"
+        }
+      ],
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "21d8ded58f9966c95744845223f04513b46aae67168d56777e5278b17044816f",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "민원공개",
+                "relatedLabel": "민원신청",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_05_01_03.do",
+                "target": "_self",
+                "sourceId": "city-c0823",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "나의민원보기",
+                "relatedLabel": "민원신청",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_05_01_02.do",
+                "target": "_self",
+                "sourceId": "city-c0822",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "민원신청(국민신문고) 바로가기",
+                "relatedLabel": "민원신청",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.epeople.go.kr/frm/pttn/pttnRqstInfo.npaid?frmMenuMngNo=WBF-2107-000002",
+                "target": "_blank",
+                "sourceId": "city-c0824",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "공고/고시 바로가기",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+                "target": "_self",
+                "sourceId": "city-c0808",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "민원안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+                "target": "_self",
+                "sourceId": "city-c0810",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "통합검색",
+                "category": "search",
+                "action": "navigate",
+                "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+                "target": "_blank",
+                "sourceId": "city-c0010",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "민원신청",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+                "target": "_self",
+                "sourceId": "city-c0821",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "민원신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-c0785",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "소식알림",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "city-c0054",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "통합예약시스템",
+                "category": "apply",
+                "action": "navigate",
+                "href": "https://www.cheonan.go.kr/yeyak/index.do",
+                "target": "_blank",
+                "sourceId": "city-c0007",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요. 2번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "petition-entry": 1,
+          "petition-status": 1,
+          "public-petitions": 1
+        },
+        "selected": [
+          {
+            "label": "민원공개",
+            "relatedLabel": "민원신청",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_05_01_03.do",
+            "target": "_self",
+            "sourceId": "city-c0823",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "나의민원보기",
+            "relatedLabel": "민원신청",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_05_01_02.do",
+            "target": "_self",
+            "sourceId": "city-c0822",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "민원신청(국민신문고) 바로가기",
+            "relatedLabel": "민원신청",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.epeople.go.kr/frm/pttn/pttnRqstInfo.npaid?frmMenuMngNo=WBF-2107-000002",
+            "target": "_blank",
+            "sourceId": "city-c0824",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "공고/고시 바로가기",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/prog/saeolGosi/GOSI/kor/sub02_02_01/list.do",
+            "target": "_self",
+            "sourceId": "city-c0808",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "민원안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_01_01.do",
+            "target": "_self",
+            "sourceId": "city-c0810",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "통합검색",
+            "category": "search",
+            "action": "navigate",
+            "href": "https://search.cheonan.go.kr/RSA/front/Search.jsp",
+            "target": "_blank",
+            "sourceId": "city-c0010",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "민원신청",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/kor/sub01_05_01_01.do",
+            "target": "_self",
+            "sourceId": "city-c0821",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "민원신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-c0785",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "소식알림",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "city-c0054",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "통합예약시스템",
+            "category": "apply",
+            "action": "navigate",
+            "href": "https://www.cheonan.go.kr/yeyak/index.do",
+            "target": "_blank",
+            "sourceId": "city-c0007",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 10,
+        "recommended": 10,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "government",
+      "pageId": "v10-government-02",
+      "split": "holdout",
+      "url": "https://www.safekorea.go.kr/safekorea-kor/cmmn/bbs/bbsList.do?menuSn=82&bbsSn=18",
+      "pageType": "list",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 48,
+      "classifiedCount": 9,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "국민안전24",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.safekorea.go.kr/safekorea-kor",
+          "sourceId": "government-c0007"
+        }
+      ],
+      "selected": [
+        {
+          "label": "검색어",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "sourceId": "government-c0211"
+        },
+        {
+          "label": "재난심리회복지원단 활성화를 위한 실무자 업무 가이드북",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "title": "재난심리회복지원단 활성화를 위한 실무자 업무 가이드북",
+          "description": "글 읽기",
+          "relationEvidence": {
+            "rule": "listed-fixed-document-kind",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"listed-fixed-document-kind\",\"help\",\"재난심리회복지원단 활성화를 위한 실무자 업무 가이드북\",\"locate\",[\"title-date-department-attachment\",\"own-document-kind\"],\"\",[[\"A\",null,null,null,null,null,null,null,null,null,\"재난심리회복지원단 활성화를 위한 실무자 업무 가이드북\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"센터소식 번호, 제목, 작성일, 부서 첨부파일 정보등을 제공하는 테이블입니다.\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"번호\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"제목\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"작성일\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"부서\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"첨부\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"tit\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"board-list\",null,null,null,null,null,null,null,null,\"\"],[\"P\",null,null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 19
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.safekorea.go.kr\",\"/safekorea-kor/cmmn/bbs/bbsList.do\",\"재난심리회복지원단 활성화를 위한 실무자 업무 가이드북\",\"locate\",[\"listed-fixed-document-kind\",\"help\",\"reading\"],[[\"A\",null,null,null,null,null,null,null,\"재난심리회복지원단 활성화를 위한 실무자 업무 가이드북\",false],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"tit\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"board-list\",null,null,null,null,null,null,\"\",null],[\"P\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 19
+          },
+          "sourceId": "government-c0223"
+        },
+        {
+          "label": "2025년 재난심리회복지원 업무매뉴얼",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "title": "2025년 재난심리회복지원 업무매뉴얼",
+          "description": "글 읽기",
+          "relationEvidence": {
+            "rule": "listed-fixed-document-kind",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"listed-fixed-document-kind\",\"help\",\"2025년 재난심리회복지원 업무매뉴얼\",\"locate\",[\"title-date-department-attachment\",\"own-document-kind\"],\"\",[[\"A\",null,null,null,null,null,null,null,null,null,\"2025년 재난심리회복지원 업무매뉴얼\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"센터소식 번호, 제목, 작성일, 부서 첨부파일 정보등을 제공하는 테이블입니다.\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"번호\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"제목\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"작성일\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"부서\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"첨부\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"tit\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"board-list\",null,null,null,null,null,null,null,null,\"\"],[\"P\",null,null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 19
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.safekorea.go.kr\",\"/safekorea-kor/cmmn/bbs/bbsList.do\",\"2025년 재난심리회복지원 업무매뉴얼\",\"locate\",[\"listed-fixed-document-kind\",\"help\",\"reading\"],[[\"A\",null,null,null,null,null,null,null,\"2025년 재난심리회복지원 업무매뉴얼\",false],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"tit\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"board-list\",null,null,null,null,null,null,\"\",null],[\"P\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 19
+          },
+          "sourceId": "government-c0224"
+        },
+        {
+          "label": "재난심리회복지원 홍보영상",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "페이지 유형 칸"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "notice",
+          "title": "재난심리회복지원 홍보영상",
+          "description": "글 읽기",
+          "sourceId": "government-c0225"
+        },
+        {
+          "label": "재난심리회복지원 홍보영상(숏폼)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "페이지 유형 칸"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "notice",
+          "title": "재난심리회복지원 홍보영상(숏폼)",
+          "description": "글 읽기",
+          "sourceId": "government-c0226"
+        },
+        {
+          "label": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "페이지 유형 칸"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "notice",
+          "title": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+          "description": "글 읽기",
+          "sourceId": "government-c0227"
+        }
+      ],
+      "correct": 3,
+      "recommended": 6,
+      "matched": 2,
+      "expected": 3,
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "missed": [
+        "center-photo-view"
+      ],
+      "incorrect": [
+        {
+          "label": "재난심리회복지원 홍보영상",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "페이지 유형 칸"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "notice",
+          "title": "재난심리회복지원 홍보영상",
+          "description": "글 읽기",
+          "sourceId": "government-c0225"
+        },
+        {
+          "label": "재난심리회복지원 홍보영상(숏폼)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "페이지 유형 칸"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "notice",
+          "title": "재난심리회복지원 홍보영상(숏폼)",
+          "description": "글 읽기",
+          "sourceId": "government-c0226"
+        },
+        {
+          "label": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "페이지 유형 칸"
+          ],
+          "sectionLabel": "심리회복지원센터",
+          "contextLabels": [
+            "심리회복지원센터",
+            "재난지원"
+          ],
+          "category": "notice",
+          "title": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+          "description": "글 읽기",
+          "sourceId": "government-c0227"
+        }
+      ],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "21d8ded58f9966c95744845223f04513b46aae67168d56777e5278b17044816f",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색어",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0211",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원단 활성화를 위한 실무자 업무 가이드북",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0223",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "2025년 재난심리회복지원 업무매뉴얼",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0224",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 홍보영상",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0225",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 홍보영상(숏폼)",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0226",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0227",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "사진자료",
+                "relatedLabel": "심리회복지원센터",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0202",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "영상자료",
+                "relatedLabel": "심리회복지원센터",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0203",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "센터소식 선택됨",
+                "relatedLabel": "심리회복지원센터",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0201",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0212",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+                "target": "_self",
+                "sourceId": "government-c0066",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 웹툰 1편",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0230",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 3,
+            "cards": [
+              {
+                "label": "재난심리회복지원 웹툰 2편",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0229",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 카드뉴스 1편",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0232",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 카드뉴스 2편",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0231",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "재난심리회복지원 카드뉴스(마음구호 프로그램)",
+                "category": "notice",
+                "action": "locate",
+                "target": null,
+                "sourceId": "government-c0228",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "Q&A",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+                "target": "_self",
+                "sourceId": "government-c0243",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요. 3번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "board-search": 1,
+          "center-guide": 1,
+          "center-photo-view": 2
+        },
+        "selected": [
+          {
+            "label": "검색어",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0211",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원단 활성화를 위한 실무자 업무 가이드북",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0223",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "2025년 재난심리회복지원 업무매뉴얼",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0224",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 홍보영상",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0225",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 홍보영상(숏폼)",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0226",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0227",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "사진자료",
+            "relatedLabel": "심리회복지원센터",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0202",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "영상자료",
+            "relatedLabel": "심리회복지원센터",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0203",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "센터소식 선택됨",
+            "relatedLabel": "심리회복지원센터",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0201",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0212",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/main/searchMain.do",
+            "target": "_self",
+            "sourceId": "government-c0066",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 웹툰 1편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0230",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 웹툰 2편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0229",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 카드뉴스 1편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0232",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 카드뉴스 2편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0231",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 카드뉴스(마음구호 프로그램)",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0228",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "Q&A",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.safekorea.go.kr/safekorea-kor/footer/info/answerQuestions.do?isFooter=Y&menuSn=2506&siteSeCd=COM000406",
+            "target": "_self",
+            "sourceId": "government-c0243",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 8,
+        "recommended": 17,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.47058823529411764,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [
+          {
+            "label": "재난심리회복지원 홍보영상",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0225",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 홍보영상(숏폼)",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0226",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 홍보영상(복식호흡, 나비포옹)",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0227",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "센터소식 선택됨",
+            "relatedLabel": "심리회복지원센터",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0201",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 웹툰 1편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0230",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 웹툰 2편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0229",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 카드뉴스 1편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0232",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 카드뉴스 2편",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0231",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "재난심리회복지원 카드뉴스(마음구호 프로그램)",
+            "category": "notice",
+            "action": "locate",
+            "target": null,
+            "sourceId": "government-c0228",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "library",
+      "pageId": "v10-library-01",
+      "split": "holdout",
+      "url": "https://www.nl.go.kr/NL/contents/N40404000000.do",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 64,
+      "classifiedCount": 21,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "첫 화면",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.nl.go.kr/",
+          "sourceId": "library-c1117"
+        },
+        {
+          "kind": "login",
+          "label": "로그인",
+          "category": "login",
+          "action": "locate",
+          "href": null,
+          "sourceId": "library-c1121"
+        }
+      ],
+      "selected": [
+        {
+          "label": "고문헌실",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "본관 자료실",
+          "contextLabels": [
+            "본관 자료실",
+            "이용 절차"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "aligned-information-directory",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"aligned-information-directory\",\"help\",\"고문헌실\",\"locate\",[\"unique-descriptive-column\",\"readonly-directory\",\"floor-only-rowspan\"],\"\",[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,null,null,\"고문헌실\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"본관 자료실 이용안내\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"층수\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"자료설명\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"이용문의\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 51
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nl.go.kr\",\"/NL/contents/N40404000000.do\",\"고문헌실\",\"locate\",[\"aligned-information-directory\",\"help\",\"reading\"],[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,\"고문헌실\",true],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 51
+          },
+          "sourceId": "library-c1514"
+        },
+        {
+          "label": "통일부 북한자료센터",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "본관 자료실",
+          "contextLabels": [
+            "본관 자료실",
+            "이용 절차"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "aligned-information-directory",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"aligned-information-directory\",\"help\",\"통일부 북한자료센터\",\"locate\",[\"unique-descriptive-column\",\"readonly-directory\",\"floor-only-rowspan\"],\"\",[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,null,null,\"통일부 북한자료센터\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"본관 자료실 이용안내\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"층수\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"자료설명\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"이용문의\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 51
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nl.go.kr\",\"/NL/contents/N40404000000.do\",\"통일부 북한자료센터\",\"locate\",[\"aligned-information-directory\",\"help\",\"reading\"],[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,\"통일부 북한자료센터\",true],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 51
+          },
+          "sourceId": "library-c1515"
+        },
+        {
+          "label": "도서자료실 (인문·사회·자연과학)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "본관 자료실",
+          "contextLabels": [
+            "본관 자료실",
+            "이용 절차"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "aligned-information-directory",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"aligned-information-directory\",\"help\",\"도서자료실 (인문·사회·자연과학)\",\"locate\",[\"unique-descriptive-column\",\"readonly-directory\",\"floor-only-rowspan\"],\"\",[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,null,null,\"도서자료실 (인문·사회·자연과학)\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"본관 자료실 이용안내\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"층수\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"자료설명\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"이용문의\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 51
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nl.go.kr\",\"/NL/contents/N40404000000.do\",\"도서자료실 (인문·사회·자연과학)\",\"locate\",[\"aligned-information-directory\",\"help\",\"reading\"],[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,\"도서자료실 (인문·사회·자연과학)\",true],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 51
+          },
+          "sourceId": "library-c1516"
+        },
+        {
+          "label": "연속간행물실(잡지·신문·공공간행물)",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "본관 자료실",
+          "contextLabels": [
+            "본관 자료실",
+            "이용 절차"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "aligned-information-directory",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"aligned-information-directory\",\"help\",\"연속간행물실(잡지·신문·공공간행물)\",\"locate\",[\"unique-descriptive-column\",\"readonly-directory\",\"floor-only-rowspan\"],\"\",[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,null,null,\"연속간행물실(잡지·신문·공공간행물)\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"본관 자료실 이용안내\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"층수\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"자료설명\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"이용문의\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 51
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nl.go.kr\",\"/NL/contents/N40404000000.do\",\"연속간행물실(잡지·신문·공공간행물)\",\"locate\",[\"aligned-information-directory\",\"help\",\"reading\"],[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,\"연속간행물실(잡지·신문·공공간행물)\",true],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 51
+          },
+          "sourceId": "library-c1517"
+        },
+        {
+          "label": "연구정보실",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "본관 자료실",
+          "contextLabels": [
+            "본관 자료실",
+            "이용 절차"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "aligned-information-directory",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"aligned-information-directory\",\"help\",\"연구정보실\",\"locate\",[\"unique-descriptive-column\",\"readonly-directory\",\"floor-only-rowspan\"],\"\",[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,null,null,\"연구정보실\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"본관 자료실 이용안내\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"층수\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"자료설명\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"이용문의\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 51
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nl.go.kr\",\"/NL/contents/N40404000000.do\",\"연구정보실\",\"locate\",[\"aligned-information-directory\",\"help\",\"reading\"],[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,\"연구정보실\",true],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 51
+          },
+          "sourceId": "library-c1518"
+        },
+        {
+          "label": "문학실",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "본관 자료실",
+          "contextLabels": [
+            "본관 자료실",
+            "이용 절차"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "aligned-information-directory",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"aligned-information-directory\",\"help\",\"문학실\",\"locate\",[\"unique-descriptive-column\",\"readonly-directory\",\"floor-only-rowspan\"],\"\",[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,null,null,\"문학실\"],[\"TABLE\",null,null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"본관 자료실 이용안내\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"층수\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"자료설명\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"이용문의\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"2\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,\"1\",null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",\"title_td\",null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 51
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nl.go.kr\",\"/NL/contents/N40404000000.do\",\"문학실\",\"locate\",[\"aligned-information-directory\",\"help\",\"reading\"],[[\"A\",\"btn_layer data_title\",null,null,null,null,null,null,\"문학실\",true],[\"TABLE\",null,null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"title_td\",null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"ucapi23_table_wrap\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",\"ir_text\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 51
+          },
+          "sourceId": "library-c1519"
+        },
+        {
+          "label": "로그인",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 문구 일치",
+            "본문 영역"
+          ],
+          "sectionLabel": "국립중앙도서관",
+          "contextLabels": [
+            "국립중앙도서관"
+          ],
+          "category": "login",
+          "sourceId": "library-c1121"
+        }
+      ],
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "21d8ded58f9966c95744845223f04513b46aae67168d56777e5278b17044816f",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "고문헌실",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1514",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "통일부 북한자료센터",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1515",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "도서자료실 (인문·사회·자연과학)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1516",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "연속간행물실(잡지·신문·공공간행물)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1517",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "연구정보실",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1518",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "문학실",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1519",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "장애인정보누리터",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1520",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "찾아오시는 길",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N50108000000.do",
+                "target": "_self",
+                "sourceId": "library-c9315",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "도서관 일정",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1476",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "오류신고",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1492",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "분실물찾기",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1493",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "이용시간",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1465",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 3,
+            "cards": [
+              {
+                "label": "이용증 발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1466",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "자료검색 열기",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1125",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "이용안내",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1464",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "신청·참여",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1483",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "자료상담·신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1471",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "자주하는 질문",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1489",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 3번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 4,
+            "cards": [
+              {
+                "label": "통합검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "library-c1120",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "뷰어프로그램 안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+                "target": "_self",
+                "sourceId": "library-c9314",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 2개의 주요 기능을 찾았어요. 4번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "old-books-room": 1,
+          "book-reading-room": 1,
+          "literature-room": 1
+        },
+        "selected": [
+          {
+            "label": "고문헌실",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1514",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "통일부 북한자료센터",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1515",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "도서자료실 (인문·사회·자연과학)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1516",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "연속간행물실(잡지·신문·공공간행물)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1517",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "연구정보실",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1518",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "문학실",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1519",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "장애인정보누리터",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1520",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "찾아오시는 길",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N50108000000.do",
+            "target": "_self",
+            "sourceId": "library-c9315",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "도서관 일정",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1476",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "오류신고",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1492",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "분실물찾기",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1493",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "이용시간",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1465",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "이용증 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1466",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "자료검색 열기",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1125",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "이용안내",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1464",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "신청·참여",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1483",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "자료상담·신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1471",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "자주하는 질문",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1489",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "통합검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1120",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "뷰어프로그램 안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nl.go.kr/NL/contents/N71300000000.do",
+            "target": "_self",
+            "sourceId": "library-c9314",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 17,
+        "recommended": 20,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.85,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [
+          {
+            "label": "도서관 일정",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1476",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "이용증 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1466",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "자료상담·신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "library-c1471",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "public-agency",
+      "pageId": "v10-public-agency-01",
+      "split": "holdout",
+      "url": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M3.do?menuId=MN24000937",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 102,
+      "classifiedCount": 42,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "NPS 국민연금 National Persion Service",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/main.do",
+          "sourceId": "public-agency-c0004"
+        },
+        {
+          "kind": "login",
+          "label": "로그인",
+          "category": "login",
+          "action": "navigate",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "sourceId": "public-agency-c0035"
+        }
+      ],
+      "selected": [
+        {
+          "label": "검색어 입력",
+          "action": "locate",
+          "context": "body",
+          "score": 82,
+          "reasons": [
+            "고정 문구 일치",
+            "명시적 검색 제어",
+            "본문 영역"
+          ],
+          "sectionLabel": "증명서 발급",
+          "contextLabels": [
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "search",
+          "pageTask": "control",
+          "contentEvidence": {
+            "level": 1,
+            "rule": "same-content-query-form",
+            "fingerprint": "[\"same-content-query-form\",1,\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",\"검색어 입력\",\"locate\",[],[[\"INPUT\",\"keyword\",null,null,null,null,null,null,\"\",null],[\"FORM\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"page-contents\",null,null,null,null,null,null,\"\",null],[\"A\",\"active\",null,null,null,null,null,null,\"증명서 발급\",false],[\"UL\",\"con-tab-nav col6\",null,null,null,null,null,null,\"\",null],[\"A\",null,null,null,null,null,null,null,\"전체\",false],[\"A\",null,null,null,null,null,null,null,\"조회\",false],[\"A\",null,null,null,null,null,null,null,\"신고 · 신청\",false],[\"A\",null,null,null,null,null,null,null,\"가입지원 · 신고센터\",false],[\"A\",null,null,null,null,null,null,null,\"인터넷 납부서비스\",false],[\"LEGEND\",null,null,null,null,null,null,null,\"\",null],[\"INPUT\",\"btn-search\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"data-search-input\",null,null,null,null,null,null,\"\",null],[\"UL\",null,null,null,null,null,null,null,\"\",null],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"LI\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 32
+          },
+          "sourceId": "public-agency-c0541"
+        },
+        {
+          "label": "상세보기",
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001054",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "증명서 발급",
+          "contextLabels": [
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relatedLabel": "가입자 가입증명(국/영문)",
+          "relationEvidence": {
+            "rule": "single-service-own-actions",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "fingerprint": "[\"single-service-own-actions\",\"help\",\"reading\",\"상세보기\",\"navigate\",\"가입자 가입증명(국/영문)\",\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",[[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"가입자 가입증명(국/영문) 상세보기\",\"상세보기\",false],[\"LI\",\"\",null,null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,null,\"가입자 가입증명(국/영문)\",null],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"가입자 가입증명(국/영문) 발급하기\",\"발급하기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"(새창열림) 가입자 가입증명(국/영문) 미리보기\",\"미리보기\",false],[\"DIV\",\"item-btn\",null,null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",\"상세보기\",\"navigate\",[\"single-service-own-actions\",\"help\",\"reading\"],[[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "public-agency-c0545"
+        },
+        {
+          "label": "미리보기",
+          "action": "locate",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "미리보기",
+          "contextLabels": [
+            "미리보기",
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relatedLabel": "가입자 가입증명(국/영문)",
+          "relationEvidence": {
+            "rule": "single-service-own-actions",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "fingerprint": "[\"single-service-own-actions\",\"help\",\"reading\",\"미리보기\",\"locate\",\"가입자 가입증명(국/영문)\",\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",[[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"(새창열림) 가입자 가입증명(국/영문) 미리보기\",\"미리보기\",false],[\"LI\",\"\",null,null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,null,\"가입자 가입증명(국/영문)\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"가입자 가입증명(국/영문) 상세보기\",\"상세보기\",false],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"가입자 가입증명(국/영문) 발급하기\",\"발급하기\",false],[\"P\",\"btn_mg\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"item-btn\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",\"미리보기\",\"locate\",[\"single-service-own-actions\",\"help\",\"reading\"],[[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "public-agency-c0547"
+        },
+        {
+          "label": "발급하기",
+          "action": "locate",
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "증명서 발급",
+          "contextLabels": [
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "apply",
+          "pageTask": "control",
+          "relatedLabel": "가입자 가입증명(국/영문)",
+          "relationEvidence": {
+            "rule": "single-service-own-actions",
+            "category": "apply",
+            "score": 70,
+            "pageTask": "control",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "fingerprint": "[\"single-service-own-actions\",\"apply\",\"control\",\"발급하기\",\"locate\",\"가입자 가입증명(국/영문)\",\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",[[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"가입자 가입증명(국/영문) 발급하기\",\"발급하기\",false],[\"LI\",\"\",null,null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,null,\"가입자 가입증명(국/영문)\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"가입자 가입증명(국/영문) 상세보기\",\"상세보기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"(새창열림) 가입자 가입증명(국/영문) 미리보기\",\"미리보기\",false],[\"DIV\",\"item-btn\",null,null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",\"발급하기\",\"locate\",[\"single-service-own-actions\",\"apply\",\"control\"],[[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "public-agency-c0546"
+        },
+        {
+          "label": "상세보기",
+          "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001055",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "증명서 발급",
+          "contextLabels": [
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+          "relationEvidence": {
+            "rule": "single-service-own-actions",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+            "fingerprint": "[\"single-service-own-actions\",\"help\",\"reading\",\"상세보기\",\"navigate\",\"연금산정용 가입내역 확인서(국/영문)\",\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",[[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"연금산정용 가입내역 확인서(국/영문) 상세보기\",\"상세보기\",false],[\"LI\",\"\",null,null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,null,\"연금산정용 가입내역 확인서(국/영문)\",null],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"연금산정용 가입내역 확인서(국/영문) 발급하기\",\"발급하기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"(새창열림) 연금산정용 가입내역 확인서(국/영문) 미리보기\",\"미리보기\",false],[\"DIV\",\"item-btn\",null,null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",\"상세보기\",\"navigate\",[\"single-service-own-actions\",\"help\",\"reading\"],[[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "public-agency-c0548"
+        },
+        {
+          "label": "미리보기",
+          "action": "locate",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "미리보기",
+          "contextLabels": [
+            "미리보기",
+            "증명서 발급",
+            "전자민원"
+          ],
+          "category": "help",
+          "pageTask": "reading",
+          "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+          "relationEvidence": {
+            "rule": "single-service-own-actions",
+            "category": "help",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+            "fingerprint": "[\"single-service-own-actions\",\"help\",\"reading\",\"미리보기\",\"locate\",\"연금산정용 가입내역 확인서(국/영문)\",\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",[[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"(새창열림) 연금산정용 가입내역 확인서(국/영문) 미리보기\",\"미리보기\",false],[\"LI\",\"\",null,null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,null,\"연금산정용 가입내역 확인서(국/영문)\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"연금산정용 가입내역 확인서(국/영문) 상세보기\",\"상세보기\",false],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"연금산정용 가입내역 확인서(국/영문) 발급하기\",\"발급하기\",false],[\"P\",\"btn_mg\",null,null,null,null,null,null,null,\"\",null],[\"DIV\",\"item-btn\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.nps.or.kr\",\"/elctcvlcpt/comm/getOHAC0000M3.do\",\"미리보기\",\"locate\",[\"single-service-own-actions\",\"help\",\"reading\"],[[\"A\",\"btn btn-go down down2\",null,null,null,null,null,null,\"미리보기\",false],[\"LI\",\"\",null,null,null,null,null,null,\"\",null],[\"STRONG\",\"item-title\",null,null,null,null,null,null,\"\",null],[\"A\",\"btn white btn-go\",null,null,null,null,null,null,\"상세보기\",false],[\"A\",\"btn btn-go \",null,null,null,null,null,null,\"발급하기\",false],[\"P\",\"btn_mg\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"item-btn\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 7
+          },
+          "sourceId": "public-agency-c0550"
+        },
+        {
+          "label": "로그인",
+          "href": "https://www.nps.or.kr/lgn/loginForm.do",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.nps.or.kr",
+          "opensNewWindow": false,
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "public-agency-c0035"
+        }
+      ],
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "21d8ded58f9966c95744845223f04513b46aae67168d56777e5278b17044816f",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "검색어 입력",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0541",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "가입자 가입증명(국/영문)",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001054",
+                "target": "_self",
+                "sourceId": "public-agency-c0545",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "가입자 가입증명(국/영문)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0547",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "가입자 가입증명(국/영문)",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0546",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001055",
+                "target": "_self",
+                "sourceId": "public-agency-c0548",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0550",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "상세보기",
+                "relatedLabel": "국민연금 수급증명(지급내역) (국/영문)",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001056",
+                "target": "_self",
+                "sourceId": "public-agency-c0551",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "국민연금 수급증명(지급내역) (국/영문)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0553",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "연금소득 원천징수영수증",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001061",
+                "target": "_self",
+                "sourceId": "public-agency-c0554",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "연금소득 원천징수영수증",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0556",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "개인회생 신청용 확인서",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001060",
+                "target": "_self",
+                "sourceId": "public-agency-c0560",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "개인회생 신청용 확인서",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0562",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 2번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 3,
+            "cards": [
+              {
+                "label": "발급하기",
+                "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0549",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "국민연금 수급증명(지급내역) (국/영문)",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0552",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "연금소득 원천징수영수증",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0555",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "개인회생 신청용 확인서",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0561",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "퇴직소득 원천징수영수증",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0564",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "연금 수급증명서 재발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0570",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 3번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 4,
+            "cards": [
+              {
+                "label": "발급하기",
+                "relatedLabel": "퇴직금 전환금 부과내역서",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0573",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "가입자증명서 발급(구 가입자 증서 재발급)",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0576",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "발급하기",
+                "relatedLabel": "국민연금보험료 미납증명",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0582",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "퇴직소득 원천징수영수증",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001062",
+                "target": "_self",
+                "sourceId": "public-agency-c0563",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "퇴직소득 원천징수영수증",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0565",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "연금 수급증명서 재발급",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001063",
+                "target": "_self",
+                "sourceId": "public-agency-c0569",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 4번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 5,
+            "cards": [
+              {
+                "label": "미리보기",
+                "relatedLabel": "연금 수급증명서 재발급",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0571",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "퇴직금 전환금 부과내역서",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001059",
+                "target": "_self",
+                "sourceId": "public-agency-c0572",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "퇴직금 전환금 부과내역서",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0574",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "가입자증명서 발급(구 가입자 증서 재발급)",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001064",
+                "target": "_self",
+                "sourceId": "public-agency-c0575",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "미리보기",
+                "relatedLabel": "가입자증명서 발급(구 가입자 증서 재발급)",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0577",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "상세보기",
+                "relatedLabel": "국민연금보험료 미납증명",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN26000007",
+                "target": "_self",
+                "sourceId": "public-agency-c0581",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 5번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 6,
+            "cards": [
+              {
+                "label": "미리보기",
+                "relatedLabel": "국민연금보험료 미납증명",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0583",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "신고 · 신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0532",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "조회",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0518",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "증명서 발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0519",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "신고 · 신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0520",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0021",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 6번째 화면이에요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 7,
+            "cards": [
+              {
+                "label": "지사찾기",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+                "target": "_self",
+                "sourceId": "public-agency-c0006",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0542",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "조회",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0530",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "이용안내",
+                "category": "help",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0528",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "증명서 발급",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "public-agency-c0531",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 5개의 주요 기능을 찾았어요. 7번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "service-search": 1,
+          "certificate-details": 1,
+          "certificate-issue-entry": 1
+        },
+        "selected": [
+          {
+            "label": "검색어 입력",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0541",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001054",
+            "target": "_self",
+            "sourceId": "public-agency-c0545",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0547",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "가입자 가입증명(국/영문)",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0546",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001055",
+            "target": "_self",
+            "sourceId": "public-agency-c0548",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0550",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "국민연금 수급증명(지급내역) (국/영문)",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001056",
+            "target": "_self",
+            "sourceId": "public-agency-c0551",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "국민연금 수급증명(지급내역) (국/영문)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0553",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "연금소득 원천징수영수증",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001061",
+            "target": "_self",
+            "sourceId": "public-agency-c0554",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "연금소득 원천징수영수증",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0556",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "개인회생 신청용 확인서",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001060",
+            "target": "_self",
+            "sourceId": "public-agency-c0560",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "개인회생 신청용 확인서",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0562",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "연금산정용 가입내역 확인서(국/영문)",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0549",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "국민연금 수급증명(지급내역) (국/영문)",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0552",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "연금소득 원천징수영수증",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0555",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "개인회생 신청용 확인서",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0561",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "퇴직소득 원천징수영수증",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0564",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "연금 수급증명서 재발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0570",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "퇴직금 전환금 부과내역서",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0573",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "가입자증명서 발급(구 가입자 증서 재발급)",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0576",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "발급하기",
+            "relatedLabel": "국민연금보험료 미납증명",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0582",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "퇴직소득 원천징수영수증",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001062",
+            "target": "_self",
+            "sourceId": "public-agency-c0563",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "퇴직소득 원천징수영수증",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0565",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "연금 수급증명서 재발급",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001063",
+            "target": "_self",
+            "sourceId": "public-agency-c0569",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "연금 수급증명서 재발급",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0571",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "퇴직금 전환금 부과내역서",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001059",
+            "target": "_self",
+            "sourceId": "public-agency-c0572",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "퇴직금 전환금 부과내역서",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0574",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "가입자증명서 발급(구 가입자 증서 재발급)",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN24001064",
+            "target": "_self",
+            "sourceId": "public-agency-c0575",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "가입자증명서 발급(구 가입자 증서 재발급)",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0577",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "상세보기",
+            "relatedLabel": "국민연금보험료 미납증명",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/elctcvlcpt/comm/getOHAC0000M5.do?menuId=MN26000007",
+            "target": "_self",
+            "sourceId": "public-agency-c0581",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "미리보기",
+            "relatedLabel": "국민연금보험료 미납증명",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0583",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "신고 · 신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0532",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "조회",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0518",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "증명서 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0519",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "신고 · 신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0520",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0021",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "지사찾기",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.nps.or.kr/pbcpgdnc/ognzprsn/getOHAG0021M0.do?menuId=MN24001022",
+            "target": "_self",
+            "sourceId": "public-agency-c0006",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0542",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "조회",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0530",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "이용안내",
+            "category": "help",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0528",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "증명서 발급",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "public-agency-c0531",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 41,
+        "recommended": 41,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    },
+    {
+      "siteId": "smu",
+      "pageId": "v10-smu-01",
+      "split": "holdout",
+      "url": "https://www.smu.ac.kr/kor/life/payment.do",
+      "pageType": "default",
+      "classificationMode": "generic",
+      "adapterVersion": 3,
+      "candidateCount": 38,
+      "classifiedCount": 11,
+      "institutionApplied": 0,
+      "common": [
+        {
+          "kind": "home",
+          "label": "상명대학교",
+          "category": null,
+          "action": "navigate",
+          "href": "https://www.smu.ac.kr/kor/index.do",
+          "sourceId": "smu-c0130"
+        },
+        {
+          "kind": "login",
+          "label": "Login",
+          "category": "login",
+          "action": "locate",
+          "href": null,
+          "sourceId": "smu-c0260"
+        },
+        {
+          "kind": "phone",
+          "label": "02-2287-5114",
+          "category": null,
+          "action": "locate",
+          "href": null,
+          "sourceId": "smu-c0400"
+        }
+      ],
+      "selected": [
+        {
+          "label": "교내 장학금",
+          "href": "https://www.smu.ac.kr/kor/life/scholarships.do#tab18343_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "장학 학사안내",
+          "contextLabels": [
+            "장학 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "selected-academic-support-documents",
+            "category": "academic",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"selected-academic-support-documents\",\"academic\",\"교내 장학금\",\"navigate\",[\"unique-current-document\",\"matching-fixed-content-heading\",\"academic-support-owner\"],\"\",[[\"A\",null,null,null,null,null,null,null,null,null,\"교내 장학금\"],[\"DIV\",\"contents-wrap\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"tab-outer\",null,null,null,null,null,null,null,null,\"\"],[\"SECTION\",\"content-wrap\",null,null,null,null,null,null,null,null,\"\"],[\"UL\",\"tab-ul swiper-wrapper\",null,null,null,null,null,null,null,null,\"\"],[\"H4\",\"h4-tit\",null,null,null,null,null,null,null,null,\"장학금 지급규정(서울캠퍼스)\"],[\"H3\",null,null,null,null,null,null,null,null,null,\"장학 학사안내\"],[\"A\",null,null,null,null,null,null,null,null,null,\"장학금지급규정\"],[\"A\",null,null,null,null,null,null,null,null,null,\"교외 장학금\"],[\"A\",null,null,null,null,null,null,null,null,null,\"학자금 융자제도\"],[\"LI\",\"swiper-slide active first swiper-slide-active\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide swiper-slide-next\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide last\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"sub-container\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"content\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"page-title\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 20
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.smu.ac.kr\",\"/kor/life/payment.do\",\"교내 장학금\",\"navigate\",[\"selected-academic-support-documents\",\"academic\",\"reading\"],[[\"A\",null,null,null,null,null,null,null,\"교내 장학금\",false],[\"DIV\",\"contents-wrap\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tab-outer\",null,null,null,null,null,null,\"\",null],[\"SECTION\",\"content-wrap\",null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul swiper-wrapper\",null,null,null,null,null,null,\"\",null],[\"H4\",\"h4-tit\",null,null,null,null,null,null,\"장학금 지급규정(서울캠퍼스)\",null],[\"H3\",null,null,null,null,null,null,null,\"장학 학사안내\",null],[\"A\",null,null,null,null,null,null,null,\"장학금지급규정\",true],[\"A\",null,null,null,null,null,null,null,\"교외 장학금\",false],[\"A\",null,null,null,null,null,null,null,\"학자금 융자제도\",false],[\"LI\",\"swiper-slide active first swiper-slide-active\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide swiper-slide-next\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide last\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"sub-container\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"content\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"page-title\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 20
+          },
+          "sourceId": "smu-c0312"
+        },
+        {
+          "label": "교외 장학금",
+          "href": "https://www.smu.ac.kr/kor/life/suburbs.do#tab18344_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "장학 학사안내",
+          "contextLabels": [
+            "장학 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "selected-academic-support-documents",
+            "category": "academic",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"selected-academic-support-documents\",\"academic\",\"교외 장학금\",\"navigate\",[\"unique-current-document\",\"matching-fixed-content-heading\",\"academic-support-owner\"],\"\",[[\"A\",null,null,null,null,null,null,null,null,null,\"교외 장학금\"],[\"DIV\",\"contents-wrap\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"tab-outer\",null,null,null,null,null,null,null,null,\"\"],[\"SECTION\",\"content-wrap\",null,null,null,null,null,null,null,null,\"\"],[\"UL\",\"tab-ul swiper-wrapper\",null,null,null,null,null,null,null,null,\"\"],[\"H4\",\"h4-tit\",null,null,null,null,null,null,null,null,\"장학금 지급규정(서울캠퍼스)\"],[\"H3\",null,null,null,null,null,null,null,null,null,\"장학 학사안내\"],[\"A\",null,null,null,null,null,null,null,null,null,\"장학금지급규정\"],[\"A\",null,null,null,null,null,null,null,null,null,\"교내 장학금\"],[\"A\",null,null,null,null,null,null,null,null,null,\"학자금 융자제도\"],[\"LI\",\"swiper-slide active first swiper-slide-active\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide swiper-slide-next\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide last\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"sub-container\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"content\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"page-title\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 20
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.smu.ac.kr\",\"/kor/life/payment.do\",\"교외 장학금\",\"navigate\",[\"selected-academic-support-documents\",\"academic\",\"reading\"],[[\"A\",null,null,null,null,null,null,null,\"교외 장학금\",false],[\"DIV\",\"contents-wrap\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tab-outer\",null,null,null,null,null,null,\"\",null],[\"SECTION\",\"content-wrap\",null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul swiper-wrapper\",null,null,null,null,null,null,\"\",null],[\"H4\",\"h4-tit\",null,null,null,null,null,null,\"장학금 지급규정(서울캠퍼스)\",null],[\"H3\",null,null,null,null,null,null,null,\"장학 학사안내\",null],[\"A\",null,null,null,null,null,null,null,\"장학금지급규정\",true],[\"A\",null,null,null,null,null,null,null,\"교내 장학금\",false],[\"A\",null,null,null,null,null,null,null,\"학자금 융자제도\",false],[\"LI\",\"swiper-slide active first swiper-slide-active\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide swiper-slide-next\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide last\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"sub-container\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"content\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"page-title\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 20
+          },
+          "sourceId": "smu-c0313"
+        },
+        {
+          "label": "pdf 다운로드",
+          "action": "locate",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "장학금 지급규정(서울캠퍼스)",
+          "contextLabels": [
+            "장학금 지급규정(서울캠퍼스)",
+            "장학 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "relatedLabel": "장학금 지급규정",
+          "relationEvidence": {
+            "rule": "academic-support-regulation-file",
+            "category": "academic",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "장학금 지급규정",
+            "fingerprint": "[\"academic-support-regulation-file\",\"academic\",\"pdf 다운로드\",\"locate\",[\"장학금 지급규정 다운로드\",\"fixed-row-document-title\",\"pdf-download-column\"],\"장학금 지급규정\",[[\"A\",\"btn-pdf\",null,null,null,null,null,null,null,null,\"pdf 다운로드\"],[\"TABLE\",\"smu-table\",null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"장학금 지급규정 다운로드 표\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",\"no-right\",null,null,null,null,null,null,null,null,\"파일(PDF) 다운로드\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"장학금 지급규정\"],[\"TD\",\"no-right\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"content\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"hide\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 13
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.smu.ac.kr\",\"/kor/life/payment.do\",\"pdf 다운로드\",\"locate\",[\"academic-support-regulation-file\",\"academic\",\"reading\"],[[\"A\",\"btn-pdf\",null,null,null,null,null,null,\"pdf 다운로드\",false],[\"TABLE\",\"smu-table\",null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",\"no-right\",null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"no-right\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"content\",null,null,null,null,null,null,\"\",null],[\"SPAN\",\"hide\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 13
+          },
+          "sourceId": "smu-c0390"
+        },
+        {
+          "label": "pdf 다운로드",
+          "action": "locate",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": true,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "장학금 지급규정(서울캠퍼스)",
+          "contextLabels": [
+            "장학금 지급규정(서울캠퍼스)",
+            "장학 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "relatedLabel": "장학금 지급에 관한 시행세칙",
+          "relationEvidence": {
+            "rule": "academic-support-regulation-file",
+            "category": "academic",
+            "score": 70,
+            "pageTask": "reading",
+            "relatedLabel": "장학금 지급에 관한 시행세칙",
+            "fingerprint": "[\"academic-support-regulation-file\",\"academic\",\"pdf 다운로드\",\"locate\",[\"장학금 지급에 관한 운영세칙 다운로드\",\"fixed-row-document-title\",\"pdf-download-column\"],\"장학금 지급에 관한 시행세칙\",[[\"A\",\"btn-pdf\",null,null,null,null,null,null,null,null,\"pdf 다운로드\"],[\"TABLE\",\"smu-table\",null,null,null,null,null,null,null,null,\"\"],[\"CAPTION\",null,null,null,null,null,null,null,null,null,\"장학금 지급규정 다운로드 표\"],[\"THEAD\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TH\",null,null,null,null,null,null,null,null,null,\"구분\"],[\"TH\",\"no-right\",null,null,null,null,null,null,null,null,\"파일(PDF) 다운로드\"],[\"TBODY\",null,null,null,null,null,null,null,null,null,\"\"],[\"TR\",null,null,null,null,null,null,null,null,null,\"\"],[\"TD\",null,null,null,null,null,null,null,null,null,\"장학금 지급에 관한 시행세칙\"],[\"TD\",\"no-right\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"content\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",\"hide\",null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 13
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.smu.ac.kr\",\"/kor/life/payment.do\",\"pdf 다운로드\",\"locate\",[\"academic-support-regulation-file\",\"academic\",\"reading\"],[[\"A\",\"btn-pdf\",null,null,null,null,null,null,\"pdf 다운로드\",false],[\"TABLE\",\"smu-table\",null,null,null,null,null,null,\"\",null],[\"CAPTION\",null,null,null,null,null,null,null,\"\",null],[\"THEAD\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TH\",null,null,null,null,null,null,null,\"\",null],[\"TH\",\"no-right\",null,null,null,null,null,null,\"\",null],[\"TBODY\",null,null,null,null,null,null,null,\"\",null],[\"TR\",null,null,null,null,null,null,null,\"\",null],[\"TD\",null,null,null,null,null,null,null,\"\",null],[\"TD\",\"no-right\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"content\",null,null,null,null,null,null,\"\",null],[\"SPAN\",\"hide\",null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 13
+          },
+          "sourceId": "smu-c0391"
+        },
+        {
+          "label": "학자금 융자제도",
+          "href": "https://www.smu.ac.kr/kor/life/loan.do#tab18345_",
+          "action": "navigate",
+          "target": "_self",
+          "destinationHost": "www.smu.ac.kr",
+          "opensNewWindow": false,
+          "context": "body",
+          "score": 70,
+          "reasons": [
+            "고정 원본 제어와 같은 본문의 관계",
+            "실제 목록·표·서비스 항목의 명시적 역할"
+          ],
+          "sectionLabel": "장학 학사안내",
+          "contextLabels": [
+            "장학 학사안내"
+          ],
+          "category": "academic",
+          "pageTask": "reading",
+          "relationEvidence": {
+            "rule": "selected-academic-support-documents",
+            "category": "academic",
+            "score": 70,
+            "pageTask": "reading",
+            "fingerprint": "[\"selected-academic-support-documents\",\"academic\",\"학자금 융자제도\",\"navigate\",[\"unique-current-document\",\"matching-fixed-content-heading\",\"academic-support-owner\"],\"\",[[\"A\",null,null,null,null,null,null,null,null,null,\"학자금 융자제도\"],[\"DIV\",\"contents-wrap\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"tab-outer\",null,null,null,null,null,null,null,null,\"\"],[\"SECTION\",\"content-wrap\",null,null,null,null,null,null,null,null,\"\"],[\"UL\",\"tab-ul swiper-wrapper\",null,null,null,null,null,null,null,null,\"\"],[\"H4\",\"h4-tit\",null,null,null,null,null,null,null,null,\"장학금 지급규정(서울캠퍼스)\"],[\"H3\",null,null,null,null,null,null,null,null,null,\"장학 학사안내\"],[\"A\",null,null,null,null,null,null,null,null,null,\"장학금지급규정\"],[\"A\",null,null,null,null,null,null,null,null,null,\"교내 장학금\"],[\"A\",null,null,null,null,null,null,null,null,null,\"교외 장학금\"],[\"LI\",\"swiper-slide active first swiper-slide-active\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide swiper-slide-next\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide\",null,null,null,null,null,null,null,null,\"\"],[\"LI\",\"swiper-slide last\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"sub-container\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"content\",null,null,null,null,null,null,null,null,\"\"],[\"DIV\",\"page-title\",null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"],[\"SPAN\",null,null,null,null,null,null,null,null,null,\"\"]]]",
+            "dependencyCount": 20
+          },
+          "contentEvidence": {
+            "level": 1,
+            "rule": "verified-current-content-relation",
+            "fingerprint": "[\"verified-current-content-relation\",1,\"https://www.smu.ac.kr\",\"/kor/life/payment.do\",\"학자금 융자제도\",\"navigate\",[\"selected-academic-support-documents\",\"academic\",\"reading\"],[[\"A\",null,null,null,null,null,null,null,\"학자금 융자제도\",false],[\"DIV\",\"contents-wrap\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"tab-outer\",null,null,null,null,null,null,\"\",null],[\"SECTION\",\"content-wrap\",null,null,null,null,null,null,\"\",null],[\"UL\",\"tab-ul swiper-wrapper\",null,null,null,null,null,null,\"\",null],[\"H4\",\"h4-tit\",null,null,null,null,null,null,\"장학금 지급규정(서울캠퍼스)\",null],[\"H3\",null,null,null,null,null,null,null,\"장학 학사안내\",null],[\"A\",null,null,null,null,null,null,null,\"장학금지급규정\",true],[\"A\",null,null,null,null,null,null,null,\"교내 장학금\",false],[\"A\",null,null,null,null,null,null,null,\"교외 장학금\",false],[\"LI\",\"swiper-slide active first swiper-slide-active\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide swiper-slide-next\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide\",null,null,null,null,null,null,\"\",null],[\"LI\",\"swiper-slide last\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"sub-container\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"swiper-tab-box swiper-container tab-swiper tab-swiper0 swiper-container-initialized swiper-container-horizontal\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"content\",null,null,null,null,null,null,\"\",null],[\"DIV\",\"page-title\",null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null],[\"SPAN\",null,null,null,null,null,null,null,\"\",null]]]",
+            "dependencyCount": 20
+          },
+          "sourceId": "smu-c0314"
+        },
+        {
+          "label": "검색",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "search",
+          "sourceId": "smu-c0276"
+        },
+        {
+          "label": "Login",
+          "action": "locate",
+          "context": "primary",
+          "score": 85,
+          "reasons": [
+            "고정 문구 일치",
+            "주요 메뉴 영역"
+          ],
+          "contextLabels": [],
+          "category": "login",
+          "sourceId": "smu-c0260"
+        }
+      ],
+      "correct": 7,
+      "recommended": 7,
+      "matched": 3,
+      "expected": 3,
+      "precision": 1,
+      "recall": 1,
+      "missed": [],
+      "incorrect": [],
+      "taskRecommended": true,
+      "menuFlow": {
+        "bundleSha256": "21d8ded58f9966c95744845223f04513b46aae67168d56777e5278b17044816f",
+        "classificationMode": "generic",
+        "adapterVersion": 3,
+        "scope": "Actual headless UI page transitions and direct weak-map source identity of each rendered card; metadata correspondence checked independently. Does not prove installed-extension use, destination/guide activation, business completion, or user study. Original first-screen quality remains separate.",
+        "completed": true,
+        "pages": [
+          {
+            "page": 1,
+            "cards": [
+              {
+                "label": "교내 장학금",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/scholarships.do#tab18343_",
+                "target": "_self",
+                "sourceId": "smu-c0312",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "교외 장학금",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/suburbs.do#tab18344_",
+                "target": "_self",
+                "sourceId": "smu-c0313",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "pdf 다운로드",
+                "relatedLabel": "장학금 지급규정",
+                "category": "academic",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0390",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "pdf 다운로드",
+                "relatedLabel": "장학금 지급에 관한 시행세칙",
+                "category": "academic",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0391",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "학자금 융자제도",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/loan.do#tab18345_",
+                "target": "_self",
+                "sourceId": "smu-c0314",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "검색",
+                "category": "search",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0276",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": true,
+            "stale": false,
+            "status": "현재 페이지에서 6개의 주요 기능을 찾았어요. 다른 기능도 볼 수 있어요."
+          },
+          {
+            "page": 2,
+            "cards": [
+              {
+                "label": "수강신청",
+                "category": "apply",
+                "action": "locate",
+                "target": null,
+                "sourceId": "smu-c0258",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "학사안내",
+                "category": "academic",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+                "target": "_self",
+                "sourceId": "smu-c0200",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "대학생활",
+                "category": "notice",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/life/notice.do",
+                "target": "_self",
+                "sourceId": "smu-c0219",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              },
+              {
+                "label": "입학안내",
+                "category": "help",
+                "action": "navigate",
+                "href": "https://www.smu.ac.kr/kor/intro/whySangmyung.do",
+                "target": "_self",
+                "sourceId": "smu-c0172",
+                "sourceMatches": 1,
+                "bindingMethod": "actual-rendered-card-source"
+              }
+            ],
+            "classificationMode": "generic",
+            "adapterVersion": 3,
+            "nextAvailable": false,
+            "stale": false,
+            "status": "현재 페이지에서 4개의 주요 기능을 찾았어요. 2번째 화면이에요."
+          }
+        ],
+        "unresolvedMappings": [],
+        "repeatedCards": [],
+        "firstReachedPage": {
+          "scholarship-rule": 1,
+          "scholarship-detail-rule": 1,
+          "loan-information": 1
+        },
+        "selected": [
+          {
+            "label": "교내 장학금",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/scholarships.do#tab18343_",
+            "target": "_self",
+            "sourceId": "smu-c0312",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "교외 장학금",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/suburbs.do#tab18344_",
+            "target": "_self",
+            "sourceId": "smu-c0313",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "pdf 다운로드",
+            "relatedLabel": "장학금 지급규정",
+            "category": "academic",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0390",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "pdf 다운로드",
+            "relatedLabel": "장학금 지급에 관한 시행세칙",
+            "category": "academic",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0391",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "학자금 융자제도",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/loan.do#tab18345_",
+            "target": "_self",
+            "sourceId": "smu-c0314",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "검색",
+            "category": "search",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0276",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "수강신청",
+            "category": "apply",
+            "action": "locate",
+            "target": null,
+            "sourceId": "smu-c0258",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "학사안내",
+            "category": "academic",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/academicCalendar.do",
+            "target": "_self",
+            "sourceId": "smu-c0200",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "대학생활",
+            "category": "notice",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/life/notice.do",
+            "target": "_self",
+            "sourceId": "smu-c0219",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          },
+          {
+            "label": "입학안내",
+            "category": "help",
+            "action": "navigate",
+            "href": "https://www.smu.ac.kr/kor/intro/whySangmyung.do",
+            "target": "_self",
+            "sourceId": "smu-c0172",
+            "sourceMatches": 1,
+            "bindingMethod": "actual-rendered-card-source"
+          }
+        ],
+        "correct": 10,
+        "recommended": 10,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "missed": [],
+        "incorrect": [],
+        "taskRecommended": true
+      }
+    }
+  ],
+  "quality": {
+    "status": "FAIL",
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75
+    },
+    "overall": {
+      "precision": 0.9117647058823529,
+      "recall": 0.9333333333333333
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "government",
+        "precision": 0.5,
+        "recall": 0.6666666666666666,
+        "passed": false
+      },
+      {
+        "siteId": "library",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "public-agency",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      },
+      {
+        "siteId": "smu",
+        "precision": 1,
+        "recall": 1,
+        "passed": true
+      }
+    ],
+    "scope": "Offline fixture accuracy/recall only. Does not establish S07 completion, live 15-task success, performance, native installation, accessibility, or user-study acceptance."
+  },
+  "menuFlow": {
+    "scope": "Separate additional-menu display coverage. Does not replace or alter original first-screen accuracy/recall acceptance.",
+    "summary": {
+      "pages": 5,
+      "correct": 86,
+      "recommended": 98,
+      "matched": 15,
+      "expected": 15,
+      "precision": 0.8775510204081632,
+      "recall": 1,
+      "tasksRecommended": 5
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 1,
+        "correct": 10,
+        "recommended": 10,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "government",
+        "pages": 1,
+        "correct": 8,
+        "recommended": 17,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.47058823529411764,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "library",
+        "pages": 1,
+        "correct": 17,
+        "recommended": 20,
+        "matched": 3,
+        "expected": 3,
+        "precision": 0.85,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 1,
+        "correct": 41,
+        "recommended": 41,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      },
+      {
+        "siteId": "smu",
+        "pages": 1,
+        "correct": 10,
+        "recommended": 10,
+        "matched": 3,
+        "expected": 3,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 1
+      }
+    ],
+    "unresolvedMappings": 0,
+    "repeatedCards": 0
+  }
+}

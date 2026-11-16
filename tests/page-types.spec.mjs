@@ -92,3 +92,71 @@ test('a list of long links without dates or page numbers is not a board', async 
   const forms = titles.map((title, n) => `<li><a href="/forms/view.do?id=${n}">${title} 서식</a></li>`).join('');
   expect((await open(page, 'https://city.example/forms/list.do', `${header}<main><ul>${forms}</ul></main>`)).type).toBe('default');
 });
+
+// 2026-11-12 survey replay: narrow fixes for page tools, policy links, board
+// search periods, attachment rows and carousel buttons.
+test('a board search uses the keyword field, not the search period', async ({ page }) => {
+  const result = await open(page, 'https://city.example/notice/list.do', `${header}<main><h2>공지사항</h2><form action="/notice/list.do"><input type="text" aria-label="검색 시작일"><input type="text" aria-label="검색 종료일"><input type="text" aria-label="검색어 입력"><button type="submit">검색</button></form>
+    <table><tbody>${rows(titles)}</tbody></table><a href="/notice/list.do?page=2">2</a></main>${footer}`);
+  expect(result.type).toBe('list');
+  expect(result.cards[0]).toBe('검색어 입력|locate');
+});
+
+test('a board row is represented by its title, not its attachment link', async ({ page }) => {
+  const body = titles.map((title, n) => `<tr><td>${100 - n}</td><td><a href="/notice/view.do?id=${n}">${title}</a></td><td><a href="/file/down.do?id=${n}">첨부파일 다운로드 ${title} 상세 자료.hwp</a></td><td>2026-10-${10 + n}</td></tr>`).join('');
+  const result = await open(page, 'https://city.example/notice/list.do', board(body));
+  expect(result.type).toBe('list');
+  expect(result.cards.slice(1)).toEqual(titles.slice(0, 5).map(title => `${title}|navigate`));
+});
+
+test('a post page ignores a banner carousel next to 이전/다음 buttons', async ({ page }) => {
+  const result = await open(page, 'https://city.example/notice/view.do?id=3', `${header}<main><div class="banner"><button type="button">이전</button> <button type="button">다음</button> <button type="button">상단배너 모두 보기</button></div>
+    <h2>겨울철 한파 대비 행동요령 안내</h2><p>본문</p><a href="/notice/list.do">목록</a></main>${footer}`);
+  expect(result.type).toBe('post');
+  const names = result.cards.map(card => card.split('|')[0]);
+  expect(names).not.toContain('이전 글');
+  expect(names).not.toContain('다음 글');
+});
+
+test('page tools never become cards', async ({ page }) => {
+  const tools = ['URL 복사하기', '프린트하기', '점자솔루션', '공지사항 전자점자다운로드', '서브메뉴 바로가기'];
+  const result = await open(page, 'https://city.example/guide/faq.do', `${header}<main><h2>자주 묻는 질문</h2><div>${tools.map((name, n) => `<a href="/tool${n}.do">${name}</a>`).join(' ')}</div></main>`);
+  for (const tool of tools) {
+    expect(result.cards.map(card => card.split('|')[0])).not.toContain(tool);
+    expect(result.pool).not.toContain(tool);
+  }
+});
+
+test('policy links in a sitemap group give way to the group tasks', async ({ page }) => {
+  const group = ['개인정보처리방침', '웹접근성안내', '법령정보', '복구진도등록', 'Q&A', '안전신문고', '생활안전지도', '재난훈련관리']
+    .map((name, n) => `<li><a href="/footer/info/item${n}.do">${name}</a></li>`).join('');
+  const result = await open(page, 'https://city.example/bbs/faq.do', `${header}<main><h2>자주 묻는 질문</h2><p>질문을 고르세요</p></main><div class="sitemap"><span>이용안내</span><div><ul>${group}</ul></div></div>`);
+  const names = result.cards.map(card => card.split('|')[0]);
+  expect(names.filter(name => /개인정보|웹접근성|법령정보/.test(name))).toEqual([]);
+});
+
+test('directions, map links and staff finders are help, but longer titles are not', async ({ page }) => {
+  const result = await open(page, 'https://city.example/intro/location.do', `${header}<main><h2>청사 안내</h2>
+    <a href="/intro/road.do">찾아오시는 길</a> <a href="https://map.kakao.com/?q=city">Kakao 맵으로 이동(새창열림)</a> <a href="/dept/find.do">담당자 찾기</a> <a href="/intro/floor.do">층별안내</a>
+    <a href="/event/42.do">오시는 길 따라 걷는 가을 축제 참가자 모집</a></main>`);
+  const all = [...result.cards.map(card => card.split('|')[0]), ...result.pool];
+  for (const name of ['찾아오시는 길', 'Kakao 맵으로 이동(새창열림)', '담당자 찾기', '층별안내']) expect(all).toContain(name);
+  expect(all).not.toContain('오시는 길 따라 걷는 가을 축제 참가자 모집');
+});
+
+test('a home page reads its featured service group, without the group controls', async ({ page }) => {
+  const services = ['여권민원', '대형폐기물', '민원서식', '부서안내'].map((name, n) => `<li><a href="/service/${n}.do">${name}</a></li>`).join('');
+  const result = await open(page, 'https://city.example/', `${header}<main><section><h2>자주 찾는 서비스</h2><ul>${services}<li><a href="/service/setting.do">설정</a></li></ul></section>
+    <section><h2>시정 소식</h2><ul><li><a href="/story/1.do">여권민원 처리 기간 단축 이야기</a></li></ul></section></main>${footer}`);
+  const all = [...result.cards.map(card => card.split('|')[0]), ...result.pool];
+  for (const name of ['여권민원', '대형폐기물', '민원서식', '부서안내']) expect(all).toContain(name);
+  expect(all).not.toContain('설정');
+  expect(all).not.toContain('여권민원 처리 기간 단축 이야기');
+});
+
+test('an inner page does not promote a featured group by heading alone', async ({ page }) => {
+  const services = ['여권민원', '대형폐기물'].map((name, n) => `<li><a href="/service/${n}.do">${name}</a></li>`).join('');
+  const result = await open(page, 'https://city.example/intro/history.do', `${header}<main><h2>시의 역사</h2><p>본문</p><section><h2>자주 찾는 서비스</h2><ul>${services}</ul></section></main>`);
+  const all = [...result.cards.map(card => card.split('|')[0]), ...result.pool];
+  expect(all).not.toContain('여권민원');
+});

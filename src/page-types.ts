@@ -1,5 +1,5 @@
 import type { Candidate, Category } from './types';
-import { isSafeSource } from './classifier';
+import { isSafeSource, locationAction } from './classifier';
 import { isDocumentDownload } from './action-policy';
 import { commonActions, isHomePage, withoutCommon, type CommonAction } from './common-actions';
 import { rank } from './ranker';
@@ -23,6 +23,9 @@ const POST_CARDS = 4;
 const outside = 'header, nav, footer, aside, [role~="banner" i], [role~="navigation" i], [role~="contentinfo" i], [role~="complementary" i]';
 const text = (value: string) => value.normalize('NFKC').replace(/\s+/g, ' ').trim();
 // Board badges appended to titles; removed from the card title only.
+const attachmentLink = /^(?:첨부\s*파일|파일\s*첨부|첨부)(?:\s*(?:다운로드|내려\s*받기|보기))?(?:\s|$)/;
+// A board search period (start/end date) is a filter, not the keyword field.
+const searchPeriod = /(?:시작|종료|마지막|끝)\s*일|기간|날짜|\bdate\b/i;
 const titleBadges = /(?:\s*(?:새\s*글|new|n|첨부\s*파일(?:\s*있음)?|파일\s*첨부|hot|조회\s*수?\s*\d+))+$/i;
 const pinnedMark = /^\[?(?:공지|고정|필독|notice)\]?$/i;
 const backToList = /^(?:목록|목록\s*보기|목록으로(?:\s*가기)?|리스트|list)$/i;
@@ -55,7 +58,10 @@ function documentList(raw: Candidate[]): Row[] {
     if (!row?.parentElement || row.closest(outside)) continue;
     const rows = groups.get(row.parentElement) ?? new Map<Element, Candidate>();
     const known = rows.get(row);
-    if (!known || text(known.label).length < text(candidate.label).length) rows.set(row, candidate);
+    // A row's title link represents it; an attachment link is used only alone.
+    const attachment = (item: Candidate) => attachmentLink.test(text(item.label));
+    if (!known || attachment(known) && !attachment(candidate)
+      || attachment(known) === attachment(candidate) && text(known.label).length < text(candidate.label).length) rows.set(row, candidate);
     groups.set(row.parentElement, rows);
   }
   let best: Map<Element, Candidate> | undefined;
@@ -91,7 +97,8 @@ function documentList(raw: Candidate[]): Row[] {
 function listSlots(raw: Candidate[], rest: Candidate[], rows: Row[]): { slots: Candidate[]; extra: Candidate[] } {
   // The board's own search field first; a scope selector or button is a fallback.
   const searches = rest.filter(candidate => candidate.category === 'search');
-  const field = (candidate: Candidate) => candidate.element.matches('input, [role~="searchbox" i], [role~="textbox" i]');
+  const field = (candidate: Candidate) => candidate.element.matches('input, [role~="searchbox" i], [role~="textbox" i]')
+    && !searchPeriod.test(text(candidate.label)) && !candidate.element.matches('input[type="date" i]');
   const search = searches.find(candidate => inBody(candidate) && field(candidate)) ?? searches.find(inBody) ?? searches.find(field) ?? searches[0];
   // Pinned notices often repeat a post listed below; numbered posts come first.
   const ordered = [...rows.filter(row => !row.pinned), ...rows.filter(row => row.pinned)];
@@ -118,12 +125,34 @@ function postSlots(raw: Candidate[]): Candidate[] | undefined {
     const container = candidate.element.closest('li, tr, dl, dd, p, div');
     const lead = text(container?.textContent ?? '').slice(0, 120);
     const match = lead.match(neighbour);
-    if (!match || candidate === back || text(candidate.label).length < 4) continue;
+    // Previous/next posts are links; a carousel's 이전/다음 buttons are not.
+    if (!match || candidate === back || text(candidate.label).length < 4 || !candidate.element.matches('a[href]')) continue;
     const name = /다음|아랫/.test(match[0]) ? '다음 글' : '이전 글';
     if (neighbours.some(item => item.title === name)) continue;
     neighbours.push(slot(candidate, 'notice', name, text(candidate.label).replace(titleBadges, '')));
   }
   return [...downloads, slot(back, 'notice', '목록으로', '글 목록으로 돌아가기'), ...neighbours];
+}
+
+// A home page often lists its main services under one heading such as 자주 찾는
+// 서비스 or 주요 서비스. Their names (여권민원, 대형폐기물) rarely match a category
+// word, so the heading is the evidence. Ordinary safe links only, never footer.
+const featuredHeading = /^(?:자주\s*(?:찾는|이용하는|쓰는)|주요|빠른|대표|인기)\s*(?:서비스|메뉴|민원)(?:\s*바로\s*가기)?$|^(?:서비스|민원)\s*바로\s*가기$|^(?:빠른|퀵)\s*메뉴(?:\s*서비스)?$|^quick\s*menu$/i;
+const featuredHelp = /안내|상담|문의|전화|찾기|센터|콜/;
+// Controls that edit or page the group itself are not services.
+const featuredControl = /^(?:설정|편집|메뉴\s*(?:설정|편집)|닫기|열기|이전|다음|정지|재생|멈춤)$/;
+function featuredServices(raw: Candidate[], known: Set<HTMLElement>): Candidate[] {
+  const seen = new Set<string>();
+  return raw.filter(candidate => {
+    const label = text(candidate.label);
+    if (known.has(candidate.element) || candidate.context === 'footer' || candidate.action !== 'navigate' || !candidate.element.matches('a[href]')
+      || !isSafeSource(candidate) || featuredControl.test(label) || label.length < 2 || label.length > 30 || !featuredHeading.test(text(candidate.sectionLabel ?? ''))) return false;
+    const key = destination(candidate) || label;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).map(candidate => ({ ...candidate, category: featuredHelp.test(candidate.label) ? 'help' as const : 'apply' as const, score: 72, pageTask: 'control' as const,
+    reasons: ['홈의 자주 찾는 서비스 묶음', '묶음 제목과 일반 링크'] }));
 }
 
 // A gate page offers a few sites to choose from, each as a large 바로가기 link.
@@ -140,16 +169,22 @@ function gateSlots(raw: Candidate[]): Candidate[] | undefined {
 }
 
 export function composeFirstScreen(raw: Candidate[], classified: Candidate[]): FirstScreen {
+  const home = isHomePage();
+  const featured = home ? featuredServices(raw, new Set(classified.map(candidate => candidate.element))) : [];
   const common = commonActions(raw, classified);
-  const rest = withoutCommon(classified, common);
+  // On a home page directions and counselling share one slot (10_page_types A),
+  // so a directions link keeps its card category but not page-task priority.
+  const homeTasks = (candidate: Candidate) => home && candidate.category === 'help' && candidate.pageTask === 'control'
+    && locationAction.test(text(candidate.label)) ? { ...candidate, pageTask: undefined } : candidate;
+  const rest = [...withoutCommon(classified, common).map(homeTasks), ...featured];
   classifiedBy = new Map(classified.map(candidate => [candidate.element, candidate]));
   let type: PageType = 'default';
   let slots: Candidate[] = [];
   let extra: Candidate[] = [];
   let target = MAX_CARDS;
   const gate = gateSlots(raw);
-  const rows = gate || isHomePage() ? [] : documentList(raw);
-  const post = gate || rows.length ? undefined : isHomePage() ? undefined : postSlots(raw);
+  const rows = gate || home ? [] : documentList(raw);
+  const post = gate || rows.length ? undefined : home ? undefined : postSlots(raw);
   if (gate) { type = 'gate'; slots = gate; }
   else if (rows.length) { type = 'list'; ({ slots, extra } = listSlots(raw, rest, rows)); }
   else if (post) { type = 'post'; slots = post; target = Math.max(POST_CARDS, Math.min(post.length, MAX_CARDS)); }

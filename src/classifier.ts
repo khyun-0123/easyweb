@@ -34,7 +34,16 @@ const academicEvent = /학기|고사|시험|수업|강의|개강|종강|방학|�
 const noticeCollection = /^(?:(?:공지(?:사항)?|새\s*소식)\s*더\s*보기|(?:notices?|announcements?)\s+(?:read\s*)?more)$/i;
 const viewerControl = /뷰어\s*(?:설치\s*)?다운로드|\bviewer\s+(?:install\s+)?download\b/i;
 const orderingLabel = /^(?:조회|검색|신청|예약|등록)(?:\s*수)?\s*순$/;
+// Page tools act on the current screen (copy its address, print it, read it in
+// braille, skip to a menu, expand a banner strip). They are not site tasks.
+const pageToolLabel = /^(?:(?:url|주소)\s*복사(?:하기)?|(?:프린트|인쇄)(?:하기)?|(?:전자\s*)?점자\s*(?:솔루션|다운로드|뷰어\s*보기)(?:\s*\(새\s*창\s*열림\))?|(?:주|서브|사이드|전체)?\s*메뉴\s*바로\s*가기|(?:상단\s*)?배너\s*모두\s*보기|(?:sns\s*)?공유(?:하기)?)$/i;
 const contactHelp = /^(?:(?:조직(?:도)?\s*(?:및|[·/&])\s*)?(?:(?:담당\s*)?(?:부서|직원|담당자)\s*)?(?:전화번호|연락처)\s*(?:안내|찾기)?|조직도(?:\s*안내)?|(?:staff|department|contact)\s+(?:directory|contacts?))$/i;
+// Finding the place or the person: directions, building/floor/parking guides,
+// a map link, or a staff/department finder. Exact names only.
+export const locationAction = /^(?:(?:찾아\s*)?오시는\s*길(?:\s*안내)?|캠퍼스\s*(?:맵|지도)|지도\s*보기|(?:kakao|카카오|naver|네이버)\s*(?:맵|지도)\s*(?:으로|로)?\s*(?:이동|보기)(?:\s*\(새\s*창\s*(?:열림)?\))?|(?:담당자|직원|부서)\s*(?:찾기|검색)|(?:교내\s*)?전화번호\s*(?:검색|찾기)|directions|campus\s+map)$/i;
+// Guide names for a building, floor, parking or campus are help by name only;
+// unlike the actions above they do not claim the page-task slots.
+const locationGuide = /^(?:청사|층별|주차|캠퍼스)\s*안내$/;
 const hoursHelp = /^(?:(?:이용|운영|개관|업무)\s*시간(?:\s*안내)?|휴관일(?:\s*안내)?|(?:opening|business|service)\s+hours)$/i;
 const formTitle = /(?:신청서|신고서|위임장|동의서|청구서|\b(?:application|declaration|authorization|consent|claim)\s+form)$/i;
 const formDownload = /(?:(?:신청서|신고서|위임장|동의서|청구서)\s*(?:다운로드|다운\s*받기)|\bdownload\s+(?:application|declaration|authorization|consent|claim)\s+form)$/i;
@@ -422,6 +431,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
     const utility = navigationUtility(candidate.element, candidate.label, navigationCache);
     if (utility === 'position') return [];
     if (orderingLabel.test(label)) return [];
+    if (pageToolLabel.test(label.replace(/^\S+\s+(?=(?:전자\s*)?점자)/, ''))) return [];
     // Reject an explicit dangerous command before any lexical fallback can
     // revive a source that a structural reading branch has already rejected.
     // This inspects fixed attributes only and never executes source scripts.
@@ -549,7 +559,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
     let best: Candidate | undefined;
     let bestIntent = 0;
     for (const rule of rules) {
-      const textMatch = (rule.label.test(label) || rule.category === 'help' && (inquiry || contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label))
+      const textMatch = (rule.label.test(label) || rule.category === 'help' && (inquiry || contactHelp.test(label) || locationAction.test(label) || locationGuide.test(label) || hoursHelp.test(label) || branchDirectory.test(label))
         || rule.category === 'apply' && issuanceIntent.test(label) || rule.category === 'notice' && publicNoticeList.test(label))
         && !(rule.category === 'search' && searchGuidance);
       const semanticMatch = rule.category === 'search' && searchControl;
@@ -583,7 +593,7 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
           ? semanticMatch || rule.category === 'apply' && applicationPageControl(candidate, label, target, url)
             || rule.category === 'help' && (viewerControl.test(label)
             || candidate.element.matches('a[href], button, [role~="button"]')
-              && (contactHelp.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? 'control'
+              && (contactHelp.test(label) || locationAction.test(label) || hoursHelp.test(label) || branchDirectory.test(label) || counselingControl.test(label))) ? 'control'
             : sectionMatch || rule.category === 'notice' && noticeCollection.test(label) ? 'collection' : undefined
           : undefined;
         best = { ...candidate, category: rule.category, score, reasons, pageTask };

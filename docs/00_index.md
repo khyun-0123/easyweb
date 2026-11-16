@@ -57,6 +57,6 @@ EasyWeb · 1인 프로젝트
 | [evidence/](evidence/) | 회차별 원본 증거 (JSON·로그·스크린샷) | 수정 금지 |
 | [../evaluation/](../evaluation/README.md) | 5개 기관 60페이지 정답표·fixture | 평가 자료. 노출 이력 보존 |
 
-검토 기록: [reviews/](reviews/) — 실제 페이지 검토처럼 한 번 측정하고 남기는 기록. 예: [실제 페이지 첫 6개 검토 (2026-10-31)](reviews/live_first6_review_20261031.md), [사이트 조사 — 페이지별 칸 수와 기능 (2026-11-01)](reviews/site_survey_20261101.md)
+검토 기록: [reviews/](reviews/) — 실제 페이지 검토처럼 한 번 측정하고 남기는 기록. 예: [실제 페이지 첫 6개 검토 (2026-10-31)](reviews/live_first6_review_20261031.md), [사이트 조사 — 페이지별 칸 수와 기능 (2026-11-01)](reviews/site_survey_20261101.md), [KRDS 검토 (2026-11-12)](reviews/krds_review_20261112.md), [사이트 조사 재생 개선 (2026-11-12)](reviews/survey_fixes_20261112.md)
 
 기획 근거 원본: [모두의창업 지원서](../모두의창업_EasyWeb.pdf) (2026-09-15 작성, 2차 지원서)

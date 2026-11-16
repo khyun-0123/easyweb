@@ -47,14 +47,14 @@ EasyWeb · 1인 프로젝트
 | `content.ts` | 중복 실행 방지, 화면 열기/닫기 | 화면은 하나만 |
 | `analyzer.ts` | 후보 수집, 안전한 이름(`getSafeLabel`), 보이는지 판단, 주변 제목 | 입력·편집 하위 트리는 건너뜀 |
 | `evidence-nodes.ts` | 근거가 의존하는 고정 노드 목록 | 값이 아닌 구조만 읽음 |
-| `navigation-utility.ts` | 페이지 위치·갈래 메뉴 같은 보조 탐색 판정 | 원본을 실행하지 않음 |
+| `navigation-utility.ts` | 페이지 위치·갈래 메뉴 같은 보조 탐색 판정. 브레드크럼은 정확한 이름(KRDS "현재 경로"·"브레드크럼" 포함)이나 `nav`의 정확한 class(KRDS `krds-breadcrumb-wrap` 포함)로만 판단 | 원본을 실행하지 않음 |
 | `institution-evidence.ts` | 기관 사이트 의미 보정 (모드: `institution`/`generic`) | 편집용 제목만 읽음 |
 | `content-evidence.ts` | 실제 본문 영역과 업무 그룹 근거 | 한 번의 분석 묶음에서만 캐시 |
 | `service-relations.ts` · `document-relations.ts` · `relations.ts` | 같은 본문 업무 탭, 상세/발급, 문서 목록표·규정 PDF 등의 관계 | 매번 다시 계산, 전역 캐시 없음 |
-| `classifier.ts` | 분류 규칙과 점수·근거(`reasons`) | 근거 없는 기능을 만들지 않음 |
+| `classifier.ts` | 분류 규칙과 점수·근거(`reasons`). 페이지 도구(주소 복사·인쇄·점자·메뉴 바로가기)는 후보에서 제외, 위치 안내(오시는 길·지도 링크·담당자 찾기)는 help | 근거 없는 기능을 만들지 않음 |
 | `common-actions.ts` | 「자주 쓰는 버튼」: 홈 페이지 판단(주소가 `/`·index·main·언어 코드), 처음 화면(같은 사이트 홈 주소 + "홈/처음으로" 이름 또는 머리 영역 로고), 로그인(분류된 짧은 "로그인"), 회원가입(정확한 이름의 일반 링크) | 고정 이름·일반 http(s) 링크만, 위험 스크립트·명령 URL 제외. 사이트별 규칙 없음 |
-| `page-types.ts` | 「자주 쓰는 버튼」 분리 후 페이지 유형(list·post·gate·default)을 판단해 처음 카드 구성. 이미 분류된 요소는 분류·근거를 그대로 쓰고 카드 문구(title·description)만 더함 | 위험 이름·스크립트·명령 주소 제외(`isSafeSource`), 편집 요소 제외, 홈은 기본 규칙 |
-| `ranker.ts` | 목적지 중복 제거, 처음 6개, 다른 메뉴 목록 | 최대 6 + 다른 메뉴 (확정 정책) |
+| `page-types.ts` | 「자주 쓰는 버튼」 분리 후 페이지 유형(list·post·gate·default)을 판단해 처음 카드 구성. 이미 분류된 요소는 분류·근거를 그대로 쓰고 카드 문구(title·description)만 더함 | 위험 이름·스크립트·명령 주소 제외(`isSafeSource`), 편집 요소 제외, 홈은 기본 규칙 + 「자주 찾는 서비스」류 제목 아래 일반 링크를 대표 서비스 후보로(홈에서만, footer 제외). 게시판 행은 글 제목 우선·검색은 날짜칸 제외, 게시글 이전/다음은 링크만 |
+| `ranker.ts` | 목적지 중복 제거, 처음 6개, 다른 메뉴 목록. 정책 링크(개인정보처리방침 등 정확한 이름)는 빈칸 채울 때만 | 최대 6 + 다른 메뉴 (확정 정책) |
 | `easy-mode.ts` | 쉬운 화면 UI, 메뉴 넘기기, 다시 찾기 | 제품 DOM에 평가 ID를 넣지 않음 |
 | `action-policy.ts` | 이동/원본 안내 결정, 다운로드·SSO 식별 | [ACTION_POLICY](ACTION_POLICY.md) |
 | `page-session.ts` | 후보 현재성 검사와 변경 감시 | 모든 실행 경로에서 낡은 후보 차단 |

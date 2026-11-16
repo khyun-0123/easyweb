@@ -8,6 +8,10 @@ const MAX_CARDS = 6;
 // alternatives visible while the total remains six cards.
 const MAX_PER_CATEGORY = 3;
 const MAX_PAGE_TASKS = 3;
+// Site policy links (privacy, accessibility statement, terms) are incidental on
+// most pages. They stay in later menus and fill a first-screen slot only when
+// nothing else remains.
+const incidentalLabel = /^(?:개인\s*정보\s*처리\s*방침|웹\s*접근성\s*(?:안내|정책)?|법령\s*정보|이용\s*약관|저작권\s*(?:정책|보호\s*정책)?|이메일\s*(?:주소\s*)?무단\s*수집\s*거부|영상\s*정보\s*처리\s*기기\s*운영\s*(?:관리\s*)?방침)$/;
 const contextOrder = { primary: 0, body: 1, footer: 2 };
 const compareText = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
 const normalizedLabel = (candidate: Candidate) => candidate.label.normalize('NFKC').replace(/\s+/g, ' ').trim().toLowerCase();
@@ -200,7 +204,9 @@ export function rank(candidates: Candidate[]): Candidate[] {
     return true;
   });
   const repeats = firstScreenRepeats(distinct);
-  const unique = distinct.filter(candidate => !repeats.has(candidate));
+  const kept = distinct.filter(candidate => !repeats.has(candidate));
+  const incidental = kept.filter(candidate => incidentalLabel.test(normalizedLabel(candidate).normalize('NFKC')));
+  const unique = kept.filter(candidate => !incidental.includes(candidate));
   const counts = new Map<Category, number>();
   const selected: Candidate[] = [];
   // Proven content on this page has priority over unrelated global categories.
@@ -250,7 +256,7 @@ export function rank(candidates: Candidate[]): Candidate[] {
   // The category cap reserves space while alternatives exist. On a focused
   // page it must not leave usable slots empty and force a needless next page.
   // Diversity and source-backed task selection above still get first choice.
-  if (selected.length < MAX_CARDS) for (const candidate of unique) {
+  if (selected.length < MAX_CARDS) for (const candidate of [...unique, ...incidental]) {
     if (selected.includes(candidate)) continue;
     selected.push(candidate);
     if (selected.length === MAX_CARDS) break;

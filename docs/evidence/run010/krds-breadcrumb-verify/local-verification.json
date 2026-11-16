@@ -1,0 +1,246 @@
+{
+  "startedAt": "2026-11-12T02:25:04.879Z",
+  "completedAt": "2026-11-12T02:26:23.971Z",
+  "localRegressionStatus": "PASS",
+  "requestedChecksStatus": "PASS",
+  "requestedMode": "local-with-core",
+  "scope": "Local regression, post-development core offline fixture quality, and synthetic performance. This is not independent blind validation, live task completion, or a full release/S07/S08/S09/S10 acceptance decision.",
+  "excluded": [
+    "live public-site observations and task completion",
+    "fresh blind evaluation",
+    "native extension installation and activeTab gesture",
+    "actual VoiceOver speech",
+    "real user study"
+  ],
+  "stages": [
+    {
+      "name": "typecheck",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 124.836709,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-typecheck.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/build.mjs"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 68.54208300000002,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-build.log"
+    },
+    {
+      "name": "playwright",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "node_modules/@playwright/test/cli.js",
+        "test",
+        "--reporter=list,json"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 69102.818959,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-playwright.log"
+    },
+    {
+      "name": "core-evaluation",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/evaluate.mjs",
+        "--engine=current",
+        "--classification-mode=institution",
+        "--suite=core",
+        "--split=all",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/core-regression"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 1170.2713749999966,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-core-evaluation.log"
+    },
+    {
+      "name": "performance",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 1849.183874999988,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-performance.log"
+    },
+    {
+      "name": "performance-flat",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--shape=flat",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 2314.312249999988,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-performance-flat.log"
+    },
+    {
+      "name": "performance-table",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.0.0/bin/node",
+        "scripts/benchmark.mjs",
+        "--shape=table",
+        "--output-dir=/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify"
+      ],
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "elapsedMilliseconds": 4458.498000000007,
+      "log": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/verify-performance-table.log"
+    }
+  ],
+  "tests": {
+    "expected": 531,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "durationMilliseconds": 68851.543,
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/playwright-local.json"
+  },
+  "coreQuality": {
+    "status": "PASS",
+    "suite": "core",
+    "evaluationPhase": "post-holdout-development",
+    "summary": {
+      "pages": 15,
+      "correct": 67,
+      "recommended": 69,
+      "matched": 45,
+      "expected": 45,
+      "precision": 0.9710144927536232,
+      "recall": 1,
+      "tasksRecommended": 15
+    },
+    "sites": [
+      {
+        "siteId": "city",
+        "pages": 3,
+        "correct": 16,
+        "recommended": 16,
+        "matched": 10,
+        "expected": 10,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "government",
+        "pages": 3,
+        "correct": 7,
+        "recommended": 7,
+        "matched": 6,
+        "expected": 6,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "library",
+        "pages": 3,
+        "correct": 11,
+        "recommended": 13,
+        "matched": 9,
+        "expected": 9,
+        "precision": 0.8461538461538461,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "public-agency",
+        "pages": 3,
+        "correct": 14,
+        "recommended": 14,
+        "matched": 11,
+        "expected": 11,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      },
+      {
+        "siteId": "smu",
+        "pages": 3,
+        "correct": 19,
+        "recommended": 19,
+        "matched": 9,
+        "expected": 9,
+        "precision": 1,
+        "recall": 1,
+        "tasksRecommended": 3,
+        "status": "PASS"
+      }
+    ],
+    "thresholds": {
+      "overallPrecision": 0.9,
+      "overallRecall": 0.85,
+      "sitePrecision": 0.8,
+      "siteRecall": 0.75,
+      "offlineTasksRecommended": 15
+    },
+    "scope": "Offline fixtures already used during development. Tasks recommended are not live task completion. This is not independent blind validation.",
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/core-regression/evaluation-current-institution-all.json"
+  },
+  "performance": {
+    "status": "PASS",
+    "runs": 10,
+    "analyzerP95Milliseconds": 27.799999952316284,
+    "overlayReadyP95Milliseconds": 107,
+    "thresholds": {
+      "analyzerP95Milliseconds": 300,
+      "overlayReadyP95Milliseconds": 1000
+    },
+    "scope": "Synthetic mixed 1,000-control page; headless Chromium; excludes real site loading and native toolbar activation.",
+    "report": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/performance.json"
+  },
+  "structuralPerformance": {
+    "status": "PASS",
+    "thresholds": {
+      "analyzerP95Milliseconds": 300,
+      "overlayReadyP95Milliseconds": 1000
+    },
+    "shapes": [
+      {
+        "shape": "flat",
+        "status": "PASS",
+        "runs": 10,
+        "analyzerP95Milliseconds": 28.59999990463257,
+        "overlayReadyP95Milliseconds": 141.60000014305115,
+        "report": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/performance-flat.json"
+      },
+      {
+        "shape": "table",
+        "status": "PASS",
+        "runs": 10,
+        "analyzerP95Milliseconds": 93.5,
+        "overlayReadyP95Milliseconds": 275.69999980926514,
+        "report": "/Users/khyun_03/easyweb/docs/evidence/run010/krds-breadcrumb-verify/performance-table.json"
+      }
+    ],
+    "scope": "Additional 1,000-control structures: one flat information-panel parent and 500 two-control table rows; ten samples per shape. Same thresholds; separate from the original mixed case and real sites."
+  }
+}

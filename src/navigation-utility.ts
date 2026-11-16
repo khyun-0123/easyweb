@@ -6,8 +6,8 @@ const listSelector = 'ul,ol,[role~="list" i],[role~="menu" i]';
 const itemSelector = 'li,[role~="listitem" i],[role~="menuitem" i]';
 const regionSelector = 'main,section,article,aside,header,footer,nav,[role~="main" i],[role~="region" i],[role~="navigation" i]';
 const headingSelector = ':is(h1,h2,h3,h4,h5,h6,[role~="heading" i])';
-const breadcrumbName = /^(?:breadcrumbs?(?:\s+(?:trail|navigation))?|현재\s*위치(?:\s*안내)?|사이트\s*경로)$/i;
-const breadcrumbClass = /^(?:breadcrumbs?|breadcrumb[-_]nav(?:igation)?|breadcrumb[-_]trail)$/i;
+const breadcrumbName = /^(?:breadcrumbs?(?:\s+(?:trail|navigation))?|브레드\s*크럼|현재\s*(?:위치(?:\s*안내)?|경로)|사이트\s*경로)$/i;
+const breadcrumbClass = /^(?:breadcrumbs?|breadcrumb[-_]nav(?:igation)?|breadcrumb[-_]trail|krds-breadcrumb-wrap)$/i;
 const noOpScript = /^javascript:\s*(?:;|void\s*\(\s*0\s*\)\s*;?)?$/i;
 
 export interface NavigationCache {
