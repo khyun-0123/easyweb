@@ -1,0 +1,24 @@
+{
+  "pageId": "knu-post",
+  "pageType": "form",
+  "purpose": "경북대학교 통합 로그인 화면에서 로그인하거나 아이디·비밀번호를 찾는다.",
+  "essential": [
+    { "i": 6, "label": "로그인", "kind": "login", "reason": "아이디·비밀번호 입력 뒤 로그인" },
+    { "i": 10, "label": "아이디 찾기", "kind": "other:계정찾기", "reason": "아이디를 잊었을 때" },
+    { "i": 9, "label": "비밀번호 분실/변경", "kind": "other:계정찾기", "reason": "비밀번호를 잊었을 때" },
+    { "i": 8, "label": "회원가입", "kind": "signup", "reason": "계정이 없을 때" }
+  ],
+  "useful": [
+    { "i": 11, "label": "도움말 도움말", "kind": "guide" },
+    { "i": 12, "label": "원격지원 원격지원", "kind": "contact" },
+    { "i": 15, "label": "학과 홈페이지", "kind": "related" },
+    { "i": 16, "label": "기관 홈페이지", "kind": "related" }
+  ],
+  "common": [
+    { "i": 0, "kind": "home" },
+    { "i": 6, "kind": "login" },
+    { "i": 8, "kind": "signup" }
+  ],
+  "idealSlots": 4,
+  "notes": "pageId는 post지만 실제로는 게시글이 아니라 로그인 페이지(appfn.knu.ac.kr/login.knu)다. 수집 과정에서 '로그인' 링크를 따라 들어온 것으로 보인다(reached-by). 게시글 평가 자료로 쓰면 안 된다. 아이디·비밀번호 입력칸(4·5)과 자동로그인 체크(7)는 값을 읽지 않는 원칙상 카드 대상에서 뺐다. 로그인 페이지 자체이므로 로그인 버튼은 카드로 두되 자동 제출은 하지 않고 원본 위치 안내가 맞다. 언어 선택(1~3), 정책 링크(13·14)는 넣지 않는다."
+}

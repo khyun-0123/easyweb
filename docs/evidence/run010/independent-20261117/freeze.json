@@ -1,0 +1,59 @@
+{
+ "frozenAt": "2026-11-17T02:03:07.791497+09:00",
+ "commit": "2fd667344e9f773db4cad170716c0436c8d0bbc1",
+ "workingTreeCleanForSrc": true,
+ "rule": "Engine source and model settings are frozen before TEST collection. TEST reviews are not used for any training or tuning. Model picks on TEST are saved before scoring. The first scored result is kept even if it fails; later fixes are reported separately.",
+ "files": {
+  "evaluation/survey/review-protocol-20261101.md": "5e75f29286cebf94031c313a8030351aae316944a83c0da5dd6609463f4afa05",
+  "evaluation/survey/sites-20261117-pool.json": "e6a9266ef58bfa61d7a9d5cdd8e24d5d55a0bbe505fbfbeb9c34331e28f12f60",
+  "evaluation/survey/sites-20261117-test.json": "7bb40c997ad24af81fb8fe774725d524b8851c8a6dce99c430e7ecffb77bb81d",
+  "scripts/ml/ondevice-llm.mjs": "ff02e17fd1a7414bb3aed8e8b1265f9c048b91793e2701002112336062cbd12b",
+  "scripts/ml/ondevice-rank.py": "cf105a96d758f5b74c26d0db7e1aba2ebae2264c4baf7e30800a447dcbfad6af",
+  "scripts/ml/ondevice-score.mjs": "2c7afbca49dc47da4cf78d5f3a133ed9c679058b3d3a4c7a3408064e9351639b",
+  "scripts/site-survey.mjs": "b5e82d23526d9731ffa91c0a613dd1273684d201f1dcb74e1f0b683416eca6d5",
+  "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+  "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+  "src/analyzer.ts": "2c2e725e4505d43b42482af4d0af3e2ef2e0a67b802581c474f9ecaa7fdf6468",
+  "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+  "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+  "src/classifier.ts": "210e8bffb33d2585c3dad12b7c291642464b262ac5125abadc779770c9fe307e",
+  "src/common-actions.ts": "e12dbacd5c423bdb1f6fce4b95155115276416ad4d3d4512d942197022080efb",
+  "src/content-evidence.ts": "b21f3f5908f6960d57b2c723c1a3ab4b38b9d16f8af5e9e133c92f081f9bf5a3",
+  "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+  "src/document-relations.ts": "0f53a7c9c73d264a458532fed1158bccde66d0744deda74b616826ab60fc6018",
+  "src/easy-mode.ts": "0c1704d9002d5c4cda1af4ae7960d751200946837196e86b52a658124becf659",
+  "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+  "src/institution-evidence.ts": "c9d6850624f51fe02730704b2e7852cb33bb3a886b8de933f1d4f6715999a4f6",
+  "src/navigation-utility.ts": "963974505ce15b5a9e66fc16368ebd95cee622e1f52fdde16ed4da824b3f8cbd",
+  "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+  "src/page-session.ts": "7c24b92805b0f207a3a4d9f44ad5fbbb29d6f2f48d8679ca51b361e8f9dc98b1",
+  "src/page-types.ts": "567ca6f853e0c4fa3d8a71b43948f6dd28c0232f50a6a4d3f23f43b95c124ee3",
+  "src/ranker.ts": "92e77337ebba0b40d032684e9b4b633b24d48870df04920bf7e1857cf472b790",
+  "src/relations.ts": "cd03dc861833d0ef2b10f243c10ab746969555ca0623fb9e9ed170d644315a2c",
+  "src/service-relations.ts": "c99b7f55bb1416e07dcf0f6f84b7e194145f9106e5923f01e67f36329719a084",
+  "src/types.ts": "53200279f32d6693a3221d531edfed4f87edfe98d61726d48d77eaa946576b82"
+ },
+ "amendments": [
+  {
+   "at": "2026-11-17T02:04:17.328730+09:00",
+   "what": "ondevice-rank.py re-frozen after adding --train/--predict (train on one set, apply to another) and teacher labels. Done while TEST collection was running and before any TEST file was read. Leave-one-site-out picks on the 134 development pages are identical to the earlier run (134/134)."
+  }
+ ],
+ "plan": {
+  "compared": [
+   "engine: first screen recorded by site-survey at TEST collection",
+   "student-review: char-ngram logistic model trained on the 134 Claude-reviewed development pages",
+   "teacher: gemma4:12b picks directly on TEST pages (ondevice-llm.mjs, same prompt as section 10)",
+   "student-teacher: same student trained only on gemma4:12b picks over POOL pages and the 134 development pages (no Claude labels)",
+   "student-both: Claude reviews of the 134 pages + gemma4:12b picks over POOL"
+  ],
+  "variants": "alone, hybrid (engine keeps list/post/gate pages), homeOnly",
+  "primary": "hybrid coverage of TEST essential vs engine, 95% site-level bootstrap interval (ondevice-score.mjs)",
+  "order": "all TEST picks are saved and hashed before TEST reviews are scored; no setting is changed after scoring"
+ },
+ "firstScore": {
+  "at": "2026-11-17T03:16:06.718954+09:00",
+  "file": "score-first.json",
+  "note": "First and only scoring of TEST. No setting changed after this."
+ }
+}

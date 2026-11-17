@@ -1,0 +1,103 @@
+{
+  "pageId": "nts-post",
+  "pageType": "board",
+  "purpose": "국세청 고시 목록에서 고시 글을 찾아 읽는다.",
+  "essential": [
+    {
+      "i": 35,
+      "label": "검색어를 입력하세요",
+      "kind": "search",
+      "reason": "고시 안에서 찾는 검색창"
+    },
+    {
+      "i": 37,
+      "label": "전자송달 서류의 범위 등에 대한 고시",
+      "kind": "post",
+      "reason": "최신 고시"
+    },
+    {
+      "i": 39,
+      "label": "‘자료집중기관’ 지정 고시",
+      "kind": "post",
+      "reason": "최신 고시"
+    },
+    {
+      "i": 41,
+      "label": "연말정산 인터넷 증빙서류에 관한 고시",
+      "kind": "post",
+      "reason": "최신 고시"
+    },
+    {
+      "i": 43,
+      "label": "소득공제가 되는 신용카드 등 사용금액 확인 등에 대한 고시",
+      "kind": "post",
+      "reason": "최신 고시"
+    },
+    {
+      "i": 45,
+      "label": "국세청장이 인터넷을 통하여 제공하는 소득공제 및 세액공제 증명서류에 관한 고시",
+      "kind": "post",
+      "reason": "최신 고시"
+    }
+  ],
+  "useful": [
+    {
+      "i": 21,
+      "label": "공고",
+      "kind": "filter"
+    },
+    {
+      "i": 22,
+      "label": "훈령∙고시 행정예고",
+      "kind": "filter"
+    },
+    {
+      "i": 23,
+      "label": "공지사항",
+      "kind": "board-list"
+    },
+    {
+      "i": 34,
+      "label": "검색 옵션",
+      "kind": "filter"
+    },
+    {
+      "i": 38,
+      "label": "첨부파일",
+      "kind": "download"
+    },
+    {
+      "i": 27,
+      "label": "국세상담센터 126 국세관련 모든 상담은 국번없이 126전국 어디서나 편리하게 상담받으세요. 평일 9시~18시 (탈세제보는 24시간)",
+      "kind": "contact"
+    }
+  ],
+  "common": [
+    {
+      "i": 4,
+      "kind": "home"
+    },
+    {
+      "i": 28,
+      "kind": "home"
+    },
+    {
+      "i": 84,
+      "kind": "other:사이트맵"
+    }
+  ],
+  "idealSlots": 6,
+  "board": {
+    "pinnedTop": 0,
+    "latestPostIs": [
+      37,
+      39,
+      41,
+      43,
+      45
+    ],
+    "showPinned": false,
+    "note": "고정 공지 표시가 보이지 않는다. 고시는 최신순이 아닐 수도 있다(날짜 미표시)."
+  },
+  "notes": "pageId는 post지만 실제로는 고시 '목록' 화면이다(개별 글 보기 아님). 구조는 nts-board와 같다. 글 제목이 javascript: 링크이고 첨부파일 링크가 글마다 붙는다. 날짜 정보가 없어 순서는 화면 위→아래로 판단했다."
+}
