@@ -1,0 +1,1590 @@
+{
+  "checkedAt": "2026-11-18T15:43:57.653Z",
+  "scope": "Diagnostic only. Replays saved picks; no model called. Reference is an engine-blind Claude review, not human users.",
+  "rule": {
+    "blocked": "input:password on the page, or title matches /로그인|본인\\s*인증|본인확인|결제|마이\\s*페이지|회원\\s*정보|비밀번호/",
+    "ruled": "engine home, list, post, gate",
+    "target": "everything else"
+  },
+  "pages": 89,
+  "routes": {
+    "ruled": 34,
+    "target": 53,
+    "blocked": 2
+  },
+  "gate": {
+    "acrc-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "acrc-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "acrc-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "acrc-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "acrc-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "goyang-board": {
+      "route": "target",
+      "why": "default"
+    },
+    "goyang-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "goyang-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "goyang-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "goyang-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "goyang-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "gwangju-board": {
+      "route": "target",
+      "why": "default"
+    },
+    "gwangju-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "gwangju-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "gwangju-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "gwangju-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "gwangju-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "incheon-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "incheon-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "incheon-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "incheon-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "incheon-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "kca-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kca-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "kca-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "kca-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "kca-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "kdca-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kdca-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "kdca-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "kdca-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "kdca-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "knu-academic": {
+      "route": "target",
+      "why": "default"
+    },
+    "knu-board": {
+      "route": "target",
+      "why": "default"
+    },
+    "knu-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "knu-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "knu-post": {
+      "route": "blocked",
+      "why": "password field"
+    },
+    "knu-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "korea-academic": {
+      "route": "target",
+      "why": "default"
+    },
+    "korea-board": {
+      "route": "target",
+      "why": "default"
+    },
+    "korea-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "korea-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "korea-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "korea-post": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "korea-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "kosaf-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kosaf-faq": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kosaf-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "kosaf-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "kosaf-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "kosaf-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "kosaf-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "mapo-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "mapo-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "mapo-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "mapo-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "mapo-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "moel-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "moel-faq": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "moel-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "moel-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "moel-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "moel-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "mois-board": {
+      "route": "target",
+      "why": "default"
+    },
+    "mois-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "mois-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "mois-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "mois-main": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "mois-post": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "mois-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "museum-board": {
+      "route": "target",
+      "why": "default"
+    },
+    "museum-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "museum-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "museum-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "museum-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "museum-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "nts-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "nts-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "nts-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "nts-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "nts-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "nts-post": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "nts-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "pusan-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "seongnam-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "seongnam-faq": {
+      "route": "blocked",
+      "why": "password field"
+    },
+    "seongnam-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "seongnam-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "seongnam-service": {
+      "route": "ruled",
+      "why": "list"
+    }
+  },
+  "engine": {
+    "coverage": 41.4,
+    "usefulPrecision": 55.9,
+    "bySite": {
+      "acrc": {
+        "essential": 27,
+        "covered": 13
+      },
+      "goyang": {
+        "essential": 28,
+        "covered": 8
+      },
+      "gwangju": {
+        "essential": 29,
+        "covered": 5
+      },
+      "incheon": {
+        "essential": 27,
+        "covered": 13
+      },
+      "kca": {
+        "essential": 28,
+        "covered": 14
+      },
+      "kdca": {
+        "essential": 27,
+        "covered": 15
+      },
+      "knu": {
+        "essential": 28,
+        "covered": 6
+      },
+      "korea": {
+        "essential": 30,
+        "covered": 11
+      },
+      "kosaf": {
+        "essential": 34,
+        "covered": 17
+      },
+      "mapo": {
+        "essential": 19,
+        "covered": 5
+      },
+      "moel": {
+        "essential": 35,
+        "covered": 17
+      },
+      "mois": {
+        "essential": 38,
+        "covered": 19
+      },
+      "museum": {
+        "essential": 25,
+        "covered": 9
+      },
+      "nts": {
+        "essential": 41,
+        "covered": 20
+      },
+      "pusan": {
+        "essential": 1,
+        "covered": 0
+      },
+      "seongnam": {
+        "essential": 27,
+        "covered": 12
+      }
+    },
+    "byType": {
+      "board": {
+        "pages": 18,
+        "coverage": 67.6,
+        "usefulPrecision": 72.6
+      },
+      "home": {
+        "pages": 16,
+        "coverage": 37.9,
+        "usefulPrecision": 52.8
+      },
+      "location": {
+        "pages": 13,
+        "coverage": 35,
+        "usefulPrecision": 45.8
+      },
+      "service": {
+        "pages": 12,
+        "coverage": 20.4,
+        "usefulPrecision": 42.6
+      },
+      "info": {
+        "pages": 9,
+        "coverage": 24.4,
+        "usefulPrecision": 51
+      },
+      "post": {
+        "pages": 8,
+        "coverage": 70.4,
+        "usefulPrecision": 69.7
+      },
+      "faq": {
+        "pages": 7,
+        "coverage": 34.2,
+        "usefulPrecision": 61.5
+      },
+      "form": {
+        "pages": 2,
+        "coverage": 25,
+        "usefulPrecision": 28.6
+      },
+      "calendar": {
+        "pages": 2,
+        "coverage": 0,
+        "usefulPrecision": 41.7
+      },
+      "gate": {
+        "pages": 1,
+        "coverage": 0,
+        "usefulPrecision": null
+      },
+      "other": {
+        "pages": 1,
+        "coverage": 0,
+        "usefulPrecision": 50
+      }
+    }
+  },
+  "models": {
+    "lambdarank-js-more": {
+      "file": "test-js-more.json",
+      "gated": {
+        "coverage": 43.2,
+        "usefulPrecision": 55.4,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 14
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 7
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 5
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 14
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 14
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 15
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 11
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 11
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 17
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 3
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 17
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 19
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 9
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 24
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 0
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 12
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 70.6,
+            "usefulPrecision": 75.5
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 34,
+            "usefulPrecision": 52.8
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 33.3,
+            "usefulPrecision": 42.1
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 29.6,
+            "usefulPrecision": 45.3
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 29.3,
+            "usefulPrecision": 46
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 39.5,
+            "usefulPrecision": 56.1
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 25,
+            "usefulPrecision": 57.1
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 14.3,
+            "usefulPrecision": 33.3
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 1.8,
+          "interval95": [
+            -0.8,
+            4.9
+          ]
+        },
+        "modelPages": 52
+      },
+      "hybrid": {
+        "coverage": 43.9,
+        "usefulPrecision": 56.9,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 14
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 7
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 8
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 17
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 15
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 15
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 11
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 11
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 17
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 3
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 17
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 19
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 9
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 22
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 0
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 10
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 70.6,
+            "usefulPrecision": 75.5
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 36.9,
+            "usefulPrecision": 61.1
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 33.3,
+            "usefulPrecision": 42.1
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 29.6,
+            "usefulPrecision": 45.3
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 29.3,
+            "usefulPrecision": 46
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 39.5,
+            "usefulPrecision": 56.1
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 25,
+            "usefulPrecision": 57.1
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 14.3,
+            "usefulPrecision": 33.3
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 2.5,
+          "interval95": [
+            -0.5,
+            6.2
+          ]
+        }
+      }
+    },
+    "lambdarank-js-pool": {
+      "file": "test-js-pool.json",
+      "gated": {
+        "coverage": 42.8,
+        "usefulPrecision": 54.3,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 14
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 7
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 5
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 14
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 14
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 15
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 11
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 11
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 17
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 2
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 17
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 19
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 9
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 23
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 0
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 12
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 70.6,
+            "usefulPrecision": 75.5
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 34,
+            "usefulPrecision": 52.8
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 31.7,
+            "usefulPrecision": 39
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 29.6,
+            "usefulPrecision": 43.8
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 26.8,
+            "usefulPrecision": 44
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 39.5,
+            "usefulPrecision": 54.8
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 25,
+            "usefulPrecision": 57.1
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 14.3,
+            "usefulPrecision": 33.3
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 1.4,
+          "interval95": [
+            -1.4,
+            4.5
+          ]
+        },
+        "modelPages": 52
+      },
+      "hybrid": {
+        "coverage": 43.7,
+        "usefulPrecision": 55.9,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 14
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 8
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 8
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 17
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 15
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 15
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 11
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 11
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 17
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 2
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 17
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 19
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 9
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 21
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 0
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 10
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 70.6,
+            "usefulPrecision": 75.5
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 37.9,
+            "usefulPrecision": 61.1
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 31.7,
+            "usefulPrecision": 39
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 29.6,
+            "usefulPrecision": 43.8
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 26.8,
+            "usefulPrecision": 44
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 39.5,
+            "usefulPrecision": 54.8
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 25,
+            "usefulPrecision": 57.1
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 14.3,
+            "usefulPrecision": 33.3
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 2.3,
+          "interval95": [
+            -0.9,
+            6.2
+          ]
+        }
+      }
+    },
+    "lambdarank-js-raw": {
+      "file": "test-js-raw.json",
+      "gated": {
+        "coverage": 53.8,
+        "usefulPrecision": 62.1,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 16
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 13
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 9
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 13
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 17
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 14
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 15
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 22
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 21
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 3
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 22
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 23
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 13
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 24
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 1
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 13
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 76.5,
+            "usefulPrecision": 82.4
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 36.9,
+            "usefulPrecision": 56
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 50,
+            "usefulPrecision": 52.6
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 55.6,
+            "usefulPrecision": 52.8
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 34.1,
+            "usefulPrecision": 42.6
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 55.3,
+            "usefulPrecision": 78.6
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 71.4
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 57.1,
+            "usefulPrecision": 50
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 66.7
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 12.4,
+          "interval95": [
+            7.2,
+            18.3
+          ]
+        },
+        "modelPages": 53
+      },
+      "hybrid": {
+        "coverage": 55.2,
+        "usefulPrecision": 63.2,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 16
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 15
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 12
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 16
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 16
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 14
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 17
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 22
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 22
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 3
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 20
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 23
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 13
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 22
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 1
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 13
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 76.5,
+            "usefulPrecision": 82.4
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 38.8,
+            "usefulPrecision": 62.5
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 50,
+            "usefulPrecision": 52.6
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 55.6,
+            "usefulPrecision": 52.8
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 34.1,
+            "usefulPrecision": 42.6
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 55.3,
+            "usefulPrecision": 78.6
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 75,
+            "usefulPrecision": 66.7
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 57.1,
+            "usefulPrecision": 50
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 66.7
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 66.7,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 13.8,
+          "interval95": [
+            8.1,
+            20.8
+          ]
+        }
+      }
+    },
+    "char-ngram-lambdarank": {
+      "file": "test-lambdarank.json",
+      "gated": {
+        "coverage": 52,
+        "usefulPrecision": 61.5,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 16
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 13
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 9
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 13
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 16
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 14
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 15
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 20
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 21
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 3
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 22
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 20
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 12
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 23
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 1
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 13
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 76.5,
+            "usefulPrecision": 81.5
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 33,
+            "usefulPrecision": 52.7
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 46.7,
+            "usefulPrecision": 53.8
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 53.7,
+            "usefulPrecision": 52.8
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 31.7,
+            "usefulPrecision": 40.7
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 55.3,
+            "usefulPrecision": 81
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 71.4
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 57.1,
+            "usefulPrecision": 50
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 66.7
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 10.6,
+          "interval95": [
+            5.6,
+            16.1
+          ]
+        },
+        "modelPages": 53
+      },
+      "hybrid": {
+        "coverage": 53.2,
+        "usefulPrecision": 62.2,
+        "bySite": {
+          "acrc": {
+            "essential": 27,
+            "covered": 16
+          },
+          "goyang": {
+            "essential": 28,
+            "covered": 15
+          },
+          "gwangju": {
+            "essential": 29,
+            "covered": 11
+          },
+          "incheon": {
+            "essential": 27,
+            "covered": 17
+          },
+          "kca": {
+            "essential": 28,
+            "covered": 15
+          },
+          "kdca": {
+            "essential": 27,
+            "covered": 14
+          },
+          "knu": {
+            "essential": 28,
+            "covered": 17
+          },
+          "korea": {
+            "essential": 30,
+            "covered": 20
+          },
+          "kosaf": {
+            "essential": 34,
+            "covered": 21
+          },
+          "mapo": {
+            "essential": 19,
+            "covered": 3
+          },
+          "moel": {
+            "essential": 35,
+            "covered": 20
+          },
+          "mois": {
+            "essential": 38,
+            "covered": 20
+          },
+          "museum": {
+            "essential": 25,
+            "covered": 12
+          },
+          "nts": {
+            "essential": 41,
+            "covered": 21
+          },
+          "pusan": {
+            "essential": 1,
+            "covered": 1
+          },
+          "seongnam": {
+            "essential": 27,
+            "covered": 13
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 76.5,
+            "usefulPrecision": 81.5
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 34,
+            "usefulPrecision": 57.3
+          },
+          "location": {
+            "pages": 13,
+            "coverage": 46.7,
+            "usefulPrecision": 53.8
+          },
+          "service": {
+            "pages": 12,
+            "coverage": 53.7,
+            "usefulPrecision": 52.8
+          },
+          "info": {
+            "pages": 9,
+            "coverage": 31.7,
+            "usefulPrecision": 40.7
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 70.4,
+            "usefulPrecision": 69.7
+          },
+          "faq": {
+            "pages": 7,
+            "coverage": 55.3,
+            "usefulPrecision": 81
+          },
+          "form": {
+            "pages": 2,
+            "coverage": 75,
+            "usefulPrecision": 66.7
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 57.1,
+            "usefulPrecision": 50
+          },
+          "gate": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 66.7
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 66.7,
+            "usefulPrecision": 50
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 11.8,
+          "interval95": [
+            6.3,
+            18.6
+          ]
+        }
+      }
+    }
+  }
+}

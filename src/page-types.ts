@@ -3,6 +3,7 @@ import { isSafeSource, locationAction } from './classifier';
 import { isDocumentDownload } from './action-policy';
 import { commonActions, isHomePage, withoutCommon, type CommonAction } from './common-actions';
 import { rank } from './ranker';
+import { learnedOrder } from './learned-hook';
 
 // Page types from the 2026-11-01 survey (docs/reviews/site_survey_20261101.md).
 // Each type fills its leading cards from the page's own structure; anything
@@ -192,6 +193,22 @@ export function composeFirstScreen(raw: Candidate[], classified: Candidate[]): F
   const elements = new Set(slots.map(candidate => candidate.element));
   const destinations = new Set(slots.map(destination).filter(Boolean));
   const remaining = rest.filter(candidate => !elements.has(candidate.element) && !(destination(candidate) && destinations.has(destination(candidate))));
+  // Experiment build only: on a page the rules left as default, a learned ranker orders the
+  // guarded analyzer candidates (src/learned-hook.experiment.ts). The default build returns undefined.
+  const learned = type === 'default' && !home ? learnedOrder(raw, classified, new Set(common.map(item => item.candidate.element))) : undefined;
+  if (learned?.length) {
+    const picked: Candidate[] = [], seen = new Set<string>();
+    for (const candidate of learned) {
+      const to = destination(candidate);
+      if (to && seen.has(to)) continue;
+      if (to) seen.add(to);
+      picked.push(candidate);
+      if (picked.length === MAX_CARDS) break;
+    }
+    const shown = new Set(picked.map(candidate => candidate.element));
+    classifiedBy = new Map();
+    return { type, common, cards: picked, pool: [...extra, ...rest.filter(candidate => !shown.has(candidate.element))] };
+  }
   const cards = slots.length >= target ? slots : [...slots, ...rank(remaining).slice(0, target - slots.length)];
   classifiedBy = new Map();
   return { type, common, cards, pool: [...extra, ...remaining] };

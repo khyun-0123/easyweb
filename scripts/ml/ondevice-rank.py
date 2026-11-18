@@ -12,6 +12,9 @@ Without --predict, pages are scored leave-one-site-out over the training
 sources (section 10). With --predict=<elements dir>@<survey.json>, one model is
 trained on everything and applied to those pages (section 11, independent set).
 
+--export=<model.json> (lambdarank with --predict) writes the fitted vocabularies, encoder
+categories and trees for the extension's experiment build (src/learned-ranker.ts); --scores=<file>
+writes every predicted control score so the JS port can be checked against this script.
 --algo=lambdarank swaps the logistic model for LightGBM LambdaRank grouped by page, with graded
 labels from reviews (essential 2, useful 1); teacher picks count as 2. Default stays logreg.
 
@@ -27,7 +30,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 args = dict(a[2:].split('=', 1) for a in sys.argv[1:])
 for key in args:
-    if key not in {'train', 'predict', 'output', 'embeddings', 'name', 'algo'}:
+    if key not in {'train', 'predict', 'output', 'embeddings', 'name', 'algo', 'export', 'scores'}:
         raise SystemExit(f'Unknown option: --{key}')
 
 ALGO = args.get('algo', 'logreg')
@@ -130,13 +133,14 @@ def fit(train):
         model = lightgbm.LGBMRanker(objective='lambdarank', n_estimators=300, learning_rate=0.05, num_leaves=31,
                                     min_child_samples=10, lambdarank_truncation_level=10, random_state=20261118, verbose=-1)
         model.fit(features(train, first=True).astype(np.float32), [r['gain'] for r in train], group=groups, eval_at=[6])
+        fitted.update(label=label, context=context, meta=meta, model=model)
         return lambda part: model.predict(features(part).astype(np.float32))
     model = LogisticRegression(C=1.0, max_iter=3000, class_weight='balanced')
     model.fit(features(train, first=True), [r['y'] for r in train])
     return lambda part: model.predict_proba(features(part))[:, 1]
 
 
-picks, fit_ms, predict_ms = {}, [], []
+picks, fit_ms, predict_ms, fitted, all_scores = {}, [], [], {}, {}
 
 
 def choose(score, part_records):
@@ -146,6 +150,7 @@ def choose(score, part_records):
         scores = score(part)
         predict_ms.append((time.perf_counter() - started) * 1000)
         picks[page_id] = [int(part[k]['i']) for k in np.argsort(-scores)[:6]]
+        all_scores[page_id] = {int(r['i']): float(v) for r, v in zip(part, scores)}
 
 
 if targets:
@@ -168,4 +173,17 @@ json.dump(dict(model=args.get('name', ('char-ngram-lambdarank' if ALGO == 'lambd
                fitMsMedian=round(float(np.median(fit_ms)), 1), predictMsPerPageMedian=round(float(np.median(predict_ms)), 2),
                pages=[dict(pageId=p, picks=v) for p, v in sorted(picks.items())]),
           open(args['output'], 'w'), ensure_ascii=False, indent=1)
+if 'scores' in args:
+    json.dump(all_scores, open(args['scores'], 'w'))
+if 'export' in args:
+    if ALGO != 'lambdarank' or not targets or 'embeddings' in args:
+        raise SystemExit('--export needs --algo=lambdarank and --predict, without --embeddings')
+    def vocab(v):
+        return dict(ngram=list(v.ngram_range), terms={t: [int(n), float(v.idf_[n])] for t, n in v.vocabulary_.items()})
+    dump = fitted['model'].booster_.dump_model()
+    json.dump(dict(format='easyweb-lambdarank-1', note='Diagnostic experiment model. Trained on engine-blind Claude reviews of the 2026-11-01 development pages.',
+                   trained=protocol, label=vocab(fitted['label']), context=vocab(fitted['context']), contextWeight=0.5,
+                   meta=[list(map(str, c)) for c in fitted['meta'].categories_], numeric=['y/pageHeight', 'index/count', 'fontPx/20', 'min(labelLength,40)/40'],
+                   trees=[t['tree_structure'] for t in dump['tree_info']]),
+              open(args['export'], 'w'), ensure_ascii=False, separators=(',', ':'))
 print(f"{protocol}; fit {np.median(fit_ms):.0f}ms, predict {np.median(predict_ms):.2f}ms/page")

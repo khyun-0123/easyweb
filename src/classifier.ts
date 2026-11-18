@@ -412,6 +412,52 @@ function readonlyHelpDocument(candidate: Candidate, label: string, target: strin
   return { ...candidate, category: 'help', score: 72, reasons: ['도움말 안내 문서 읽기', '도움말 목적과 목록의 명시적 읽기 문서'], pageTask: 'reading' };
 }
 
+// Source guard shared by classify() and the experiment build's learned ordering
+// (src/learned-hook.experiment.ts): page position/ordering/page tools, explicit dangerous
+// scripts, non-HTTP(S) destinations and dangerous URLs are rejected before any reading.
+// Returns undefined when the source is rejected. Reads fixed attributes only.
+export function sourceGuard(candidate: Candidate, navigationCache = createNavigationCache()) {
+  // Machine-authored accessible names can separate words with _ or -. This
+  // lexical view does not alter source labels, URL paths or action metadata.
+  const sourceLabel = normalize(candidate.label).replace(/[_-]+/g, ' ');
+  const documentDownload = candidate.action === 'locate' && isDocumentDownload(candidate.element, candidate.label);
+  // File names remain unchanged in Candidate/UI. Strip a known document
+  // suffix only from this lexical view of an explicit download control.
+  const label = documentDownload ? sourceLabel.replace(documentExtension, '').trim() : sourceLabel;
+  const utility = navigationUtility(candidate.element, candidate.label, navigationCache);
+  if (utility === 'position') return undefined;
+  if (orderingLabel.test(label)) return undefined;
+  if (pageToolLabel.test(label.replace(/^\S+\s+(?=(?:전자\s*)?점자)/, ''))) return undefined;
+  // Reject an explicit dangerous command before any lexical fallback can
+  // revive a source that a structural reading branch has already rejected.
+  // This inspects fixed attributes only and never executes source scripts.
+  if (hasDangerousScript(candidate.element)) return undefined;
+  let url: URL | undefined;
+  if (candidate.href) {
+    try { url = new URL(candidate.href); } catch { return undefined; }
+    if (!/^https?:$/.test(url.protocol)) return undefined;
+  }
+  const parts = url ? pathParts(url) : [];
+  if (url && isDangerousURL(url, parts)) return undefined;
+  let inspectionURL = url;
+  if (!url) {
+    // A locate action intentionally omits href from Candidate, but an
+    // explicit source HTTP command is still safety evidence. Read only the
+    // fixed destination metadata, without promoting it to navigation.
+    const raw = candidate.element.getAttribute('href')?.trim() ?? '';
+    if (raw && !/^(?:#|javascript:)/i.test(raw)) {
+      try {
+        const sourceURL = new URL(raw, document.baseURI);
+        if (/^https?:$/.test(sourceURL.protocol)) {
+          if (isDangerousURL(sourceURL, pathParts(sourceURL))) return undefined;
+          inspectionURL = sourceURL;
+        }
+      } catch { /* An unresolved source stays a locate action. */ }
+    }
+  }
+  return { label, documentDownload, utility, url, parts, inspectionURL };
+}
+
 export function classify(candidates: Candidate[], options: ClassificationOptions = {}): Candidate[] {
   const mode = options.mode ?? 'institution';
   const collectionCache: CollectionCache = new WeakMap();
@@ -421,44 +467,9 @@ export function classify(candidates: Candidate[], options: ClassificationOptions
   const navigationCache = createNavigationCache();
   const relationCache = createRelationCache();
   const classified = candidates.flatMap<Candidate>(candidate => {
-    // Machine-authored accessible names can separate words with _ or -. This
-    // lexical view does not alter source labels, URL paths or action metadata.
-    const sourceLabel = normalize(candidate.label).replace(/[_-]+/g, ' ');
-    const documentDownload = candidate.action === 'locate' && isDocumentDownload(candidate.element, candidate.label);
-    // File names remain unchanged in Candidate/UI. Strip a known document
-    // suffix only from this lexical view of an explicit download control.
-    const label = documentDownload ? sourceLabel.replace(documentExtension, '').trim() : sourceLabel;
-    const utility = navigationUtility(candidate.element, candidate.label, navigationCache);
-    if (utility === 'position') return [];
-    if (orderingLabel.test(label)) return [];
-    if (pageToolLabel.test(label.replace(/^\S+\s+(?=(?:전자\s*)?점자)/, ''))) return [];
-    // Reject an explicit dangerous command before any lexical fallback can
-    // revive a source that a structural reading branch has already rejected.
-    // This inspects fixed attributes only and never executes source scripts.
-    if (hasDangerousScript(candidate.element)) return [];
-    let url: URL | undefined;
-    if (candidate.href) {
-      try { url = new URL(candidate.href); } catch { return []; }
-      if (!/^https?:$/.test(url.protocol)) return [];
-    }
-    const parts = url ? pathParts(url) : [];
-    if (url && isDangerousURL(url, parts)) return [];
-    let inspectionURL = url;
-    if (!url) {
-      // A locate action intentionally omits href from Candidate, but an
-      // explicit source HTTP command is still safety evidence. Read only the
-      // fixed destination metadata, without promoting it to navigation.
-      const raw = candidate.element.getAttribute('href')?.trim() ?? '';
-      if (raw && !/^(?:#|javascript:)/i.test(raw)) {
-        try {
-          const sourceURL = new URL(raw, document.baseURI);
-          if (/^https?:$/.test(sourceURL.protocol)) {
-            if (isDangerousURL(sourceURL, pathParts(sourceURL))) return [];
-            inspectionURL = sourceURL;
-          }
-        } catch { /* An unresolved source stays a locate action. */ }
-      }
-    }
+    const guard = sourceGuard(candidate, navigationCache);
+    if (!guard) return [];
+    const { label, documentDownload, utility, url, parts, inspectionURL } = guard;
     const target = endpoint(parts);
     // Verified reading metadata can describe payment/history topics. The URL
     // command guard runs first; the narrow reading/card branches retain the

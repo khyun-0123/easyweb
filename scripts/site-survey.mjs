@@ -9,7 +9,7 @@ import path from 'node:path';
 // for an engine-blind importance review, and (2) the engine's common row, cards
 // and later menus, bound to the same indices by element identity rather than
 // by name. No clicks, no input, no form values. Headless only.
-for (const arg of process.argv.slice(2)) if (!/^--(?:seeds|output-dir|html-dir|max-pages|replay|composition)=.+$/.test(arg)) throw Error(`Unknown option: ${arg}`);
+for (const arg of process.argv.slice(2)) if (!/^--(?:seeds|output-dir|html-dir|max-pages|replay|composition)=.+$|^--learned$/.test(arg)) throw Error(`Unknown option: ${arg}`);
 const value = name => process.argv.find(arg => arg.startsWith(`--${name}=`))?.slice(name.length + 3);
 const seedsFile = value('seeds'), outputDir = value('output-dir'), htmlDir = value('html-dir');
 const maxPages = Number(value('max-pages') ?? 7);
@@ -26,8 +26,10 @@ const engine = await build({ stdin: {
 const commonOnly=(raw,classified)=>{const common=commonActions(raw,classified);const pool=withoutCommon(classified,common);return {type:'default',common,cards:rank(pool),pool};}; import {composeFirstScreen} from './src/page-types';
 window.easywebSurvey=()=>{const els=window.__surveyEls??[];const raw=analyzePage();const classified=classify(raw);const screen=${value('composition') === 'common-only' ? 'commonOnly' : 'composeFirstScreen'}(raw,classified);const common=screen.common;const rest=screen.pool;const cards=screen.cards;
 const show=c=>({i:els.indexOf(c.element),category:c.category??null,label:c.label,title:c.title??null,action:c.action,section:c.sectionLabel??null,context:c.context,score:c.score??null,pageTask:c.pageTask??null,reason:(c.reasons??[])[0]??null});
-return {pageType:screen.type,homePage:isHomePage(),candidateCount:raw.length,classifiedCount:classified.length,common:common.map(({kind,candidate})=>({kind,...show(candidate)})),cards:cards.map(show),more:[...remainingMenus(rest,cards)].slice(0,40).map(show)};};`,
-  resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife' });
+return {pageType:screen.type,homePage:isHomePage(),candidateCount:raw.length,classifiedCount:classified.length,common:common.map(({kind,candidate})=>({kind,...show(candidate)})),cards:cards.map(show),more:[...remainingMenus(rest,cards)].slice(0,40).map(show),rawIndex:raw.map(c=>els.indexOf(c.element)),poolIndex:rest.map(c=>els.indexOf(c.element))};};`,
+  resolveDir: process.cwd(), loader: 'ts' }, bundle: true, write: false, format: 'iife',
+  // --learned measures the experiment build: the learned hook replaces the default stub (scripts/build.mjs).
+  plugins: [{ name: 'learned-hook', setup(b) { b.onResolve({ filter: /^\.\/learned-hook$/ }, () => ({ path: path.resolve(`src/learned-hook${process.argv.includes('--learned') ? '.experiment' : ''}.ts`) })); } }] });
 
 const collect = () => {
   const clip = (s, n) => (s ?? '').replace(/\s+/g, ' ').trim().slice(0, n);
@@ -174,7 +176,8 @@ if (replay) {
         return slots.get(k)?.[n] ?? -1;
       });
       const remap = list => list.map(item => ({ ...item, i: item.i >= 0 ? mapIndex[item.i] : -1 }));
-      const engineResult = { ...observed.engine, common: remap(observed.engine.common), cards: remap(observed.engine.cards), more: remap(observed.engine.more) };
+      const remapIndex = list => (list ?? []).map(i => i >= 0 ? mapIndex[i] : -1);
+      const engineResult = { ...observed.engine, common: remap(observed.engine.common), cards: remap(observed.engine.cards), more: remap(observed.engine.more), rawIndex: remapIndex(observed.engine.rawIndex), poolIndex: remapIndex(observed.engine.poolIndex) };
       pages.push({ ...target, engine: engineResult, replay: { controls: observed.data.items.length, originalControls: original.length, mapped: mapIndex.filter(i => i >= 0).length } });
       console.log(`${target.pageId}: ${engineResult.pageType} · mapped ${mapIndex.filter(i => i >= 0).length}/${original.length} · ${engineResult.cards.map(c => (c.title ?? c.label).slice(0, 14)).join(' / ')}`);
     }

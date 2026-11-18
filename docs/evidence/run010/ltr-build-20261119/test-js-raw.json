@@ -1,0 +1,982 @@
+{
+ "model": "lambdarank-js-raw",
+ "scope": "Diagnostic only. JS port of the experiment model, picks restricted to engine candidates (cards + more).",
+ "pages": [
+  {
+   "pageId": "acrc-board",
+   "picks": [
+    25,
+    27,
+    28,
+    30,
+    31,
+    29
+   ]
+  },
+  {
+   "pageId": "acrc-home",
+   "picks": [
+    52,
+    53,
+    178,
+    26,
+    23,
+    37
+   ]
+  },
+  {
+   "pageId": "acrc-location",
+   "picks": [
+    20,
+    22,
+    19,
+    44,
+    26,
+    36
+   ]
+  },
+  {
+   "pageId": "acrc-post",
+   "picks": [
+    26,
+    29,
+    31,
+    34,
+    24,
+    25
+   ]
+  },
+  {
+   "pageId": "acrc-service",
+   "picks": [
+    20,
+    38,
+    30,
+    49,
+    16,
+    41
+   ]
+  },
+  {
+   "pageId": "goyang-board",
+   "picks": [
+    33,
+    40,
+    30,
+    67,
+    24,
+    29
+   ]
+  },
+  {
+   "pageId": "goyang-faq",
+   "picks": [
+    38,
+    27,
+    23,
+    29,
+    30,
+    34
+   ]
+  },
+  {
+   "pageId": "goyang-guide",
+   "picks": [
+    56,
+    80,
+    36,
+    44,
+    75,
+    29
+   ]
+  },
+  {
+   "pageId": "goyang-home",
+   "picks": [
+    91,
+    31,
+    96,
+    89,
+    95,
+    132
+   ]
+  },
+  {
+   "pageId": "goyang-location",
+   "picks": [
+    32,
+    33,
+    30,
+    34,
+    28,
+    27
+   ]
+  },
+  {
+   "pageId": "goyang-service",
+   "picks": [
+    39,
+    40,
+    38,
+    41,
+    37,
+    27
+   ]
+  },
+  {
+   "pageId": "gwangju-board",
+   "picks": [
+    35,
+    37,
+    19,
+    44,
+    21,
+    18
+   ]
+  },
+  {
+   "pageId": "gwangju-faq",
+   "picks": [
+    36,
+    25,
+    35,
+    40,
+    38,
+    37
+   ]
+  },
+  {
+   "pageId": "gwangju-home",
+   "picks": [
+    30,
+    25,
+    20,
+    83,
+    29,
+    31
+   ]
+  },
+  {
+   "pageId": "gwangju-location",
+   "picks": [
+    19,
+    25,
+    23,
+    22,
+    31,
+    45
+   ]
+  },
+  {
+   "pageId": "gwangju-post",
+   "picks": [
+    35,
+    19,
+    18,
+    21,
+    20,
+    26
+   ]
+  },
+  {
+   "pageId": "gwangju-service",
+   "picks": [
+    35,
+    42,
+    38,
+    26,
+    39,
+    32
+   ]
+  },
+  {
+   "pageId": "incheon-board",
+   "picks": [
+    33,
+    35,
+    38,
+    43,
+    37,
+    36
+   ]
+  },
+  {
+   "pageId": "incheon-home",
+   "picks": [
+    51,
+    67,
+    46,
+    52,
+    48,
+    98
+   ]
+  },
+  {
+   "pageId": "incheon-location",
+   "picks": [
+    27,
+    31,
+    45,
+    33,
+    47,
+    28
+   ]
+  },
+  {
+   "pageId": "incheon-post",
+   "picks": [
+    33,
+    26,
+    21,
+    25,
+    32,
+    17
+   ]
+  },
+  {
+   "pageId": "incheon-service",
+   "picks": [
+    24,
+    27,
+    30,
+    26,
+    23,
+    29
+   ]
+  },
+  {
+   "pageId": "kca-board",
+   "picks": [
+    42,
+    46,
+    78,
+    44,
+    81,
+    50
+   ]
+  },
+  {
+   "pageId": "kca-guide",
+   "picks": [
+    36,
+    16,
+    45,
+    42,
+    39,
+    40
+   ]
+  },
+  {
+   "pageId": "kca-home",
+   "picks": [
+    103,
+    95,
+    111,
+    70,
+    50,
+    105
+   ]
+  },
+  {
+   "pageId": "kca-post",
+   "picks": [
+    54,
+    47,
+    43,
+    41,
+    44,
+    46
+   ]
+  },
+  {
+   "pageId": "kca-service",
+   "picks": [
+    52,
+    53,
+    35,
+    50,
+    54,
+    55
+   ]
+  },
+  {
+   "pageId": "kdca-board",
+   "picks": [
+    40,
+    42,
+    43,
+    44,
+    45,
+    46
+   ]
+  },
+  {
+   "pageId": "kdca-faq",
+   "picks": [
+    30,
+    15,
+    16,
+    33,
+    14,
+    12
+   ]
+  },
+  {
+   "pageId": "kdca-home",
+   "picks": [
+    21,
+    24,
+    46,
+    22,
+    25,
+    20
+   ]
+  },
+  {
+   "pageId": "kdca-location",
+   "picks": [
+    21,
+    18,
+    22,
+    16,
+    20,
+    17
+   ]
+  },
+  {
+   "pageId": "kdca-service",
+   "picks": [
+    15,
+    24,
+    14,
+    16,
+    23,
+    35
+   ]
+  },
+  {
+   "pageId": "knu-academic",
+   "picks": [
+    37,
+    26,
+    40,
+    39,
+    20,
+    32
+   ]
+  },
+  {
+   "pageId": "knu-board",
+   "picks": [
+    37,
+    41,
+    44,
+    48,
+    43,
+    39
+   ]
+  },
+  {
+   "pageId": "knu-home",
+   "picks": [
+    56,
+    59,
+    92,
+    95,
+    83,
+    62
+   ]
+  },
+  {
+   "pageId": "knu-location",
+   "picks": [
+    42,
+    31,
+    32,
+    41,
+    38,
+    40
+   ]
+  },
+  {
+   "pageId": "knu-post",
+   "picks": [
+    9,
+    1,
+    10,
+    3,
+    15,
+    11
+   ]
+  },
+  {
+   "pageId": "knu-service",
+   "picks": [
+    38,
+    39,
+    40,
+    37,
+    32,
+    41
+   ]
+  },
+  {
+   "pageId": "korea-academic",
+   "picks": [
+    48,
+    47,
+    37,
+    24,
+    23,
+    44
+   ]
+  },
+  {
+   "pageId": "korea-board",
+   "picks": [
+    35,
+    39,
+    45,
+    41,
+    40,
+    43
+   ]
+  },
+  {
+   "pageId": "korea-faq",
+   "picks": [
+    35,
+    37,
+    24,
+    25,
+    85,
+    23
+   ]
+  },
+  {
+   "pageId": "korea-home",
+   "picks": [
+    58,
+    42,
+    51,
+    92,
+    101,
+    62
+   ]
+  },
+  {
+   "pageId": "korea-location",
+   "picks": [
+    32,
+    24,
+    23,
+    67,
+    30,
+    31
+   ]
+  },
+  {
+   "pageId": "korea-post",
+   "picks": [
+    37,
+    39,
+    30,
+    41,
+    23,
+    24
+   ]
+  },
+  {
+   "pageId": "korea-service",
+   "picks": [
+    36,
+    37,
+    39,
+    40,
+    38,
+    33
+   ]
+  },
+  {
+   "pageId": "kosaf-board",
+   "picks": [
+    57,
+    46,
+    41,
+    54,
+    55,
+    49
+   ]
+  },
+  {
+   "pageId": "kosaf-faq",
+   "picks": [
+    51,
+    45,
+    37,
+    61,
+    31,
+    43
+   ]
+  },
+  {
+   "pageId": "kosaf-guide",
+   "picks": [
+    66,
+    56,
+    45,
+    33,
+    57,
+    40
+   ]
+  },
+  {
+   "pageId": "kosaf-home",
+   "picks": [
+    35,
+    13,
+    56,
+    16,
+    36,
+    20
+   ]
+  },
+  {
+   "pageId": "kosaf-location",
+   "picks": [
+    52,
+    47,
+    55,
+    46,
+    30,
+    51
+   ]
+  },
+  {
+   "pageId": "kosaf-post",
+   "picks": [
+    32,
+    13,
+    16,
+    30,
+    20,
+    31
+   ]
+  },
+  {
+   "pageId": "kosaf-service",
+   "picks": [
+    42,
+    32,
+    41,
+    29,
+    44,
+    16
+   ]
+  },
+  {
+   "pageId": "mapo-board",
+   "picks": [
+    188,
+    179,
+    18,
+    148,
+    42,
+    195
+   ]
+  },
+  {
+   "pageId": "mapo-guide",
+   "picks": [
+    179,
+    18,
+    42,
+    137,
+    33,
+    108
+   ]
+  },
+  {
+   "pageId": "mapo-home",
+   "picks": [
+    179,
+    18,
+    137,
+    212,
+    42,
+    209
+   ]
+  },
+  {
+   "pageId": "mapo-location",
+   "picks": [
+    188,
+    179,
+    18,
+    42,
+    108,
+    148
+   ]
+  },
+  {
+   "pageId": "mapo-service",
+   "picks": [
+    179,
+    18,
+    42,
+    137,
+    33,
+    92
+   ]
+  },
+  {
+   "pageId": "moel-board",
+   "picks": [
+    28,
+    40,
+    32,
+    34,
+    42,
+    38
+   ]
+  },
+  {
+   "pageId": "moel-faq",
+   "picks": [
+    30,
+    38,
+    35,
+    16,
+    36,
+    37
+   ]
+  },
+  {
+   "pageId": "moel-home",
+   "picks": [
+    56,
+    23,
+    26,
+    34,
+    61,
+    19
+   ]
+  },
+  {
+   "pageId": "moel-location",
+   "picks": [
+    20,
+    17,
+    23,
+    22,
+    21,
+    33
+   ]
+  },
+  {
+   "pageId": "moel-post",
+   "picks": [
+    34,
+    25,
+    29,
+    31,
+    26,
+    28
+   ]
+  },
+  {
+   "pageId": "moel-service",
+   "picks": [
+    27,
+    17,
+    16,
+    20,
+    23,
+    15
+   ]
+  },
+  {
+   "pageId": "mois-board",
+   "picks": [
+    40,
+    41,
+    38,
+    39,
+    48,
+    22
+   ]
+  },
+  {
+   "pageId": "mois-faq",
+   "picks": [
+    29,
+    35,
+    28,
+    26,
+    22,
+    27
+   ]
+  },
+  {
+   "pageId": "mois-home",
+   "picks": [
+    40,
+    41,
+    38,
+    39,
+    48,
+    22
+   ]
+  },
+  {
+   "pageId": "mois-location",
+   "picks": [
+    22,
+    34,
+    13,
+    35,
+    30,
+    36
+   ]
+  },
+  {
+   "pageId": "mois-main",
+   "picks": [
+    42,
+    22,
+    20,
+    8,
+    13,
+    24
+   ]
+  },
+  {
+   "pageId": "mois-post",
+   "picks": [
+    39,
+    42,
+    22,
+    43,
+    44,
+    45
+   ]
+  },
+  {
+   "pageId": "mois-service",
+   "picks": [
+    27,
+    22,
+    39,
+    13,
+    30,
+    41
+   ]
+  },
+  {
+   "pageId": "museum-board",
+   "picks": [
+    55,
+    64,
+    33,
+    62,
+    63,
+    37
+   ]
+  },
+  {
+   "pageId": "museum-guide",
+   "picks": [
+    38,
+    40,
+    49,
+    37,
+    47,
+    48
+   ]
+  },
+  {
+   "pageId": "museum-home",
+   "picks": [
+    36,
+    37,
+    89,
+    82,
+    86,
+    79
+   ]
+  },
+  {
+   "pageId": "museum-location",
+   "picks": [
+    35,
+    34,
+    29,
+    37,
+    30,
+    31
+   ]
+  },
+  {
+   "pageId": "museum-post",
+   "picks": [
+    36,
+    33,
+    38,
+    35,
+    77,
+    45
+   ]
+  },
+  {
+   "pageId": "museum-service",
+   "picks": [
+    35,
+    74,
+    81,
+    42,
+    43,
+    33
+   ]
+  },
+  {
+   "pageId": "nts-board",
+   "picks": [
+    35,
+    41,
+    49,
+    45,
+    39,
+    43
+   ]
+  },
+  {
+   "pageId": "nts-faq",
+   "picks": [
+    51,
+    53,
+    52,
+    50,
+    45,
+    28
+   ]
+  },
+  {
+   "pageId": "nts-guide",
+   "picks": [
+    56,
+    48,
+    10,
+    27,
+    17,
+    33
+   ]
+  },
+  {
+   "pageId": "nts-home",
+   "picks": [
+    35,
+    63,
+    37,
+    40,
+    54,
+    62
+   ]
+  },
+  {
+   "pageId": "nts-location",
+   "picks": [
+    18,
+    36,
+    29,
+    21,
+    35,
+    22
+   ]
+  },
+  {
+   "pageId": "nts-post",
+   "picks": [
+    35,
+    39,
+    27,
+    43,
+    45,
+    41
+   ]
+  },
+  {
+   "pageId": "nts-service",
+   "picks": [
+    22,
+    24,
+    21,
+    28,
+    29,
+    14
+   ]
+  },
+  {
+   "pageId": "pusan-home",
+   "picks": [
+    1,
+    2,
+    0
+   ]
+  },
+  {
+   "pageId": "seongnam-board",
+   "picks": [
+    27,
+    41,
+    35,
+    36,
+    37,
+    42
+   ]
+  },
+  {
+   "pageId": "seongnam-faq",
+   "picks": [
+    5,
+    17,
+    25,
+    16,
+    15,
+    18
+   ]
+  },
+  {
+   "pageId": "seongnam-home",
+   "picks": [
+    24,
+    7,
+    45,
+    33,
+    37,
+    114
+   ]
+  },
+  {
+   "pageId": "seongnam-location",
+   "picks": [
+    33,
+    40,
+    20,
+    21,
+    28,
+    19
+   ]
+  },
+  {
+   "pageId": "seongnam-service",
+   "picks": [
+    51,
+    59,
+    26,
+    46,
+    61,
+    23
+   ]
+  }
+ ]
+}

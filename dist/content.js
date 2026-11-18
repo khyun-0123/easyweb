@@ -2286,6 +2286,42 @@
     if (!url || candidate.context !== "body" || candidate.action !== "navigate" || !candidate.element.matches("a[href]") || !candidate.element.closest('li, tr, [role~="listitem"], [role~="row"]') || candidate.element.closest('article, [role~="article"]') || !hasDocumentReference(url) || candidate.pagePurpose !== "help" || label.length < 4 || label.length > 100 || pathParts(url).some((part) => /^(?:news|articles?|stories|story|press)$/.test(part)) || !(/(?:안내|방법|절차)$/.test(label) || interrogative.test(label)) || rules.some((rule) => rule.category !== "help" && rule.endpoints.has(target))) return;
     return { ...candidate, category: "help", score: 72, reasons: ["\uB3C4\uC6C0\uB9D0 \uC548\uB0B4 \uBB38\uC11C \uC77D\uAE30", "\uB3C4\uC6C0\uB9D0 \uBAA9\uC801\uACFC \uBAA9\uB85D\uC758 \uBA85\uC2DC\uC801 \uC77D\uAE30 \uBB38\uC11C"], pageTask: "reading" };
   }
+  function sourceGuard(candidate, navigationCache = createNavigationCache()) {
+    const sourceLabel = normalize5(candidate.label).replace(/[_-]+/g, " ");
+    const documentDownload = candidate.action === "locate" && isDocumentDownload(candidate.element, candidate.label);
+    const label = documentDownload ? sourceLabel.replace(documentExtension, "").trim() : sourceLabel;
+    const utility2 = navigationUtility(candidate.element, candidate.label, navigationCache);
+    if (utility2 === "position") return void 0;
+    if (orderingLabel.test(label)) return void 0;
+    if (pageToolLabel.test(label.replace(/^\S+\s+(?=(?:전자\s*)?점자)/, ""))) return void 0;
+    if (hasDangerousScript(candidate.element)) return void 0;
+    let url;
+    if (candidate.href) {
+      try {
+        url = new URL(candidate.href);
+      } catch {
+        return void 0;
+      }
+      if (!/^https?:$/.test(url.protocol)) return void 0;
+    }
+    const parts = url ? pathParts(url) : [];
+    if (url && isDangerousURL(url, parts)) return void 0;
+    let inspectionURL = url;
+    if (!url) {
+      const raw = candidate.element.getAttribute("href")?.trim() ?? "";
+      if (raw && !/^(?:#|javascript:)/i.test(raw)) {
+        try {
+          const sourceURL2 = new URL(raw, document.baseURI);
+          if (/^https?:$/.test(sourceURL2.protocol)) {
+            if (isDangerousURL(sourceURL2, pathParts(sourceURL2))) return void 0;
+            inspectionURL = sourceURL2;
+          }
+        } catch {
+        }
+      }
+    }
+    return { label, documentDownload, utility: utility2, url, parts, inspectionURL };
+  }
   function classify(candidates, options = {}) {
     const mode = options.mode ?? "institution";
     const collectionCache = /* @__PURE__ */ new WeakMap();
@@ -2295,39 +2331,9 @@
     const navigationCache = createNavigationCache();
     const relationCache = createRelationCache();
     const classified = candidates.flatMap((candidate) => {
-      const sourceLabel = normalize5(candidate.label).replace(/[_-]+/g, " ");
-      const documentDownload = candidate.action === "locate" && isDocumentDownload(candidate.element, candidate.label);
-      const label = documentDownload ? sourceLabel.replace(documentExtension, "").trim() : sourceLabel;
-      const utility2 = navigationUtility(candidate.element, candidate.label, navigationCache);
-      if (utility2 === "position") return [];
-      if (orderingLabel.test(label)) return [];
-      if (pageToolLabel.test(label.replace(/^\S+\s+(?=(?:전자\s*)?점자)/, ""))) return [];
-      if (hasDangerousScript(candidate.element)) return [];
-      let url;
-      if (candidate.href) {
-        try {
-          url = new URL(candidate.href);
-        } catch {
-          return [];
-        }
-        if (!/^https?:$/.test(url.protocol)) return [];
-      }
-      const parts = url ? pathParts(url) : [];
-      if (url && isDangerousURL(url, parts)) return [];
-      let inspectionURL = url;
-      if (!url) {
-        const raw = candidate.element.getAttribute("href")?.trim() ?? "";
-        if (raw && !/^(?:#|javascript:)/i.test(raw)) {
-          try {
-            const sourceURL2 = new URL(raw, document.baseURI);
-            if (/^https?:$/.test(sourceURL2.protocol)) {
-              if (isDangerousURL(sourceURL2, pathParts(sourceURL2))) return [];
-              inspectionURL = sourceURL2;
-            }
-          } catch {
-          }
-        }
-      }
+      const guard = sourceGuard(candidate, navigationCache);
+      if (!guard) return [];
+      const { label, documentDownload, utility: utility2, url, parts, inspectionURL } = guard;
       const target = endpoint(parts);
       const academicInfo = academicInformation(candidate, label, target, url);
       const element = candidate.element;
@@ -2956,6 +2962,11 @@
     return classified.filter((candidate) => !elements.has(candidate.element) && !(candidate.action === "navigate" && candidate.href && destinations.has(candidate.href)) && !(login && candidate.category === "login" && loginLabel.test(text(candidate))));
   }
 
+  // src/learned-hook.ts
+  function learnedOrder(_raw, _classified, _excluded) {
+    return void 0;
+  }
+
   // src/page-types.ts
   var MAX_CARDS2 = 6;
   var POST_CARDS = 4;
@@ -3110,6 +3121,20 @@
     const elements = new Set(slots.map((candidate) => candidate.element));
     const destinations = new Set(slots.map(destination2).filter(Boolean));
     const remaining = rest.filter((candidate) => !elements.has(candidate.element) && !(destination2(candidate) && destinations.has(destination2(candidate))));
+    const learned = type === "default" && !home ? learnedOrder(raw, classified, new Set(common.map((item) => item.candidate.element))) : void 0;
+    if (learned?.length) {
+      const picked = [], seen = /* @__PURE__ */ new Set();
+      for (const candidate of learned) {
+        const to = destination2(candidate);
+        if (to && seen.has(to)) continue;
+        if (to) seen.add(to);
+        picked.push(candidate);
+        if (picked.length === MAX_CARDS2) break;
+      }
+      const shown = new Set(picked.map((candidate) => candidate.element));
+      classifiedBy = /* @__PURE__ */ new Map();
+      return { type, common, cards: picked, pool: [...extra, ...rest.filter((candidate) => !shown.has(candidate.element))] };
+    }
     const cards = slots.length >= target ? slots : [...slots, ...rank(remaining).slice(0, target - slots.length)];
     classifiedBy = /* @__PURE__ */ new Map();
     return { type, common, cards, pool: [...extra, ...remaining] };
