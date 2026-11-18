@@ -1,0 +1,1763 @@
+{
+  "checkedAt": "2026-11-18T14:52:30.470Z",
+  "measure": "essential in cards or common row; useful = card in essential or useful",
+  "engine": {
+    "coverage": 37.2,
+    "usefulPrecision": 55.7,
+    "cards": 657,
+    "bySite": {
+      "busan": {
+        "essential": 23,
+        "covered": 11
+      },
+      "cheonan": {
+        "essential": 33,
+        "covered": 12
+      },
+      "cnu": {
+        "essential": 40,
+        "covered": 18
+      },
+      "comwel": {
+        "essential": 32,
+        "covered": 12
+      },
+      "daejeon": {
+        "essential": 36,
+        "covered": 17
+      },
+      "epeople": {
+        "essential": 20,
+        "covered": 10
+      },
+      "epost": {
+        "essential": 29,
+        "covered": 7
+      },
+      "gangnam": {
+        "essential": 39,
+        "covered": 9
+      },
+      "hira": {
+        "essential": 30,
+        "covered": 10
+      },
+      "jeonju": {
+        "essential": 31,
+        "covered": 15
+      },
+      "knou": {
+        "essential": 21,
+        "covered": 6
+      },
+      "lh": {
+        "essential": 31,
+        "covered": 16
+      },
+      "mohw": {
+        "essential": 31,
+        "covered": 11
+      },
+      "nhis": {
+        "essential": 38,
+        "covered": 17
+      },
+      "nl": {
+        "essential": 37,
+        "covered": 18
+      },
+      "nps": {
+        "essential": 34,
+        "covered": 10
+      },
+      "safekorea": {
+        "essential": 16,
+        "covered": 7
+      },
+      "seoul": {
+        "essential": 24,
+        "covered": 8
+      },
+      "smu": {
+        "essential": 37,
+        "covered": 16
+      },
+      "snu": {
+        "essential": 31,
+        "covered": 11
+      },
+      "snuh": {
+        "essential": 6,
+        "covered": 0
+      },
+      "suwon": {
+        "essential": 28,
+        "covered": 9
+      },
+      "yonsei": {
+        "essential": 36,
+        "covered": 4
+      }
+    },
+    "byType": {
+      "board": {
+        "pages": 24,
+        "coverage": 53.2,
+        "usefulPrecision": 70.6,
+        "cards": 143
+      },
+      "home": {
+        "pages": 23,
+        "coverage": 30.7,
+        "usefulPrecision": 53.6,
+        "cards": 110
+      },
+      "location": {
+        "pages": 21,
+        "coverage": 22.3,
+        "usefulPrecision": 28.7,
+        "cards": 87
+      },
+      "faq": {
+        "pages": 16,
+        "coverage": 35.2,
+        "usefulPrecision": 56.8,
+        "cards": 88
+      },
+      "post": {
+        "pages": 14,
+        "coverage": 60.4,
+        "usefulPrecision": 77.4,
+        "cards": 53
+      },
+      "info": {
+        "pages": 13,
+        "coverage": 30.2,
+        "usefulPrecision": 39.7,
+        "cards": 68
+      },
+      "service": {
+        "pages": 13,
+        "coverage": 32.3,
+        "usefulPrecision": 53.6,
+        "cards": 69
+      },
+      "calendar": {
+        "pages": 4,
+        "coverage": 25,
+        "usefulPrecision": 58.8,
+        "cards": 17
+      },
+      "gate": {
+        "pages": 3,
+        "coverage": 35.3,
+        "usefulPrecision": 100,
+        "cards": 5
+      },
+      "search": {
+        "pages": 2,
+        "coverage": 50,
+        "usefulPrecision": 66.7,
+        "cards": 12
+      },
+      "form": {
+        "pages": 1,
+        "coverage": 40,
+        "usefulPrecision": 60,
+        "cards": 5
+      }
+    }
+  },
+  "models": {
+    "char-ngram-logreg": {
+      "file": "rank-char-ngram.json",
+      "cpuThreads": null,
+      "failures": 0,
+      "invalidPicks": 0,
+      "latencyMs": null,
+      "promptTokens": null,
+      "alone": {
+        "coverage": 38.5,
+        "usefulPrecision": 49.6,
+        "cards": 804,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 12
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 14
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 15
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 13
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 15
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 10
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 0
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 10
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 8
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 12
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 11
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 11
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 14
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 14
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 19
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 4
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 4
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 17
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 15
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 14
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 15
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 32.4,
+            "usefulPrecision": 47.9,
+            "cards": 144
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 35,
+            "usefulPrecision": 52.9,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 48.5,
+            "usefulPrecision": 50.8,
+            "cards": 126
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 27.3,
+            "usefulPrecision": 45.8,
+            "cards": 96
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 56.6,
+            "usefulPrecision": 51.2,
+            "cards": 84
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 45.3,
+            "usefulPrecision": 44.9,
+            "cards": 78
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 30.8,
+            "usefulPrecision": 43.6,
+            "cards": 78
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 37.5,
+            "usefulPrecision": 58.3,
+            "cards": 24
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 58.8,
+            "usefulPrecision": 77.8,
+            "cards": 18
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 50,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 60,
+            "usefulPrecision": 50,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 1.3,
+          "interval95": [
+            -3.9,
+            7.1
+          ]
+        }
+      },
+      "hybrid": {
+        "coverage": 43.6,
+        "usefulPrecision": 55.7,
+        "cards": 777,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 11
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 14
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 20
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 14
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 17
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 11
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 4
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 11
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 13
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 12
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 10
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 17
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 11
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 21
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 18
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 17
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 6
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 7
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 19
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 16
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 15
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 14
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 53.2,
+            "usefulPrecision": 70.8,
+            "cards": 144
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 35,
+            "usefulPrecision": 52.9,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 48.5,
+            "usefulPrecision": 50.8,
+            "cards": 126
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 30.7,
+            "usefulPrecision": 47.9,
+            "cards": 96
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 62.3,
+            "usefulPrecision": 72.4,
+            "cards": 58
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 45.3,
+            "usefulPrecision": 44.9,
+            "cards": 78
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 30.8,
+            "usefulPrecision": 43.6,
+            "cards": 78
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 37.5,
+            "usefulPrecision": 58.3,
+            "cards": 24
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 58.8,
+            "usefulPrecision": 82.4,
+            "cards": 17
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 50,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 60,
+            "usefulPrecision": 50,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 6.4,
+          "interval95": [
+            2.6,
+            10.4
+          ]
+        }
+      },
+      "homeOnly": {
+        "coverage": 38.1,
+        "usefulPrecision": 55.5,
+        "cards": 685,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 10
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 15
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 18
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 11
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 18
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 10
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 7
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 9
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 9
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 17
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 7
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 17
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 13
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 16
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 19
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 11
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 7
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 7
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 15
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 11
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 8
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 5
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 53.2,
+            "usefulPrecision": 70.6,
+            "cards": 143
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 35,
+            "usefulPrecision": 52.9,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 22.3,
+            "usefulPrecision": 28.7,
+            "cards": 87
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 35.2,
+            "usefulPrecision": 56.8,
+            "cards": 88
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 60.4,
+            "usefulPrecision": 77.4,
+            "cards": 53
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 30.2,
+            "usefulPrecision": 39.7,
+            "cards": 68
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 32.3,
+            "usefulPrecision": 53.6,
+            "cards": 69
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 25,
+            "usefulPrecision": 58.8,
+            "cards": 17
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 35.3,
+            "usefulPrecision": 100,
+            "cards": 5
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 66.7,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 40,
+            "usefulPrecision": 60,
+            "cards": 5
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 0.9,
+          "interval95": [
+            -0.7,
+            2.5
+          ]
+        }
+      }
+    },
+    "char-ngram-lambdarank": {
+      "file": "dev-lambdarank.json",
+      "cpuThreads": null,
+      "failures": 0,
+      "invalidPicks": 0,
+      "latencyMs": null,
+      "promptTokens": null,
+      "alone": {
+        "coverage": 45.1,
+        "usefulPrecision": 57.6,
+        "cards": 804,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 10
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 13
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 16
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 14
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 20
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 12
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 8
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 18
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 12
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 13
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 10
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 13
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 21
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 17
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 18
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 7
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 6
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 10
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 16
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 2
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 18
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 18
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 43.9,
+            "usefulPrecision": 59.7,
+            "cards": 144
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 38.6,
+            "usefulPrecision": 60.9,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 42.7,
+            "usefulPrecision": 48.4,
+            "cards": 126
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 45.5,
+            "usefulPrecision": 66.7,
+            "cards": 96
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 54.7,
+            "usefulPrecision": 54.8,
+            "cards": 84
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 49.1,
+            "usefulPrecision": 53.8,
+            "cards": 78
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 43.1,
+            "usefulPrecision": 55.1,
+            "cards": 78
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 50,
+            "usefulPrecision": 62.5,
+            "cards": 24
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 76.5,
+            "usefulPrecision": 72.2,
+            "cards": 18
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 58.3,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 60,
+            "usefulPrecision": 33.3,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 7.9,
+          "interval95": [
+            2.2,
+            14.2
+          ]
+        }
+      },
+      "hybrid": {
+        "coverage": 47.3,
+        "usefulPrecision": 60.5,
+        "cards": 777,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 11
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 13
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 20
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 16
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 22
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 10
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 9
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 18
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 13
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 12
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 9
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 17
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 15
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 22
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 20
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 16
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 8
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 9
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 13
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 16
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 2
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 18
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 14
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 52.5,
+            "usefulPrecision": 69.4,
+            "cards": 144
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 38.6,
+            "usefulPrecision": 60.9,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 42.7,
+            "usefulPrecision": 48.4,
+            "cards": 126
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 44.3,
+            "usefulPrecision": 63.5,
+            "cards": 96
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 62.3,
+            "usefulPrecision": 72.4,
+            "cards": 58
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 49.1,
+            "usefulPrecision": 53.8,
+            "cards": 78
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 43.1,
+            "usefulPrecision": 55.1,
+            "cards": 78
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 50,
+            "usefulPrecision": 62.5,
+            "cards": 24
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 76.5,
+            "usefulPrecision": 76.5,
+            "cards": 17
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 58.3,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 60,
+            "usefulPrecision": 33.3,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 10.1,
+          "interval95": [
+            5.8,
+            14.8
+          ]
+        }
+      },
+      "homeOnly": {
+        "coverage": 38.8,
+        "usefulPrecision": 57.1,
+        "cards": 685,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 11
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 14
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 19
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 10
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 19
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 10
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 9
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 10
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 11
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 16
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 6
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 12
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 17
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 19
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 10
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 7
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 9
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 13
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 11
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 10
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 6
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 53.2,
+            "usefulPrecision": 70.6,
+            "cards": 143
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 38.6,
+            "usefulPrecision": 60.9,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 22.3,
+            "usefulPrecision": 28.7,
+            "cards": 87
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 35.2,
+            "usefulPrecision": 56.8,
+            "cards": 88
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 60.4,
+            "usefulPrecision": 77.4,
+            "cards": 53
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 30.2,
+            "usefulPrecision": 39.7,
+            "cards": 68
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 32.3,
+            "usefulPrecision": 53.6,
+            "cards": 69
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 25,
+            "usefulPrecision": 58.8,
+            "cards": 17
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 35.3,
+            "usefulPrecision": 100,
+            "cards": 5
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 66.7,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 40,
+            "usefulPrecision": 60,
+            "cards": 5
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 1.6,
+          "interval95": [
+            -0.1,
+            3.1
+          ]
+        }
+      }
+    },
+    "crossenc-ft:mmarco-mMiniLMv2-L12-H384-v1": {
+      "file": "dev-crossenc.json",
+      "cpuThreads": null,
+      "failures": 0,
+      "invalidPicks": 0,
+      "latencyMs": null,
+      "promptTokens": null,
+      "alone": {
+        "coverage": 36.2,
+        "usefulPrecision": 48,
+        "cards": 804,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 7
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 12
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 14
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 13
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 13
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 8
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 9
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 14
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 5
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 9
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 8
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 14
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 12
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 18
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 14
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 15
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 9
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 7
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 12
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 14
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 10
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 10
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 30.9,
+            "usefulPrecision": 54.2,
+            "cards": 144
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 30.7,
+            "usefulPrecision": 46.4,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 36.9,
+            "usefulPrecision": 40.5,
+            "cards": 126
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 39.8,
+            "usefulPrecision": 57.3,
+            "cards": 96
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 50.9,
+            "usefulPrecision": 50,
+            "cards": 84
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 34,
+            "usefulPrecision": 32.1,
+            "cards": 78
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 32.3,
+            "usefulPrecision": 43.6,
+            "cards": 78
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 37.5,
+            "usefulPrecision": 50,
+            "cards": 24
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 64.7,
+            "usefulPrecision": 83.3,
+            "cards": 18
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 75,
+            "usefulPrecision": 66.7,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 40,
+            "usefulPrecision": 33.3,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": -1,
+          "interval95": [
+            -5.6,
+            3.6
+          ]
+        }
+      },
+      "hybrid": {
+        "coverage": 42,
+        "usefulPrecision": 53.2,
+        "cards": 777,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 8
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 11
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 19
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 14
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 18
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 10
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 10
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 14
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 9
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 10
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 7
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 14
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 25
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 19
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 14
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 9
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 8
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 15
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 16
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 12
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 9
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 52.5,
+            "usefulPrecision": 70.1,
+            "cards": 144
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 30.7,
+            "usefulPrecision": 46.4,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 36.9,
+            "usefulPrecision": 40.5,
+            "cards": 126
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 43.2,
+            "usefulPrecision": 60.4,
+            "cards": 96
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 64.2,
+            "usefulPrecision": 74.1,
+            "cards": 58
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 34,
+            "usefulPrecision": 32.1,
+            "cards": 78
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 32.3,
+            "usefulPrecision": 43.6,
+            "cards": 78
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 37.5,
+            "usefulPrecision": 50,
+            "cards": 24
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 64.7,
+            "usefulPrecision": 88.2,
+            "cards": 17
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 75,
+            "usefulPrecision": 66.7,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 40,
+            "usefulPrecision": 33.3,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 4.8,
+          "interval95": [
+            1,
+            8.7
+          ]
+        }
+      },
+      "homeOnly": {
+        "coverage": 37.2,
+        "usefulPrecision": 54.2,
+        "cards": 685,
+        "bySite": {
+          "busan": {
+            "essential": 23,
+            "covered": 10
+          },
+          "cheonan": {
+            "essential": 33,
+            "covered": 13
+          },
+          "cnu": {
+            "essential": 40,
+            "covered": 18
+          },
+          "comwel": {
+            "essential": 32,
+            "covered": 10
+          },
+          "daejeon": {
+            "essential": 36,
+            "covered": 19
+          },
+          "epeople": {
+            "essential": 20,
+            "covered": 10
+          },
+          "epost": {
+            "essential": 29,
+            "covered": 9
+          },
+          "gangnam": {
+            "essential": 39,
+            "covered": 9
+          },
+          "hira": {
+            "essential": 30,
+            "covered": 10
+          },
+          "jeonju": {
+            "essential": 31,
+            "covered": 15
+          },
+          "knou": {
+            "essential": 21,
+            "covered": 6
+          },
+          "lh": {
+            "essential": 31,
+            "covered": 15
+          },
+          "mohw": {
+            "essential": 31,
+            "covered": 12
+          },
+          "nhis": {
+            "essential": 38,
+            "covered": 18
+          },
+          "nl": {
+            "essential": 37,
+            "covered": 21
+          },
+          "nps": {
+            "essential": 34,
+            "covered": 9
+          },
+          "safekorea": {
+            "essential": 16,
+            "covered": 7
+          },
+          "seoul": {
+            "essential": 24,
+            "covered": 7
+          },
+          "smu": {
+            "essential": 37,
+            "covered": 13
+          },
+          "snu": {
+            "essential": 31,
+            "covered": 10
+          },
+          "snuh": {
+            "essential": 6,
+            "covered": 0
+          },
+          "suwon": {
+            "essential": 28,
+            "covered": 8
+          },
+          "yonsei": {
+            "essential": 36,
+            "covered": 5
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 24,
+            "coverage": 53.2,
+            "usefulPrecision": 70.6,
+            "cards": 143
+          },
+          "home": {
+            "pages": 23,
+            "coverage": 30.7,
+            "usefulPrecision": 46.4,
+            "cards": 138
+          },
+          "location": {
+            "pages": 21,
+            "coverage": 22.3,
+            "usefulPrecision": 28.7,
+            "cards": 87
+          },
+          "faq": {
+            "pages": 16,
+            "coverage": 35.2,
+            "usefulPrecision": 56.8,
+            "cards": 88
+          },
+          "post": {
+            "pages": 14,
+            "coverage": 60.4,
+            "usefulPrecision": 77.4,
+            "cards": 53
+          },
+          "info": {
+            "pages": 13,
+            "coverage": 30.2,
+            "usefulPrecision": 39.7,
+            "cards": 68
+          },
+          "service": {
+            "pages": 13,
+            "coverage": 32.3,
+            "usefulPrecision": 53.6,
+            "cards": 69
+          },
+          "calendar": {
+            "pages": 4,
+            "coverage": 25,
+            "usefulPrecision": 58.8,
+            "cards": 17
+          },
+          "gate": {
+            "pages": 3,
+            "coverage": 35.3,
+            "usefulPrecision": 100,
+            "cards": 5
+          },
+          "search": {
+            "pages": 2,
+            "coverage": 50,
+            "usefulPrecision": 66.7,
+            "cards": 12
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 40,
+            "usefulPrecision": 60,
+            "cards": 5
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 0,
+          "interval95": [
+            -1.9,
+            1.7
+          ]
+        }
+      }
+    }
+  }
+}

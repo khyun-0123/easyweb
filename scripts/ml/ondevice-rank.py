@@ -12,8 +12,11 @@ Without --predict, pages are scored leave-one-site-out over the training
 sources (section 10). With --predict=<elements dir>@<survey.json>, one model is
 trained on everything and applied to those pages (section 11, independent set).
 
+--algo=lambdarank swaps the logistic model for LightGBM LambdaRank grouped by page, with graded
+labels from reviews (essential 2, useful 1); teacher picks count as 2. Default stays logreg.
+
 usage: python ondevice-rank.py --train=<sources> --output=<picks.json>
-       [--predict=<elements>@<survey.json>] [--embeddings=<file.json>] [--name=<label>]
+       [--predict=<elements>@<survey.json>] [--embeddings=<file.json>] [--name=<label>] [--algo=logreg|lambdarank]
 """
 import json, os, re, sys, time
 import numpy as np
@@ -24,9 +27,12 @@ from sklearn.preprocessing import OneHotEncoder
 
 args = dict(a[2:].split('=', 1) for a in sys.argv[1:])
 for key in args:
-    if key not in {'train', 'predict', 'output', 'embeddings', 'name'}:
+    if key not in {'train', 'predict', 'output', 'embeddings', 'name', 'algo'}:
         raise SystemExit(f'Unknown option: --{key}')
 
+ALGO = args.get('algo', 'logreg')
+if ALGO not in {'logreg', 'lambdarank'}:
+    raise SystemExit(f'Unknown algo: {ALGO}')
 REGIONS = {'-', 'main', 'footer', 'nav', 'header', 'aside', 'navigation'}
 
 
@@ -49,14 +55,14 @@ def load_engine(path):
     return {p['pageId']: p for p in json.load(open(path))['pages'] if not p.get('error')}
 
 
-def page_records(elements, page, positives, source):
+def page_records(elements, page, positives, source, gains=None):
     items = rows(elements, page['pageId'])
     height = max([r['y'] for r in items] + [1])
     rule_type = 'home' if page['engine'].get('homePage') else page['engine'].get('pageType', 'default')
     out = []
     for n, r in enumerate(items):
         path = re.sub(r'^[a-z0-9.-]+\.[a-z]{2,}(?=/|$)', ' ext ', r['href'].lower())
-        out.append(dict(page=page['pageId'], site=page['siteId'], source=source, i=r['i'], y=int(r['i'] in positives),
+        out.append(dict(page=page['pageId'], site=page['siteId'], source=source, i=r['i'], y=int(r['i'] in positives), gain=(gains or {}).get(r['i'], 2 if r['i'] in positives else 0),
                         text=r['label'], context=f"{r['heading']} {' '.join(re.split(r'[/._?=&-]+', path))}",
                         meta=[r['tag'], r['region'], rule_type, f"{rule_type}:{r['region']}",
                               'same' if not path.startswith(' ext ') else 'ext'],
@@ -74,7 +80,9 @@ for spec in args['train'].split(','):
             if name.endswith('.json'):
                 review = json.load(open(os.path.join(labels, name)))
                 if review['pageId'] in engine:
-                    records += page_records(elements, engine[review['pageId']], {item['i'] for item in review['essential']}, kind)
+                    essential = {item['i'] for item in review['essential']}
+                    gains = {**{item['i']: 1 for item in review.get('useful', [])}, **{i: 2 for i in essential}}
+                    records += page_records(elements, engine[review['pageId']], essential, kind, gains)
     elif kind == 'teacher':
         for page in json.load(open(labels))['pages']:
             if page['pageId'] in engine and not page.get('error') and page['picks']:
@@ -112,6 +120,17 @@ def fit(train):
             blocks.append(csr_matrix(np.array([r['vec'] for r in part])))
         return hstack(blocks).tocsr()
 
+    if ALGO == 'lambdarank':
+        import lightgbm
+        groups, last = [], None
+        for r in train:  # records are appended page by page, so pages are contiguous
+            if r['page'] != last:
+                groups.append(0); last = r['page']
+            groups[-1] += 1
+        model = lightgbm.LGBMRanker(objective='lambdarank', n_estimators=300, learning_rate=0.05, num_leaves=31,
+                                    min_child_samples=10, lambdarank_truncation_level=10, random_state=20261118, verbose=-1)
+        model.fit(features(train, first=True).astype(np.float32), [r['gain'] for r in train], group=groups, eval_at=[6])
+        return lambda part: model.predict(features(part).astype(np.float32))
     model = LogisticRegression(C=1.0, max_iter=3000, class_weight='balanced')
     model.fit(features(train, first=True), [r['y'] for r in train])
     return lambda part: model.predict_proba(features(part))[:, 1]
@@ -144,7 +163,7 @@ else:
         choose(score, [r for r in records if r['site'] == site and r['source'] == 'review'])
     protocol = 'leave-one-site-out over %d sites, %d pages, %d controls' % (len(sites), len(picks), len(records))
 
-json.dump(dict(model=args.get('name', 'char-ngram-logreg' + ('+embedding' if 'embeddings' in args else '')), protocol=protocol,
+json.dump(dict(model=args.get('name', ('char-ngram-lambdarank' if ALGO == 'lambdarank' else 'char-ngram-logreg') + ('+embedding' if 'embeddings' in args else '')), protocol=protocol,
                scope='Diagnostic only. Reference is an engine-blind Claude review, not human users.',
                fitMsMedian=round(float(np.median(fit_ms)), 1), predictMsPerPageMedian=round(float(np.median(predict_ms)), 2),
                pages=[dict(pageId=p, picks=v) for p, v in sorted(picks.items())]),

@@ -1,0 +1,28 @@
+{
+  "writtenAt": "2026-11-18T13:47:03.153Z",
+  "purpose": "Free hosted models on the rules-first gate: Korean first-screen picking quality, written before any call.",
+  "pages": "independent test 89 pages; only the 53 gate \"target\" pages are sent; blocked (2) and rule-typed (34) pages are never sent",
+  "sent": "page title, headings, and per control: index, tag, fixed label (60 chars), short href (40), region, nearby heading (30). No input values.",
+  "prompt": "system prompt saved in picks-teacher-gemma4-12b-test.json (same as local gemma4:12b)",
+  "candidates": [
+    "openrouter google/gemma-4-31b-it:free",
+    "openrouter nvidia/nemotron-3-ultra-550b-a55b:free",
+    "openrouter baidu/ernie-5.5-flash-preview:free",
+    "gemini free Flash-Lite class (model id from the key holder console)"
+  ],
+  "primary": "gated coverage vs engine 41.4%, site-level paired bootstrap seed 20261115 (ondevice-gate.mjs); reference point gemma4:12b gated 55.9%",
+  "rules": [
+    "picks saved and sha256 recorded before scoring",
+    "score once; first result kept",
+    "failed or empty pages fall back to engine cards and are counted",
+    "no paid model; free tier only; stop on 429 and resume another day",
+    "no second account to raise limits"
+  ],
+  "caveat": "Reference is an engine-blind Claude review; LLM scores may be inflated. Human observation 0.",
+  "fileSha256": {
+    "scripts/ml/freeapi-pick.mjs": "1d20de4f5067a6a08e8719357dbb812da59b073e5735b9ade47baf4b228806b2",
+    "scripts/ml/ondevice-gate.mjs": "8f8cf097d0fc60ba6b329c4e0f29611bdb7dacb0294c29957dfc81512ee4f6c0",
+    "docs/evidence/run010/gate-20261118/gate-score.json": "24a730bd1923be7ce5e9afcc0dbcb52563e642f0c4cd1c1c5407ed5a4b616b77",
+    "docs/evidence/run010/independent-20261117/picks-teacher-gemma4-12b-test.json": "c192dbd7bba306d95e4ca0119fb49fe77774d1be504f4c9ebf24952267146c08"
+  }
+}

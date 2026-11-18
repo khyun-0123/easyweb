@@ -244,10 +244,140 @@ A·B를 하게 된다면: 사용자당 하루 30쪽, 전체 월 예산 고정, �
    - PRD 원칙도 "사용자나 기관이 키를 넣고 켠 경우에만, 공개 페이지 메뉴 이름만 보냄"으로 고쳐야 합니다(D15). 이는 01·08을 먼저 고칠 일입니다.
 6. **집에서는 PC만 해당합니다.** 모바일 Chrome은 PRD에서 제외되어 있습니다. 어르신이 집에서 PC와 휴대폰 중 무엇으로 일을 보는지는 미확인입니다.
 
+### 무료 로컬 확인 결과 (2026-11-18, 외부 호출 없음)
+
+- **방법:** 처음 보는 89쪽에 위 호출 조건을 그대로 적용했습니다.
+  - 모델 선택은 새로 받지 않았습니다. 채점 전에 저장하고 해시를 남긴 선택을 다시 썼습니다.
+  - 차단 조건은 "비밀번호 칸이 있거나, 제목에 로그인·본인인증·결제·마이페이지·회원정보·비밀번호가 있음"입니다.
+  - 스크립트는 [ondevice-gate.mjs](../../scripts/ml/ondevice-gate.mjs), 결과는 [gate-score.json](../evidence/run010/gate-20261118/gate-score.json)입니다.
+- **나뉨:**
+  - AI 대상 53쪽(60%)
+  - 규칙만 34쪽(홈·게시판·게시글·관문)
+  - 차단 2쪽: 경북대 "post", 성남 "faq". 둘 다 실제로는 로그인 화면이었고, 비밀번호 칸으로 걸렸습니다.
+
+| 방식 | 품질 | 엔진 대비 (95% 구간) | AI를 부른 쪽 |
+| :---- | ---: | :---- | ---: |
+| 지금 엔진 | 41.4% | — | 0 |
+| gemma4:12b, 호출 조건 적용 | **55.9%** | +6.8 ~ +23.2%p | 53쪽 |
+| gemma4:12b, 지난 "섞음" (홈 포함, 차단 없음) | 57.9% | +8.5 ~ +25.7%p | 66쪽 |
+| 1MB 작은 모델, 호출 조건 적용 | 47.5% | +1.4 ~ +12.4%p | (로컬) |
+
+- **해석:**
+  - 호출 조건을 걸어도 큰 모델 효과의 대부분(16.5%p 중 14.5%p)이 남습니다.
+  - 부르는 쪽 수는 66쪽에서 53쪽으로 약 20% 줄었습니다.
+  - 비밀번호 화면 2쪽은 구조상 밖으로 나가지 않았습니다.
+- **비용 감:** 한 사람이 하루 50회 무료 한도를 쓰면, 같은 페이지 재사용 없이도 하루 약 80쪽까지 볼 수 있습니다(53/89 비율 기준).
+- **한계:**
+  - 89쪽은 조사용으로 고른 페이지입니다. 어르신이 실제로 여는 페이지 구성에서 AI 대상 비율은 다를 수 있습니다.
+  - 기준은 여전히 Claude 검토자입니다.
+
+### 무료 API 후보 (2026-11-18 검색, 대부분 제3자 글. 공식 문서 재확인 필요)
+
+| 후보 | 무료 조건 (보도·글 기준) | 키 | 한국어 | 입력 학습 이용 | 우리 쓰임 |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| **Chrome 내장 AI (Gemini Nano, Prompt API)** | 무료, 사용자 PC에서 실행, 확장 프로그램에서 사용 가능 | 필요 없음 | **지원 언어 목록에 없음** (영·일·스·독·프) | 밖으로 안 나감 | PRD 원칙과 가장 잘 맞음. 한국어가 지원되면 개인용 1순위. 디스크 22GB 필요, PC 전용 |
+| **OpenRouter 무료 모델** | 하루 50회, $10 한 번 충전 시 하루 1,000회, 분당 20회 | 필요 | 모델마다 다름 | 일부 제공사 있음 | 개인 선택 키, 기관 1단계 |
+| **Google Gemini API 무료** | Flash·Flash-Lite 무료. 하루 한도는 콘솔에만 표시(글에 따라 500~1,000회) | 필요 | 좋을 것으로 예상 (미측정) | **무료 등급은 제품 개선에 쓰일 수 있음** | 개인 선택 키. 기관은 동의 필요 |
+| **LG K-엑사원 2.5 API** | 2026-11-09 무료 개방. 개인 시험 글에서는 하루 100회, 키 30일 만료 | 필요 | 강점 (국산) | 개인 글에서는 학습 이용으로 정리 | 약관에 비상업 조건이 있다는 지적. 개인 무료 사용은 맞을 수 있으나, 기관·사업용은 약관 확인 전 보류 |
+| **Groq 무료** | 하루 약 1,000회로 알려졌으나, 2026-10 자료에 분당 3회로 줄었다는 기록도 있음 | 필요 | 공개 모델 위주 | 미확인 | 예비 후보 (한도 불안정) |
+| **Cloudflare Workers AI** | 계정당 하루 10,000 뉴런(모델 크기에 따라 대략 수백 회 이하, 옛 추정) | 서버에만 | 모델마다 다름 | 미확인 | **기관 중계 서버를 이 위에 두면 키가 PC에 안 감.** 넘으면 유료 전환 가능 |
+| Mistral 무료 등급 | 무료 등급에서 API가 빠졌다는 글이 있음 | 필요 | 미확인 | 미확인 | 보류 |
+| Cerebras | 상시 무료가 아니라 체험 | 필요 | — | — | 맞지 않음 |
+| GitHub Models | 2026-07 종료했다는 글이 있음 | — | — | — | 맞지 않음 |
+| 업스테이지 Solar | 무료 행사·공공기관 지원(2026-03 종료)은 지남. 현재 무료 조건은 미확인 | 필요 | 강점 (국산) | 미확인 | 행사 때만 |
+
+**우리 시나리오에 대입하면**
+
+- **개인 (집, 과금 없음):**
+  - 기본은 규칙과 1MB 모델입니다.
+  - 선택으로 자녀나 강사가 무료 키 하나를 넣습니다. 후보는 OpenRouter, Gemini, K-엑사원 중 하나입니다.
+  - Chrome 내장 AI가 한국어를 지원하면 키 없이 쓰는 1순위가 됩니다.
+- **기관 방문 현장:**
+  - 중계 서버(Cloudflare Workers 같은 곳)에 키를 두고, 무료 한도를 먼저 씁니다.
+  - 무료 단계는 OpenRouter $10 계정(하루 1,000회)이나 Workers AI 무료 몫으로 시작합니다.
+  - 입력 학습 조건이 있는 무료 등급(Gemini 무료, K-엑사원)은 기관 동의 없이 쓰지 않습니다.
+- **여러 무료 제공사를 차례로 시도할 수 있습니다.** 한 곳이 막히면 다음 곳, 모두 막히면 규칙으로 갑니다.
+  - 다만 한 제공사에 계정을 여러 개 만들어 한도를 늘리는 것은 하지 않습니다.
+- **어느 무료 모델도 우리 과제(한국어 메뉴 고르기) 품질은 재지 않았습니다.**
+
+### 방향 수정: 분석은 우리 쪽 로컬 모델로 미리, 사용자는 결과만 받기 (같은 날, 사용자 결정 전 제안)
+
+사용자 제안은 이렇습니다. 사이트 분석은 우리 쪽에서 로컬 모델로 해서 결과를 서버에 계속 올려 두고, 사용자가 실제로 여는 페이지나 요청한 페이지 순서로 분석을 늘려 갑니다. 결과가 없는 페이지에서 어떻게 할지는 따로 풉니다.
+
+```
+[우리 쪽]  수집기(별도 headless, 로그인 안 함) → 엔진 + gemma4:12b → 사이트 단위 결과 파일 → 정적 서버
+[사용자]   결과 목록에 있는 사이트면 그 사이트 파일을 받음 → 지금 화면 후보와 고정 표시로 맞춰 봄 → 카드
+```
+
+- **API 비용 0원:** 처리량은 한 쪽에 약 20초, Mac 한 대로 하루 약 4,000쪽입니다.
+- **gemma가 느린 문제는 구조로 풉니다.** 사용자는 기다리지 않고, 모델은 우리 쪽에서 미리 돕니다.
+- **방문 기록을 알리지 않습니다.** 페이지마다 묻지 않고 사이트 단위 파일을 받습니다. 결과가 있는 사이트 목록은 확장에 같이 넣어, 목록에 없는 사이트는 아예 묻지 않습니다.
+- **원칙 변경이 필요합니다.** 사용자 쪽에서 결과 파일을 받는 외부 요청이 생기므로, PRD 원칙을 01·08에서 먼저 고쳐야 합니다(D15·D17).
+
+**결과가 없는 페이지 (제안 순서)**
+
+| 순서 | 방법 | 근거 |
+| :---- | :---- | :---- |
+| 1 | 즉시 규칙 + 작은 학습 모델 | 1MB 로지스틱 47.5%(2ms) → 순위 학습 52.0%(약 4ms, 확인 3) |
+| 2 | 같은 사이트의 같은 틀 페이지 결과 재사용 | 미측정 |
+| 3 | "분석 요청" 버튼 → 주소만 보냄 → 다음 방문부터 모든 사용자에게 결과 | 다음 방문부터 gemma 수준. 누를 때만 전송, 로그인 뒤 화면은 요청 불가 |
+| 4 | 선택: 본인 무료 키로 즉시 AI | 미측정 |
+| 5 | 나중: Chrome 내장 AI (한국어 지원 시) | 미측정 |
+
+**확인 1: 저장한 결과가 다음 수집에서도 맞나 (2026-11-18, 외부 AI 호출 없음)**
+
+- **방법:** 11-17에 모은 평가용 16곳을 11-18에 같은 시드와 별도 headless로 다시 모았습니다([recollect](../evidence/run010/stability-20261118/recollect)). 11-17의 선택을 번호가 아니라 고정 표시로 바꿔, 새 화면에서 하나로만 다시 찾아지는지 셌습니다([stability-check.mjs](../../scripts/ml/stability-check.mjs), [stability.json](../evidence/run010/stability-20261118/stability.json)).
+- **페이지:** 89쪽 중 83쪽은 주소가 같았습니다. 5쪽은 주소가 바뀌었고 1쪽은 수집되지 않았습니다. 대부분 최신 글이 바뀐 게시글 쪽과 행정안전부 쪽입니다.
+
+| 고정 표시 | gemma4:12b 선택 494개 | 엔진 카드 443개 |
+| :---- | ---: | ---: |
+| 이름 + 짧은 주소 + 영역 + 같은 표시 중 순서 | **98.8%** | 98.2% |
+| 이름 + 짧은 주소 + 영역 | 91.7% | 93.7% |
+| 이름 + 짧은 주소 | 86.4% | 87.8% |
+| 이름만 | 84.2% | 86.0% |
+
+- **해석:** 같은 링크가 한 페이지에 여러 번 나오는 경우가 많아서, 순서까지 넣어야 거의 다 찾습니다. 순서를 넣으면 하루 뒤에 99% 가까이 다시 찾았습니다.
+- **한계:** 간격이 하루뿐입니다. 사이트 개편 뒤나 몇 주 뒤에는 더 떨어질 수 있습니다. 주기적인 재수집과 "맞는 비율이 낮으면 결과 없음 처리"가 필요합니다.
+
+**확인 2: Jev처럼 가벼운 순위·분류 모델이 더 있나 (2026-11-18 검색 + 로컬 시험)**
+
+사용자 판단대로, 핵심은 "엔진이 이미 찾은 버튼 중 무엇이 가장 중요한가"의 순위입니다. 그래서 문장을 만들지 않고 점수만 내는 작은 모델을 찾았습니다. 그중 바로 돌릴 수 있는 것은 개발 134쪽에서 학습 없이(제로샷) 시험했습니다([ondevice-rerank.mjs](../../scripts/ml/ondevice-rerank.mjs), [점수](../evidence/run010/stability-20261118/rerank-dev-score.json)).
+
+| 종류 | 모델 (크기) | 결과 (개발 134쪽, 섞음) |
+| :---- | :---- | :---- |
+| 지금 엔진 | — | 37.2% |
+| 리랭커, 학습 없이 | cross-encoder/mmarco-mMiniLMv2 (약 1.2억) | 34.3% (−5.7 ~ −1.0%p, **엔진보다 낮음**). 한 쪽 49ms |
+| 리랭커, 학습 없이 | Horizon-Labs/multilingual-reranker-small | 35.7% (−3.4 ~ +0.3%p). 한 쪽 120ms |
+| 리랭커 | jina-reranker-v2 다국어 (2.8억), gte 다국어 리랭커 (3억) | 우리 도구(transformers.js 3.8.1)가 구조를 지원하지 않아 못 돌림 |
+| 리랭커 (한국어 조정판 포함) | bge-reranker-v2-m3(-ko) (5.7억), Qwen3-Reranker-0.6B, jina-reranker-v3 (6억) | 크기·형식 때문에 이번에 시험 안 함 |
+| 학습 없는 분류 | GLiClass 다국어 mini (약 2.9억) | 시험 안 함. 한국어 학습 여부 미확인 |
+| Jev 비슷한 결정 모델 | jeff (4억), selfjev-4b, OpenJev | 커뮤니티 구현, 라이선스·성숙도 미확인 ([09](../09_local_ai_review.md)) |
+| **우리 자료로 학습한 작은 모델** | 글자 조각 + 위치 특징 로지스틱 (약 1MB) | **43.6%** (+2.6 ~ +10.4%p), 처음 보는 쪽 48.2%. 한 쪽 2ms |
+| 큰 LLM | gemma4:12b (7.7GB) | 53.4%, 한 쪽 약 13초 |
+
+- **해석:** 학습 없는 리랭커는 "검색어와 관련 있는가"를 잽니다. 그래서 "어르신에게 이 페이지에서 무엇이 중요한가"를 모르고, 엔진보다 낮았습니다.
+- **점수를 올리는 것은 모델 크기가 아니라 우리 과제로 학습했느냐입니다.** 1MB 학습 모델이 1억 개 넘는 매개변수의 리랭커보다 높았습니다.
+- **미리 분석하는 구조가 학습 자료를 계속 만듭니다.** gemma 결과와, 나중에 사람이 확정한 결과입니다. 이걸로 1MB 모델(결과 없는 페이지용)을 계속 다시 학습하는 고리가 됩니다. 다만 지난 증류 시험(LLM 라벨만으로 학습)은 효과가 확인되지 않았으므로, 사람 확정 라벨이 섞여야 할 가능성이 큽니다.
+
+**확인 3: 순위를 직접 학습하면 (2026-11-18, [09](../09_local_ai_review.md) 12절)**
+
+| 방식 | 처음 보는 89쪽 (섞음) | 호출 조건 적용 | 한 쪽 시간 |
+| :---- | ---: | ---: | :---- |
+| 지금 엔진 | 41.4% | 41.4% | — |
+| 1MB 로지스틱 | 48.2% | 47.5% | 2ms |
+| **순위 학습 (LambdaRank)** | **53.2%** (+6.3 ~ +18.6%p) | **52.0%** | 약 4ms |
+| 리랭커 조정 학습 (1.2억) | 48.2% | 48.0% | 약 100ms |
+| gemma4:12b | 57.9% | 55.9% | 약 20초 |
+
+- **결과 없는 페이지용 즉시 모델로는 순위 학습이 가장 맞습니다.** gemma와의 차이가 4.7%p까지 줄었고, 속도는 수천 배 빠릅니다.
+- 그래서 구조는 이렇게 정리됩니다.
+  - 미리 분석한 결과가 있으면 gemma 수준(약 56~58%)으로 보여 줍니다.
+  - 결과가 없으면 순위 학습 모델로 즉시 약 52~53%를 보여 줍니다.
+  - 엔진만 쓰면 41%입니다.
+
 ### 다음에 할 수 있는 것 (결정 전)
 
-- **무료 로컬 확인:** 위 호출 조건을 이미 가진 89쪽 자료와 gemma4 결과에 그대로 적용해, 품질과 AI 호출 쪽 수를 잽니다. 외부 호출이 없습니다.
-- **무료 모델 품질 측정:** 무료 모델 2~3개로 89쪽을 재면 약 180~270회가 듭니다. 과금은 없지만 사용자 계정의 키가 필요합니다.
+- **무료 모델 품질 측정 (보류):** 분석을 로컬로 미리 하는 방향이면 급하지 않습니다. 무료 모델 2~3개로 89쪽을 재면 약 180~270회가 듭니다. 과금은 없지만 사용자 계정의 키가 필요합니다.
 - **현장 확인:** 도서관·체험 공간에 어르신 PC석과 이용량이 실제로 있는지 확인합니다(0건).
 
 ## 8. 결정해야 할 것 (07에 기록)
@@ -265,6 +395,13 @@ A·B를 하게 된다면: 사용자당 하루 30쪽, 전체 월 예산 고정, �
 
 ## 10. 출처 (2026-11-18 검색)
 
+- 무료 API 비교: [OpenRouter 블로그](https://openrouter.ai/blog/tutorials/free-llm-apis-compared/), [continuumcode](https://continuumcode.ai/guides/free-llm-api/), [AgentDeals](https://agentdeals.dev/llm-api-pricing), [decodethefuture](https://decodethefuture.org/en/best-free-llm-apis-2026/), [gravity.fast](https://gravity.fast/data/free-llm-api-tiers/)
+- Chrome 내장 AI: [Chrome Prompt API (확장)](https://developer.chrome.com/docs/extensions/ai/prompt-api), [Chrome Prompt API](https://developer.chrome.com/docs/ai/prompt-api), [시작하기](https://developer.chrome.com/docs/ai/get-started)
+- Gemini 무료 등급: [AgentDeals](https://agentdeals.dev/gemini-api-pricing-changes), [laozhang](https://blog.laozhang.ai/en/posts/gemini-api-free-tier), [benchlm](https://benchlm.ai/free-tier/google-ai-studio)
+- K-엑사원 2.5 무료 API: [LG 보도자료](https://lg.co.kr/media/release/30760), [Korea Times](https://www.koreatimes.co.kr/business/companies/20261109/lg-ai-research-opens-k-exaone-25-api-free-of-charge), [뉴스토마토](https://newstomato.com/ReadNews.aspx?no=1319732), [브런치 실사용기](https://brunch.co.kr/@ainote/236), [위키독스](https://wikidocs.net/blog/@openwiki/28300/)
+- Cloudflare Workers AI: [가격 문서](https://developers.cloudflare.com/workers-ai/platform/pricing/), [Costbench](https://costbench.com/software/llm-api-providers/cloudflare-workers-ai/free-plan/)
+- 업스테이지·공공 지원: [아시아경제](https://www.asiae.co.kr/en/article/2025040809094465909)
+- 리랭커·분류 모델: [Jina Reranker v3](https://jina.ai/news/jina-reranker-v3-0-6b-listwise-reranker-for-sota-multilingual-retrieval/), [Qwen3-Reranker-0.6B](https://www.mixpeek.com/model/Qwen/Qwen3-Reranker-0.6B), [SiliconFlow 다국어 리랭커](https://www.siliconflow.com/ko/articles/best-reranker-model-for-multilingual-enterprises), [Lychee-Reranker](https://arxiv.org/pdf/2606.22807), [bge-reranker-v2-m3-ko](https://huggingface.co/dragonkue/bge-reranker-v2-m3-ko/blob/main/README.md), [upskyy/ko-reranker](https://huggingface.co/upskyy/ko-reranker), [Dongjin-kr/ko-reranker](https://huggingface.co/Dongjin-kr/ko-reranker), [sigridjineth/ko-reranker-v1.1](https://huggingface.co/sigridjineth/ko-reranker-v1.1), [GLiClass 논문](https://www.arxiv.org/pdf/2508.07662), [GLiClass small](https://huggingface.co/knowledgator/gliclass-small-v1.0-lw/raw/main/README.md)
 - 국정원 AI 보안 가이드북: [CIO](https://www.cio.com/article/4103809/), [peekaboolabs 정리](https://peekaboolabs.ai/blog/kisa-ai-security-guide)
 - 공공 AI 조달 협약: [보안뉴스](https://m.boannews.com/html/detail.html?idx=138706)
 - 행안부 공공부문 AI 윤리원칙(안): [경향신문](https://www.khan.co.kr/article/202511031510001/)

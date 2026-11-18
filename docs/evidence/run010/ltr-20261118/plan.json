@@ -1,0 +1,20 @@
+{
+  "writtenAt": "2026-11-18T14:50:28.708Z",
+  "purpose": "Learned ranking of controls: LambdaRank on the 1MB-model features, and a fine-tuned 118M multilingual MiniLM cross-encoder.",
+  "train": "134 Claude-reviewed development pages (site survey 2026-11-01); graded labels essential/useful",
+  "devProtocol": "lambdarank leave-one-site-out; cross-encoder site-grouped 5-fold (seed 20261118)",
+  "test": "independent 89 pages (2026-11-17); train on all 134, predict once with the settings fixed in the scripts at the hashes below; no setting changed after the dev results",
+  "primary": "hybrid coverage vs engine 41.4% (ondevice-score.mjs) and gated coverage (ondevice-gate.mjs); comparison point logreg 48.2% hybrid / 47.5% gated",
+  "rules": [
+    "picks saved and sha256 recorded before scoring",
+    "score once; first result kept",
+    "test pages were already used on 2026-11-17 for other methods; this is a second use of the same set, reported as such"
+  ],
+  "caveat": "Reference is an engine-blind Claude review. Human observation 0.",
+  "fileSha256": {
+    "scripts/ml/ondevice-rank.py": "143a5541ca294449203e3416ace4e6702be6fbf28b11655880b9cbcdf20f8a7c",
+    "scripts/ml/ondevice-crossenc.py": "9acb0919b2ac5f5eb6336a8af48b8c1720ea3aadd1dbf4f2a289a6148f11a01d",
+    "scripts/ml/ondevice-score.mjs": "2c7afbca49dc47da4cf78d5f3a133ed9c679058b3d3a4c7a3408064e9351639b",
+    "scripts/ml/ondevice-gate.mjs": "8f8cf097d0fc60ba6b329c4e0f29611bdb7dacb0294c29957dfc81512ee4f6c0"
+  }
+}
