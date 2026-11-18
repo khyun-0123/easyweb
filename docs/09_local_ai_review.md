@@ -412,7 +412,9 @@ L1~L3 이후, 사용자가 원할 때만 진행한다.
 ## 13. 결과 없는 페이지용 실험 빌드 (2026-11-19)
 
 - 결정: 01·08에 "학습한 순위 모델의 실험 빌드(기본 꺼짐)"를 먼저 적고 코드를 바꿨습니다(사용자 지시 2026-11-19).
-- 빌드: `node scripts/build.mjs --learned` → `dist-learned/`. 기본 `dist/`의 content script는 236KB 그대로이고 모델 코드가 없습니다. 실험 빌드는 모델 JSON(4.7MB, gzip 0.9MB) 때문에 약 5MB입니다.
+- 빌드: `node scripts/build.mjs --learned` → `dist-learned/`. 기본 `dist/`의 content script는 236KB 그대로이고 모델 코드가 없습니다.
+  - 실험 빌드는 처음에 모델 JSON 4.7MB 때문에 약 5MB였습니다.
+  - 점수 계산에 필요 없는 트리 기록 필드를 빼고 형식을 줄였습니다([compact-model.mjs](../scripts/ml/compact-model.mjs)). 모델 1.33MB(gzip 313KB), content script 2.0MB가 됐고, Python과 점수 차이 0, 상위 6개 89/89 일치를 다시 확인했습니다([parity-compact.json](evidence/run010/ltr-build-20261119/parity-compact.json)).
 - 모델: 12절 LambdaRank를 개발 134쪽 전체로 학습해 `src/model/learned-ranker.json`으로 내보냈습니다(`ondevice-rank.py --export`, 해시 [model-sha256.txt](evidence/run010/ltr-build-20261119/model-sha256.txt)).
 - JS 이식 확인: [learned-parity.mjs](../scripts/ml/learned-parity.mjs)로 89쪽 9,585개 제어를 비교했습니다. Python 점수와 차이 0, 상위 6개 89/89 일치입니다.
 
@@ -430,14 +432,27 @@ L1~L3 이후, 사용자가 원할 때만 진행한다.
   - 이런 카드는 「이용 안내」 카드에 원본 이름으로 나옵니다.
 - 적용 페이지: 엔진이 일반 페이지로 둔 쪽만입니다(홈·게시판·게시글·관문 제외). 비밀번호 칸이 있거나 제목에 로그인·본인인증·결제·마이페이지·회원정보·비밀번호가 있으면 쓰지 않습니다.
 
-**실제 코드 경로 결과** (저장 화면 재생, `site-survey.mjs --replay [--learned]`, [test-build-score.json](evidence/run010/ltr-build-20261119/test-build-score.json))
+**실제 코드 경로 결과** (저장 화면 재생, `site-survey.mjs --replay [--learned]`, [test-build-score-first.json](evidence/run010/ltr-build-20261119/test-build-score-first.json))
 
 | 자료 | 기본 빌드 | 실험 빌드 | 차이 (95% 구간) |
 | :---- | ---: | ---: | :---- |
 | 처음 보는 89쪽 | 41.4% | **53.4%** | **+6.9 ~ +17.8%p** |
 | 개발 134쪽 | 41.3% | (74.1%) | 학습 자료라 평가로 쓰지 않음 |
 
-- 89쪽 유형별(실험 빌드): 서비스 안내 51.9%(기본 20.4%), FAQ 55.3%(34.2%), 오시는 길 50.0%(35.0%), 안내 문서 36.6%(24.4%), 홈 36.9%(37.9%).
+**규칙 보강: 분류 안 된 후보는 일반 링크만** (2026-11-19)
+
+- 실험 빌드 접근성 검사에서 "기능을 못 찾음" 상태의 합성 페이지에 카드 1개가 나왔습니다. 분류되지 않은 일반 버튼("원본 화면")이 안전 검사를 통과해서입니다([a11y-learned-first](evidence/run010/ltr-build-20261119/a11y-learned-first)).
+- 목적지 없는 버튼은 근거 없는 기능이 될 수 있습니다. 그래서 분류되지 않은 후보는 **바로 이동하는 일반 HTTP(S) 링크만** 허용하도록 고쳤습니다. 점수를 보고 정한 것이 아니라 원칙으로 정했습니다.
+- 89쪽 재측정(네 번째 사용, [test-build-score-links.json](evidence/run010/ltr-build-20261119/test-build-score-links.json)):
+
+| 실험 빌드 규칙 | 89쪽 | 기본 빌드 대비 |
+| :---- | ---: | :---- |
+| 첫 판: 분류 안 된 링크·버튼 허용 (첫 결과, 보존) | 53.4% | +6.9 ~ +17.8%p |
+| **현재: 분류 안 된 후보는 일반 링크만** | **50.2%** | **+4.7 ~ +12.9%p** |
+
+- 고친 뒤 접근성 검사 21조건은 위반 0이고, 모든 경우의 카드 수가 기본 빌드와 같습니다([a11y-learned](evidence/run010/ltr-build-20261119/a11y-learned)). 따라서 합성 페이지에서는 분류 안 된 링크 카드 화면이 검사되지 않았습니다.
+
+- 89쪽 유형별(첫 판 실험 빌드): 서비스 안내 51.9%(기본 20.4%), FAQ 55.3%(34.2%), 오시는 길 50.0%(35.0%), 안내 문서 36.6%(24.4%), 홈 36.9%(37.9%).
 - 기본 빌드 재생은 원래 엔진 결과와 같았습니다(89쪽 41.4%).
 - 기본 빌드 검증: `npm run verify` 통과(타입·빌드·로컬 539개 실패 0·core 품질·합성 성능 3종). `sourceGuard`를 떼어 낸 뒤에도 기본 동작이 그대로라는 근거입니다.
   - 검증 도구가 run009·run010의 이전 증거 파일을 덮어써서, 새 결과는 [verify-base-outputs](evidence/run010/ltr-build-20261119/verify-base-outputs)로 옮기고 원래 파일은 되돌렸습니다.

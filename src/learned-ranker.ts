@@ -15,19 +15,29 @@ export interface RankRow {
   font: number;     // font size in px
 }
 
-interface Vocab { ngram: [number, number]; terms: Record<string, [number, number]> }
-interface Node { split_feature?: number; threshold?: number; left_child?: Node; right_child?: Node; leaf_value?: number }
+// Compact model (scripts/ml/compact-model.mjs, format easyweb-lambdarank-2): vocabulary terms and
+// idf in column order; a tree node is [feature, threshold, left, right] and a leaf is its value.
+interface Vocab { ngram: [number, number]; terms: string[]; idf: number[] }
+type Node = number | [number, number, Node, Node];
 export interface RankModel { format: string; label: Vocab; context: Vocab; contextWeight: number; meta: string[][]; trees: Node[] }
+
+const columns = new WeakMap<Vocab, Map<string, number>>();
+function column(vocab: Vocab): Map<string, number> {
+  let map = columns.get(vocab);
+  if (!map) { map = new Map(vocab.terms.map((term, n) => [term, n])); columns.set(vocab, map); }
+  return map;
+}
 
 // sklearn TfidfVectorizer(analyzer='char_wb', lowercase, sublinear_tf, norm='l2').
 function tfidf(text: string, vocab: Vocab, weight: number, offset: number, out: Map<number, number>): void {
   const [min, max] = vocab.ngram;
-  const counts = new Map<string, number>();
+  const index = column(vocab);
+  const counts = new Map<number, number>();
   for (const word of text.toLowerCase().replace(/\s\s+/g, ' ').split(/\s+/).filter(Boolean)) {
     const w = [...` ${word} `];
     for (let n = min; n <= max; n++) {
       let start = 0;
-      const add = () => { const gram = w.slice(start, start + n).join(''); if (vocab.terms[gram]) counts.set(gram, (counts.get(gram) ?? 0) + 1); };
+      const add = () => { const at = index.get(w.slice(start, start + n).join('')); if (at !== undefined) counts.set(at, (counts.get(at) ?? 0) + 1); };
       add();
       while (start + n < w.length) { start++; add(); }
       if (start === 0) break;
@@ -35,16 +45,15 @@ function tfidf(text: string, vocab: Vocab, weight: number, offset: number, out: 
   }
   const cells: [number, number][] = [];
   let norm = 0;
-  for (const [gram, count] of counts) {
-    const [index, idf] = vocab.terms[gram];
-    const value = (1 + Math.log(count)) * idf;
-    cells.push([index, value]); norm += value * value;
+  for (const [at, count] of counts) {
+    const value = (1 + Math.log(count)) * vocab.idf[at];
+    cells.push([at, value]); norm += value * value;
   }
   norm = Math.sqrt(norm);
-  for (const [index, value] of cells) out.set(offset + index, (value / norm) * weight);
+  for (const [at, value] of cells) out.set(offset + at, (value / norm) * weight);
 }
 
-const size = (vocab: Vocab) => Object.keys(vocab.terms).length;
+const size = (vocab: Vocab) => vocab.terms.length;
 
 export function features(model: RankModel, rows: RankRow[], ruleType: string): Map<number, number>[] {
   const labelSize = size(model.label), contextSize = size(model.context);
@@ -73,8 +82,8 @@ export function scoreRows(model: RankModel, rows: RankRow[], ruleType: string): 
     let total = 0;
     for (const tree of model.trees) {
       let node = tree;
-      while (node.leaf_value === undefined) node = Math.fround(vector.get(node.split_feature!) ?? 0) <= node.threshold! ? node.left_child! : node.right_child!;
-      total += node.leaf_value;
+      while (typeof node !== 'number') node = Math.fround(vector.get(node[0]) ?? 0) <= node[1] ? node[2] : node[3];
+      total += node;
     }
     return total;
   });

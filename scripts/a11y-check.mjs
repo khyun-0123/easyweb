@@ -241,15 +241,17 @@ function addFocusContrast(record) {
   return { ...record, contrast: Math.min(contrastRatio(record.outlineColor, record.background) ?? 0, contrastRatio(record.outlineColor, record.surroundingBackground) ?? 0) };
 }
 
-export async function runA11yCheck({ output = reportFile, screenshots = true } = {}) {
+export async function runA11yCheck({ output = reportFile, screenshots = true, learned = false } = {}) {
   const screenshotDir = join(dirname(output), 'a11y-screenshots');
   const sourceBefore = await sourceHashes();
-  const built = await build({ entryPoints: ['src/content.ts'], bundle: true, write: false, format: 'iife', loader: { '.css': 'text' } });
+  // learned: the experiment build's learned hook replaces the default stub (scripts/build.mjs --learned).
+  const learnedHook = { name: 'learned-hook', setup(b) { b.onResolve({ filter: /^\.\/learned-hook$/ }, () => ({ path: resolve(`src/learned-hook${learned ? '.experiment' : ''}.ts`) })); } };
+  const built = await build({ entryPoints: ['src/content.ts'], bundle: true, write: false, format: 'iife', loader: { '.css': 'text' }, plugins: [learnedHook] });
   const bundle = built.outputFiles[0].text;
   const browser = await chromium.launch({ headless: true });
   const report = {
     checkedAt: new Date().toISOString(),
-    scope: 'Current source bundled in memory; synthetic page and EasyWeb shadow hosts only. No deployment/activeTab or live-site validation.',
+    scope: `Current source bundled in memory${learned ? ' (experiment build: learned hook)' : ''}; synthetic page and EasyWeb shadow hosts only. No deployment/activeTab or live-site validation.`, learnedBuild: learned,
     bundleSHA256: createHash('sha256').update(bundle).digest('hex'),
     sourceHashes: sourceBefore,
     browser: browser.version(), axeVersion: axe.version,
@@ -352,7 +354,7 @@ export async function runA11yCheck({ output = reportFile, screenshots = true } =
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const output = process.argv.find(arg => arg.startsWith('--output='))?.slice('--output='.length) ?? reportFile;
-  const report = await runA11yCheck({ output });
+  const report = await runA11yCheck({ output, learned: process.argv.includes('--learned') });
   console.log(JSON.stringify({ report: output, ...report.summary }, null, 2));
   if (report.summary.errors || report.summary.violations || report.summary.horizontalOverflowCases.length || report.summary.smallTargets.length || report.summary.lowComponentContrast.length || report.summary.lowFocusContrast.length) process.exitCode = 1;
 }

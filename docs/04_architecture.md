@@ -55,7 +55,7 @@ EasyWeb · 1인 프로젝트
 | `common-actions.ts` | 「자주 쓰는 버튼」: 홈 페이지 판단(주소가 `/`·index·main·언어 코드), 처음 화면(같은 사이트 홈 주소 + "홈/처음으로" 이름 또는 머리 영역 로고), 로그인(분류된 짧은 "로그인"), 회원가입(정확한 이름의 일반 링크) | 고정 이름·일반 http(s) 링크만, 위험 스크립트·명령 URL 제외. 사이트별 규칙 없음 |
 | `page-types.ts` | 「자주 쓰는 버튼」 분리 후 페이지 유형(list·post·gate·default)을 판단해 처음 카드 구성. 이미 분류된 요소는 분류·근거를 그대로 쓰고 카드 문구(title·description)만 더함 | 위험 이름·스크립트·명령 주소 제외(`isSafeSource`), 편집 요소 제외, 홈은 기본 규칙 + 「자주 찾는 서비스」류 제목 아래 일반 링크를 대표 서비스 후보로(홈에서만, footer 제외). 게시판 행은 글 제목 우선·검색은 날짜칸 제외, 게시글 이전/다음은 링크만 |
 | `learned-hook.ts` | 기본 빌드용 빈 연결: 학습 순서를 쓰지 않음 | 기본 빌드에 모델 코드가 들어가지 않음 |
-| `learned-hook.experiment.ts` · `learned-ranker.ts` · `learned-rows.ts` · `model/learned-ranker.json` | **실험 빌드 전용** (`build.mjs --learned`). 일반 페이지에서 보이는 제어 목록(조사 도구와 같은 방식)을 만들고 LambdaRank 모델로 점수를 매겨, 안전 검사를 통과한 분석 후보의 카드 순서를 정함 | 후보를 새로 만들지 않음. 분류 안 된 후보는 `sourceGuard`+`isSafeSource` 통과 필수. 비밀번호 칸·로그인/인증/결제 제목 페이지 제외. 값 읽지 않음, 외부 통신 없음 |
+| `learned-hook.experiment.ts` · `learned-ranker.ts` · `learned-rows.ts` · `model/learned-ranker.json` | **실험 빌드 전용** (`build.mjs --learned`). 일반 페이지에서 보이는 제어 목록(조사 도구와 같은 방식)을 만들고 LambdaRank 모델로 점수를 매겨, 안전 검사를 통과한 분석 후보의 카드 순서를 정함 | 후보를 새로 만들지 않음. 분류 안 된 후보는 일반 HTTP(S) 링크만, `sourceGuard`+`isSafeSource` 통과 필수. 비밀번호 칸·로그인/인증/결제 제목 페이지 제외. 값 읽지 않음, 외부 통신 없음 |
 | `ranker.ts` | 목적지 중복 제거, 처음 6개, 다른 메뉴 목록. 정책 링크(개인정보처리방침 등 정확한 이름)는 빈칸 채울 때만 | 최대 6 + 다른 메뉴 (확정 정책) |
 | `easy-mode.ts` | 쉬운 화면 UI, 메뉴 넘기기, 다시 찾기 | 제품 DOM에 평가 ID를 넣지 않음 |
 | `action-policy.ts` | 이동/원본 안내 결정, 다운로드·SSO 식별 | [ACTION_POLICY](ACTION_POLICY.md) |
@@ -70,7 +70,7 @@ EasyWeb · 1인 프로젝트
 - **저장:** 없음. 분석 결과는 화면이 열려 있는 동안 메모리에만 있음
 - **외부 통신:** 없음. 사용자가 링크 카드를 눌러 원래 사이트로 이동할 때 생기는 일반 요청만 있음
 - **권한:** `activeTab`, `scripting`
-- **실험 빌드 (`dist-learned/`):** 위와 같음. 학습 모델(약 4.7MB JSON)이 content script에 함께 들어가 크기가 약 5MB가 됨
+- **실험 빌드 (`dist-learned/`):** 위와 같음. 학습 모델(1.33MB JSON)이 content script에 함께 들어가 크기가 약 2.0MB가 됨
 
 ## 5. 개발 도구 구조 (제품에 들어가지 않음)
 
