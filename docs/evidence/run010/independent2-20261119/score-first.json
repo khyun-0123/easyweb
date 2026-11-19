@@ -1,0 +1,967 @@
+{
+  "checkedAt": "2026-11-19T00:00:44.982Z",
+  "measure": "essential in cards or common row; useful = card in essential or useful",
+  "engine": {
+    "coverage": 37,
+    "usefulPrecision": 58.9,
+    "cards": 457,
+    "bySite": {
+      "bucheon": {
+        "essential": 41,
+        "covered": 25
+      },
+      "cbnu": {
+        "essential": 35,
+        "covered": 7
+      },
+      "customs": {
+        "essential": 30,
+        "covered": 15
+      },
+      "gb": {
+        "essential": 32,
+        "covered": 11
+      },
+      "hwaseong": {
+        "essential": 31,
+        "covered": 15
+      },
+      "inha": {
+        "essential": 39,
+        "covered": 7
+      },
+      "jbnu": {
+        "essential": 42,
+        "covered": 13
+      },
+      "jeju": {
+        "essential": 31,
+        "covered": 9
+      },
+      "jongno": {
+        "essential": 44,
+        "covered": 17
+      },
+      "kead": {
+        "essential": 28,
+        "covered": 9
+      },
+      "kostat": {
+        "essential": 27,
+        "covered": 10
+      },
+      "kwater": {
+        "essential": 31,
+        "covered": 16
+      },
+      "mafra": {
+        "essential": 28,
+        "covered": 13
+      },
+      "mfds": {
+        "essential": 31,
+        "covered": 10
+      },
+      "semas": {
+        "essential": 16,
+        "covered": 3
+      }
+    },
+    "byType": {
+      "board": {
+        "pages": 18,
+        "coverage": 68.3,
+        "usefulPrecision": 82.4,
+        "cards": 102
+      },
+      "home": {
+        "pages": 16,
+        "coverage": 23.6,
+        "usefulPrecision": 51.3,
+        "cards": 76
+      },
+      "location": {
+        "pages": 16,
+        "coverage": 28.7,
+        "usefulPrecision": 41.5,
+        "cards": 82
+      },
+      "faq": {
+        "pages": 10,
+        "coverage": 43.1,
+        "usefulPrecision": 71.7,
+        "cards": 60
+      },
+      "info": {
+        "pages": 8,
+        "coverage": 29.4,
+        "usefulPrecision": 45.7,
+        "cards": 46
+      },
+      "post": {
+        "pages": 8,
+        "coverage": 27,
+        "usefulPrecision": 54.1,
+        "cards": 37
+      },
+      "service": {
+        "pages": 8,
+        "coverage": 28.2,
+        "usefulPrecision": 50,
+        "cards": 42
+      },
+      "calendar": {
+        "pages": 2,
+        "coverage": 16.7,
+        "usefulPrecision": 60,
+        "cards": 10
+      },
+      "form": {
+        "pages": 1,
+        "coverage": 20,
+        "usefulPrecision": 50,
+        "cards": 2
+      },
+      "other": {
+        "pages": 1,
+        "coverage": 0,
+        "usefulPrecision": null,
+        "cards": 0
+      }
+    }
+  },
+  "models": {
+    "build-base": {
+      "file": "cards-base.json",
+      "cpuThreads": null,
+      "failures": 0,
+      "invalidPicks": 0,
+      "latencyMs": null,
+      "promptTokens": null,
+      "alone": {
+        "coverage": 37.1,
+        "usefulPrecision": 58.7,
+        "cards": 453,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 7
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 15
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 11
+          },
+          "hwaseong": {
+            "essential": 25,
+            "covered": 13
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 7
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 13
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 9
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 17
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 9
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 10
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 13
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 10
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 3
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4,
+            "cards": 102
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 23.6,
+            "usefulPrecision": 51.3,
+            "cards": 76
+          },
+          "location": {
+            "pages": 15,
+            "coverage": 28.4,
+            "usefulPrecision": 39.7,
+            "cards": 78
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 43.1,
+            "usefulPrecision": 71.7,
+            "cards": 60
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 29.4,
+            "usefulPrecision": 45.7,
+            "cards": 46
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 54.1,
+            "cards": 37
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 28.2,
+            "usefulPrecision": 50,
+            "cards": 42
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60,
+            "cards": 10
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50,
+            "cards": 2
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null,
+            "cards": 0
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 0.1,
+          "interval95": [
+            -1.3,
+            0
+          ]
+        }
+      },
+      "hybrid": {
+        "coverage": 37.1,
+        "usefulPrecision": 58.7,
+        "cards": 453,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 7
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 15
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 11
+          },
+          "hwaseong": {
+            "essential": 25,
+            "covered": 13
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 7
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 13
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 9
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 17
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 9
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 10
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 13
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 10
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 3
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4,
+            "cards": 102
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 23.6,
+            "usefulPrecision": 51.3,
+            "cards": 76
+          },
+          "location": {
+            "pages": 15,
+            "coverage": 28.4,
+            "usefulPrecision": 39.7,
+            "cards": 78
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 43.1,
+            "usefulPrecision": 71.7,
+            "cards": 60
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 29.4,
+            "usefulPrecision": 45.7,
+            "cards": 46
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 54.1,
+            "cards": 37
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 28.2,
+            "usefulPrecision": 50,
+            "cards": 42
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60,
+            "cards": 10
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50,
+            "cards": 2
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null,
+            "cards": 0
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 0.1,
+          "interval95": [
+            -1.3,
+            0
+          ]
+        }
+      },
+      "homeOnly": {
+        "coverage": 37,
+        "usefulPrecision": 58.9,
+        "cards": 457,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 7
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 15
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 11
+          },
+          "hwaseong": {
+            "essential": 31,
+            "covered": 15
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 7
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 13
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 9
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 17
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 9
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 10
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 13
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 10
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 3
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4,
+            "cards": 102
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 23.6,
+            "usefulPrecision": 51.3,
+            "cards": 76
+          },
+          "location": {
+            "pages": 16,
+            "coverage": 28.7,
+            "usefulPrecision": 41.5,
+            "cards": 82
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 43.1,
+            "usefulPrecision": 71.7,
+            "cards": 60
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 29.4,
+            "usefulPrecision": 45.7,
+            "cards": 46
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 54.1,
+            "cards": 37
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 28.2,
+            "usefulPrecision": 50,
+            "cards": 42
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60,
+            "cards": 10
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50,
+            "cards": 2
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null,
+            "cards": 0
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 0,
+          "interval95": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "build-learned": {
+      "file": "cards-learned.json",
+      "cpuThreads": null,
+      "failures": 0,
+      "invalidPicks": 0,
+      "latencyMs": null,
+      "promptTokens": null,
+      "alone": {
+        "coverage": 42.2,
+        "usefulPrecision": 63.7,
+        "cards": 510,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 10
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 17
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 14
+          },
+          "hwaseong": {
+            "essential": 31,
+            "covered": 16
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 9
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 15
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 11
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 13
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 12
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 16
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 16
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 13
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 2
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4,
+            "cards": 108
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 22.6,
+            "usefulPrecision": 48.9,
+            "cards": 92
+          },
+          "location": {
+            "pages": 16,
+            "coverage": 48.3,
+            "usefulPrecision": 61.5,
+            "cards": 96
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 41.4,
+            "usefulPrecision": 71.7,
+            "cards": 60
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 32.4,
+            "usefulPrecision": 54.2,
+            "cards": 48
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 52.5,
+            "cards": 40
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 41,
+            "usefulPrecision": 60.4,
+            "cards": 48
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60,
+            "cards": 10
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50,
+            "cards": 2
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 100,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 5.2,
+          "interval95": [
+            1.5,
+            8.5
+          ]
+        }
+      },
+      "hybrid": {
+        "coverage": 42.2,
+        "usefulPrecision": 63.7,
+        "cards": 510,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 10
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 17
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 14
+          },
+          "hwaseong": {
+            "essential": 31,
+            "covered": 16
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 9
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 15
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 11
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 13
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 12
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 16
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 16
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 13
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 2
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4,
+            "cards": 108
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 22.6,
+            "usefulPrecision": 48.9,
+            "cards": 92
+          },
+          "location": {
+            "pages": 16,
+            "coverage": 48.3,
+            "usefulPrecision": 61.5,
+            "cards": 96
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 41.4,
+            "usefulPrecision": 71.7,
+            "cards": 60
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 32.4,
+            "usefulPrecision": 54.2,
+            "cards": 48
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 52.5,
+            "cards": 40
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 41,
+            "usefulPrecision": 60.4,
+            "cards": 48
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60,
+            "cards": 10
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50,
+            "cards": 2
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 100,
+            "cards": 6
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 5.2,
+          "interval95": [
+            1.5,
+            8.5
+          ]
+        }
+      },
+      "homeOnly": {
+        "coverage": 36.8,
+        "usefulPrecision": 58.1,
+        "cards": 473,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 24
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 7
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 15
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 11
+          },
+          "hwaseong": {
+            "essential": 31,
+            "covered": 15
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 7
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 13
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 9
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 17
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 9
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 10
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 15
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 14
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 10
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 3
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4,
+            "cards": 102
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 22.6,
+            "usefulPrecision": 48.9,
+            "cards": 92
+          },
+          "location": {
+            "pages": 16,
+            "coverage": 28.7,
+            "usefulPrecision": 41.5,
+            "cards": 82
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 43.1,
+            "usefulPrecision": 71.7,
+            "cards": 60
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 29.4,
+            "usefulPrecision": 45.7,
+            "cards": 46
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 54.1,
+            "cards": 37
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 28.2,
+            "usefulPrecision": 50,
+            "cards": 42
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60,
+            "cards": 10
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50,
+            "cards": 2
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 0,
+            "usefulPrecision": null,
+            "cards": 0
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": -0.2,
+          "interval95": [
+            -1,
+            0.4
+          ]
+        }
+      }
+    }
+  }
+}

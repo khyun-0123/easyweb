@@ -1,0 +1,80 @@
+{
+  "frozenAt": "2026-11-18T16:53:25.637Z",
+  "commit": "0a38d1d8e6356c21d176c172b881925c497f5a29",
+  "workingTreeCleanForSrc": true,
+  "rule": "Engine source, learned model and the experiment-build rules are frozen before TEST2 collection. TEST2 reviews are not used for training or tuning. Both builds are run on the saved pages before any review is read; their cards are saved and hashed before scoring. The first scored result is kept even if it fails.",
+  "plan": {
+    "compared": [
+      "base build: first screen recorded by site-survey at collection (default dist)",
+      "experiment build: replay of the same saved pages with --learned (current rule: unclassified candidates only as ordinary links)"
+    ],
+    "primary": "experiment coverage minus base coverage of TEST2 essential items, 95% site-level paired bootstrap (ondevice-score.mjs, seed 20261115); experiment cards passed as picks, alone variant",
+    "secondary": [
+      "by reviewer page type",
+      "useful precision",
+      "pages where the learned path ran (engine default, not home, not sensitive)"
+    ],
+    "hypothesis": "experiment > base; earlier estimate on TEST (used four times) +8.8%p [+4.7, +12.9]",
+    "reviewers": "engine-blind Claude reviewers (subagents) see only elements/<pageId>.txt and the protocol; never survey.json or any engine/model output",
+    "order": [
+      "freeze",
+      "collect (headless, seeds above)",
+      "replay with --learned on saved HTML",
+      "hash both card files",
+      "reviews",
+      "score once"
+    ]
+  },
+  "fileSha256": {
+    "src/action-bridge.ts": "9b3077d6fc5c2c4e26755788680c8fc1c41d9e2c2f5c2c0822ef5c2fe801a772",
+    "src/action-policy.ts": "caa7d7b2d0374b5e21e5ecfd365b440d45cb2bf85ea47f1f20c5050b15d14051",
+    "src/analyzer.ts": "2c2e725e4505d43b42482af4d0af3e2ef2e0a67b802581c474f9ecaa7fdf6468",
+    "src/assets.d.ts": "c97da961ced5133d8c8e6771fa15a5fe40fdd74aa9fed1cd96f5f91956b452b0",
+    "src/background.ts": "43ab0cb5227c4936a8019dcacd7590b2a0029e9a66b12422fb591b3a2f1cd15a",
+    "src/classifier.ts": "4351b47f9cf55d0bfc1905afaa5eb6df721f0e6b96dea2bfd85d57465b62a6a7",
+    "src/common-actions.ts": "e12dbacd5c423bdb1f6fce4b95155115276416ad4d3d4512d942197022080efb",
+    "src/content-evidence.ts": "b21f3f5908f6960d57b2c723c1a3ab4b38b9d16f8af5e9e133c92f081f9bf5a3",
+    "src/content.ts": "b4d5383dab2ce99a2296720bee32a8dbd588692d93fbfd896a0de974e6359045",
+    "src/document-relations.ts": "0f53a7c9c73d264a458532fed1158bccde66d0744deda74b616826ab60fc6018",
+    "src/easy-mode.ts": "0c1704d9002d5c4cda1af4ae7960d751200946837196e86b52a658124becf659",
+    "src/evidence-nodes.ts": "d3bdb8fd1ddf5ba0b6f472bbcd988513b0880f39cd38a34f14b52b80e26fb001",
+    "src/institution-evidence.ts": "c9d6850624f51fe02730704b2e7852cb33bb3a886b8de933f1d4f6715999a4f6",
+    "src/learned-hook.experiment.ts": "4ff5762ed4103fafe937b60079b77972c78051928ebf300cb38a599fd43c0148",
+    "src/learned-hook.ts": "66e6533e804be1a5e56782ecd323b20e97f01971da81e53a8532dc5412c0e392",
+    "src/learned-ranker.ts": "e5988b66d917b95d099ffde4150ff7d3d0f18f3b922bc287edda75b80f4fae67",
+    "src/learned-rows.ts": "84677309d664864b6a6edacd55ef5097fe2792247c7962f7169acac885081a23",
+    "src/navigation-utility.ts": "963974505ce15b5a9e66fc16368ebd95cee622e1f52fdde16ed4da824b3f8cbd",
+    "src/original-notice.ts": "d0cdc1ae11de54a4b1006d9b499c69ee46297ee7038a7e14914b1289cbe8f7ad",
+    "src/page-session.ts": "7c24b92805b0f207a3a4d9f44ad5fbbb29d6f2f48d8679ca51b361e8f9dc98b1",
+    "src/page-types.ts": "e83978fbdb6e99f263b316a10faef53b843c2b423a4e890318fe5af555afcb50",
+    "src/ranker.ts": "92e77337ebba0b40d032684e9b4b633b24d48870df04920bf7e1857cf472b790",
+    "src/relations.ts": "cd03dc861833d0ef2b10f243c10ab746969555ca0623fb9e9ed170d644315a2c",
+    "src/service-relations.ts": "c99b7f55bb1416e07dcf0f6f84b7e194145f9106e5923f01e67f36329719a084",
+    "src/types.ts": "53200279f32d6693a3221d531edfed4f87edfe98d61726d48d77eaa946576b82",
+    "src/model/learned-ranker.json": "e0f25d0324cf6255b4a9464219f80450c51a6d1ad25722ccb17c14a50910caf2",
+    "scripts/site-survey.mjs": "325b8c3a6971993c7bfa174c45b641af172b62d033a35e13a3e68778cc6c301a",
+    "scripts/ml/ondevice-score.mjs": "2c7afbca49dc47da4cf78d5f3a133ed9c679058b3d3a4c7a3408064e9351639b",
+    "scripts/ml/ondevice-gate.mjs": "8f8cf097d0fc60ba6b329c4e0f29611bdb7dacb0294c29957dfc81512ee4f6c0",
+    "evaluation/survey/review-protocol-20261101.md": "5e75f29286cebf94031c313a8030351aae316944a83c0da5dd6609463f4afa05",
+    "evaluation/survey/sites-20261119-test2.json": "63d2265e475ac9d3b0dedc1c82a57335825cbf23a9011f75b72b4244746a0c7b"
+  },
+  "firstScore": {
+    "scoredAt": "2026-11-19T09:00:53.667862+09:00",
+    "pages": 88,
+    "essential": 486,
+    "excluded": [
+      "nfm-home (0 controls captured)",
+      "kostat-post (collection failed: download)"
+    ],
+    "base": 37,
+    "experiment": 42.2,
+    "versusBase": {
+      "coverageDiff": 5.2,
+      "interval95": [
+        1.5,
+        8.5
+      ]
+    },
+    "note": "Scored once. Reviews by 4 engine-blind Claude subagents; reviewer notes list pages whose content differs from their names (e.g. kostat-faq maintenance page, jongno-guide landed on home)."
+  }
+}

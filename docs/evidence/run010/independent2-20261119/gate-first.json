@@ -1,0 +1,743 @@
+{
+  "checkedAt": "2026-11-19T00:00:45.081Z",
+  "scope": "Diagnostic only. Replays saved picks; no model called. Reference is an engine-blind Claude review, not human users.",
+  "rule": {
+    "blocked": "input:password on the page, or title matches /로그인|본인\\s*인증|본인확인|결제|마이\\s*페이지|회원\\s*정보|비밀번호/",
+    "ruled": "engine home, list, post, gate",
+    "target": "everything else"
+  },
+  "pages": 88,
+  "routes": {
+    "ruled": 37,
+    "target": 50,
+    "blocked": 1
+  },
+  "gate": {
+    "bucheon-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "bucheon-faq": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "bucheon-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "bucheon-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "bucheon-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "bucheon-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "bucheon-service": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "cbnu-academic": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "cbnu-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "cbnu-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "cbnu-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "cbnu-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "cbnu-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "cbnu-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "customs-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "customs-faq": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "customs-home": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "customs-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "customs-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "gb-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "gb-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "gb-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "gb-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "gb-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "gb-service": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "hwaseong-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "hwaseong-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "hwaseong-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "hwaseong-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "hwaseong-post": {
+      "route": "target",
+      "why": "default"
+    },
+    "hwaseong-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "inha-academic": {
+      "route": "target",
+      "why": "default"
+    },
+    "inha-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "inha-faq": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "inha-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "inha-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "inha-post": {
+      "route": "target",
+      "why": "default"
+    },
+    "inha-service": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jbnu-academic": {
+      "route": "blocked",
+      "why": "password field"
+    },
+    "jbnu-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jbnu-faq": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jbnu-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "jbnu-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "jbnu-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "jbnu-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "jeju-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jeju-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "jeju-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "jeju-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "jeju-post": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jeju-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "jongno-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jongno-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "jongno-guide": {
+      "route": "target",
+      "why": "default"
+    },
+    "jongno-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "jongno-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "jongno-post": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "jongno-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "kead-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kead-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "kead-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "kead-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "kead-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "kostat-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kostat-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "kostat-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "kostat-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "kostat-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "kwater-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "kwater-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "kwater-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "kwater-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "kwater-post": {
+      "route": "ruled",
+      "why": "post"
+    },
+    "kwater-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "mafra-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "mafra-home": {
+      "route": "target",
+      "why": "default"
+    },
+    "mafra-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "mafra-post": {
+      "route": "target",
+      "why": "default"
+    },
+    "mafra-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "mfds-board": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "mfds-faq": {
+      "route": "target",
+      "why": "default"
+    },
+    "mfds-home": {
+      "route": "ruled",
+      "why": "home"
+    },
+    "mfds-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "mfds-post": {
+      "route": "target",
+      "why": "default"
+    },
+    "mfds-service": {
+      "route": "target",
+      "why": "default"
+    },
+    "semas-home": {
+      "route": "ruled",
+      "why": "list"
+    },
+    "semas-location": {
+      "route": "target",
+      "why": "default"
+    },
+    "semas-service": {
+      "route": "target",
+      "why": "default"
+    }
+  },
+  "engine": {
+    "coverage": 37,
+    "usefulPrecision": 58.9,
+    "bySite": {
+      "bucheon": {
+        "essential": 41,
+        "covered": 25
+      },
+      "cbnu": {
+        "essential": 35,
+        "covered": 7
+      },
+      "customs": {
+        "essential": 30,
+        "covered": 15
+      },
+      "gb": {
+        "essential": 32,
+        "covered": 11
+      },
+      "hwaseong": {
+        "essential": 31,
+        "covered": 15
+      },
+      "inha": {
+        "essential": 39,
+        "covered": 7
+      },
+      "jbnu": {
+        "essential": 42,
+        "covered": 13
+      },
+      "jeju": {
+        "essential": 31,
+        "covered": 9
+      },
+      "jongno": {
+        "essential": 44,
+        "covered": 17
+      },
+      "kead": {
+        "essential": 28,
+        "covered": 9
+      },
+      "kostat": {
+        "essential": 27,
+        "covered": 10
+      },
+      "kwater": {
+        "essential": 31,
+        "covered": 16
+      },
+      "mafra": {
+        "essential": 28,
+        "covered": 13
+      },
+      "mfds": {
+        "essential": 31,
+        "covered": 10
+      },
+      "semas": {
+        "essential": 16,
+        "covered": 3
+      }
+    },
+    "byType": {
+      "board": {
+        "pages": 18,
+        "coverage": 68.3,
+        "usefulPrecision": 82.4
+      },
+      "home": {
+        "pages": 16,
+        "coverage": 23.6,
+        "usefulPrecision": 51.3
+      },
+      "location": {
+        "pages": 16,
+        "coverage": 28.7,
+        "usefulPrecision": 41.5
+      },
+      "faq": {
+        "pages": 10,
+        "coverage": 43.1,
+        "usefulPrecision": 71.7
+      },
+      "info": {
+        "pages": 8,
+        "coverage": 29.4,
+        "usefulPrecision": 45.7
+      },
+      "post": {
+        "pages": 8,
+        "coverage": 27,
+        "usefulPrecision": 54.1
+      },
+      "service": {
+        "pages": 8,
+        "coverage": 28.2,
+        "usefulPrecision": 50
+      },
+      "calendar": {
+        "pages": 2,
+        "coverage": 16.7,
+        "usefulPrecision": 60
+      },
+      "form": {
+        "pages": 1,
+        "coverage": 20,
+        "usefulPrecision": 50
+      },
+      "other": {
+        "pages": 1,
+        "coverage": 0,
+        "usefulPrecision": null
+      }
+    }
+  },
+  "models": {
+    "build-learned": {
+      "file": "cards-learned.json",
+      "gated": {
+        "coverage": 42.2,
+        "usefulPrecision": 63.7,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 10
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 17
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 14
+          },
+          "hwaseong": {
+            "essential": 31,
+            "covered": 16
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 9
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 15
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 11
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 13
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 12
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 16
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 16
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 13
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 2
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 22.6,
+            "usefulPrecision": 48.9
+          },
+          "location": {
+            "pages": 16,
+            "coverage": 48.3,
+            "usefulPrecision": 61.5
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 41.4,
+            "usefulPrecision": 71.7
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 32.4,
+            "usefulPrecision": 54.2
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 52.5
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 41,
+            "usefulPrecision": 60.4
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 100
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 5.2,
+          "interval95": [
+            1.5,
+            8.5
+          ]
+        },
+        "modelPages": 50
+      },
+      "hybrid": {
+        "coverage": 42.2,
+        "usefulPrecision": 63.7,
+        "bySite": {
+          "bucheon": {
+            "essential": 41,
+            "covered": 25
+          },
+          "cbnu": {
+            "essential": 35,
+            "covered": 10
+          },
+          "customs": {
+            "essential": 30,
+            "covered": 17
+          },
+          "gb": {
+            "essential": 32,
+            "covered": 14
+          },
+          "hwaseong": {
+            "essential": 31,
+            "covered": 16
+          },
+          "inha": {
+            "essential": 39,
+            "covered": 9
+          },
+          "jbnu": {
+            "essential": 42,
+            "covered": 15
+          },
+          "jeju": {
+            "essential": 31,
+            "covered": 11
+          },
+          "jongno": {
+            "essential": 44,
+            "covered": 13
+          },
+          "kead": {
+            "essential": 28,
+            "covered": 12
+          },
+          "kostat": {
+            "essential": 27,
+            "covered": 16
+          },
+          "kwater": {
+            "essential": 31,
+            "covered": 16
+          },
+          "mafra": {
+            "essential": 28,
+            "covered": 16
+          },
+          "mfds": {
+            "essential": 31,
+            "covered": 13
+          },
+          "semas": {
+            "essential": 16,
+            "covered": 2
+          }
+        },
+        "byType": {
+          "board": {
+            "pages": 18,
+            "coverage": 68.3,
+            "usefulPrecision": 82.4
+          },
+          "home": {
+            "pages": 16,
+            "coverage": 22.6,
+            "usefulPrecision": 48.9
+          },
+          "location": {
+            "pages": 16,
+            "coverage": 48.3,
+            "usefulPrecision": 61.5
+          },
+          "faq": {
+            "pages": 10,
+            "coverage": 41.4,
+            "usefulPrecision": 71.7
+          },
+          "info": {
+            "pages": 8,
+            "coverage": 32.4,
+            "usefulPrecision": 54.2
+          },
+          "post": {
+            "pages": 8,
+            "coverage": 27,
+            "usefulPrecision": 52.5
+          },
+          "service": {
+            "pages": 8,
+            "coverage": 41,
+            "usefulPrecision": 60.4
+          },
+          "calendar": {
+            "pages": 2,
+            "coverage": 16.7,
+            "usefulPrecision": 60
+          },
+          "form": {
+            "pages": 1,
+            "coverage": 20,
+            "usefulPrecision": 50
+          },
+          "other": {
+            "pages": 1,
+            "coverage": 100,
+            "usefulPrecision": 100
+          }
+        },
+        "versusEngine": {
+          "coverageDiff": 5.2,
+          "interval95": [
+            1.5,
+            8.5
+          ]
+        }
+      }
+    }
+  }
+}
