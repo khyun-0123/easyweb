@@ -115,6 +115,20 @@ function listSlots(raw: Candidate[], rest: Candidate[], rows: Row[]): { slots: C
   return { slots: [...slots, ...posts.slice(0, MAX_CARDS - slots.length)], extra: posts.slice(MAX_CARDS - slots.length) };
 }
 
+// The words before a post link in its row: <li><span>이전글</span><a>…</a></li> reads as
+// "이전글 …" (textContent would join it to the title), and <dt>이전글</dt><dd><a>…</a></dd>
+// takes the term of its definition.
+function neighbourLead(candidate: Candidate): string {
+  const element = candidate.element;
+  const container = element.closest('li, tr, dl, dd, p, div');
+  if (!container) return text(candidate.label);
+  const term = container.matches('dd') && container.previousElementSibling?.matches('dt') ? container.previousElementSibling.textContent : '';
+  const before = document.createRange();
+  before.setStart(container, 0);
+  before.setEndBefore(element);
+  return text(`${term} ${before.toString()} ${candidate.label}`).slice(0, 120);
+}
+
 function postSlots(raw: Candidate[]): Candidate[] | undefined {
   const body = raw.filter(candidate => inBody(candidate) && isSafeSource(candidate));
   const back = body.find(candidate => backToList.test(text(candidate.label)));
@@ -123,9 +137,7 @@ function postSlots(raw: Candidate[]): Candidate[] | undefined {
     .slice(0, 2).map(candidate => slot(candidate, 'apply', text(candidate.label).replace(/\s*(?:다운로드|내려\s*받기)$/, '') || '첨부파일', '첨부파일 내려받기'));
   const neighbours: Candidate[] = [];
   for (const candidate of body) {
-    const container = candidate.element.closest('li, tr, dl, dd, p, div');
-    const lead = text(container?.textContent ?? '').slice(0, 120);
-    const match = lead.match(neighbour);
+    const match = neighbourLead(candidate).match(neighbour);
     // Previous/next posts are links; a carousel's 이전/다음 buttons are not.
     if (!match || candidate === back || text(candidate.label).length < 4 || !candidate.element.matches('a[href]')) continue;
     const name = /다음|아랫/.test(match[0]) ? '다음 글' : '이전 글';

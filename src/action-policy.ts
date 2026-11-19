@@ -48,7 +48,8 @@ export function isDocumentDownload(element: HTMLElement, safeLabel = ''): boolea
   const titleDownload = /(?:^|\s)(?:다운로드|download)$/i.test(title)
     && !negatedDownloadTitle.test(title.normalize('NFKC').replace(/\s+/g, ' '));
   return element.hasAttribute('download') || titleDownload
-    || /\.(?:pdf|hwp|hwpx|docx?|xlsx?|pptx?|odt|rtf)$/i.test(safeLabel.trim())
+    // A file name, optionally followed by its size: 공고.hwpx(59KB), 결과.pdf [38.74 KB].
+    || /\.(?:pdf|hwp|hwpx|docx?|xlsx?|pptx?|odt|rtf)(?:\s*[[(]\s*\d[\d.,]*\s*(?:bytes?|[kmg]i?b|바이트)\s*[\])])?$/i.test(safeLabel.trim())
     || !!sourceDownloadEvidence(element, safeLabel);
 }
 

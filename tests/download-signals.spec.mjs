@@ -107,3 +107,9 @@ test('기존 title 근거도 명시적 부정은 제외하고 긍정 제목·dow
   await setup(page, `<main>${titles.map((title,index)=>`<a id="title-${index}" href="/opaque?document=sample-${index}" title="${title}">공개 양식</a>`).join('')}<a id="attribute" href="/opaque?document=sample-extra" title="Do not download" download>공개 양식</a></main>`);
   expect((await analyze(page)).map(i=>i.action)).toEqual(['navigate','navigate','navigate','navigate','locate','locate','locate']);
 });
+
+test('파일 이름 뒤에 크기가 붙은 첨부 링크도 다운로드로 보고 원본 위치만 안내한다', async ({page})=>{
+  const names=['공고.hwpx(59KB)','결과.pdf [38.74 KB]','명단.xlsx (1,204 bytes)','안내.pdf(12MB)','pdf 보기','결과.pdf 안내 (3)'];
+  await setup(page, `<main>${names.map((name,index)=>`<a id="file-${index}" href="/opaque?document=sample-${index}">${name}</a>`).join('')}</main>`);
+  expect((await analyze(page)).map(i=>i.action)).toEqual(['locate','locate','locate','locate','navigate','navigate']);
+});

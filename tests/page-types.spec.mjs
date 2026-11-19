@@ -70,6 +70,19 @@ test('a post page offers the attachment, back to list and neighbouring posts', a
   expect(result.cards.length).toBeLessThanOrEqual(6);
 });
 
+test('a post page reads 이전글/다음글 joined to the title and in a dt/dd list, and a file name with its size', async ({ page }) => {
+  const joined = await open(page, 'https://city.example/notice/view.do?id=3', `${header}<main><h2>겨울철 한파 대비 행동요령 안내</h2><p>본문</p>
+    <ul class="files"><li><a href="/file/1/get/abc/download.do">한파행동요령.hwpx(59KB)</a></li><li><a href="/file/2/get/def/download.do">대피소 목록.pdf [38.74 KB]</a></li></ul>
+    <button type="button" onclick="goList(); return false;">목록</button>
+    <ul class="prevnext"><li class="prev"><span>이전글</span><a href="/notice/view.do?id=2">시청 민원실 점심시간 운영 변경</a></li><li class="next"><span>다음글</span><a href="/notice/view.do?id=4">주택공급 현장 애로를 해소해 드립니다</a></li></ul></main>${footer}`);
+  expect(joined.type).toBe('post');
+  expect(joined.cards).toEqual(['한파행동요령.hwpx(59KB)|locate', '대피소 목록.pdf [38.74 KB]|locate', '목록으로|locate', '이전 글|navigate', '다음 글|navigate']);
+  const terms = await open(page, 'https://city.example/notice/view.do?id=3', `${header}<main><h2>겨울철 한파 대비 행동요령 안내</h2><p>본문</p>
+    <a href="/notice/list.do">목록보기</a>
+    <dl class="page_mov"><dt>이전글</dt><dd><a href="/notice/view.do?id=2">브러싱스캠 대국민 행동요령 안내</a></dd><dt>다음글</dt><dd>다음글이 없습니다.</dd></dl></main>${footer}`);
+  expect(terms.cards.slice(0, 2)).toEqual(['목록으로|navigate', '이전 글|navigate']);
+});
+
 test('a gate page shows each site to choose', async ({ page }) => {
   const sites = [['대표홈페이지', '/main.do'], ['개인민원', '/minwon/index.do'], ['사업장민원', 'https://edi.example/']]
     .map(([name, href]) => `<a href="${href}"><strong>${name}</strong><p>${name} 서비스를 이용하세요</p> 바로가기</a>`).join('');

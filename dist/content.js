@@ -36,7 +36,7 @@
     if (!(element instanceof HTMLAnchorElement) || !element.hasAttribute("href")) return false;
     const title = (element.getAttribute("title") ?? "").trim();
     const titleDownload = /(?:^|\s)(?:다운로드|download)$/i.test(title) && !negatedDownloadTitle.test(title.normalize("NFKC").replace(/\s+/g, " "));
-    return element.hasAttribute("download") || titleDownload || /\.(?:pdf|hwp|hwpx|docx?|xlsx?|pptx?|odt|rtf)$/i.test(safeLabel.trim()) || !!sourceDownloadEvidence(element, safeLabel);
+    return element.hasAttribute("download") || titleDownload || /\.(?:pdf|hwp|hwpx|docx?|xlsx?|pptx?|odt|rtf)(?:\s*[[(]\s*\d[\d.,]*\s*(?:bytes?|[kmg]i?b|바이트)\s*[\])])?$/i.test(safeLabel.trim()) || !!sourceDownloadEvidence(element, safeLabel);
   }
   function sourceAction(element, safeLabel = "") {
     const locate = { action: "locate" };
@@ -3045,6 +3045,16 @@
     const slots = search ? [search] : [];
     return { slots: [...slots, ...posts.slice(0, MAX_CARDS2 - slots.length)], extra: posts.slice(MAX_CARDS2 - slots.length) };
   }
+  function neighbourLead(candidate) {
+    const element = candidate.element;
+    const container = element.closest("li, tr, dl, dd, p, div");
+    if (!container) return text2(candidate.label);
+    const term = container.matches("dd") && container.previousElementSibling?.matches("dt") ? container.previousElementSibling.textContent : "";
+    const before = document.createRange();
+    before.setStart(container, 0);
+    before.setEndBefore(element);
+    return text2(`${term} ${before.toString()} ${candidate.label}`).slice(0, 120);
+  }
   function postSlots(raw) {
     const body = raw.filter((candidate) => inBody(candidate) && isSafeSource(candidate));
     const back = body.find((candidate) => backToList.test(text2(candidate.label)));
@@ -3052,9 +3062,7 @@
     const downloads = body.filter((candidate) => isDocumentDownload(candidate.element, candidate.label) || /다운로드|내려\s*받기/.test(candidate.label)).slice(0, 2).map((candidate) => slot(candidate, "apply", text2(candidate.label).replace(/\s*(?:다운로드|내려\s*받기)$/, "") || "\uCCA8\uBD80\uD30C\uC77C", "\uCCA8\uBD80\uD30C\uC77C \uB0B4\uB824\uBC1B\uAE30"));
     const neighbours = [];
     for (const candidate of body) {
-      const container = candidate.element.closest("li, tr, dl, dd, p, div");
-      const lead = text2(container?.textContent ?? "").slice(0, 120);
-      const match = lead.match(neighbour);
+      const match = neighbourLead(candidate).match(neighbour);
       if (!match || candidate === back || text2(candidate.label).length < 4 || !candidate.element.matches("a[href]")) continue;
       const name2 = /다음|아랫/.test(match[0]) ? "\uB2E4\uC74C \uAE00" : "\uC774\uC804 \uAE00";
       if (neighbours.some((item) => item.title === name2)) continue;
