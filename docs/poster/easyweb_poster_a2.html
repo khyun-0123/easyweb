@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EasyWeb 포스터</title>
+<style>
+  /* A2 세로 420×594mm = 96dpi에서 1587×2245px.
+     설계는 2334×3301px로 하고 zoom 0.68로 줄인다. */
+  @page { size: 420mm 594mm; margin: 0; }
+  :root {
+    /* EasyWeb 제품 화면(src/styles.css)의 색을 따른다 */
+    --paper: #ffffff; --ink: #172739; --ink-soft: #34465a; --ink-mute: #526476;
+    --rule: #dce3ea; --steel-2: #f5f7fa;
+    --navy: #0b4f48;                       /* 구조: 번호 배지 · 제목 · 결론 상자 (브랜드 청록의 진한 단계) */
+    --blue: #0a7b70; --blue-text: #08796e; /* 결과: EasyWeb 브랜드 청록 */
+    --mist: #f0f5f6; --mist-2: #e1f1ed;
+    --gold: #a57019; --gold-2: #e6cc9f; --gold-soft: #fff1dc; /* 결론 · 한계: EasyWeb 안내 호박색 */
+    --base: #7f8c99;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--paper); }
+  body {
+    color: var(--ink);
+    font-family: "Apple SD Gothic Neo", "IBM Plex Sans KR", "Malgun Gothic", sans-serif;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .sheet {
+    width: 2334px; height: 3301px; zoom: 0.68;
+    display: flex; flex-direction: column; overflow: hidden;
+    font-size: 26px; line-height: 1.5; word-break: keep-all;
+  }
+  .pad { padding-left: 84px; padding-right: 84px; }
+  b, strong { font-weight: 800; }
+
+  /* ── 헤더 ── */
+  .head { display: grid; grid-template-columns: 1fr 820px; gap: 56px; padding-top: 70px; align-items: center; }
+  .mark { display: flex; align-items: center; gap: 18px; font-size: 22px; color: var(--ink-mute); letter-spacing: .01em; }
+  .mark .logo { width: 54px; height: 54px; border-radius: 14px; background: var(--blue); display: flex; align-items: center; justify-content: center; }
+  .mark .logo i { display: block; width: 26px; height: 3px; background: #fff; box-shadow: 0 -8px 0 #fff, 0 8px 0 #fff; border-radius: 2px; }
+  .mark b { color: var(--navy); font-size: 30px; }
+  h1 { margin-top: 30px; font-size: 92px; line-height: 1.14; font-weight: 800; color: var(--navy); letter-spacing: -.015em; }
+  h1 em { font-style: normal; color: var(--blue-text); }
+  .lede { margin-top: 24px; font-size: 31px; line-height: 1.45; color: var(--ink-soft); max-width: 1200px; }
+  .byline { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .byline .who { font-size: 30px; font-weight: 800; color: var(--ink); margin-right: 14px; }
+  .chip { font-size: 21px; padding: 7px 16px; border-radius: 999px; background: var(--steel-2); color: var(--ink-soft); border: 1px solid var(--rule); }
+  .hero { border: 2px solid var(--rule); border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 6px 0 var(--mist-2); }
+  .hero img { display: block; width: 100%; height: 500px; object-fit: cover; object-position: top; }
+  .hero .cap { font-size: 18px; color: var(--ink-mute); padding: 10px 18px; border-top: 1px solid var(--rule); background: var(--steel-2); margin-top: 0; }
+
+  /* ── 질문 띠 ── */
+  .band { margin-top: 50px; background: var(--mist); border-radius: 26px; padding: 40px 48px; display: grid; grid-template-columns: 560px 1fr; gap: 44px; align-items: center; }
+  .band .q small { display: block; font-size: 21px; font-weight: 800; color: var(--navy); letter-spacing: .08em; }
+  .band .q p { margin-top: 10px; font-size: 38px; line-height: 1.35; font-weight: 800; color: var(--navy); }
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .flow > div { background: #fff; border: 1px solid var(--rule); border-radius: 18px; padding: 22px 22px 24px; position: relative; }
+  .flow > div:not(:last-child)::after { content: "→"; position: absolute; right: -8px; top: 50%; transform: translate(50%, -50%); font-size: 24px; color: var(--ink-mute); z-index: 1; }
+  .flow .k { font-size: 20px; font-weight: 800; letter-spacing: .04em; color: var(--navy); }
+  .flow p { margin-top: 8px; font-size: 23px; line-height: 1.4; color: var(--ink-soft); }
+  .flow p b { color: var(--ink); }
+  .flow .res { background: var(--mist-2); border-color: #d3e9e3; }
+  .flow .res .k { color: var(--blue-text); }
+  .flow .so { background: var(--gold-soft); border-color: var(--gold-2); }
+  .flow .so .k { color: var(--gold); }
+  .flow .big { display: block; font-size: 38px; font-weight: 800; color: var(--blue-text); line-height: 1.15; margin-bottom: 4px; }
+
+  /* ── 3열 ── */
+  .cols { margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 56px; }
+  .col { display: flex; flex-direction: column; gap: 46px; }
+  .sec h2 { display: flex; align-items: center; gap: 16px; font-size: 38px; font-weight: 800; color: var(--navy); line-height: 1.2; }
+  .sec h2 .no { flex: none; width: 54px; height: 54px; border-radius: 14px; background: var(--navy); color: #fff; font-size: 24px; display: flex; align-items: center; justify-content: center; }
+  .sec h2 .t { flex: 1; }
+  .qt { flex: none; font-size: 18px; font-weight: 800; padding: 6px 14px; border-radius: 999px; border: 2px solid transparent; letter-spacing: .02em; }
+  .qt.prob { background: var(--mist); color: var(--navy); border-color: var(--mist-2); }
+  .qt.meth { background: #fff; color: var(--navy); border-color: var(--navy); }
+  .qt.res  { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .qt.lim  { background: var(--gold-soft); color: #704709; border-color: var(--gold-2); }
+  .rule { margin: 16px 0 22px; height: 2px; background: var(--rule); position: relative; }
+  .rule::before { content: ""; position: absolute; left: 0; top: -2px; width: 90px; height: 6px; background: var(--navy); border-radius: 3px; }
+  .sec p { color: var(--ink-soft); }
+  .sec p + p { margin-top: 12px; }
+  .sec p b { color: var(--ink); }
+  .cap { font-size: 19px; color: var(--ink-mute); line-height: 1.4; margin-top: 10px; }
+
+  /* 01 문제 */
+  .scene { background: var(--steel-2); border-left: 6px solid var(--navy); border-radius: 0 14px 14px 0; padding: 20px 24px; font-size: 25px; color: var(--ink); }
+  .pains { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .pains div { display: grid; grid-template-columns: 200px 1fr; gap: 14px; font-size: 23px; color: var(--ink-soft); padding-bottom: 10px; border-bottom: 1px dashed var(--rule); }
+  .pains div:last-child { border-bottom: 0; }
+  .pains b { color: var(--navy); }
+  .stat { margin-top: 18px; display: flex; gap: 20px; align-items: center; }
+  .stat .n { font-size: 66px; font-weight: 800; color: var(--navy); line-height: 1; }
+  .stat .d { font-size: 22px; color: var(--ink-soft); line-height: 1.35; }
+
+  /* 02 기능 */
+  .feats { display: flex; flex-direction: column; gap: 16px; }
+  .feat { display: grid; grid-template-columns: 52px 1fr; gap: 16px; }
+  .feat .i { width: 52px; height: 52px; border-radius: 50%; border: 3px solid var(--navy); color: var(--navy); font-weight: 800; font-size: 24px; display: flex; align-items: center; justify-content: center; }
+  .feat h3 { font-size: 27px; color: var(--ink); line-height: 1.3; }
+  .feat p { font-size: 23px; margin-top: 4px; line-height: 1.42; }
+
+  /* 03 작동 */
+  .steps div { display: grid; grid-template-columns: 44px 1fr; gap: 14px; font-size: 23px; color: var(--ink-soft); line-height: 1.38; padding: 9px 0; }
+  .steps .k { width: 40px; height: 40px; border-radius: 50%; background: var(--mist-2); color: var(--navy); font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+  .steps b { color: var(--ink); }
+  .never { margin-top: 14px; background: var(--steel-2); border-radius: 16px; padding: 18px 22px; }
+  .never h4 { font-size: 23px; color: var(--navy); }
+  .never ul { list-style: none; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; font-size: 21px; color: var(--ink-soft); }
+  .never li::before { content: "✕"; color: var(--navy); font-weight: 800; margin-right: 8px; }
+
+  /* 04 AX */
+  .pipe { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr; align-items: stretch; }
+  .pipe .box { border: 2px solid var(--rule); border-radius: 14px; padding: 14px 10px; text-align: center; font-size: 19px; color: var(--ink-soft); line-height: 1.35; }
+  .pipe .box b { display: block; font-size: 22px; color: var(--ink); margin-bottom: 4px; }
+  .pipe .box.ai { border-color: var(--navy); background: var(--mist); }
+  .pipe .ar { display: flex; align-items: center; justify-content: center; color: var(--ink-mute); font-size: 22px; }
+  .facts { margin-top: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .facts div { background: var(--steel-2); border-radius: 14px; padding: 14px 8px; text-align: center; font-size: 19px; color: var(--ink-mute); line-height: 1.3; }
+  .facts b { display: block; font-size: 36px; color: var(--navy); line-height: 1.15; }
+  .why { margin-top: 16px; }
+  .why h4 { font-size: 23px; color: var(--navy); }
+  .why ul { list-style: none; margin-top: 6px; }
+  .why li { font-size: 21.5px; color: var(--ink-soft); padding-left: 22px; position: relative; line-height: 1.42; margin-top: 5px; }
+  .why li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 9px; height: 9px; border-radius: 50%; background: var(--navy); }
+
+  /* 05·06 결과 */
+  .verdict { background: var(--mist-2); border: 1px solid #d3e9e3; border-radius: 18px; padding: 20px 24px; }
+  .verdict .lbl { font-size: 20px; font-weight: 800; color: var(--blue-text); letter-spacing: .03em; }
+  .verdict .num { display: flex; align-items: baseline; gap: 16px; margin-top: 4px; }
+  .verdict .num .a { font-size: 46px; font-weight: 800; color: var(--ink-mute); }
+  .verdict .num .arr { font-size: 36px; color: var(--ink-mute); }
+  .verdict .num .b { font-size: 76px; font-weight: 800; color: var(--blue-text); line-height: 1; }
+  .verdict .ci { font-size: 21px; color: var(--ink-soft); margin-top: 6px; }
+  .def { margin-top: 14px; font-size: 21px; color: var(--ink-soft); line-height: 1.42; }
+  .def b { color: var(--ink); }
+
+  .legend { display: flex; gap: 22px; font-size: 19px; color: var(--ink-soft); margin: 4px 0 14px; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .legend i { width: 18px; height: 18px; border-radius: 4px; display: inline-block; }
+  .bars { display: flex; flex-direction: column; gap: 15px; }
+  .bg { display: grid; grid-template-columns: 170px 1fr; gap: 12px; align-items: center; }
+  .bg .lab { font-size: 21px; font-weight: 800; color: var(--ink); line-height: 1.2; }
+  .bg .lab small { display: block; font-weight: 400; font-size: 17px; color: var(--ink-mute); }
+  .pair { display: flex; flex-direction: column; gap: 2px; }
+  .bar { height: 24px; border-radius: 0 4px 4px 0; position: relative; }
+  .bar.a { background: var(--base); }
+  .bar.b { background: var(--blue); }
+  .bar span { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); font-size: 18px; font-weight: 800; color: var(--ink); white-space: nowrap; }
+  .axis { display: grid; grid-template-columns: 170px 1fr; gap: 12px; font-size: 16px; color: var(--ink-mute); margin-top: 6px; }
+  .axis div:last-child { display: flex; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 4px; width: 80%; }
+  .checks { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .checks div { border: 1px solid var(--rule); border-radius: 14px; padding: 12px 6px; text-align: center; font-size: 18px; color: var(--ink-mute); line-height: 1.3; }
+  .checks b { display: block; font-size: 29px; color: var(--ink); }
+  .fix { margin-top: 16px; font-size: 21px; color: var(--ink-soft); line-height: 1.42; }
+
+  /* ── 07 정리 표 ── */
+  .s7 { margin-top: 50px; }
+  table.sum { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-top: -6px; }
+  table.sum th { text-align: left; font-size: 20px; color: var(--ink-mute); font-weight: 800; padding: 0 22px 2px; letter-spacing: .03em; }
+  table.sum td { background: var(--steel-2); font-size: 22.5px; color: var(--ink-soft); padding: 14px 22px; vertical-align: middle; line-height: 1.38; }
+  table.sum td:first-child { border-left: 6px solid var(--navy); border-radius: 10px 0 0 10px; color: var(--ink); font-weight: 800; width: 23%; }
+  table.sum td:last-child { border-radius: 0 10px 10px 0; }
+  table.sum td.to::before { content: "→ "; color: var(--navy); font-weight: 800; }
+  .badge { display: inline-block; font-size: 17px; font-weight: 800; color: #704709; background: var(--gold-soft); border: 1.5px solid var(--gold-2); padding: 2px 10px; border-radius: 999px; margin-right: 10px; vertical-align: 2px; }
+
+  /* ── 결론 ── */
+  .concl { margin-top: 50px; background: var(--navy); color: #fff; border-radius: 26px; padding: 40px 48px 44px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; }
+  .concl .lbl { font-size: 21px; font-weight: 800; color: var(--gold-2); letter-spacing: .08em; }
+  .concl h2 { margin-top: 10px; font-size: 40px; line-height: 1.32; font-weight: 800; }
+  .concl h2 em { font-style: normal; color: var(--gold-2); }
+  .ev { margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .ev div { background: #fff; color: var(--ink); border-radius: 16px; padding: 16px 16px 18px; border-top: 6px solid var(--gold); }
+  .ev small { font-size: 16px; font-weight: 800; color: var(--gold); letter-spacing: .04em; }
+  .ev b { display: block; font-size: 40px; line-height: 1.1; color: var(--navy); margin-top: 4px; }
+  .ev p { font-size: 18px; color: var(--ink-soft); line-height: 1.35; margin-top: 6px; }
+  .side { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; align-content: start; }
+  .side h4 { font-size: 22px; color: var(--gold-2); font-weight: 800; }
+  .side li { font-size: 20px; line-height: 1.42; color: #d3e9e3; }
+  .side ul { list-style: none; margin-top: 6px; }
+  .side li { margin-top: 4px; padding-left: 18px; position: relative; }
+  .side li::before { content: "·"; position: absolute; left: 2px; font-weight: 800; color: var(--gold-2); }
+  .side .qr { grid-column: 1 / -1; display: flex; gap: 22px; align-items: center; background: rgba(255,255,255,.08); border-radius: 16px; padding: 16px 18px; }
+  .side .qr img { width: 130px; height: 130px; background: #fff; border-radius: 10px; padding: 6px; flex: none; }
+  .side .qr p { font-size: 19px; color: #d3e9e3; line-height: 1.42; }
+  .side .qr b { color: #fff; font-size: 22px; display: block; }
+
+  .foot { margin-top: auto; padding-top: 20px; padding-bottom: 34px; display: flex; justify-content: space-between; font-size: 17px; color: var(--ink-mute); }
+</style>
+</head>
+<body>
+<div class="sheet" id="poster">
+
+<!-- 헤더 -->
+<div class="head pad">
+  <div>
+    <div class="mark"><span class="logo"><i></i></span><b>EasyWeb</b>2026 천안형 글로벌 인재육성사업 · AX 액션러닝 · 개인 프로젝트</div>
+    <h1>복잡한 기관 홈페이지를,<br><em>큰 버튼 6개로.</em></h1>
+    <p class="lede">지금 보고 있는 페이지에서 <b>실제로 있는</b> 주요 기능을 찾아 큰 카드로 다시 보여 주는 Chrome 확장 프로그램입니다. 원래 사이트는 그대로 두고, 로그인·신청은 원래 화면에서 하도록 안내합니다.</p>
+    <div class="byline">
+      <span class="who">김재현</span>
+      <span class="chip">1인 개발</span>
+      <span class="chip">Chrome 확장 · 서버 없음</span>
+      <span class="chip">처음 보는 16개 기관 88쪽으로 검증</span>
+      <span class="chip">어르신 관찰은 다음 단계</span>
+    </div>
+  </div>
+  <figure class="hero">
+    <img src="assets/easy-screen.png" alt="EasyWeb 쉬운 화면: 무엇을 하시겠어요? 아래 검색·로그인·공지사항·학사정보·신청·조회·이용 안내 카드 6개">
+    <figcaption class="cap">EasyWeb 쉬운 화면 (v0.10) · 테스트용 가상 대학 페이지에 적용한 실제 화면</figcaption>
+  </figure>
+</div>
+
+<!-- 질문 띠 -->
+<div class="pad">
+  <div class="band">
+    <div class="q">
+      <small>핵심 질문</small>
+      <p>처음 보는 기관 홈페이지에서도, 꼭 필요한 기능을 첫 화면에 찾아 줄 수 있을까?</p>
+    </div>
+    <div class="flow">
+      <div><div class="k">왜?</div><p>어르신은 배너·뉴스 사이에서 <b>필요한 메뉴를 못 찾고</b>, 사이트마다 구조가 다르다</p></div>
+      <div><div class="k">무엇을?</div><p>보이는 버튼을 읽어 <b>큰 카드 6개</b>로. 규칙이 찾고, <b>작은 AI</b>가 순서를 정한다</p></div>
+      <div class="res"><div class="k">결과</div><p><span class="big">37.0 → 42.2%</span>처음 보는 88쪽에서 꼭 필요한 기능이 첫 화면에 나온 비율</p></div>
+      <div class="so"><div class="k">그래서</div><p>지어내지 않는 작은 AI로 <b>찾기 품질을 올렸다</b>. 다음은 어르신이 실제로 더 빨리 찾는지 잰다</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3열 본문 -->
+<div class="cols pad">
+
+  <div class="col">
+    <section class="sec">
+      <h2><span class="no">01</span><span class="t">누가, 무엇이 답답한가</span><span class="qt prob">문제</span></h2>
+      <div class="rule"></div>
+      <div class="scene">시청 홈페이지에서 <b>여권 신청 안내</b>를 찾아야 하는데, 배너·뉴스·행사·SNS가 섞인 첫 화면에서 어디를 눌러야 할지 몰라 메뉴를 여러 번 열어 본다.</div>
+      <p class="cap">개발자의 할머니 사례 (가족에게 들은 이야기 · 관찰 기록 아님)</p>
+      <div class="pains">
+        <div><b>찾기 어렵다</b><span>업무 메뉴와 홍보물이 한 화면에 섞여 있다</span></div>
+        <div><b>작아서 안 보인다</b><span>예전엔 잘 찾던 중년도 버튼이 작아 힘들다 (어머니)</span></div>
+        <div><b>사이트마다 다르다</b><span>한 곳에서 익힌 방법이 다른 곳에선 안 통한다</span></div>
+      </div>
+      <div class="stat"><span class="n">77.5%</span><span class="d">디지털 취약계층의 디지털 정보화 수준<br>(일반 국민 = 100 · 2024 · 과기정통부 발표 보도)</span></div>
+    </section>
+
+    <section class="sec">
+      <h2><span class="no">02</span><span class="t">기능 3가지</span><span class="qt meth">방법</span></h2>
+      <div class="rule"></div>
+      <div class="feats">
+        <div class="feat"><span class="i">1</span><div><h3>주요 기능 찾기</h3><p>보이는 링크·버튼·검색창을 읽어 로그인·검색·공지사항·학사정보·신청·조회·이용 안내로 나눈다. <b>페이지에 없는 기능은 만들지 않는다.</b></p></div></div>
+        <div class="feat"><span class="i">2</span><div><h3>쉬운 화면</h3><p>처음엔 큰 카드 <b>최대 6개</b>, 더 필요하면 「다른 기능 보기」. 큰 글씨·키보드·스크린리더 지원, Esc로 원래 화면.</p></div></div>
+        <div class="feat"><span class="i">3</span><div><h3>원본과 안전하게 연결</h3><p>일반 링크는 바로 이동. 로그인·팝업·다운로드는 <b>원본 위치만 표시</b>하고 사용자가 직접 누른다.</p></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="col">
+    <section class="sec">
+      <h2><span class="no">03</span><span class="t">어떻게 작동하나</span><span class="qt meth">방법</span></h2>
+      <div class="rule"></div>
+      <div class="steps">
+        <div><span class="k">1</span><span>사용자가 <b>확장 버튼을 누른 탭</b>에서만 실행</span></div>
+        <div><span class="k">2</span><span>버튼의 <b>이름·위치·주변 제목</b>만 읽는다 (입력값은 읽지 않음)</span></div>
+        <div><span class="k">3</span><span><b>규칙</b>이 근거 있는 후보만 6개 분류에 넣는다</span></div>
+        <div><span class="k">4</span><span>페이지 종류에 맞춰 첫 6칸 구성 (게시판 → 검색 + 최신 글, 게시글 → 첨부·목록·이전/다음 글)</span></div>
+        <div><span class="k">5</span><span>카드를 누르면 이동하거나 <b>원본 위치를 강조</b></span></div>
+      </div>
+      <div class="never">
+        <h4>하지 않는 것 — 사람이 직접 누를 자리를 남긴다</h4>
+        <ul>
+          <li>로그인·결제·신청 대신 실행</li>
+          <li>입력한 내용 읽기</li>
+          <li>화면 내용을 서버로 보내기</li>
+          <li>원본 사이트 고치기</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2><span class="no">04</span><span class="t">AI는 순서만 정한다</span><span class="qt meth">방법</span></h2>
+      <div class="rule"></div>
+      <p>AI가 없는 버튼을 지어내면 안 되는 서비스입니다. 그래서 <b>규칙이 찾은 실제 버튼</b> 중 무엇을 먼저 보여 줄지만 작은 AI가 정합니다.</p>
+      <div class="pipe" style="margin-top:14px">
+        <div class="box"><b>규칙</b>실제 버튼 찾기 · 위험 버튼 거르기</div><div class="ar">→</div>
+        <div class="box ai"><b>작은 순위 AI</b>중요한 순서 매기기</div><div class="ar">→</div>
+        <div class="box"><b>안전 검사</b>일반 링크만 · 로그인·결제 화면 제외</div>
+      </div>
+      <div class="facts">
+        <div><b>1.33MB</b>확장 안에 든 AI</div>
+        <div><b>약 4ms</b>한 페이지 판단</div>
+        <div><b>0회</b>외부 AI 호출</div>
+      </div>
+      <div class="why">
+        <h4>왜 큰 AI(LLM)를 쓰지 않았나</h4>
+        <ul>
+          <li>로컬 LLM은 품질이 조금 높았지만 한 페이지에 <b>13~20초</b></li>
+          <li>사용자가 보는 화면을 외부로 보내지 않아도 된다</li>
+        </ul>
+      </div>
+      <p class="cap">학습: 23개 사이트 134쪽 정답표 · 순위 학습(LightGBM) · 지금은 시험판에서만 켬</p>
+    </section>
+  </div>
+
+  <div class="col">
+    <section class="sec">
+      <h2><span class="no">05</span><span class="t">처음 보는 사이트로 검증</span><span class="qt res">결과</span></h2>
+      <div class="rule"></div>
+      <div class="verdict">
+        <div class="lbl">학습에 안 쓴 16개 기관 88쪽 · 꼭 필요한 기능 포함률</div>
+        <div class="num"><span class="a">37.0%</span><span class="arr">→</span><span class="b">42.2%</span></div>
+        <div class="ci">+5.2%p (95% 신뢰구간 +1.5 ~ +8.5%p, 0보다 큼)</div>
+      </div>
+      <p class="def"><b>꼭 필요한 기능 포함률</b> = 검토자가 "이 페이지에서 꼭 필요하다"고 꼽은 기능 중, EasyWeb 첫 화면(카드 6칸·자주 쓰는 버튼)에 나온 비율</p>
+      <p class="def">공정하게 재려고 <b>프로그램과 AI를 먼저 고정</b>한 뒤 새 사이트를 모으고, 한 번만 채점했습니다. 정답은 프로그램 결과를 보지 않은 검토자(Claude)가 작성했습니다.</p>
+      <div class="checks">
+        <div><b>541/541</b>자동 테스트 통과</div>
+        <div><b>위반 0</b>자동 접근성 21조건</div>
+        <div><b>≤ 0.3초</b>분석 시간 (시험 페이지)</div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2><span class="no">06</span><span class="t">어디서 좋아졌나</span><span class="qt res">결과</span></h2>
+      <div class="rule"></div>
+      <div class="legend"><span><i style="background:var(--base)"></i>기본 (규칙만)</span><span><i style="background:var(--blue)"></i>규칙 + 작은 AI</span></div>
+      <div class="bars">
+        <div class="bg"><div class="lab">오시는 길·조직</div><div class="pair"><div class="bar a" style="width:28.7%"><span>28.7%</span></div><div class="bar b" style="width:48.3%"><span>48.3%</span></div></div></div>
+        <div class="bg"><div class="lab">서비스 안내</div><div class="pair"><div class="bar a" style="width:28.2%"><span>28.2%</span></div><div class="bar b" style="width:41.0%"><span>41.0%</span></div></div></div>
+        <div class="bg"><div class="lab">게시판</div><div class="pair"><div class="bar a" style="width:68.3%"><span>68.3%</span></div><div class="bar b" style="width:68.3%"><span>68.3%</span></div></div></div>
+        <div class="bg"><div class="lab">홈<small>첫 화면</small></div><div class="pair"><div class="bar a" style="width:23.6%"><span>23.6%</span></div><div class="bar b" style="width:22.6%"><span>22.6%</span></div></div></div>
+      </div>
+      <div class="axis"><div></div><div><span>0</span><span>20</span><span>40</span><span>60</span><span>80%</span></div></div>
+      <p class="fix">안내형 페이지에서 크게 올랐고, <b>홈은 그대로</b>입니다(07). 게시글은 규칙 결함 3개를 고쳐 같은 88쪽에서 27.0% → 35.1%가 됐습니다.</p>
+    </section>
+  </div>
+</div>
+
+<!-- 07 정리 표 -->
+<div class="pad s7">
+  <section class="sec">
+    <h2><span class="no">07</span><span class="t">아직 안 되는 것과 다음에 할 일</span><span class="qt lim">한계</span></h2>
+    <div class="rule"></div>
+    <table class="sum">
+      <tr><th>남은 문제</th><th>왜 그런가</th><th>다음에 할 일</th></tr>
+      <tr><td><span class="badge">한계 1</span>어르신 관찰 0건</td><td>정답은 검토자(Claude)가 만든 것. 실제 사람이 더 빨리 찾는지는 아직 모른다</td><td class="to">할머니·어머니 짧은 관찰 → 디지털배움터 공용 PC에서 6~8명, 원본 vs EasyWeb 비교 (성공률·시간·오클릭)</td></tr>
+      <tr><td><span class="badge">한계 2</span>목표의 절반 수준</td><td>목표 85%에 지금 42.2%. 놓친 기능 대부분은 후보로 분류조차 안 된 것</td><td class="to">검토 자료를 늘려 다시 학습 · 남은 게시글 결함(꼬리말 속 목록 링크 등) 수정</td></tr>
+      <tr><td><span class="badge">한계 3</span>홈은 23% 안팎</td><td>여권민원·환급금 조회처럼 사이트마다 서비스 이름이 달라 공통 규칙으로 못 잡는다</td><td class="to">기관 담당자가 중요 메뉴를 직접 고르는 기관용 설정</td></tr>
+    </table>
+  </section>
+</div>
+
+<!-- 결론 -->
+<div class="pad">
+  <div class="concl">
+    <div>
+      <div class="lbl">결론</div>
+      <h2>규칙으로 <em>실제로 있는 버튼만</em> 고르고, 작은 AI로 순서를 정해 <em>처음 보는 기관 사이트</em>에서도 꼭 필요한 기능을 더 많이 첫 화면에 올렸습니다.</h2>
+      <div class="ev">
+        <div><small>근거 1 · 05</small><b>+5.2%p</b><p>처음 보는 88쪽, 신뢰구간이 0보다 큼</p></div>
+        <div><small>근거 2 · 06</small><b>28.7→48.3%</b><p>오시는 길·조직 페이지</p></div>
+        <div><small>근거 3 · 04</small><b>외부 0회</b><p>1.33MB AI가 확장 안에서 4ms</p></div>
+      </div>
+    </div>
+    <div class="side">
+      <div>
+        <h4>함께할 곳을 찾습니다</h4>
+        <ul>
+          <li>천안시 등 기관 홈페이지 담당 부서 — 중요 메뉴 지정·시범 적용</li>
+          <li>디지털배움터·복지관 — 어르신 사용 관찰</li>
+        </ul>
+      </div>
+      <div>
+        <h4>사업 방향 (검토 단계)</h4>
+        <ul>
+          <li>개인용 확장은 무료로 효과를 증명</li>
+          <li>기관용: 웹 담당자 진단 보고서 → 홈페이지에 붙는 쉬운 화면</li>
+          <li>기관 인터뷰는 아직 0건</li>
+        </ul>
+      </div>
+      <div class="qr">
+        <img src="assets/qr-github.svg" alt="GitHub 저장소 QR 코드">
+        <p><b>코드와 기록 전체 공개</b>github.com/khyun-0123/easyweb<br>설치 방법 · 평가 자료 · 실패 기록까지 그대로 있습니다. EasyWeb은 웹 접근성 인증을 대신하지 않는 보조 도구입니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="foot pad">
+  <span>EasyWeb v0.10 · TypeScript · esbuild · Playwright · LightGBM · Claude Code로 개발</span>
+  <span>수치 출처: 저장소 docs/09_local_ai_review.md 14·15절 (2026-11-19)</span>
+</div>
+
+</div>
+</body>
+</html>
